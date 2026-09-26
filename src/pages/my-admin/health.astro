@@ -4,6 +4,7 @@
  * whether the counter itself is working and how close it is to the free
  * limits. Always the last 7 days.
  */
+import WeekStrip from '../../components/admin/WeekStrip.astro'
 import Admin from '../../layouts/Admin.astro'
 import Hint from '../../components/admin/Hint.astro'
 import BarList from '../../components/admin/BarList.astro'
@@ -105,6 +106,8 @@ const plan = planHealth(homePlan?.night, homeLog, dayKey(0))
   wrongWord={wrongWord}
   note="The last 7 days. What is broken, and whether the counter itself is fine."
 >
+  {signedIn && <WeekStrip db={db} fields={['views', 'visits']} />}
+
   <section class="kpis" aria-label="Health at a glance">
     <Kpi label="Night job" value={jobLate ? 'Late' : 'On time'} unit={lastRun ? `last ${shortDay(lastRun.day)}` : ''} mood={jobLate ? 'bad' : 'good'} hero />
     <Kpi label="Events today so far" value={health.today} />

@@ -12,6 +12,7 @@
  * To act on it: pin or ban a title in data/home-rules.json and push. To take a
  * title off the site entirely, data/block.json as before.
  */
+import WeekStrip from '../../components/admin/WeekStrip.astro'
 import Admin from '../../layouts/Admin.astro'
 import Hint from '../../components/admin/Hint.astro'
 import BarList from '../../components/admin/BarList.astro'
@@ -116,6 +117,8 @@ const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'bl
   wrongWord={wrongWord}
   note="The shelves the homepage fills by itself each night. As of the last deploy."
 >
+  {signedIn && <WeekStrip db={db} fields={['views', 'visits', 'clicks']} />}
+
   <section class="kpis" aria-label="Homepage plan at a glance">
     <Kpi label="Plan made" value={plan?.night ? shortDate(plan.night) : 'Never'} unit={health.age != null ? `${health.age} nights ago` : ''} mood={health.hint ? 'bad' : 'good'} hero />
     <Kpi label="Changes that night" value={changes} />

@@ -6,6 +6,7 @@
  * database (see src/lib/own-count.js and src/lib/beacon-rows.js), so they can
  * never show up here either.
  */
+import WeekStrip from '../../components/admin/WeekStrip.astro'
 import Admin from '../../layouts/Admin.astro'
 import Hint from '../../components/admin/Hint.astro'
 import BarList from '../../components/admin/BarList.astro'
@@ -134,6 +135,8 @@ const anyUse = usage.some((row) => row.value > 0)
   wrongWord={wrongWord}
   note={`${range.label}. What readers do with My list and the For you feed. Counts only: list names and AniList usernames are never sent.`}
 >
+  {signedIn && <WeekStrip db={db} fields={['views', 'visits', 'clicks']} />}
+
   <section class="kpis" aria-label="My list at a glance">
     <Kpi label="Titles saved" value={count('list_add')} spark={savesTrend.map((d) => d.saves)} tone="violet" hero />
     <Kpi label="People who saved" value={people('list_add')} />

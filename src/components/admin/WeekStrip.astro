@@ -1,0 +1,80 @@
+---
+/**
+ * This week against last week, as one strip of arrows at the top of a tab.
+ * The seven last CLOSED days against the seven before (weeks() in
+ * src/lib/admin-more.js), from daily_totals only: 14 small rows, so it is
+ * cheap enough for every tab, the self-reloading Now tab included.
+ *
+ * Arrow AND words, like Kpi.astro, so it never depends on colour.
+ * Pass the week totals in when the tab already has them (This week does).
+ */
+import { weekTotals } from '../../lib/admin-more.js'
+import { deltaOf } from '../../lib/admin-chart.js'
+import { num } from '../../lib/admin.js'
+
+const { db, totals = null, fields = ['views', 'visits', 'clicks', 'buys'] } = Astro.props
+
+const NAMES = { views: 'Page views', visits: 'Visits', clicks: 'Clicks out', buys: 'Amazon clicks', reads: 'Reads', watches: 'Watches' }
+
+let week = totals
+if (!week && db) {
+  try {
+    week = await weekTotals(db)
+  } catch {
+    week = null // A strip that cannot load is left out, never an error page.
+  }
+}
+const items = week
+  ? fields.map((field) => {
+      const now = Number(week.now?.[field]) || 0
+      const before = Number(week.before?.[field]) || 0
+      return { field, name: NAMES[field] || field, now, d: deltaOf(now, before) }
+    })
+  : []
+---
+
+{
+  items.length > 0 && (
+    <section class="weekstrip" aria-label="This week against last week">
+      <span class="weekstrip__head">7 days vs the 7 before</span>
+      {items.map(({ name, now, d }) => (
+        <span class:list={['weekstrip__item', d.dir === 'up' && 'up', d.dir === 'down' && 'down']}>
+          {name} <b>{num(now)}</b>{' '}
+          {d.pct === null ? <em>new</em> : <em aria-hidden="true">{d.arrow} {Math.abs(d.pct)}%</em>}
+          {d.pct !== null && <span class="sr-only">{d.words}</span>}
+        </span>
+      ))}
+    </section>
+  )
+}
+
+<style>
+  .weekstrip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    align-items: baseline;
+    font-size: 12.5px;
+    color: var(--dim);
+    margin: 0 0 12px;
+  }
+  .weekstrip__head {
+    color: var(--faint);
+    width: 100%;
+  }
+  .weekstrip__item b {
+    color: var(--text);
+    font-weight: 650;
+  }
+  .weekstrip__item em {
+    font-style: normal;
+    font-weight: 650;
+    color: var(--faint);
+  }
+  .weekstrip__item.up em {
+    color: var(--good);
+  }
+  .weekstrip__item.down em {
+    color: var(--bad);
+  }
+</style>

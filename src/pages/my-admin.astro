@@ -11,6 +11,8 @@ import ClickFeed from '../components/admin/ClickFeed.astro'
 import Columns from '../components/admin/Columns.astro'
 import Kpi from '../components/admin/Kpi.astro'
 import PageFeed from '../components/admin/PageFeed.astro'
+import WeekStrip from '../components/admin/WeekStrip.astro'
+import { changesFor } from '../lib/admin-extra.js'
 import { envOf } from '../lib/runtime.js'
 import {
   gate,
@@ -49,6 +51,7 @@ let hours = []
 let looking = []
 let clicks = []
 let missing = []
+let changes = []
 
 if (signedIn) {
   const [a, b, h, c, d, e] = await Promise.all([
@@ -112,6 +115,13 @@ if (signedIn) {
   looking = c
   clicks = d
   missing = e
+  // Yesterday's three biggest moves. Asked once a day and then kept in the
+  // Worker's cache, because this tab reloads itself every minute.
+  try {
+    changes = await changesFor(db, { nameOf: humanize, sourceOf: sourceName, now })
+  } catch {
+    changes = [] // The box is a bonus; the live numbers must still draw.
+  }
 }
 
 /**
@@ -182,6 +192,23 @@ const brokenRows = missing.map((row) => ({
   refresh={60}
   note="The last five minutes and today so far. Reloads itself every 60 seconds."
 >
+  {changes.length > 0 && (
+    <div class="panel wide">
+      <h2>3 things that changed yesterday</h2>
+      <p class="say">Yesterday against its usual day over the week before. Green went up, rose went down.</p>
+      <ol class="changes">
+        {changes.map((c) => (
+          <li class={c.tone === 'good' ? 't-good' : 't-bad'}>
+            <span aria-hidden="true">{c.tone === 'good' ? '▲' : '▼'}</span>{' '}
+            {c.href ? <a href={c.href}>{c.text}</a> : c.text}
+          </li>
+        ))}
+      </ol>
+    </div>
+  )}
+
+  {signedIn && <WeekStrip db={db} />}
+
   <section class="kpis" aria-label="Right now and today">
     <Kpi label="People here now" value={live.people || 0} live hero />
     <Kpi label="Pages opened in 5 min" value={live.views || 0} />
