@@ -16,7 +16,8 @@ import { envOf } from '../../lib/runtime.js'
 import { gate, rangeOf, num } from '../../lib/admin.js'
 import { actionsFor, closedDaysFor, tally } from '../../lib/admin-more.js'
 import { shortDay, withToday } from '../../lib/admin-chart.js'
-import { droppedHint, feedHint, importHint, savedHint } from '../../lib/admin-hints.js'
+import { droppedHint, feedHint, importHint, savedStatus } from '../../lib/admin-hints.js'
+import homePlan from '../../../data/home-auto.json'
 
 export const prerender = false
 
@@ -62,7 +63,9 @@ const savedRows = saved.map((row) => ({ name: row.label || `AniList #${row.key}`
 const savesTrend = range.mode === 'mixed' ? withToday(closedDays, { saves: count('list_add') }, range.toDay, ['saves']) : closedDays
 const saveColumns = savesTrend.map((row) => ({ label: shortDay(row.day), parts: [row.saves || 0] }))
 const savedTop = saved[0]
-const savedHintFor = savedTop && savedHint(savedTop.n)
+// Where the most saved title stands with the homepage's Readers are saving
+// shelf, from the plan the last deploy shipped with.
+const savedLine = savedTop && savedStatus(savedTop.key, savedTop.people, homePlan)
 
 // --- Finished and dropped. A status is set when a title is added or changed.
 const statusRows = [...of('list_status'), ...of('list_add')]
@@ -148,7 +151,11 @@ const anyUse = usage.some((row) => row.value > 0)
   <div class="panel">
     <h2>What did people save most?</h2>
     <BarList rows={savedRows} tone="violet" empty="No list saves yet in this window." />
-    <Hint hint={savedHintFor && { ...savedHintFor, text: `${savedTop.label || 'The top title'}: ${savedHintFor.text}` }} />
+    {savedLine && (
+      <p class="say">
+        {savedTop.label || 'The top title'}: {savedLine} <a href="/my-admin/homepage">Homepage tab →</a>
+      </p>
+    )}
   </div>
 
   <div class="panel">

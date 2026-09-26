@@ -27,6 +27,7 @@ import {
   SERIES_FIELDS,
 } from '../../lib/admin-more.js'
 import { deltaOf, fillDays, flagOf } from '../../lib/admin-chart.js'
+import homeLog from '../../../data/home-decisions.json'
 import {
   entryPageHint,
   missingTitleHint,
@@ -120,6 +121,19 @@ const hints = topHints([
   platformTop && platformHint({ name: platformTop.platform, total: platformTop.clicks }),
 ])
 
+// The last three things the homepage planner did by itself, so a change on
+// the homepage is never a surprise. The full log is on the Homepage tab.
+const homeChanges = (Array.isArray(homeLog) ? homeLog : [])
+  .filter((d) => d && ['add', 'drop', 'show', 'hide', 'skip'].includes(d.action))
+  .slice(0, 3)
+  .map((d) => ({
+    name: [d.night, d.section === 'all' ? '' : d.section, d.action, d.title].filter(Boolean).join(' · '),
+    href: d.path || undefined,
+    sub: d.reason,
+    value: '',
+    tone: d.action === 'skip' ? 'bad' : undefined,
+  }))
+
 const countryRows = countries.map((row) => ({
   name: `${flagOf(row.country) ? `${flagOf(row.country)}  ` : ''}${countryName(row.country)}`,
   value: row.views || 0,
@@ -152,6 +166,13 @@ const platformRows = [...platforms.now]
     <h2>What should I do today?</h2>
     {hints.length === 0 && <p class="empty">Nothing needs you today. The numbers are steady.</p>}
     {hints.map((h) => <Hint hint={h} />)}
+    {homeChanges.length > 0 && (
+      <>
+        <h3>What the homepage changed by itself</h3>
+        <BarList rows={homeChanges} />
+        <p class="more"><a href="/my-admin/homepage">Homepage tab →</a></p>
+      </>
+    )}
   </div>
 
   {closedDays === 0 ? (

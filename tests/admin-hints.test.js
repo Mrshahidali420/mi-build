@@ -44,7 +44,6 @@ test('no hint anywhere ever suggests noindex', () => {
     h.trafficHint(200, 100),
     h.entryPageHint({ entries: 99, views: 99, clicks: 0 }),
     h.quickExitHint({ entries: 99, quick_exits: 99 }),
-    h.savedHint(9, 0),
     h.droppedHint(9, 10),
     h.importHint(0, 0, 9),
     h.feedHint(500, 0),
@@ -62,8 +61,6 @@ test('no hint anywhere ever suggests noindex', () => {
 })
 
 test('lists, import and feed floors', () => {
-  assert.equal(h.savedHint(2, 0), null)
-  assert.equal(h.savedHint(5, 100), null)
   assert.equal(h.droppedHint(3, 20), null)
   assert.ok(h.droppedHint(3, 9))
   assert.equal(h.importHint(3, 0, 1), null, 'fewer than 5 imports says nothing')
@@ -99,4 +96,22 @@ test('topHints puts things to do first and keeps three', () => {
     { text: 'a2', level: 'act' },
   ])
   assert.deepEqual(out.map((x) => x.text), ['a1', 'a2', 'w'])
+})
+
+test('the most saved title: a status line, no longer a "feature it" hint', () => {
+  const plan = {
+    sections: {
+      saving: { enabled: true, title: 'Readers are saving', items: [{ id: 7, since: '2026-09-20' }] },
+      new: { enabled: false, title: 'New and noticed', items: [{ id: 8, since: '2026-09-25' }] },
+    },
+    rejected: { saving: [{ id: 9, reason: "title word 'lolicon'", safety: true }, { id: 10, reason: 'saved by 4 of 10 people', safety: false }] },
+    next: { saving: [{ id: 11 }] },
+  }
+  assert.equal(h.savedStatus(7, 12, plan), 'On the homepage in Readers are saving since 2026-09-20.')
+  assert.match(h.savedStatus(8, 3, plan), /hidden until enough titles qualify/)
+  assert.equal(h.savedStatus(9, 4, plan), "Blocked: title word 'lolicon'.")
+  assert.equal(h.savedStatus(10, 4, plan), 'Not yet: saved by 4 of 10 people.')
+  assert.match(h.savedStatus(11, 12, plan), /waiting for a free slot/)
+  assert.equal(h.savedStatus(12, 4, plan), 'Not yet: 4 of 10 people saved it this week.')
+  assert.equal(h.savedStatus(12, 4, null), 'Not yet: 4 of 10 people saved it this week.')
 })

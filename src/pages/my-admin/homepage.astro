@@ -3,9 +3,11 @@
  * Homepage. What the self-updating shelves show tonight, what they would
  * show next, what was kept off and why, and every change the planner made.
  *
- * Everything here comes from the two files scripts/plan-home.mjs writes,
- * bundled at build time the way PopularNow.astro takes home-boost.json, so
- * opening this tab costs D1 nothing. The numbers are as of the last deploy.
+ * The plan comes from the two files scripts/plan-home.mjs writes, bundled at
+ * build time the way PopularNow.astro takes home-boost.json, so they are as
+ * of the last deploy. The one live question is the last 7 days of
+ * home_seen and home_click from daily_actions (plus the raw rows of today): how
+ * often each shelf was seen and each slot opened.
  *
  * To act on it: pin or ban a title in data/home-rules.json and push. To take a
  * title off the site entirely, data/block.json as before.
@@ -15,8 +17,10 @@ import Hint from '../../components/admin/Hint.astro'
 import BarList from '../../components/admin/BarList.astro'
 import Kpi from '../../components/admin/Kpi.astro'
 import { envOf } from '../../lib/runtime.js'
-import { gate } from '../../lib/admin.js'
-import { SECTIONS, daysBetween } from '../../lib/home-plan.mjs'
+import { gate, rangeOf, num } from '../../lib/admin.js'
+import { actionsFor } from '../../lib/admin-more.js'
+import { SECTIONS, FLOORS, RISING, NEW, MONTH, daysBetween } from '../../lib/home-plan.mjs'
+import { shelfNumbers } from '../../lib/home-sections.js'
 import { planHealth } from '../../lib/admin-hints.js'
 import plan from '../../../data/home-auto.json'
 import decisions from '../../../data/home-decisions.json'
@@ -24,9 +28,23 @@ import decisions from '../../../data/home-decisions.json'
 export const prerender = false
 
 const env = envOf(Astro)
-const { secret, signedIn, wrongWord } = await gate(Astro, env)
+const { db, secret, signedIn, wrongWord } = await gate(Astro, env)
 if (secret && !signedIn && Astro.request.method !== 'POST') {
   return Astro.redirect('/my-admin')
+}
+
+// This week's shelf numbers, as the homepage itself reported them.
+const week = rangeOf(new URL('?range=7d', Astro.url), '7d')
+let acts = []
+if (signedIn) acts = await actionsFor(db, week, ['home_seen', 'home_click'], 2000)
+const live = shelfNumbers(acts)
+
+// What a title needs, per shelf, in one line under its card.
+const NEEDS = {
+  rising: `A title needs ${FLOORS.people7} different people and ${RISING.minOpens7} opens this week at ${RISING.lift7} times its usual, on ${FLOORS.daysSeen7} or more days, and a clean name.`,
+  saving: `A title needs ${FLOORS.savers7} different people saving it this week, on ${FLOORS.saveDays7} or more days, and a clean name.`,
+  new: `A title first counted in the last ${NEW.firstSeenDays} days (or started on AniList in the last ${NEW.startDays}) needs ${NEW.minOpens7} opens by ${FLOORS.people7} people this week, and a clean name.`,
+  month: `A title needs ${MONTH.minOpens30} opens by ${FLOORS.people30} people in 30 days, ${MONTH.minHandoff * 100} in 100 going on to read or watch, and a clean name.`,
 }
 
 const today = new Date().toISOString().slice(0, 10)
@@ -43,9 +61,17 @@ const cards = Object.entries(SECTIONS).map(([key, cfg]) => {
   const mid = rates.length ? [...rates].sort((a, b) => a - b)[Math.floor(rates.length / 2)] : 0
   const status = (it) =>
     it.pinned ? 'pinned' : it.nights <= 1 ? 'new' : it.nights >= cfg.maxStay ? 'leaving tomorrow' : 'kept'
+  const seen = live.seen[key] || 0
+  const clicked = live.shelfClicks[key] || 0
+  const clicksOf = (id) => live.clicks.get(key + ':' + id) || 0
+  const share = seen ? Math.round((clicked * 1000) / seen) / 10 : 0
   return {
     key,
     title: cfg.title,
+    needs: NEEDS[key],
+    week: seen
+      ? `Seen ${num(seen)} times in the last 7 days, ${num(clicked)} covers opened (${share}%).`
+      : 'Not seen on the homepage in the last 7 days.',
     state: section.enabled
       ? `Shown, ${items.length} titles.`
       : `Hidden: ${items.length} of ${cfg.floor} titles qualify.`,
@@ -56,7 +82,8 @@ const cards = Object.entries(SECTIONS).map(([key, cfg]) => {
         status(it),
         `night ${it.nights}`,
         it.reason,
-        it.shown ? `opened ${it.opened} of ${it.shown} home views` : '',
+        seen ? `this week: opened ${clicksOf(it.id)} of ${seen} times seen` : '',
+        it.shown ? `since added: opened ${it.opened} of ${it.shown} times shown` : '',
         it.shown && mid ? `${(it.opened / it.shown / mid).toFixed(1)}x the shelf median` : '',
       ].filter(Boolean).join(' · '),
       value: Math.round(it.score || 0),
@@ -104,7 +131,7 @@ const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'bl
   {cards.map((card) => (
     <div class="panel wide">
       <h2>On the homepage tonight: {card.title}</h2>
-      <p class="say">{card.state} A title needs 10 different people saving it this week, on 3 or more days, and a clean name.</p>
+      <p class="say">{card.state} {card.week} {card.needs}</p>
       <BarList rows={card.rows} tone="good" empty="No title qualifies yet." />
       <h3>Would be next</h3>
       <p class="say">Qualify, but got no slot tonight (the nightly limit or a full shelf).</p>

@@ -14,7 +14,8 @@ import Trend from '../../components/admin/Trend.astro'
 import { envOf } from '../../lib/runtime.js'
 import { gate, rangeOf, fmtDwell, handOff, humanize, num, sectionName, withRange } from '../../lib/admin.js'
 import { edgesFor, pagesFor, totalsFor } from '../../lib/admin-data.js'
-import { closedDaysFor, quickExitsFor } from '../../lib/admin-more.js'
+import { closedDaysFor, liftsFor, quickExitsFor } from '../../lib/admin-more.js'
+import { liftsOf, baseDaysOf, RISING } from '../../lib/home-plan.mjs'
 import { withToday } from '../../lib/admin-chart.js'
 import { entryPageHint, quickExitHint, MIN_ENTRIES } from '../../lib/admin-hints.js'
 
@@ -37,16 +38,37 @@ let totals = {}
 let quick = new Map()
 let edges = []
 let closedDays = []
+let lifts = { rows: [], historyStart: null, night: '' }
 
 if (signedIn) {
-  ;[rows, totals, quick, edges, closedDays] = await Promise.all([
+  ;[rows, totals, quick, edges, closedDays, lifts] = await Promise.all([
     pagesFor(db, range),
     totalsFor(db, range),
     quickExitsFor(db, range),
     edgesFor(db, range, 8),
     closedDaysFor(db, range),
+    liftsFor(db, Date.now(), RISING.minOpens7),
   ])
 }
+
+// --- 1 day, 7 days, 30 days. The same lift the homepage planner uses for
+// Rising this week, on every page with 30 opens this week, so a rise shows
+// here before the planner acts on it. A big lift seen on only one or two
+// days is more likely a bot burst than readers.
+const baseDays = lifts.night ? baseDaysOf(lifts.historyStart, lifts.night) : 30
+const lifted = lifts.rows
+  .map((row) => ({ ...row, ...liftsOf(row, baseDays) }))
+  .sort((a, b) => b.lift7 - a.lift7 || (a.path < b.path ? -1 : 1))
+  .slice(0, 40)
+const topLift = lifted[0]?.lift7 || 1
+const liftRows = lifted.map((row) => ({
+    name: humanize(row.path, row.label),
+    href: row.path,
+    sub: `${num(row.opens1)} yesterday · ${num(row.opens7)} in 7 days · ${num(row.opens30)} in ${baseDays} days · seen ${row.days7} of 7 days`,
+    value: `${row.lift7.toFixed(1)}x`,
+    bar: (row.lift7 / topLift) * 100,
+    tone: row.days7 < 3 ? 'bad' : row.lift7 >= RISING.lift7 ? 'good' : undefined,
+  }))
 
 // The day-by-day line. A 7 or 30 day range ends with today, worked out from
 // the totals this page already has; All time shows the last closed days.
@@ -235,6 +257,17 @@ const named = (row, hint) => hint && { ...hint, text: `${humanize(row.path, row.
       <a href={withRange('/my-admin/journeys', range)}>Recent visits, step by step →</a>
       <a href={withRange('/my-admin/sections', range)}>Sections, countries and sources →</a>
     </p>
+  </div>
+
+  <div class="panel wide">
+    <h2>1 day, 7 days, 30 days: what is rising?</h2>
+    <p class="say">
+      Pages with {RISING.minOpens7} or more opens in the last 7 closed days, by how
+      much this week beats their usual week ({baseDays < 30 ? `the counter has ${baseDays} days so far` : 'the last 30 days'}).
+      Green is {RISING.lift7}x or more, the Rising shelf's bar. Rose means seen on
+      fewer than 3 of 7 days: more likely a burst than readers.
+    </p>
+    <BarList rows={liftRows} empty={`No page has ${RISING.minOpens7} opens in the last 7 days yet.`} />
   </div>
 
   <div class="panel">

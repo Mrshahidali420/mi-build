@@ -247,3 +247,38 @@ export async function counterHealth(db, now = Date.now()) {
   ])
   return { log, today: today.rows || 0 }
 }
+
+// ------------------------------------------------------------------ rising pages
+
+/**
+ * Every page with at least `floor` opens in the last 7 closed days, with its
+ * opens yesterday, over 7 days and over 30 days, and on how many of the 7
+ * days it was seen at all. Closed days only, from daily_pages, so the table
+ * reads what the homepage planner reads. Also returns the first day the
+ * counter holds, so the "usual" is worked out over the days that exist.
+ */
+export async function liftsFor(db, now = Date.now(), floor = 30) {
+  const last = dayKey(1, now)
+  const from7 = dayKey(7, now)
+  const from30 = dayKey(30, now)
+  const [rows, first] = await Promise.all([
+    ask(
+      db,
+      `SELECT path, MAX(label) AS label,
+         SUM(CASE WHEN day = ? THEN views ELSE 0 END) AS opens1,
+         SUM(CASE WHEN day >= ? THEN views ELSE 0 END) AS opens7,
+         SUM(views) AS opens30,
+         COUNT(DISTINCT CASE WHEN day >= ? THEN day END) AS days7
+       FROM daily_pages WHERE day >= ? AND day <= ?
+       GROUP BY path HAVING opens7 >= ?`,
+      last,
+      from7,
+      from7,
+      from30,
+      last,
+      floor
+    ),
+    askOne(db, 'SELECT MIN(day) AS day FROM daily_pages'),
+  ])
+  return { rows, historyStart: first.day || null, night: dayKey(0, now) }
+}

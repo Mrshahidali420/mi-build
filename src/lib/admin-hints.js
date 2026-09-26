@@ -14,6 +14,7 @@
  *   - Never "noindex" a page. A thin page that already ranks is made fuller,
  *     never hidden from Google.
  */
+import { FLOORS } from './home-plan.mjs'
 
 // Below these, a share swings too much to act on.
 export const MIN_ENTRIES = 20
@@ -84,12 +85,25 @@ export function quickExitHint(row) {
   )
 }
 
-/** A title people save a lot but rarely open. */
-export function savedHint(saves, views) {
-  const s = Number(saves) || 0
-  if (s < 3) return null
-  if ((Number(views) || 0) > s * 5) return null
-  return hint('Saved often for how rarely it is opened. Feature it on the homepage.', 'watch')
+/**
+ * Where the most saved title stands with the homepage. This used to be a hint
+ * ("feature it on the homepage"); the Readers are saving shelf now does that
+ * by itself, behind its floors, so the tab only says what happened.
+ * plan: data/home-auto.json. people: distinct savers the tab counted.
+ */
+export function savedStatus(id, people, plan) {
+  const key = String(id)
+  for (const section of Object.values(plan?.sections || {})) {
+    const item = (section?.items || []).find((it) => String(it.id) === key)
+    if (!item) continue
+    return section.enabled
+      ? `On the homepage in ${section.title} since ${item.since}.`
+      : `In ${section.title}, which stays hidden until enough titles qualify.`
+  }
+  const refused = (plan?.rejected?.saving || []).find((it) => String(it.id) === key)
+  if (refused) return refused.safety ? `Blocked: ${refused.reason}.` : `Not yet: ${refused.reason}.`
+  if ((plan?.next?.saving || []).some((it) => String(it.id) === key)) return 'Qualifies; waiting for a free slot on the homepage.'
+  return `Not yet: ${Number(people) || 0} of ${FLOORS.savers7} people saved it this week.`
 }
 
 /** Many readers drop the same title. */
@@ -144,7 +158,6 @@ export function noClickHint(row) {
   return hint('Seen a lot, never clicked. It may have no platforms listed: check its data on AniList.', 'watch')
 }
 
-/** The night job did not close yesterday. `lastDay` is its newest day. */
 // A homepage plan older than this is stale: the self-updating shelves have
 // stopped following readers. Ten nights, so one or two bad nights stay quiet.
 export const PLAN_STALE_NIGHTS = 10
@@ -179,6 +192,7 @@ export function planHealth(planNight, log, today) {
   return { age, line, hint: null }
 }
 
+/** The night job did not close yesterday. `lastDay` is its newest day. */
 export function rollupHint(lastDay, yesterday) {
   if (lastDay && lastDay >= yesterday) return null
   return hint(
