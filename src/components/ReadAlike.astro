@@ -1,0 +1,199 @@
+---
+/**
+ * "Read something like it, legally, now", right under the "Read it on" box on
+ * a comic or novel page with no official English platform.
+ *
+ * Those pages are found on Google and then had nothing to click except the
+ * Amazon box. This gives the searcher three honest next steps, in the order
+ * that helps most: licensed titles like it (worked out at build time, see
+ * src/lib/alike.mjs), the official Japanese pages AniList lists (clearly
+ * marked, because most readers here cannot use them), and saving the title to
+ * hear when it is licensed.
+ *
+ * The Amazon box keeps its place above the platforms; this sits below them.
+ */
+import CoverGrid from './CoverGrid.astro'
+import { japaneseLinks } from '../lib/alike.mjs'
+
+const { item, word, languages = [] } = Astro.props
+
+const picks = item.alike || []
+const jp = japaneseLinks(item)
+
+// What the reader is up against, in one sentence. It says what WE list, not
+// what exists: a print licence can exist that AniList files as a publisher
+// page rather than a reading platform (Kodansha USA is one), and "nobody has
+// licensed it" would then be false.
+const others = languages.filter((l) => l && l !== 'English')
+const why = others.length
+  ? `The only official platforms we list for ${item.title} are in ${others.join(', ')}.`
+  : `We list no official English platform for ${item.title} yet.`
+const lead = picks.length
+  ? `${why} These ${picks.length} share its genres and each has an official English platform today.`
+  : why
+// The heading promises something to read. With no picks and no Japanese page
+// there is nothing behind it, so only the save nudge is drawn.
+const hasBlock = picks.length > 0 || jp.length > 0
+---
+
+<section class={hasBlock ? 'answer alike' : 'alike'} aria-labelledby={hasBlock ? 'alike-head' : undefined}>
+  {
+    hasBlock && (
+      <div class="answer__head">
+        <h2 id="alike-head">Read something like it, legally, now</h2>
+        <p>{lead}</p>
+      </div>
+    )
+  }
+
+  {picks.length > 0 && <CoverGrid items={picks} badges />}
+
+  {
+    jp.length > 0 && (
+      <div class="alike__jp">
+        <p class="alike__jp-head">
+          <b>Official pages in Japan</b>
+          <span>Listed on AniList. Japanese only.</span>
+        </p>
+        <ul>
+          {jp.map((link) => (
+            <li>
+              {/* One fixed platform name, so GA4 files every click under
+                  read_japanese_official instead of a new name per site. */}
+              <a
+                href={link.url}
+                rel="noopener nofollow"
+                target="_blank"
+                data-go="read"
+                data-platform="Japanese official"
+              >
+                {link.site === link.host ? link.host : `${link.site} (${link.host})`}
+              </a>
+              <span class="alike__tag">Japanese only</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  <p class="alike__save" data-alike-save>
+    <span class="alike__save-text">
+      Waiting for an English release of {item.title}? Add it to your list. The day we list an
+      official English platform, it shows here and next to the {word} on My list.
+    </span>
+    <button type="button" class="alike__save-btn">Add to my list</button>
+  </p>
+</section>
+
+<script>
+  // The nudge presses the real "Add to my list" button under the cover, so
+  // the save, its count and its undo all work exactly as they do there. It
+  // only reads that button's state; the list itself stays in the browser.
+  for (const box of document.querySelectorAll('[data-alike-save]')) {
+    const main = document.querySelector('[data-mylist] .mylist__add')
+    const btn = box.querySelector('.alike__save-btn')
+    if (!main || !btn) {
+      box.hidden = true
+      continue
+    }
+    const sync = () => {
+      const saved = main.getAttribute('aria-pressed') === 'true'
+      btn.textContent = saved ? 'On your list' : 'Add to my list'
+      btn.disabled = saved
+    }
+    btn.addEventListener('click', () => {
+      if (main.getAttribute('aria-pressed') !== 'true') main.click()
+      sync()
+    })
+    // The list script draws the main button after this runs, and again on
+    // every change, so the nudge follows its attribute.
+    new MutationObserver(sync).observe(main, { attributes: true, attributeFilter: ['aria-pressed'] })
+    sync()
+  }
+</script>
+
+<style>
+  .alike__jp {
+    margin: 1rem 0 0;
+    font-size: 0.88rem;
+  }
+  .alike__jp-head {
+    margin: 0 0 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.6rem;
+    align-items: baseline;
+    color: var(--dawn-faint);
+  }
+  .alike__jp-head b {
+    color: var(--day);
+  }
+  .alike__jp ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .alike__jp li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.6rem;
+    align-items: baseline;
+  }
+  .alike__jp a {
+    color: var(--day);
+    text-decoration: none;
+    border-bottom: 1px solid var(--cobalt-line);
+    overflow-wrap: anywhere;
+  }
+  .alike__jp a:hover {
+    border-bottom-color: var(--rose);
+  }
+  .alike__tag {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--dawn-faint);
+    border: 1px solid var(--cobalt-line);
+    border-radius: 3px;
+    padding: 0 0.35rem;
+  }
+  .alike__save {
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.8rem;
+    border: 1px solid var(--cobalt-line);
+    border-radius: 4px;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.88rem;
+    color: var(--dawn-dim);
+  }
+  .alike__save-text {
+    flex: 1 1 16rem;
+  }
+  .alike__save-btn {
+    font: inherit;
+    font-weight: 600;
+    color: var(--day);
+    background: transparent;
+    border: 1px solid var(--rose);
+    border-radius: 4px;
+    padding: 0.35rem 0.8rem;
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .alike__save-btn:hover:not(:disabled),
+  .alike__save-btn:focus-visible {
+    background: var(--rose);
+    color: var(--night, #000);
+  }
+  .alike__save-btn:disabled {
+    border-color: var(--cobalt-line);
+    color: var(--dawn-faint);
+    cursor: default;
+  }
+</style>

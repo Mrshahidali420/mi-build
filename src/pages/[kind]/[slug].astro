@@ -28,6 +28,8 @@ import EpisodeList from '../../components/EpisodeList.astro'
 import { dubOf, dubLabel } from '../../lib/dub.mjs'
 import { whereAnimeUrl } from '../../lib/where-links.mjs'
 import MyListButton from '../../components/MyListButton.astro'
+import ReadAlike from '../../components/ReadAlike.astro'
+import { needsAlike } from '../../lib/alike.mjs'
 import { checkedISO, checkedLong } from '../../lib/checked.js'
 import { sectionOf, SECTIONS } from '../../lib/section.mjs'
 import { seasonLabel, seasonPath, seasonWhen } from '../../lib/season-core.mjs'
@@ -593,6 +595,11 @@ const updatedLong = checkedLong
           </p>
         </Fragment>
       </Platforms>
+
+      {/* No official English platform: licensed titles like it, the official
+          Japanese pages, and a nudge to save it (src/components/ReadAlike.astro).
+          Below the platforms, so the Amazon box keeps its place above them. */}
+      {needsAlike(item) && <ReadAlike item={item} word={word} languages={languages} />}
 
       {
         picked && buys.length > 0 && (
