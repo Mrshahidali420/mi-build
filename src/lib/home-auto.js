@@ -6,7 +6,7 @@
 // has no self-updating sections and is otherwise exactly as before.
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { SECTIONS } from './home-plan.mjs'
+import { SECTIONS, BADGE_MAX } from './home-plan.mjs'
 
 /** The plan, or null when the file is missing or not a plan. */
 export function loadHomeAuto(file = join(process.cwd(), 'data', 'home-auto.json')) {
@@ -40,7 +40,10 @@ export function homeShelf(plan, key, { lookup, onPage = new Set() }) {
     const found = lookup(id)
     if (!found) continue
     seen.add(id)
-    items.push(found.item)
+    // The planner's one-line badge ("Saved by 14 readers this week") rides
+    // on a copy of the record, so the catalog's own object is never touched.
+    const badge = typeof it.badge === 'string' && it.badge.length <= BADGE_MAX ? it.badge : ''
+    items.push(badge ? { ...found.item, badge } : found.item)
     if (items.length >= cfg.slots) break
   }
   if (items.length < cfg.floor) return null

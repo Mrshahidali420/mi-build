@@ -392,18 +392,35 @@ export function monthReason(s) {
   return cut(`Opened ${s.opens30 || 0} times this month by ${s.people30 || 0} people, ${pct}% went on to read or watch`)
 }
 
+// ------------------------------------------------------------------ public badges
+
+/**
+ * The short line printed on the cover itself on the homepage (owner's call,
+ * 27 Sep 2026). It says why the title is on that shelf in the reader's
+ * words, from the same numbers the planner used, and nothing else.
+ * "Readers" only where the count is true distinct people (savers over the
+ * week); everywhere else it counts opens, which is what the number is.
+ */
+export const BADGE_MAX = 40
+const badgeCut = (text) => (text.length > BADGE_MAX ? '' : text)
+export const savingBadge = (s) => badgeCut(`Saved by ${s.savers7 || 0} readers this week`)
+export const risingBadge = (s, ctx = {}) => badgeCut(`Opened ${liftsOf(s, ctx.baseDays).lift7.toFixed(1)}x its usual this week`)
+export const newBadge = (s) => badgeCut(`New, opened ${s.opens7 || 0} times this week`)
+export const monthBadge = (s) => badgeCut(`Opened ${s.opens30 || 0} times this month`)
+
 // Each section's rules in one place. strength orders the "kept off" list on
 // /my-admin, so the titles closest to making it are shown first.
 const RULES = {
-  rising: { miss: risingMiss, score: risingScore, reason: risingReason, strength: (s) => s.opens7 || 0 },
+  rising: { miss: risingMiss, score: risingScore, reason: risingReason, badge: risingBadge, strength: (s) => s.opens7 || 0 },
   saving: {
     miss: savingMiss,
     score: savingScore,
     reason: savingReason,
+    badge: savingBadge,
     strength: (s) => (s.savers7 || 0) * 1e6 + (s.saves7 || 0),
   },
-  new: { miss: newMiss, score: newScore, reason: newReason, strength: (s) => s.opens7 || 0 },
-  month: { miss: monthMiss, score: monthScore, reason: monthReason, strength: (s) => s.opens30 || 0 },
+  new: { miss: newMiss, score: newScore, reason: newReason, badge: newBadge, strength: (s) => s.opens7 || 0 },
+  month: { miss: monthMiss, score: monthScore, reason: monthReason, badge: monthBadge, strength: (s) => s.opens30 || 0 },
 }
 
 // ------------------------------------------------------------------ loop check
@@ -536,6 +553,10 @@ export function planHome(input) {
   const nightsOf = (it) => daysBetween(it.since, night) + 1
   const scoreOf = (rule, s, title) => (s ? rule.score(s, ctx, title) : 0)
   const reasonOf = (rule, s, title) => (s ? rule.reason(s, ctx, title) : '')
+  // A title kept only by its minimum stay may no longer meet the floor, so a
+  // badge is only printed while the title still qualifies: the number on the
+  // cover must be the reason it is there.
+  const badgeOf = (rule, s, title) => (s && !rule.miss(s, title, ctx) ? rule.badge(s, ctx) : '')
 
   // 1 and 2, for every section before any new title is placed: what is on
   // the page stays or leaves first, so a title never hops from one shelf to
@@ -579,6 +600,7 @@ export function planHome(input) {
         nights,
         score: scoreOf(rule, s, title),
         reason: s ? reasonOf(rule, s, title) : item.reason || '',
+        badge: pinned ? '' : badgeOf(rule, s, title),
         pinned,
       })
       taken.add(id)
@@ -650,7 +672,7 @@ export function planHome(input) {
         rejected.push({ id, path, title: title?.title || '', strength, trending, reason: cut(why), safety })
         continue
       }
-      candidates.push({ id, path, title: title.title, score: scoreOf(rule, s, title), reason: reasonOf(rule, s, title) })
+      candidates.push({ id, path, title: title.title, score: scoreOf(rule, s, title), reason: reasonOf(rule, s, title), badge: badgeOf(rule, s, title) })
     }
     candidates.sort(byScore)
     const room = Math.max(0, cfg.slots - staying.length)
@@ -713,6 +735,7 @@ export function planHome(input) {
         opened: enabled ? it.opened || 0 : 0,
         score: it.score,
         reason: cut(it.reason || ''),
+        badge: it.pinned ? '' : it.badge || '',
         pinned: Boolean(it.pinned),
       }))
 

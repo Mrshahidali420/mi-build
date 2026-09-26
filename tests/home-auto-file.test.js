@@ -48,3 +48,14 @@ test('the homepage drops titles shown elsewhere and hides a short shelf', () => 
   assert.equal(homeShelf(planOf(ids, false), 'saving', { lookup }), null, 'a hidden section is not drawn')
   assert.equal(homeShelf(null, 'saving', { lookup }), null)
 })
+
+test('a plan badge rides on a copy of the record, and a long one is dropped', () => {
+  const p = planOf([1, 2, 3, 4, 5, 6])
+  p.sections.saving.items[0].badge = 'Saved by 14 readers this week'
+  p.sections.saving.items[1].badge = 'x'.repeat(200)
+  const record = { id: 1, title: 'T1' }
+  const shelf = homeShelf(p, 'saving', { lookup: (id) => (id === 1 ? { item: record } : lookup(id)) })
+  assert.equal(shelf.items[0].badge, 'Saved by 14 readers this week')
+  assert.equal(record.badge, undefined, 'the catalog record is untouched')
+  assert.equal(shelf.items[1].badge, undefined)
+})

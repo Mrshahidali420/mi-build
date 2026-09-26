@@ -897,6 +897,18 @@ img {
   color: var(--day);
 }
 
+/* Why a cover is on a self-updating homepage shelf. Rose like the other
+   live signals, one line, cut with an ellipsis on a narrow card. */
+.card__why {
+  margin: 0.25rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--rose);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* one quiet fact line: score, kind, status */
 .card__meta {
   margin: 0.3rem 0 0;

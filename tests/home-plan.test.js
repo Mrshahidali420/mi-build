@@ -6,6 +6,7 @@ import {
   planHome, savingMiss, savingScore, adultReason, hasWord, loopDrops, mergeDecisions,
   addDays, SECTIONS, FLOORS, DROP, PRIORITY, PAGE_CHANGE_CAP,
   risingMiss, liftsOf, baseDaysOf, newMiss, newSince, monthMiss, monthScore, exposureOf, startDayOf,
+  savingBadge, risingBadge, newBadge, monthBadge, BADGE_MAX,
 } from '../src/lib/home-plan.mjs'
 
 const RULES = JSON.parse(readFileSync(new URL('../data/home-rules.json', import.meta.url), 'utf8'))
@@ -107,6 +108,27 @@ test('block.json and ban keep a title off; a pin forces one in', () => {
   assert.ok(ids.includes(7), 'pinned')
   assert.equal(p.sections.saving.items[0].id, 7, 'pins lead the shelf')
   assert.equal(p.sections.saving.items.filter((it) => !it.pinned).length, 3, 'the pin did not use the cap')
+  // The public badge: true distinct savers on a qualifying title, nothing on a pin.
+  for (const it of p.sections.saving.items) {
+    if (it.pinned) assert.equal(it.badge, '')
+    else assert.equal(it.badge, `Saved by ${w.stats.get(it.id).savers7} readers this week`)
+  }
+})
+
+test('badges are short, honest and only for titles that still qualify', () => {
+  assert.equal(savingBadge({ savers7: 14 }), 'Saved by 14 readers this week')
+  assert.equal(monthBadge({ opens30: 410 }), 'Opened 410 times this month')
+  assert.equal(newBadge({ opens7: 55 }), 'New, opened 55 times this week')
+  assert.match(risingBadge({ opens7: 300, opens30: 400 }, { baseDays: 30 }), /^Opened \d+\.\dx its usual this week$/)
+  for (const b of [savingBadge({ savers7: 999999 }), monthBadge({ opens30: 1234567 })]) assert.ok(b.length <= BADGE_MAX)
+  // Kept only by its minimum stay: no longer at the floor, so no badge.
+  const w = world(6)
+  const first = plan(w).plan
+  w.stats.set(first.sections.saving.items[0].id, good({ savers7: 3, saves7: 3 }))
+  const second = plan(w, { prev: first, night: addDays(NIGHT, 1) }).plan
+  const kept = second.sections.saving.items.find((it) => it.id === first.sections.saving.items[0].id)
+  assert.ok(kept, 'still inside its minimum stay')
+  assert.equal(kept.badge, '')
 })
 
 test('a title already in a Trending shelf is never shown twice', () => {

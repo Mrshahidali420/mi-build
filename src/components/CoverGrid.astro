@@ -71,6 +71,9 @@ const smallCover = (url) =>
               {badges && isFree(item) ? <span class="card__free">Free</span> : null}
             </span>
             <p class="card__title">{item.title}</p>
+            {/* Only the homepage's self-updating shelves set a badge: why the
+                title is on that shelf, from the nightly plan. */}
+            {item.badge && <p class="card__why">{item.badge}</p>}
             <p class="card__meta">
               <span>{metaOf(item)}</span>
             </p>
