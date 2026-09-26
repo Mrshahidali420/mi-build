@@ -10,6 +10,7 @@
  * search are cleaned a second time, because anyone can change a page.
  */
 import { normalizeQuery } from './finder-core.js'
+import { homeSection, homeSeenDetail } from './home-sections.js'
 
 // The only words allowed in the kind column. Anything else becomes 'other', so
 // a made up value can never widen a table or break a count.
@@ -32,13 +33,15 @@ export const ACT_NAMES = new Set([
   'feed_view',
   'feed_click',
   'miss_next',
+  'home_seen',
+  'home_click',
 ])
 export const SEARCH_NAMES = new Set(['search_pick', 'search_none'])
 
 // The actions that are about one title. Only these may carry a title id and
 // its name. The rest are counts only: a list name or an AniList username can
 // never reach the database, even from a page that was changed to send one.
-const TITLE_ACTS = new Set(['list_add', 'list_remove', 'list_status', 'list_toggle', 'feed_click'])
+const TITLE_ACTS = new Set(['list_add', 'list_remove', 'list_status', 'list_toggle', 'feed_click', 'home_click'])
 
 // Where an Amazon link sat: the hand-picked Top picks, the BuyBox on a title
 // page, the /shop page, or the theme songs box.
@@ -106,6 +109,20 @@ function actionFields(kind, name, row) {
   }
 
   if (!ACT_NAMES.has(name)) return null
+  // The homepage shelves: detail must name only our own shelves, so these
+  // two can never become a way to store free text.
+  if (name === 'home_seen') {
+    const said = word(row.detail)
+    const detail = homeSeenDetail(said)
+    if (!detail || said.split('-').some((key) => !homeSection(key))) return null
+    return { item: '', detail, pos: whole(row.pos, 10), label: '' }
+  }
+  if (name === 'home_click') {
+    const id = whole(row.item, 1e9)
+    const detail = homeSection(row.detail)
+    if (!id || !detail) return null
+    return { item: String(id), detail, pos: whole(row.pos, 50), label: text(row.label, 120) }
+  }
   if (name === 'miss_next') {
     const path = ownPath(row.item)
     if (!path) return null

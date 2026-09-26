@@ -8,6 +8,8 @@ import PopularNow from '../components/PopularNow.astro'
 import { animeByPopularity, novelsByPopularity, comics, comicsOfCountry, anime, genres, platform, airingThisWeek, inIndex } from '../lib/catalog.js'
 import { upcomingAnime, upcomingRow } from '../lib/schedule.mjs'
 import { loadHomeAuto, homeShelf } from '../lib/home-auto.js'
+import { PRIORITY } from '../lib/home-plan.mjs'
+import HomeShelf from '../components/HomeShelf.astro'
 
 const manhwa = comicsOfCountry('KR')
 const manga = comicsOfCountry('JP')
@@ -60,9 +62,21 @@ const onPage = new Set([
   ...coming.dated.slice(0, 6).map((a) => a.id),
 ])
 const homePlan = loadHomeAuto()
-const autoShelves = ['saving']
-  .map((key) => homeShelf(homePlan, key, { lookup: inIndex, onPage }))
-  .filter(Boolean)
+// Worked out in the planner's priority order, each shelf taking the titles
+// the ones before it did not, so no cover is drawn in two shelves even when
+// the plan file is older than today's catalog.
+const shelfOf = {}
+const shownSoFar = new Set(onPage)
+for (const key of PRIORITY) {
+  const shelf = homeShelf(homePlan, key, { lookup: inIndex, onPage: shownSoFar })
+  if (!shelf) continue
+  shelfOf[key] = shelf
+  for (const item of shelf.items) shownSoFar.add(item.id)
+}
+// Rising sits above the Trending shelves (it is the news); the slower
+// shelves sit below them.
+const risingShelf = shelfOf.rising
+const lowerShelves = ['saving', 'new', 'month'].map((key) => shelfOf[key]).filter(Boolean)
 
 // The hero stands in front of a real banner: the most popular manhwa
 // that ships wide art. Masked so it dissolves into the cyc gradient.
@@ -275,6 +289,8 @@ const tinyCover = (url) =>
       fillForYou()
     </script>
 
+    {risingShelf && <HomeShelf shelf={risingShelf} />}
+
     {
       rows.map((row) => (
         <section class="section" data-phase="night">
@@ -325,27 +341,72 @@ const tinyCover = (url) =>
       }
     </script>
 
-    {
-      autoShelves.map((shelf) => (
-        <section class="section" data-phase="night" data-home-section={shelf.key} aria-labelledby={`home-${shelf.key}-h`}>
-          <div class="section__head section__head--row">
-            <div>
-              <h2 id={`home-${shelf.key}-h`}>{shelf.title}</h2>
-              <p>{shelf.why}</p>
-            </div>
-          </div>
-          <div class="shelf-wrap">
-            <button type="button" class="shelf-arrow shelf-arrow--left" aria-label={`Scroll ${shelf.title} left`}>
-              ‹
-            </button>
-            <CoverGrid items={shelf.items} shelf />
-            <button type="button" class="shelf-arrow shelf-arrow--right" aria-label={`Scroll ${shelf.title} right`}>
-              ›
-            </button>
-          </div>
-        </section>
-      ))
-    }
+    {lowerShelves.map((shelf) => <HomeShelf shelf={shelf} />)}
+
+    <script>
+      // What the homepage shelves are worth, counted cheaply (see
+      // tasks/auto-homepage-plan.md, section 7). A shelf counts as seen when
+      // half of it was on screen for a second: a fast scroll past is not a
+      // look. Everything seen on this view leaves as ONE row, when the page is
+      // put away or left; a click on a cover is one more row, riding the same
+      // queue to the next page like the For you clicks.
+      import { track } from '../lib/my-list.js'
+      import { seenBatch } from '../lib/own-count.js'
+
+      const shelves = [...document.querySelectorAll('[data-home-section]')]
+      if (shelves.length) {
+        const batch = seenBatch()
+        const SEEN_AFTER_MS = 1000
+        if ('IntersectionObserver' in window) {
+          const timers = new Map()
+          const watch = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                const key = entry.target.dataset.homeSection
+                if (entry.isIntersecting) {
+                  if (timers.has(key)) continue
+                  timers.set(key, setTimeout(() => {
+                    batch.saw(key)
+                    watch.unobserve(entry.target)
+                  }, SEEN_AFTER_MS))
+                } else {
+                  clearTimeout(timers.get(key))
+                  timers.delete(key)
+                }
+              }
+            },
+            { threshold: 0.5 }
+          )
+          for (const shelf of shelves) watch.observe(shelf)
+        }
+        // Hidden comes before the page is gone, on a click away and on a tab
+        // switch alike, while the counter can still take the row.
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'hidden') batch.flush()
+        })
+
+        for (const shelf of shelves) {
+          const key = shelf.dataset.homeSection
+          const ids = (shelf.dataset.homeIds || '').split(',').map(Number)
+          if (!ids[0]) continue
+          shelf.addEventListener('click', (event) => {
+            const card = event.target.closest && event.target.closest('.card')
+            if (!card || !event.target.closest('a')) return
+            const slot = [...shelf.querySelectorAll('.card')].indexOf(card) + 1
+            const id = ids[slot - 1]
+            if (!slot || !id) return
+            // A cover that was clicked was certainly seen.
+            batch.saw(key)
+            track('home_click', {
+              title_id: id,
+              section: key,
+              slot,
+              title: card.querySelector('.card__title')?.textContent || '',
+            })
+          })
+        }
+      }
+    </script>
 
     <PopularNow />
 

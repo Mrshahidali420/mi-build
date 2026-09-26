@@ -15,7 +15,10 @@
 export const CLICK = "kind IN ('buy','read','watch','other')"
 
 // Anything a reader DID on a page: a click out, a list action, a search.
-export const DID = "kind IN ('buy','read','watch','other','act','search')"
+// home_seen is only "these shelves were on screen", sent by the homepage on
+// its own, so it must not turn a homepage quick exit into a visit that did
+// something.
+export const DID = "(kind IN ('buy','read','watch','other','act','search') AND name <> 'home_seen')"
 
 // How many rows of each action are kept per day. The long tail of one-off
 // titles says nothing and costs a written row each.

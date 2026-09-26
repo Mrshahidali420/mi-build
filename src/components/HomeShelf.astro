@@ -1,0 +1,38 @@
+---
+/**
+ * One self-updating homepage shelf (Rising this week, Readers are saving, New
+ * and noticed, Most opened this month), drawn like the Trending shelves.
+ *
+ * data-home-section and data-home-ids are read by the small script in
+ * src/pages/index.astro: which shelf a cover sits in, and which title is in
+ * which slot, so a click can be counted as "title X from shelf Y, slot N"
+ * without putting anything extra on every cover.
+ */
+import CoverGrid from './CoverGrid.astro'
+
+const { shelf } = Astro.props
+---
+
+<section
+  class="section"
+  data-phase="night"
+  data-home-section={shelf.key}
+  data-home-ids={shelf.items.map((item) => item.id).join(',')}
+  aria-labelledby={`home-${shelf.key}-h`}
+>
+  <div class="section__head section__head--row">
+    <div>
+      <h2 id={`home-${shelf.key}-h`}>{shelf.title}</h2>
+      <p>{shelf.why}</p>
+    </div>
+  </div>
+  <div class="shelf-wrap">
+    <button type="button" class="shelf-arrow shelf-arrow--left" aria-label={`Scroll ${shelf.title} left`}>
+      ‹
+    </button>
+    <CoverGrid items={shelf.items} shelf />
+    <button type="button" class="shelf-arrow shelf-arrow--right" aria-label={`Scroll ${shelf.title} right`}>
+      ›
+    </button>
+  </div>
+</section>

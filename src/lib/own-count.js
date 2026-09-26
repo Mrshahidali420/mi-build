@@ -11,6 +11,7 @@
  * The Worker checks everything again (src/lib/beacon-rows.js).
  */
 import { normalizeQuery } from './finder-core.js'
+import { homeSection, homeSeenDetail } from './home-sections.js'
 
 // For each action: which of the caller's keys fills which column. A key not
 // named here is never read.
@@ -30,6 +31,11 @@ const SHAPES = {
   my_list_view: { pos: 'titles' },
   feed_view: { pos: 'picks' },
   feed_click: { item: 'title_id', detail: 'position', pos: 'position', label: true },
+  // The homepage shelves. home_seen is one row per homepage view naming every
+  // shelf that was on screen, never one per shelf or per cover; home_click is
+  // the title opened, its shelf and its place in it.
+  home_seen: { detail: 'sections', pos: 'shown' },
+  home_click: { item: 'title_id', detail: 'section', pos: 'slot', label: true },
 }
 
 // Opened once is enough to know a person looked. Counting every reload only
@@ -60,6 +66,8 @@ export function toOwnRow(name, params = {}) {
   const p = params && typeof params === 'object' ? params : {}
   let detail = shape.detail ? short(p[shape.detail], 40) : ''
   if (shape.detail === 'in_list') detail = Number(p.in_list) ? 'in' : 'out'
+  if (name === 'home_seen') detail = homeSeenDetail(p.sections)
+  if (name === 'home_click') detail = homeSection(p.section)
   const row = {
     name,
     kind: 'act',
@@ -70,6 +78,8 @@ export function toOwnRow(name, params = {}) {
   }
   // An action about one title with no title id is a broken call. Drop it.
   if (shape.item && !row.item) return null
+  // A homepage row that names none of our shelves says nothing.
+  if ((name === 'home_seen' || name === 'home_click') && !row.detail) return null
   return row
 }
 
@@ -89,6 +99,31 @@ export function searchPickRow(href, surface, pos, title) {
     detail: surface === 'page' ? 'page' : 'dropdown',
     pos: count(pos),
     label: short(title, 120),
+  }
+}
+
+/**
+ * The homepage shelves a reader saw, gathered while the page is open and sent
+ * as ONE row, once per page view. A row per shelf, or per cover, would
+ * multiply the database writes by the number of shelves for no extra answer:
+ * the planner only needs "this view saw these shelves".
+ *   saw(key)  a shelf was on screen long enough; unknown keys are ignored
+ *   flush()   send the row now (the page is being left); later calls do nothing
+ */
+export function seenBatch(send = sendOwn) {
+  const seen = new Set()
+  let sent = false
+  return {
+    saw(key) {
+      if (!sent && homeSection(key)) seen.add(key)
+    },
+    flush() {
+      if (sent || !seen.size) return null
+      sent = true
+      const row = toOwnRow('home_seen', { sections: [...seen], shown: seen.size })
+      send(row)
+      return row
+    },
   }
 }
 
