@@ -363,7 +363,10 @@ export function shape(media, kind = kindOfMedia(media)) {
     watchLinks: links.filter(isWatchLink).map((l) => ({ site: l.site, url: l.url, language: l.language || null })),
     otherLinks: links
       .filter((l) => !isReadLink(l) && !isWatchLink(l))
-      .map((l) => ({ site: l.site, url: l.url, type: l.type })),
+      // The language rides along (only when AniList gives one) so a page with
+      // no English platform can mark an official link "Japanese only" from a
+      // fact, not from the address alone. See src/lib/alike.mjs.
+      .map((l) => ({ site: l.site, url: l.url, type: l.type, ...(l.language ? { language: l.language } : {}) })),
     streamingEpisodes: (media.streamingEpisodes || []).slice(0, 3).map((e) => ({ title: e.title, url: e.url, site: e.site })),
     studios: media.studios?.nodes?.map((s) => s.name) || [],
     // Only the first four staff rows, as when the query asked for four: the

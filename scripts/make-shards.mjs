@@ -31,6 +31,7 @@ import { hasFreePage, hasLikePage, hasCastPage, hasBuyPage, hasCharacterBuyPage 
 import { hubSeasonKeys, seasonKeyOf } from '../src/lib/season-core.mjs'
 import { indexAiring, attachEpisodes } from '../src/lib/episodes.mjs'
 import { indexWhereLinks, attachWhereLinks } from '../src/lib/where-links.mjs'
+import { licensedPools, alikeFor } from '../src/lib/alike.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = join(ROOT, 'public', 'd')
@@ -132,6 +133,26 @@ function readWhereLinks() {
   }
 }
 
+/**
+ * How often readers opened a platform from each title page over 30 days,
+ * from data/handoff.json (written each night by scripts/plan-home.mjs), or
+ * null. Optional: without it the "read something like it" picks rank by
+ * AniList popularity instead.
+ */
+function readHandoff() {
+  if (!existsSync(join(ROOT, 'data', 'handoff.json'))) {
+    console.log('  no data/handoff.json. "Read something like it" ranks by popularity.')
+    return null
+  }
+  try {
+    const handoff = read('handoff.json')
+    return handoff && handoff.pages && typeof handoff.pages === 'object' ? handoff : null
+  } catch (error) {
+    console.log(`  data/handoff.json is unreadable (${error.message}). Ranking by popularity.`)
+    return null
+  }
+}
+
 export const kindOf = sectionOf
 
 /** Write one folder of shards. The count is fixed: see shard-key.js. */
@@ -192,8 +213,18 @@ const thin = (p) => ({
  */
 const POOL_PER_GENRE = 300
 
-function precompute(titles) {
+function precompute(titles, handoff = null) {
   const byId = new Map(titles.map((item) => [item.id, item]))
+  // Licensed titles by genre, for pages with no English platform. Built once
+  // here, not per title. See src/lib/alike.mjs.
+  const licensed = licensedPools(titles)
+  // Only the English platforms ride along with each pick, so the marks under
+  // its cover are the ones this reader can actually use.
+  const alikeThin = (p) => ({
+    ...thin(p),
+    readLinks: (p.readLinks || []).filter((l) => l.language === 'English').slice(0, 6).map((l) => ({ site: l.site })),
+  })
+  let alikeCount = 0
   // id -> the ids of the reader picks we also hold, best first. The title
   // record drops recIds below, but the "My list" rows still want them.
   const recsInIndex = new Map()
@@ -257,6 +288,14 @@ function precompute(titles) {
       .map(({ id }) => byId.get(id))
       .filter((p) => p && p.id !== item.id && p.cover)
     item.recs = recHits.slice(0, 6).map(thin)
+
+    // A page with no English platform offers licensed titles like it, so a
+    // reader who came from Google has a legal next step.
+    const alike = alikeFor(item, licensed, { handoff, thin: alikeThin })
+    if (alike.length) {
+      item.alike = alike
+      alikeCount++
+    }
     recsInIndex.set(item.id, recHits.slice(0, ROW_RECS_MAX).map((p) => p.id))
     delete item.recIds
 
@@ -272,6 +311,8 @@ function precompute(titles) {
     item.chain = readingChain(item, byId)
     item.adapt = adaptationOf(item, byId)
   }
+
+  console.log(`  "read something like it" picks on ${alikeCount} unlicensed pages${handoff ? ', ranked by hand-off' : ''}`)
 
   // The original overview. It is written here, on every build, so a title
   // added tomorrow gets its own prose tomorrow with no extra step.
@@ -689,7 +730,7 @@ async function main() {
   }
 
   const titles = [...comics, ...anime]
-  const { byId, recsInIndex } = precompute(titles)
+  const { byId, recsInIndex } = precompute(titles, readHandoff())
   since('precompute')
   const t = writeShards(join(OUT, 't'), titles, TITLE_SHARDS, (item) =>
     titleKey(kindOf(item), item.slug))
