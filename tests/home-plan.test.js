@@ -4,7 +4,8 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import {
   planHome, savingMiss, savingScore, adultReason, hasWord, loopDrops, mergeDecisions,
-  addDays, SECTIONS, FLOORS, DROP,
+  addDays, SECTIONS, FLOORS, DROP, PRIORITY, PAGE_CHANGE_CAP,
+  risingMiss, liftsOf, baseDaysOf, newMiss, newSince, monthMiss, monthScore, exposureOf, startDayOf,
 } from '../src/lib/home-plan.mjs'
 
 const RULES = JSON.parse(readFileSync(new URL('../data/home-rules.json', import.meta.url), 'utf8'))
@@ -238,4 +239,218 @@ test('the decisions log keeps 90 nights and replaces a re-run night', () => {
   const out = mergeDecisions(old, [{ night: NIGHT, action: 'add' }], NIGHT)
   assert.deepEqual(out.map((d) => d.night), [NIGHT, addDays(NIGHT, -89)])
   assert.equal(FLOORS.savers7, 10)
+})
+
+// ================================================================ phase 2
+
+// A title rising this week: 30 days of history, a quiet usual, a loud week.
+const riser = (over = {}) => ({
+  opens1: 30, opens7: 120, opens30: 240, people7: 60, people30: 120, outs7: 10, outs30: 20,
+  daysSeen7: 7, entries7: 10, quick7: 1, saves7: 0, savers7: 0, ...over,
+})
+const CTX = { lastDay: addDays(NIGHT, -1), baseDays: 30, historyStart: '2026-08-01' }
+
+test('rising: lift7 carries the +5 shrink, and 1.8x is the bar', () => {
+  // usual week = 7 * 240/30 = 56; (120+5)/(56+5) = 2.05
+  assert.equal(liftsOf(riser(), 30).lift7.toFixed(2), '2.05')
+  assert.equal(risingMiss(riser(), rec(1), CTX), null)
+  // (95+5)/(7*185/30+5) = 100/48.2 = 2.07; still a rise
+  assert.equal(risingMiss(riser({ opens7: 95, opens30: 185 }), rec(1), CTX), null)
+  // A title opened the same every week is not rising.
+  assert.match(risingMiss(riser({ opens7: 70, opens30: 300, opens1: 10 }), rec(1), CTX), /its usual, needs 1.8x/)
+  assert.match(risingMiss(riser({ opens7: 29, opens30: 40, people7: 20 }), rec(1), CTX), /29 of 30 times/)
+})
+
+test('rising: a spike yesterday on a page with traffic also counts', () => {
+  // lift7 = (70+5)/(7*300/30+5) = 1.0, but yesterday was 40 against a usual 10.
+  const s = riser({ opens7: 70, opens30: 300, opens1: 40 })
+  assert.ok(liftsOf(s, 30).lift1 >= 2.5)
+  assert.equal(risingMiss(s, rec(1), CTX), null)
+  assert.match(risingMiss({ ...s, opens7: 59 }, rec(1), CTX), /its usual/, 'a spike needs 60 opens in the week')
+})
+
+test('rising: no history before this week goes to New, never Rising', () => {
+  assert.equal(risingMiss(riser({ opens30: 120 }), rec(1), CTX), 'no history before this week')
+})
+
+test('rising: a young counter divides by the days it really has', () => {
+  assert.equal(baseDaysOf('2026-09-15', '2026-09-27'), 12)
+  assert.equal(baseDaysOf('2026-08-01', '2026-09-27'), 30)
+  assert.equal(baseDaysOf(null, '2026-09-27'), 30)
+  // 12 days of 20 opens a day, a flat week of 140: not a rise over 12 days,
+  // but it would look like 2.2x if the 240 were spread over 30.
+  const flat = riser({ opens7: 140, opens30: 240, opens1: 20 })
+  assert.match(risingMiss(flat, rec(1), { ...CTX, baseDays: 12 }), /needs 1.8x/)
+  assert.equal(risingMiss(flat, rec(1), CTX), null)
+})
+
+test('rising and new: one person reloading a page is caught', () => {
+  assert.match(risingMiss(riser({ opens7: 200, people7: 60 }), rec(1), CTX), /200 opens from 60 people/)
+  assert.match(risingMiss(riser({ saves7: 6, savers7: 2 }), rec(1), CTX), /6 saves from 2 people/)
+  // Two saves by one person is too small to call.
+  assert.equal(risingMiss(riser({ saves7: 2, savers7: 1 }), rec(1), CTX), null)
+  // A one-day burst is not a trend, in every section.
+  assert.match(risingMiss(riser({ daysSeen7: 2 }), rec(1), CTX), /seen on 2 of 3 days/)
+})
+
+test('new: a first day is believed only well after the counter began', () => {
+  const s = riser({ opens30: 120, firstDay: '2026-09-20' })
+  assert.equal(newSince(s, rec(1), CTX), '2026-09-20')
+  // The counter began 15 Sep: every old page got a first day around then.
+  assert.equal(newSince(s, rec(1), { ...CTX, historyStart: '2026-09-15' }), null)
+  assert.equal(newSince(s, rec(1), { ...CTX, historyStart: null }), null)
+  // A start date on AniList in the last 120 days is always believed.
+  assert.equal(startDayOf([2026, 7, null]), '2026-07-01')
+  assert.equal(startDayOf([2026, null, null]), null)
+  assert.equal(newSince({}, rec(1, { startDate: [2026, 7, 4] }), { ...CTX, historyStart: null }), '2026-07-04')
+  assert.equal(newSince({}, rec(1, { startDate: [2025, 1, 4] }), CTX), null)
+  assert.equal(newSince({}, rec(1, { startDate: [2027, 1, 4] }), CTX), null, 'not started yet')
+})
+
+test('new: floors of 30 opens and 20 people', () => {
+  const s = riser({ opens30: 120, firstDay: '2026-09-20' })
+  assert.equal(newMiss(s, rec(1), CTX), null)
+  assert.match(newMiss({ ...s, opens7: 29 }, rec(1), CTX), /29 of 30 times/)
+  assert.match(newMiss({ ...s, people7: 19 }, rec(1), CTX), /19 of 20 people/)
+  assert.match(newMiss(riser({ firstDay: '2026-07-01' }), rec(1), CTX), /not new/)
+})
+
+test('most opened: 150 opens, 60 people in 30 days, 2 in 100 go on', () => {
+  const s = riser({ opens30: 300, people30: 120, outs30: 12 })
+  assert.equal(monthMiss(s, rec(1)), null)
+  assert.match(monthMiss({ ...s, people30: 59 }, rec(1)), /59 of 60 people this month/)
+  assert.match(monthMiss({ ...s, opens30: 149, people30: 60 }, rec(1)), /149 of 150 times/)
+  assert.match(monthMiss({ ...s, outs30: 5 }, rec(1)), /1.7% went on to read or watch, needs 2%/)
+  assert.equal(monthScore(s), 162, '300 * (0.5 + 0.04)')
+})
+
+// A world where titles 1-4 rise, 5-6 are new, 7-14 are steady monthly
+// titles, and title 1 is also saved by many people.
+function mixed() {
+  const titles = new Map()
+  const stats = new Map()
+  for (let id = 1; id <= 14; id++) titles.set(id, rec(id))
+  for (let id = 1; id <= 4; id++) stats.set(id, riser({ opens7: 120 + id }))
+  for (let id = 5; id <= 6; id++) stats.set(id, riser({ opens30: 120 + id, opens7: 120 + id, firstDay: '2026-09-20' }))
+  for (let id = 7; id <= 14; id++) {
+    stats.set(id, riser({ opens7: 60, opens30: 300 + id, people30: 150, outs30: 30, opens1: 8 }))
+  }
+  stats.set(1, { ...stats.get(1), saves7: 14, savers7: 12, saveDays7: 4 })
+  return { titles, stats }
+}
+const planMixed = (over = {}) => {
+  const w = mixed()
+  return planHome({ night: NIGHT, titles: w.titles, stats: w.stats, rules: RULES, prev: null, historyStart: '2026-08-01', ...over })
+}
+
+test('every section fills from its own rule, rising first', () => {
+  const { plan: p } = planMixed()
+  assert.deepEqual(PRIORITY, ['rising', 'new', 'saving', 'month'])
+  assert.deepEqual(Object.keys(p.sections), ['rising', 'saving', 'new', 'month'])
+  assert.deepEqual(p.sections.rising.items.map((it) => it.id), [4, 3, 2, 1])
+  assert.deepEqual(p.sections.new.items.map((it) => it.id).sort(), [5, 6])
+  assert.ok(p.sections.month.items.length > 0)
+  assert.ok(p.sections.rising.items.every((it) => it.reason.length < 120))
+})
+
+test('a title sits in one section only, by priority', () => {
+  const { plan: p } = planMixed()
+  // Title 1 rises and is saved by 12 people: it goes to Rising only.
+  assert.ok(p.sections.rising.items.some((it) => it.id === 1))
+  assert.ok(!p.sections.saving.items.some((it) => it.id === 1))
+  const all = Object.values(p.sections).flatMap((s) => s.items.map((it) => it.id))
+  assert.equal(new Set(all).size, all.length, 'no id twice across sections')
+})
+
+test('the page-wide cap: at most 8 new titles a night across all sections', () => {
+  const { plan: p, decisions } = planMixed()
+  const adds = decisions.filter((d) => d.action === 'add')
+  assert.equal(PAGE_CHANGE_CAP, 8)
+  assert.equal(adds.length, 8, 'rising 4 + new 2 + month 2')
+  assert.equal(p.sections.month.items.length, 2, 'month got what was left of the page cap')
+  assert.ok(p.next.month.length > 0, 'the rest wait for another night')
+})
+
+test('no title from Trending, airing or coming soon in any section', () => {
+  const { plan: p } = planMixed({ onPage: new Set([4, 5, 7]) })
+  const all = Object.values(p.sections).flatMap((s) => s.items.map((it) => it.id))
+  for (const id of [4, 5, 7]) assert.ok(!all.includes(id))
+})
+
+test('adult, block.json, ban and pin hold in every section', () => {
+  const w = mixed()
+  w.titles.set(2, rec(2, { title: 'Hentai Rising' }))
+  w.titles.set(8, rec(8, { tags: ['Nudity'] }))
+  const rules = { ...RULES, ban: [3], pin: { month: [13] } }
+  const { plan: p, decisions } = planHome({
+    night: NIGHT, titles: w.titles, stats: w.stats, rules, prev: null, historyStart: '2026-08-01', blocked: new Set([5]),
+  })
+  const all = Object.values(p.sections).flatMap((s) => s.items.map((it) => it.id))
+  for (const id of [2, 3, 5, 8]) assert.ok(!all.includes(id), `id ${id} kept off`)
+  assert.equal(p.sections.month.items[0].id, 13, 'the pin leads its shelf')
+  assert.ok(p.sections.month.items[0].pinned)
+  // A blocked title is logged once, not once per section.
+  assert.equal(decisions.filter((d) => d.id === 2 && d.action === 'block').length, 1)
+})
+
+test('kept titles stay in their shelf before any new title is placed', () => {
+  // Title 1 has been in Saving for 2 nights; tonight it also rises. It stays
+  // in Saving rather than hopping to Rising.
+  const prev = {
+    night: addDays(NIGHT, -1),
+    sections: { saving: { enabled: false, items: [slot(1, addDays(NIGHT, -2))] } },
+    cooldown: {},
+  }
+  const { plan: p } = planMixed({ prev })
+  assert.ok(p.sections.saving.items.some((it) => it.id === 1))
+  assert.ok(!p.sections.rising.items.some((it) => it.id === 1))
+})
+
+test('new titles leave after 45 nights and do not come back as new', () => {
+  const prev = { night: addDays(NIGHT, -1), sections: { new: { enabled: true, items: [slot(5, addDays(NIGHT, -45))] } }, cooldown: {} }
+  const { plan: p } = planMixed({ prev })
+  assert.ok(!p.sections.new.items.some((it) => it.id === 5))
+  assert.equal(p.cooldown['5'], addDays(NIGHT, SECTIONS.new.cooldown))
+})
+
+// ---------------------------------------------------------------- closed loop, phase 2
+
+test("exposure uses the homepage's own seen and click numbers when a day has them", () => {
+  const since = addDays(NIGHT, -3)
+  const item = { id: 7, path: '/manhwa/t-7', shown_since: since }
+  const loop = {
+    homeViews: { [since]: 1000, [addDays(since, 1)]: 1000, [addDays(since, 2)]: 1000 },
+    fromHome: new Map([['/manhwa/t-7', { [since]: 50, [addDays(since, 1)]: 50, [addDays(since, 2)]: 50 }]]),
+    // The first day predates the homepage events: it falls back to views.
+    seen: { [addDays(since, 1)]: { month: 400, rising: 900 }, [addDays(since, 2)]: { rising: 100 } },
+    clicks: new Map([['month:7', { [addDays(since, 1)]: 6 }]]),
+  }
+  assert.deepEqual(exposureOf(item, 'month', loop, addDays(NIGHT, -1)), { shown: 1400, opened: 56 })
+  assert.deepEqual(exposureOf({ ...item, shown_since: null }, 'month', loop, addDays(NIGHT, -1)), { shown: 0, opened: 0 })
+})
+
+test('the drop rule: after 7 nights and 1,500 exposures, under 25% of the median goes', () => {
+  const since = addDays(NIGHT, -8)
+  const items = Array.from({ length: 8 }, (_, i) => slot(i + 7, since))
+  const prev = { night: addDays(NIGHT, -1), sections: { month: { enabled: true, items } }, cooldown: {} }
+  const seen = {}
+  const clicks = new Map()
+  for (let d = since; d < NIGHT; d = addDays(d, 1)) seen[d] = { month: 250 }
+  for (let id = 7; id <= 14; id++) clicks.set(`month:${id}`, { [since]: id === 14 ? 1 : 30 })
+  const loop = { homeViews: {}, fromHome: new Map(), seen, clicks }
+  const { plan: p, decisions } = planMixed({ prev, loop })
+  assert.ok(!p.sections.month.items.some((it) => it.id === 14), 'shown 2000 times, opened once')
+  assert.ok(decisions.some((d) => d.id === 14 && d.rule === 'drop.ctr' && /shown 2000 times, opened 1 times/.test(d.reason)))
+  assert.equal(p.cooldown['14'], addDays(NIGHT, DROP.cooldown))
+  // The same slots, younger than 7 nights, are not judged yet.
+  const young = {
+    ...prev,
+    sections: { month: { enabled: true, items: items.map((it) => ({ ...it, since: addDays(NIGHT, -5), shown_since: since })) } },
+  }
+  const { plan: q } = planMixed({ prev: young, loop })
+  assert.ok(q.sections.month.items.some((it) => it.id === 14))
+})
+
+test('phase 2 planning is deterministic', () => {
+  assert.equal(JSON.stringify(planMixed()), JSON.stringify(planMixed()))
 })

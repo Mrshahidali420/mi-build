@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 import { mkdtempSync, writeFileSync, readFileSync, copyFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { runPlan, QUERIES } from '../scripts/plan-home.mjs'
+import { runPlan, QUERIES, statsFrom, loopFrom } from '../scripts/plan-home.mjs'
 import { D1Error } from '../src/lib/d1-api.mjs'
 
 const NIGHT = '2026-09-27'
@@ -75,6 +75,9 @@ test('a good answer writes both files, with the guardrails applied', async () =>
   const ids = [1, 21, 22, 23, 24, 25, 26, 27, 28, 99]
   const answers = {
     [QUERIES.rollup]: [{ day: '2026-09-26' }],
+    [QUERIES.history]: [{ day: '2026-09-01' }],
+    [QUERIES.firsts]: [],
+    [QUERIES.homeActs]: [],
     [QUERIES.pages]: ids.flatMap((id) => days.map((day) => ({ day, path: `/manhwa/${id === 99 ? 'ls' : `t-${id}`}`, views: 50, people: 10, entries: 5, quick_exits: 1 }))),
     [QUERIES.actions]: ids.flatMap((id) => days.slice(0, 4).map((day) => ({ day, name: 'list_add', item: String(id), n: 3 }))),
     [QUERIES.savers]: ids.map((id) => ({ item: String(id), people: 12 })),
@@ -94,4 +97,45 @@ test('a good answer writes both files, with the guardrails applied', async () =>
   const log = JSON.parse(read(dir, 'home-decisions.json'))
   assert.ok(log.some((d) => d.id === 99 && d.action === 'block'))
   assert.equal(log.filter((d) => d.action === 'add').length, 3)
+})
+
+test('the runner cuts yesterday, the week and the month from 30 days of page rows', () => {
+  const idOf = new Map([['/manhwa/a', 1], ['/manhwa/a-old', 1], ['/manhwa/b', 2]])
+  const rows = {
+    actions: [{ day: '2026-09-25', name: 'list_add', item: '1', n: 2 }],
+    savers: [{ item: '1', people: 2 }],
+    pages: [
+      { day: '2026-09-01', path: '/manhwa/a', views: 100, people: 50, clicks: 4, entries: 9, quick_exits: 1 },
+      { day: '2026-09-22', path: '/manhwa/a', views: 20, people: 10, clicks: 1, entries: 2, quick_exits: 0 },
+      { day: '2026-09-26', path: '/manhwa/a-old', views: 5, people: 5, clicks: 0, entries: 1, quick_exits: 1 },
+      { day: '2026-09-26', path: '/manhwa/b', views: 7, people: 7, clicks: 0, entries: 0, quick_exits: 0 },
+      { day: '2026-09-26', path: '/elsewhere', views: 99, people: 99, clicks: 0, entries: 0, quick_exits: 0 },
+    ],
+    firsts: [{ path: '/manhwa/b', first_day: '2026-09-20' }, { path: '/manhwa/a-old', first_day: '2026-09-02' }],
+  }
+  const stats = statsFrom(rows, idOf, { last: '2026-09-26', from7: '2026-09-20' })
+  const a = stats.get(1)
+  assert.deepEqual(
+    [a.opens1, a.opens7, a.opens30, a.people7, a.people30, a.outs7, a.outs30, a.daysSeen7, a.entries7, a.quick7],
+    [5, 25, 125, 15, 65, 1, 5, 2, 3, 1]
+  )
+  assert.equal(a.saves7, 2)
+  assert.equal(a.firstDay, '2026-09-02')
+  assert.equal(stats.get(2).firstDay, '2026-09-20', 'a title nobody saved is looked at too')
+  assert.equal(stats.size, 2)
+})
+
+test('the homepage rows become per-shelf seen counts and per-slot clicks', () => {
+  const loop = loopFrom({
+    home: [{ day: '2026-09-26', views: 300 }],
+    fromHome: [],
+    homeActs: [
+      { day: '2026-09-26', name: 'home_seen', item: '', detail: 'rising-saving', n: 40 },
+      { day: '2026-09-26', name: 'home_seen', item: '', detail: 'saving', n: 10 },
+      { day: '2026-09-26', name: 'home_click', item: '7', detail: 'saving', n: 3 },
+    ],
+  })
+  assert.deepEqual(loop.seen['2026-09-26'], { rising: 40, saving: 50 })
+  assert.deepEqual(loop.clicks.get('saving:7'), { '2026-09-26': 3 })
+  assert.equal(loop.homeViews['2026-09-26'], 300)
 })

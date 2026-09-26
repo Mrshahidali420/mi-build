@@ -24,6 +24,7 @@ import { pathToFileURL } from 'node:url'
 import { writeFileAtomic, writeJsonAtomic } from '../src/lib/write-atomic.mjs'
 import { queryD1, queryD1Wrangler } from '../src/lib/d1-api.mjs'
 import { planHome, mergeDecisions, addDays, SECTIONS } from '../src/lib/home-plan.mjs'
+import { upcomingAnime } from '../src/lib/schedule.mjs'
 
 const TITLE_TYPES = "('manhwa','manga','manhua','novel','anime')"
 // The Trending shelves on the homepage show the first 18 of each list; a
@@ -38,8 +39,14 @@ const readJson = (file, fallback) => {
 /** The questions, all bounded by day, all on closed days only. */
 export const QUERIES = {
   rollup: 'SELECT day FROM rollup_log WHERE day = ?',
-  pages: `SELECT day, path, views, people, entries, quick_exits FROM daily_pages
+  // The first day the counter holds pages for. Until 30 days have passed the
+  // "usual" of a title is worked out over the days that exist, not over 30.
+  history: 'SELECT MIN(day) AS day FROM daily_pages',
+  pages: `SELECT day, path, views, people, entries, quick_exits, clicks FROM daily_pages
           WHERE day >= ? AND day <= ? AND page_type IN ${TITLE_TYPES}`,
+  // Only pages first counted inside the window: the rest cannot be new.
+  firsts: `SELECT path, first_day FROM total_pages
+           WHERE first_day >= ? AND page_type IN ${TITLE_TYPES}`,
   actions: `SELECT day, name, item, SUM(n) AS n FROM daily_actions
             WHERE day >= ? AND day <= ? AND name IN ('list_add', 'list_remove')
             GROUP BY day, name, item`,
@@ -51,6 +58,11 @@ export const QUERIES = {
            GROUP BY item`,
   home: "SELECT day, views FROM daily_pages WHERE path = '/' AND day >= ? AND day <= ?",
   fromHome: 'SELECT day, path, views FROM daily_from_home WHERE day >= ? AND day <= ?',
+  // What the homepage itself reports: which shelves were seen (one row per
+  // homepage view, the shelves in detail) and which title was opened from
+  // which shelf.
+  homeActs: `SELECT day, name, item, detail, n FROM daily_actions
+             WHERE day >= ? AND day <= ? AND name IN ('home_seen', 'home_click')`,
 }
 
 /** id -> current path, and every path (old ones too) -> id, from the registry. */
@@ -68,28 +80,47 @@ function pathsFrom(registry) {
   return { pathOf, idOf }
 }
 
-/** Ids in the homepage's Trending shelves, worked out the way index.astro does. */
-function trendingIds(comicsAll, anime, blocked) {
+/**
+ * Ids already on the homepage, worked out the way index.astro does: the
+ * Trending shelves, Anime airing this week, Most anticipated and Coming soon.
+ * The page drops these from an auto shelf anyway; leaving them out here too
+ * means the planner never spends a slot on a cover the page will not draw.
+ */
+function onPageIds(comicsAll, animeAll, blocked, nowSec = Date.now() / 1000) {
   const keep = (list) => list.filter((x) => !blocked.has(x.id)).sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
   const comics = keep(comicsAll.filter((c) => c.kind !== 'novel'))
   const novels = keep(comicsAll.filter((c) => c.kind === 'novel'))
+  const anime = keep(animeAll)
   const shelves = [
     comics.filter((c) => c.country === 'KR'),
     comics.filter((c) => c.country === 'JP'),
     comics.filter((c) => c.country === 'CN'),
-    keep(anime),
+    anime,
     novels,
   ]
-  return new Set(shelves.flatMap((list) => list.slice(0, TRENDING_SIZE).map((x) => x.id)))
+  const ids = new Set(shelves.flatMap((list) => list.slice(0, TRENDING_SIZE).map((x) => x.id)))
+  const airing = anime
+    .filter((a) => a.nextEpisode && a.nextEpisode.at > nowSec && a.nextEpisode.at < nowSec + 7 * 86400)
+    .sort((a, b) => a.nextEpisode.at - b.nextEpisode.at)
+    .slice(0, 8)
+  const coming = upcomingAnime(anime, nowSec)
+  for (const a of [...airing, ...coming.anticipated.slice(0, 6), ...coming.dated.slice(0, 6)]) ids.add(a.id)
+  return ids
 }
 
-/** Per-title numbers for the week, from the rows D1 sent back. */
-export function statsFrom(rows, idOf) {
+const blankStats = () => ({
+  saves7: 0, unsaves7: 0, savers7: 0, saveDays7: 0, opens1: 0, opens7: 0, opens30: 0,
+  people7: 0, people30: 0, outs7: 0, outs30: 0, daysSeen7: 0, entries7: 0, quick7: 0, firstDay: null,
+})
+
+/**
+ * Per-title numbers for the last day, week and month, from the rows D1 sent
+ * back. `last` is the last closed day, `from7` the first day of the week.
+ */
+export function statsFrom(rows, idOf, { last, from7 } = {}) {
   const stats = new Map()
   const of = (id) => {
-    if (!stats.has(id)) {
-      stats.set(id, { saves7: 0, unsaves7: 0, savers7: 0, saveDays7: 0, opens7: 0, people7: 0, daysSeen7: 0, entries7: 0, quick7: 0 })
-    }
+    if (!stats.has(id)) stats.set(id, blankStats())
     return stats.get(id)
   }
   const saveDays = new Map()
@@ -110,25 +141,41 @@ export function statsFrom(rows, idOf) {
     const id = Number(r.item)
     if (stats.has(id)) stats.get(id).savers7 = Number(r.people) || 0
   }
-  // Only titles someone saved can be in Saving, so page rows for other
-  // titles are skipped rather than kept in memory.
+  // Page rows are 30 days; the week and yesterday are cut from them.
   const seen = new Map()
   for (const r of rows.pages) {
     const id = idOf.get(r.path)
-    if (id === undefined || !stats.has(id)) continue
-    const s = stats.get(id)
-    s.opens7 += Number(r.views) || 0
+    if (id === undefined) continue
+    const s = of(id)
+    const views = Number(r.views) || 0
+    s.opens30 += views
+    s.people30 += Number(r.people) || 0
+    s.outs30 += Number(r.clicks) || 0
+    if (from7 && r.day < from7) continue
+    s.opens7 += views
     s.people7 += Number(r.people) || 0
+    s.outs7 += Number(r.clicks) || 0
     s.entries7 += Number(r.entries) || 0
     s.quick7 += Number(r.quick_exits) || 0
+    if (r.day === last) s.opens1 += views
     if (!seen.has(id)) seen.set(id, new Set())
     seen.get(id).add(r.day)
   }
   for (const [id, days] of seen) stats.get(id).daysSeen7 = days.size
+  // A title that moved address has two first days; the older one is true.
+  for (const r of rows.firsts || []) {
+    const id = idOf.get(r.path)
+    if (id === undefined || !stats.has(id) || !r.first_day) continue
+    const s = stats.get(id)
+    if (!s.firstDay || r.first_day < s.firstDay) s.firstDay = r.first_day
+  }
   return stats
 }
 
-function loopFrom(rows) {
+/** The homepage's own shelves, when detail lists them ("rising-saving"). */
+const shelvesIn = (detail) => String(detail || '').split('-').filter(Boolean)
+
+export function loopFrom(rows) {
   const homeViews = {}
   for (const r of rows.home) homeViews[r.day] = (homeViews[r.day] || 0) + (Number(r.views) || 0)
   const fromHome = new Map()
@@ -136,7 +183,21 @@ function loopFrom(rows) {
     if (!fromHome.has(r.path)) fromHome.set(r.path, {})
     fromHome.get(r.path)[r.day] = Number(r.views) || 0
   }
-  return { homeViews, fromHome }
+  const seen = {}
+  const clicks = new Map()
+  for (const r of rows.homeActs || []) {
+    const n = Number(r.n) || 0
+    if (r.name === 'home_seen') {
+      const day = (seen[r.day] ||= {})
+      for (const key of shelvesIn(r.detail)) day[key] = (day[key] || 0) + n
+    } else if (r.name === 'home_click') {
+      const key = `${r.detail}:${Number(r.item)}`
+      if (!clicks.has(key)) clicks.set(key, {})
+      const byDay = clicks.get(key)
+      byDay[r.day] = (byDay[r.day] || 0) + n
+    }
+  }
+  return { homeViews, fromHome, seen, clicks }
 }
 
 const isArrayOfRows = (x) => Array.isArray(x) && x.every((r) => r && typeof r === 'object')
@@ -195,11 +256,14 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
     const done = await query(QUERIES.rollup, [last])
     if (!isArrayOfRows(done)) return skip('D1 answer was malformed')
     if (!done.length) return skip(`the night job has not closed ${last} yet`)
-    rows.pages = await query(QUERIES.pages, [from7, last])
+    rows.history = await query(QUERIES.history, [])
+    rows.pages = await query(QUERIES.pages, [from30, last])
+    rows.firsts = await query(QUERIES.firsts, [from30])
     rows.actions = await query(QUERIES.actions, [from7, last])
     rows.savers = await query(QUERIES.savers, [from7, last])
     rows.home = await query(QUERIES.home, [from30, last])
     rows.fromHome = await query(QUERIES.fromHome, [from30, last])
+    rows.homeActs = await query(QUERIES.homeActs, [from30, last])
   } catch (error) {
     return skip(error.message || String(error))
   }
@@ -207,9 +271,11 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
 
   const blocked = new Set((blockRaw.media || []).map(Number).filter(Number.isInteger))
   const { pathOf, idOf } = pathsFrom(registry)
-  const stats = statsFrom(rows, idOf)
+  const stats = statsFrom(rows, idOf, { last, from7 })
+  const historyStart = rows.history[0]?.day || null
 
   // The catalog record for each title the plan may name, with its live path.
+  // Every title with numbers is looked at now, not only saved ones.
   const wanted = new Set(stats.keys())
   for (const section of Object.values(prev?.sections || {})) for (const it of section.items || []) wanted.add(Number(it.id))
   for (const ids of Object.values(rules.pin || {})) for (const id of ids) wanted.add(Number(id))
@@ -224,17 +290,19 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
     titles,
     stats,
     loop: loopFrom(rows),
-    onPage: trendingIds(comics, anime, blocked),
+    onPage: onPageIds(comics, anime, blocked),
     blocked,
     rules,
     prev,
+    historyStart,
   })
 
-  say(`homepage plan for ${night}: ${stats.size} saved titles looked at`)
+  say(`homepage plan for ${night}: ${stats.size} titles looked at, counter since ${historyStart || 'unknown'}`)
   for (const key of Object.keys(SECTIONS)) {
     const s = plan.sections[key]
     say(`  ${key}: ${s.enabled ? 'shown' : 'hidden'}, ${s.items.length} titles`)
     for (const it of s.items.slice(0, 5)) say(`    + ${it.title}: ${it.reason}`)
+    for (const n of plan.next[key].slice(0, 3)) say(`    > next: ${n.title}: ${n.reason}`)
     for (const r of plan.rejected[key].slice(0, 5)) say(`    - ${r.title || r.id}: ${r.reason}`)
   }
   say(`  ${decisions.length} decisions tonight`)
