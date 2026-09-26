@@ -1,0 +1,9 @@
+{
+  "note": "Owner rules for the self-updating homepage (scripts/plan-home.mjs). pin: AniList ids forced into a section. ban: ids kept off the homepage while their pages stay up (data/block.json removes a page for good). The three word lists keep adult titles off the front page; add to them freely. Titles match whole words only, so 'loli' does not catch 'Lolita'.",
+  "pin": { "saving": [] },
+  "ban": [],
+  "adultGenres": ["Hentai", "Ecchi"],
+  "tagBlock": ["Nudity", "Incest", "Lolicon", "Shotacon"],
+  "titleWordBlock": ["loli", "lolicon", "shota", "shotacon", "hentai", "ecchi", "nsfw", "r18", "r-18", "18+", "erotic", "xxx", "sex"],
+  "why": {}
+}

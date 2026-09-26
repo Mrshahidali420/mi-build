@@ -5,8 +5,9 @@ import Countdown from '../components/Countdown.astro'
 import CoverGrid from '../components/CoverGrid.astro'
 import UpcomingList from '../components/UpcomingList.astro'
 import PopularNow from '../components/PopularNow.astro'
-import { animeByPopularity, novelsByPopularity, comics, comicsOfCountry, anime, genres, platform, airingThisWeek } from '../lib/catalog.js'
+import { animeByPopularity, novelsByPopularity, comics, comicsOfCountry, anime, genres, platform, airingThisWeek, inIndex } from '../lib/catalog.js'
 import { upcomingAnime, upcomingRow } from '../lib/schedule.mjs'
+import { loadHomeAuto, homeShelf } from '../lib/home-auto.js'
 
 const manhwa = comicsOfCountry('KR')
 const manga = comicsOfCountry('JP')
@@ -48,6 +49,20 @@ const rows = [
   { id: 'manhua', label: 'Trending manhua', items: manhua.slice(0, 18), base: '/manhua', all: manhua.length, note: '' },
   { id: 'novel', label: 'Trending novels', items: novelsByPopularity.slice(0, 18), base: '/novel', all: novelsByPopularity.length, note: 'Light novels and web novels, with the stores that sell them in English.' },
 ]
+
+// The self-updating shelves, planned each night from what readers did (see
+// scripts/plan-home.mjs). Every title already shown elsewhere on this page is
+// left out, so no cover appears twice; a shelf left too short is not drawn.
+const onPage = new Set([
+  ...rows.flatMap((row) => row.items.map((item) => item.id)),
+  ...airing.map((a) => a.id),
+  ...coming.anticipated.slice(0, 6).map((a) => a.id),
+  ...coming.dated.slice(0, 6).map((a) => a.id),
+])
+const homePlan = loadHomeAuto()
+const autoShelves = ['saving']
+  .map((key) => homeShelf(homePlan, key, { lookup: inIndex, onPage }))
+  .filter(Boolean)
 
 // The hero stands in front of a real banner: the most popular manhwa
 // that ships wide art. Masked so it dissolves into the cyc gradient.
@@ -309,6 +324,28 @@ const tinyCover = (url) =>
         update()
       }
     </script>
+
+    {
+      autoShelves.map((shelf) => (
+        <section class="section" data-phase="night" data-home-section={shelf.key} aria-labelledby={`home-${shelf.key}-h`}>
+          <div class="section__head section__head--row">
+            <div>
+              <h2 id={`home-${shelf.key}-h`}>{shelf.title}</h2>
+              <p>{shelf.why}</p>
+            </div>
+          </div>
+          <div class="shelf-wrap">
+            <button type="button" class="shelf-arrow shelf-arrow--left" aria-label={`Scroll ${shelf.title} left`}>
+              ‹
+            </button>
+            <CoverGrid items={shelf.items} shelf />
+            <button type="button" class="shelf-arrow shelf-arrow--right" aria-label={`Scroll ${shelf.title} right`}>
+              ›
+            </button>
+          </div>
+        </section>
+      ))
+    }
 
     <PopularNow />
 

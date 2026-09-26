@@ -1,0 +1,54 @@
+{
+  "night": "2026-09-26",
+  "source": "d1",
+  "sections": {
+    "saving": {
+      "enabled": false,
+      "title": "Readers are saving",
+      "why": "Titles readers added to their lists this week.",
+      "items": []
+    }
+  },
+  "cooldown": {},
+  "flips": {
+    "saving": []
+  },
+  "frozen": {},
+  "next": {
+    "saving": []
+  },
+  "rejected": {
+    "saving": [
+      {
+        "id": 20,
+        "path": "/anime/naruto",
+        "title": "Naruto",
+        "reason": "already on the homepage in a Trending shelf"
+      },
+      {
+        "id": 11633,
+        "path": "/anime/blood-lad",
+        "title": "Blood Lad",
+        "reason": "adult genre Ecchi"
+      },
+      {
+        "id": 97668,
+        "path": "/anime/one-punch-man-season-2",
+        "title": "One-Punch Man Season 2",
+        "reason": "saved by 1 of 10 people"
+      },
+      {
+        "id": 105791,
+        "path": "/manga/higehiro-after-being-rejected-i-shaved-and-took-in-a-high-school-runaway",
+        "title": "Higehiro: After Being Rejected, I Shaved and Took In a High School Runaway",
+        "reason": "saved by 1 of 10 people"
+      },
+      {
+        "id": 86848,
+        "path": "/manhwa/lookism",
+        "title": "Lookism",
+        "reason": "already on the homepage in a Trending shelf"
+      }
+    ]
+  }
+}

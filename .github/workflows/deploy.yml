@@ -227,6 +227,32 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: 735d0fbab0757142b2c29917563e0626
         run: node scripts/pull-where-links.mjs
 
+      # The homepage's self-updating shelves (scripts/plan-home.mjs). Last
+      # night's plan comes back from its own cache entry; with no cache the
+      # committed seed in data/ is used. The path list must never change, for
+      # the same reason as the catalog's above.
+      - name: Restore the homepage plan
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/home-auto.json
+            data/home-decisions.json
+          key: home-plan-${{ github.run_id }}
+          restore-keys: home-plan-
+
+      # Nightly only: a push deploy builds from the restored plan. Reads D1
+      # through the Cloudflare API, which needs Account > D1 > Read on the
+      # token (CLOUDFLARE_D1_TOKEN wins when that secret exists). Any trouble
+      # leaves the plan as it was, prints a warning and exits 0.
+      - name: Plan the homepage from last night's numbers
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_D1_TOKEN: ${{ secrets.CLOUDFLARE_D1_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 735d0fbab0757142b2c29917563e0626
+        run: node --max-old-space-size=6000 scripts/plan-home.mjs
+
       # The catalog grew to ~107,000 titles and each record now carries the
       # backfilled fields too. Both make-shards and astro build hold the whole
       # thing in memory, and the default 2 GB heap is no longer enough: the
@@ -255,6 +281,17 @@ jobs:
         with:
           path: data/slug-registry.json
           key: slug-registry-${{ github.run_id }}
+
+      # The plan that is now live, so tomorrow's night keeps each title's age,
+      # cooldowns and the decisions log.
+      - name: Save the homepage plan
+        if: always() && steps.deploy.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/home-auto.json
+            data/home-decisions.json
+          key: home-plan-${{ github.run_id }}
 
       # Only after a successful deploy: the file must describe what is live.
       - name: Record the live manifest

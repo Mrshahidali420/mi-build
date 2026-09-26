@@ -145,6 +145,40 @@ export function noClickHint(row) {
 }
 
 /** The night job did not close yesterday. `lastDay` is its newest day. */
+// A homepage plan older than this is stale: the self-updating shelves have
+// stopped following readers. Ten nights, so one or two bad nights stay quiet.
+export const PLAN_STALE_NIGHTS = 10
+
+/**
+ * How the homepage planner is doing, for the Homepage and Health tabs.
+ * planNight: the night in data/home-auto.json. log: data/home-decisions.json,
+ * newest first. Returns { age, line, hint }.
+ */
+export function planHealth(planNight, log, today) {
+  const list = Array.isArray(log) ? log : []
+  const age = planNight
+    ? Math.round((Date.parse(`${today}T00:00:00Z`) - Date.parse(`${planNight}T00:00:00Z`)) / 86400000)
+    : null
+  const skip = list.find((d) => d && d.action === 'skip' && (!planNight || d.night > planNight))
+  const changes = list.filter((d) => d && d.night === planNight && ['add', 'drop', 'block'].includes(d.action)).length
+  const line = skip
+    ? `Skipped on ${skip.night}: ${skip.reason}.`
+    : planNight
+      ? `Planned on ${planNight}, ${changes} ${changes === 1 ? 'change' : 'changes'}.`
+      : 'Not planned yet.'
+  if (skip && /permission|403|401/.test(skip.reason)) {
+    return {
+      age,
+      line,
+      hint: hint('The deploy token cannot read D1. In the Cloudflare dashboard, give the token Account > D1 > Read (or add a CLOUDFLARE_D1_TOKEN secret with it).'),
+    }
+  }
+  if (age != null && age > PLAN_STALE_NIGHTS) {
+    return { age, line, hint: hint(`The homepage plan is ${age} nights old, so its shelves no longer follow readers. Check the "Plan the homepage" step in the deploy job.`) }
+  }
+  return { age, line, hint: null }
+}
+
 export function rollupHint(lastDay, yesterday) {
   if (lastDay && lastDay >= yesterday) return null
   return hint(
@@ -157,8 +191,9 @@ export function rollupHint(lastDay, yesterday) {
 // the change (about 6 with four indexes); see db/schema.sql.
 export const WRITES_PER_EVENT = 3
 // The night job writes the rollups, and every rollup row has a primary key
-// index too. A generous allowance.
-export const NIGHT_WRITES = 3000
+// index too. A generous allowance, plus up to 300 daily_from_home rows (and
+// their key) for the homepage shelves since 0004.
+export const NIGHT_WRITES = 3600
 export const D1_WRITE_LIMIT = 100000
 
 /** How close a day of events comes to the free D1 write limit. */

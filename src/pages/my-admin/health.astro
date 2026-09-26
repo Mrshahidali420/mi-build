@@ -14,9 +14,12 @@ import { gate, rangeOf, clock, dayKey, humanize, num, sourceName } from '../../l
 import { shortDay } from '../../lib/admin-chart.js'
 import { pagesFor } from '../../lib/admin-data.js'
 import { actionsFor, counterHealth, missingFor, tally } from '../../lib/admin-more.js'
+import homePlan from '../../../data/home-auto.json'
+import homeLog from '../../../data/home-decisions.json'
 import {
   brokenLinkHint,
   noClickHint,
+  planHealth,
   rollupHint,
   writeLoadHint,
   D1_WRITE_LIMIT,
@@ -89,6 +92,8 @@ const writeShare = Math.min(100, Math.round((writes / D1_WRITE_LIMIT) * 1000) / 
 const writeTone = writeShare >= 80 ? 'bad' : writeShare >= 50 ? 'amber' : 'good'
 const jobLate = Boolean(rollupHint(lastRun?.day, yesterday))
 const brokenHits = missing.reduce((n, row) => n + (row.hits || 0), 0)
+// The homepage planner, from the files the last deploy shipped with.
+const plan = planHealth(homePlan?.night, homeLog, dayKey(0))
 ---
 
 
@@ -126,6 +131,12 @@ const brokenHits = missing.reduce((n, row) => n + (row.hits || 0), 0)
     )}
     <h3>The night job</h3>
     <BarList rows={logRows} tone="good" empty="The night job has not run yet." />
+    <h3>The homepage planner</h3>
+    <p class="say">
+      {plan.line}{plan.age != null ? ` The plan is ${plan.age} ${plan.age === 1 ? 'night' : 'nights'} old.` : ''}
+      {' '}<a href="/my-admin/homepage">Homepage tab →</a>
+    </p>
+    <Hint hint={plan.hint} />
   </div>
 
   <div class="panel">

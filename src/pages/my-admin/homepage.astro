@@ -1,0 +1,123 @@
+---
+/**
+ * Homepage. What the self-updating shelves show tonight, what they would
+ * show next, what was kept off and why, and every change the planner made.
+ *
+ * Everything here comes from the two files scripts/plan-home.mjs writes,
+ * bundled at build time the way PopularNow.astro takes home-boost.json, so
+ * opening this tab costs D1 nothing. The numbers are as of the last deploy.
+ *
+ * To act on it: pin or ban a title in data/home-rules.json and push. To take a
+ * title off the site entirely, data/block.json as before.
+ */
+import Admin from '../../layouts/Admin.astro'
+import Hint from '../../components/admin/Hint.astro'
+import BarList from '../../components/admin/BarList.astro'
+import Kpi from '../../components/admin/Kpi.astro'
+import { envOf } from '../../lib/runtime.js'
+import { gate } from '../../lib/admin.js'
+import { SECTIONS, daysBetween } from '../../lib/home-plan.mjs'
+import { planHealth } from '../../lib/admin-hints.js'
+import plan from '../../../data/home-auto.json'
+import decisions from '../../../data/home-decisions.json'
+
+export const prerender = false
+
+const env = envOf(Astro)
+const { secret, signedIn, wrongWord } = await gate(Astro, env)
+if (secret && !signedIn && Astro.request.method !== 'POST') {
+  return Astro.redirect('/my-admin')
+}
+
+const today = new Date().toISOString().slice(0, 10)
+const log = Array.isArray(decisions) ? decisions : []
+const health = planHealth(plan?.night, log, today)
+const shortDate = (day) => new Date(`${day}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' })
+
+// One card per section: its slots, with how long each has been up and how
+// often it was opened from the homepage.
+const cards = Object.entries(SECTIONS).map(([key, cfg]) => {
+  const section = plan?.sections?.[key] || { enabled: false, items: [] }
+  const items = section.items || []
+  const rates = items.filter((it) => it.shown > 0).map((it) => it.opened / it.shown)
+  const mid = rates.length ? [...rates].sort((a, b) => a - b)[Math.floor(rates.length / 2)] : 0
+  const status = (it) =>
+    it.pinned ? 'pinned' : it.nights <= 1 ? 'new' : it.nights >= cfg.maxStay ? 'leaving tomorrow' : 'kept'
+  return {
+    key,
+    title: cfg.title,
+    state: section.enabled
+      ? `Shown, ${items.length} titles.`
+      : `Hidden: ${items.length} of ${cfg.floor} titles qualify.`,
+    rows: items.map((it) => ({
+      name: it.title || `#${it.id}`,
+      href: it.path,
+      sub: [
+        status(it),
+        `night ${it.nights}`,
+        it.reason,
+        it.shown ? `opened ${it.opened} of ${it.shown} home views` : '',
+        it.shown && mid ? `${(it.opened / it.shown / mid).toFixed(1)}x the shelf median` : '',
+      ].filter(Boolean).join(' · '),
+      value: Math.round(it.score || 0),
+      unit: 'score',
+    })),
+    next: (plan?.next?.[key] || []).map((it) => ({ name: it.title || `#${it.id}`, href: it.path, sub: it.reason, value: Math.round(it.score || 0), unit: 'score' })),
+    rejected: (plan?.rejected?.[key] || []).map((it) => ({ name: it.title || `#${it.id}`, href: it.path || undefined, sub: it.reason, value: '' })),
+  }
+})
+
+// The last 30 nights, newest first. A skipped night is drawn in the warning
+// colour, with its reason, so a planner that stopped working is seen at once.
+const oldest = log.length ? log[0].night : today
+const recent = log.filter((d) => d && daysBetween(d.night, oldest) < 30)
+const logRows = recent.map((d) => ({
+  name: `${shortDate(d.night)} · ${d.section === 'all' ? 'all' : SECTIONS[d.section]?.title || d.section} · ${d.action}${d.title ? ` ${d.title}` : ''}`,
+  href: d.path || undefined,
+  sub: `${d.reason} (rule ${d.rule})`,
+  value: '',
+  tone: d.action === 'skip' ? 'bad' : undefined,
+}))
+const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'block'].includes(d.action)).length
+---
+
+<Admin
+  title="Homepage"
+  here="/my-admin/homepage"
+  signedIn={signedIn}
+  secret={secret}
+  wrongWord={wrongWord}
+  note="The shelves the homepage fills by itself each night. As of the last deploy."
+>
+  <section class="kpis" aria-label="Homepage plan at a glance">
+    <Kpi label="Plan made" value={plan?.night ? shortDate(plan.night) : 'Never'} unit={health.age != null ? `${health.age} nights ago` : ''} mood={health.hint ? 'bad' : 'good'} hero />
+    <Kpi label="Changes that night" value={changes} />
+    <Kpi label="Shelves shown" value={cards.filter((c) => plan?.sections?.[c.key]?.enabled).length} unit={`of ${cards.length}`} />
+  </section>
+
+  <div class="panel wide">
+    <h2>Is the planner working?</h2>
+    <p class="say">{health.line}</p>
+    <Hint hint={health.hint} />
+  </div>
+
+  {cards.map((card) => (
+    <div class="panel wide">
+      <h2>On the homepage tonight: {card.title}</h2>
+      <p class="say">{card.state} A title needs 10 different people saving it this week, on 3 or more days, and a clean name.</p>
+      <BarList rows={card.rows} tone="good" empty="No title qualifies yet." />
+      <h3>Would be next</h3>
+      <p class="say">Qualify, but got no slot tonight (the nightly limit or a full shelf).</p>
+      <BarList rows={card.next} empty="Nobody waiting." />
+      <h3>Kept off, and why</h3>
+      <p class="say">The titles with the most saves that did not make it. Pin or ban in data/home-rules.json.</p>
+      <BarList rows={card.rejected} tone="amber" empty="Nothing kept off." />
+    </div>
+  ))}
+
+  <div class="panel wide">
+    <h2>Decisions log</h2>
+    <p class="say">Every change the planner made in the last 30 nights, newest first.</p>
+    <BarList rows={logRows} empty="No decisions yet." />
+  </div>
+</Admin>
