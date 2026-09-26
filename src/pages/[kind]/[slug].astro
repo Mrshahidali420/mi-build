@@ -552,8 +552,19 @@ const updatedLong = checkedLong
         )
       }
 
+      {/* Real hand-picked products beat a generic Amazon search, so when a
+          title has Top picks they take the shopping slot above the platforms
+          and "Own a copy" moves below them. Without picks, "Own a copy" keeps
+          the slot. */}
       {
-        buys.length > 0 && (
+        picked ? (
+          <TopPicks
+            heading={`Top picks for ${picked.from || item.title}`}
+            sub={picked.byHand ? 'Real products on Amazon, picked by hand.' : 'Real products on Amazon, matched from publisher records.'}
+            byHand={picked.byHand}
+            picks={picked.picks}
+          />
+        ) : buys.length > 0 && (
           <BuyBox
             heading="Own a copy"
             sub={`Books, discs and figures for ${item.title}, straight from Amazon.`}
@@ -581,12 +592,11 @@ const updatedLong = checkedLong
       </Platforms>
 
       {
-        picked && (
-          <TopPicks
-            heading={`Top picks for ${picked.from || item.title}`}
-            sub={picked.byHand ? 'Real products on Amazon, picked by hand.' : 'Real products on Amazon, matched from publisher records.'}
-            byHand={picked.byHand}
-            picks={picked.picks}
+        picked && buys.length > 0 && (
+          <BuyBox
+            heading="Own a copy"
+            sub={`Books, discs and figures for ${item.title}, straight from Amazon.`}
+            rows={buys}
           />
         )
       }

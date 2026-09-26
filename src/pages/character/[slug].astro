@@ -415,10 +415,7 @@ const jsonld = {
       </div>
     </article>
 
-    {buys.length > 0 && (
-      <BuyBox id="buy" heading={buyHeading} sub={buySub} rows={buys} />
-    )}
-
+    {/* Hand-picked products come first, as on title pages. */}
     {picked && (
       <TopPicks
         heading={`Top picks for ${picked.from || primary}`}
@@ -426,6 +423,10 @@ const jsonld = {
         byHand={picked.byHand}
         picks={picked.picks}
       />
+    )}
+
+    {buys.length > 0 && (
+      <BuyBox id="buy" heading={buyHeading} sub={buySub} rows={buys} />
     )}
 
     {merchIsCharacter && hasCharacterBuyPage(person) && (
