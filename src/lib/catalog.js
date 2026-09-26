@@ -11,6 +11,7 @@ import { join } from 'node:path'
 import { reslugAll } from './reslug.mjs'
 import { loadRegistry } from './slug-registry.mjs'
 import { dropBlocked, dropBlockedRows } from './blocked.js'
+import { migrateAliasedLinksAll } from './platform-aliases.mjs'
 
 // Resolved from the working directory, not from import.meta.url: this module is
 // bundled into dist/_worker.js before the prerender step runs it, so a path
@@ -24,6 +25,14 @@ const readJson = (name) =>
 const comicsRaw = dropBlockedRows(dropBlocked(readJson('comics')))
 const animeRaw = dropBlockedRows(dropBlocked(readJson('anime')))
 const characterData = readJson('characters')
+
+// A record ingested before its site name was recognised (e.g. AniList's
+// "Kodansha USA") keeps that raw name in otherLinks forever, because the
+// ingest never refetches an unchanged AniList record (it probes updatedAt;
+// see scripts/ingest-daily.mjs). Applying the alias here, on every build,
+// reaches those already-stored records without a refetch. See
+// src/lib/platform-aliases.mjs.
+migrateAliasedLinksAll(comicsRaw)
 import { characterHasPage, genreSlug } from './format.js'
 
 // Public URLs carry clean slugs, never database ids (see reslug.mjs). The

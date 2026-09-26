@@ -12,6 +12,7 @@
 import { writeFileSync, mkdirSync, appendFileSync, readFileSync, existsSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { canonicalSite } from '../src/lib/platform-aliases.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const DATA_DIR = join(ROOT, 'data')
@@ -135,7 +136,7 @@ const READ_PLATFORMS = [
 ]
 
 const isReadLink = (link) =>
-  READ_PLATFORMS.some((p) => (link.site || '').toLowerCase() === p.toLowerCase())
+  READ_PLATFORMS.some((p) => canonicalSite(link.site || '').toLowerCase() === p.toLowerCase())
 
 const isWatchLink = (link) => link.type === 'STREAMING'
 
@@ -208,7 +209,9 @@ function shape(media, kind) {
     coverColor: media.coverImage?.color || null,
     banner: media.bannerImage || null,
     anilistUrl: media.siteUrl,
-    readLinks: links.filter(isReadLink).map((l) => ({ site: l.site, url: l.url, language: l.language || null })),
+    readLinks: links
+      .filter(isReadLink)
+      .map((l) => ({ site: canonicalSite(l.site), url: l.url, language: l.language || null })),
     watchLinks: links.filter(isWatchLink).map((l) => ({ site: l.site, url: l.url, language: l.language || null })),
     otherLinks: links
       .filter((l) => !isReadLink(l) && !isWatchLink(l))

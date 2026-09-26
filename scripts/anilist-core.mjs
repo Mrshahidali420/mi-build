@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url'
 import { BLOCKED_MEDIA, dropBlocked, dropBlockedRows } from '../src/lib/blocked.js'
 import { slugify } from '../src/lib/slugify.mjs'
 import { writeFileAtomic, writeJsonAtomic } from '../src/lib/write-atomic.mjs'
+import { canonicalSite } from '../src/lib/platform-aliases.mjs'
 
 // Every catalog write goes through a temporary file and a rename, so a run
 // killed mid-write leaves the last whole file, never a torn one. The helpers
@@ -266,7 +267,7 @@ const READ_PLATFORMS = [
 ]
 
 const isReadLink = (link) =>
-  READ_PLATFORMS.some((p) => (link.site || '').toLowerCase() === p.toLowerCase())
+  READ_PLATFORMS.some((p) => canonicalSite(link.site || '').toLowerCase() === p.toLowerCase())
 
 const isWatchLink = (link) => link.type === 'STREAMING'
 
@@ -359,7 +360,9 @@ export function shape(media, kind = kindOfMedia(media)) {
     coverColor: media.coverImage?.color || null,
     banner: media.bannerImage || null,
     anilistUrl: media.siteUrl,
-    readLinks: links.filter(isReadLink).map((l) => ({ site: l.site, url: l.url, language: l.language || null })),
+    readLinks: links
+      .filter(isReadLink)
+      .map((l) => ({ site: canonicalSite(l.site), url: l.url, language: l.language || null })),
     watchLinks: links.filter(isWatchLink).map((l) => ({ site: l.site, url: l.url, language: l.language || null })),
     otherLinks: links
       .filter((l) => !isReadLink(l) && !isWatchLink(l))

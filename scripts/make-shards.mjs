@@ -32,6 +32,7 @@ import { hubSeasonKeys, seasonKeyOf } from '../src/lib/season-core.mjs'
 import { indexAiring, attachEpisodes } from '../src/lib/episodes.mjs'
 import { indexWhereLinks, attachWhereLinks } from '../src/lib/where-links.mjs'
 import { licensedPools, alikeFor } from '../src/lib/alike.mjs'
+import { migrateAliasedLinksAll } from '../src/lib/platform-aliases.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = join(ROOT, 'public', 'd')
@@ -699,6 +700,10 @@ async function main() {
   const comics = dropBlockedRows(dropBlocked(read('comics.json')))
   let anime = dropBlockedRows(dropBlocked(read('anime.json')))
   let characters = read('characters.json')
+  // See src/lib/platform-aliases.mjs: a record ingested before its site name
+  // was recognised (e.g. "Kodansha USA") keeps the raw name in otherLinks
+  // forever, since the ingest never refetches an unchanged record.
+  migrateAliasedLinksAll(comics)
   since('read json')
   // Slugs come from the registry make-redirects.mjs just saved. Frozen: a page
   // it did not register is an error here, never a fresh slug of our own.
