@@ -12,12 +12,15 @@ import BarList from '../../components/admin/BarList.astro'
 import Kpi from '../../components/admin/Kpi.astro'
 import Trend from '../../components/admin/Trend.astro'
 import { envOf } from '../../lib/runtime.js'
-import { gate, rangeOf, fmtDwell, handOff, humanize, num, sectionName, withRange } from '../../lib/admin.js'
+import { gate, rangeOf, countryName, fmtDwell, handOff, humanize, num, sectionName, withRange } from '../../lib/admin.js'
 import { edgesFor, pagesFor, totalsFor } from '../../lib/admin-data.js'
 import { closedDaysFor, liftsFor, quickExitsFor } from '../../lib/admin-more.js'
 import { liftsOf, baseDaysOf, RISING } from '../../lib/home-plan.mjs'
-import { withToday } from '../../lib/admin-chart.js'
+import { flagOf, withToday } from '../../lib/admin-chart.js'
 import { entryPageHint, quickExitHint, MIN_ENTRIES } from '../../lib/admin-hints.js'
+import { countriesForPaths, titlesForPaths, COUNTRY_DAYS } from '../../lib/admin-extra.js'
+import { deadEnds, deadReason, countriesByPath, isTitlePath, usualRate, DEAD_MIN_ENTRIES } from '../../lib/admin-insights.js'
+import WeekStrip from '../../components/admin/WeekStrip.astro'
 
 export const prerender = false
 
@@ -50,6 +53,53 @@ if (signedIn) {
     liftsFor(db, Date.now(), RISING.minOpens7),
   ])
 }
+
+// --- Dead ends and where readers come from. Arrivals are not kept for All
+// time, so the dead-end list needs a shorter range; the country mix always
+// reads the last 7 days of raw views, for a short list of paths only.
+const usual = usualRate(rows)
+const dead = range.mode !== 'all' ? deadEnds(rows, { usual }) : []
+const topTitles = rows.filter((row) => isTitlePath(row.path)).slice(0, 15)
+let mix = new Map()
+let records = new Map()
+if (signedIn && (dead.length || topTitles.length)) {
+  try {
+    const [countryRaw, recs] = await Promise.all([
+      countriesForPaths(db, [...dead.map((r) => r.path), ...topTitles.map((r) => r.path)]),
+      titlesForPaths(env, dead.map((r) => r.path)),
+    ])
+    mix = countriesByPath(countryRaw)
+    records = recs
+  } catch {
+    // Without the mix the lists still draw, just without countries and reasons.
+  }
+}
+const countryWords = (path) =>
+  (mix.get(path)?.top || []).map((c) => `${flagOf(c.country)} ${countryName(c.country)} ${c.share}%`.trim()).join(' · ')
+const deadRows = dead.map((row) => {
+  const top = mix.get(row.path)?.top[0]
+  const reason = deadReason(records.get(row.path), {
+    buys: Number(row.buys) || 0,
+    country: top?.country || '',
+    countryLabel: countryName(top?.country),
+  })
+  return {
+    path: row.path,
+    name: humanize(row.path, row.label),
+    lost: row.lost,
+    sub: `${num(row.entries)} arrived · ${num(row.clicks)} clicks out (${Math.round(row.rate * 1000) / 10}%)${countryWords(row.path) ? ` · ${countryWords(row.path)}` : ''}`,
+    reason: reason ? reason.text : records.get(row.path) ? 'Platforms are listed and reachable: look at the page itself' : '',
+  }
+})
+const countryRows = topTitles
+  .filter((row) => mix.has(row.path))
+  .map((row) => ({
+    name: humanize(row.path, row.label),
+    href: row.path,
+    sub: countryWords(row.path),
+    value: mix.get(row.path).total,
+    unit: 'views',
+  }))
 
 // --- 1 day, 7 days, 30 days. The same lift the homepage planner uses for
 // Rising this week, on every page with 30 opens this week, so a rise shows
@@ -193,6 +243,8 @@ const named = (row, hint) => hint && { ...hint, text: `${humanize(row.path, row.
   wrongWord={wrongWord}
   note={`${range.label}. Which page hands readers on, and which only collects them.`}
 >
+  {signedIn && <WeekStrip db={db} fields={['views', 'clicks', 'reads', 'watches']} />}
+
   <section class="kpis" aria-label="All pages together">
     <Kpi label="Page views" value={totals.views || 0} spark={trend.map((d) => d.views)} hero />
     <Kpi label="Clicks out" value={totals.clicks || 0} spark={trend.map((d) => d.clicks)} tone="amber" />
@@ -238,6 +290,40 @@ const named = (row, hint) => hint && { ...hint, text: `${humanize(row.path, row.
       <p class="empty">Pick 7 or 30 days: this needs the arrivals, which All time does not keep.</p>
     )}
     <Hint hint={leaverWorst && named(leaverWorst, quickExitHint(leaverWorst))} />
+  </div>
+
+  <div class="panel wide">
+    <h2>Which title pages are dead ends?</h2>
+    <p class="say">
+      Title pages with {DEAD_MIN_ENTRIES} or more arrivals, by the clicks out they lost: arrivals
+      times how far their hand-off falls below the usual title page ({Math.round(usual * 1000) / 10}%).
+      The line under each says why, from the page's own record and where its readers came from
+      (last {COUNTRY_DAYS} days).
+    </p>
+    {range.mode === 'all' ? (
+      <p class="empty">All time keeps no arrivals per page. Pick 7 or 30 days.</p>
+    ) : deadRows.length === 0 ? (
+      <p class="empty">No title page is losing readers in this window.</p>
+    ) : (
+      <ol class="why-list">
+        {deadRows.map((row) => (
+          <li>
+            <div class="top"><a href={row.path}>{row.name}</a><b>{num(row.lost)} lost</b></div>
+            <div class="sub">{row.sub}</div>
+            {row.reason && <div class="reason">{row.reason}</div>}
+          </li>
+        ))}
+      </ol>
+    )}
+  </div>
+
+  <div class="panel">
+    <h2>Which countries read which title?</h2>
+    <p class="say">
+      The busiest title pages in this window, with where their views came from over the last
+      {COUNTRY_DAYS} days. A title read mostly in one country wants that country's platform first.
+    </p>
+    <BarList rows={countryRows} tone="violet" empty="No title page views in the last 7 days yet." />
   </div>
 
   <div class="panel">
