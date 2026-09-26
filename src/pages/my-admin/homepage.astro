@@ -23,6 +23,7 @@ import { actionsFor } from '../../lib/admin-more.js'
 import { SECTIONS, FLOORS, RISING, NEW, MONTH, daysBetween } from '../../lib/home-plan.mjs'
 import { shelfNumbers } from '../../lib/home-sections.js'
 import { planHealth } from '../../lib/admin-hints.js'
+import { tomorrowOf, banLine } from '../../lib/home-preview.js'
 import plan from '../../../data/home-auto.json'
 import decisions from '../../../data/home-decisions.json'
 
@@ -106,6 +107,16 @@ const logRows = recent.map((d) => ({
   value: '',
   tone: d.action === 'skip' ? 'bad' : undefined,
 }))
+// Tomorrow's homepage, as far as tonight's plan already decides it, with the
+// line that bans any title from it (src/lib/home-preview.js).
+const tomorrow = tomorrowOf(plan).map((s) => ({
+  ...s,
+  rows: [
+    ...s.joins.map((t) => ({ name: t.title || `#${t.id}`, href: t.path, sub: `joins · ban: ${banLine(t.id)}`, value: '', tone: 'good' })),
+    ...s.stays.map((t) => ({ name: t.title || `#${t.id}`, href: t.path, sub: `stays${t.badge ? ` · "${t.badge}"` : ''} · ban: ${banLine(t.id)}`, value: '' })),
+    ...s.leaves.map((t) => ({ name: t.title || `#${t.id}`, href: t.path, sub: 'leaves: longest stay reached', value: '', tone: 'bad' })),
+  ],
+}))
 const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'block'].includes(d.action)).length
 ---
 
@@ -129,6 +140,23 @@ const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'bl
     <h2>Is the planner working?</h2>
     <p class="say">{health.line}</p>
     <Hint hint={health.hint} />
+  </div>
+
+  <div class="panel wide">
+    <h2>Tomorrow's homepage, if the numbers hold</h2>
+    <p class="say">
+      What tonight's plan already decides for the next night: titles at their longest stay leave,
+      and the first of "would be next" take the free slots, within the nightly limits. A title can
+      still fall under a floor overnight. To keep one off, add its id to "ban" in data/home-rules.json
+      (the line is under each title) and push.
+    </p>
+    {tomorrow.length === 0 && <p class="empty">No plan yet.</p>}
+    {tomorrow.map((s) => (
+      <>
+        <h3>{s.title} · {s.enabledTomorrow ? 'shown' : 'hidden'}</h3>
+        <BarList rows={s.rows} tone="good" empty="Empty." />
+      </>
+    ))}
   </div>
 
   {cards.map((card) => (
