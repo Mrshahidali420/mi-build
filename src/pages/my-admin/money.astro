@@ -13,7 +13,9 @@ import Columns from '../../components/admin/Columns.astro'
 import Kpi from '../../components/admin/Kpi.astro'
 import { envOf } from '../../lib/runtime.js'
 import { gate, ask, rangeOf, countryName, handOff, humanize, num, sectionName, shopName } from '../../lib/admin.js'
-import { clicksFor, rawWhere, totalsFor } from '../../lib/admin-data.js'
+import { clicksFor, pagesFor, rawWhere, totalsFor, typesFor } from '../../lib/admin-data.js'
+import { moneyPer, perThousand, MONEY_MIN_VIEWS } from '../../lib/admin-insights.js'
+import WeekStrip from '../../components/admin/WeekStrip.astro'
 import { actionsFor, closedDaysFor, tally, weekPlatforms } from '../../lib/admin-more.js'
 import { platformHint } from '../../lib/admin-hints.js'
 import { deltaOf, flagOf, shortDay, withToday } from '../../lib/admin-chart.js'
@@ -44,14 +46,18 @@ let fromPages = []
 let stores = []
 let week = { now: [], before: [] }
 let closedDays = []
+let types = []
+let pages = []
 
 if (signedIn) {
-  ;[rows, totals, buys, week, closedDays] = await Promise.all([
+  ;[rows, totals, buys, week, closedDays, types, pages] = await Promise.all([
     clicksFor(db, range),
     totalsFor(db, range),
     actionsFor(db, range, ['buy'], 1000),
     weekPlatforms(db),
     closedDaysFor(db, range),
+    typesFor(db, range),
+    pagesFor(db, range),
   ])
 
   // The raw table only keeps 30 days, so these exact lists are only offered
@@ -159,6 +165,28 @@ const typeRows = byType.map((row) => ({
   value: row.total,
   unit: 'clicks',
 }))
+// --- Money per page: Amazon clicks for every 1,000 views, so a busy section
+// and a quiet one can be compared fairly. Sales are only in the Associates
+// reports; this is the step before them.
+const sitePer1k = perThousand(buyClicks, Number(totals.views) || 0)
+const moneyTypes = moneyPer(types)
+const moneyTypeMax = moneyTypes.reduce((m, row) => Math.max(m, row.per1k), 0)
+const moneyTypeRows = moneyTypes.map((row) => ({
+  name: sectionName(row.page_type),
+  sub: `${num(row.buys)} Amazon clicks on ${num(row.views)} views`,
+  value: `${row.per1k}`,
+  bar: moneyTypeMax ? (row.per1k / moneyTypeMax) * 100 : 0,
+}))
+const moneyTop = moneyPer(pages.filter((row) => (Number(row.buys) || 0) > 0))
+const moneyTopMax = moneyTop[0]?.per1k || 0
+const moneyPageRows = moneyTop.map((row) => ({
+  name: humanize(row.path, row.label),
+  href: row.path,
+  sub: `${sectionName(row.page_type)} · ${num(row.buys)} Amazon clicks on ${num(row.views)} views`,
+  value: `${row.per1k}`,
+  bar: moneyTopMax ? (row.per1k / moneyTopMax) * 100 : 0,
+}))
+
 const KIND_WORD = { read: 'read', watch: 'watch', buy: 'Amazon' }
 const titleRows = fromPages.map((row) => ({
   name: humanize(row.path, ''),
@@ -180,6 +208,8 @@ const titleRows = fromPages.map((row) => ({
   wrongWord={wrongWord}
   note={`${range.label}. Every link that hands a reader over to an official platform or a shop.`}
 >
+  {signedIn && <WeekStrip db={db} fields={['clicks', 'reads', 'watches', 'buys']} />}
+
   <section class="kpis" aria-label="Clicks out at a glance">
     <Kpi label="Read clicks" value={reads} spark={trend.map((d) => d.reads)} tone="blue" />
     <Kpi label="Watch clicks" value={watches} spark={trend.map((d) => d.watches)} tone="violet" />
@@ -228,6 +258,17 @@ const titleRows = fromPages.map((row) => ({
       <a href="https://affiliate-program.amazon.com/home/reports" rel="noopener" target="_blank">Associates reports</a>.
       Compare them with these clicks: a box with many clicks and no sales needs other products.
     </Hint>
+  </div>
+
+  <div class="panel">
+    <h2>Money per page: Amazon clicks per 1,000 views</h2>
+    <p class="say">
+      The whole site: {sitePer1k} per 1,000 views. By section, then the best pages. Pages and
+      sections under {MONEY_MIN_VIEWS} views are left out, because one click on a quiet page reads as a lot.
+    </p>
+    <BarList rows={moneyTypeRows} tone="amber" empty="No section has enough views yet." />
+    <h3>Best pages</h3>
+    <BarList rows={moneyPageRows} tone="amber" empty="No page with Amazon clicks has enough views yet." />
   </div>
 
   <div class="panel">
