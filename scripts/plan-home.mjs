@@ -25,6 +25,7 @@ import { writeFileAtomic, writeJsonAtomic } from '../src/lib/write-atomic.mjs'
 import { queryD1, queryD1Wrangler } from '../src/lib/d1-api.mjs'
 import { planHome, mergeDecisions, addDays, SECTIONS } from '../src/lib/home-plan.mjs'
 import { upcomingAnime } from '../src/lib/schedule.mjs'
+import { HANDOFF_MIN_OPENS } from '../src/lib/alike.mjs'
 
 const TITLE_TYPES = "('manhwa','manga','manhua','novel','anime')"
 // The Trending shelves on the homepage show the first 18 of each list; a
@@ -200,6 +201,20 @@ export function loopFrom(rows) {
   return { homeViews, fromHome, seen, clicks }
 }
 
+/**
+ * Opens and clicks out over 30 days per title id, for the "read something
+ * like it" picks on unlicensed pages (src/lib/alike.mjs). Pages under the
+ * floor are left out: a rate from a handful of opens is noise. Counts only,
+ * no visitor data, so the file is safe to keep in the Actions cache.
+ */
+export function handoffFrom(stats, night) {
+  const pages = {}
+  for (const [id, s] of [...stats].sort((a, b) => a[0] - b[0])) {
+    if (s.opens30 >= HANDOFF_MIN_OPENS) pages[id] = [s.opens30, s.outs30]
+  }
+  return { night, min: HANDOFF_MIN_OPENS, pages }
+}
+
 const isArrayOfRows = (x) => Array.isArray(x) && x.every((r) => r && typeof r === 'object')
 
 /** The decisions file, one line per decision so a diff reads line by line. */
@@ -307,7 +322,11 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
   }
   say(`  ${decisions.length} decisions tonight`)
 
+  const handoff = handoffFrom(stats, night)
+  say(`  hand-off rates for ${Object.keys(handoff.pages).length} title pages`)
+
   if (!dry) {
+    writeJsonAtomic(join(dataDir, 'handoff.json'), handoff)
     writeJsonAtomic(autoFile, plan, 2)
     writeFileAtomic(logFile, decisionsText(mergeDecisions(oldLog, decisions, night)))
   }

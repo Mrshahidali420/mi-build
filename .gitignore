@@ -56,3 +56,8 @@ data/where-links.json
 
 # Local secrets for `wrangler dev`. Never committed.
 .dev.vars
+
+# Opens and clicks out per title page over 30 days (scripts/plan-home.mjs),
+# for the "read something like it" picks. Lives in its own Actions cache entry
+# (handoff-*); a missing file only ranks the picks by popularity.
+data/handoff.json

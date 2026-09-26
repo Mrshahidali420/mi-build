@@ -240,6 +240,16 @@ jobs:
           key: home-plan-${{ github.run_id }}
           restore-keys: home-plan-
 
+      # Opens and clicks out per title page (written by the planner below),
+      # which ranks the "read something like it" picks on unlicensed pages.
+      # Its own cache entry, so the home-plan path list above never changes.
+      - name: Restore the hand-off rates
+        uses: actions/cache/restore@v4
+        with:
+          path: data/handoff.json
+          key: handoff-${{ github.run_id }}
+          restore-keys: handoff-
+
       # Nightly only: a push deploy builds from the restored plan. Reads D1
       # through the Cloudflare API, which needs Account > D1 > Read on the
       # token (CLOUDFLARE_D1_TOKEN wins when that secret exists). Any trouble
@@ -292,6 +302,13 @@ jobs:
             data/home-auto.json
             data/home-decisions.json
           key: home-plan-${{ github.run_id }}
+
+      - name: Save the hand-off rates
+        if: always() && steps.deploy.outcome == 'success' && hashFiles('data/handoff.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: data/handoff.json
+          key: handoff-${{ github.run_id }}
 
       # Only after a successful deploy: the file must describe what is live.
       - name: Record the live manifest

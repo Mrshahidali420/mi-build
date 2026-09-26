@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 import { mkdtempSync, writeFileSync, readFileSync, copyFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { runPlan, QUERIES, statsFrom, loopFrom } from '../scripts/plan-home.mjs'
+import { runPlan, QUERIES, statsFrom, loopFrom, handoffFrom } from '../scripts/plan-home.mjs'
 import { D1Error } from '../src/lib/d1-api.mjs'
 
 const NIGHT = '2026-09-27'
@@ -97,6 +97,22 @@ test('a good answer writes both files, with the guardrails applied', async () =>
   const log = JSON.parse(read(dir, 'home-decisions.json'))
   assert.ok(log.some((d) => d.id === 99 && d.action === 'block'))
   assert.equal(log.filter((d) => d.action === 'add').length, 3)
+  // The hand-off file for unlicensed pages: counts per id, 30 days.
+  const handoff = JSON.parse(read(dir, 'handoff.json'))
+  assert.equal(handoff.night, NIGHT)
+  assert.deepEqual(handoff.pages['21'], [300, 0])
+  assert.equal(Object.keys(handoff.pages).length, ids.length)
+})
+
+test('a skipped night writes no hand-off file', async () => {
+  const dir = dataDir()
+  await runPlan({ query: async () => [], dataDir: dir, night: NIGHT, say: quiet })
+  assert.throws(() => read(dir, 'handoff.json'))
+})
+
+test('the hand-off file leaves out pages under the floor', () => {
+  const stats = new Map([[2, { opens30: 29, outs30: 5 }], [1, { opens30: 30, outs30: 3 }]])
+  assert.deepEqual(handoffFrom(stats, NIGHT).pages, { 1: [30, 3] })
 })
 
 test('the runner cuts yesterday, the week and the month from 30 days of page rows', () => {
