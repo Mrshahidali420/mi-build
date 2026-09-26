@@ -18,6 +18,7 @@ import { loadTitle, envOf, countryOf, notFound, unavailable } from '../../../lib
 import { sectionOf, SECTIONS } from '../../../lib/section.mjs'
 import { faqJsonld } from '../../../lib/answers.mjs'
 import { shopLinks } from '../../../lib/shop-links.js'
+import { titleBuyCopy } from '../../../lib/buy-copy.js'
 import { buyAnswer, BUY_POPULARITY } from '../../../lib/buy.mjs'
 import { hasBuyPage, hasFreePage } from '../../../lib/gates.mjs'
 import { statusWord, charactersOf, genreSlug } from '../../../lib/format.js'
@@ -48,6 +49,11 @@ const buys = shopLinks(item, countryOf(Astro), { books: booksKnown(item) })
 if (buys.length === 0) return notFound(Astro)
 // Hand-picked products, for readers on amazon.com only (see src/lib/picks.js).
 const picked = picksShowFor(countryOf(Astro)) ? picksForTitle(item) : null
+// The same reason line as the title page, so the two never disagree.
+const buyCopy = titleBuyCopy(item, {
+  books: booksKnown(item),
+  printKnown: Boolean(picked?.picks?.some((pick) => pick.t === 'book')),
+})
 // The sitemap's own gate, so the two can never disagree about this page.
 if (!hasBuyPage(item)) return notFound(Astro)
 
@@ -127,7 +133,7 @@ const jsonld = [
       <p class="title-answer">{answer.lede}</p>
 
       {/* The reader came here to buy. The shops go first. */}
-      <BuyBox heading={`Own ${item.title}`} sub="Amazon, in your own country's store." rows={buys} />
+      <BuyBox heading={`Own ${item.title}`} sub={buyCopy.sub} rows={buys} />
 
       {picked && (
         <TopPicks
@@ -136,6 +142,7 @@ const jsonld = [
           byHand={picked.byHand}
           picks={picked.picks}
           max={8}
+          support={false}
         />
       )}
 

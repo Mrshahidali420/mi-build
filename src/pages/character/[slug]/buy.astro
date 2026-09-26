@@ -17,6 +17,7 @@ import { faqJsonld } from '../../../lib/answers.mjs'
 import { kindOfAppearance } from '../../../lib/format.js'
 import { characterShopLinks } from '../../../lib/shop-links.js'
 import { characterBuyAnswer } from '../../../lib/buy.mjs'
+import { characterBuyCopy } from '../../../lib/buy-copy.js'
 import { displayName } from '../../../lib/names.mjs'
 import { hasCharacterBuyPage, hasBuyPage } from '../../../lib/gates.mjs'
 import { ageOf } from '../../../lib/age.mjs'
@@ -63,6 +64,13 @@ const merchIsCharacter = buys.some((row) => row.kind === 'figures')
 // first among the others. The shop rows above still search the record as it is.
 // When nothing is swapped, the record goes in untouched.
 const { primary, formal } = displayName(person)
+// The same reason line as the character page, so the two never disagree.
+const buyCopy = characterBuyCopy({
+  name: primary,
+  story: String((series || lead).title || '').replace(/["“”]/g, '').trim(),
+  merchFirst: buys[0]?.kind === 'figures',
+  merchIsCharacter,
+})
 const named = formal
   ? { ...person, name: primary, formalName: formal, aliases: [formal, ...(person.aliases || [])] }
   : person
@@ -144,7 +152,7 @@ const jsonld = [
       {/* The reader came here to buy. The shelves go first. */}
       <BuyBox
         heading={merchIsCharacter ? `Own a piece of ${primary}` : `Own ${lead.title}`}
-        sub="Amazon, in your own country's store."
+        sub={buyCopy.sub}
         rows={buys}
       />
 
@@ -155,6 +163,7 @@ const jsonld = [
           byHand={picked.byHand}
           picks={picked.picks}
           max={8}
+          support={false}
         />
       )}
 

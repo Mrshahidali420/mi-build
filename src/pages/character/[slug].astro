@@ -15,6 +15,7 @@ import { characterFaq, faqJsonld, wordOf, verbOf, uniqueBySite, linksOf } from '
 import { characterShopLinks } from '../../lib/shop-links.js'
 // The merch page answers 404 when this gate says no, so the link obeys it too.
 import { hasCharacterBuyPage } from '../../lib/gates.mjs'
+import { characterBuyCopy } from '../../lib/buy-copy.js'
 import BuyBox from '../../components/BuyBox.astro'
 import TopPicks from '../../components/TopPicks.astro'
 import { picksForPerson, picksShowFor } from '../../lib/picks.js'
@@ -212,20 +213,14 @@ const buys = characterShopLinks(person, series || lead, countryOf(Astro))
 const picked = picksShowFor(countryOf(Astro)) ? picksForPerson(person, series || lead) : null
 const merchIsCharacter = buys.some((row) => row.kind === 'figures')
 const merchFirst = buys[0]?.kind === 'figures'
-// The heading names whatever the first row sells, so the box never promises
-// figures above a row of books. The book rows can name two series (the big
-// story first, then the spin-off this page leads with), so the words stay
-// general rather than name a title the first row may not be.
-const buyHeading = merchFirst
-  ? `Own a piece of ${primary}`
-  : merchIsCharacter
-    ? `Books and merch of ${primary}`
-    : `Own the story ${primary} is from`
-const buySub = merchFirst
-  ? `Figures, prints and apparel of ${primary}, then the books of the story, from Amazon's live search.`
-  : merchIsCharacter
-    ? `The books of the story, then figures and merch of ${primary}, from Amazon's live search.`
-    : `Printed volumes and series merch, from Amazon's live search.`
+// The words fit what the first row sells and name the story the face is
+// from. The rules live in src/lib/buy-copy.js.
+const { heading: buyHeading, sub: buySub } = characterBuyCopy({
+  name: primary,
+  story: unquote((series || lead).title),
+  merchFirst,
+  merchIsCharacter,
+})
 
 // Without the fact lines, so "Who is X?" opens on a sentence, not "Height:".
 const bioPlain = bio.trim() ? bioText(bio) : ''
@@ -426,7 +421,7 @@ const jsonld = {
     )}
 
     {buys.length > 0 && (
-      <BuyBox id="buy" heading={buyHeading} sub={buySub} rows={buys} />
+      <BuyBox id="buy" heading={buyHeading} sub={buySub} rows={buys} support={!picked} />
     )}
 
     {merchIsCharacter && hasCharacterBuyPage(person) && (

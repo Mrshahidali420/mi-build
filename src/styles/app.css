@@ -1448,6 +1448,14 @@ main:has(.title-page) {
   /* The note sits above the links now, so its gap goes below it. */
   margin: 0 0 0.85rem;
 }
+/* The support line closes the box. Same quiet size as the note, so it reads
+   as a fact about the site, not a second offer. */
+.buys__support {
+  color: var(--dawn-dim);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  margin: 0.85rem 0 0;
+}
 @media (max-width: 480px) {
   .buy a {
     grid-template-columns: auto 1fr;

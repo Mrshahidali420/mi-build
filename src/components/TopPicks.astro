@@ -12,10 +12,12 @@
  */
 import { BUY_ICONS } from '../lib/buy-icons.js'
 import { PICK_LABELS, pickUrl } from '../lib/picks.js'
+import { SUPPORT_LINE } from '../lib/buy-copy.js'
 
 // `byHand` is false for picks matched from publisher records (product-picks.json),
 // so the note never claims a person chose them.
-const { heading, sub, picks = [], max = 6, byHand = true } = Astro.props
+// `support` is false when a buy box above it already says the support line.
+const { heading, sub, picks = [], max = 6, byHand = true, support = true } = Astro.props
 
 const ICON_OF = { book: 'book', disc: 'disc', figure: 'figure', plush: 'plush', poster: 'poster', apparel: 'shirt', merch: 'tag' }
 const shown = picks.slice(0, max)
@@ -48,6 +50,7 @@ const shown = picks.slice(0, max)
           </li>
         ))}
       </ul>
+      {support && <p class="buys__support">{SUPPORT_LINE}</p>}
     </section>
   )
 }

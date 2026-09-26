@@ -12,10 +12,13 @@
  * "Shop" because the reader knows what is behind it before they spend a tap.
  */
 import { BUY_ICONS } from '../lib/buy-icons.js'
+import { SUPPORT_LINE } from '../lib/buy-copy.js'
 
 // `id` is optional. The character page sets it so the Merch door on the
 // character wall can jump straight to this box.
-const { heading, sub, rows = [], id } = Astro.props
+// `support` is false for a second box on the same page, so the reader is
+// told once, not twice.
+const { heading, sub, rows = [], id, support = true } = Astro.props
 
 const ICONS = BUY_ICONS
 ---
@@ -52,4 +55,6 @@ const ICONS = BUY_ICONS
       ))
     }
   </ul>
+
+  {support && <p class="buys__support">{SUPPORT_LINE}</p>}
 </section>

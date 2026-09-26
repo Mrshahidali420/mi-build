@@ -18,6 +18,7 @@ import { loadTitle, envOf, countryOf, notFound, unavailable } from '../../lib/ru
 import { titleFaq, faqJsonld, freeSplit } from '../../lib/answers.mjs'
 import { coverage, adaptationAnswer, readingOrder, upcoming } from '../../lib/computed.mjs'
 import { shopLinks } from '../../lib/shop-links.js'
+import { titleBuyCopy } from '../../lib/buy-copy.js'
 import { hasFreePage, hasLikePage, hasCastPage, hasBuyPage } from '../../lib/gates.mjs'
 import BuyBox from '../../components/BuyBox.astro'
 import TopPicks from '../../components/TopPicks.astro'
@@ -194,6 +195,12 @@ const buys = shopLinks(item, countryOf(Astro), { books: booksKnown(item) })
 // amazon.com (see src/lib/picks.js). A sequel or an adaptation borrows the
 // picks of its own story, and the heading then names that story.
 const picked = picksShowFor(countryOf(Astro)) ? picksForTitle(item) : null
+// The words at the top of the shopping box, fitted to this title: licensed or
+// not, finished or still going, anime or comic. See src/lib/buy-copy.js.
+const buyCopy = titleBuyCopy(item, {
+  books: booksKnown(item),
+  printKnown: Boolean(picked?.picks?.some((pick) => pick.t === 'book')),
+})
 
 // An anime's key credits (director, writer, designer, composer), from AniList.
 // Grouped by role so two composers share one row. Empty on a comic and on any
@@ -560,16 +567,12 @@ const updatedLong = checkedLong
         picked ? (
           <TopPicks
             heading={`Top picks for ${picked.from || item.title}`}
-            sub={picked.byHand ? 'Real products on Amazon, picked by hand.' : 'Real products on Amazon, matched from publisher records.'}
+            sub={buyCopy.sub}
             byHand={picked.byHand}
             picks={picked.picks}
           />
         ) : buys.length > 0 && (
-          <BuyBox
-            heading="Own a copy"
-            sub={`Books, discs and figures for ${item.title}, straight from Amazon.`}
-            rows={buys}
-          />
+          <BuyBox heading={buyCopy.heading} sub={buyCopy.sub} rows={buys} />
         )
       }
 
@@ -597,6 +600,7 @@ const updatedLong = checkedLong
             heading="Own a copy"
             sub={`Books, discs and figures for ${item.title}, straight from Amazon.`}
             rows={buys}
+            support={false}
           />
         )
       }

@@ -37,6 +37,7 @@ import {
 import { shelfLinks, characterShopLinks, shopUrl, BOOKS, TOYS, ALL } from '../lib/shop-links.js'
 import { hasCharacterBuyPage } from '../lib/gates.mjs'
 import { displayName } from '../lib/names.mjs'
+import { SUPPORT_LINE } from '../lib/buy-copy.js'
 
 // How many covers a shelf shows. Enough to browse, few enough that the page
 // still loads fast on a phone.
@@ -245,6 +246,8 @@ const jsonld = {
         stock and ship nothing. Every link opens Amazon, so you see what is really
         in print today.
       </p>
+      {/* Said once for the whole page, not under every shelf. */}
+      <p class="buys__support">{SUPPORT_LINE}</p>
     </header>
 
     <nav class="shop-jump" aria-label="Jump to a shelf">
