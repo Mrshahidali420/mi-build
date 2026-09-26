@@ -6,8 +6,12 @@
  *
  *   rising, saving, new, month = the self-updating shelves (src/lib/home-plan.mjs)
  *   chars                      = Popular characters right now (by hand)
+ *   season                     = New this season (src/lib/season-shelf.mjs)
+ *
+ * A new key goes at the END: home_seen stores the shelves in this order, and
+ * a key slotted in the middle would split one set of shelves into two words.
  */
-export const HOME_SECTIONS = ['rising', 'saving', 'new', 'month', 'chars']
+export const HOME_SECTIONS = ['rising', 'saving', 'new', 'month', 'chars', 'season']
 const KNOWN = new Set(HOME_SECTIONS)
 
 /** One shelf key, or '' when it is not one of ours. */

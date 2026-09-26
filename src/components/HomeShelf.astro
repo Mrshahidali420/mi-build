@@ -25,6 +25,7 @@ const { shelf } = Astro.props
       <h2 id={`home-${shelf.key}-h`}>{shelf.title}</h2>
       <p>{shelf.why}</p>
     </div>
+    {shelf.href && <a class="section__more" href={shelf.href}>All of it →</a>}
   </div>
   <div class="shelf-wrap">
     <button type="button" class="shelf-arrow shelf-arrow--left" aria-label={`Scroll ${shelf.title} left`}>

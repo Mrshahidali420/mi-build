@@ -8,7 +8,9 @@ import PopularNow from '../components/PopularNow.astro'
 import { animeByPopularity, novelsByPopularity, comics, comicsOfCountry, anime, genres, platform, airingThisWeek, inIndex } from '../lib/catalog.js'
 import { upcomingAnime, upcomingRow } from '../lib/schedule.mjs'
 import { loadHomeAuto, homeShelf } from '../lib/home-auto.js'
-import { PRIORITY } from '../lib/home-plan.mjs'
+import { PRIORITY, adultReason } from '../lib/home-plan.mjs'
+import { newSeasonShelf } from '../lib/season-shelf.mjs'
+import homeRules from '../../data/home-rules.json'
 import HomeShelf from '../components/HomeShelf.astro'
 
 const manhwa = comicsOfCountry('KR')
@@ -76,6 +78,14 @@ for (const key of PRIORITY) {
 // Rising sits above the Trending shelves (it is the news); the slower
 // shelves sit below them.
 const risingShelf = shelfOf.rising
+// New this season: drawn by the build date alone for the first six weeks of
+// an anime season (src/lib/season-shelf.mjs), with the same adult filter the
+// auto shelves use, and never a cover the page already shows.
+const seasonShelf = newSeasonShelf(anime, {
+  onPage: shownSoFar,
+  keep: (item) => !adultReason(item, homeRules),
+})
+if (seasonShelf) for (const item of seasonShelf.items) shownSoFar.add(item.id)
 const lowerShelves = ['saving', 'new', 'month'].map((key) => shelfOf[key]).filter(Boolean)
 
 // The hero stands in front of a real banner: the most popular manhwa
@@ -290,6 +300,7 @@ const tinyCover = (url) =>
     </script>
 
     {risingShelf && <HomeShelf shelf={risingShelf} />}
+    {seasonShelf && <HomeShelf shelf={seasonShelf} />}
 
     {
       rows.map((row) => (

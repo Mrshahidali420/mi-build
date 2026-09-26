@@ -15,8 +15,9 @@ const clean = (row) => {
   return values && Object.fromEntries(COLUMNS.map((c, i) => [c, values[i]]))
 }
 
-test('shelf keys: five known words, one fixed order', () => {
-  assert.deepEqual(HOME_SECTIONS, ['rising', 'saving', 'new', 'month', 'chars'])
+test('shelf keys: six known words, one fixed order, new ones last', () => {
+  assert.deepEqual(HOME_SECTIONS, ['rising', 'saving', 'new', 'month', 'chars', 'season'])
+  assert.equal(homeSeenDetail(['season', 'rising']), 'rising-season')
   assert.equal(homeSeenDetail(['month', 'rising', 'month', 'nope']), 'rising-month')
   assert.equal(homeSeenDetail('saving-rising'), 'rising-saving')
   assert.equal(homeSeenDetail(''), '')
