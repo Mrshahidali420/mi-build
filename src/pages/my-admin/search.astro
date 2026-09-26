@@ -12,6 +12,7 @@ import Hint from '../../components/admin/Hint.astro'
 import BarList from '../../components/admin/BarList.astro'
 import Kpi from '../../components/admin/Kpi.astro'
 import Split from '../../components/admin/Split.astro'
+import WeekStrip from '../../components/admin/WeekStrip.astro'
 import { envOf } from '../../lib/runtime.js'
 import { gate, rangeOf, humanize, num } from '../../lib/admin.js'
 import { actionsFor, tally } from '../../lib/admin-more.js'
@@ -56,9 +57,15 @@ const foundRows = found.map((row) => ({
 }))
 
 const missing = tally(nones, (row) => row.item).slice(0, 30)
+// Each miss opens the same words on AniList, where the id for data/keep.json
+// is found in one tap. Comics first: most searches here are for a comic, and
+// the AniList page has an Anime tab one tap away.
+const anilistSearch = (words) => `https://anilist.co/search/manga?search=${encodeURIComponent(words)}`
 const missingRows = missing.map((row) => ({
   name: `“${row.key}”`,
-  sub: `${num(row.people)} people`,
+  href: anilistSearch(row.key),
+  target: true,
+  sub: `${num(row.people)} people · find its id on AniList`,
   value: row.n,
   unit: 'searches',
   tone: 'bad',
@@ -75,6 +82,8 @@ const missingRows = missing.map((row) => ({
   wrongWord={wrongWord}
   note={`${range.label}. The site's own search box. What people type into Google is only in Search Console.`}
 >
+  {signedIn && <WeekStrip db={db} />}
+
   <section class="kpis" aria-label="Searches at a glance">
     <Kpi label="Searches" value={total} hero />
     <Kpi label="Found a result" value={pickTotal} />
@@ -105,6 +114,17 @@ const missingRows = missing.map((row) => ({
     </p>
     <BarList rows={missingRows} empty="Nothing yet. Words show here once two different people search for the same missing title." />
     <Hint hint={missingTitleHint(missing.length)} />
+    {missing.length > 0 && (
+      <>
+        <h3>Add one to the keep list</h3>
+        <p class="say">
+          Tap a search above, open the right title on AniList, and copy the number from its
+          address (anilist.co/manga/<b>12345</b>). Put it in the "media" list of data/keep.json
+          like this, commit, and run the catalog workflow:
+        </p>
+        <pre class="snippet">{`"media": [12345]`}</pre>
+      </>
+    )}
   </div>
 
   <p class="say">
