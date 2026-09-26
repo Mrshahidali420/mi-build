@@ -110,13 +110,16 @@ async function rollOneDay(db, day) {
     .bind(D, D)
 
   // All time, added up as we go. This is the only place "all time" comes from.
+  // first_day is set once, the first night a page shows up, and never moved,
+  // so the homepage planner can tell a new title from an old one.
   const totalPages = db
     .prepare(
       `INSERT INTO total_pages
-         (path, page_type, label, views, clicks, buys, reads, watches, dwell_sum, dwell_n, last_day)
-       SELECT path, page_type, label, views, clicks, buys, reads, watches, dwell_sum, dwell_n, day
+         (path, page_type, label, views, clicks, buys, reads, watches, dwell_sum, dwell_n, last_day, first_day)
+       SELECT path, page_type, label, views, clicks, buys, reads, watches, dwell_sum, dwell_n, day, day
        FROM daily_pages WHERE day = ?
        ON CONFLICT(path) DO UPDATE SET
+         first_day = COALESCE(total_pages.first_day, excluded.first_day),
          views = total_pages.views + excluded.views,
          clicks = total_pages.clicks + excluded.clicks,
          buys = total_pages.buys + excluded.buys,
@@ -129,6 +132,19 @@ async function rollOneDay(db, day) {
          last_day = excluded.last_day`
     )
     .bind(D)
+
+  // Pages opened straight from the homepage. A click on our own link is not
+  // an event; the next page's view carries prev = '/' instead, so this is the
+  // only way to see which homepage titles people actually open.
+  const fromHome = db
+    .prepare(
+      `INSERT OR REPLACE INTO daily_from_home (day, path, views, people)
+       SELECT ?, path, COUNT(*),
+         COUNT(DISTINCT CASE WHEN visitor <> '' THEN visitor END)
+       FROM events WHERE day = ? AND kind = 'view' AND prev = '/' AND path <> ''
+       GROUP BY path ORDER BY COUNT(*) DESC LIMIT 300`
+    )
+    .bind(D, D)
 
   const countries = db
     .prepare(
@@ -207,6 +223,7 @@ async function rollOneDay(db, day) {
     types,
     pages,
     totalPages,
+    fromHome,
     countries,
     clicks,
     sources,

@@ -82,7 +82,13 @@ CREATE TABLE IF NOT EXISTS total_pages (
   path TEXT PRIMARY KEY, page_type TEXT, label TEXT, views INTEGER DEFAULT 0,
   clicks INTEGER DEFAULT 0, buys INTEGER DEFAULT 0, reads INTEGER DEFAULT 0,
   watches INTEGER DEFAULT 0, dwell_sum INTEGER DEFAULT 0, dwell_n INTEGER DEFAULT 0,
-  last_day TEXT);
+  last_day TEXT, first_day TEXT);
+
+-- Pages opened straight from the homepage (the view's prev was '/'), per day.
+-- Measures the homepage's own sections. Top 300 a day. See 0004-home.sql.
+CREATE TABLE IF NOT EXISTS daily_from_home (
+  day TEXT, path TEXT, views INTEGER DEFAULT 0, people INTEGER DEFAULT 0,
+  PRIMARY KEY (day, path));
 
 CREATE TABLE IF NOT EXISTS daily_countries (
   day TEXT, country TEXT, page_type TEXT, views INTEGER DEFAULT 0,

@@ -123,6 +123,33 @@ test('the dashboard asks the raw table the same questions', async () => {
   assert.deepEqual(clicks.map((r) => r.kind).sort(), ['buy', 'read'])
 })
 
+test('opens from the homepage are rolled up, and first_day never moves', async () => {
+  const d1 = analyticsD1()
+  const fromHome = (visitor, session, path) => ({ ...view(visitor, session, 2, path), prev: '/', prev_type: 'home' })
+  write(d1, [
+    view('h1', 'hs1', 1, '/'),
+    fromHome('h1', 'hs1', '/manga/a'),
+    view('h2', 'hs2', 1, '/'),
+    fromHome('h2', 'hs2', '/manga/a'),
+    // The same person opening it twice is two opens and one person.
+    fromHome('h2', 'hs2', '/manga/a'),
+    // Arriving on the page from somewhere else is not an open from home.
+    view('h3', 'hs3', 1, '/manga/a'),
+  ])
+  await runRollup(d1, NIGHT)
+  const rows = all(d1, 'SELECT path, views, people FROM daily_from_home WHERE day = ?', DAY)
+  assert.deepEqual(rows.map((r) => ({ ...r })), [{ path: '/manga/a', views: 3, people: 2 }])
+  assert.equal(all(d1, 'SELECT first_day FROM total_pages WHERE path = ?', '/manga/a')[0].first_day, DAY)
+
+  // The next night the page is seen again: first_day stays on the first night.
+  const nextDay = '2026-09-21'
+  write(d1, [view('h4', 'hs4', 1, '/manga/a')], Date.parse(`${nextDay}T12:00:00Z`))
+  await runRollup(d1, Date.parse('2026-09-22T00:10:00Z'))
+  const page = all(d1, 'SELECT first_day, last_day FROM total_pages WHERE path = ?', '/manga/a')[0]
+  assert.equal(page.first_day, DAY)
+  assert.equal(page.last_day, nextDay)
+})
+
 test('a long range adds the closed days to today', async () => {
   const d1 = fixture()
   await runRollup(d1, NIGHT)
