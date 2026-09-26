@@ -229,7 +229,7 @@ function adaptation(item, kind) {
     )
     return source ? 'It comes from a comic, and that comic has its own page here.' : ''
   }
-  if (item.animeInIndex) return 'There is an anime version, and it has its own page on this site.'
+  if (item.animeInIndex?.length) return 'There is an anime version, and it has its own page on this site.'
   if (item.hasAnime) return 'An anime version exists.'
   return ''
 }
