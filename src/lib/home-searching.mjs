@@ -25,6 +25,15 @@
  *   gGoogle7       how many of the 7-day arrivals were Google
  *   s7, sPeople7, sDays7   searches on our own box: rows, distinct people, days
  *   entries7, quick7       from the page rows, for the quick-exit brake
+ *
+ * Two modes (owner's call, 27 Sep 2026). Search arrivals were first counted
+ * on 19 Sep, and a "usual" needs weeks behind it, so the rise rule would keep
+ * the shelf empty for a fortnight. While the arrivals table holds fewer than
+ * 28 days, the shelf ranks by volume instead: distinct people from search
+ * engines plus distinct people on our own search box, this week. Every other
+ * floor and brake is the same in both modes. From 28 days on it switches back
+ * to the rise by itself. The planner picks the mode (searchModeOf) and passes
+ * it in ctx.searchMode; with no mode given, the rise rule applies.
  */
 
 export const SEARCHING_SECTION = {
@@ -56,7 +65,25 @@ export const SEARCHING = {
   siteWeight: 3,
   // The /my-admin line says "Google" only when Google sent at least this share.
   googleShare: 0.8,
+  // Days of search-arrival history before the rise rule is trusted. Under
+  // this, the shelf ranks by volume (see the top of this file).
+  matureDays: 28,
 }
+
+/** The two modes, and what /my-admin calls them. */
+export const SEARCH_MODES = {
+  volume: 'most searched (young data)',
+  lift: 'rising',
+}
+
+/**
+ * The mode for tonight, from how many closed days the arrivals table holds
+ * (null when it holds none, which is young too).
+ */
+export const searchModeOf = (historyDays) =>
+  (historyDays || 0) >= SEARCHING.matureDays ? 'lift' : 'volume'
+
+const isVolume = (ctx) => ctx?.searchMode === 'volume'
 
 const MAX_REASON = 119
 const cut = (text) => (text.length > MAX_REASON ? `${text.slice(0, MAX_REASON - 1)}…` : text)
@@ -74,6 +101,8 @@ export function webMiss(s, ctx = {}) {
   if (people < SEARCHING.webPeople7) return `found on search by ${people} of ${SEARCHING.webPeople7} people`
   if ((s.gDays7 || 0) < SEARCHING.webDays7) return `found on search on ${s.gDays7 || 0} of ${SEARCHING.webDays7} days`
   if ((s.g7 || 0) > SEARCHING.perPerson * people) return `one-visitor share: ${s.g7} arrivals from ${people} people`
+  // Young data: no usual yet to rise from, so the floors above are the rule.
+  if (isVolume(ctx)) return null
   const lift = searchLift(s, ctx.searchBaseDays)
   if (lift < SEARCHING.lift7) return `found ${lift.toFixed(1)}x its usual on search, needs ${SEARCHING.lift7}x`
   return null
@@ -112,8 +141,15 @@ export function searchingMiss(s, title, ctx = {}) {
   return null
 }
 
-/** Search-engine people times the rise, plus our own searchers, weighted. */
+/**
+ * Rising: search-engine people times the rise, plus our own searchers,
+ * weighted. Young data: distinct people from search engines plus distinct
+ * people on our own search box, each side counted only when it qualifies.
+ */
 export function searchingScore(s, ctx = {}) {
+  if (isVolume(ctx)) {
+    return (webMiss(s, ctx) ? 0 : s.gPeople7 || 0) + (siteMiss(s) ? 0 : s.sPeople7 || 0)
+  }
   const web = webMiss(s, ctx) ? 0 : (s.gPeople7 || 0) * Math.min(searchLift(s, ctx.searchBaseDays), 4)
   const site = siteMiss(s) ? 0 : SEARCHING.siteWeight * (s.sPeople7 || 0)
   return round2(web + site)
@@ -125,6 +161,9 @@ export const engineLabel = (s) =>
 
 /** Both numbers, always, for /my-admin: search engines and our own box. */
 export function searchingReason(s, ctx = {}) {
+  if (isVolume(ctx)) {
+    return cut(`Found on ${engineLabel(s)} by ${s.gPeople7 || 0} people this week (${s.g7 || 0} arrivals), searched here by ${s.sPeople7 || 0}`)
+  }
   const lift = searchLift(s, ctx.searchBaseDays).toFixed(1)
   return cut(
     `Found on ${engineLabel(s)} by ${s.gPeople7 || 0} people this week (${s.g7 || 0} arrivals, ${lift}x usual), searched here by ${s.sPeople7 || 0}`

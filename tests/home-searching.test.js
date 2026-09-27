@@ -4,9 +4,10 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { planHome, FLOORS, PRIORITY, SECTIONS, PAGE_CHANGE_CAP } from '../src/lib/home-plan.mjs'
+import { planHome, FLOORS, PRIORITY, SECTIONS, PAGE_CHANGE_CAP, searchHistoryDaysOf } from '../src/lib/home-plan.mjs'
 import {
   searchingMiss, searchingScore, searchingReason, searchingBadge, searchLift, SEARCHING,
+  SEARCH_MODES, searchModeOf,
 } from '../src/lib/home-searching.mjs'
 import { HOME_SECTIONS } from '../src/lib/home-sections.js'
 
@@ -158,4 +159,85 @@ test('the shelf stays for its minimum nights, then leaves when the searching sto
   const night5 = planHome({ night: '2026-10-01', titles: w.titles, stats: w.stats, rules: RULES, prev: night2.plan, searchHistoryStart: '2026-08-01' })
   const left = night5.plan.sections.searching.items.map((it) => it.id)
   for (const id of ids) assert.ok(!left.includes(id), `title ${id} left after its minimum stay`)
+})
+
+// ---------------------------------------------------------------- young data: volume mode
+
+const young = { ...ctx, searchMode: 'volume' }
+// Found by 25 people this week, as often as ever: no rise at all.
+const steady = (over = {}) => found({ g7: 30, g30: 130, gPeople7: 25, gGoogle7: 30, ...over })
+
+test('the mode follows the days of search history: volume under 28, rise from 28', () => {
+  assert.equal(searchHistoryDaysOf(null, NIGHT), 0)
+  assert.equal(searchHistoryDaysOf('2026-09-27', NIGHT), 0, 'tonight is not a closed day yet')
+  assert.equal(searchHistoryDaysOf('2026-09-19', NIGHT), 8)
+  assert.equal(searchModeOf(0), 'volume')
+  assert.equal(searchModeOf(27), 'volume')
+  assert.equal(searchModeOf(28), 'lift')
+  assert.equal(SEARCHING.matureDays, 28)
+  assert.equal(SEARCH_MODES.volume, 'most searched (young data)')
+  assert.equal(SEARCH_MODES.lift, 'rising')
+})
+
+test('volume mode ranks by people, with no rise needed', () => {
+  assert.match(searchingMiss(steady(), rec(1), ctx), /its usual on search/, 'the rise rule keeps it off')
+  assert.equal(searchingMiss(steady(), rec(1), young), null, 'volume mode takes it')
+  // Distinct people from search engines plus distinct people on our own box.
+  assert.equal(searchingScore(steady(), young), 25)
+  assert.equal(searchingScore(steady({ s7: 7, sPeople7: 6, sDays7: 4 }), young), 31)
+  assert.equal(searchingScore(searched(), young), 6)
+  assert.equal(searchingReason(steady(), young), 'Found on Google by 25 people this week (30 arrivals), searched here by 0')
+  assert.equal(searchingBadge(steady(), young), 'Hot this week')
+})
+
+test('volume mode keeps every floor and brake', () => {
+  assert.match(searchingMiss(steady({ gPeople7: 9, g7: 12 }), rec(1), young), /found on search by 9 of 10 people/)
+  assert.match(searchingMiss(steady({ gDays7: 2 }), rec(1), young), /on 2 of 3 days/)
+  assert.match(searchingMiss(steady({ g7: 120 }), rec(1), young), /one-visitor share: 120 arrivals from 25 people/)
+  assert.match(searchingMiss(searched({ sPeople7: 4, s7: 4 }), rec(1), young), /searched here by 4 of 5 people/)
+  assert.match(searchingMiss(steady({ gDays7: 3 }), rec(1, { popularity: 10 }), young), /unknown on AniList/)
+  assert.match(searchingMiss(steady({ entries7: 40, quick7: 35 }), rec(1), young), /leave at once/)
+  assert.equal(searchingScore(steady({ gDays7: 2 }), young), 0)
+})
+
+test('the planner runs volume mode on young data and logs it', () => {
+  const w = world(6, (id) => ({ g30: 400 + id, g7: 25 + id }))
+  const { plan: p, decisions } = plan(w, { searchHistoryStart: '2026-09-19' })
+  assert.equal(p.modes.searching, 'volume')
+  const line = decisions.find((d) => d.section === 'searching' && d.action === 'mode')
+  assert.equal(line.rule, 'searching.mode')
+  assert.equal(line.reason, 'mode: most searched (young data), 8 days of search history')
+  assert.deepEqual(p.sections.searching.items.map((it) => it.id), [6, 5, 4], 'most people first, within the nightly cap')
+  assert.doesNotMatch(p.sections.searching.items[0].reason, /usual/)
+})
+
+test('volume mode still keeps adult, blocked, banned, Trending and Rising titles off', () => {
+  const w = world(9, (id) => ({ g30: 400 + id }))
+  w.titles.set(1, rec(1, { isAdult: true }))
+  w.titles.set(2, rec(2, { title: 'Hentai Days' }))
+  w.stats.set(6, {
+    ...w.stats.get(6), opens1: 60, opens7: 300, opens30: 360, people7: 120, daysSeen7: 7, entries7: 30, quick7: 5,
+  })
+  const { plan: p } = plan(w, {
+    searchHistoryStart: '2026-09-19',
+    historyStart: '2026-08-01',
+    blocked: new Set([3]),
+    rules: { ...RULES, ban: [4] },
+    onPage: new Set([5]),
+  })
+  assert.ok(p.sections.rising.items.some((it) => it.id === 6))
+  const shown = new Set([...p.sections.searching.items, ...p.next.searching].map((it) => it.id))
+  for (const id of [1, 2, 3, 4, 5, 6]) assert.ok(!shown.has(id), `title ${id} is kept off`)
+})
+
+test('from 28 days of history the planner switches back to the rise by itself', () => {
+  const w = world(6, (id) => ({ g30: 400 + id, g7: 25 + id }))
+  // 30 Aug to 26 Sep is 28 closed days.
+  const { plan: p, decisions } = plan(w, { searchHistoryStart: '2026-08-30' })
+  assert.equal(p.modes.searching, 'lift')
+  assert.match(decisions.find((d) => d.action === 'mode').reason, /^mode: rising, 28 days/)
+  assert.equal(p.sections.searching.items.length, 0, 'a steady title is not news once there is a usual')
+  assert.match(p.rejected.searching[0].reason, /its usual on search/)
+  // The day before, 27 days: still volume.
+  assert.equal(plan(w, { searchHistoryStart: '2026-08-31' }).plan.modes.searching, 'volume')
 })

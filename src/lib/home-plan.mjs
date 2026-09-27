@@ -16,7 +16,7 @@
  * The four sections and their numbers are in tasks/auto-homepage-plan.md.
  */
 
-import { SEARCHING_SECTION, searchingRule } from './home-searching.mjs'
+import { SEARCHING_SECTION, SEARCH_MODES, searchModeOf, searchingRule } from './home-searching.mjs'
 
 // Each section's size and brakes, in the order the homepage draws them.
 // slots: how many covers at most. floor: fewer than this and the section is
@@ -179,6 +179,16 @@ export function baseDaysOf(historyStart, night) {
   const from = addDays(night, -30)
   if (!historyStart || historyStart <= from) return 30
   return Math.max(1, Math.min(30, daysBetween(historyStart, last) + 1))
+}
+
+/**
+ * Closed days of search-arrival history on this night: from its first day
+ * to the day before the night, 0 when there is none yet.
+ */
+export function searchHistoryDaysOf(start, night) {
+  const last = addDays(night, -1)
+  if (!start || start > last) return 0
+  return daysBetween(start, last) + 1
 }
 
 // ------------------------------------------------------------------ safety
@@ -535,11 +545,14 @@ export function planHome(input) {
     // Search arrivals were first counted on their own day, so their "usual"
     // is worked out over the days that table really holds.
     searchBaseDays: baseDaysOf(input.searchHistoryStart || input.historyStart, night),
+    // Under 28 days of search arrivals the shelf ranks by volume, not rise.
+    searchMode: searchModeOf(searchHistoryDaysOf(input.searchHistoryStart, night)),
     floors: FLOORS,
   }
   const old = prev && typeof prev === 'object' ? prev : emptyPlan()
   const plan = emptyPlan(night)
   plan.source = 'd1'
+  plan.modes = { searching: ctx.searchMode }
   const decisions = []
   const log = (section, action, id, rule, reason) => {
     const t = id != null ? titles.get(id) : null
@@ -554,6 +567,9 @@ export function planHome(input) {
       reason: cut(reason),
     })
   }
+
+  log('searching', 'mode', null, 'searching.mode',
+    `mode: ${SEARCH_MODES[ctx.searchMode]}, ${searchHistoryDaysOf(input.searchHistoryStart, night)} days of search history`)
 
   // Cooldowns still running tonight carry over; spent ones are forgotten.
   for (const [id, until] of Object.entries(old.cooldown || {})) {

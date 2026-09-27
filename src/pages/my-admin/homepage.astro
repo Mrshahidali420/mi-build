@@ -21,7 +21,7 @@ import { envOf } from '../../lib/runtime.js'
 import { gate, rangeOf, num } from '../../lib/admin.js'
 import { actionsFor } from '../../lib/admin-more.js'
 import { SECTIONS, FLOORS, RISING, NEW, MONTH, daysBetween } from '../../lib/home-plan.mjs'
-import { SEARCHING } from '../../lib/home-searching.mjs'
+import { SEARCHING, SEARCH_MODES } from '../../lib/home-searching.mjs'
 import { shelfNumbers } from '../../lib/home-sections.js'
 import { planHealth } from '../../lib/admin-hints.js'
 import { tomorrowOf, banLine } from '../../lib/home-preview.js'
@@ -42,12 +42,19 @@ let acts = []
 if (signedIn) acts = await actionsFor(db, week, ['home_seen', 'home_click'], 2000)
 const live = shelfNumbers(acts)
 
+// Hot this week ranks by volume until search arrivals have 28 days behind
+// them, then by the rise. A plan made before the modes existed was a rise.
+const searchMode = SEARCH_MODES[plan?.modes?.searching] ? plan.modes.searching : 'lift'
+const searchNeeds = searchMode === 'volume'
+  ? `Mode: ${SEARCH_MODES.volume}. Search arrivals have under ${SEARCHING.matureDays} days of history, so titles are ranked by how many people searched: ${SEARCHING.webPeople7} or more different people arriving from Google or another search engine this week, on ${SEARCHING.webDays7} or more days; or ${SEARCHING.sitePeople7} different people finding it with our own search on ${SEARCHING.siteDays7} days. It switches to "${SEARCH_MODES.lift}" by itself at ${SEARCHING.matureDays} days.`
+  : `Mode: ${SEARCH_MODES.lift}. A title needs ${SEARCHING.webPeople7} different people arriving from Google or another search engine this week, on ${SEARCHING.webDays7} or more days, at ${SEARCHING.lift7} times its usual; or ${SEARCHING.sitePeople7} different people finding it with our own search on ${SEARCHING.siteDays7} days.`
+
 // What a title needs, per shelf, in one line under its card.
 const NEEDS = {
   rising: `A title needs ${FLOORS.people7} different people and ${RISING.minOpens7} opens this week at ${RISING.lift7} times its usual, on ${FLOORS.daysSeen7} or more days, and a clean name.`,
   saving: `A title needs ${FLOORS.savers7} different people saving it this week, on ${FLOORS.saveDays7} or more days, and a clean name.`,
   new: `A title first counted in the last ${NEW.firstSeenDays} days (or started on AniList in the last ${NEW.startDays}) needs ${NEW.minOpens7} opens by ${FLOORS.people7} people this week, and a clean name.`,
-  searching: `A title needs ${SEARCHING.webPeople7} different people arriving from Google or another search engine this week, on ${SEARCHING.webDays7} or more days, at ${SEARCHING.lift7} times its usual; or ${SEARCHING.sitePeople7} different people finding it with our own search on ${SEARCHING.siteDays7} days. Each line says both: search-engine people and arrivals, and people who searched here.`,
+  searching: `${searchNeeds} Each line says both: search-engine people and arrivals, and people who searched here.`,
   month: `A title needs ${MONTH.minOpens30} opens by ${FLOORS.people30} people in 30 days, ${MONTH.minHandoff * 100} in 100 going on to read or watch, and a clean name.`,
 }
 
