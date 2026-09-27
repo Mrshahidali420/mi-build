@@ -75,6 +75,7 @@ const people = {
   web: planFloors.searching ?? SEARCHING.webPeople7,
   site: plan?.floors?.site ?? SEARCHING.sitePeople7,
 }
+const opens = { ...{ rising: RISING.minOpens7, new: NEW.minOpens7, month: MONTH.minOpens30 }, ...(plan?.floors?.opens || {}) }
 const grows = (n, ceiling) => (n < ceiling ? ` (grows with traffic, up to ${ceiling})` : '')
 // The short line at the top of each card.
 const needsPeople = (key) => {
@@ -94,11 +95,11 @@ const searchNeeds = searchMode === 'volume'
 
 // What a title needs, per shelf, in one line under its card.
 const NEEDS = {
-  rising: `A title needs ${people.people7} different people${grows(people.people7, FLOORS.people7)} and ${RISING.minOpens7} opens this week at ${RISING.lift7} times its usual, on ${FLOORS.daysSeen7} or more days, and a clean name.`,
+  rising: `A title needs ${people.people7} different people${grows(people.people7, FLOORS.people7)} and ${opens.rising} opens this week at ${RISING.lift7} times its usual, on ${FLOORS.daysSeen7} or more days, and a clean name.`,
   saving: `A title needs ${people.savers7} different people${grows(people.savers7, FLOORS.savers7)} saving it this week, on ${FLOORS.saveDays7} or more days, and a clean name.`,
-  new: `A title first counted in the last ${NEW.firstSeenDays} days (or started on AniList in the last ${NEW.startDays}) needs ${NEW.minOpens7} opens by ${people.people7} people${grows(people.people7, FLOORS.people7)} this week, and a clean name.`,
+  new: `A title first counted in the last ${NEW.firstSeenDays} days (or started on AniList in the last ${NEW.startDays}) needs ${opens.new} opens by ${people.people7} people${grows(people.people7, FLOORS.people7)} this week, and a clean name.`,
   searching: `${searchNeeds} Each line says both: search-engine people and arrivals, and people who searched here.`,
-  month: `A title needs ${MONTH.minOpens30} opens by ${people.people30} people${grows(people.people30, FLOORS.people30)} in 30 days, ${MONTH.minHandoff * 100} in 100 going on to read or watch, and a clean name.`,
+  month: `A title needs ${opens.month} opens by ${people.people30} people${grows(people.people30, FLOORS.people30)} in 30 days, ${MONTH.minHandoff * 100} in 100 going on to read or watch, and a clean name.`,
 }
 
 const today = new Date().toISOString().slice(0, 10)

@@ -85,7 +85,8 @@ export const PRIORITY = ['rising', 'searching', 'new', 'saving', 'month']
 // hard at pages that rewrite themselves; a calm page is the safe page.
 export const PAGE_CHANGE_CAP = 8
 
-// people7, people30 and savers7 below are ceilings: each night they are
+// people7, people30 and savers7 below (and the opens minimums of Rising, New
+// and Most opened) are ceilings: each night they are
 // scaled down to the site's traffic (src/lib/home-floors.mjs), never up.
 export const FLOORS = {
   // Distinct people who opened the title's page this week (per-day distinct,
@@ -287,6 +288,8 @@ function sharedMiss(s, title, { win = 7, opens = false, floors = FLOORS } = {}) 
 
 // Tonight's floors (scaled to traffic), or the fixed ones when none are given.
 const floorsOf = (ctx) => ctx?.floors || FLOORS
+// An opens minimum for tonight: scaled to traffic when the planner set one.
+const opensFloor = (ctx, key, fixed) => ctx?.floors?.[key] ?? fixed
 
 const cut = (text) => (text.length > MAX_REASON ? `${text.slice(0, MAX_REASON - 1)}…` : text)
 const round2 = (n) => Math.round(n * 100) / 100
@@ -342,9 +345,11 @@ export function risingMiss(s, title, ctx = {}) {
   if ((s.opens30 || 0) <= (s.opens7 || 0)) return 'no history before this week'
   const { lift7, lift1 } = liftsOf(s, ctx.baseDays)
   const opens7 = s.opens7 || 0
-  if (opens7 >= RISING.minOpens7 && lift7 >= RISING.lift7) return null
-  if (opens7 >= RISING.spikeOpens7 && lift1 >= RISING.lift1) return null
-  if (opens7 < RISING.minOpens7) return `opened ${opens7} of ${RISING.minOpens7} times this week`
+  const minOpens = opensFloor(ctx, 'risingOpens7', RISING.minOpens7)
+  const spikeOpens = opensFloor(ctx, 'risingSpike7', RISING.spikeOpens7)
+  if (opens7 >= minOpens && lift7 >= RISING.lift7) return null
+  if (opens7 >= spikeOpens && lift1 >= RISING.lift1) return null
+  if (opens7 < minOpens) return `opened ${opens7} of ${minOpens} times this week`
   return `opened ${lift7.toFixed(1)}x its usual, needs ${RISING.lift7}x`
 }
 
@@ -379,7 +384,8 @@ export function newSince(s, title, ctx = {}) {
 export function newMiss(s, title, ctx = {}) {
   if (!s) return 'no numbers this week'
   if (!newSince(s, title, ctx)) return 'not new: older than 30 days here and 120 on AniList'
-  if ((s.opens7 || 0) < NEW.minOpens7) return `opened ${s.opens7 || 0} of ${NEW.minOpens7} times this week`
+  const minOpens = opensFloor(ctx, 'newOpens7', NEW.minOpens7)
+  if ((s.opens7 || 0) < minOpens) return `opened ${s.opens7 || 0} of ${minOpens} times this week`
   return sharedMiss(s, title, { opens: true, floors: floorsOf(ctx) })
 }
 
@@ -400,7 +406,8 @@ export function monthMiss(s, title, ctx = {}) {
   if (!s) return 'no numbers this month'
   const shared = sharedMiss(s, title, { win: 30, opens: true, floors: floorsOf(ctx) })
   if (shared) return shared
-  if ((s.opens30 || 0) < MONTH.minOpens30) return `opened ${s.opens30 || 0} of ${MONTH.minOpens30} times this month`
+  const minOpens = opensFloor(ctx, 'monthOpens30', MONTH.minOpens30)
+  if ((s.opens30 || 0) < minOpens) return `opened ${s.opens30 || 0} of ${minOpens} times this month`
   const handoff = (s.outs30 || 0) / Math.max(s.opens30 || 0, 1)
   if (handoff < MONTH.minHandoff) return `${Math.round(handoff * 1000) / 10}% went on to read or watch, needs 2%`
   return null
@@ -550,6 +557,10 @@ export function planHome(input) {
     people30: FLOORS.people30,
     webPeople7: SEARCHING.webPeople7,
     sitePeople7: SEARCHING.sitePeople7,
+    risingOpens7: RISING.minOpens7,
+    risingSpike7: RISING.spikeOpens7,
+    newOpens7: NEW.minOpens7,
+    monthOpens30: MONTH.minOpens30,
   })
   const ctx = {
     rules,
@@ -572,7 +583,12 @@ export function planHome(input) {
   plan.modes = { searching: ctx.searchMode }
   // What each shelf needed tonight, for /my-admin: distinct people, scaled to
   // the traffic. site: the own-search-box side of Hot this week.
-  plan.floors = { traffic, site: people.sitePeople7, sections: {} }
+  plan.floors = {
+    traffic,
+    site: people.sitePeople7,
+    sections: {},
+    opens: { rising: people.risingOpens7, new: people.newOpens7, month: people.monthOpens30 },
+  }
   for (const [key, floor] of Object.entries(SECTION_FLOOR)) plan.floors.sections[key] = people[floor]
   const decisions = []
   const log = (section, action, id, rule, reason) => {

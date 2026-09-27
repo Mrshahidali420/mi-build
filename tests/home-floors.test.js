@@ -3,8 +3,8 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { scaleFloor, scaledFloors, floorsLine, MIN_PEOPLE } from '../src/lib/home-floors.mjs'
-import { planHome, savingMiss, FLOORS } from '../src/lib/home-plan.mjs'
-import { SEARCHING, webMiss, siteMiss } from '../src/lib/home-searching.mjs'
+import { planHome, savingMiss, risingMiss, newMiss, monthMiss, FLOORS, RISING, NEW, MONTH } from '../src/lib/home-plan.mjs'
+import { SEARCHING, webMiss, siteMiss, searchingMiss } from '../src/lib/home-searching.mjs'
 import { trafficFrom } from '../scripts/plan-home.mjs'
 
 const RULES = JSON.parse(readFileSync(new URL('../data/home-rules.json', import.meta.url), 'utf8'))
@@ -15,21 +15,32 @@ const CEILINGS = {
   people30: FLOORS.people30,
   webPeople7: SEARCHING.webPeople7,
   sitePeople7: SEARCHING.sitePeople7,
+  risingOpens7: RISING.minOpens7,
+  risingSpike7: RISING.spikeOpens7,
+  newOpens7: NEW.minOpens7,
+  monthOpens30: MONTH.minOpens30,
 }
-const SMALL = { people7: 300, people30: 600 }
+const OPENS_MIN = { risingOpens7: 3, risingSpike7: 3, newOpens7: 3, monthOpens30: 3 }
+const SMALL = { people7: 150, people30: 300 }
 const NOW = { people7: 2014, people30: 4552 }
 const LARGE = { people7: 100000, people30: 400000 }
 
 test('the ceilings are the old fixed floors', () => {
-  assert.deepEqual(CEILINGS, { people7: 20, savers7: 10, people30: 60, webPeople7: 10, sitePeople7: 5 })
+  assert.deepEqual(CEILINGS, {
+    people7: 20, savers7: 10, people30: 60, webPeople7: 10, sitePeople7: 5,
+    risingOpens7: 30, risingSpike7: 60, newOpens7: 30, monthOpens30: 150,
+  })
 })
 
 test('small traffic: every floor sits at the minimum of 3 people', () => {
-  assert.deepEqual(scaledFloors(SMALL, CEILINGS), { people7: 3, savers7: 3, people30: 3, webPeople7: 3, sitePeople7: 3 })
+  assert.deepEqual(scaledFloors(SMALL, CEILINGS), { people7: 3, savers7: 3, people30: 3, webPeople7: 3, sitePeople7: 3, ...OPENS_MIN })
 })
 
-test("today's traffic: month 15, saving 5, rising and new 9, hot 6 and 3", () => {
-  assert.deepEqual(scaledFloors(NOW, CEILINGS), { people7: 9, savers7: 5, people30: 15, webPeople7: 6, sitePeople7: 3 })
+test("today's traffic: month 15, saving 5, rising and new 9, hot 6 and 3, opens 13 / 27 / 37", () => {
+  assert.deepEqual(scaledFloors(NOW, CEILINGS), {
+    people7: 9, savers7: 5, people30: 15, webPeople7: 6, sitePeople7: 3,
+    risingOpens7: 13, risingSpike7: 27, newOpens7: 13, monthOpens30: 37,
+  })
 })
 
 test('large traffic: every floor stops at its ceiling', () => {
@@ -102,10 +113,11 @@ test('the floors are logged and written into the plan', () => {
   const { plan: p, decisions } = plan(world(1), { traffic: NOW })
   assert.deepEqual(p.floors.sections, { rising: 9, saving: 5, new: 9, month: 15, searching: 6 })
   assert.equal(p.floors.site, 3)
+  assert.deepEqual(p.floors.opens, { rising: 13, new: 13, month: 37 })
   assert.deepEqual(p.floors.traffic, NOW)
   const line = decisions.find((d) => d.rule === 'floors.scale')
   assert.equal(line.section, 'all')
-  assert.match(line.reason, /2014 people this week, 4552 this month: rising\/new 9, saving 5, month 15, hot 6\/3/)
+  assert.match(line.reason, /2014 people this week, 4552 this month: rising\/new 9 \(13 opens\), saving 5, month 15 \(37\), hot 6\/3/)
 })
 
 test('hot this week reads the scaled search floors', () => {
@@ -142,4 +154,60 @@ test('every other guardrail still holds at the lowest floors', () => {
   assert.equal(new Set(ids).size, ids.length, 'no title twice')
   // Two titles qualify, the shelf needs 6: it stays hidden.
   assert.equal(q.sections.saving.enabled, false)
+})
+
+// ---------------------------------------------------------------- regression
+
+// 27 Sep 2026: a dry run with the small seed registry showed Hot this week
+// losing Happy Family and five others once the floors went down. The cause
+// was the seed catalog (those pages had no id), not the floors, but the rule
+// it asked for is kept here: a lower floor never qualifies fewer titles.
+const MISS = { saving: savingMiss, rising: risingMiss, new: newMiss, month: monthMiss, searching: searchingMiss }
+
+function someStats(n) {
+  let seed = 7
+  const r = (max) => { seed = (seed * 48271) % 2147483647; return seed % (max + 1) }
+  const out = []
+  for (let i = 0; i < n; i++) {
+    const people7 = r(40)
+    const opens7 = people7 + r(2 * people7 + 1)
+    out.push({
+      people7, opens7, opens1: r(opens7), opens30: opens7 + r(200), people30: people7 + r(80), outs30: r(20),
+      savers7: r(14), saves7: 0, saveDays7: r(7), unsaves7: 0, daysSeen7: r(7), entries7: r(30), quick7: 0,
+      gPeople7: r(25), gDays7: r(7), g7: 0, g30: r(60), sPeople7: r(8), sDays7: r(7), s7: 0, firstDay: '2026-09-20',
+    })
+    const s = out[i]
+    s.saves7 = s.savers7
+    s.g7 = s.gPeople7 + r(s.gPeople7)
+    s.s7 = s.sPeople7
+  }
+  return out
+}
+
+test('a lower floor never qualifies fewer titles than a higher one did', () => {
+  const title = rec(1)
+  const stats = someStats(400)
+  const levels = [LARGE, { people7: 4000, people30: 12000 }, NOW, SMALL].map((t) => scaledFloors(t, CEILINGS))
+  for (const mode of ['volume', 'lift']) {
+    for (const [key, miss] of Object.entries(MISS)) {
+      let before = null
+      for (const f of levels) {
+        const ctx = { floors: { ...FLOORS, ...f }, searchMode: mode, lastDay: '2026-09-26', historyStart: '2026-08-01', baseDays: 30, searchBaseDays: 30 }
+        const passing = new Set(stats.map((s, i) => (miss(s, title, ctx) ? -1 : i)).filter((i) => i >= 0))
+        if (before) for (const i of before) assert.ok(passing.has(i), `${key} ${mode}: title ${i} lost at a lower floor`)
+        before = passing
+      }
+    }
+  }
+})
+
+test('Hot this week keeps the titles the fixed floors showed (27 Sep numbers)', () => {
+  const hot = [[20, 5], [19, 7], [16, 7], [15, 5], [13, 6], [13, 5]]
+  for (const f of [CEILINGS, scaledFloors(NOW, CEILINGS), scaledFloors(SMALL, CEILINGS)]) {
+    const ctx = { floors: { ...FLOORS, ...f }, searchMode: 'volume' }
+    for (const [people, days] of hot) {
+      const s = { gPeople7: people, gDays7: days, g7: people, sPeople7: 0, sDays7: 0, s7: 0, entries7: 5, quick7: 0 }
+      assert.equal(searchingMiss(s, rec(1), ctx), null, `${people} people`)
+    }
+  }
 })

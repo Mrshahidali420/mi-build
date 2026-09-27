@@ -24,6 +24,13 @@
  *   people30    0.33%  -> 15   Most opened this month (ceiling 60 from ~18,000 a month)
  *   webPeople7  0.30%  -> 6    Hot this week, from search engines (ceiling 10)
  *   sitePeople7 0.15%  -> 3    Hot this week, from our own search box (ceiling 5)
+ * and the opens minimums, same clamp (the old values are the ceilings):
+ *   risingOpens7 0.67% -> 13   Rising, opens this week (ceiling 30)
+ *   risingSpike7 1.34% -> 27   Rising, a spike yesterday (ceiling 60)
+ *   newOpens7    0.67% -> 13   New and noticed (ceiling 30)
+ *   monthOpens30 0.82% -> 37   Most opened this month (ceiling 150)
+ * A floor is only ever compared with "at least", so a lower floor lets in
+ * every title a higher one did (tests/home-floors.test.js checks that).
  * The month window is compared with the month's own traffic, so while the
  * counter holds fewer than 30 days both sides are short by the same days.
  *
@@ -41,6 +48,13 @@ export const SCALE = {
   people30: { share: 0.0033, win: 30 },
   webPeople7: { share: 0.003, win: 7 },
   sitePeople7: { share: 0.0015, win: 7 },
+  // The opens minimums keep their old ratio to the people floor: Rising and
+  // New asked 30 opens for 20 people (1.5x), the spike 60 (3x), the month 150
+  // for 60 people (2.5x).
+  risingOpens7: { share: 0.0067, win: 7 },
+  risingSpike7: { share: 0.0134, win: 7 },
+  newOpens7: { share: 0.0067, win: 7 },
+  monthOpens30: { share: 0.0082, win: 30 },
 }
 
 // The floor each shelf is held to, for the plan file and /my-admin.
@@ -65,7 +79,7 @@ export function scaleFloor(traffic, share, ceiling, min = MIN_PEOPLE) {
  * Tonight's people floors. traffic = { people7, people30 } (site-wide, per-day
  * people summed), or null when it could not be read: then every floor stays at
  * its ceiling, the old fixed value, because an unknown site is not a small one.
- * ceilings = { people7, savers7, people30, webPeople7, sitePeople7 }.
+ * ceilings: one per key of SCALE, the old fixed values.
  */
 export function scaledFloors(traffic, ceilings) {
   // Half an answer is no answer: both windows or neither.
@@ -83,5 +97,5 @@ export function floorsLine(traffic, f) {
   const t = known(Number(traffic?.people7))
     ? `${traffic.people7} people this week, ${traffic.people30} this month`
     : 'traffic unknown, fixed floors'
-  return `${t}: rising/new ${f.people7}, saving ${f.savers7}, month ${f.people30}, hot ${f.webPeople7}/${f.sitePeople7}`
+  return `${t}: rising/new ${f.people7} (${f.risingOpens7} opens), saving ${f.savers7}, month ${f.people30} (${f.monthOpens30}), hot ${f.webPeople7}/${f.sitePeople7}`
 }
