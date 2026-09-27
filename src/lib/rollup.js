@@ -18,6 +18,7 @@
  * It runs from the `scheduled` handler in src/worker.js at 00:10 UTC.
  */
 import { CLICK, keptActionsSql, quickExitsSql } from './action-sql.js'
+import { arrivalsRollupSql } from './search-signals.js'
 
 // How long the one-by-one rows are kept. Journeys and "which page sent this
 // click" need them; after a month the daily tables carry the story instead.
@@ -25,6 +26,9 @@ const KEEP_DAYS = 30
 
 // How many rows one delete pass removes. Kept small so the job never runs long.
 const PRUNE_BATCH = 5000
+
+// How long the door's refused-hit counts are kept (see src/lib/reject-count.js).
+const REJECT_KEEP_DAYS = 180
 
 /** 'YYYY-MM-DD' for a day, counted back from now, in UTC. */
 export function dayKey(shiftDays = 0, now = Date.now()) {
@@ -181,6 +185,16 @@ async function rollOneDay(db, day) {
     )
     .bind(D, D)
 
+  // Arrivals from Google, Bing and the rest, per page. daily_sources says how
+  // many came from Google in all; this says for which title, which is what
+  // the "People are searching for" shelf needs (src/lib/search-signals.js).
+  const arrivals = db
+    .prepare(
+      `INSERT OR REPLACE INTO daily_search_arrivals (day, path, engine, views, people)
+       ${arrivalsRollupSql('day = ?')}`
+    )
+    .bind(D, D)
+
   // The shape of a visit, kept forever after the one-by-one rows are gone.
   const edges = db
     .prepare(
@@ -227,6 +241,7 @@ async function rollOneDay(db, day) {
     countries,
     clicks,
     sources,
+    arrivals,
     edges,
     actions,
     quickPages,
@@ -300,6 +315,13 @@ export async function runRollup(db, now = Date.now()) {
     pruned = await prune(db, now)
   } catch (e) {
     // A failed prune is not worth failing the night for. It retries tomorrow.
+  }
+  try {
+    // The door's refused-hit counts are only read for recent weeks, and a
+    // flood day can hold a few thousand country rows. Half a year is plenty.
+    await db.prepare('DELETE FROM daily_rejects WHERE day < ?').bind(dayKey(REJECT_KEEP_DAYS, now)).run()
+  } catch (e) {
+    // Same: tomorrow will do.
   }
 
   return { ok: true, rolled, pruned }

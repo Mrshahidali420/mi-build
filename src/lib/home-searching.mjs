@@ -1,0 +1,155 @@
+/**
+ * "People are searching for": the homepage shelf that follows what people
+ * search for, from our own numbers (owner's design, 27 Sep 2026). On the
+ * homepage it is called "Hot this week" and each cover just says so: the
+ * owner does not want Google or any count on a public card. The numbers
+ * (search-engine arrivals and our own searches) are shown in /my-admin only.
+ * Pure, like the rest of the planner; src/lib/home-plan.mjs runs it with the same
+ * brakes as every other shelf (safety, block and ban lists, one cover per
+ * page, the nightly change cap, minimum and maximum stay, cooldown, flap
+ * freeze, and the closed-loop drop).
+ *
+ * Two ways in, either is enough:
+ *   - Search engines: this week's arrivals from Google, Bing and the rest,
+ *     against the title's usual (over the days the counter really has, as
+ *     Rising does). A title people have always found on Google is not news;
+ *     one they suddenly search for is.
+ *   - Our own search box: distinct people who picked the title in a search,
+ *     or typed exactly its name. Rarer, and a stronger sign, so it weighs
+ *     more per person.
+ *
+ * Per-title numbers (built by scripts/plan-home.mjs):
+ *   g1, g7, g30    arrivals from a search engine: yesterday, 7 days, 30 days
+ *   gPeople7       distinct people behind the 7-day arrivals (true distinct)
+ *   gDays7         days of the 7 with an arrival
+ *   gGoogle7       how many of the 7-day arrivals were Google
+ *   s7, sPeople7, sDays7   searches on our own box: rows, distinct people, days
+ *   entries7, quick7       from the page rows, for the quick-exit brake
+ */
+
+export const SEARCHING_SECTION = {
+  title: 'Hot this week',
+  why: 'Titles more people are looking for this week.',
+  slots: 12,
+  // Search arrivals are spread thin over many titles, so four is a shelf.
+  floor: 4,
+  cap: 3,
+  minStay: 3,
+  maxStay: 14,
+  cooldown: 7,
+}
+
+export const SEARCHING = {
+  // Distinct people who arrived from a search engine this week.
+  webPeople7: 10,
+  // Days of the 7 with an arrival. One loud day is a news spike or one link.
+  webDays7: 3,
+  // This week against the usual week; +5 shrinks small numbers like Rising.
+  lift7: 1.5,
+  shrink7: 5,
+  // More arrivals than 3 per person: somebody searching and reloading.
+  perPerson: 3,
+  // Distinct people who found it with our own search box this week.
+  sitePeople7: 5,
+  siteDays7: 3,
+  // One of our own searches is worth this many search-engine arrivals.
+  siteWeight: 3,
+  // The /my-admin line says "Google" only when Google sent at least this share.
+  googleShare: 0.8,
+}
+
+const MAX_REASON = 119
+const cut = (text) => (text.length > MAX_REASON ? `${text.slice(0, MAX_REASON - 1)}…` : text)
+const round2 = (n) => Math.round(n * 100) / 100
+
+/** This week's search arrivals against the usual week. */
+export function searchLift(s, baseDays = 30) {
+  const r30 = (s.g30 || 0) / Math.max(baseDays, 1)
+  return ((s.g7 || 0) + SEARCHING.shrink7) / (7 * r30 + SEARCHING.shrink7)
+}
+
+/** Why the search-engine side does not qualify, or null. */
+export function webMiss(s, ctx = {}) {
+  const people = s.gPeople7 || 0
+  if (people < SEARCHING.webPeople7) return `found on search by ${people} of ${SEARCHING.webPeople7} people`
+  if ((s.gDays7 || 0) < SEARCHING.webDays7) return `found on search on ${s.gDays7 || 0} of ${SEARCHING.webDays7} days`
+  if ((s.g7 || 0) > SEARCHING.perPerson * people) return `one-visitor share: ${s.g7} arrivals from ${people} people`
+  const lift = searchLift(s, ctx.searchBaseDays)
+  if (lift < SEARCHING.lift7) return `found ${lift.toFixed(1)}x its usual on search, needs ${SEARCHING.lift7}x`
+  return null
+}
+
+/** Why the own-search side does not qualify, or null. */
+export function siteMiss(s) {
+  const people = s.sPeople7 || 0
+  if (people < SEARCHING.sitePeople7) return `searched here by ${people} of ${SEARCHING.sitePeople7} people`
+  if ((s.sDays7 || 0) < SEARCHING.siteDays7) return `searched here on ${s.sDays7 || 0} of ${SEARCHING.siteDays7} days`
+  if ((s.s7 || 0) > SEARCHING.perPerson * people) return `one-visitor share: ${s.s7} searches from ${people} people`
+  return null
+}
+
+/**
+ * Why a title is not on the shelf tonight, or null when it qualifies. When
+ * both sides miss, the reason names the side that came closer. The brakes
+ * every shelf shares (a title AniList barely knows needs 5 days; a page most
+ * people leave at once is not one to send more people to) come from
+ * ctx.floors, the planner's own FLOORS.
+ */
+export function searchingMiss(s, title, ctx = {}) {
+  if (!s) return 'no numbers this week'
+  const web = webMiss(s, ctx)
+  const site = siteMiss(s)
+  if (web && site) return (s.gPeople7 || 0) >= (s.sPeople7 || 0) * SEARCHING.siteWeight ? web : site
+  const f = ctx.floors || {}
+  const days = Math.max(web ? 0 : s.gDays7 || 0, site ? 0 : s.sDays7 || 0)
+  if ((title?.popularity || 0) < (f.popularityAnchor || 0) && days < (f.anchorDays || 0)) {
+    return `unknown on AniList and searched on ${days} of ${f.anchorDays} days`
+  }
+  const entries = s.entries7 || 0
+  if (f.quickExitMinEntries && entries >= f.quickExitMinEntries && (s.quick7 || 0) / entries > f.quickExitShare) {
+    return 'most visits leave at once'
+  }
+  return null
+}
+
+/** Search-engine people times the rise, plus our own searchers, weighted. */
+export function searchingScore(s, ctx = {}) {
+  const web = webMiss(s, ctx) ? 0 : (s.gPeople7 || 0) * Math.min(searchLift(s, ctx.searchBaseDays), 4)
+  const site = siteMiss(s) ? 0 : SEARCHING.siteWeight * (s.sPeople7 || 0)
+  return round2(web + site)
+}
+
+/** The engine to name: Google when it sent most of the week, else "search". */
+export const engineLabel = (s) =>
+  (s.g7 || 0) > 0 && (s.gGoogle7 || 0) >= SEARCHING.googleShare * (s.g7 || 0) ? 'Google' : 'search'
+
+/** Both numbers, always, for /my-admin: search engines and our own box. */
+export function searchingReason(s, ctx = {}) {
+  const lift = searchLift(s, ctx.searchBaseDays).toFixed(1)
+  return cut(
+    `Found on ${engineLabel(s)} by ${s.gPeople7 || 0} people this week (${s.g7 || 0} arrivals, ${lift}x usual), searched here by ${s.sPeople7 || 0}`
+  )
+}
+
+// The words on the cover (owner's call, 27 Sep 2026): no engine, no count.
+export const SEARCHING_BADGE = 'Hot this week'
+
+/**
+ * The line on the cover, only while the title still qualifies on either
+ * side, so a title kept by its minimum stay after the searching stopped
+ * does not claim to be hot.
+ */
+export function searchingBadge(s, ctx = {}) {
+  return !webMiss(s, ctx) || !siteMiss(s) ? SEARCHING_BADGE : ''
+}
+
+/** How close a title came, for ordering the "kept off" list. */
+export const searchingStrength = (s) => (s.gPeople7 || 0) + SEARCHING.siteWeight * (s.sPeople7 || 0)
+
+export const searchingRule = {
+  miss: searchingMiss,
+  score: searchingScore,
+  reason: searchingReason,
+  badge: searchingBadge,
+  strength: searchingStrength,
+}

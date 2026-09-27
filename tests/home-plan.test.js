@@ -367,8 +367,8 @@ const planMixed = (over = {}) => {
 
 test('every section fills from its own rule, rising first', () => {
   const { plan: p } = planMixed()
-  assert.deepEqual(PRIORITY, ['rising', 'new', 'saving', 'month'])
-  assert.deepEqual(Object.keys(p.sections), ['rising', 'saving', 'new', 'month'])
+  assert.deepEqual(PRIORITY, ['rising', 'searching', 'new', 'saving', 'month'])
+  assert.deepEqual(Object.keys(p.sections), ['rising', 'saving', 'new', 'month', 'searching'])
   assert.deepEqual(p.sections.rising.items.map((it) => it.id), [4, 3, 2, 1])
   assert.deepEqual(p.sections.new.items.map((it) => it.id).sort(), [5, 6])
   assert.ok(p.sections.month.items.length > 0)

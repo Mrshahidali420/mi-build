@@ -26,6 +26,7 @@ import { queryD1, queryD1Wrangler } from '../src/lib/d1-api.mjs'
 import { planHome, mergeDecisions, addDays, SECTIONS } from '../src/lib/home-plan.mjs'
 import { upcomingAnime } from '../src/lib/schedule.mjs'
 import { HANDOFF_MIN_OPENS } from '../src/lib/alike.mjs'
+import { engineSql, titlePageSql, titlePagePath, buildNameIndex, searchTitleId } from '../src/lib/search-signals.js'
 
 const TITLE_TYPES = "('manhwa','manga','manhua','novel','anime')"
 // The Trending shelves on the homepage show the first 18 of each list; a
@@ -64,6 +65,34 @@ export const QUERIES = {
   // which shelf.
   homeActs: `SELECT day, name, item, detail, n FROM daily_actions
              WHERE day >= ? AND day <= ? AND name IN ('home_seen', 'home_click')`,
+}
+
+/**
+ * The questions behind "People are searching for" (src/lib/home-searching.mjs).
+ * Kept apart from QUERIES: the tables are newer (0005-search-and-bots.sql), and
+ * a problem here must cost this one shelf, never the whole night's plan.
+ */
+export const SEARCH_QUERIES = {
+  history: 'SELECT MIN(day) AS day FROM daily_search_arrivals',
+  // 30 days of arrivals per page and engine, from the night job's table.
+  arrivals: 'SELECT day, path, engine, views FROM daily_search_arrivals WHERE day >= ? AND day <= ?',
+  // True distinct people over the week, which the per-day table cannot say.
+  // An answer page is folded into its title in SQL, so one person landing on
+  // a title and on its /characters page is one person. Walks the (day, kind)
+  // index over 7 days of views.
+  arrivalPeople: `SELECT ${titlePageSql('path')} AS page,
+           COUNT(DISTINCT visitor) AS people, COUNT(DISTINCT day) AS days
+         FROM events
+         WHERE day >= ? AND day <= ? AND kind = 'view' AND referrer <> '' AND visitor <> ''
+           AND ${engineSql('referrer')} <> ''
+         GROUP BY page`,
+  // Our own search box over the week, one row per person, day and search.
+  // The words and the visitor ids stay in this run's memory; only counts per
+  // title are written (data/home-auto.json).
+  searches: `SELECT name, item, visitor, day FROM events
+             WHERE day >= ? AND day <= ? AND kind = 'search' AND visitor <> ''
+               AND name IN ('search_pick', 'search_none')
+             GROUP BY name, item, visitor, day`,
 }
 
 /** id -> current path, and every path (old ones too) -> id, from the registry. */
@@ -112,6 +141,7 @@ function onPageIds(comicsAll, animeAll, blocked, nowSec = Date.now() / 1000) {
 const blankStats = () => ({
   saves7: 0, unsaves7: 0, savers7: 0, saveDays7: 0, opens1: 0, opens7: 0, opens30: 0,
   people7: 0, people30: 0, outs7: 0, outs30: 0, daysSeen7: 0, entries7: 0, quick7: 0, firstDay: null,
+  g1: 0, g7: 0, g30: 0, gPeople7: 0, gDays7: 0, gGoogle7: 0, s7: 0, sPeople7: 0, sDays7: 0,
 })
 
 /**
@@ -170,6 +200,54 @@ export function statsFrom(rows, idOf, { last, from7 } = {}) {
     const s = stats.get(id)
     if (!s.firstDay || r.first_day < s.firstDay) s.firstDay = r.first_day
   }
+  return stats
+}
+
+/**
+ * Add the search numbers to the per-title stats: search-engine arrivals
+ * (30 days from the rollup, distinct people and days over the week from the
+ * raw rows) and our own search box (picked results, and searches that found
+ * nothing but were exactly a title's name). `names` is buildNameIndex().
+ */
+export function searchStatsInto(stats, rows, idOf, names, { last, from7 } = {}) {
+  const of = (id) => {
+    if (!stats.has(id)) stats.set(id, blankStats())
+    return stats.get(id)
+  }
+  const idFor = (path) => idOf.get(titlePagePath(path))
+  for (const r of rows.arrivals || []) {
+    const id = idFor(r.path)
+    if (id === undefined) continue
+    const s = of(id)
+    const views = Number(r.views) || 0
+    s.g30 += views
+    if (from7 && r.day < from7) continue
+    s.g7 += views
+    if (r.engine === 'google') s.gGoogle7 += views
+    if (r.day === last) s.g1 += views
+  }
+  for (const r of rows.arrivalPeople || []) {
+    const id = idFor(r.page)
+    if (id === undefined) continue
+    const s = of(id)
+    // A title that moved has two addresses; the same person on both is rare
+    // enough that adding them up is the honest guess.
+    s.gPeople7 += Number(r.people) || 0
+    s.gDays7 = Math.max(s.gDays7, Number(r.days) || 0)
+  }
+  const people = new Map()
+  const days = new Map()
+  for (const r of rows.searches || []) {
+    const id = searchTitleId(r, { idOf, names })
+    if (id == null) continue
+    of(id).s7 += 1
+    if (!people.has(id)) people.set(id, new Set())
+    if (!days.has(id)) days.set(id, new Set())
+    people.get(id).add(r.visitor)
+    days.get(id).add(r.day)
+  }
+  for (const [id, set] of people) stats.get(id).sPeople7 = set.size
+  for (const [id, set] of days) stats.get(id).sDays7 = set.size
   return stats
 }
 
@@ -284,10 +362,31 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
   }
   if (!Object.values(rows).every(isArrayOfRows)) return skip('D1 answer was malformed')
 
+  // The search questions. Any trouble empties this one shelf and says so;
+  // the other shelves are planned as usual.
+  const searchRows = { history: [], arrivals: [], arrivalPeople: [], searches: [] }
+  try {
+    const got = {
+      history: await query(SEARCH_QUERIES.history, []),
+      arrivals: await query(SEARCH_QUERIES.arrivals, [from30, last]),
+      arrivalPeople: await query(SEARCH_QUERIES.arrivalPeople, [from7, last]),
+      searches: await query(SEARCH_QUERIES.searches, [from7, last]),
+    }
+    for (const [key, list] of Object.entries(got)) if (isArrayOfRows(list)) searchRows[key] = list
+  } catch (error) {
+    say(`::warning::search numbers unavailable, the Hot this week shelf stays empty: ${String(error.message || error).slice(0, 100)}`)
+  }
+
   const blocked = new Set((blockRaw.media || []).map(Number).filter(Number.isInteger))
   const { pathOf, idOf } = pathsFrom(registry)
   const stats = statsFrom(rows, idOf, { last, from7 })
   const historyStart = rows.history[0]?.day || null
+  // Exact-name matching is only needed when a search found nothing.
+  const names = searchRows.searches.some((r) => r.name === 'search_none')
+    ? buildNameIndex([...comics, ...anime].filter((rec) => pathOf.has(rec.id)))
+    : new Map()
+  searchStatsInto(stats, searchRows, idOf, names, { last, from7 })
+  const searchHistoryStart = searchRows.history[0]?.day || null
 
   // The catalog record for each title the plan may name, with its live path.
   // Every title with numbers is looked at now, not only saved ones.
@@ -310,6 +409,7 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
     rules,
     prev,
     historyStart,
+    searchHistoryStart,
   })
 
   say(`homepage plan for ${night}: ${stats.size} titles looked at, counter since ${historyStart || 'unknown'}`)

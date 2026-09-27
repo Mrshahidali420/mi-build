@@ -5,7 +5,8 @@ import assert from 'node:assert/strict'
 import { mkdtempSync, writeFileSync, readFileSync, copyFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { runPlan, QUERIES, statsFrom, loopFrom, handoffFrom } from '../scripts/plan-home.mjs'
+import { runPlan, QUERIES, SEARCH_QUERIES, statsFrom, loopFrom, handoffFrom, searchStatsInto } from '../scripts/plan-home.mjs'
+import { buildNameIndex } from '../src/lib/search-signals.js'
 import { D1Error } from '../src/lib/d1-api.mjs'
 
 const NIGHT = '2026-09-27'
@@ -154,4 +155,48 @@ test('the homepage rows become per-shelf seen counts and per-slot clicks', () =>
   assert.deepEqual(loop.seen['2026-09-26'], { rising: 40, saving: 50 })
   assert.deepEqual(loop.clicks.get('saving:7'), { '2026-09-26': 3 })
   assert.equal(loop.homeViews['2026-09-26'], 300)
+})
+
+test('search arrivals and our own searches become per-title numbers', () => {
+  const idOf = new Map([['/manga/a', 1], ['/manga/a-old', 1], ['/manga/b', 2]])
+  const names = buildNameIndex([{ id: 2, title: 'Bee Story' }])
+  const rows = {
+    arrivals: [
+      { day: '2026-09-26', path: '/manga/a', engine: 'google', views: 4 },
+      { day: '2026-09-25', path: '/manga/a/characters', engine: 'google', views: 3 },
+      { day: '2026-09-24', path: '/manga/a-old', engine: 'bing', views: 2 },
+      { day: '2026-09-02', path: '/manga/a', engine: 'google', views: 10 },
+      { day: '2026-09-26', path: '/genre/action', engine: 'google', views: 50 },
+    ],
+    arrivalPeople: [{ page: '/manga/a', people: 7, days: 3 }, { page: '/manga/a-old', people: 1, days: 1 }],
+    searches: [
+      { name: 'search_pick', item: '/manga/b', visitor: 'v1', day: '2026-09-25' },
+      { name: 'search_pick', item: '/manga/b/buy', visitor: 'v1', day: '2026-09-26' },
+      { name: 'search_none', item: 'bee story', visitor: 'v2', day: '2026-09-26' },
+      { name: 'search_none', item: 'nothing like it', visitor: 'v3', day: '2026-09-26' },
+    ],
+  }
+  const stats = searchStatsInto(new Map(), rows, idOf, names, { last: '2026-09-26', from7: '2026-09-20' })
+  const a = stats.get(1)
+  assert.deepEqual([a.g1, a.g7, a.g30, a.gGoogle7, a.gPeople7, a.gDays7], [4, 9, 19, 7, 8, 3])
+  const b = stats.get(2)
+  assert.deepEqual([b.s7, b.sPeople7, b.sDays7], [3, 2, 2], 'a pick, an answer-page pick and an exact name')
+  assert.equal(stats.size, 2, 'a genre page and an unmatched search are no title')
+})
+
+test('the search questions failing costs only the new shelf', async () => {
+  const dir = dataDir()
+  const answers = {
+    [QUERIES.rollup]: [{ day: '2026-09-26' }],
+    [QUERIES.history]: [{ day: '2026-09-01' }],
+  }
+  const query = async (sql) => {
+    if (Object.values(SEARCH_QUERIES).includes(sql)) throw new D1Error('no such table: daily_search_arrivals')
+    return answers[sql] || []
+  }
+  const said = []
+  const out = await runPlan({ query, dataDir: dir, night: NIGHT, say: (line) => said.push(line) })
+  assert.equal(out.ok, true)
+  assert.ok(said.some((line) => /Hot this week shelf stays empty/.test(line)))
+  assert.deepEqual(out.plan.sections.searching.items, [])
 })

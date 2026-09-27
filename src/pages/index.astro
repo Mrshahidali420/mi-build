@@ -86,7 +86,10 @@ const seasonShelf = newSeasonShelf(anime, {
   keep: (item) => !adultReason(item, homeRules),
 })
 if (seasonShelf) for (const item of seasonShelf.items) shownSoFar.add(item.id)
-const lowerShelves = ['saving', 'new', 'month'].map((key) => shelfOf[key]).filter(Boolean)
+// Hot this week (planned as "People are searching for") leads the lower
+// shelves: fresh like Rising, but a guess about interest rather than a count
+// of opens, so it sits under the Trending shelves instead of above them.
+const lowerShelves = ['searching', 'saving', 'new', 'month'].map((key) => shelfOf[key]).filter(Boolean)
 
 // The hero stands in front of a real banner: the most popular manhwa
 // that ships wide art. Masked so it dissolves into the cyc gradient.

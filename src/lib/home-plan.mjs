@@ -16,6 +16,8 @@
  * The four sections and their numbers are in tasks/auto-homepage-plan.md.
  */
 
+import { SEARCHING_SECTION, searchingRule } from './home-searching.mjs'
+
 // Each section's size and brakes, in the order the homepage draws them.
 // slots: how many covers at most. floor: fewer than this and the section is
 // not drawn at all (a shelf of two looks broken). cap: new titles per night,
@@ -65,12 +67,17 @@ export const SECTIONS = {
     maxStay: 30,
     cooldown: 7,
   },
+  // People are searching for: Google arrivals and our own search box. Its
+  // rules live in src/lib/home-searching.mjs.
+  searching: SEARCHING_SECTION,
 }
 
 // When a title qualifies for more than one section it goes to the first of
 // these. Rising and New are the rarer, more useful statements; Most opened is
-// the slow one and takes what is left.
-export const PRIORITY = ['rising', 'new', 'saving', 'month']
+// the slow one and takes what is left. Searching sits right after Rising: a
+// title people search for is news too, and one Rising already holds is not
+// shown twice.
+export const PRIORITY = ['rising', 'searching', 'new', 'saving', 'month']
 
 // Across the whole page, however many sections there are, at most this many
 // titles change in one night. Google's September 2026 spam update is looking
@@ -421,6 +428,7 @@ const RULES = {
   },
   new: { miss: newMiss, score: newScore, reason: newReason, badge: newBadge, strength: (s) => s.opens7 || 0 },
   month: { miss: monthMiss, score: monthScore, reason: monthReason, badge: monthBadge, strength: (s) => s.opens30 || 0 },
+  searching: searchingRule,
 }
 
 // ------------------------------------------------------------------ loop check
@@ -506,7 +514,10 @@ export function emptyPlan(night = '') {
  *   rules:        data/home-rules.json
  *   prev:         last night's plan, or null
  *   historyStart: the first day the counter has numbers for, or null
+ *   searchHistoryStart: the first day of search-engine arrivals, or null
  * }
+ * stats may also carry the search numbers (g1, g7, g30, gPeople7, gDays7,
+ * gGoogle7, s7, sPeople7, sDays7); see src/lib/home-searching.mjs.
  * returns { plan, decisions }
  */
 export function planHome(input) {
@@ -521,6 +532,10 @@ export function planHome(input) {
     lastDay,
     historyStart: input.historyStart || null,
     baseDays: baseDaysOf(input.historyStart, night),
+    // Search arrivals were first counted on their own day, so their "usual"
+    // is worked out over the days that table really holds.
+    searchBaseDays: baseDaysOf(input.searchHistoryStart || input.historyStart, night),
+    floors: FLOORS,
   }
   const old = prev && typeof prev === 'object' ? prev : emptyPlan()
   const plan = emptyPlan(night)

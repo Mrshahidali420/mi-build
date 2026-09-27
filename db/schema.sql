@@ -121,6 +121,21 @@ CREATE TABLE IF NOT EXISTS daily_actions (
   n INTEGER DEFAULT 0, people INTEGER DEFAULT 0,
   PRIMARY KEY (day, name, item, detail));
 
+-- Page views that arrived from a search engine, per page and engine. Top 300
+-- a day. The "People are searching for" shelf and the Search tab read it.
+-- See 0005-search-and-bots.sql and src/lib/search-signals.js.
+CREATE TABLE IF NOT EXISTS daily_search_arrivals (
+  day TEXT, path TEXT, engine TEXT, views INTEGER DEFAULT 0, people INTEGER DEFAULT 0,
+  PRIMARY KEY (day, path, engine));
+
+-- Hits the beacon and the pass desk refused (and let in), by reason. Counts
+-- only, written in batches by src/lib/reject-count.js. WITHOUT ROWID: one
+-- written row per upsert. Kept 180 days.
+CREATE TABLE IF NOT EXISTS daily_rejects (
+  day TEXT NOT NULL, reason TEXT NOT NULL, place TEXT NOT NULL, country TEXT NOT NULL,
+  n INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, reason, place, country)) WITHOUT ROWID;
+
 CREATE TABLE IF NOT EXISTS rollup_log (day TEXT PRIMARY KEY, ran_at INTEGER, rows INTEGER);
 
 CREATE INDEX IF NOT EXISTS total_pages_views ON total_pages(views DESC);

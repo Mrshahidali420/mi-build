@@ -1,17 +1,18 @@
 /**
  * The homepage shelves that report what readers see and open, by one short
  * key each. Shared by the page (src/lib/own-count.js) and the Worker
- * (src/lib/beacon-rows.js), so both sides agree on the same five words and a
+ * (src/lib/beacon-rows.js), so both sides agree on the same words and a
  * changed page can never widen the table with a new one.
  *
  *   rising, saving, new, month = the self-updating shelves (src/lib/home-plan.mjs)
  *   chars                      = Popular characters right now (by hand)
  *   season                     = New this season (src/lib/season-shelf.mjs)
+ *   searching                  = People are searching for (src/lib/home-searching.mjs)
  *
  * A new key goes at the END: home_seen stores the shelves in this order, and
  * a key slotted in the middle would split one set of shelves into two words.
  */
-export const HOME_SECTIONS = ['rising', 'saving', 'new', 'month', 'chars', 'season']
+export const HOME_SECTIONS = ['rising', 'saving', 'new', 'month', 'chars', 'season', 'searching']
 const KNOWN = new Set(HOME_SECTIONS)
 
 /** One shelf key, or '' when it is not one of ours. */

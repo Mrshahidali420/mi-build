@@ -17,6 +17,8 @@ import { envOf } from '../../lib/runtime.js'
 import { gate, rangeOf, humanize, num } from '../../lib/admin.js'
 import { actionsFor, tally } from '../../lib/admin-more.js'
 import { missingTitleHint } from '../../lib/admin-hints.js'
+import { searchArrivalsFor, searchedTitles, enginesLine } from '../../lib/admin-searching.js'
+import plan from '../../../data/home-auto.json'
 
 export const prerender = false
 
@@ -29,7 +31,13 @@ if (secret && !signedIn && Astro.request.method !== 'POST') {
 const range = rangeOf(Astro.url, '7d')
 
 let rows = []
-if (signedIn) rows = await actionsFor(db, range, ['search_pick', 'search_none', 'search_none_all'], 1000)
+let arrivals = []
+if (signedIn) {
+  ;[rows, arrivals] = await Promise.all([
+    actionsFor(db, range, ['search_pick', 'search_none', 'search_none_all'], 1000),
+    searchArrivalsFor(db),
+  ])
+}
 
 const picks = rows.filter((row) => row.name === 'search_pick')
 const nones = rows.filter((row) => row.name === 'search_none')
@@ -56,6 +64,31 @@ const foundRows = found.map((row) => ({
   unit: 'picks',
 }))
 
+// The same picks, by title: a pick of a title's /characters page is a search
+// for that title. "people" over several days is people per day added up.
+const searchedRows = searchedTitles(picks).slice(0, 15).map((row) => ({
+  name: row.label || humanize(row.key, ''),
+  href: row.key,
+  sub: `${num(row.people)} people · ${num(row.n)} picks`,
+  value: row.people,
+  unit: 'people',
+}))
+
+// Found on Google and the other engines: the last 7 closed days against the
+// usual, the same numbers the homepage shelf is planned from.
+const arrivalRows = arrivals.map((row) => ({
+  name: row.label || humanize(row.page, ''),
+  href: row.page,
+  sub: `${row.lift.toFixed(1)}x its usual · ${enginesLine(row.engines)} · about ${num(row.people7)} people`,
+  value: row.g7,
+  unit: 'arrivals',
+  tone: row.lift >= 1.5 ? 'good' : undefined,
+}))
+const shelf = plan?.sections?.searching
+const shelfLine = shelf
+  ? `${shelf.enabled ? 'Shown' : 'Hidden'} on the homepage with ${shelf.items.length} titles; ${(plan?.next?.searching || []).length} would be next.`
+  : 'Not planned yet.'
+
 const missing = tally(nones, (row) => row.item).slice(0, 30)
 // Each miss opens the same words on AniList, where the id for data/keep.json
 // is found in one tap. Comics first: most searches here are for a comic, and
@@ -80,7 +113,7 @@ const missingRows = missing.map((row) => ({
   signedIn={signedIn}
   secret={secret}
   wrongWord={wrongWord}
-  note={`${range.label}. The site's own search box. What people type into Google is only in Search Console.`}
+  note={`${range.label}. The site's own search box, and which titles people find on Google. What they type into Google is only in Search Console.`}
 >
   {signedIn && <WeekStrip db={db} />}
 
@@ -98,6 +131,24 @@ const missingRows = missing.map((row) => ({
     ) : (
       <Split parts={surfaceParts} label="Which search box" />
     )}
+  </div>
+
+  <div class="panel wide">
+    <h2>Which titles are people finding on Google more than usual?</h2>
+    <p class="say">
+      Page views that arrived from a search engine, last 7 closed days, against the title's
+      usual week. Answer pages count for their title. Always the last 7 days, whatever the range.
+    </p>
+    <BarList rows={arrivalRows} tone="good" empty="No search-engine arrivals counted yet. The night job fills this in." />
+    <p class="say">
+      The homepage shelf planned from these numbers ("Hot this week"): {shelfLine} <a href="/my-admin/homepage">Homepage tab →</a>
+    </p>
+  </div>
+
+  <div class="panel">
+    <h2>Which titles do people search for here?</h2>
+    <p class="say">Search results picked, by title, most people first.</p>
+    <BarList rows={searchedRows} empty="Nobody picked a search result yet." />
   </div>
 
   <div class="panel">
