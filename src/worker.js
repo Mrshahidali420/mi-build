@@ -8,6 +8,8 @@ import shards from '../data/shards.json'
 import astro from '../dist/_worker.js/index.js'
 import { runRollup } from './lib/rollup.js'
 import { cleanRow, INSERT_SQL } from './lib/beacon-rows.js'
+import { passProblem, readBeacon, beaconPlace, sign } from './lib/beacon-pass.js'
+import { rejectCounter, writeRejects } from './lib/reject-count.js'
 
 // How long the edge keeps a rendered page. The data changes once a day.
 const CACHE_SECONDS = 86400
@@ -24,36 +26,60 @@ const SUBPAGE = /^(\/[^/]+\/[^/]+)(\/(?:buy|free|like|characters))$/
 // exit. It is short on purpose: it travels in every page.
 const BEACON_PATH = '/_a'
 
-// A row is small. Anything bigger than this is a mistake or an attack, and is
-// dropped before it reaches the database.
-const MAX_BODY = 32768
 // Most visits now arrive as one batch at the end, so a body holds many rows.
 const MAX_ROWS = 25
+
+// What the door turned away, and what it let in, by reason. Counted in this
+// isolate's memory and written at most once a minute, so a robot flood
+// cannot turn into a flood of database writes. See src/lib/reject-count.js.
+const doorCounts = rejectCounter()
+
+/** Count one hit at the door; write the isolate's counts when a window is up. */
+function countDoor(request, env, ctx, reason, place, n = 1) {
+  try {
+    const now = Date.now()
+    doorCounts.add(reason, place, request.headers.get('cf-ipcountry'), now, n)
+    const rows = doorCounts.take(now)
+    // Written after the answer has gone, so a slow write never slows a page.
+    if (rows && env && env.ANALYTICS && ctx) ctx.waitUntil(writeRejects(env.ANALYTICS, rows).catch(() => {}))
+  } catch (e) {
+    // Counting the door must never break the door.
+  }
+}
 
 /**
  * Keep one event. It can never fail the page: the script does not wait for the
  * answer, and every error here ends as the same empty 204.
  */
-async function recordEvent(request, env) {
+async function recordEvent(request, env, ctx) {
   const done = new Response(null, {
     status: 204,
     headers: { 'cache-control': 'no-store' },
   })
   if (!env || !env.ANALYTICS) return done
 
-  let body
+  let raw = ''
   try {
-    const raw = await request.text()
-    if (!raw || raw.length > MAX_BODY) return done
-    body = JSON.parse(raw)
+    raw = await request.text()
   } catch (e) {
+    raw = ''
+  }
+  // The same checks as always (src/lib/beacon-pass.js); they now say why.
+  const read = readBeacon(raw)
+  if (read.reason) {
+    countDoor(request, env, ctx, read.reason, 'other')
     return done
   }
-  if (!body || typeof body !== 'object') return done
+  const body = read.body
+  const place = beaconPlace(body)
 
   // No pass, nothing written. This is the whole defence: a browser driven by a
   // program cannot get a Turnstile ticket, so it can never hold a pass.
-  if (!(await passIsGood(body.pass, env))) return done
+  const problem = await passProblem(body.pass, env)
+  if (problem) {
+    countDoor(request, env, ctx, problem, place)
+    return done
+  }
 
   // One visit used to cost three requests: open, click, leave. On a free
   // Workers plan that was 82% of the whole daily allowance, and the site
@@ -74,6 +100,8 @@ async function recordEvent(request, env) {
       const values = cleanRow(row, country, now)
       if (values) batch.push(stmt.bind(...values))
     }
+    countDoor(request, env, ctx, 'ok', place)
+    if (batch.length < rows.length) countDoor(request, env, ctx, 'bad_row', place, rows.length - batch.length)
     if (batch.length) await env.ANALYTICS.batch(batch)
   } catch (e) {
     // A full day allowance or a dropped connection must not break a page view.
@@ -98,39 +126,27 @@ const VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
 // pass is what travels with every later beacon.
 const PASS_MINUTES = 30
 
-const enc = new TextEncoder()
-
-async function sign(key, message) {
-  const k = await crypto.subtle.importKey(
-    'raw',
-    enc.encode(key),
-    { name: 'HMAC', hash: 'SHA-256' },
-    false,
-    ['sign']
-  )
-  const mac = await crypto.subtle.sign('HMAC', k, enc.encode(message))
-  return Array.from(new Uint8Array(mac))
-    .map((b) => b.toString(16).padStart(2, '0'))
-    .join('')
-}
-
 /**
  * Trade one Turnstile ticket for a pass. The pass is the minute it dies plus a
  * signature, so the worker can check it later without keeping a list.
  */
-async function issuePass(request, env) {
+async function issuePass(request, env, ctx) {
   const no = new Response('no', { status: 403, headers: { 'cache-control': 'no-store' } })
   if (!env || !env.TURNSTILE_SECRET || !env.PASS_KEY) return no
+  const refuse = (reason) => {
+    countDoor(request, env, ctx, reason, 'pass')
+    return no
+  }
 
   let token = ''
   try {
     const raw = await request.text()
-    if (raw.length > 4096) return no
+    if (raw.length > 4096) return refuse('pass_bad_ask')
     token = String(JSON.parse(raw).token || '')
   } catch (e) {
-    return no
+    return refuse('pass_bad_ask')
   }
-  if (!token) return no
+  if (!token) return refuse('pass_bad_ask')
 
   try {
     const form = new FormData()
@@ -140,26 +156,17 @@ async function issuePass(request, env) {
     if (ip) form.append('remoteip', ip)
     const answer = await fetch(VERIFY_URL, { method: 'POST', body: form })
     const verdict = await answer.json()
-    if (!verdict || verdict.success !== true) return no
+    if (!verdict || verdict.success !== true) return refuse('pass_refused')
   } catch (e) {
-    return no
+    return refuse('pass_error')
   }
+  countDoor(request, env, ctx, 'pass_ok', 'pass')
 
   const dies = Date.now() + PASS_MINUTES * 60000
   const pass = dies + '.' + (await sign(env.PASS_KEY, String(dies)))
   return new Response(JSON.stringify({ pass }), {
     headers: { 'content-type': 'application/json', 'cache-control': 'no-store' },
   })
-}
-
-/** True only for a pass this worker signed itself and that is still alive. */
-async function passIsGood(pass, env) {
-  if (!env || !env.PASS_KEY || typeof pass !== 'string') return false
-  const cut = pass.indexOf('.')
-  if (cut < 1) return false
-  const dies = Number(pass.slice(0, cut))
-  if (!dies || dies < Date.now()) return false
-  return pass.slice(cut + 1) === (await sign(env.PASS_KEY, String(dies)))
 }
 
 export default {
@@ -179,13 +186,19 @@ export default {
     }
 
     if (url.pathname === PASS_PATH) {
-      if (request.method !== 'POST') return new Response(null, { status: 405 })
-      return issuePass(request, env)
+      if (request.method !== 'POST') {
+        countDoor(request, env, ctx, 'wrong_method', 'pass')
+        return new Response(null, { status: 405 })
+      }
+      return issuePass(request, env, ctx)
     }
 
     if (url.pathname === BEACON_PATH) {
-      if (request.method !== 'POST') return new Response(null, { status: 405 })
-      return recordEvent(request, env)
+      if (request.method !== 'POST') {
+        countDoor(request, env, ctx, 'wrong_method', 'other')
+        return new Response(null, { status: 405 })
+      }
+      return recordEvent(request, env, ctx)
     }
 
     // The admin pages read the database on every request, so they are

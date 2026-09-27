@@ -11,10 +11,11 @@ import BarList from '../../components/admin/BarList.astro'
 import Columns from '../../components/admin/Columns.astro'
 import Kpi from '../../components/admin/Kpi.astro'
 import { envOf } from '../../lib/runtime.js'
-import { gate, rangeOf, clock, dayKey, humanize, num, sourceName } from '../../lib/admin.js'
+import { gate, rangeOf, clock, dayKey, humanize, num, sourceName, countryName } from '../../lib/admin.js'
 import { shortDay } from '../../lib/admin-chart.js'
 import { pagesFor } from '../../lib/admin-data.js'
 import { actionsFor, counterHealth, missingFor, tally } from '../../lib/admin-more.js'
+import { botsFor, botJumpHint, reasonWords } from '../../lib/admin-bots.js'
 import homePlan from '../../../data/home-auto.json'
 import homeLog from '../../../data/home-decisions.json'
 import {
@@ -42,15 +43,29 @@ let missing = []
 let nexts = []
 let pages = []
 let health = { log: [], today: 0 }
+let bots = { days: [], reasons: [], countries: [], refused7: 0, share7: 0, hasData: false }
 
 if (signedIn) {
-  ;[missing, nexts, pages, health] = await Promise.all([
+  ;[missing, nexts, pages, health, bots] = await Promise.all([
     missingFor(db),
     actionsFor(db, week, ['miss_next']),
     pagesFor(db, week),
     counterHealth(db),
+    botsFor(db),
   ])
 }
+
+// Bots against people. Real people per day come from the counter as always;
+// refused hits from the door's own tally (src/lib/reject-count.js).
+const dayLabel = (d, i, all) => (i === all.length - 1 ? 'Today' : shortDay(d.day))
+const peopleColumns = bots.days.map((d, i, all) => ({ label: dayLabel(d, i, all), parts: [d.people], title: `${d.day}: ${num(d.people)} people` }))
+const refusedColumns = bots.days.map((d, i, all) => ({ label: dayLabel(d, i, all), parts: [d.rejected], title: `${d.day}: ${num(d.rejected)} refused` }))
+const reasonRows = bots.reasons.map((r) => ({ name: reasonWords(r.reason), sub: r.reason, value: r.n || 0, unit: 'hits', tone: 'amber' }))
+// T1 is Cloudflare's code for Tor, worth saying; '--' is the counter folding
+// a wide spread of countries into one row (src/lib/reject-count.js).
+const whereName = (c) => (c === 'T1' ? 'Tor network' : c === '--' ? 'Many countries, folded together' : countryName(c) || c)
+const countryRows = bots.countries.map((r) => ({ name: whereName(r.country), sub: r.country, value: r.n || 0, unit: 'hits' }))
+const botHint = botJumpHint(bots.days)
 
 const missingRows = missing.map((row) => ({
   name: row.path,
@@ -140,6 +155,30 @@ const plan = planHealth(homePlan?.night, homeLog, dayKey(0))
       {' '}<a href="/my-admin/homepage">Homepage tab →</a>
     </p>
     <Hint hint={plan.hint} />
+  </div>
+
+  <div class="panel wide">
+    <h2>How many robots does the counter turn away?</h2>
+    <p class="say">
+      Every hit on the counter needs a Turnstile pass; robots cannot get one, so nothing they
+      send is counted. This is what was turned away, and why, next to the real people counted.
+      {bots.hasData ? ` Last 7 days: ${num(bots.refused7)} refused, ${Math.round(bots.share7 * 100)}% of all beacons.` : ''}
+    </p>
+    <Hint hint={botHint} />
+    {!bots.hasData ? (
+      <p class="empty">Nothing counted yet. The door starts counting with this deploy.</p>
+    ) : (
+      <>
+        <h3>People per day</h3>
+        <Columns columns={peopleColumns} tones={['blue']} height={48} peakWord="busiest" label="People per day" />
+        <h3>Refused hits per day</h3>
+        <Columns columns={refusedColumns} tones={['amber']} height={48} peakWord="most" label="Refused hits per day" />
+        <h3>Why they were refused (7 days)</h3>
+        <BarList rows={reasonRows} tone="amber" empty="Nothing refused this week." />
+        <h3>From where (7 days)</h3>
+        <BarList rows={countryRows} tone="amber" empty="Nothing refused this week." />
+      </>
+    )}
   </div>
 
   <div class="panel">
