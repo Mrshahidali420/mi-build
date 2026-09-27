@@ -65,20 +65,40 @@ for (const row of dbRules) ruleOf.set(Number(row.anilist_id), { action: row.acti
 for (const id of fileRules.ban || []) ruleOf.set(Number(id), { action: 'ban', source: 'file' })
 const tap = (it, section) => ({ id: Number(it.id), name: it.title || `#${it.id}`, href: it.path || undefined, section, rule: ruleOf.get(Number(it.id)) })
 
+// Tonight's people floors, scaled to the site's traffic by the planner
+// (src/lib/home-floors.mjs). A plan made before they existed used the fixed ones.
+const planFloors = plan?.floors?.sections || {}
+const people = {
+  people7: planFloors.rising ?? FLOORS.people7,
+  savers7: planFloors.saving ?? FLOORS.savers7,
+  people30: planFloors.month ?? FLOORS.people30,
+  web: planFloors.searching ?? SEARCHING.webPeople7,
+  site: plan?.floors?.site ?? SEARCHING.sitePeople7,
+}
+const grows = (n, ceiling) => (n < ceiling ? ` (grows with traffic, up to ${ceiling})` : '')
+// The short line at the top of each card.
+const needsPeople = (key) => {
+  const n = { rising: people.people7, new: people.people7, saving: people.savers7, month: people.people30, searching: people.web }[key]
+  return n == null ? '' : `Needs ${n} people, grows with traffic.`
+}
+const trafficNote = plan?.floors?.traffic
+  ? `People floors tonight are set from ${num(plan.floors.traffic.people7)} people this week and ${num(plan.floors.traffic.people30)} this month (each day's people added up), never under 3.`
+  : ''
+
 // Hot this week ranks by volume until search arrivals have 28 days behind
 // them, then by the rise. A plan made before the modes existed was a rise.
 const searchMode = SEARCH_MODES[plan?.modes?.searching] ? plan.modes.searching : 'lift'
 const searchNeeds = searchMode === 'volume'
-  ? `Mode: ${SEARCH_MODES.volume}. Search arrivals have under ${SEARCHING.matureDays} days of history, so titles are ranked by how many people searched: ${SEARCHING.webPeople7} or more different people arriving from Google or another search engine this week, on ${SEARCHING.webDays7} or more days; or ${SEARCHING.sitePeople7} different people finding it with our own search on ${SEARCHING.siteDays7} days. It switches to "${SEARCH_MODES.lift}" by itself at ${SEARCHING.matureDays} days.`
-  : `Mode: ${SEARCH_MODES.lift}. A title needs ${SEARCHING.webPeople7} different people arriving from Google or another search engine this week, on ${SEARCHING.webDays7} or more days, at ${SEARCHING.lift7} times its usual; or ${SEARCHING.sitePeople7} different people finding it with our own search on ${SEARCHING.siteDays7} days.`
+  ? `Mode: ${SEARCH_MODES.volume}. Search arrivals have under ${SEARCHING.matureDays} days of history, so titles are ranked by how many people searched: ${people.web} or more different people${grows(people.web, SEARCHING.webPeople7)} arriving from Google or another search engine this week, on ${SEARCHING.webDays7} or more days; or ${people.site} different people finding it with our own search on ${SEARCHING.siteDays7} days. It switches to "${SEARCH_MODES.lift}" by itself at ${SEARCHING.matureDays} days.`
+  : `Mode: ${SEARCH_MODES.lift}. A title needs ${people.web} different people${grows(people.web, SEARCHING.webPeople7)} arriving from Google or another search engine this week, on ${SEARCHING.webDays7} or more days, at ${SEARCHING.lift7} times its usual; or ${people.site} different people finding it with our own search on ${SEARCHING.siteDays7} days.`
 
 // What a title needs, per shelf, in one line under its card.
 const NEEDS = {
-  rising: `A title needs ${FLOORS.people7} different people and ${RISING.minOpens7} opens this week at ${RISING.lift7} times its usual, on ${FLOORS.daysSeen7} or more days, and a clean name.`,
-  saving: `A title needs ${FLOORS.savers7} different people saving it this week, on ${FLOORS.saveDays7} or more days, and a clean name.`,
-  new: `A title first counted in the last ${NEW.firstSeenDays} days (or started on AniList in the last ${NEW.startDays}) needs ${NEW.minOpens7} opens by ${FLOORS.people7} people this week, and a clean name.`,
+  rising: `A title needs ${people.people7} different people${grows(people.people7, FLOORS.people7)} and ${RISING.minOpens7} opens this week at ${RISING.lift7} times its usual, on ${FLOORS.daysSeen7} or more days, and a clean name.`,
+  saving: `A title needs ${people.savers7} different people${grows(people.savers7, FLOORS.savers7)} saving it this week, on ${FLOORS.saveDays7} or more days, and a clean name.`,
+  new: `A title first counted in the last ${NEW.firstSeenDays} days (or started on AniList in the last ${NEW.startDays}) needs ${NEW.minOpens7} opens by ${people.people7} people${grows(people.people7, FLOORS.people7)} this week, and a clean name.`,
   searching: `${searchNeeds} Each line says both: search-engine people and arrivals, and people who searched here.`,
-  month: `A title needs ${MONTH.minOpens30} opens by ${FLOORS.people30} people in 30 days, ${MONTH.minHandoff * 100} in 100 going on to read or watch, and a clean name.`,
+  month: `A title needs ${MONTH.minOpens30} opens by ${people.people30} people${grows(people.people30, FLOORS.people30)} in 30 days, ${MONTH.minHandoff * 100} in 100 going on to read or watch, and a clean name.`,
 }
 
 const today = new Date().toISOString().slice(0, 10)
@@ -103,6 +123,7 @@ const cards = Object.entries(SECTIONS).map(([key, cfg]) => {
     key,
     title: cfg.title,
     needs: NEEDS[key],
+    people: needsPeople(key),
     week: seen
       ? `Seen ${num(seen)} times in the last 7 days, ${num(clicked)} covers opened (${share}%).`
       : 'Not seen on the homepage in the last 7 days.',
@@ -181,6 +202,7 @@ const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'bl
   <div class="panel wide">
     <h2>Is the planner working?</h2>
     <p class="say">{health.line}</p>
+    {trafficNote && <p class="say">{trafficNote}</p>}
     <Hint hint={health.hint} />
   </div>
 
@@ -215,7 +237,7 @@ const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'bl
   {cards.map((card) => (
     <div class="panel wide">
       <h2>On the homepage tonight: {card.title}</h2>
-      <p class="say">{card.state} {card.week} {card.needs}</p>
+      <p class="say"><strong>{card.people}</strong> {card.state} {card.week} {card.needs}</p>
       <TapList rows={card.rows} empty="No title qualifies yet." />
       <h3>Would be next</h3>
       <p class="say">Qualify, but got no slot tonight (the nightly limit or a full shelf).</p>

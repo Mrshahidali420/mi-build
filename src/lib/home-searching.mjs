@@ -48,6 +48,9 @@ export const SEARCHING_SECTION = {
   cooldown: 7,
 }
 
+// webPeople7 and sitePeople7 are ceilings: the planner scales them to the
+// site's traffic each night (src/lib/home-floors.mjs) and passes them in
+// ctx.floors.
 export const SEARCHING = {
   // Distinct people who arrived from a search engine this week.
   webPeople7: 10,
@@ -84,6 +87,9 @@ export const searchModeOf = (historyDays) =>
   (historyDays || 0) >= SEARCHING.matureDays ? 'lift' : 'volume'
 
 const isVolume = (ctx) => ctx?.searchMode === 'volume'
+// Tonight's people floors, or the fixed ones when the planner gave none.
+const webFloor = (ctx) => ctx?.floors?.webPeople7 ?? SEARCHING.webPeople7
+const siteFloor = (ctx) => ctx?.floors?.sitePeople7 ?? SEARCHING.sitePeople7
 
 const MAX_REASON = 119
 const cut = (text) => (text.length > MAX_REASON ? `${text.slice(0, MAX_REASON - 1)}…` : text)
@@ -98,7 +104,8 @@ export function searchLift(s, baseDays = 30) {
 /** Why the search-engine side does not qualify, or null. */
 export function webMiss(s, ctx = {}) {
   const people = s.gPeople7 || 0
-  if (people < SEARCHING.webPeople7) return `found on search by ${people} of ${SEARCHING.webPeople7} people`
+  const floor = webFloor(ctx)
+  if (people < floor) return `found on search by ${people} of ${floor} people`
   if ((s.gDays7 || 0) < SEARCHING.webDays7) return `found on search on ${s.gDays7 || 0} of ${SEARCHING.webDays7} days`
   if ((s.g7 || 0) > SEARCHING.perPerson * people) return `one-visitor share: ${s.g7} arrivals from ${people} people`
   // Young data: no usual yet to rise from, so the floors above are the rule.
@@ -109,9 +116,10 @@ export function webMiss(s, ctx = {}) {
 }
 
 /** Why the own-search side does not qualify, or null. */
-export function siteMiss(s) {
+export function siteMiss(s, ctx = {}) {
   const people = s.sPeople7 || 0
-  if (people < SEARCHING.sitePeople7) return `searched here by ${people} of ${SEARCHING.sitePeople7} people`
+  const floor = siteFloor(ctx)
+  if (people < floor) return `searched here by ${people} of ${floor} people`
   if ((s.sDays7 || 0) < SEARCHING.siteDays7) return `searched here on ${s.sDays7 || 0} of ${SEARCHING.siteDays7} days`
   if ((s.s7 || 0) > SEARCHING.perPerson * people) return `one-visitor share: ${s.s7} searches from ${people} people`
   return null
@@ -127,7 +135,7 @@ export function siteMiss(s) {
 export function searchingMiss(s, title, ctx = {}) {
   if (!s) return 'no numbers this week'
   const web = webMiss(s, ctx)
-  const site = siteMiss(s)
+  const site = siteMiss(s, ctx)
   if (web && site) return (s.gPeople7 || 0) >= (s.sPeople7 || 0) * SEARCHING.siteWeight ? web : site
   const f = ctx.floors || {}
   const days = Math.max(web ? 0 : s.gDays7 || 0, site ? 0 : s.sDays7 || 0)
@@ -148,10 +156,10 @@ export function searchingMiss(s, title, ctx = {}) {
  */
 export function searchingScore(s, ctx = {}) {
   if (isVolume(ctx)) {
-    return (webMiss(s, ctx) ? 0 : s.gPeople7 || 0) + (siteMiss(s) ? 0 : s.sPeople7 || 0)
+    return (webMiss(s, ctx) ? 0 : s.gPeople7 || 0) + (siteMiss(s, ctx) ? 0 : s.sPeople7 || 0)
   }
   const web = webMiss(s, ctx) ? 0 : (s.gPeople7 || 0) * Math.min(searchLift(s, ctx.searchBaseDays), 4)
-  const site = siteMiss(s) ? 0 : SEARCHING.siteWeight * (s.sPeople7 || 0)
+  const site = siteMiss(s, ctx) ? 0 : SEARCHING.siteWeight * (s.sPeople7 || 0)
   return round2(web + site)
 }
 
@@ -179,7 +187,7 @@ export const SEARCHING_BADGE = 'Hot this week'
  * does not claim to be hot.
  */
 export function searchingBadge(s, ctx = {}) {
-  return !webMiss(s, ctx) || !siteMiss(s) ? SEARCHING_BADGE : ''
+  return !webMiss(s, ctx) || !siteMiss(s, ctx) ? SEARCHING_BADGE : ''
 }
 
 /** How close a title came, for ordering the "kept off" list. */

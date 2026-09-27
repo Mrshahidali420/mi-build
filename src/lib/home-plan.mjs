@@ -16,7 +16,8 @@
  * The four sections and their numbers are in tasks/auto-homepage-plan.md.
  */
 
-import { SEARCHING_SECTION, SEARCH_MODES, searchModeOf, searchingRule } from './home-searching.mjs'
+import { SEARCHING, SEARCHING_SECTION, SEARCH_MODES, searchModeOf, searchingRule } from './home-searching.mjs'
+import { scaledFloors, floorsLine, SECTION_FLOOR } from './home-floors.mjs'
 
 // Each section's size and brakes, in the order the homepage draws them.
 // slots: how many covers at most. floor: fewer than this and the section is
@@ -84,6 +85,8 @@ export const PRIORITY = ['rising', 'searching', 'new', 'saving', 'month']
 // hard at pages that rewrite themselves; a calm page is the safe page.
 export const PAGE_CHANGE_CAP = 8
 
+// people7, people30 and savers7 below are ceilings: each night they are
+// scaled down to the site's traffic (src/lib/home-floors.mjs), never up.
 export const FLOORS = {
   // Distinct people who opened the title's page this week (per-day distinct,
   // summed). Below this the title is simply not known well enough.
@@ -256,11 +259,11 @@ export function safetyReason(id, title, ctx) {
  * section. `opens` turns on the reload check, which only the sections that
  * rank by opens need; Saving already counts true distinct savers.
  */
-function sharedMiss(s, title, { win = 7, opens = false } = {}) {
+function sharedMiss(s, title, { win = 7, opens = false, floors = FLOORS } = {}) {
   if (win === 30) {
-    if ((s.people30 || 0) < FLOORS.people30) return `opened by ${s.people30 || 0} of ${FLOORS.people30} people this month`
-  } else if ((s.people7 || 0) < FLOORS.people7) {
-    return `opened by ${s.people7 || 0} of ${FLOORS.people7} people`
+    if ((s.people30 || 0) < floors.people30) return `opened by ${s.people30 || 0} of ${floors.people30} people this month`
+  } else if ((s.people7 || 0) < floors.people7) {
+    return `opened by ${s.people7 || 0} of ${floors.people7} people`
   }
   if ((s.daysSeen7 || 0) < FLOORS.daysSeen7) return `seen on ${s.daysSeen7 || 0} of ${FLOORS.daysSeen7} days`
   const saves = s.saves7 || 0
@@ -282,6 +285,9 @@ function sharedMiss(s, title, { win = 7, opens = false } = {}) {
   return null
 }
 
+// Tonight's floors (scaled to traffic), or the fixed ones when none are given.
+const floorsOf = (ctx) => ctx?.floors || FLOORS
+
 const cut = (text) => (text.length > MAX_REASON ? `${text.slice(0, MAX_REASON - 1)}…` : text)
 const round2 = (n) => Math.round(n * 100) / 100
 
@@ -291,11 +297,12 @@ const round2 = (n) => Math.round(n * 100) / 100
  * Why this title does not qualify for Saving tonight, or null when it does.
  * Checked in order, so the reason names the first floor it missed.
  */
-export function savingMiss(s, title) {
+export function savingMiss(s, title, ctx = {}) {
   if (!s) return 'no numbers this week'
-  if ((s.savers7 || 0) < FLOORS.savers7) return `saved by ${s.savers7 || 0} of ${FLOORS.savers7} people`
+  const floors = floorsOf(ctx)
+  if ((s.savers7 || 0) < floors.savers7) return `saved by ${s.savers7 || 0} of ${floors.savers7} people`
   if ((s.saveDays7 || 0) < FLOORS.saveDays7) return `saves on ${s.saveDays7 || 0} of ${FLOORS.saveDays7} days`
-  const shared = sharedMiss(s, title)
+  const shared = sharedMiss(s, title, { floors })
   if (shared) return shared
   if ((s.unsaves7 || 0) > FLOORS.unsaveShare * (s.saves7 || 0)) return 'removed from lists too often'
   return null
@@ -328,7 +335,7 @@ export function liftsOf(s, baseDays = 30) {
 
 export function risingMiss(s, title, ctx = {}) {
   if (!s) return 'no numbers this week'
-  const shared = sharedMiss(s, title, { opens: true })
+  const shared = sharedMiss(s, title, { opens: true, floors: floorsOf(ctx) })
   if (shared) return shared
   // Nothing before this week means there is no "usual" to rise from. Such a
   // title is new, and New and noticed is the place for it.
@@ -373,7 +380,7 @@ export function newMiss(s, title, ctx = {}) {
   if (!s) return 'no numbers this week'
   if (!newSince(s, title, ctx)) return 'not new: older than 30 days here and 120 on AniList'
   if ((s.opens7 || 0) < NEW.minOpens7) return `opened ${s.opens7 || 0} of ${NEW.minOpens7} times this week`
-  return sharedMiss(s, title, { opens: true })
+  return sharedMiss(s, title, { opens: true, floors: floorsOf(ctx) })
 }
 
 /** Opens, lifted when readers go on to read or watch it. */
@@ -389,9 +396,9 @@ export function newReason(s, ctx = {}, title = null) {
 
 // ------------------------------------------------------------------ Most opened this month
 
-export function monthMiss(s, title) {
+export function monthMiss(s, title, ctx = {}) {
   if (!s) return 'no numbers this month'
-  const shared = sharedMiss(s, title, { win: 30, opens: true })
+  const shared = sharedMiss(s, title, { win: 30, opens: true, floors: floorsOf(ctx) })
   if (shared) return shared
   if ((s.opens30 || 0) < MONTH.minOpens30) return `opened ${s.opens30 || 0} of ${MONTH.minOpens30} times this month`
   const handoff = (s.outs30 || 0) / Math.max(s.opens30 || 0, 1)
@@ -525,6 +532,8 @@ export function emptyPlan(night = '') {
  *   prev:         last night's plan, or null
  *   historyStart: the first day the counter has numbers for, or null
  *   searchHistoryStart: the first day of search-engine arrivals, or null
+ *   traffic:      { people7, people30 } site-wide people (per-day, summed) over
+ *                 the week and the month, or null; scales the people floors
  * }
  * stats may also carry the search numbers (g1, g7, g30, gPeople7, gDays7,
  * gGoogle7, s7, sPeople7, sDays7); see src/lib/home-searching.mjs.
@@ -534,6 +543,14 @@ export function planHome(input) {
   const { night, titles, stats, rules = {}, prev } = input
   const lastDay = addDays(night, -1)
   const loop = input.loop || { homeViews: {}, fromHome: new Map() }
+  const traffic = input.traffic || null
+  const people = scaledFloors(traffic, {
+    people7: FLOORS.people7,
+    savers7: FLOORS.savers7,
+    people30: FLOORS.people30,
+    webPeople7: SEARCHING.webPeople7,
+    sitePeople7: SEARCHING.sitePeople7,
+  })
   const ctx = {
     rules,
     blocked: input.blocked || new Set(),
@@ -547,12 +564,16 @@ export function planHome(input) {
     searchBaseDays: baseDaysOf(input.searchHistoryStart || input.historyStart, night),
     // Under 28 days of search arrivals the shelf ranks by volume, not rise.
     searchMode: searchModeOf(searchHistoryDaysOf(input.searchHistoryStart, night)),
-    floors: FLOORS,
+    floors: { ...FLOORS, ...people },
   }
   const old = prev && typeof prev === 'object' ? prev : emptyPlan()
   const plan = emptyPlan(night)
   plan.source = 'd1'
   plan.modes = { searching: ctx.searchMode }
+  // What each shelf needed tonight, for /my-admin: distinct people, scaled to
+  // the traffic. site: the own-search-box side of Hot this week.
+  plan.floors = { traffic, site: people.sitePeople7, sections: {} }
+  for (const [key, floor] of Object.entries(SECTION_FLOOR)) plan.floors.sections[key] = people[floor]
   const decisions = []
   const log = (section, action, id, rule, reason) => {
     const t = id != null ? titles.get(id) : null
@@ -568,6 +589,7 @@ export function planHome(input) {
     })
   }
 
+  log('all', 'floors', null, 'floors.scale', floorsLine(traffic, people))
   log('searching', 'mode', null, 'searching.mode',
     `mode: ${SEARCH_MODES[ctx.searchMode]}, ${searchHistoryDaysOf(input.searchHistoryStart, night)} days of search history`)
 

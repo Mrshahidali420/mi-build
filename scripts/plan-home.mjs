@@ -102,6 +102,23 @@ export const SEARCH_QUERIES = {
              GROUP BY name, item, visitor, day`,
 }
 
+/**
+ * The site's traffic, which sets how many people each shelf needs
+ * (src/lib/home-floors.mjs): people summed day by day over the week and over
+ * the month, from the rollup. Params: from7, from30, last.
+ */
+export const TRAFFIC_QUERY = `SELECT SUM(CASE WHEN day >= ? THEN people ELSE 0 END) AS people7,
+         SUM(people) AS people30 FROM daily_totals WHERE day >= ? AND day <= ?`
+
+/** { people7, people30 } from the traffic answer, or null when it makes no sense. */
+export function trafficFrom(rows) {
+  const row = Array.isArray(rows) ? rows[0] : null
+  const people7 = Number(row?.people7)
+  const people30 = Number(row?.people30)
+  if (!(people7 > 0) || !(people30 >= people7)) return null
+  return { people7, people30 }
+}
+
 /** id -> current path, and every path (old ones too) -> id, from the registry. */
 function pathsFrom(registry) {
   const pathOf = new Map()
@@ -387,6 +404,14 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
     say(`::warning::search numbers unavailable, the Hot this week shelf stays empty: ${String(error.message || error).slice(0, 100)}`)
   }
 
+  // Unknown traffic keeps every floor at its old fixed value; it never lowers one.
+  let traffic = null
+  try {
+    traffic = trafficFrom(await query(TRAFFIC_QUERY, [from7, from30, last]))
+  } catch (error) {
+    say(`::warning::traffic unavailable, the shelves keep their fixed floors: ${String(error.message || error).slice(0, 100)}`)
+  }
+
   const blocked = new Set((blockRaw.media || []).map(Number).filter(Number.isInteger))
   const { pathOf, idOf } = pathsFrom(registry)
   const stats = statsFrom(rows, idOf, { last, from7 })
@@ -420,9 +445,11 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
     prev,
     historyStart,
     searchHistoryStart,
+    traffic,
   })
 
   say(`homepage plan for ${night}: ${stats.size} titles looked at, counter since ${historyStart || 'unknown'}`)
+  say(`  floors: ${decisions.find((d) => d.rule === 'floors.scale')?.reason || 'fixed'}`)
   for (const key of Object.keys(SECTIONS)) {
     const s = plan.sections[key]
     say(`  ${key}: ${s.enabled ? 'shown' : 'hidden'}, ${s.items.length} titles`)
