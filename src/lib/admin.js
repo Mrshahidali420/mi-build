@@ -58,9 +58,44 @@ export async function gate(Astro, env) {
   return {
     db,
     secret,
-    signedIn: Astro.cookies.get(COOKIE)?.value === wanted,
+    signedIn: sameText(Astro.cookies.get(COOKIE)?.value || '', wanted),
     wrongWord: false,
   }
+}
+
+/**
+ * Two strings compared in time that does not depend on where they differ,
+ * so the answer time cannot be used to guess the fingerprint one character
+ * at a time.
+ */
+function sameText(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false
+  let diff = 0
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i)
+  return diff === 0
+}
+
+/** One cookie's value out of a raw Cookie header, or ''. */
+export function cookieFrom(header, name = COOKIE) {
+  for (const part of String(header || '').split(';')) {
+    const at = part.indexOf('=')
+    if (at > 0 && part.slice(0, at).trim() === name) return part.slice(at + 1).trim()
+  }
+  return ''
+}
+
+/**
+ * The same door as gate(), for a request that is not a page: the admin
+ * buttons' endpoint. True only when ADMIN_SECRET is set and the request
+ * carries the cookie gate() hands out after the right word. There is no
+ * other way in: no header, no query string, no second secret.
+ */
+export async function isOwner(request, env) {
+  const secret = env?.ADMIN_SECRET || ''
+  if (!secret) return false
+  const given = cookieFrom(request.headers.get('cookie'))
+  if (!given) return false
+  return sameText(given, await fingerprint(secret))
 }
 
 /** Ask the database one question. A broken query gives an empty answer, never

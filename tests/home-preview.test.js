@@ -1,7 +1,7 @@
 // Tomorrow's homepage from tonight's plan. See src/lib/home-preview.js.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { tomorrowOf, banLine } from '../src/lib/home-preview.js'
+import { tomorrowOf } from '../src/lib/home-preview.js'
 import { SECTIONS } from '../src/lib/home-plan.mjs'
 
 const item = (id, nights, over = {}) => ({ id, path: `/manhwa/t-${id}`, title: `T${id}`, nights, pinned: false, ...over })
@@ -29,6 +29,3 @@ test('a short shelf is said to stay hidden; an empty plan gives nothing', () => 
   assert.deepEqual(tomorrowOf(null), [])
 })
 
-test('the ban line is valid JSON inside the rules object', () => {
-  assert.deepEqual(JSON.parse(`{${banLine(123)}}`), { ban: [123] })
-})

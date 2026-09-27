@@ -1,0 +1,18 @@
+---
+/**
+ * One box and one button: put an AniList id on the keep list without editing
+ * data/keep.json. The tap is handled by taps.js and checked by the server;
+ * the nightly refresh reads the list (scripts/keep-list.mjs).
+ */
+---
+
+<form class="keep-form" data-keep-form novalidate>
+  <label for="keep-id" class="say">AniList id, or paste the AniList address</label>
+  <input id="keep-id" name="id" inputmode="numeric" autocomplete="off" placeholder="12345" maxlength="200" />
+  <button type="submit">Add to keep list</button>
+  <p class="saved" role="status" aria-live="polite"></p>
+</form>
+
+<script>
+  import './taps.js'
+</script>

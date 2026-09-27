@@ -20,6 +20,7 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { DATA_DIR, slugify, cutBio, voiceIn, VOICE_ROLES } from './anilist-core.mjs'
+import { KEEP_READ, mergeKeep } from '../src/lib/owner-rules.mjs'
 
 export const KEEP_FILE = join(DATA_DIR, 'keep.json')
 
@@ -56,6 +57,28 @@ export function loadKeep() {
     throw new Error(`data/keep.json is not valid JSON: ${error.message}`)
   }
   return { characters: onlyIds(raw.characters), media: onlyIds(raw.media) }
+}
+
+/**
+ * The keep list plus the ids kept from the Search tab (the keep_media table,
+ * db/migrations/0006-owner-rules.sql). `query(sql, params)` is queryD1. The
+ * file alone still works: without a token, or when D1 cannot be read, the
+ * run says so and goes on with the file, because a missing extra id costs one
+ * night while a stopped refresh costs every title.
+ */
+export async function loadKeepWithD1(query, env = process.env, say = console.warn) {
+  const keep = loadKeep()
+  if (!env.CLOUDFLARE_D1_TOKEN && !env.CLOUDFLARE_API_TOKEN) return keep
+  try {
+    const rows = await query(KEEP_READ, [], env)
+    const merged = mergeKeep(keep, rows)
+    const added = merged.media.length - keep.media.length
+    if (added) console.log(`  keep list: ${added} more ids kept from /my-admin.`)
+    return merged
+  } catch (error) {
+    say(`  keep list: the ids kept from /my-admin could not be read (${String(error.message || error).slice(0, 100)}); using data/keep.json only.`)
+    return keep
+  }
 }
 
 /** The ids the probe found plus the ones the keep list insists on. */

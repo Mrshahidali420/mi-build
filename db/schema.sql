@@ -139,3 +139,23 @@ CREATE TABLE IF NOT EXISTS daily_rejects (
 CREATE TABLE IF NOT EXISTS rollup_log (day TEXT PRIMARY KEY, ran_at INTEGER, rows INTEGER);
 
 CREATE INDEX IF NOT EXISTS total_pages_views ON total_pages(views DESC);
+
+-- The owner's buttons on /my-admin (0006-owner-rules.sql): homepage rules,
+-- the keep list, and a log of every tap.
+CREATE TABLE IF NOT EXISTS home_rules (
+  anilist_id INTEGER PRIMARY KEY CHECK (anilist_id > 0),
+  action TEXT NOT NULL CHECK (action IN ('ban', 'pin')),
+  section TEXT NOT NULL DEFAULT '',
+  note TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS keep_media (
+  anilist_id INTEGER PRIMARY KEY CHECK (anilist_id > 0),
+  note TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS admin_log (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  at TEXT NOT NULL,
+  action TEXT NOT NULL,
+  anilist_id INTEGER,
+  section TEXT NOT NULL DEFAULT '',
+  note TEXT NOT NULL DEFAULT '');

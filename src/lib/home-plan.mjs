@@ -245,7 +245,7 @@ export function adultReason(title, rules = {}) {
 export function safetyReason(id, title, ctx) {
   if (!title) return 'not in the catalog'
   if (ctx.blocked.has(id)) return 'in data/block.json'
-  if (ctx.banned.has(id)) return 'banned in data/home-rules.json'
+  if (ctx.banned.has(id)) return 'banned by the owner'
   return adultReason(title, ctx.rules)
 }
 
@@ -672,7 +672,7 @@ export function planHome(input) {
         score: scoreOf(rule, s, title), reason: 'Chosen by the site owner', pinned: true, shown: 0, opened: 0,
       })
       taken.add(id)
-      log(key, 'pin', id, 'pin', 'pinned in data/home-rules.json')
+      log(key, 'pin', id, 'pin', 'pinned by the owner')
     }
   }
 

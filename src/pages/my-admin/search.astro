@@ -13,8 +13,11 @@ import BarList from '../../components/admin/BarList.astro'
 import Kpi from '../../components/admin/Kpi.astro'
 import Split from '../../components/admin/Split.astro'
 import WeekStrip from '../../components/admin/WeekStrip.astro'
+import TapList from '../../components/admin/TapList.astro'
+import KeepForm from '../../components/admin/KeepForm.astro'
 import { envOf } from '../../lib/runtime.js'
-import { gate, rangeOf, humanize, num } from '../../lib/admin.js'
+import { gate, rangeOf, humanize, num, ask } from '../../lib/admin.js'
+import { KEEP_LIST } from '../../lib/owner-rules.mjs'
 import { actionsFor, tally } from '../../lib/admin-more.js'
 import { missingTitleHint } from '../../lib/admin-hints.js'
 import { searchArrivalsFor, searchedTitles, enginesLine } from '../../lib/admin-searching.js'
@@ -32,12 +35,26 @@ const range = rangeOf(Astro.url, '7d')
 
 let rows = []
 let arrivals = []
+let kept = []
 if (signedIn) {
-  ;[rows, arrivals] = await Promise.all([
+  ;[rows, arrivals, kept] = await Promise.all([
     actionsFor(db, range, ['search_pick', 'search_none', 'search_none_all'], 1000),
     searchArrivalsFor(db),
+    ask(db, KEEP_LIST),
   ])
 }
+
+// The ids kept with the box below. Read by the nightly refresh together with
+// data/keep.json (scripts/keep-list.mjs).
+const shortDay = (iso) => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' })
+const keptRows = kept.map((row) => ({
+  id: row.anilist_id,
+  name: row.note || `AniList #${row.anilist_id}`,
+  href: `https://anilist.co/manga/${row.anilist_id}`,
+  sub: `id ${row.anilist_id} · added ${shortDay(row.created_at)}`,
+  kind: 'keep',
+  rule: { action: 'keep', source: 'db' },
+}))
 
 const picks = rows.filter((row) => row.name === 'search_pick')
 const nones = rows.filter((row) => row.name === 'search_none')
@@ -165,17 +182,16 @@ const missingRows = missing.map((row) => ({
     </p>
     <BarList rows={missingRows} empty="Nothing yet. Words show here once two different people search for the same missing title." />
     <Hint hint={missingTitleHint(missing.length)} />
-    {missing.length > 0 && (
-      <>
-        <h3>Add one to the keep list</h3>
-        <p class="say">
-          Tap a search above, open the right title on AniList, and copy the number from its
-          address (anilist.co/manga/<b>12345</b>). Put it in the "media" list of data/keep.json
-          like this, commit, and run the catalog workflow:
-        </p>
-        <pre class="snippet">{`"media": [12345]`}</pre>
-      </>
-    )}
+    <h3>Add one to the keep list</h3>
+    <p class="say">
+      Tap a search above, open the right title on AniList, and copy the number from its
+      address (anilist.co/manga/<b>12345</b>), or copy the whole address. Put it in the box.
+      The title is fetched at tonight's update and its page appears on that build.
+    </p>
+    {signedIn && <KeepForm />}
+    <h3>Your keep list</h3>
+    <p class="say">Added here. The ids in data/keep.json are kept too.</p>
+    <TapList rows={keptRows} empty="Nothing added here yet." />
   </div>
 
   <p class="say">

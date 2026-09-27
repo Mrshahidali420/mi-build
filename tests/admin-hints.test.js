@@ -69,8 +69,8 @@ test('lists, import and feed floors', () => {
   assert.equal(h.feedHint(100, 2), null)
 })
 
-test('a missed search points at data/keep.json', () => {
-  assert.match(h.missingTitleHint(1).text, /data\/keep\.json/)
+test('a missed search points at the keep list box', () => {
+  assert.match(h.missingTitleHint(1).text, /keep list box/)
   assert.equal(h.missingTitleHint(0), null)
 })
 

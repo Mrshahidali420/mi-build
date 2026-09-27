@@ -46,5 +46,3 @@ export function tomorrowOf(plan) {
   return out
 }
 
-/** The line to paste into data/home-rules.json to keep a title off. */
-export const banLine = (id) => `"ban": [${Number(id)}]`

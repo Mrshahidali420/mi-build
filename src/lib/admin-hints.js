@@ -136,7 +136,7 @@ export function feedHint(views, clicks) {
 export function missingTitleHint(count) {
   if (!(Number(count) > 0)) return null
   return hint(
-    'Find each title on anilist.co, add its id to the "media" list in data/keep.json, and run the catalog workflow. The page comes back on the next build.'
+    'Find each title on anilist.co and add its id with the keep list box below. It is fetched at tonight\'s update and its page comes back on that build.'
   )
 }
 

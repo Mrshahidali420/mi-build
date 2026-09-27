@@ -9,23 +9,29 @@
  * home_seen and home_click from daily_actions (plus the raw rows of today): how
  * often each shelf was seen and each slot opened.
  *
- * To act on it: pin or ban a title in data/home-rules.json and push. To take a
- * title off the site entirely, data/block.json as before.
+ * To act on it: the buttons under each title write a rule to D1
+ * (src/lib/admin-actions.js), and the next night's planner run reads it. The
+ * homepage is a prebuilt file, so a tap shows from tonight's update on.
+ * data/home-rules.json still works for the same rules. To take a title off
+ * the site entirely, data/block.json as before.
  */
 import WeekStrip from '../../components/admin/WeekStrip.astro'
 import Admin from '../../layouts/Admin.astro'
 import Hint from '../../components/admin/Hint.astro'
 import BarList from '../../components/admin/BarList.astro'
 import Kpi from '../../components/admin/Kpi.astro'
+import TapList from '../../components/admin/TapList.astro'
 import { envOf } from '../../lib/runtime.js'
-import { gate, rangeOf, num } from '../../lib/admin.js'
+import { gate, rangeOf, num, ask } from '../../lib/admin.js'
+import { RULES_LIST } from '../../lib/owner-rules.mjs'
 import { actionsFor } from '../../lib/admin-more.js'
 import { SECTIONS, FLOORS, RISING, NEW, MONTH, daysBetween } from '../../lib/home-plan.mjs'
 import { SEARCHING, SEARCH_MODES } from '../../lib/home-searching.mjs'
 import { shelfNumbers } from '../../lib/home-sections.js'
 import { planHealth } from '../../lib/admin-hints.js'
-import { tomorrowOf, banLine } from '../../lib/home-preview.js'
+import { tomorrowOf } from '../../lib/home-preview.js'
 import plan from '../../../data/home-auto.json'
+import fileRules from '../../../data/home-rules.json'
 import decisions from '../../../data/home-decisions.json'
 
 export const prerender = false
@@ -39,8 +45,25 @@ if (secret && !signedIn && Astro.request.method !== 'POST') {
 // This week's shelf numbers, as the homepage itself reported them.
 const week = rangeOf(new URL('?range=7d', Astro.url), '7d')
 let acts = []
-if (signedIn) acts = await actionsFor(db, week, ['home_seen', 'home_click'], 2000)
+let dbRules = []
+if (signedIn) {
+  ;[acts, dbRules] = await Promise.all([
+    actionsFor(db, week, ['home_seen', 'home_click'], 2000),
+    ask(db, RULES_LIST),
+  ])
+}
 const live = shelfNumbers(acts)
+
+// Every rule a title has, from the buttons (D1) or from data/home-rules.json.
+// A button rule is the newer word and wins, except over a file ban: the
+// planner lets a ban win from either place (mergeRules in
+// src/lib/owner-rules.mjs), so the tab says the same. A file rule can only be
+// named here, since undoing it means editing the file.
+const ruleOf = new Map()
+for (const ids of Object.values(fileRules.pin || {})) for (const id of ids) ruleOf.set(Number(id), { action: 'pin', source: 'file' })
+for (const row of dbRules) ruleOf.set(Number(row.anilist_id), { action: row.action, source: 'db' })
+for (const id of fileRules.ban || []) ruleOf.set(Number(id), { action: 'ban', source: 'file' })
+const tap = (it, section) => ({ id: Number(it.id), name: it.title || `#${it.id}`, href: it.path || undefined, section, rule: ruleOf.get(Number(it.id)) })
 
 // Hot this week ranks by volume until search arrivals have 28 days behind
 // them, then by the rise. A plan made before the modes existed was a rise.
@@ -87,8 +110,7 @@ const cards = Object.entries(SECTIONS).map(([key, cfg]) => {
       ? `Shown, ${items.length} titles.`
       : `Hidden: ${items.length} of ${cfg.floor} titles qualify.`,
     rows: items.map((it) => ({
-      name: it.title || `#${it.id}`,
-      href: it.path,
+      ...tap(it, key),
       sub: [
         status(it),
         `night ${it.nights}`,
@@ -96,12 +118,12 @@ const cards = Object.entries(SECTIONS).map(([key, cfg]) => {
         seen ? `this week: opened ${clicksOf(it.id)} of ${seen} times seen` : '',
         it.shown ? `since added: opened ${it.opened} of ${it.shown} times shown` : '',
         it.shown && mid ? `${(it.opened / it.shown / mid).toFixed(1)}x the shelf median` : '',
+        `score ${Math.round(it.score || 0)}`,
       ].filter(Boolean).join(' · '),
-      value: Math.round(it.score || 0),
-      unit: 'score',
+      tone: 'good',
     })),
-    next: (plan?.next?.[key] || []).map((it) => ({ name: it.title || `#${it.id}`, href: it.path, sub: it.reason, value: Math.round(it.score || 0), unit: 'score' })),
-    rejected: (plan?.rejected?.[key] || []).map((it) => ({ name: it.title || `#${it.id}`, href: it.path || undefined, sub: it.reason, value: '' })),
+    next: (plan?.next?.[key] || []).map((it) => ({ ...tap(it, key), sub: `${it.reason} · score ${Math.round(it.score || 0)}` })),
+    rejected: (plan?.rejected?.[key] || []).map((it) => ({ ...tap(it, key), sub: it.reason, tone: 'amber' })),
   }
 })
 
@@ -116,16 +138,27 @@ const logRows = recent.map((d) => ({
   value: '',
   tone: d.action === 'skip' ? 'bad' : undefined,
 }))
-// Tomorrow's homepage, as far as tonight's plan already decides it, with the
-// line that bans any title from it (src/lib/home-preview.js).
+// Tomorrow's homepage, as far as tonight's plan already decides it
+// (src/lib/home-preview.js), each title with its buttons.
 const tomorrow = tomorrowOf(plan).map((s) => ({
   ...s,
   rows: [
-    ...s.joins.map((t) => ({ name: t.title || `#${t.id}`, href: t.path, sub: `joins · ban: ${banLine(t.id)}`, value: '', tone: 'good' })),
-    ...s.stays.map((t) => ({ name: t.title || `#${t.id}`, href: t.path, sub: `stays${t.badge ? ` · "${t.badge}"` : ''} · ban: ${banLine(t.id)}`, value: '' })),
-    ...s.leaves.map((t) => ({ name: t.title || `#${t.id}`, href: t.path, sub: 'leaves: longest stay reached', value: '', tone: 'bad' })),
+    ...s.joins.map((t) => ({ ...tap(t, s.key), sub: 'joins', tone: 'good' })),
+    ...s.stays.map((t) => ({ ...tap(t, s.key), sub: `stays${t.badge ? ` · "${t.badge}"` : ''}` })),
+    ...s.leaves.map((t) => ({ ...tap(t, s.key), sub: 'leaves: longest stay reached', tone: 'bad' })),
   ],
 }))
+
+// The rules set with the buttons, newest first, each with Undo.
+const when = (iso) => new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' })
+const yourRules = dbRules.map((row) => ({
+  id: Number(row.anilist_id),
+  name: row.note || `AniList #${row.anilist_id}`,
+  section: row.action === 'pin' ? row.section : '',
+  sub: `${row.action === 'pin' ? `kept in ${SECTIONS[row.section]?.title || row.section}` : 'hidden from every shelf'} · set ${when(row.created_at)}`,
+  rule: { action: row.action, source: 'db' },
+}))
+const fileCount = (fileRules.ban || []).length + Object.values(fileRules.pin || {}).reduce((n, ids) => n + ids.length, 0)
 const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'block'].includes(d.action)).length
 ---
 
@@ -152,18 +185,29 @@ const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'bl
   </div>
 
   <div class="panel wide">
+    <h2>Your rules</h2>
+    <p class="say">
+      Set with the buttons on this page, newest first. A change applies at tonight's update,
+      when the homepage is planned and rebuilt.
+      {fileCount > 0 && ` ${fileCount} more ${fileCount === 1 ? 'rule is' : 'rules are'} set in data/home-rules.json.`}
+    </p>
+    <TapList rows={yourRules} empty="No rules yet. Use the buttons under any title below." />
+  </div>
+
+  <div class="panel wide">
     <h2>Tomorrow's homepage, if the numbers hold</h2>
     <p class="say">
       What tonight's plan already decides for the next night: titles at their longest stay leave,
       and the first of "would be next" take the free slots, within the nightly limits. A title can
-      still fall under a floor overnight. To keep one off, add its id to "ban" in data/home-rules.json
-      (the line is under each title) and push.
+      still fall under a floor overnight. "Hide from homepage" keeps a title off every shelf;
+      "Keep on homepage" holds it in that shelf while it passes the adult filter. Both apply at
+      tonight's update.
     </p>
     {tomorrow.length === 0 && <p class="empty">No plan yet.</p>}
     {tomorrow.map((s) => (
       <>
         <h3>{s.title} · {s.enabledTomorrow ? 'shown' : 'hidden'}</h3>
-        <BarList rows={s.rows} tone="good" empty="Empty." />
+        <TapList rows={s.rows} empty="Empty." />
       </>
     ))}
   </div>
@@ -172,13 +216,13 @@ const changes = log.filter((d) => d.night === plan?.night && ['add', 'drop', 'bl
     <div class="panel wide">
       <h2>On the homepage tonight: {card.title}</h2>
       <p class="say">{card.state} {card.week} {card.needs}</p>
-      <BarList rows={card.rows} tone="good" empty="No title qualifies yet." />
+      <TapList rows={card.rows} empty="No title qualifies yet." />
       <h3>Would be next</h3>
       <p class="say">Qualify, but got no slot tonight (the nightly limit or a full shelf).</p>
-      <BarList rows={card.next} empty="Nobody waiting." />
+      <TapList rows={card.next} empty="Nobody waiting." />
       <h3>Kept off, and why</h3>
-      <p class="say">The titles with the most saves that did not make it. Pin or ban in data/home-rules.json.</p>
-      <BarList rows={card.rejected} tone="amber" empty="Nothing kept off." />
+      <p class="say">The titles with the most saves that did not make it. "Keep on homepage" asks for one anyway; an adult or blocked title is still refused.</p>
+      <TapList rows={card.rejected} empty="Nothing kept off." />
     </div>
   ))}
 

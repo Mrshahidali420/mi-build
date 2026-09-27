@@ -1,0 +1,59 @@
+---
+/**
+ * A list of titles with the owner's buttons under each one: "Hide from
+ * homepage" and "Keep on homepage", or "Undo" for a title that already has a
+ * rule. The taps are handled by taps.js; the server checks every one.
+ *
+ * rows: [{ id, name, href?, sub?, tone?, section?, rule?, kind? }]
+ *   section: the shelf key a "Keep" pins the title to. Without it only
+ *            "Hide" is offered.
+ *   rule:    { action: 'ban' | 'pin' | 'keep', source: 'db' | 'file' }.
+ *            A rule from a file cannot be undone here, so it is only named.
+ *   kind:    'keep' for a keep-list row (Search tab).
+ * tone: the colour of the mark at the row's start (good, bad, amber).
+ */
+const { rows = [], empty = 'Nothing yet.' } = Astro.props
+
+const LABEL = { ban: 'Hidden from homepage', pin: 'Kept on homepage', keep: 'On the keep list' }
+---
+
+{rows.length === 0 && <p class="empty">{empty}</p>}
+{rows.length > 0 && (
+  <ol class="taps">
+    {rows.map((row) => (
+      <li
+        data-tap-row
+        data-id={String(row.id)}
+        data-section={row.section || ''}
+        data-name={row.name || ''}
+        data-kind={row.kind || ''}
+        class:list={[row.tone && `tone-${row.tone}`]}
+      >
+        <span class="name">
+          {row.href ? <a href={row.href}>{row.name}</a> : <span>{row.name}</span>}
+          {row.sub && <span class="sub">{row.sub}</span>}
+        </span>
+        <div class="acts">
+          {row.rule ? (
+            <>
+              <span class={`ruled ${row.rule.action}`}>{LABEL[row.rule.action] || row.rule.action}</span>
+              {row.rule.source === 'db'
+                ? <button type="button" class="quiet" data-op="remove" data-kind={row.rule.action}>Undo</button>
+                : <span class="sub">set in data/home-rules.json</span>}
+            </>
+          ) : (
+            <>
+              <button type="button" class="quiet" data-op="add" data-kind="ban">Hide from homepage</button>
+              {row.section && <button type="button" data-op="add" data-kind="pin">Keep on homepage</button>}
+            </>
+          )}
+        </div>
+        <p class="saved" role="status" aria-live="polite"></p>
+      </li>
+    ))}
+  </ol>
+)}
+
+<script>
+  import './taps.js'
+</script>

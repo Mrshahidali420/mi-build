@@ -10,7 +10,9 @@
  * 7 days) from D1, the catalog and the slug registry from data/, and writes
  * data/home-auto.json (what the homepage shows) and data/home-decisions.json
  * (what changed and why, for /my-admin/homepage). The rules live in
- * src/lib/home-plan.mjs.
+ * src/lib/home-plan.mjs. The owner's bans and pins come from
+ * data/home-rules.json plus the home_rules table the /my-admin buttons write
+ * (src/lib/owner-rules.mjs).
  *
  * It never fails the deploy. When D1 cannot be read, the token is refused,
  * the answer makes no sense, or last night's rollup is missing, it leaves
@@ -24,6 +26,7 @@ import { pathToFileURL } from 'node:url'
 import { writeFileAtomic, writeJsonAtomic } from '../src/lib/write-atomic.mjs'
 import { queryD1, queryD1Wrangler } from '../src/lib/d1-api.mjs'
 import { planHome, mergeDecisions, addDays, SECTIONS } from '../src/lib/home-plan.mjs'
+import { RULES_READ, mergeRules } from '../src/lib/owner-rules.mjs'
 import { upcomingAnime } from '../src/lib/schedule.mjs'
 import { HANDOFF_MIN_OPENS } from '../src/lib/alike.mjs'
 import { engineSql, titlePageSql, titlePagePath, buildNameIndex, searchTitleId } from '../src/lib/search-signals.js'
@@ -65,6 +68,10 @@ export const QUERIES = {
   // which shelf.
   homeActs: `SELECT day, name, item, detail, n FROM daily_actions
              WHERE day >= ? AND day <= ? AND name IN ('home_seen', 'home_click')`,
+  // The bans and pins set with the buttons on /my-admin/homepage. In the main
+  // set on purpose: a night that cannot read them skips and keeps the last
+  // plan, because planning without them could put a hidden title back.
+  ownerRules: RULES_READ,
 }
 
 /**
@@ -357,10 +364,13 @@ export async function runPlan({ query, dataDir = join(process.cwd(), 'data'), ni
     rows.home = await query(QUERIES.home, [from30, last])
     rows.fromHome = await query(QUERIES.fromHome, [from30, last])
     rows.homeActs = await query(QUERIES.homeActs, [from30, last])
+    rows.ownerRules = await query(QUERIES.ownerRules, [])
   } catch (error) {
     return skip(error.message || String(error))
   }
   if (!Object.values(rows).every(isArrayOfRows)) return skip('D1 answer was malformed')
+  // data/home-rules.json and the buttons, as one set of rules.
+  rules = mergeRules(rules, rows.ownerRules)
 
   // The search questions. Any trouble empties this one shelf and says so;
   // the other shelves are planned as usual.

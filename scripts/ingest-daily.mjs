@@ -25,7 +25,8 @@
  *   MAX_PROBE_PAGES=40 how deep a probe sweep may go before it gives up
  *
  * data/keep.json lists ids that are fetched every night no matter what the
- * probe says. See scripts/keep-list.mjs.
+ * probe says, and so do the ids kept from the /my-admin Search tab (D1). See
+ * scripts/keep-list.mjs.
  */
 
 import { appendFileSync, mkdirSync, readFileSync } from 'node:fs'
@@ -37,8 +38,9 @@ import {
   writeJsonAtomic,
 } from './anilist-core.mjs'
 import {
-  loadKeep, withKeptMedia, KEEP_CHARACTERS_QUERY, keepCharacterRecord, linkKeptCharacter,
+  loadKeepWithD1, withKeptMedia, KEEP_CHARACTERS_QUERY, keepCharacterRecord, linkKeptCharacter,
 } from './keep-list.mjs'
+import { queryD1 } from '../src/lib/d1-api.mjs'
 
 const STATE_FILE = join(DATA_DIR, 'ingest-state.json')
 const DAILY_RAW = join(RAW_DIR, 'daily.jsonl')
@@ -193,7 +195,7 @@ async function main() {
     await sleep(REQUEST_DELAY_MS)
   }
 
-  const keep = loadKeep()
+  const keep = await loadKeepWithD1(queryD1)
   const ids = withKeptMedia([...wanted], keep)
   console.log(`Probe done in ${calls} calls. ${wanted.size} titles need a full fetch, ${keep.media.length} more are on the keep list.`)
 

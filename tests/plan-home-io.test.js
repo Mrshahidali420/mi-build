@@ -79,6 +79,7 @@ test('a good answer writes both files, with the guardrails applied', async () =>
     [QUERIES.history]: [{ day: '2026-09-01' }],
     [QUERIES.firsts]: [],
     [QUERIES.homeActs]: [],
+    [QUERIES.ownerRules]: [],
     [QUERIES.pages]: ids.flatMap((id) => days.map((day) => ({ day, path: `/manhwa/${id === 99 ? 'ls' : `t-${id}`}`, views: 50, people: 10, entries: 5, quick_exits: 1 }))),
     [QUERIES.actions]: ids.flatMap((id) => days.slice(0, 4).map((day) => ({ day, name: 'list_add', item: String(id), n: 3 }))),
     [QUERIES.savers]: ids.map((id) => ({ item: String(id), people: 12 })),
@@ -199,4 +200,60 @@ test('the search questions failing costs only the new shelf', async () => {
   assert.equal(out.ok, true)
   assert.ok(said.some((line) => /Hot this week shelf stays empty/.test(line)))
   assert.deepEqual(out.plan.sections.searching.items, [])
+})
+
+// ------------------------------------------------ the owner's buttons (D1)
+
+/** The good night from above, with the owner's rules as D1 would send them. */
+function goodNight(ownerRules) {
+  const days = ['2026-09-21', '2026-09-22', '2026-09-23', '2026-09-24', '2026-09-25', '2026-09-26']
+  const ids = [21, 22, 23, 24, 25, 26, 27, 28, 99]
+  const answers = {
+    [QUERIES.rollup]: [{ day: '2026-09-26' }],
+    [QUERIES.history]: [{ day: '2026-09-01' }],
+    [QUERIES.pages]: ids.flatMap((id) => days.map((day) => ({ day, path: `/manhwa/${id === 99 ? 'ls' : `t-${id}`}`, views: 50, people: 10, entries: 5, quick_exits: 1 }))),
+    [QUERIES.actions]: ids.flatMap((id) => days.slice(0, 4).map((day) => ({ day, name: 'list_add', item: String(id), n: 3 }))),
+    [QUERIES.savers]: ids.map((id) => ({ item: String(id), people: 12 })),
+    [QUERIES.home]: days.map((day) => ({ day, views: 500 })),
+    [QUERIES.ownerRules]: ownerRules,
+  }
+  return async (sql) => answers[sql] ?? []
+}
+
+test('a ban from the buttons keeps a title off; a pin from the buttons puts one in', async () => {
+  const dir = dataDir()
+  // 28 would be picked on the numbers; 29 has no numbers at all (and 1 to 20
+  // sit in Trending, where a pin is refused as already on the homepage).
+  const query = goodNight([
+    { anilist_id: 28, action: 'ban', section: '' },
+    { anilist_id: 29, action: 'pin', section: 'saving' },
+  ])
+  const out = await runPlan({ query, dataDir: dir, night: NIGHT, say: quiet })
+  assert.equal(out.ok, true)
+  const got = out.plan.sections.saving.items
+  assert.ok(!Object.values(out.plan.sections).some((s) => s.items.some((it) => it.id === 28)), 'banned everywhere')
+  assert.equal(got[0].id, 29, 'the pin leads its shelf')
+  assert.ok(got[0].pinned)
+})
+
+test('a pin from the buttons never bypasses the adult filter', async () => {
+  const dir = dataDir()
+  // 99 is "Lolicon Saga": the pin is a request, and it is refused.
+  const out = await runPlan({ query: goodNight([{ anilist_id: 99, action: 'pin', section: 'saving' }]), dataDir: dir, night: NIGHT, say: quiet })
+  assert.equal(out.ok, true)
+  assert.ok(!Object.values(out.plan.sections).some((s) => s.items.some((it) => it.id === 99)))
+  assert.ok(out.decisions.some((d) => d.id === 99 && d.action === 'block' && /pin refused/.test(d.reason)))
+})
+
+test('owner rules that cannot be read skip the night and keep the last plan', async () => {
+  const dir = dataDir()
+  const good = goodNight([])
+  const query = async (sql, params) => {
+    if (sql === QUERIES.ownerRules) throw new D1Error('D1 answered 400: no such table: home_rules')
+    return good(sql, params)
+  }
+  const out = await runPlan({ query, dataDir: dir, night: NIGHT, say: quiet })
+  assert.equal(out.ok, false)
+  assert.match(out.reason, /home_rules/)
+  assert.equal(read(dir, 'home-auto.json'), SEED)
 })

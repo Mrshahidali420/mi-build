@@ -145,9 +145,15 @@ jobs:
       # workflow (backfill.yml), because it takes hours.
       # If AniList has a bad day, we still build and deploy from the data
       # we already have. A stale site beats a dead site.
+      # The token is only for reading the ids kept from /my-admin's Search tab
+      # (keep_media in D1). Without it the run uses data/keep.json alone.
       - name: Pull changed data
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_D1_TOKEN: ${{ secrets.CLOUDFLARE_D1_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 735d0fbab0757142b2c29917563e0626
         run: node --max-old-space-size=6000 scripts/ingest-daily.mjs
 
       # The walk keeps its place in data/characters-walk.json and never
