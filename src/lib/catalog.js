@@ -12,6 +12,7 @@ import { reslugAll } from './reslug.mjs'
 import { loadRegistry } from './slug-registry.mjs'
 import { dropBlocked, dropBlockedRows } from './blocked.js'
 import { migrateAliasedLinksAll } from './platform-aliases.mjs'
+import { fixNovelAppearanceKindsAll } from './novel-appearance-kind.mjs'
 
 // Resolved from the working directory, not from import.meta.url: this module is
 // bundled into dist/_worker.js before the prerender step runs it, so a path
@@ -49,6 +50,13 @@ import { characterHasPage, genreSlug } from './format.js'
 export const comics = comicsRaw.filter((c) => c.kind !== 'novel')
 export const novels = comicsRaw.filter((c) => c.kind === 'novel')
 export const anime = animeRaw
+
+// A character record ingested before a novel title's appearance carried its
+// own kind (see src/lib/novel-appearance-kind.mjs) keeps a dead /manga or
+// /manhwa or /manhua link where the page only exists at /novel/<slug>. Fixed
+// here, on every build, so an old record reads the same as one ingested
+// today, without a refetch.
+fixNovelAppearanceKindsAll(characterData, new Set(novels.map((n) => n.slug)))
 
 // Everything a Worker-rendered page also needs is re-exported, so the pages
 // that were already written against catalog.js keep working unchanged.

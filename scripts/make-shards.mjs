@@ -33,6 +33,7 @@ import { indexAiring, attachEpisodes } from '../src/lib/episodes.mjs'
 import { indexWhereLinks, attachWhereLinks } from '../src/lib/where-links.mjs'
 import { licensedPools, alikeFor } from '../src/lib/alike.mjs'
 import { migrateAliasedLinksAll } from '../src/lib/platform-aliases.mjs'
+import { fixNovelAppearanceKindsAll } from '../src/lib/novel-appearance-kind.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = join(ROOT, 'public', 'd')
@@ -713,6 +714,11 @@ async function main() {
   const frozen = !!registry && process.env.REGISTRY_READONLY !== '1'
   reslugAll(comics, anime, characters, { registry, frozen })
   since('reslug')
+  // See src/lib/novel-appearance-kind.mjs: an old character record can carry
+  // a dead /manga or /manhwa or /manhua link for a title that is really a
+  // novel. Fixed here, after slugs are final, so an old record reads the
+  // same as one ingested today.
+  fixNovelAppearanceKindsAll(characters, new Set(comics.filter((c) => c.kind === 'novel').map((c) => c.slug)))
 
   const titlesWithExtras = attachEnrich([...comics, ...anime])
   const animeWithThemes = attachThemes(anime)

@@ -368,8 +368,11 @@ async function main() {
   }
 
   // Fill in where each character appears, then keep only the ones worth a page.
-  for (const [items, kind] of [[comics, 'comic'], [anime, 'anime']]) {
+  for (const [items, defaultKind] of [[comics, 'comic'], [anime, 'anime']]) {
     for (const item of items) {
+      // A title in `comics` can itself be a novel; the appearance carries
+      // the title's own kind, never the group's fixed default.
+      const kind = item.kind || defaultKind
       for (const ref of item.characters) {
         const person = CHARACTERS.get(ref.id)
         if (!person) continue

@@ -571,8 +571,11 @@ export function assembleAndWrite(comics, anime, startedAt = Date.now()) {
     if (person.slug) bySlug.set(person.slug, person)
   }
 
-  for (const [items, kind] of [[comics, 'comic'], [anime, 'anime']]) {
+  for (const [items, defaultKind] of [[comics, 'comic'], [anime, 'anime']]) {
     for (const item of items) {
+      // A title in `comics` can itself be a novel (see kindOfMedia above), so
+      // the appearance carries the title's own kind, never the group's.
+      const kind = item.kind || defaultKind
       for (const ref of item.characters || []) {
         // Every title page links to its cast, so a character with no record
         // here became a dead link: about one in four of them. The reference
@@ -611,8 +614,13 @@ export function assembleAndWrite(comics, anime, startedAt = Date.now()) {
   // keeps the character too, so a /characters page never shrinks away either.
   // Fresh rows from today's cast lists win; only the missing ones come back.
   const titleByKey = new Map()
-  for (const [items, kind] of [[comics, 'comic'], [anime, 'anime']]) {
-    for (const item of items) titleByKey.set(`${kind}/${item.slug}`, item)
+  const titleBySlug = new Map()
+  for (const [items, defaultKind] of [[comics, 'comic'], [anime, 'anime']]) {
+    for (const item of items) {
+      const kind = item.kind || defaultKind
+      titleByKey.set(`${kind}/${item.slug}`, item)
+      titleBySlug.set(item.slug, item)
+    }
   }
   let restored = 0
   for (const [slug, rows] of PRIOR_ROWS) {
@@ -620,13 +628,18 @@ export function assembleAndWrite(comics, anime, startedAt = Date.now()) {
     if (!person) continue
     const have = new Set(person.appearsIn.map((a) => `${a.kind}/${a.slug}`))
     for (const row of rows) {
-      const key = `${row.kind}/${row.slug}`
-      if (have.has(key)) continue
-      const item = titleByKey.get(key)
+      // An old row may still carry the pre-fix kind 'comic' for a title that
+      // is really a novel: resolve by slug so the title's own kind wins,
+      // never the row's stale one.
+      const item = titleByKey.get(`${row.kind}/${row.slug}`) || titleBySlug.get(row.slug)
       if (!item) continue
+      const kind = item.kind || row.kind
+      const key = `${kind}/${row.slug}`
+      if (have.has(key)) continue
       have.add(key)
       person.appearsIn.push({
         ...row,
+        kind,
         title: item.title,
         cover: item.cover,
         country: item.country,
