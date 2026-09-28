@@ -132,9 +132,9 @@ const jsonld = [
     <div class="title-body">
       <p class="title-answer">{answer.lede}</p>
 
-      {/* The reader came here to buy. The shops go first. */}
-      <BuyBox heading={`Own ${item.title}`} sub={buyCopy.sub} rows={buys} />
-
+      {/* The reader came here to buy. Real hand-picked products go first, as
+          on the title page; the store searches follow. Only the first box
+          says the support line. */}
       {picked && (
         <TopPicks
           heading={`Top picks for ${picked.from || item.title}`}
@@ -142,9 +142,10 @@ const jsonld = [
           byHand={picked.byHand}
           picks={picked.picks}
           max={8}
-          support={false}
         />
       )}
+
+      <BuyBox heading={`Own ${item.title}`} sub={buyCopy.sub} rows={buys} support={!picked} />
 
       {
         answer.paragraphs.map((block) => (
