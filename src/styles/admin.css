@@ -449,6 +449,31 @@ code { overflow-wrap: anywhere; font-size: 12.5px; color: var(--accent-soft); }
 }
 .feed.no-icon li { grid-template-columns: 6px 38px minmax(0, 1fr) auto; }
 .feed li + li { border-top: 1px solid var(--line); }
+/* A date header above each day's rows in a time-ordered feed: "Today, 28
+   Sep", "Yesterday, 27 Sep", or "Fri, 26 Sep" for anything older. */
+.feed li.day-header {
+  display: block;
+  grid-column: 1 / -1;
+  padding: 12px 2px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+  border-top: none;
+  min-height: 0;
+}
+.feed li.day-header:first-child { padding-top: 2px; }
+.feed li.day-header + li { border-top: none; }
+h3.day-header {
+  margin: 16px 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+}
+h3.day-header:first-of-type { margin-top: 4px; }
 .feed .dot { width: 6px; height: 6px; border-radius: 50%; }
 .feed time { color: var(--faint); font-size: 12px; }
 .feed .what { min-width: 0; }

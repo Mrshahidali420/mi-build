@@ -317,6 +317,10 @@ export function clock(ts) {
 
 export const ADMIN_TZ = 'Asia/Karachi'
 
+// Read the hour/minute out in 24-hour form first, then say them as words.
+// Intl's own hour12 option gives "12:08 AM" (uppercase, and "12" spelled two
+// different ways depending on locale); reading the 24-hour parts and doing
+// the am/pm math by hand gives one predictable shape everywhere: "1:26 pm".
 const ADMIN_HM = new Intl.DateTimeFormat('en-GB', {
   timeZone: ADMIN_TZ,
   hour: '2-digit',
@@ -333,23 +337,108 @@ const ADMIN_DAY_HM = new Intl.DateTimeFormat('en-GB', {
   hour12: false,
 })
 
-/** A clock time, Pakistan time. Used everywhere inside /my-admin. */
-export function adminClock(ts) {
-  return `${ADMIN_HM.format(new Date(ts))} PKT`
+const ADMIN_DAY = new Intl.DateTimeFormat('en-GB', {
+  timeZone: ADMIN_TZ,
+  day: 'numeric',
+  month: 'short',
+})
+
+const ADMIN_WEEKDAY = new Intl.DateTimeFormat('en-GB', {
+  timeZone: ADMIN_TZ,
+  weekday: 'short',
+})
+
+// The PKT calendar date of a timestamp, as 'YYYY-MM-DD', for comparing two
+// timestamps' days without touching the server's own UTC date.
+const ADMIN_YMD = new Intl.DateTimeFormat('en-CA', {
+  timeZone: ADMIN_TZ,
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+})
+
+// Node's ICU spells September "Sept" in the short form; every other month
+// stays three letters. Trimmed back to "Sep" so every month reads the same
+// width, matching the spelled-out examples ("28 Sep").
+const shortMonth = (s) => s.replace(/\bSept\b/, 'Sep')
+
+/** "13:26" -> "1:26 pm". "00:34" -> "12:34 am". Hour and minute are already
+ * in the target time zone; this only chooses the words. */
+function say12Hour(hour, minute) {
+  const ampm = hour >= 12 ? 'pm' : 'am'
+  const h12 = hour % 12 || 12
+  return `${h12}:${String(minute).padStart(2, '0')} ${ampm}`
 }
 
-/** A day and a clock time, Pakistan time: "24 Sep, 12:08 PKT". For a "last
+/** en-GB's 24-hour "HH:MM" pulled back apart into numbers. */
+function readHM(formatter, ts) {
+  const [h, m] = formatter.format(new Date(ts)).split(':').map(Number)
+  return [h, m]
+}
+
+/** A clock time, Pakistan time, 12-hour with am/pm. Used everywhere inside
+ * /my-admin: "1:26 pm PKT". */
+export function adminClock(ts) {
+  const [h, m] = readHM(ADMIN_HM, ts)
+  return `${say12Hour(h, m)} PKT`
+}
+
+/** A day and a clock time, Pakistan time: "24 Sep, 12:08 pm PKT". For a "last
  * closed" or "last ran" line, where the day alone is not enough. */
 export function adminDateTime(ts) {
-  return `${ADMIN_DAY_HM.format(new Date(ts)).replace(',', '')} PKT`
+  const stamp = ADMIN_DAY_HM.format(new Date(ts))
+  const [dayPart, hmPart] = stamp.split(', ')
+  const [h, m] = hmPart.split(':').map(Number)
+  return `${shortMonth(dayPart)} ${say12Hour(h, m)} PKT`
 }
 
 /** The hour-by-hour chart on Now is bucketed by UTC hour (see the SQL in
  * my-admin.astro) so the bucket itself never moves. Only the label on each
- * column is said in Pakistan time: UTC hour 0 is 05:00 in Pakistan. */
+ * column is said in Pakistan time: UTC hour 0 is 5 am in Pakistan. */
 export function pktHourLabel(utcHour) {
   const h = ((Number(utcHour) || 0) + 5) % 24
-  return `${String(h).padStart(2, '0')}:00`
+  const ampm = h >= 12 ? 'pm' : 'am'
+  const h12 = h % 12 || 12
+  return `${h12} ${ampm}`
+}
+
+/** The PKT calendar date of a timestamp, as 'YYYY-MM-DD'. */
+function pktDayKey(ts) {
+  return ADMIN_YMD.format(new Date(ts))
+}
+
+/** A date header for a time-ordered feed, in Pakistan time: "Today, 28 Sep",
+ * "Yesterday, 27 Sep", or "Fri, 26 Sep" for anything older. `now` is the
+ * moment the page was drawn, so "Today" always means the reader's today, not
+ * whenever the row happened to be written. */
+export function pktDayLabel(ts, now = Date.now()) {
+  const day = pktDayKey(ts)
+  const dm = shortMonth(ADMIN_DAY.format(new Date(ts)))
+  if (day === pktDayKey(now)) return `Today, ${dm}`
+  if (day === pktDayKey(now - 86400000)) return `Yesterday, ${dm}`
+  return `${ADMIN_WEEKDAY.format(new Date(ts))}, ${dm}`
+}
+
+/**
+ * Split a time-ordered list of rows (newest first) into groups under a PKT
+ * day header, for a feed. A new group starts only when the PKT calendar date
+ * actually changes between one row and the next, so this never reorders rows
+ * and never merges two different days into one header even if the rows
+ * happen to share a label by coincidence — consecutive rows only, same as
+ * groupRepeats (admin-chart.js). `tsOf` reads the timestamp off a row;
+ * defaults to `row.ts`.
+ *
+ * Returns [{ label, rows }, ...].
+ */
+export function groupByPktDay(rows, now = Date.now(), tsOf = (row) => row.ts) {
+  const groups = []
+  for (const row of rows || []) {
+    const label = pktDayLabel(tsOf(row), now)
+    const last = groups[groups.length - 1]
+    if (last && last.label === label) last.rows.push(row)
+    else groups.push({ label, rows: [row] })
+  }
+  return groups
 }
 
 /** A big number with spaces, so 12400 reads as 12 400. */

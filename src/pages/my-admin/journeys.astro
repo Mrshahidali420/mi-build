@@ -15,6 +15,7 @@ import {
   adminClock,
   countryName,
   fmtDwell,
+  groupByPktDay,
   humanize,
   num,
   sectionName,
@@ -93,6 +94,8 @@ if (signedIn) {
   }
 }
 
+const visitDays = groupByPktDay(visits, Date.now(), (row) => row.started)
+
 const edgeRows = edges.map((row) => ({
   name: `${sectionName(row.from_type)} → ${sectionName(row.to_type)}`,
   value: row.moves || 0,
@@ -115,24 +118,29 @@ const edgeRows = edges.map((row) => ({
     <h2>Recent visits, step by step</h2>
     <p class="say">One block is one person in one visit, read left to right. Amber text is a click out to a platform or a shop.</p>
     {visits.length === 0 && <p class="empty">No multi-page visits in this window yet.</p>}
-    {visits.map((visit) => (
-      <div class="visit">
-        <div class="meta">
-          {adminClock(visit.started)} · {flagOf(visit.country) ? `${flagOf(visit.country)} ` : ''}{countryName(visit.country)} · {visit.device} · {num(visit.steps.length)} pages
-        </div>
-        <div class="chain">
-          {visit.steps.map((step, i) => (
-            <>
-              {i > 0 && <span class="arrow" aria-label="then">→</span>}
-              <span class="hop" title={`${step.page} (${sectionName(step.type)})`}>
-                {step.page}
-                {step.stayed > 0 && <small>{fmtDwell(step.stayed)}</small>}
-              </span>
-              {step.did.length > 0 && <span class="did">clicked {step.did.join(', ')}</span>}
-            </>
-          ))}
-        </div>
-      </div>
+    {visitDays.map((day) => (
+      <>
+        <h3 class="day-header">{day.label}</h3>
+        {day.rows.map((visit) => (
+          <div class="visit">
+            <div class="meta">
+              {adminClock(visit.started)} · {flagOf(visit.country) ? `${flagOf(visit.country)} ` : ''}{countryName(visit.country)} · {visit.device} · {num(visit.steps.length)} pages
+            </div>
+            <div class="chain">
+              {visit.steps.map((step, i) => (
+                <>
+                  {i > 0 && <span class="arrow" aria-label="then">→</span>}
+                  <span class="hop" title={`${step.page} (${sectionName(step.type)})`}>
+                    {step.page}
+                    {step.stayed > 0 && <small>{fmtDwell(step.stayed)}</small>}
+                  </span>
+                  {step.did.length > 0 && <span class="did">clicked {step.did.join(', ')}</span>}
+                </>
+              ))}
+            </div>
+          </div>
+        ))}
+      </>
     ))}
   </div>
 

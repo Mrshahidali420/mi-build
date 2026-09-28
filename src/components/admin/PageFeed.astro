@@ -11,7 +11,7 @@
  *
  * rows: [{ ts, href, name, section, from, country, step, device }]
  */
-import { adminClock, countryName } from '../../lib/admin.js'
+import { adminClock, countryName, groupByPktDay } from '../../lib/admin.js'
 import { flagOf } from '../../lib/admin-chart.js'
 
 const { rows = [], empty = 'Nothing yet.' } = Astro.props
@@ -19,32 +19,38 @@ const lines = rows.map((row) => ({
   ...row,
   where: row.country ? `${flagOf(row.country) ? `${flagOf(row.country)} ` : ''}${countryName(row.country)}` : '',
 }))
+const days = groupByPktDay(lines)
 ---
 
 {lines.length === 0 && <p class="empty">{empty}</p>}
 {lines.length > 0 && (
   <ul class="feed no-icon">
-    {lines.map((row) => (
-      <li>
-        <span
-          class={`dot ${(row.step || 1) > 1 ? 'bg-dim' : 'bg-accent'}`}
-          title={(row.step || 1) > 1 ? 'Moved on from another page' : 'The visit started here'}
-        ></span>
-        <time datetime={new Date(row.ts).toISOString()}>{adminClock(row.ts).replace(' PKT', '')}</time>
-        <span class="what">
-          <span class="line1" title={row.name}>
-            <a href={row.href}>{row.name}</a>
-          </span>
-          <span class="meta">
-            {row.section !== row.name && `${row.section} · `}
-            <span class="src">{row.from}</span>
-            {row.where && ` · ${row.where}`}
-            {` · page ${row.step || 1}`}
-            {row.device && ` · ${row.device}`}
-          </span>
-        </span>
-        <span></span>
-      </li>
+    {days.map((day) => (
+      <>
+        <li class="day-header">{day.label}</li>
+        {day.rows.map((row) => (
+          <li>
+            <span
+              class={`dot ${(row.step || 1) > 1 ? 'bg-dim' : 'bg-accent'}`}
+              title={(row.step || 1) > 1 ? 'Moved on from another page' : 'The visit started here'}
+            ></span>
+            <time datetime={new Date(row.ts).toISOString()}>{adminClock(row.ts).replace(' PKT', '')}</time>
+            <span class="what">
+              <span class="line1" title={row.name}>
+                <a href={row.href}>{row.name}</a>
+              </span>
+              <span class="meta">
+                {row.section !== row.name && `${row.section} · `}
+                <span class="src">{row.from}</span>
+                {row.where && ` · ${row.where}`}
+                {` · page ${row.step || 1}`}
+                {row.device && ` · ${row.device}`}
+              </span>
+            </span>
+            <span></span>
+          </li>
+        ))}
+      </>
     ))}
   </ul>
 )}

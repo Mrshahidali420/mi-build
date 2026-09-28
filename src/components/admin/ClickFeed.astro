@@ -19,7 +19,7 @@
  * data-platform, same as one written just now.
  */
 import PlatformIcon from './PlatformIcon.astro'
-import { SPOTS, adminClock, countryName, humanize, searchTarget, sectionName, shopName, words } from '../../lib/admin.js'
+import { SPOTS, adminClock, countryName, groupByPktDay, humanize, searchTarget, sectionName, shopName, words } from '../../lib/admin.js'
 import { clickKey, flagOf, groupRepeats } from '../../lib/admin-chart.js'
 
 const { rows = [], empty = 'No clicks yet.' } = Astro.props
@@ -50,6 +50,7 @@ const lines = groupRepeats(rows, clickKey).map((row) => {
     ].filter(Boolean).join(' · '),
   }
 })
+const days = groupByPktDay(lines)
 ---
 
 {lines.length === 0 && <p class="empty">{empty}</p>}
@@ -62,29 +63,34 @@ const lines = groupRepeats(rows, clickKey).map((row) => {
       <span>×2 = same link twice in a minute</span>
     </div>
     <ul class="feed">
-      {lines.map((row) => (
-        <li>
-          <span class={`dot bg-${TONE[row.kind] || 'dim'}`} title={WORD[row.kind] || row.kind}></span>
-          <time datetime={new Date(row.ts).toISOString()}>{adminClock(row.ts).replace(' PKT', '')}</time>
-          <PlatformIcon name={row.who} />
-          <span class="what">
-            <span class="line1" title={`${row.who} · ${row.what}`}>
-              <span class="sr-only">{WORD[row.kind] || row.kind}: </span>
-              {row.target ? (
-                <a href={row.target} rel="noopener nofollow" target="_blank">{row.who}</a>
+      {days.map((day) => (
+        <>
+          <li class="day-header">{day.label}</li>
+          {day.rows.map((row) => (
+            <li>
+              <span class={`dot bg-${TONE[row.kind] || 'dim'}`} title={WORD[row.kind] || row.kind}></span>
+              <time datetime={new Date(row.ts).toISOString()}>{adminClock(row.ts).replace(' PKT', '')}</time>
+              <PlatformIcon name={row.who} />
+              <span class="what">
+                <span class="line1" title={`${row.who} · ${row.what}`}>
+                  <span class="sr-only">{WORD[row.kind] || row.kind}: </span>
+                  {row.target ? (
+                    <a href={row.target} rel="noopener nofollow" target="_blank">{row.who}</a>
+                  ) : (
+                    <strong>{row.who}</strong>
+                  )}
+                  {' · '}{row.what}
+                </span>
+                <span class="meta" title={row.meta}>{row.meta}</span>
+              </span>
+              {row.count > 1 ? (
+                <span class="count" title={`${row.count} clicks in the same minute`}>×{row.count}</span>
               ) : (
-                <strong>{row.who}</strong>
+                <span></span>
               )}
-              {' · '}{row.what}
-            </span>
-            <span class="meta" title={row.meta}>{row.meta}</span>
-          </span>
-          {row.count > 1 ? (
-            <span class="count" title={`${row.count} clicks in the same minute`}>×{row.count}</span>
-          ) : (
-            <span></span>
-          )}
-        </li>
+            </li>
+          ))}
+        </>
       ))}
     </ul>
   </>
