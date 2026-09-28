@@ -11,7 +11,7 @@ import BarList from '../../components/admin/BarList.astro'
 import Columns from '../../components/admin/Columns.astro'
 import Kpi from '../../components/admin/Kpi.astro'
 import { envOf } from '../../lib/runtime.js'
-import { gate, rangeOf, clock, dayKey, humanize, num, sourceName, countryName } from '../../lib/admin.js'
+import { gate, rangeOf, adminClock, adminDateTime, dayKey, humanize, num, sourceName, countryName } from '../../lib/admin.js'
 import { shortDay } from '../../lib/admin-chart.js'
 import { pagesFor } from '../../lib/admin-data.js'
 import { actionsFor, counterHealth, missingFor, tally } from '../../lib/admin-more.js'
@@ -70,10 +70,10 @@ const botHint = botJumpHint(bots.days)
 const missingRows = missing.map((row) => ({
   name: row.path,
   sub: row.referrer
-    ? `sent from ${sourceName(row.referrer)} · last ${clock(row.last)}`
+    ? `sent from ${sourceName(row.referrer)} · last ${adminClock(row.last)}`
     : row.prev
-      ? `sent from our own ${humanize(row.prev, '')} · last ${clock(row.last)}`
-      : `typed or a bookmark · last ${clock(row.last)}`,
+      ? `sent from our own ${humanize(row.prev, '')} · last ${adminClock(row.last)}`
+      : `typed or a bookmark · last ${adminClock(row.last)}`,
   value: row.hits,
   unit: 'hits',
   tone: 'bad',
@@ -93,7 +93,7 @@ const busiest = Math.max(health.today, ...health.log.map((row) => row.rows || 0)
 const writes = busiest * WRITES_PER_EVENT + NIGHT_WRITES
 const logRows = health.log.map((row) => ({
   name: row.day,
-  sub: `closed ${new Date(row.ran_at).toISOString().slice(0, 16).replace('T', ' ')} UTC`,
+  sub: `closed ${adminDateTime(row.ran_at)}`,
   value: row.rows || 0,
   unit: 'events',
 }))

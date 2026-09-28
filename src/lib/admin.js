@@ -304,6 +304,54 @@ export function clock(ts) {
   return `${new Date(ts).toISOString().slice(11, 16)} UTC`
 }
 
+// ----------------------------------------------------------- Pakistan time
+//
+// The reading room at /my-admin is read by one person, in Pakistan. Every
+// clock face it draws — the click feed, the page feed, "last seen", the
+// night job's closed-at line, the hour-by-hour chart — speaks Pakistan time,
+// UTC+5 with no daylight saving, never the server's own UTC. Day keys, the
+// five date ranges and what "today" means all stay UTC underneath (see
+// dayKey/rangeOf above): only the clock FACE changes here, not the clock.
+// clock() above is left alone because it also answers a public question —
+// "when does this episode air in Japan" — where UTC is the right unit.
+
+export const ADMIN_TZ = 'Asia/Karachi'
+
+const ADMIN_HM = new Intl.DateTimeFormat('en-GB', {
+  timeZone: ADMIN_TZ,
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+})
+
+const ADMIN_DAY_HM = new Intl.DateTimeFormat('en-GB', {
+  timeZone: ADMIN_TZ,
+  day: 'numeric',
+  month: 'short',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+})
+
+/** A clock time, Pakistan time. Used everywhere inside /my-admin. */
+export function adminClock(ts) {
+  return `${ADMIN_HM.format(new Date(ts))} PKT`
+}
+
+/** A day and a clock time, Pakistan time: "24 Sep, 12:08 PKT". For a "last
+ * closed" or "last ran" line, where the day alone is not enough. */
+export function adminDateTime(ts) {
+  return `${ADMIN_DAY_HM.format(new Date(ts)).replace(',', '')} PKT`
+}
+
+/** The hour-by-hour chart on Now is bucketed by UTC hour (see the SQL in
+ * my-admin.astro) so the bucket itself never moves. Only the label on each
+ * column is said in Pakistan time: UTC hour 0 is 05:00 in Pakistan. */
+export function pktHourLabel(utcHour) {
+  const h = ((Number(utcHour) || 0) + 5) % 24
+  return `${String(h).padStart(2, '0')}:00`
+}
+
 /** A big number with spaces, so 12400 reads as 12 400. */
 export function num(value) {
   return String(Math.round(Number(value) || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ')

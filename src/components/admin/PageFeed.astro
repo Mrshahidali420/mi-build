@@ -11,7 +11,7 @@
  *
  * rows: [{ ts, href, name, section, from, country, step, device }]
  */
-import { clock, countryName } from '../../lib/admin.js'
+import { adminClock, countryName } from '../../lib/admin.js'
 import { flagOf } from '../../lib/admin-chart.js'
 
 const { rows = [], empty = 'Nothing yet.' } = Astro.props
@@ -30,7 +30,7 @@ const lines = rows.map((row) => ({
           class={`dot ${(row.step || 1) > 1 ? 'bg-dim' : 'bg-accent'}`}
           title={(row.step || 1) > 1 ? 'Moved on from another page' : 'The visit started here'}
         ></span>
-        <time datetime={new Date(row.ts).toISOString()}>{clock(row.ts).replace(' UTC', '')}</time>
+        <time datetime={new Date(row.ts).toISOString()}>{adminClock(row.ts).replace(' PKT', '')}</time>
         <span class="what">
           <span class="line1" title={row.name}>
             <a href={row.href}>{row.name}</a>

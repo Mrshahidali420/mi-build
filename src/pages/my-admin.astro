@@ -18,10 +18,11 @@ import {
   gate,
   ask,
   askOne,
-  clock,
+  adminClock,
   CLICK_FILTERS,
   clickFilterOf,
   dayKey,
+  pktHourLabel,
   RECENT,
   humanize,
   num,
@@ -147,7 +148,7 @@ const byHour = new Map(hours.map((row) => [Number(row.hour), row]))
 const nowHour = new Date(now).getUTCHours()
 const hourColumns = Array.from({ length: 24 }, (_, hour) => {
   const row = byHour.get(hour) || {}
-  const tag = `${String(hour).padStart(2, '0')}:00`
+  const tag = pktHourLabel(hour)
   return {
     label: tag,
     parts: [row.views || 0, row.clicks || 0],
@@ -177,7 +178,7 @@ const brokenRows = missing.map((row) => ({
       : row.prev
         ? `sent from our own ${humanize(row.prev, '')}`
         : 'typed or a bookmark'
-  } · last ${clock(row.last).replace(' UTC', '')}`,
+  } · last ${adminClock(row.last).replace(' PKT', '')}`,
   value: row.hits || 0,
   unit: 'hits',
 }))
@@ -219,7 +220,7 @@ const brokenRows = missing.map((row) => ({
 
   <div class="panel wide">
     <h2>How is today going, hour by hour?</h2>
-    <p class="say">Page views (blue) with clicks out on top (amber). The bright column is this hour, UTC.</p>
+    <p class="say">Page views (blue) with clicks out on top (amber). The bright column is this hour, Pakistan time.</p>
     {viewsToday + clicksToday === 0 ? (
       <p class="empty">Nothing counted yet today.</p>
     ) : (

@@ -19,7 +19,7 @@
  * data-platform, same as one written just now.
  */
 import PlatformIcon from './PlatformIcon.astro'
-import { SPOTS, clock, countryName, humanize, searchTarget, sectionName, shopName, words } from '../../lib/admin.js'
+import { SPOTS, adminClock, countryName, humanize, searchTarget, sectionName, shopName, words } from '../../lib/admin.js'
 import { clickKey, flagOf, groupRepeats } from '../../lib/admin-chart.js'
 
 const { rows = [], empty = 'No clicks yet.' } = Astro.props
@@ -65,7 +65,7 @@ const lines = groupRepeats(rows, clickKey).map((row) => {
       {lines.map((row) => (
         <li>
           <span class={`dot bg-${TONE[row.kind] || 'dim'}`} title={WORD[row.kind] || row.kind}></span>
-          <time datetime={new Date(row.ts).toISOString()}>{clock(row.ts).replace(' UTC', '')}</time>
+          <time datetime={new Date(row.ts).toISOString()}>{adminClock(row.ts).replace(' PKT', '')}</time>
           <PlatformIcon name={row.who} />
           <span class="what">
             <span class="line1" title={`${row.who} · ${row.what}`}>

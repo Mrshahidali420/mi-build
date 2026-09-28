@@ -12,7 +12,7 @@ import {
   gate,
   ask,
   rangeOf,
-  clock,
+  adminClock,
   countryName,
   fmtDwell,
   humanize,
@@ -118,7 +118,7 @@ const edgeRows = edges.map((row) => ({
     {visits.map((visit) => (
       <div class="visit">
         <div class="meta">
-          {clock(visit.started)} · {flagOf(visit.country) ? `${flagOf(visit.country)} ` : ''}{countryName(visit.country)} · {visit.device} · {num(visit.steps.length)} pages
+          {adminClock(visit.started)} · {flagOf(visit.country) ? `${flagOf(visit.country)} ` : ''}{countryName(visit.country)} · {visit.device} · {num(visit.steps.length)} pages
         </div>
         <div class="chain">
           {visit.steps.map((step, i) => (

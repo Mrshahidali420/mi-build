@@ -176,7 +176,7 @@ const platformRows = [...platforms.now]
   </div>
 
   {closedDays === 0 ? (
-    <p class="empty wide">No closed days yet. The night job fills this after 00:10 UTC.</p>
+    <p class="empty wide">No closed days yet. The night job fills this after 00:10 UTC (05:10 PKT).</p>
   ) : (
     <section class="kpis" aria-label="This week against last week">
       <Kpi label="Visits" value={a.visits || 0} now={a.visits} before={b.visits} spark={line('visits')} hero />
