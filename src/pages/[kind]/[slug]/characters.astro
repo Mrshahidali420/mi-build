@@ -58,6 +58,12 @@ const description =
 
 // The voices are only worth naming on an anime page. A comic has none.
 const voices = kind === 'anime' ? cast.filter((c) => c.voice).length : 0
+// People search "<title> voice actors", so the leads' voices get a plain
+// sentence, and every voice name carries its language.
+const voiceLine = (kind === 'anime' ? leads : [])
+  .filter((c) => c.voice)
+  .slice(0, 3)
+  .map((c) => `${c.name} is voiced by ${c.voice} in Japanese${c.voiceEn ? ` and ${c.voiceEn} in English` : ''}`)
 
 const jsonld = [
   {
@@ -118,13 +124,14 @@ const jsonld = [
         {leadNames.length > 1 && <>, led by {leadNames.join(', ')}</>}. Tap any face
         for that character's own page: age, height, birthday, and every other
         story they turn up in.
+        {voiceLine.length > 0 && <> Voice actors: {voiceLine.join('; ')}.</>}
       </p>
 
       {
         leads.length > 0 && (
           <section class="answer">
             <div class="answer__head">
-              <h2>The main characters</h2>
+              <h2>{voices > 0 ? 'The main characters and their voice actors' : 'The main characters'}</h2>
               <p>The people the story is about.</p>
             </div>
             <ul class="people people--wall">
@@ -133,7 +140,7 @@ const jsonld = [
                   <a href={`/character/${person.slug}`}>
                     <img src={person.image} alt={`${person.name} portrait`} width="220" height="293" loading="lazy" decoding="async" />
                     <b>{person.name}</b>
-                    <span>{person.voice ? person.voice : 'Main'}</span>
+                    <span>{person.voice ? (kind === 'anime' ? `Japanese: ${person.voice}` : person.voice) : 'Main'}</span>
                     {kind === 'anime' && person.voiceEn && <span class="people__voice">English: {person.voiceEn}</span>}
                   </a>
                 </li>
@@ -156,7 +163,7 @@ const jsonld = [
                   <a href={`/character/${person.slug}`}>
                     <img src={person.image} alt={`${person.name} portrait`} width="220" height="293" loading="lazy" decoding="async" />
                     <b>{person.name}</b>
-                    <span>{person.voice ? person.voice : 'Supporting'}</span>
+                    <span>{person.voice ? (kind === 'anime' ? `Japanese: ${person.voice}` : person.voice) : 'Supporting'}</span>
                     {kind === 'anime' && person.voiceEn && <span class="people__voice">English: {person.voiceEn}</span>}
                   </a>
                 </li>

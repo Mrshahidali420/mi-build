@@ -464,6 +464,16 @@ export function titleFaq(item, kind) {
         : `There is nothing to pay for yet, because no platform has licensed it.`,
   })
 
+  // People search "has X ended" / "is X completed". Answer it in plain words
+  // from the same status the table shows.
+  const ended = {
+    FINISHED: `Yes. ${item.title} has finished.`,
+    RELEASING: `No. ${item.title} is still releasing, so new ${unit} are still coming out.`,
+    HIATUS: `Not yet. ${item.title} is on hiatus: it has paused, but it has not ended.`,
+    CANCELLED: `It stopped. ${item.title} was cancelled before its planned end.`,
+  }[item.status]
+  if (ended) faq.push({ q: `Has ${item.title} ended?`, a: ended })
+
   for (const site of ASKED_ABOUT[kind] || ASKED_ABOUT.comic) {
     if (faq.length >= 6) break
     if (onIt.has(site)) {
