@@ -667,13 +667,18 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
          but nothing is shown until Google approves the site, and no ad slot is
          placed in the markup yet. `async` keeps it off the critical path. -->
     <meta name="google-adsense-account" content="ca-pub-2789392733984505" />
-    <!-- Monetag site verification only. No Monetag ad script or service worker. -->
+    <!-- Monetag: site verification, plus the In-Page Push banner (zone
+         11941818) only. No pop-under, no push notifications, no service
+         worker: those formats hurt readers and the AdSense review. -->
     <meta name="monetag" content="a5dc3d4d32d7f7e64a24d10b6378be31" />
     <script
       is:inline
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2789392733984505"
       crossorigin="anonymous"></script>
+    {!noindex && (
+      <script is:inline>(function(s){s.dataset.zone='11941818',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    )}
   </head>
 
   <body>
