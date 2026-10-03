@@ -17,7 +17,8 @@
 import { themeLabel, songWords, episodesWords } from '../lib/answers.mjs'
 import { shopUrl, ALL } from '../lib/shop-links.js'
 
-const { themes = [], title, country } = Astro.props
+// `id` lets the title page's jump links point here.
+const { themes = [], title, country, id } = Astro.props
 const rows = Array.isArray(themes) ? themes : []
 
 // The words a person would type to find this song: its title and first artist.
@@ -40,7 +41,7 @@ const listenLinks = (row) => {
 
 {
   rows.length > 0 && (
-    <section class="answer">
+    <section class="answer" id={id}>
       <div class="answer__head">
         <h2>Opening and ending songs</h2>
         <p>

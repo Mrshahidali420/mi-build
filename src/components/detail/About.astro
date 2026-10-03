@@ -1,0 +1,102 @@
+---
+/**
+ * About: our own "in short" text first, the publisher synopsis under it with
+ * its credit, then the trailer. On a wide screen a Quick facts card stands to
+ * the right of the prose. The rest of the facts are in Details further down,
+ * so no fact is lost and none is printed three times.
+ *
+ * A very long synopsis shows its opening and folds the rest behind "Read
+ * more". The folded text stays in the HTML.
+ *
+ * props: title, overview, synopsis, synopsisCredit, quickFacts [[label, value]], trailer
+ */
+const { title, overview = { paragraphs: [] }, synopsis = '', synopsisCredit, quickFacts = [], trailer } = Astro.props
+
+const paragraphs = overview.paragraphs || []
+const heading = paragraphs.length > 0 ? `${title} in short` : `About ${title}`
+
+// Fold only when there is a lot of it and a clean paragraph break to fold on.
+const LONG = 900
+const KEEP = 420
+const parts = synopsis.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean)
+let open = parts
+let folded = []
+if (synopsis.length > LONG && parts.length > 1) {
+  let used = 0
+  let cut = 0
+  while (cut < parts.length - 1 && (cut === 0 || used + parts[cut].length <= KEEP)) {
+    used += parts[cut].length
+    cut += 1
+  }
+  open = parts.slice(0, cut)
+  folded = parts.slice(cut)
+}
+---
+
+<section class="answer dp-about" id="about" aria-labelledby="dp-about-head">
+  <div class="answer__head">
+    <h2 id="dp-about-head">{heading}</h2>
+  </div>
+
+  <div class="dp-about__grid">
+    <div class="dp-about__prose">
+      {paragraphs.map((line) => <p class="overview">{line}</p>)}
+
+      {synopsis && (
+        <div class="dp-sub">
+          <h3>The publisher synopsis</h3>
+          {open.map((part) => <p class="synopsis">{part}</p>)}
+          {folded.length > 0 && (
+            <details class="dp-more">
+              <summary>Read more</summary>
+              {folded.map((part) => <p class="synopsis">{part}</p>)}
+            </details>
+          )}
+          {synopsisCredit && <p class="synopsis__credit">Synopsis by {synopsisCredit}.</p>}
+        </div>
+      )}
+    </div>
+
+    {quickFacts.length > 0 && (
+      <aside class="dp-qf" aria-labelledby="dp-qf-head">
+        <h3 id="dp-qf-head" class="dp-qf__head">Quick facts</h3>
+        <dl>
+          {quickFacts.map(([label, value]) => (
+            <div>
+              <dt>{label}</dt>
+              <dd>{value && value.href ? <a href={value.href}>{value.text}</a> : value}</dd>
+            </div>
+          ))}
+        </dl>
+      </aside>
+    )}
+  </div>
+
+  {trailer && (
+    <div class="dp-sub dp-trailer">
+      <h3>Trailer</h3>
+      <div class="trailer" data-yt={trailer.id}>
+        {trailer.thumb && <img src={trailer.thumb} alt={`${title} trailer thumbnail`} width="640" height="360" loading="lazy" decoding="async" />}
+        <button type="button">
+          <span>
+            <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
+              <path d="M3 2l9 5-9 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            </svg>
+            Play trailer
+          </span>
+        </button>
+      </div>
+    </div>
+  )}
+</section>
+
+<script>
+  // The iframe loads only on click, so YouTube costs nothing until someone
+  // actually wants the video.
+  document.querySelectorAll('.trailer').forEach((box) => {
+    box.querySelector('button')?.addEventListener('click', () => {
+      const id = box.dataset.yt
+      box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1" title="Trailer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
+    })
+  })
+</script>

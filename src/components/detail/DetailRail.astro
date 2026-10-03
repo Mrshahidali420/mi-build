@@ -1,0 +1,69 @@
+---
+/**
+ * The right-hand rail on a wide screen: the score, a second door to My list,
+ * and the "On this page" links. It stays in view while the page scrolls.
+ * Hidden below 1100px, where the jump chips do the same job.
+ *
+ * The My list button here owns no state. It presses the real one in the hero
+ * (MyListButton.astro) and copies that button's label and pressed state, so
+ * the two can never disagree and the page keeps one popover and one set of ids.
+ *
+ * props: score (0-100 or null), malScore, links [{ id, label }]
+ */
+const { score, malScore, links = [] } = Astro.props
+---
+
+<aside class="dp-rail" aria-label="Quick links">
+  <div class="dp-rail__box">
+    {(score || malScore) && (
+      <p class="dp-rail__score">
+        {score && (
+          <span>
+            <b>{(score / 10).toFixed(1)}</b> AniList
+          </span>
+        )}
+        {malScore && (
+          <span>
+            <b>{malScore.score.toFixed(1)}</b> MyAnimeList
+          </span>
+        )}
+      </p>
+    )}
+    <button type="button" class="dp-rail__save" aria-pressed="false" data-rail-save>
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" /></svg>
+      <span data-rail-label>Add to my list</span>
+    </button>
+  </div>
+
+  {links.length > 1 && (
+    <nav class="dp-rail__nav" aria-label="On this page" data-jump>
+      <p class="dp-rail__head">On this page</p>
+      <ul>
+        {links.map((link) => (
+          <li><a href={`#${link.id}`}>{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  )}
+</aside>
+
+<script>
+  const btn = document.querySelector('[data-rail-save]')
+  const box = document.querySelector('.dp-hero [data-mylist]')
+  if (btn && box) {
+    const add = box.querySelector('.mylist__add')
+    const label = box.querySelector('.mylist__label')
+    const out = btn.querySelector('[data-rail-label]')
+    const copy = () => {
+      const on = box.classList.contains('mylist--on')
+      btn.classList.toggle('dp-rail__save--on', on)
+      btn.setAttribute('aria-pressed', String(on))
+      if (label && out) out.textContent = label.textContent
+    }
+    btn.addEventListener('click', () => add?.click())
+    new MutationObserver(copy).observe(box, { attributes: true, attributeFilter: ['class'], subtree: true, childList: true, characterData: true })
+    copy()
+  } else if (btn) {
+    btn.hidden = true
+  }
+</script>

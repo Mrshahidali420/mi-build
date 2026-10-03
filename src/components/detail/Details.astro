@@ -1,0 +1,63 @@
+---
+/**
+ * Details: the facts that are not in Quick facts, the staff credits, and the
+ * quiet outbound lines (AniList tracking, other databases, the sister site).
+ * Low weight on purpose: plain definition lists, no cards.
+ *
+ * props: facts [[label, value]], staffRows [[role, names]], anilistUrl,
+ *        alsoSites [{ name, url }], whereUrl
+ */
+const { facts = [], staffRows = [], anilistUrl, alsoSites = [], whereUrl } = Astro.props
+---
+
+<section class="answer dp-details" id="details" aria-labelledby="dp-details-head">
+  <div class="answer__head">
+    <h2 id="dp-details-head">The facts</h2>
+  </div>
+
+  {facts.length > 0 && (
+    <dl class="facts dp-facts">
+      {facts.map(([label, value]) => (
+        <div>
+          <dt>{label}</dt>
+          <dd>{value && value.href ? <a href={value.href}>{value.text}</a> : value}</dd>
+        </div>
+      ))}
+    </dl>
+  )}
+
+  {staffRows.length > 0 && (
+    <div class="dp-sub">
+      <h3>Who made it</h3>
+      <p class="dp-sub__lead">The key staff credits AniList lists for this anime.</p>
+      <dl class="facts dp-facts">
+        {staffRows.map(([role, names]) => (
+          <div>
+            <dt>{role}</dt>
+            <dd>{names}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  )}
+
+  <div class="dp-out">
+    {whereUrl && (
+      <p class="sister-link">
+        <a href={whereUrl}>Episode dates, full cast and watch order on WhereAnime</a>
+      </p>
+    )}
+    <p class="track-line">
+      <a href={anilistUrl} target="_blank" rel="noopener">Track your progress on AniList ↗</a>
+      <span>free account · keeps your reading list in one place</span>
+    </p>
+    {alsoSites.length > 0 && (
+      <p class="also-on">
+        <span>Also listed on</span>
+        {alsoSites.map((site) => (
+          <a href={site.url} target="_blank" rel="noopener">{site.name}</a>
+        ))}
+      </p>
+    )}
+  </div>
+</section>

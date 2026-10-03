@@ -1,0 +1,28 @@
+---
+/**
+ * Common questions. The same rows feed the FAQPage markup in the page head,
+ * so the two can never drift apart. The first answer is open.
+ *
+ * props: faq [{ q, a }]
+ */
+const { faq = [] } = Astro.props
+---
+
+{
+  faq.length > 0 && (
+    <section class="answer dp-faq" id="faq" aria-labelledby="dp-faq-head">
+      <div class="answer__head">
+        <h2 id="dp-faq-head">Common questions</h2>
+        <p>Answered from the same facts as the table above.</p>
+      </div>
+      <div class="qa2">
+        {faq.map((row, i) => (
+          <details open={i === 0}>
+            <summary>{row.q}</summary>
+            <p class="qa2__a">{row.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )
+}
