@@ -517,6 +517,10 @@ const jumpLinks = [
           freePage={freePage}
         />
 
+        {/* Straight under the platforms: placed after Related (3 Oct 2026),
+            Amazon clicks fell from about 2 an hour to 2 in 15 hours. */}
+        <Shop title={item.title} picked={picked} buys={buys} buyCopy={buyCopy} buyPage={buyPage} />
+
         <About
           title={item.title}
           overview={overview}
@@ -542,8 +546,6 @@ const jumpLinks = [
           relationLabel={RELATION_LABEL}
           familyWord={familyWord}
         />
-
-        <Shop title={item.title} picked={picked} buys={buys} buyCopy={buyCopy} buyPage={buyPage} />
 
         <Details
           facts={moreFacts}
