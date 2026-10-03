@@ -217,17 +217,22 @@
   color: var(--dawn);
   font-weight: 600;
 }
+/* Sub or dub: the first chip in the genre row, same size, a filled face so it
+   reads as a fact about the show rather than one more genre link. */
 .dp-audio {
-  padding: 0.1rem 0.55rem;
-  border: 1px solid var(--line, rgb(255 255 255 / 0.18));
-  border-radius: 4px;
-  font-size: 0.85em;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--sf-line);
+  border-radius: 6px;
+  background: rgb(255 255 255 / 0.06);
+  color: var(--dawn);
+  font-size: 0.84rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
 }
 .dp-audio--dub {
-  border-color: var(--rose);
-  color: var(--dawn);
+  border-color: var(--rose-soft);
 }
 .dp-status--live {
   display: inline-flex;
@@ -338,7 +343,8 @@
 .dp-jump {
   position: sticky;
   top: var(--mast-h);
-  z-index: 1;
+  /* Above card badges (z-index 2), under the site header (5). */
+  z-index: 4;
   border-bottom: 1px solid var(--sf-line);
   background: rgb(5 5 8 / 0.94);
 }

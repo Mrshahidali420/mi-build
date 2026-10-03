@@ -91,15 +91,15 @@ const audio = dub ? { short: dub.state === 'dub' ? 'Sub · Dub' : 'Sub only', fu
         <p class="dp-hero__meta">
           <span class={live ? 'dp-status dp-status--live' : 'dp-status'}>{statusWord(item.status)}</span>
           {meta.map((part) => <span>{part}</span>)}
-          {audio && (
-            <span class={dub.state === 'dub' ? 'dp-audio dp-audio--dub' : 'dp-audio'} title={audio.full}>
-              <span class="sr-only">{audio.full}</span>
-              <span aria-hidden="true">{audio.short}</span>
-            </span>
-          )}
         </p>
-        {item.genres.length > 0 && (
+        {(item.genres.length > 0 || audio) && (
           <ul class="dp-genres" aria-label="Genres">
+            {audio && (
+              <li class={dub.state === 'dub' ? 'dp-audio dp-audio--dub' : 'dp-audio'} title={audio.full}>
+                <span class="sr-only">{audio.full}</span>
+                <span aria-hidden="true">{audio.short}</span>
+              </li>
+            )}
             {item.genres.slice(0, 4).map((genre) => (
               <li><a href={`/genre/${genreSlug(genre)}`}>{genre}</a></li>
             ))}
