@@ -1,0 +1,23 @@
+---
+/**
+ * The key to the colour bars under each cover: one colour per official
+ * platform. The homepage draws it inside the first shelf whose covers carry
+ * the bars, so the key sits right where the bars are first seen.
+ */
+const { legend = [] } = Astro.props
+---
+
+<aside class="legend-key" aria-label="Platform colour key">
+  <p class="legend__lead">Every colour is one official platform:</p>
+  <ul class="legend__list">
+    {
+      legend.map((l) => (
+        <li>
+          <i style={`--mark:${l.color}`} aria-hidden="true" />
+          {l.name}
+        </li>
+      ))
+    }
+    <li class="legend__note">…and more. Open a title to see its full list.</li>
+  </ul>
+</aside>

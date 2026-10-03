@@ -153,6 +153,56 @@ export function upcomingRow(item) {
 }
 
 /**
+ * The homepage's one "Coming up" list: the next episodes of this week and
+ * the premieres announced to the day, as one list, soonest first.
+ *
+ * It used to be two lists, and a show premiering this week sat in both: its
+ * first episode is "airing this week" and its premiere is "coming soon". Here
+ * each AniList id appears once. When a show is in both, its episode wins,
+ * because the episode clock is the exact minute and the premiere only a day.
+ *
+ *   airing   anime with a next episode this week, soonest first (catalog.js)
+ *   dated    unreleased anime with an exact premiere day (upcomingAnime().dated)
+ *   airingMax / datedMax   how many of each the list holds at most, so a
+ *            busy week never pushes every premiere off the homepage
+ *
+ * Rows carry only what the list prints: the cover (the small copy), what is
+ * coming ("Episode 5", "TV series premiere"), the time for the countdown,
+ * and how many platforms stream it.
+ */
+export function comingUp(airing, dated, { airingMax = 8, datedMax = 6 } = {}) {
+  const rows = new Map()
+  const add = (show, at, what) =>
+    rows.set(show.id, {
+      id: show.id,
+      slug: show.slug,
+      title: show.title,
+      cover: smallCover(show.cover),
+      at,
+      what,
+      platforms: (show.watchLinks || []).length,
+    })
+  for (const show of airing.slice(0, airingMax)) {
+    const at = show?.nextEpisode?.at
+    if (!at || rows.has(show.id)) continue
+    const number = show.nextEpisode.number
+    add(show, at, number ? `Episode ${number}` : 'Next episode')
+  }
+  // datedMax premieres the list does not already hold: a show counted once
+  // above does not use up a premiere's place.
+  let premieres = 0
+  for (const show of dated) {
+    if (premieres >= datedMax) break
+    const at = premiereAt(show)
+    if (!at || rows.has(show.id)) continue
+    premieres += 1
+    const format = FORMAT_WORDS[show.format]
+    add(show, at, format ? `${format} premiere` : 'Premiere')
+  }
+  return [...rows.values()].sort((a, b) => a.at - b.at || a.id - b.id)
+}
+
+/**
  * The most popular shows airing right now, with their next episode when the
  * calendar knows it. nextSlot() is the same clock the title pages use.
  */

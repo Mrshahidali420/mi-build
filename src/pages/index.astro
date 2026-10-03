@@ -6,12 +6,15 @@ import CoverGrid from '../components/CoverGrid.astro'
 import UpcomingList from '../components/UpcomingList.astro'
 import PopularNow from '../components/PopularNow.astro'
 import { animeByPopularity, novelsByPopularity, comics, comicsOfCountry, anime, genres, platform, airingThisWeek, inIndex } from '../lib/catalog.js'
-import { upcomingAnime, upcomingRow } from '../lib/schedule.mjs'
-import { loadHomeAuto, homeShelf } from '../lib/home-auto.js'
+import { upcomingAnime, upcomingRow, comingUp } from '../lib/schedule.mjs'
+import { loadHomeAuto, homeShelf, loadReaderRatings } from '../lib/home-auto.js'
 import { PRIORITY, adultReason } from '../lib/home-plan.mjs'
+import { hasOfficialLink } from '../lib/home-searching.mjs'
+import { ratedShelf } from '../lib/reader-rated.mjs'
 import { newSeasonShelf } from '../lib/season-shelf.mjs'
 import homeRules from '../../data/home-rules.json'
 import HomeShelf from '../components/HomeShelf.astro'
+import PlatformLegend from '../components/PlatformLegend.astro'
 
 const manhwa = comicsOfCountry('KR')
 const manga = comicsOfCountry('JP')
@@ -33,17 +36,14 @@ const legendNames = [
 ]
 const legend = legendNames.map((name) => ({ name, color: platform(name).color }))
 
-// Airing schedule. The countdown itself is drawn in the reader's browser, so
-// the list carries only the raw timestamp. See components/Countdown.astro.
-const airing = airingThisWeek.slice(0, 8)
-
-// Two short teasers for what is coming, worked out at build time like the
-// rest of the page. The full lists live on /schedule.
+// What is coming, worked out at build time like the rest of the page. The
+// full lists live on /schedule. Coming up is this week's next episodes and
+// the premieres announced to the day, one list, each show once, soonest
+// first. The countdown itself is drawn in the reader's browser, so the list
+// carries only the raw timestamp. See components/Countdown.astro.
 const coming = upcomingAnime(anime)
+const comingRows = comingUp(airingThisWeek, coming.dated)
 const anticipated = coming.anticipated.slice(0, 6).map(upcomingRow)
-const comingSoon = coming.dated.slice(0, 6).map(upcomingRow)
-// /schedule splits the dated list in two; land on whichever half comes first.
-const comingSoonHref = coming.big.length ? '/schedule#big-releases' : '/schedule#coming-soon'
 
 // One shelf per catalog, all visible at once. Arrows scroll each shelf.
 const rows = [
@@ -59,9 +59,8 @@ const rows = [
 // left out, so no cover appears twice; a shelf left too short is not drawn.
 const onPage = new Set([
   ...rows.flatMap((row) => row.items.map((item) => item.id)),
-  ...airing.map((a) => a.id),
+  ...comingRows.map((a) => a.id),
   ...coming.anticipated.slice(0, 6).map((a) => a.id),
-  ...coming.dated.slice(0, 6).map((a) => a.id),
 ])
 const homePlan = loadHomeAuto()
 // Worked out in the planner's priority order, each shelf taking the titles
@@ -69,8 +68,12 @@ const homePlan = loadHomeAuto()
 // the plan file is older than today's catalog.
 const shelfOf = {}
 const shownSoFar = new Set(onPage)
+// Hot this week sends people off to read or watch, so a title whose cover
+// would say "no official link yet" is left off it and the planner's next
+// pick takes its place.
+const keepOf = { searching: hasOfficialLink }
 for (const key of PRIORITY) {
-  const shelf = homeShelf(homePlan, key, { lookup: inIndex, onPage: shownSoFar })
+  const shelf = homeShelf(homePlan, key, { lookup: inIndex, onPage: shownSoFar, keep: keepOf[key] || null })
   if (!shelf) continue
   shelfOf[key] = shelf
   for (const item of shelf.items) shownSoFar.add(item.id)
@@ -91,6 +94,21 @@ if (seasonShelf) for (const item of seasonShelf.items) shownSoFar.add(item.id)
 // it, and it is built from what people are looking for right now.
 const hotShelf = shelfOf.searching
 const lowerShelves = ['saving', 'new', 'month'].map((key) => shelfOf[key]).filter(Boolean)
+// Top rated by readers: our own readers' ratings, copied out of D1 by the
+// nightly job (scripts/pull-ratings.mjs) and joined to the catalog here, so
+// the Worker never asks the database for it. Under four titles with enough
+// ratings it is not drawn.
+const topRated = ratedShelf(loadReaderRatings(), {
+  lookup: inIndex,
+  onPage: shownSoFar,
+  keep: (item) => !adultReason(item, homeRules),
+})
+if (topRated) for (const item of topRated.items) shownSoFar.add(item.id)
+
+// The platform colour key sits right under the first shelf whose covers
+// carry the colour bars: the first self-updating shelf drawn, or else
+// Trending manhwa.
+const topShelves = [hotShelf, risingShelf, seasonShelf].filter(Boolean)
 
 // The hero stands in front of a real banner: the most popular manhwa
 // that ships wide art. Masked so it dissolves into the cyc gradient.
@@ -309,12 +327,14 @@ const tinyCover = (url) =>
       fillForYou()
     </script>
 
-    {hotShelf && <HomeShelf shelf={hotShelf} />}
-    {risingShelf && <HomeShelf shelf={risingShelf} />}
-    {seasonShelf && <HomeShelf shelf={seasonShelf} />}
+    {
+      topShelves.map((shelf, i) => (
+        <HomeShelf shelf={shelf}>{i === 0 && <PlatformLegend legend={legend} />}</HomeShelf>
+      ))
+    }
 
     {
-      rows.map((row) => (
+      rows.map((row, i) => (
         <section class="section" data-phase="night">
           <div class="section__head section__head--row">
             <div>
@@ -334,6 +354,7 @@ const tinyCover = (url) =>
               ›
             </button>
           </div>
+          {i === 0 && topShelves.length === 0 && <PlatformLegend legend={legend} />}
         </section>
       ))
     }
@@ -364,6 +385,7 @@ const tinyCover = (url) =>
     </script>
 
     {lowerShelves.map((shelf) => <HomeShelf shelf={shelf} />)}
+    {topRated && <HomeShelf shelf={topRated} counted={false} />}
 
     <script>
       // What the homepage shelves are worth, counted cheaply (see
@@ -433,27 +455,29 @@ const tinyCover = (url) =>
     <PopularNow />
 
     {
-      airing.length > 0 && (
-        <section class="section" data-phase="night">
+      comingRows.length > 0 && (
+        <section class="section" data-phase="night" aria-labelledby="coming-up-h">
           <div class="section__head section__head--row">
             <div>
-              <h2>Anime airing this week</h2>
-              <p>The next episode of each ongoing show, and where it legally streams.</p>
+              <h2 id="coming-up-h">Coming up</h2>
+              <p>This week's new episodes and the anime premieres announced to the day, soonest first.</p>
             </div>
             <a class="section__more section__more--cta" href="/schedule">
-              See the full week →
+              See the full schedule →
             </a>
           </div>
           <ul class="airing">
-            {airing.map((a) => (
+            {comingRows.map((r) => (
               <li>
-                <a href={`/anime/${a.slug}`}>
-                  <img src={tinyCover(a.cover)} alt={`Cover of ${a.title}`} width="52" height="74" loading="lazy" decoding="async" />
+                <a href={`/anime/${r.slug}`}>
+                  {r.cover && (
+                    <img src={r.cover} alt={`Cover of ${r.title}`} width="52" height="74" loading="lazy" decoding="async" />
+                  )}
                   <span>
-                    <b>{a.title}</b>
+                    <b>{r.title}</b>
                     <em>
-                      Episode {a.nextEpisode.number} · <Countdown at={a.nextEpisode.at} />
-                      {a.watchLinks.length ? ` · on ${a.watchLinks.length} platforms` : ''}
+                      {r.what} · <Countdown at={r.at} />
+                      {r.platforms > 0 && ` · on ${r.platforms} ${r.platforms === 1 ? 'platform' : 'platforms'}`}
                     </em>
                   </span>
                 </a>
@@ -480,39 +504,6 @@ const tinyCover = (url) =>
         </section>
       )
     }
-
-    {
-      comingSoon.length > 0 && (
-        <section class="section" data-phase="night">
-          <div class="section__head section__head--row">
-            <div>
-              <h2>Anime coming soon</h2>
-              <p>Announced with an exact premiere date, soonest first.</p>
-            </div>
-            <a class="section__more section__more--cta" href={comingSoonHref}>
-              See the full schedule →
-            </a>
-          </div>
-          <UpcomingList rows={comingSoon} />
-        </section>
-      )
-    }
-
-
-    <section class="section legend" data-phase="first" aria-label="Platform colour legend">
-      <p class="legend__lead">Every colour is one official platform:</p>
-      <ul class="legend__list">
-        {
-          legend.map((l) => (
-            <li>
-              <i style={`--mark:${l.color}`} aria-hidden="true" />
-              {l.name}
-            </li>
-          ))
-        }
-        <li class="legend__note">…and more. Open a title to see its full list.</li>
-      </ul>
-    </section>
 
     <section class="section" data-phase="day">
       <div class="section__head">

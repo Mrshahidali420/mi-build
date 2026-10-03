@@ -754,6 +754,10 @@ img {
 .legend {
   padding-block: 0;
 }
+/* Drawn inside the first shelf with colour bars, right under its covers. */
+.legend-key {
+  margin-top: 1.4rem;
+}
 .legend__lead {
   margin: 0 0 0.55rem;
   font-size: 0.85rem;

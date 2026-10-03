@@ -27,7 +27,7 @@ import { writeFileAtomic, writeJsonAtomic } from '../src/lib/write-atomic.mjs'
 import { queryD1, queryD1Wrangler } from '../src/lib/d1-api.mjs'
 import { planHome, mergeDecisions, addDays, SECTIONS } from '../src/lib/home-plan.mjs'
 import { RULES_READ, mergeRules } from '../src/lib/owner-rules.mjs'
-import { upcomingAnime } from '../src/lib/schedule.mjs'
+import { upcomingAnime, comingUp } from '../src/lib/schedule.mjs'
 import { HANDOFF_MIN_OPENS } from '../src/lib/alike.mjs'
 import { engineSql, titlePageSql, titlePagePath, buildNameIndex, searchTitleId } from '../src/lib/search-signals.js'
 
@@ -136,7 +136,8 @@ function pathsFrom(registry) {
 
 /**
  * Ids already on the homepage, worked out the way index.astro does: the
- * Trending shelves, Anime airing this week, Most anticipated and Coming soon.
+ * Trending shelves, Coming up (src/lib/schedule.mjs comingUp) and Most
+ * anticipated.
  * The page drops these from an auto shelf anyway; leaving them out here too
  * means the planner never spends a slot on a cover the page will not draw.
  */
@@ -156,9 +157,8 @@ function onPageIds(comicsAll, animeAll, blocked, nowSec = Date.now() / 1000) {
   const airing = anime
     .filter((a) => a.nextEpisode && a.nextEpisode.at > nowSec && a.nextEpisode.at < nowSec + 7 * 86400)
     .sort((a, b) => a.nextEpisode.at - b.nextEpisode.at)
-    .slice(0, 8)
   const coming = upcomingAnime(anime, nowSec)
-  for (const a of [...airing, ...coming.anticipated.slice(0, 6), ...coming.dated.slice(0, 6)]) ids.add(a.id)
+  for (const a of [...comingUp(airing, coming.dated), ...coming.anticipated.slice(0, 6)]) ids.add(a.id)
   return ids
 }
 

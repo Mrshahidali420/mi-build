@@ -10,14 +10,16 @@
  */
 import CoverGrid from './CoverGrid.astro'
 
-const { shelf } = Astro.props
+// counted={false}: a shelf the homepage counter has no key for (see
+// src/lib/home-sections.js) is drawn the same way but not reported.
+const { shelf, counted = true } = Astro.props
 ---
 
 <section
   class="section"
   data-phase="night"
-  data-home-section={shelf.key}
-  data-home-ids={shelf.items.map((item) => item.id).join(',')}
+  data-home-section={counted ? shelf.key : undefined}
+  data-home-ids={counted ? shelf.items.map((item) => item.id).join(',') : undefined}
   aria-labelledby={`home-${shelf.key}-h`}
 >
   <div class="section__head section__head--row">
@@ -36,4 +38,5 @@ const { shelf } = Astro.props
       ›
     </button>
   </div>
+  <slot />
 </section>
