@@ -5375,47 +5375,135 @@ html.mi-has-list .foryou[hidden] {
   .link-pills a::after { transition: none; }
 }
 
-/* ---------- what readers think: stars, approved reviews, the form ---------
- * src/components/Ratings.astro. Every line of text that changes after a tap
- * has its height reserved, so nothing below the block moves when the script
- * answers. The stars light rose up to the one under the pointer, the same
- * light the rest of the page uses for "this is live". */
+/* ---------- what readers think: the rating card, reviews, the form --------
+ * src/components/Ratings.astro. One card in the page's card surface: the
+ * readers' average on one side, the reader's own stars on the other. It is
+ * laid out by the width of the section itself (a container query), so the
+ * two columns appear only where they have room, whatever the page around it
+ * does. Text that changes after a tap has its space reserved, so nothing
+ * below the block moves when the script answers. */
 
-.rate__ask {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.25rem 1rem;
-  padding-top: 0.9rem;
+.rate {
+  container-type: inline-size;
 }
-.rate__q {
+.rate__panel {
+  display: grid;
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-r);
+  background: var(--sf);
+}
+.rate__sum,
+.rate__you {
+  min-width: 0;
+  padding: 1.1rem 1.15rem;
+}
+.rate__you {
+  border-top: 1px solid var(--sf-line);
+}
+
+/* the average. Phone: the figure on the left, the stars and the count beside
+   it. The min-height holds the same room for the no-average state, so the
+   card keeps its height when the third vote turns it into a number. */
+.rate__sum {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: center;
+  align-items: center;
+  gap: 0.3rem 1rem;
+  min-height: 6.6rem;
+}
+.rate__avg {
+  grid-row: 1 / 3;
+  display: grid;
+  margin: 0;
+}
+.rate__avg b {
+  font-family: var(--stencil);
+  font-weight: 400;
+  font-size: 2.9rem;
+  line-height: 1;
+  color: var(--dawn);
+  font-variant-numeric: tabular-nums;
+}
+.rate__of {
+  margin-top: 0.2rem;
+  color: var(--dawn-faint);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+/* Five stars as one strip, lit rose up to the average. */
+.rate__meter {
+  --star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z'/%3E%3C/svg%3E");
+  display: block;
+  width: 6.25rem;
+  height: 1.25rem;
+  background: linear-gradient(90deg, var(--rose) var(--fill, 0%), var(--cobalt-line) var(--fill, 0%));
+  -webkit-mask: var(--star) left center / 1.25rem 1.25rem repeat-x;
+  mask: var(--star) left center / 1.25rem 1.25rem repeat-x;
+}
+.rate__note {
   margin: 0;
   color: var(--dawn-dim);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+/* Fewer than three votes: a plain heading and one line, no figure. */
+.rate__sum:not([data-show]) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.rate__sum:not([data-show]) .rate__avg {
+  grid-row: auto;
+}
+.rate__sum:not([data-show]) .rate__avg b {
+  font-family: var(--grotesque);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+.rate__sum:not([data-show]) :is(.rate__of, .rate__meter) {
+  display: none;
+}
+
+/* the reader's own stars */
+.rate__you {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.rate__label {
+  margin: 0 0 0.2rem;
+  color: var(--dawn-faint);
+  font-size: 0.68rem;
   font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .rate__stars {
   display: flex;
-  margin-inline: -0.45rem;
+  gap: 2px;
+  /* the first star's outline lines up with the text above it */
+  margin-left: -7px;
 }
 .rate__stars button {
   display: grid;
   place-items: center;
-  min-width: 44px;
-  min-height: 44px;
+  width: 44px;
+  height: 44px;
   margin: 0;
   padding: 0;
   border: 0;
+  border-radius: 8px;
   background: none;
   color: var(--dawn-faint);
   cursor: pointer;
   transition: color 120ms var(--ease-dawn), transform 120ms var(--ease-dawn);
 }
 .rate__stars svg {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.6;
+  stroke-width: 1.5;
   stroke-linejoin: round;
 }
 .rate__stars button.on {
@@ -5424,117 +5512,107 @@ html.mi-has-list .foryou[hidden] {
 .rate__stars button.on svg {
   fill: currentColor;
 }
-.rate__stars:not([data-locked]):hover button {
-  color: var(--rose);
-}
-.rate__stars:not([data-locked]):hover button svg {
-  fill: currentColor;
-}
-.rate__stars:not([data-locked]) button:hover ~ button {
-  color: var(--dawn-faint);
-}
-.rate__stars:not([data-locked]) button:hover ~ button svg {
-  fill: none;
+@media (hover: hover) {
+  .rate__stars:not([data-locked]):hover button {
+    color: var(--rose);
+  }
+  .rate__stars:not([data-locked]):hover button svg {
+    fill: currentColor;
+  }
+  .rate__stars:not([data-locked]) button:hover ~ button {
+    color: var(--dawn-faint);
+  }
+  .rate__stars:not([data-locked]) button:hover ~ button svg {
+    fill: none;
+  }
 }
 .rate__stars:not([data-locked]) button:active {
-  transform: scale(0.92);
+  transform: scale(0.9);
 }
 .rate__stars button:focus-visible {
   outline: 2px solid var(--day);
-  outline-offset: -4px;
+  outline-offset: -2px;
 }
 .rate__stars button:disabled {
   cursor: default;
 }
 .rate__said {
-  flex-basis: 100%;
-  min-height: 1.5em;
-  margin: 0;
+  min-height: 1.45em;
+  margin: 0.15rem 0 0.9rem;
   color: var(--dawn-dim);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.rate__check {
+  margin-bottom: 0.75rem;
 }
 .rate__check:empty {
   display: none;
 }
 
-.reviews {
-  list-style: none;
-  margin: 1rem 0 0;
-  padding: 0;
-}
-.review {
-  padding-block: 1rem;
-  border-top: 1px solid rgb(36 65 143 / 0.45);
-}
-.review__by {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.2rem 0.75rem;
-  margin: 0 0 0.4rem;
-}
-.review__by b {
-  color: var(--dawn);
-}
-.review__stars {
-  color: var(--rose);
-  letter-spacing: 0.08em;
-  font-size: 0.9rem;
-}
-.review__stars-off {
-  color: var(--cobalt-line);
-}
-.review__by time {
-  color: var(--dawn-faint);
-  font-size: 0.85rem;
-}
-.review__text {
-  max-width: var(--measure, 68ch);
-  margin: 0 0 0.5rem;
-  color: var(--dawn-dim);
-  overflow-wrap: anywhere;
-}
-
+/* "Write a review": a quiet outlined button that opens the form */
 .rate__write {
-  margin-top: 1rem;
-  border-top: 1px solid var(--cobalt);
+  width: 100%;
 }
 .rate__write summary {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.6rem;
   min-height: 44px;
-  padding-block: 0.5rem;
-  color: var(--rose-soft);
-  font-weight: 700;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--sf-line-strong);
+  border-radius: 8px;
+  color: var(--dawn);
+  font-weight: 600;
   cursor: pointer;
   list-style: none;
+  transition: border-color 150ms var(--ease-dawn), color 150ms var(--ease-dawn);
 }
 .rate__write summary::-webkit-details-marker {
   display: none;
 }
-.rate__write summary::before {
-  content: '+';
-  width: 1ch;
-  color: var(--dawn-faint);
+.rate__write summary::after {
+  content: '';
+  width: 0.42rem;
+  height: 0.42rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 200ms var(--ease-dawn);
 }
-.rate__write[open] summary::before {
-  content: '−';
+.rate__write[open] summary {
+  border-color: var(--rose);
 }
+.rate__write[open] summary::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+@media (hover: hover) {
+  .rate__write summary:hover {
+    border-color: var(--rose);
+    color: var(--rose-soft);
+  }
+}
+.rate__write summary:focus-visible {
+  outline: 2px solid var(--day);
+  outline-offset: 2px;
+}
+
 .review-form {
   display: grid;
   gap: 0.35rem;
-  max-width: 40rem;
-  padding-bottom: 1rem;
+  padding-top: 1.1rem;
 }
 .review-form__rule {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.3rem;
   color: var(--dawn-dim);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 .review-form label {
-  margin-top: 0.45rem;
-  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: var(--dawn);
+  font-size: 0.88rem;
   font-weight: 600;
 }
 .review-form label span {
@@ -5545,7 +5623,7 @@ html.mi-has-list .foryou[hidden] {
 .review-form :is(input, select, textarea) {
   width: 100%;
   min-height: 44px;
-  padding: 0.55rem 0.7rem;
+  padding: 0.55rem 0.75rem;
   border: 1px solid var(--sf-line-strong);
   border-radius: 8px;
   background: var(--night-sunk);
@@ -5553,10 +5631,13 @@ html.mi-has-list .foryou[hidden] {
   font: inherit;
   font-size: 1rem;
 }
+.review-form ::placeholder {
+  color: var(--dawn-faint);
+}
 .review-form textarea {
-  min-height: 8.5rem;
+  min-height: 9rem;
   resize: vertical;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 .review-form :is(input, select, textarea):focus-visible {
   outline: 2px solid var(--day);
@@ -5564,6 +5645,7 @@ html.mi-has-list .foryou[hidden] {
   border-color: var(--rose);
 }
 .review-form__count {
+  max-width: none;
   margin: 0;
   color: var(--dawn-faint);
   font-size: 0.8rem;
@@ -5574,14 +5656,20 @@ html.mi-has-list .foryou[hidden] {
   min-height: 1.45em;
   margin: 0;
   color: var(--dawn-dim);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 .review-form__said.bad {
   color: var(--rose-soft);
 }
+.review-form__note {
+  margin: 0.2rem 0 0.35rem;
+  color: var(--dawn-faint);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
 .review-form button {
-  justify-self: start;
-  min-height: 44px;
+  width: 100%;
+  min-height: 46px;
   padding: 0 1.2rem;
   border: 1px solid var(--dawn);
   border-radius: 8px;
@@ -5592,8 +5680,10 @@ html.mi-has-list .foryou[hidden] {
   cursor: pointer;
   transition: background 150ms var(--ease-dawn);
 }
-.review-form button:hover {
-  background: var(--day);
+@media (hover: hover) {
+  .review-form button:hover {
+    background: var(--day);
+  }
 }
 .review-form button:focus-visible {
   outline: 2px solid var(--day);
@@ -5603,9 +5693,101 @@ html.mi-has-list .foryou[hidden] {
   opacity: 0.6;
   cursor: progress;
 }
-/* The count beside "What readers think" can be a short sentence, so unlike
-   the other answer counts it may wrap on a narrow phone. */
-.rate .answer__count {
-  white-space: normal;
-  text-align: right;
+
+/* approved reviews: one quiet card each */
+.reviews {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+.review {
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--sf-line);
+  border-radius: var(--sf-r);
+  background: var(--sf);
+}
+.review__by {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.15rem 1rem;
+}
+.review__by b {
+  color: var(--dawn);
+  overflow-wrap: anywhere;
+}
+.review__by time {
+  color: var(--dawn-faint);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+}
+.review__stars {
+  margin: 0.25rem 0 0;
+  color: var(--rose);
+  font-size: 0.92rem;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+}
+.review__stars-off {
+  color: var(--cobalt-line);
+}
+.review__text {
+  max-width: var(--measure, 68ch);
+  margin: 0.55rem 0 0;
+  color: var(--dawn-dim);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+/* Wide enough for two columns: the average on the left, the reader's stars
+   and the review form on the right. */
+@container (min-width: 620px) {
+  .rate__panel {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+  .rate__sum {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    gap: 0.55rem;
+    min-height: 0;
+    padding: 1.5rem 1.6rem;
+  }
+  .rate__avg {
+    grid-row: auto;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .rate__avg b {
+    font-size: 3.6rem;
+  }
+  .rate__of {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+  .rate__sum:not([data-show]) .rate__avg b {
+    font-size: 1.3rem;
+  }
+  .rate__you {
+    padding: 1.5rem 1.6rem;
+    border-top: 0;
+    border-left: 1px solid var(--sf-line);
+  }
+  .rate__write summary {
+    display: inline-flex;
+  }
+  .review {
+    padding: 1.15rem 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rate__stars button,
+  .rate__write summary,
+  .rate__write summary::after {
+    transition: none;
+  }
 }

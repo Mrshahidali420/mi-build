@@ -293,6 +293,23 @@ export function ratingLine(rating) {
   return rating.votes > 0 ? 'A few ratings in. Add yours.' : 'Be the first to rate it.'
 }
 
+/**
+ * The words in the rating card: `big` is the large figure (the average, or a
+ * plain "no average" heading), `note` the line under the stars. The vote
+ * endpoint sends the same pair back, so the card reads the same after a tap.
+ */
+export function ratingWords(rating) {
+  if (rating.show) return { big: rating.avg.toFixed(1), note: `from ${rating.votes} readers` }
+  if (rating.votes > 0) {
+    const n = rating.votes
+    return {
+      big: 'No average yet',
+      note: `${n} ${n === 1 ? 'rating' : 'ratings'} so far. The average shows from ${SHOW_AVERAGE_FROM}.`,
+    }
+  }
+  return { big: 'No ratings yet', note: 'Be the first to rate it.' }
+}
+
 /** "3 Oct 2026", the date under a review. */
 export function reviewDate(iso) {
   const at = new Date(iso)

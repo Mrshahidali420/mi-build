@@ -119,12 +119,24 @@ async function post(path, body) {
   return { ok: res.ok && data.ok === true, status: res.status, data }
 }
 
+// The rating card after a vote, in the words the server chose
+// (ratingWords in src/lib/reviews.mjs).
+function showRating(root, data) {
+  const sum = root.querySelector('[data-rate-sum]')
+  if (!sum || typeof data.big !== 'string') return
+  sum.querySelector('[data-rate-big]').textContent = data.big
+  sum.querySelector('[data-rate-line]').textContent = data.note || ''
+  const avg = Number(data.avg)
+  const fill = data.show && avg >= 1 && avg <= 5 ? Math.round(avg * 20) : 0
+  sum.querySelector('[data-rate-meter]').style.setProperty('--fill', `${fill}%`)
+  sum.toggleAttribute('data-show', Boolean(data.show))
+}
+
 function start(root) {
   const { id, kind, slug, key } = root.dataset
   const group = root.querySelector('[data-rate-stars]')
   const buttons = [...root.querySelectorAll('[data-rate-stars] button')]
   const said = root.querySelector('[data-rate-said]')
-  const line = root.querySelector('[data-rate-line]')
   const check = root.querySelector('[data-rate-check]')
   let busy = false
 
@@ -169,7 +181,7 @@ function start(root) {
       }
       if (out.ok) {
         remember(id, stars)
-        if (out.data.line) line.textContent = out.data.line
+        showRating(root, out.data)
         said.textContent = `Thank you. You rated it ${stars} of 5.`
         const score = root.querySelector('#rv-stars')
         if (score && !score.value) score.value = String(stars)

@@ -29,6 +29,7 @@ import {
   checkReview,
   ratingOf,
   ratingLine,
+  ratingWords,
   VOTE_INSERT,
   TOTALS_RECOUNT,
   TOTALS_READ,
@@ -167,7 +168,15 @@ export async function handleVote(request, env, { now = Date.now(), verify = veri
   // A repeat is answered like a first vote: telling a script which taps
   // counted would only help it.
   const rating = ratingOf(row)
-  return answer(200, { ok: true, counted, votes: rating.votes, avg: rating.avg, line: ratingLine(rating) })
+  return answer(200, {
+    ok: true,
+    counted,
+    votes: rating.votes,
+    avg: rating.avg,
+    show: rating.show,
+    line: ratingLine(rating),
+    ...ratingWords(rating),
+  })
 }
 
 /** One review from the form. Saved as pending; nothing is shown until approved. */

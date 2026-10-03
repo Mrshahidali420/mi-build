@@ -15,6 +15,7 @@ import {
   checkReviewTap,
   ratingOf,
   ratingLine,
+  ratingWords,
   aggregateJsonld,
   reviewsJsonld,
   paragraphsOf,
@@ -238,6 +239,13 @@ test('the average: one decimal, shown from 3 votes, marked up from 5', () => {
   assert.equal(ratingLine(ratingOf({ votes: 3, total: 15 })), '5.0 from 3 readers')
   assert.equal(ratingLine(ratingOf({ votes: 2, total: 8 })), 'A few ratings in. Add yours.')
   assert.equal(ratingLine(ratingOf(null)), 'Be the first to rate it.')
+  assert.deepEqual(ratingWords(ratingOf({ votes: 27, total: 124 })), { big: '4.6', note: 'from 27 readers' })
+  assert.deepEqual(ratingWords(ratingOf({ votes: 1, total: 5 })), {
+    big: 'No average yet',
+    note: '1 rating so far. The average shows from 3.',
+  })
+  assert.equal(ratingWords(ratingOf({ votes: 2, total: 7 })).note, '2 ratings so far. The average shows from 3.')
+  assert.deepEqual(ratingWords(ratingOf(null)), { big: 'No ratings yet', note: 'Be the first to rate it.' })
 })
 
 test('structured data: AggregateRating only from 5 votes, Review per approved review', () => {
@@ -341,6 +349,7 @@ test('votes: counted once per browser and address a day, totals kept in step', a
   await handleVote(vote(4, { 'user-agent': 'OtherBrowser/2' }), env, { now: NOW, verify: yes })
   out = await (await handleVote(vote(4, { 'cf-connecting-ip': '198.51.100.9' }), env, { now: NOW, verify: yes })).json()
   assert.deepEqual([out.votes, out.avg, out.line], [3, 4.3, '4.3 from 3 readers'])
+  assert.deepEqual([out.show, out.big, out.note], [true, '4.3', 'from 3 readers'])
 
   // The next day the same browser may vote again.
   out = await (await handleVote(vote(3), env, { now: NOW + 86400000, verify: yes })).json()
