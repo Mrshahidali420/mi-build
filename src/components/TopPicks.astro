@@ -17,7 +17,10 @@ import { SUPPORT_LINE } from '../lib/buy-copy.js'
 // `byHand` is false for picks matched from publisher records (product-picks.json),
 // so the note never claims a person chose them.
 // `support` is false when a buy box above it already says the support line.
-const { heading, sub, picks = [], max = 6, byHand = true, support = true } = Astro.props
+// `bare` draws only the note and the list, for a page that holds the picks
+// inside its own shop section (the title page). The heading is then the host's.
+const { heading, sub, picks = [], max = 6, byHand = true, support = true, bare = false } = Astro.props
+const Wrap = bare ? 'div' : 'section'
 
 const ICON_OF = { book: 'book', disc: 'disc', figure: 'figure', plush: 'plush', poster: 'poster', apparel: 'shirt', merch: 'tag' }
 const shown = picks.slice(0, max)
@@ -25,11 +28,13 @@ const shown = picks.slice(0, max)
 
 {
   shown.length > 0 && (
-    <section class="buybox picks">
-      <div class="buybox__head">
-        <h2>{heading}</h2>
-        {sub && <p>{sub}</p>}
-      </div>
+    <Wrap class={bare ? 'picks picks--bare' : 'buybox picks'}>
+      {!bare && (
+        <div class="buybox__head">
+          <h2>{heading}</h2>
+          {sub && <p>{sub}</p>}
+        </div>
+      )}
       <p class="buys__note">
         {byHand ? 'Chosen by hand on Amazon.' : 'The official English editions, found in publisher records.'} The price and the stock are
         Amazon's, and are right at the moment you look.
@@ -51,6 +56,6 @@ const shown = picks.slice(0, max)
         ))}
       </ul>
       {support && <p class="buys__support">{SUPPORT_LINE}</p>}
-    </section>
+    </Wrap>
   )
 }

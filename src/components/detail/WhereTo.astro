@@ -1,0 +1,196 @@
+---
+/**
+ * Where to watch / where to read: the reason a reader came to the page, so it
+ * gets the most weight after the hero.
+ *
+ * Order inside: the quotable answer sentence, the cheapest way in (our own
+ * ranking, from bestValue) with one clear button, then one card per platform
+ * with how you pay, what is free, where it works and sign-in, then how wide
+ * the official coverage is. The rows are ranked and merged exactly as the old
+ * table (rankedRows in src/lib/answers.mjs); only the drawing changed.
+ *
+ * Anime keeps id="watch": the /where-to-watch lists link to /anime/<slug>#watch.
+ */
+import Mark from '../Mark.astro'
+import ReadAlike from '../ReadAlike.astro'
+import { platform } from '../../lib/format.js'
+import { rankedRows, bestValue } from '../../lib/answers.mjs'
+import { checkedText, checkedISO } from '../../lib/checked.js'
+
+const {
+  item,
+  isComic,
+  word,
+  links = [],
+  answer,
+  checked,
+  freeLinks = [],
+  freeCount = 0,
+  reach,
+  showAlike = false,
+  languages = [],
+  freePage,
+} = Astro.props
+
+const verb = isComic ? 'read' : 'watch'
+const Verb = isComic ? 'Read' : 'Watch'
+const anchor = isComic ? 'read' : 'watch'
+const rows = rankedRows(links)
+const verdict = bestValue(rows, isComic ? 'comic' : 'anime')
+const top = rows[0]
+const count = rows.length
+const countLine = [
+  count ? `${count} legal ${count === 1 ? 'place' : 'places'}` : null,
+  freeCount ? `${freeCount} free to start` : null,
+].filter(Boolean).join(' · ')
+const hasEnglish = languages.includes('English')
+const otherLanguages = languages.filter((l) => l !== 'English')
+---
+
+<section class="answer dp-where" id={anchor} aria-labelledby="dp-where-head">
+  <div class="answer__head">
+    <h2 id="dp-where-head">{isComic ? 'Read it on' : 'Watch it on'}</h2>
+    {countLine && <p class="answer__count">{countLine}</p>}
+  </div>
+
+  <p class="title-answer">
+    {answer}
+    {' '}
+    <span class="title-answer__stamp">Checked {checked}.</span>
+  </p>
+
+  {
+    count > 0 ? (
+      <>
+        {(verdict || freeLinks.length > 0) && (
+          <div class="dp-best">
+            {verdict && (
+              <>
+                <p class="dp-best__tag">Best way in</p>
+                <p class="dp-best__line">{verdict}</p>
+                <a
+                  class="dp-btn dp-btn--primary"
+                  href={top.link.url}
+                  rel="noopener nofollow sponsored"
+                  target="_blank"
+                  data-go={verb}
+                  data-platform={top.link.site}
+                >
+                  {Verb} on {top.link.site} <span aria-hidden="true">→</span>
+                </a>
+              </>
+            )}
+            {freeLinks.length > 0 && (
+              <p class="free-call">
+                <b>{isComic ? 'Read it free on' : 'Watch it free on'}</b>
+                {freeLinks.map((link) => (
+                  <a
+                    href={link.url}
+                    rel="noopener nofollow sponsored"
+                    target="_blank"
+                    data-go={verb}
+                    data-platform={link.site}
+                  >
+                    {link.site}
+                  </a>
+                ))}
+              </p>
+            )}
+          </div>
+        )}
+
+        <ul class="dp-plats">
+          {rows.map(({ link, facts, languages: langs }, at) => {
+            const brand = platform(link.site)
+            const sub = [
+              langs.length > 2 ? `${langs.length} languages` : langs.join(', '),
+              facts.account ? 'Sign-in needed' : null,
+            ].filter(Boolean).join(' · ') || 'Official'
+            return (
+              <li class="dp-plat" style={`--mark:${brand.color}`}>
+                <a
+                  href={link.url}
+                  rel="noopener nofollow sponsored"
+                  target="_blank"
+                  data-go={verb}
+                  data-platform={link.site}
+                >
+                  <span class="dp-plat__top">
+                    <Mark site={link.site} size="28px" class="dp-plat__mark" />
+                    <span class="dp-plat__name">
+                      {link.site}
+                      {at === 0 && facts.free && <b class="dp-plat__best">Best value</b>}
+                    </span>
+                    <span class="dp-plat__sub">{sub}</span>
+                  </span>
+                  <span class="dp-plat__facts">
+                    <span><b>How you pay</b>{facts.pay || brand.note || 'Official'}</span>
+                    <span><b>Free to {verb}</b>{facts.free || '—'}</span>
+                    <span><b>Works in</b>{facts.region || '—'}</span>
+                  </span>
+                  <span class="dp-plat__go">{Verb} <span aria-hidden="true">→</span></span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+
+        <p class="compare__checked">
+          We checked these on <time datetime={checkedISO}>{checkedText}</time>. Platforms
+          change their terms, so the platform's own page is the last word.
+        </p>
+      </>
+    ) : (
+      <div class="empty">
+        <p>
+          <strong>No official platform listed yet.</strong>
+          {' '}
+          {isComic
+            ? `No publisher has licensed ${item.title} in a language we track. That usually changes once a series gets popular, so it is worth checking back.`
+            : `${item.title} is not on a streaming platform we track. It may be region-locked or not licensed yet.`}
+        </p>
+      </div>
+    )
+  }
+
+  {isComic && languages.length > 0 && (
+    <p class="langs">
+      {hasEnglish && <b>✓ Official English release</b>}
+      {otherLanguages.length > 0 && (
+        <span>
+          {hasEnglish ? 'Also officially in' : 'Officially in'} {otherLanguages.join(' · ')}
+        </span>
+      )}
+    </p>
+  )}
+
+  {reach && (
+    <div class="dp-sub dp-reach">
+      <h3>How wide is the official coverage?</h3>
+      <ul class="reach">
+        {reach.stats.map((stat) => (
+          <li class={stat.tone === 'good' ? 'reach__cell reach__cell--good' : 'reach__cell'}>
+            <span class="reach__value">{stat.value}</span>
+            <span class="reach__label">{stat.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="overview">{reach.line}</p>
+    </div>
+  )}
+
+  {freePage && (
+    <a class="crosslink" href={freePage.href}>
+      <div>
+        <span class="crosslink__lead">{freePage.lead}</span>
+        <span class="crosslink__title">{freePage.title}</span>
+        <span class="crosslink__lead">{freePage.note}</span>
+      </div>
+    </a>
+  )}
+</section>
+
+{/* No official English platform: licensed titles like it, the official
+    Japanese pages, and a nudge to save it (src/components/ReadAlike.astro).
+    Its own section, straight under the platforms. */}
+{showAlike && <ReadAlike item={item} word={word} languages={languages} />}

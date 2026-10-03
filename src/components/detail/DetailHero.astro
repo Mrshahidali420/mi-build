@@ -1,0 +1,120 @@
+---
+/**
+ * The top of a title page: art behind, cover, the name, one score row, one
+ * facts line, the genres and the three things a reader does here (go to the
+ * platforms, save it, file it in a list). Each fact is said once.
+ *
+ * The art behind is the AniList banner, or the cover blurred when there is
+ * none. Phones get a 1x1 stand-in instead (same rule as the homepage hero):
+ * the art is faded to a third, and a 260 KB download held back first paint.
+ */
+import MyListButton from '../MyListButton.astro'
+import Countdown from '../Countdown.astro'
+import { statusWord, genreSlug } from '../../lib/format.js'
+import { dubLabel } from '../../lib/dub.mjs'
+
+const {
+  item,
+  kind,
+  isComic,
+  kindLabel,
+  kindBase,
+  alsoKnown = [],
+  malScore,
+  dub,
+  ahead,
+  whereHref,
+} = Astro.props
+
+const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+const art = item.banner || item.cover
+const live = item.status === 'RELEASING'
+const count = isComic
+  ? item.chapters
+    ? `${item.chapters} chapters`
+    : null
+  : item.episodes
+    ? `${item.episodes} episodes`
+    : null
+const meta = [count, item.startYear ? String(item.startYear) : null, dub ? dubLabel(dub) : null].filter(Boolean)
+---
+
+<section class="dp-hero" aria-labelledby="dp-title">
+  <div class={item.banner ? 'dp-hero__art' : 'dp-hero__art dp-hero__art--cover'} aria-hidden="true">
+    <picture>
+      <source media="(max-width: 700px)" srcset={PIXEL} />
+      <img src={art} alt="" width="1900" height="400" decoding="async" />
+    </picture>
+  </div>
+
+  <div class="dp-shell dp-hero__inner">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <a href={kindBase}>{kindLabel}</a>
+    </nav>
+
+    <div class="dp-hero__grid">
+      <div class="dp-hero__cover">
+        <img
+          class="cover"
+          src={item.cover}
+          alt={`Cover of ${item.title}`}
+          width="460"
+          height="651"
+          fetchpriority="high"
+        />
+      </div>
+
+      <div class="dp-hero__id">
+        <h1 id="dp-title">{item.title}</h1>
+        {item.titleNative && <p class="dp-hero__native">{item.titleNative}</p>}
+        {alsoKnown.length > 0 && <p class="dp-hero__aka">Also known as {alsoKnown.join(' · ')}</p>}
+      </div>
+
+      <div class="dp-hero__info">
+        {(item.score || malScore) && (
+          <p class="dp-score">
+            {item.score && (
+              <span class="dp-score__one">
+                <b>{(item.score / 10).toFixed(1)}</b> on AniList
+              </span>
+            )}
+            {malScore && (
+              <span class="dp-score__one">
+                <b>{malScore.score.toFixed(1)}</b> on MyAnimeList
+              </span>
+            )}
+          </p>
+        )}
+        <p class="dp-hero__meta">
+          <span class={live ? 'dp-status dp-status--live' : 'dp-status'}>{statusWord(item.status)}</span>
+          {meta.map((part) => <span>{part}</span>)}
+        </p>
+        {item.genres.length > 0 && (
+          <ul class="dp-genres" aria-label="Genres">
+            {item.genres.slice(0, 4).map((genre) => (
+              <li><a href={`/genre/${genreSlug(genre)}`}>{genre}</a></li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div class="dp-hero__actions">
+        <a class="dp-btn dp-btn--go" href={whereHref}>
+          {isComic ? 'Where to read' : 'Where to watch'}
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" /></svg>
+        </a>
+        <MyListButton item={item} ns={kind} />
+      </div>
+    </div>
+
+    {ahead && (
+      <p class="next-ep dp-hero__next">
+        <span class="next-ep__tag">{ahead.tag}</span>
+        <span class="next-ep__num">{ahead.label}</span>
+        {ahead.at && <Countdown at={ahead.at} local={!ahead.dateOnly} />}
+        <a class="next-ep__all" href={ahead.href}>{ahead.linkText}</a>
+      </p>
+    )}
+  </div>
+</section>

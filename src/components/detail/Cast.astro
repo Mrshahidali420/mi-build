@@ -1,0 +1,51 @@
+---
+/**
+ * Who is in it: a grid of faces with the role and, on an anime, the Japanese
+ * and English voices. The record carries the first twelve; the whole cast has
+ * its own page, linked under the grid when that page exists.
+ *
+ * props: cast, isComic, castPage ({ href, lead, title, note } or null)
+ */
+const { cast = [], isComic, castPage } = Astro.props
+const voiced = isComic ? 0 : cast.filter((c) => c.voice).length
+const dubbed = isComic ? 0 : cast.filter((c) => c.voiceEn).length
+const intro =
+  dubbed > 0
+    ? 'The Japanese voice actor is named under each face, and the English one below it. Tap a face to see every other story that character turns up in.'
+    : voiced > 0
+      ? 'The voice actor is named under each face. Tap a face to see every other story that character turns up in.'
+      : 'Tap a face to see every other story that character turns up in.'
+---
+
+{
+  cast.length > 0 && (
+    <section class="answer dp-cast" id="cast" aria-labelledby="dp-cast-head">
+      <div class="answer__head">
+        <h2 id="dp-cast-head">Who is in it</h2>
+        <p>{intro}</p>
+      </div>
+      <ul class="people dp-people">
+        {cast.map((person) => (
+          <li>
+            <a href={`/character/${person.slug}`}>
+              <img src={person.image} alt={`${person.name} portrait`} width="220" height="293" loading="lazy" decoding="async" />
+              <b>{person.name}</b>
+              <span>{person.role === 'MAIN' ? 'Main' : 'Supporting'}</span>
+              {!isComic && person.voice && <span class="people__voice">{person.voice}</span>}
+              {!isComic && person.voiceEn && <span class="people__voice">English: {person.voiceEn}</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+      {castPage && (
+        <a class="crosslink dp-cast__all" href={castPage.href}>
+          <div>
+            <span class="crosslink__lead">{castPage.lead}</span>
+            <span class="crosslink__title">{castPage.title}</span>
+            <span class="crosslink__lead">{castPage.note}</span>
+          </div>
+        </a>
+      )}
+    </section>
+  )
+}

@@ -1,0 +1,56 @@
+---
+/**
+ * One shopping section. It used to be two boxes on the page: "Top picks"
+ * (hand-picked Amazon products, US store only) near the top and "Own a copy"
+ * (Amazon searches) under the platforms. Both now sit here, under one
+ * heading, with the support line said once. Picks, tags and the per-country
+ * store routing are unchanged: they come from the same components and libs.
+ *
+ * The Amazon Associates sentence stays in the footer and on /privacy only.
+ *
+ * props: title, picked, buys, buyCopy, buyPage
+ */
+import TopPicks from '../TopPicks.astro'
+import BuyBox from '../BuyBox.astro'
+import { SUPPORT_LINE } from '../../lib/buy-copy.js'
+
+const { title, picked, buys = [], buyCopy = {}, buyPage } = Astro.props
+const hasPicks = Boolean(picked && picked.picks && picked.picks.length)
+const heading = hasPicks ? `Top picks for ${picked.from || title}` : buyCopy.heading
+const show = hasPicks || buys.length > 0
+---
+
+{
+  show && (
+    <section class="buybox dp-shop" id="shop" aria-labelledby="dp-shop-head">
+      <div class="buybox__head">
+        <h2 id="dp-shop-head">{heading}</h2>
+        {buyCopy.sub && <p>{buyCopy.sub}</p>}
+      </div>
+
+      {hasPicks && <TopPicks bare byHand={picked.byHand} picks={picked.picks} support={false} />}
+
+      {buys.length > 0 && (
+        <BuyBox
+          bare
+          heading={hasPicks ? 'Own a copy' : null}
+          sub={hasPicks ? `Books, discs and figures for ${title}, straight from Amazon.` : null}
+          rows={buys}
+          support={false}
+        />
+      )}
+
+      <p class="buys__support">{SUPPORT_LINE}</p>
+
+      {buyPage && (
+        <a class="crosslink" href={buyPage.href}>
+          <div>
+            <span class="crosslink__lead">{buyPage.lead}</span>
+            <span class="crosslink__title">{buyPage.title}</span>
+            <span class="crosslink__lead">{buyPage.note}</span>
+          </div>
+        </a>
+      )}
+    </section>
+  )
+}

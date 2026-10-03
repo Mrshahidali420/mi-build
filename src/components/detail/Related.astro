@@ -1,0 +1,135 @@
+---
+/**
+ * The rest of the story in one place: the order to watch or read it in, the
+ * original (or the anime), how the anime and the comic line up, and every
+ * prequel, sequel, side story and spin-off. Each of these used to be its own
+ * section; they are now sub-headings under one, with the same words.
+ *
+ * props: item, isComic, related, order, bridge, family, relationLabel, familyWord
+ */
+import { pathOf } from '../../lib/format.js'
+
+const { item, isComic, related = [], order, bridge, family = [], relationLabel = {}, familyWord } = Astro.props
+
+const hasOriginal = !isComic && related.length > 0
+const any = isComic || hasOriginal || bridge || order || family.length > 0
+const heading = isComic ? 'Reading order and related' : 'Watch order and related'
+---
+
+{
+  any && (
+    <section class="answer dp-related" id="related" aria-labelledby="dp-related-head">
+      <div class="answer__head">
+        <h2 id="dp-related-head">{heading}</h2>
+      </div>
+
+      {order && (
+        <div class="dp-sub">
+          <h3>{order.heading}</h3>
+          <p class="dp-sub__lead">{order.line}</p>
+          <ol class="order order--tl">
+            {order.chain.map((partOf) => (
+              <li class={partOf.self ? 'order__step order__step--self' : 'order__step'}>
+                <span class="order__name">
+                  {partOf.self ? partOf.title : <a href={`/${partOf.kind}/${partOf.slug}`}>{partOf.title}</a>}
+                </span>
+                <span class="order__meta">
+                  {partOf.startYear ? `${partOf.startYear} · ` : ''}
+                  {partOf.chapters
+                    ? `${partOf.chapters} chapters`
+                    : partOf.episodes
+                      ? `${partOf.episodes} episodes`
+                      : 'Count not confirmed'}
+                  {partOf.self ? ' · you are here' : ''}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {isComic && (
+        <div class="dp-sub">
+          <h3>Is there an anime?</h3>
+          {related.length > 0 ? (
+            related.map((rel) => (
+              <a class="crosslink" href={`/anime/${rel.slug}`}>
+                <div>
+                  <span class="crosslink__lead">Yes. Watch the adaptation</span>
+                  <span class="crosslink__title">{rel.title}</span>
+                  <span class="crosslink__lead">
+                    {rel.episodes ? `${rel.episodes} episodes` : 'Episode count not confirmed'}
+                    {rel.watchCount ? ` · on ${rel.watchCount} platforms` : ''}
+                  </span>
+                </div>
+              </a>
+            ))
+          ) : item.hasAnime ? (
+            <div class="empty">
+              <p>
+                <strong>Yes, an adaptation exists</strong>, but it is not in our index yet.
+              </p>
+            </div>
+          ) : (
+            <div class="empty">
+              <p>
+                <strong>Not yet.</strong> {item.title} has no anime adaptation announced. Most
+                series never get one, so the comic is the whole story for now.
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {hasOriginal && (
+        <div class="dp-sub">
+          <h3>Read the original</h3>
+          {related.map((rel) => (
+            <a class="crosslink" href={pathOf(rel)}>
+              <div>
+                <span class="crosslink__lead">The anime is based on this</span>
+                <span class="crosslink__title">{rel.title}</span>
+                <span class="crosslink__lead">
+                  {rel.readCount ? `${rel.readCount} official reading options` : 'No official reader yet'}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {bridge && (
+        <div class="dp-sub">
+          <h3>{bridge.heading}</h3>
+          {bridge.lines.map((line) => <p class="overview">{line}</p>)}
+        </div>
+      )}
+
+      {family.length > 0 && (
+        <div class="dp-sub">
+          <h3>The same story, elsewhere</h3>
+          <p class="dp-sub__lead">Every prequel, sequel, side story and spin-off AniList knows about.</p>
+          <ul class="family">
+            {family.map((rel) => (
+              <li>
+                {rel.hit ? (
+                  <a href={pathOf(rel.hit.item, rel.hit.kind)}>
+                    <b>{relationLabel[rel.relation]}</b>
+                    <span class="family__title">{rel.title}</span>
+                    <span class="family__kind">{familyWord(rel)} · in the index</span>
+                  </a>
+                ) : (
+                  <a href={`https://anilist.co/${rel.type.toLowerCase()}/${rel.id}`} target="_blank" rel="noopener">
+                    <b>{relationLabel[rel.relation]}</b>
+                    <span class="family__title">{rel.title}</span>
+                    <span class="family__kind">{familyWord(rel)} · on AniList ↗</span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )
+}

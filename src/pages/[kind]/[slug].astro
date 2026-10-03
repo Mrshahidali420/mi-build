@@ -1,18 +1,25 @@
 ---
 import Base from '../../layouts/Base.astro'
 import AlsoLookFor from '../../components/AlsoLookFor.astro'
-import Platforms from '../../components/Platforms.astro'
-import Countdown from '../../components/Countdown.astro'
-import CoverGrid from '../../components/CoverGrid.astro'
+import '../../styles/detail.css'
+import DetailHero from '../../components/detail/DetailHero.astro'
+import JumpNav from '../../components/detail/JumpNav.astro'
+import DetailRail from '../../components/detail/DetailRail.astro'
+import WhereTo from '../../components/detail/WhereTo.astro'
+import About from '../../components/detail/About.astro'
+import Cast from '../../components/detail/Cast.astro'
+import Related from '../../components/detail/Related.astro'
+import Shop from '../../components/detail/Shop.astro'
+import Details from '../../components/detail/Details.astro'
+import Faq from '../../components/detail/Faq.astro'
+import MoreLike from '../../components/detail/MoreLike.astro'
 import {
   formatWord,
   statusWord,
   truncate,
   charactersOf,
-  pathOf,
   platform,
   enrichOf,
-  genreSlug,
 } from '../../lib/format.js'
 import { loadTitle, envOf, countryOf, notFound, unavailable } from '../../lib/runtime.js'
 import { titleFaq, faqJsonld, freeSplit } from '../../lib/answers.mjs'
@@ -20,15 +27,11 @@ import { coverage, adaptationAnswer, readingOrder, upcoming } from '../../lib/co
 import { shopLinks } from '../../lib/shop-links.js'
 import { titleBuyCopy } from '../../lib/buy-copy.js'
 import { hasFreePage, hasLikePage, hasCastPage, hasBuyPage } from '../../lib/gates.mjs'
-import BuyBox from '../../components/BuyBox.astro'
-import TopPicks from '../../components/TopPicks.astro'
 import { picksForTitle, picksShowFor, booksKnown } from '../../lib/picks.js'
 import Themes from '../../components/Themes.astro'
 import EpisodeList from '../../components/EpisodeList.astro'
-import { dubOf, dubLabel } from '../../lib/dub.mjs'
+import { dubOf } from '../../lib/dub.mjs'
 import { whereAnimeUrl } from '../../lib/where-links.mjs'
-import MyListButton from '../../components/MyListButton.astro'
-import ReadAlike from '../../components/ReadAlike.astro'
 import { needsAlike } from '../../lib/alike.mjs'
 import { checkedISO, checkedLong } from '../../lib/checked.js'
 import { sectionOf, SECTIONS } from '../../lib/section.mjs'
@@ -99,16 +102,10 @@ const nextEp =
 // the same name must not be listed twice.
 const platformNames = [...new Set(links.map((l) => l.site))]
 
-// The quick numbers strip under the title. Only real numbers go in it.
+// How many platforms give something away. Said once, in the head of the
+// Watch / Read section ("5 legal places · 3 free to start"). The score, the
+// count and the year that used to sit in a strip here are in the hero.
 const freeNow = freeSplit(links).free.length
-const quickStats = [
-  item.score ? ['Score', (item.score / 10).toFixed(1), true] : null,
-  isComic && item.chapters ? ['Chapters', String(item.chapters), false] : null,
-  !isComic && item.episodes ? ['Episodes', String(item.episodes), false] : null,
-  siteCount ? ['Legal sites', String(siteCount), false] : null,
-  freeNow ? ['Free tier', String(freeNow), false] : null,
-  item.startYear ? [isComic ? 'Started' : 'First aired', String(item.startYear), false] : null,
-].filter(Boolean)
 
 // Our own words, written at build time from the facts in the record. This is
 // the main text of the page. See src/lib/prose.mjs.
@@ -160,25 +157,31 @@ const SOURCE_WORDS = {
   LIVE_ACTION: 'A live action show',
 }
 
-const facts = [
+// The facts, in two groups. The core ones (what it is, how long, who, where
+// from) sit in the Quick facts card beside the About text; the rest (charts,
+// reader counts, the next airing, favourites) open the Details section lower
+// down. Every row of the old single table is in one of the two.
+const quickFacts = [
   ['Status', statusWord(item.status)],
-  ...(SOURCE_WORDS[item.source] ? [['Based on', SOURCE_WORDS[item.source]]] : []),
-  ...(chart ? [['AniList chart', `#${chart.rank} ${chartWord[chart.type]} of all time`]] : []),
-  ...(num(readers.current) ? [[isComic ? 'Reading now' : 'Watching now', num(readers.current)]] : []),
-  ...(num(readers.completed) ? [['Finished it', num(readers.completed)]] : []),
   isComic ? ['Chapters', item.chapters ?? 'Not counted'] : ['Episodes', item.episodes ?? 'Not counted'],
   isComic ? ['Volumes', item.volumes ?? '—'] : ['Studio', item.studios[0] ?? '—'],
+  ['Format', word],
+  ...(SOURCE_WORDS[item.source] ? [['Based on', SOURCE_WORDS[item.source]]] : []),
+  ['Country', { KR: 'South Korea', JP: 'Japan', CN: 'China', TW: 'Taiwan' }[item.country] || '—'],
   ['First released', item.startYear ?? '—'],
   // make-shards.mjs sets seasonHub only when that season's hub page was built.
   ...(!isComic && item.seasonHub
     ? [[seasonWhen(item.seasonYear, item.season) > 0 ? 'Airs' : 'Aired', { text: `${seasonLabel(item.season)} ${item.seasonYear}`, href: seasonPath(item.seasonYear, item.season) }]]
     : []),
-  ['Country', { KR: 'South Korea', JP: 'Japan', CN: 'China', TW: 'Taiwan' }[item.country] || '—'],
-  ['Format', word],
   ...(item.authors?.length ? [['Author', item.authors.map((a) => a.name).join(', ')]] : []),
+]
+const moreFacts = [
+  ...(chart ? [['AniList chart', `#${chart.rank} ${chartWord[chart.type]} of all time`]] : []),
+  ...(num(readers.current) ? [[isComic ? 'Reading now' : 'Watching now', num(readers.current)]] : []),
+  ...(num(readers.completed) ? [['Finished it', num(readers.completed)]] : []),
   ...(nextEp ? [[`Episode ${item.nextEpisode.number} airs`, nextEp]] : []),
   ...(item.favourites ? [['AniList favourites', item.favourites.toLocaleString()]] : []),
-].filter(([, value]) => value !== '—' || true)
+]
 
 // AniList sometimes returns the video id with trailing whitespace, which
 // would make every URL built from it invalid.
@@ -294,15 +297,9 @@ const jsonld = {
       }
     : {}),
 }
+// The first twelve faces. An anime record also names the voices; the Cast
+// block prints them under each face (src/components/detail/Cast.astro).
 const cast = charactersOf(item).slice(0, 12)
-
-// An anime record also names the person who speaks each part. The full cast
-// page showed that already; this page did not, so a reader who came here for
-// a voice actor found the name nowhere on the page they landed on.
-// A comic has no voices, so the count stays at zero and nothing changes there.
-const voicedCast = isComic ? 0 : cast.filter((c) => c.voice).length
-// The English dub cast, named under the Japanese one where AniList has it.
-const dubbedCast = isComic ? 0 : cast.filter((c) => c.voiceEn).length
 // Sub or dub, from the whole cast list, not just the twelve faces shown.
 // Says nothing when the record has no voice credits (src/lib/dub.mjs).
 const dub = isComic ? null : dubOf(item)
@@ -310,10 +307,6 @@ const dub = isComic ? null : dubOf(item)
 // You may also like: worked out at build time and stored in the record,
 // so the Worker does no searching at request time.
 const similar = item.similar || []
-// A pick you can legally go and read today is worth more than one you cannot,
-// so the block says how many of them that is before you scroll the covers.
-const similarOpen = similar.filter((p) =>
-  ((p.kind === 'anime' ? p.watchLinks : p.readLinks) || []).length > 0).length
 const similarBase = isComic ? `/${word}` : '/anime'
 
 // What AniList readers themselves picked next after this story. A human vote
@@ -408,46 +401,48 @@ const answer = links.length
 // its page passes the gate in src/lib/gates.mjs, the same gate the page itself
 // runs before it answers 404, so a reader is never sent to a dead end.
 const faq = titleFaq(item, kind)
-const answerPages = []
-if (hasFreePage(item)) {
-  answerPages.push({
-    href: `/${kind}/${item.slug}/free`,
-    lead: isComic ? 'The free question' : 'The free question',
-    title: `Where to ${verb} ${item.title} free and legal`,
-    note: 'How much each platform gives away, and what the rest costs',
-  })
-}
+// Each answer page is linked from the section it answers: the free page from
+// Watch / Read, the buy page from the shop, the "like" page from the picks at
+// the end, the full cast from the cast grid.
+const freePage = hasFreePage(item)
+  ? {
+      href: `/${kind}/${item.slug}/free`,
+      lead: 'The free question',
+      title: `Where to ${verb} ${item.title} free and legal`,
+      note: 'How much each platform gives away, and what the rest costs',
+    }
+  : null
 // A reader who has decided they want to OWN it is asking a different
 // question from the table above. Only stories people really search for get
 // that page, so the link only shows when the page exists.
-if (hasBuyPage(item)) {
-  answerPages.push({
-    href: `/${kind}/${item.slug}/buy`,
-    lead: 'If you want to own it',
-    title: `Where to buy ${item.title}`,
-    note: isComic
-      ? 'Printed volumes, figures, art books and posters, in your own store'
-      : 'Discs, figures, art books and posters, in your own store',
-  })
-}
-if (hasLikePage(item)) {
-  answerPages.push({
-    href: `/${kind}/${item.slug}/like`,
-    lead: 'If you finished it',
-    title: `${kindLabel} like ${item.title}`,
-    note: `${similar.length} close matches, each with its official platforms`,
-  })
-}
+const buyPage = hasBuyPage(item)
+  ? {
+      href: `/${kind}/${item.slug}/buy`,
+      lead: 'If you want to own it',
+      title: `Where to buy ${item.title}`,
+      note: isComic
+        ? 'Printed volumes, figures, art books and posters, in your own store'
+        : 'Discs, figures, art books and posters, in your own store',
+    }
+  : null
+const likePage = hasLikePage(item)
+  ? {
+      href: `/${kind}/${item.slug}/like`,
+      lead: 'If you finished it',
+      title: `${kindLabel} like ${item.title}`,
+      note: `${similar.length} close matches, each with its official platforms`,
+    }
+  : null
 // A whole cast list. The block above only shows the first twelve faces, and
 // people search for the rest by the story name.
-if (hasCastPage(item)) {
-  answerPages.push({
-    href: `/${kind}/${item.slug}/characters`,
-    lead: 'Everyone in it',
-    title: `All characters in ${item.title}`,
-    note: `${charactersOf(item).length} faces, each with its own page`,
-  })
-}
+const castPage = hasCastPage(item)
+  ? {
+      href: `/${kind}/${item.slug}/characters`,
+      lead: 'Everyone in it',
+      title: `All characters in ${item.title}`,
+      note: `${charactersOf(item).length} faces, each with its own page`,
+    }
+  : null
 
 // Facts this site works out for itself: how wide the official coverage is,
 // how the anime and the comic line up, and the order to read the series in.
@@ -460,6 +455,22 @@ const bridge = adaptationAnswer(item, kind)
 const order = readingOrder(item, kind)
 
 const updatedLong = checkedLong
+
+// The sections this page really has, in page order. The jump chips (phones,
+// tablets) and the rail (wide screens) both draw from this one list.
+const hasThemes = !isComic && (item.themes || []).length > 0
+const hasEpisodes = !isComic && (item.episodeList || []).length > 0
+const hasRelated = isComic || related.length > 0 || Boolean(bridge) || Boolean(order) || family.length > 0
+const jumpLinks = [
+  { id: isComic ? 'read' : 'watch', label: isComic ? 'Read' : 'Watch' },
+  { id: 'about', label: 'About' },
+  cast.length > 0 ? { id: 'cast', label: isComic ? 'Characters' : 'Cast' } : null,
+  hasEpisodes ? { id: 'episodes', label: 'Episodes' } : null,
+  hasThemes ? { id: 'music', label: 'Music' } : null,
+  hasRelated ? { id: 'related', label: 'Related' } : null,
+  { id: 'reader-ratings', label: 'Reviews' },
+  faq.length > 0 ? { id: 'faq', label: 'FAQ' } : null,
+].filter(Boolean)
 ---
 
 <Base
@@ -469,579 +480,100 @@ const updatedLong = checkedLong
   jsonld={faq.length ? [jsonld, faqJsonld(faq)] : jsonld}
   crumbs={[{ name: kindLabel, href: kindBase }, { name: item.title }]}
 >
-  <div class="shell title-page">
-    <div class="cover-rail">
-      <div class="cover-wrap">
-        <img
-          class="cover"
-          src={item.cover}
-          alt={`Cover of ${item.title}`}
-          width="460"
-          height="651"
-          fetchpriority="high"
+  <div class="dp">
+    <DetailHero
+      item={item}
+      kind={kind}
+      isComic={isComic}
+      kindLabel={kindLabel}
+      kindBase={kindBase}
+      alsoKnown={alsoKnown}
+      malScore={malScore}
+      dub={dub}
+      ahead={ahead}
+      whereHref={isComic ? '#read' : '#watch'}
+    />
+
+    <JumpNav links={jumpLinks} />
+
+    <div class="dp-shell dp-body">
+      <div class="dp-main">
+        <WhereTo
+          item={item}
+          isComic={isComic}
+          word={word}
+          links={links}
+          answer={answer}
+          checked={updatedLong}
+          freeLinks={freeLinks}
+          freeCount={freeNow}
+          reach={reach}
+          showAlike={needsAlike(item)}
+          languages={languages}
+          freePage={freePage}
+        />
+
+        <About
+          title={item.title}
+          overview={overview}
+          synopsis={synopsis}
+          synopsisCredit={synopsisCredit}
+          quickFacts={quickFacts}
+          trailer={trailer}
+        />
+
+        <Cast cast={cast} isComic={isComic} castPage={castPage} />
+
+        {!isComic && <EpisodeList rows={item.episodeList} title={item.title} />}
+
+        {!isComic && <Themes id="music" themes={item.themes} title={item.title} country={countryOf(Astro)} />}
+
+        <Related
+          item={item}
+          isComic={isComic}
+          related={related}
+          order={order}
+          bridge={bridge}
+          family={family}
+          relationLabel={RELATION_LABEL}
+          familyWord={familyWord}
+        />
+
+        <Shop title={item.title} picked={picked} buys={buys} buyCopy={buyCopy} buyPage={buyPage} />
+
+        <Details
+          facts={moreFacts}
+          staffRows={staffRows}
+          anilistUrl={item.anilistUrl}
+          alsoSites={alsoSites}
+          whereUrl={!isComic && item.whereSlug ? whereAnimeUrl(item.whereSlug) : null}
+        />
+
+        <Ratings
+          id={item.id}
+          kind={kind}
+          slug={item.slug}
+          title={item.title}
+          rating={voices.rating}
+          reviews={voices.reviews}
+        />
+
+        <Faq faq={faq} />
+
+        <AlsoLookFor path={Astro.url.pathname} frame="answer" />
+
+        <MoreLike
+          title={item.title}
+          isComic={isComic}
+          word={word}
+          recs={recs}
+          similar={similar}
+          similarBase={similarBase}
+          likePage={likePage}
         />
       </div>
-      {
-        (item.score || malScore) && (
-          <div class="scores">
-            {item.score && (
-              <p class="cover-rail__score">
-                <b>{(item.score / 10).toFixed(1)}</b>
-                <span>on AniList</span>
-              </p>
-            )}
-            {malScore && (
-              <p class="cover-rail__score cover-rail__score--alt">
-                <b>{malScore.score.toFixed(1)}</b>
-                <span>on MyAnimeList</span>
-              </p>
-            )}
-          </div>
-        )
-      }
-      {/* On a computer it sits under the cover and scores, and stays in view
-          with the sticky rail. On a phone the rail flattens (display:
-          contents), so it takes its own full-width row under the cover.
-          Drawn from the reader's own browser. */}
-      <MyListButton item={item} ns={kind} />
-    </div>
 
-    <header class="title-head">
-      <nav class="crumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <a href={kindBase}>{kindLabel}</a>
-      </nav>
-      <h1>{item.title}</h1>
-      {item.titleNative && <p class="title-head__native">{item.titleNative}</p>}
-      {alsoKnown.length > 0 && (
-        <p class="title-head__aka">Also known as {alsoKnown.join(' · ')}</p>
-      )}
-      {/* The status is not repeated here: the pill row just below says it,
-          with the live dot when it is still running. */}
-      <ul class="title-head__meta">
-        {item.startYear && <li>{item.startYear}</li>}
-        {isComic && item.chapters && <li>{item.chapters} chapters</li>}
-        {!isComic && item.episodes && <li>{item.episodes} episodes</li>}
-        {item.genres.slice(0, 4).map((genre) => (
-          <li class="title-head__genre">
-            <a href={`/genre/${genreSlug(genre)}`}>{genre}</a>
-          </li>
-        ))}
-      </ul>
-    </header>
-
-    <div class="title-body">
-
-      <ul class="pills">
-        <li class={item.status === 'RELEASING' ? 'pill pill--live' : 'pill'}>
-          {statusWord(item.status)}
-        </li>
-        {siteCount > 0 && (
-          <li class="pill">
-            {siteCount} legal {siteCount === 1 ? 'place' : 'places'} to {isComic ? 'read' : 'watch'}
-          </li>
-        )}
-        {dub && <li class="pill">{dubLabel(dub)}</li>}
-      </ul>
-
-      {quickStats.length > 2 && (
-        <div class="stats">
-          {quickStats.map(([label, value, hot]) => (
-            <dl class={hot ? 'stats__cell stats__cell--hot' : 'stats__cell'}>
-              <dt>{label}</dt>
-              <dd>{value}</dd>
-            </dl>
-          ))}
-        </div>
-      )}
-      <p class="title-answer">
-        {answer}
-        {' '}
-        <span class="title-answer__stamp">Checked {updatedLong}.</span>
-      </p>
-
-      {
-        ahead && (
-          <p class="next-ep">
-            <span class="next-ep__tag">{ahead.tag}</span>
-            <span class="next-ep__num">{ahead.label}</span>
-            {ahead.at && <Countdown at={ahead.at} local={!ahead.dateOnly} />}
-            <a class="next-ep__all" href={ahead.href}>{ahead.linkText}</a>
-          </p>
-        )
-      }
-
-      {
-        freeLinks.length > 0 && (
-          <p class="free-call">
-            <b>{isComic ? 'Read it free on' : 'Watch it free on'}</b>
-            {freeLinks.map((link) => (
-              <a
-                href={link.url}
-                rel="noopener nofollow sponsored"
-                target="_blank"
-                data-go={isComic ? 'read' : 'watch'}
-                data-platform={link.site}
-              >
-                {link.site}
-              </a>
-            ))}
-          </p>
-        )
-      }
-
-      {/* Real hand-picked products beat a generic Amazon search, so when a
-          title has Top picks they take the shopping slot above the platforms
-          and "Own a copy" moves below them. Without picks, "Own a copy" keeps
-          the slot. */}
-      {
-        picked ? (
-          <TopPicks
-            heading={`Top picks for ${picked.from || item.title}`}
-            sub={buyCopy.sub}
-            byHand={picked.byHand}
-            picks={picked.picks}
-          />
-        ) : buys.length > 0 && (
-          <BuyBox heading={buyCopy.heading} sub={buyCopy.sub} rows={buys} />
-        )
-      }
-
-      <Platforms
-        heading={isComic ? 'Read it on' : 'Watch it on'}
-        links={links}
-        count={`${siteCount} official ${siteCount === 1 ? 'place' : 'places'}`}
-        withVerdict
-        verb={isComic ? 'read' : 'watch'}
-      >
-        <Fragment slot="empty">
-          <p>
-            <strong>No official platform listed yet.</strong>
-            {' '}
-            {isComic
-              ? `No publisher has licensed ${item.title} in a language we track. That usually changes once a series gets popular, so it is worth checking back.`
-              : `${item.title} is not on a streaming platform we track. It may be region-locked or not licensed yet.`}
-          </p>
-        </Fragment>
-      </Platforms>
-
-      {/* No official English platform: licensed titles like it, the official
-          Japanese pages, and a nudge to save it (src/components/ReadAlike.astro).
-          Below the platforms, so the Amazon box keeps its place above them. */}
-      {needsAlike(item) && <ReadAlike item={item} word={word} languages={languages} />}
-
-      {
-        picked && buys.length > 0 && (
-          <BuyBox
-            heading="Own a copy"
-            sub={`Books, discs and figures for ${item.title}, straight from Amazon.`}
-            rows={buys}
-            support={false}
-          />
-        )
-      }
-
-      {!isComic && <EpisodeList rows={item.episodeList} title={item.title} />}
-
-      {/* The sister site goes deeper on anime than this page does. Shown only
-          when WhereAnime has published a live page for this title
-          (src/lib/where-links.mjs). */}
-      {
-        !isComic && item.whereSlug && (
-          <p class="sister-link">
-            <a href={whereAnimeUrl(item.whereSlug)}>Episode dates, full cast and watch order on WhereAnime</a>
-          </p>
-        )
-      }
-
-      {
-        reach && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>How wide is the official coverage?</h2>
-            </div>
-            <ul class="reach">
-              {reach.stats.map((stat) => (
-                <li class={stat.tone === 'good' ? 'reach__cell reach__cell--good' : 'reach__cell'}>
-                  <span class="reach__value">{stat.value}</span>
-                  <span class="reach__label">{stat.label}</span>
-                </li>
-              ))}
-            </ul>
-            <p class="overview">{reach.line}</p>
-          </section>
-        )
-      }
-
-      {
-        answerPages.length > 0 && (
-          <div class="more-answers">
-            {answerPages.map((page) => (
-              <a class="crosslink" href={page.href}>
-                <div>
-                  <span class="crosslink__lead">{page.lead}</span>
-                  <span class="crosslink__title">{page.title}</span>
-                  <span class="crosslink__lead">{page.note}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        )
-      }
-
-      {
-        isComic && languages.length > 0 && (
-          <p class="langs">
-            {hasEnglish && <b>✓ Official English release</b>}
-            {otherLanguages.length > 0 && (
-              <span>
-                {hasEnglish ? 'Also officially in' : 'Officially in'} {otherLanguages.join(' · ')}
-              </span>
-            )}
-          </p>
-        )
-      }
-
-      <p class="track-line">
-        <a href={item.anilistUrl} target="_blank" rel="noopener">
-          Track your progress on AniList ↗
-        </a>
-        <span>free account · keeps your reading list in one place</span>
-      </p>
-
-      {
-        alsoSites.length > 0 && (
-          <p class="also-on">
-            <span>Also listed on</span>
-            {alsoSites.map((site) => (
-              <a href={site.url} target="_blank" rel="noopener">
-                {site.name}
-              </a>
-            ))}
-          </p>
-        )
-      }
-
-      {
-        overview.paragraphs.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>{item.title} in short</h2>
-            </div>
-            {overview.paragraphs.map((line) => (
-              <p class="overview">{line}</p>
-            ))}
-          </section>
-        )
-      }
-
-      {
-        synopsis && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>The publisher synopsis</h2>
-            </div>
-            <p class="synopsis">{synopsis}</p>
-            {synopsisCredit && <p class="synopsis__credit">Synopsis by {synopsisCredit}.</p>}
-          </section>
-        )
-      }
-
-      <section class="answer">
-        <div class="answer__head">
-          <h2>The facts</h2>
-        </div>
-        <dl class="facts">
-          {facts.map(([label, value]) => (
-            <div>
-              <dt>{label}</dt>
-              <dd>{value && value.href ? <a href={value.href}>{value.text}</a> : value}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      {
-        staffRows.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>Who made it</h2>
-              <p>The key staff credits AniList lists for this anime.</p>
-            </div>
-            <dl class="facts">
-              {staffRows.map(([role, names]) => (
-                <div>
-                  <dt>{role}</dt>
-                  <dd>{names}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-        )
-      }
-
-      <Ratings
-        id={item.id}
-        kind={kind}
-        slug={item.slug}
-        title={item.title}
-        rating={voices.rating}
-        reviews={voices.reviews}
-      />
-
-      {!isComic && <Themes themes={item.themes} title={item.title} country={countryOf(Astro)} />}
-
-      <AlsoLookFor path={Astro.url.pathname} frame="answer" />
-
-      {
-        faq.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>Common questions</h2>
-              <p>Answered from the same facts as the table above.</p>
-            </div>
-            <div class="qa2">
-              {faq.map((row, i) => (
-                <details open={i === 0}>
-                  <summary>{row.q}</summary>
-                  <p class="qa2__a">{row.a}</p>
-                </details>
-              ))}
-            </div>
-          </section>
-        )
-      }
-
-      {
-        trailer && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>Trailer</h2>
-            </div>
-            <div class="trailer" data-yt={trailer.id}>
-              {trailer.thumb && <img src={trailer.thumb} alt={`${item.title} trailer thumbnail`} width="640" height="360" loading="lazy" decoding="async" />}
-              <button type="button">
-                <span>
-                  <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true">
-                    <path
-                      d="M3 2l9 5-9 5z"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                  Play trailer
-                </span>
-              </button>
-            </div>
-            <script>
-              // The iframe loads only on click, so YouTube costs nothing
-              // until someone actually wants the video.
-              document.querySelectorAll('.trailer').forEach((box) => {
-                box.querySelector('button').addEventListener('click', () => {
-                  const id = box.dataset.yt
-                  box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1" title="Trailer" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
-                })
-              })
-            </script>
-          </section>
-        )
-      }
-
-      {
-        isComic && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>Is there an anime?</h2>
-            </div>
-            {related.length > 0 ? (
-              related.map((rel) => (
-                <a class="crosslink" href={`/anime/${rel.slug}`}>
-                  <div>
-                    <span class="crosslink__lead">Yes. Watch the adaptation</span>
-                    <span class="crosslink__title">{rel.title}</span>
-                    <span class="crosslink__lead">
-                      {rel.episodes ? `${rel.episodes} episodes` : 'Episode count not confirmed'}
-                      {rel.watchCount ? ` · on ${rel.watchCount} platforms` : ''}
-                    </span>
-                  </div>
-                </a>
-              ))
-            ) : item.hasAnime ? (
-              <div class="empty">
-                <p>
-                  <strong>Yes, an adaptation exists</strong>, but it is not in our index yet.
-                </p>
-              </div>
-            ) : (
-              <div class="empty">
-                <p>
-                  <strong>Not yet.</strong> {item.title} has no anime adaptation announced. Most
-                  series never get one, so the comic is the whole story for now.
-                </p>
-              </div>
-            )}
-          </section>
-        )
-      }
-
-      {
-        !isComic && related.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>Read the original</h2>
-            </div>
-            {related.map((rel) => (
-              <a class="crosslink" href={pathOf(rel)}>
-                <div>
-                  <span class="crosslink__lead">The anime is based on this</span>
-                  <span class="crosslink__title">{rel.title}</span>
-                  <span class="crosslink__lead">
-                    {rel.readCount ? `${rel.readCount} official reading options` : 'No official reader yet'}
-                  </span>
-                </div>
-              </a>
-            ))}
-          </section>
-        )
-      }
-
-      {
-        bridge && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>{bridge.heading}</h2>
-            </div>
-            {bridge.lines.map((line) => (
-              <p class="overview">{line}</p>
-            ))}
-          </section>
-        )
-      }
-
-      {
-        order && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>{order.heading}</h2>
-              <p>{order.line}</p>
-            </div>
-            <ol class="order order--tl">
-              {order.chain.map((partOf) => (
-                <li class={partOf.self ? 'order__step order__step--self' : 'order__step'}>
-                  <span class="order__name">
-                    {partOf.self ? (
-                      partOf.title
-                    ) : (
-                      <a href={`/${partOf.kind}/${partOf.slug}`}>{partOf.title}</a>
-                    )}
-                  </span>
-                  <span class="order__meta">
-                    {partOf.startYear ? `${partOf.startYear} · ` : ''}
-                    {partOf.chapters
-                      ? `${partOf.chapters} chapters`
-                      : partOf.episodes
-                        ? `${partOf.episodes} episodes`
-                        : 'Count not confirmed'}
-                    {partOf.self ? ' · you are here' : ''}
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </section>
-        )
-      }
-
-      {
-        family.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>The same story, elsewhere</h2>
-              <p>Every prequel, sequel, side story and spin-off AniList knows about.</p>
-            </div>
-            <ul class="family">
-              {family.map((rel) => (
-                <li>
-                  {rel.hit ? (
-                    <a href={pathOf(rel.hit.item, rel.hit.kind)}>
-                      <b>{RELATION_LABEL[rel.relation]}</b>
-                      <span class="family__title">{rel.title}</span>
-                      <span class="family__kind">{familyWord(rel)} · in the index</span>
-                    </a>
-                  ) : (
-                    <a
-                      href={`https://anilist.co/${rel.type.toLowerCase()}/${rel.id}`}
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      <b>{RELATION_LABEL[rel.relation]}</b>
-                      <span class="family__title">{rel.title}</span>
-                      <span class="family__kind">{familyWord(rel)} · on AniList ↗</span>
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </section>
-        )
-      }
-
-      {
-        cast.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>Who is in it</h2>
-              <p>
-                {dubbedCast > 0
-                  ? `The Japanese voice actor is named under each face, and the English one below it. Tap a face to see every other story that character turns up in.`
-                  : voicedCast > 0
-                  ? `The voice actor is named under each face. Tap a face to see every other story that character turns up in.`
-                  : 'Tap a face to see every other story that character turns up in.'}
-              </p>
-            </div>
-            <ul class="people">
-              {cast.map((person) => (
-                <li>
-                  <a href={`/character/${person.slug}`}>
-                    <img src={person.image} alt={`${person.name} portrait`} width="220" height="293" loading="lazy" decoding="async" />
-                    <b>{person.name}</b>
-                    <span>{person.role === 'MAIN' ? 'Main' : 'Supporting'}</span>
-                    {!isComic && person.voice && <span class="people__voice">{person.voice}</span>}
-                    {!isComic && person.voiceEn && <span class="people__voice">English: {person.voiceEn}</span>}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )
-      }
-
-      {
-        recs.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>Readers of {item.title} picked these next</h2>
-              <p>Voted for by AniList readers who finished this one. Open any of them to see where to read or watch it legally.</p>
-            </div>
-            <CoverGrid items={recs} badges />
-          </section>
-        )
-      }
-
-      {
-        similar.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>You may also like</h2>
-              <p>{similarOpen > 0
-                ? `${similarOpen} of these ${similarOpen === 1 ? 'has' : 'have'} an official place to ${isComic ? 'read' : 'watch'} right now. Closest by genre, most-read first.`
-                : `Closest ${word} by genre, most-read first.`}</p>
-            </div>
-            <CoverGrid items={similar} base={similarBase} badges />
-          </section>
-        )
-      }
+      <DetailRail score={item.score} malScore={malScore} links={jumpLinks} />
     </div>
   </div>
 </Base>

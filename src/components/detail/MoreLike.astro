@@ -1,0 +1,62 @@
+---
+/**
+ * The end of the page: what AniList readers picked next (a human vote, so it
+ * comes first), then the closest titles by genre, then the "like" page when
+ * it exists. Same blocks and words as before, grouped at the bottom.
+ *
+ * props: title, isComic, word, recs, similar, similarBase, likePage
+ */
+import CoverGrid from '../CoverGrid.astro'
+
+const { title, isComic, word, recs = [], similar = [], similarBase, likePage } = Astro.props
+const open = similar.filter((p) => ((p.kind === 'anime' ? p.watchLinks : p.readLinks) || []).length > 0).length
+---
+
+{
+  recs.length > 0 && (
+    <section class="answer dp-more-like" id="more">
+      <div class="answer__head">
+        <h2>Readers of {title} picked these next</h2>
+        <p>Voted for by AniList readers who finished this one. Open any of them to see where to read or watch it legally.</p>
+      </div>
+      <CoverGrid items={recs} badges />
+    </section>
+  )
+}
+
+{
+  similar.length > 0 && (
+    <section class="answer dp-more-like" id={recs.length ? undefined : 'more'}>
+      <div class="answer__head">
+        <h2>You may also like</h2>
+        <p>
+          {open > 0
+            ? `${open} of these ${open === 1 ? 'has' : 'have'} an official place to ${isComic ? 'read' : 'watch'} right now. Closest by genre, most-read first.`
+            : `Closest ${word} by genre, most-read first.`}
+        </p>
+      </div>
+      <CoverGrid items={similar} base={similarBase} badges />
+      {likePage && (
+        <a class="crosslink dp-more-like__page" href={likePage.href}>
+          <div>
+            <span class="crosslink__lead">{likePage.lead}</span>
+            <span class="crosslink__title">{likePage.title}</span>
+            <span class="crosslink__lead">{likePage.note}</span>
+          </div>
+        </a>
+      )}
+    </section>
+  )
+}
+
+{
+  similar.length === 0 && likePage && (
+    <a class="crosslink" href={likePage.href}>
+      <div>
+        <span class="crosslink__lead">{likePage.lead}</span>
+        <span class="crosslink__title">{likePage.title}</span>
+        <span class="crosslink__lead">{likePage.note}</span>
+      </div>
+    </a>
+  )
+}

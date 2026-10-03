@@ -18,16 +18,28 @@ import { SUPPORT_LINE } from '../lib/buy-copy.js'
 // character wall can jump straight to this box.
 // `support` is false for a second box on the same page, so the reader is
 // told once, not twice.
-const { heading, sub, rows = [], id, support = true } = Astro.props
+// `bare` drops the boxed frame, for a page that holds the rows inside its own
+// shop section (the title page): the heading is then a sub-heading, or none.
+const { heading, sub, rows = [], id, support = true, bare = false } = Astro.props
+const Wrap = bare ? 'div' : 'section'
 
 const ICONS = BUY_ICONS
 ---
 
-<section class="buybox" id={id}>
-  <div class="buybox__head">
-    <h2>{heading}</h2>
-    <p>{sub}</p>
-  </div>
+<Wrap class={bare ? 'buybox--bare' : 'buybox'} id={id}>
+  {bare ? (
+    heading && (
+      <div class="buybox__sub">
+        <h3>{heading}</h3>
+        {sub && <p>{sub}</p>}
+      </div>
+    )
+  ) : (
+    <div class="buybox__head">
+      <h2>{heading}</h2>
+      <p>{sub}</p>
+    </div>
+  )}
 
   {/* The Amazon Associates sentence lives in the site footer and on the
       privacy page, not beside every box (owner's call, 24 Sep 2026). */}
@@ -57,4 +69,4 @@ const ICONS = BUY_ICONS
   </ul>
 
   {support && <p class="buys__support">{SUPPORT_LINE}</p>}
-</section>
+</Wrap>

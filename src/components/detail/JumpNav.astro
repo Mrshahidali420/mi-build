@@ -1,0 +1,95 @@
+---
+/**
+ * "On this page": one link per section the page really has. Below 1100px it
+ * is a sticky row of chips under the header; on a wide screen it is hidden
+ * and the same links live in the right-hand rail (DetailRail.astro).
+ *
+ * The script is shared by both lists (anything marked data-jump). It marks
+ * the section in view with aria-current, keeps the active chip scrolled into
+ * the row, and tells the CSS how tall the sticky header is, so neither the
+ * row nor a jumped-to heading hides behind it.
+ *
+ * props: links [{ id, label }]
+ */
+const { links = [] } = Astro.props
+---
+
+{
+  links.length > 1 && (
+    <nav class="dp-jump" aria-label="On this page" data-jump>
+      <ul class="dp-jump__row">
+        {links.map((link) => (
+          <li><a href={`#${link.id}`}>{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<script>
+  const root = document.documentElement
+  const mast = document.querySelector('.masthead')
+  const setMast = () => {
+    if (mast) root.style.setProperty('--mast-h', `${Math.round(mast.getBoundingClientRect().height)}px`)
+  }
+  setMast()
+  addEventListener('resize', setMast, { passive: true })
+
+  const lists = [...document.querySelectorAll('[data-jump]')]
+  const ids = [...new Set(lists.flatMap((nav) => [...nav.querySelectorAll('a[href^="#"]')].map((a) => a.hash.slice(1))))]
+  const sections = ids.map((id) => document.getElementById(id)).filter(Boolean)
+
+  const mark = (id) => {
+    for (const nav of lists) {
+      if (!id) nav.querySelector('.dp-jump__row')?.scrollTo({ left: 0 })
+      for (const a of nav.querySelectorAll('a[href^="#"]')) {
+        const on = a.hash === `#${id}`
+        if (on) a.setAttribute('aria-current', 'true')
+        else a.removeAttribute('aria-current')
+        // Keep the active chip in view inside its own row, without moving the page.
+        const row = a.closest('.dp-jump__row')
+        if (on && row && row.scrollWidth > row.clientWidth) {
+          const left = a.offsetLeft - (row.clientWidth - a.offsetWidth) / 2
+          row.scrollTo({ left: Math.max(0, left), behavior: 'smooth' })
+        }
+      }
+    }
+  }
+
+  if (sections.length && 'IntersectionObserver' in window) {
+    let last = null
+    // "Here" is the last section whose top has passed a line a third of the
+    // way down the screen. Above the first section (in the hero) nothing is.
+    const update = () => {
+      const line = innerHeight * 0.35
+      let hit = ''
+      for (const s of sections) {
+        if (s.getBoundingClientRect().top <= line) hit = s.id
+        else break
+      }
+      if (hit !== last) {
+        last = hit
+        mark(hit)
+      }
+    }
+    // The observer wakes the check when a section edge crosses that line. A
+    // long jump (Home key, a far anchor) can skip every edge, so a scroll
+    // also asks once per frame at most.
+    const io = new IntersectionObserver(update, { rootMargin: '-35% 0px -64% 0px' })
+    sections.forEach((s) => io.observe(s))
+    let queued = false
+    addEventListener(
+      'scroll',
+      () => {
+        if (queued) return
+        queued = true
+        requestAnimationFrame(() => {
+          queued = false
+          update()
+        })
+      },
+      { passive: true },
+    )
+    update()
+  }
+</script>
