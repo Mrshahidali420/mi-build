@@ -319,10 +319,12 @@ export function aggregateJsonld(rating) {
 }
 
 /** schema.org Review items for approved reviews, the same ones the page draws. */
+// Only reviews with a real name go into the markup: Google flags a generic
+// author like "A reader". Unnamed reviews still show on the page itself.
 export function reviewsJsonld(reviews) {
-  return (Array.isArray(reviews) ? reviews : []).map((r) => ({
+  return (Array.isArray(reviews) ? reviews : []).filter((r) => r.name && r.name !== DEFAULT_NAME).map((r) => ({
     '@type': 'Review',
-    author: { '@type': 'Person', name: r.name || DEFAULT_NAME },
+    author: { '@type': 'Person', name: r.name },
     ...(String(r.created_at || '').length >= 10 ? { datePublished: String(r.created_at).slice(0, 10) } : {}),
     reviewBody: r.body,
     ...(Number.isInteger(r.stars) && r.stars >= 1 && r.stars <= 5

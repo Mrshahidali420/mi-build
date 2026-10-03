@@ -254,8 +254,10 @@ test('structured data: AggregateRating only from 5 votes, Review per approved re
     reviewBody: 'Good.',
     reviewRating: { '@type': 'Rating', ratingValue: '4', bestRating: '5', worstRating: '1' },
   })
-  assert.equal(out[1].author.name, DEFAULT_NAME)
-  assert.equal('reviewRating' in out[1], false)
+  // An unnamed review stays on the page but out of the markup.
+  assert.equal(out.length, 1)
+  assert.equal(reviewsJsonld([{ name: DEFAULT_NAME, body: 'Fine.' }]).length, 0)
+  assert.equal('reviewRating' in reviewsJsonld([{ name: 'Ali', body: 'Fine.', stars: null }])[0], false)
   assert.deepEqual(reviewsJsonld(null), [])
 })
 
