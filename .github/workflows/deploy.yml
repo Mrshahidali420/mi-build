@@ -4,8 +4,11 @@ on:
   push:
     branches: [master]
   schedule:
-    # Every day at 02:00 UTC: pull fresh data, rebuild, redeploy.
+    # Every 6 hours: pull fresh data, rebuild, redeploy. AniList changes a
+    # status or an air date at any hour, and a day was too long to wait.
+    # The 02:00 run is the nightly one (homepage plan, see below).
     - cron: '0 2 * * *'
+    - cron: '0 8,14,20 * * *'
   workflow_dispatch:
     inputs:
       accept_registry:
@@ -261,7 +264,7 @@ jobs:
       # token (CLOUDFLARE_D1_TOKEN wins when that secret exists). Any trouble
       # leaves the plan as it was, prints a warning and exits 0.
       - name: Plan the homepage from last night's numbers
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event.schedule == '0 2 * * *' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
