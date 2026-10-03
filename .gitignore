@@ -61,3 +61,8 @@ data/where-links.json
 # for the "read something like it" picks. Lives in its own Actions cache entry
 # (handoff-*); a missing file only ranks the picks by popularity.
 data/handoff.json
+
+# Readers' rating totals for the Top rated shelf (scripts/pull-ratings.mjs).
+# Lives in its own Actions cache entry (reader-ratings-*); a missing file only
+# leaves the shelf out.
+data/reader-ratings.json
