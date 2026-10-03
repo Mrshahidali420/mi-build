@@ -16,7 +16,9 @@
  */
 import { namesakeLabel } from '../lib/namesakes.mjs'
 
-const { name, people = [], high = false, here = '' } = Astro.props
+// frame: 'answer' draws the low list as a detail-page section (detail.css).
+const { name, people = [], high = false, here = '', frame = 'section' } = Astro.props
+const head = frame === 'answer' ? 'answer__head' : 'section__head'
 ---
 
 {
@@ -34,8 +36,8 @@ const { name, people = [], high = false, here = '' } = Astro.props
         </ul>
       </aside>
     ) : (
-      <section class="section">
-        <div class="section__head">
+      <section class={frame}>
+        <div class={head}>
           <h2>Other characters named {name}</h2>
           <p>Same name, a different story. Open one to see where they turn up.</p>
         </div>

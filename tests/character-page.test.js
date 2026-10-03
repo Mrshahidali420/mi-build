@@ -85,3 +85,18 @@ test('factsBelowHero drops only the rows the hero line already says', () => {
   ]
   assert.deepEqual(factsBelowHero(facts), [['Age', '17'], ['Made by', 'C'], ['AniList favourites', '10']])
 })
+
+test('faqBio keeps a short bio whole', async () => {
+  const { faqBio } = await import('../src/lib/character-page.mjs')
+  assert.equal(faqBio('He is a hunter. He shares a close relationship with his sister.'), 'He is a hunter. He shares a close relationship with his sister.')
+  assert.equal(faqBio(''), '')
+})
+
+test('faqBio cuts a long bio on a whole sentence, never with an ellipsis', async () => {
+  const { faqBio } = await import('../src/lib/character-page.mjs')
+  const bio = 'First sentence here. Second one is a bit longer than that. Third sentence runs on and on.'
+  assert.equal(faqBio(bio, 60), 'First sentence here. Second one is a bit longer than that.')
+  assert.equal(faqBio(bio, 10), 'First sentence here.')
+  assert.ok(!faqBio(bio, 30).endsWith('…'))
+  assert.equal(faqBio('No full stop at all and very long', 5), 'No full stop at all and very long')
+})

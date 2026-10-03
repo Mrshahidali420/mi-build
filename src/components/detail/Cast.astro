@@ -4,9 +4,10 @@
  * and English voices. The record carries the first twelve; the whole cast has
  * its own page, linked under the grid when that page exists.
  *
- * props: cast, isComic, castPage ({ href, lead, title, note } or null)
+ * props: cast, isComic, castPage ({ href, lead, title, note } or null), and
+ * optionally id and heading (the character page's "Other characters in X")
  */
-const { cast = [], isComic, castPage } = Astro.props
+const { cast = [], isComic, castPage, id = 'cast', heading = 'Who is in it' } = Astro.props
 const voiced = isComic ? 0 : cast.filter((c) => c.voice).length
 const dubbed = isComic ? 0 : cast.filter((c) => c.voiceEn).length
 const intro =
@@ -19,9 +20,9 @@ const intro =
 
 {
   cast.length > 0 && (
-    <section class="answer dp-cast" id="cast" aria-labelledby="dp-cast-head">
+    <section class="answer dp-cast" id={id} aria-labelledby="dp-cast-head">
       <div class="answer__head">
-        <h2 id="dp-cast-head">Who is in it</h2>
+        <h2 id="dp-cast-head">{heading}</h2>
         <p>{intro}</p>
       </div>
       <ul class="people dp-people">

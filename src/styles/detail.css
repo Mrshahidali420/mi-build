@@ -922,8 +922,8 @@
   margin-top: 0;
 }
 
-/* Where they show up: one plain list per medium, role as small text. */
-.dp-appears__group:first-of-type {
+/* Where they show up: the title page's cover cards, one grid per medium. */
+.dp-appears .dp-sub:first-of-type {
   margin-top: 0;
 }
 .dp-appears__n {
@@ -933,22 +933,25 @@
   font-weight: 400;
   font-variant-numeric: tabular-nums;
 }
-.dp-appears .appears a {
-  grid-template-columns: 46px minmax(0, 1fr);
-}
-.dp-appears .appears b {
-  color: var(--dawn);
-  font-size: 0.95rem;
-}
-.dp-appears .dp-more[open] > .appears {
-  margin-top: 1px;
+/* Short rows sit under their own heading, not centred away from it. */
+.dp-appears .grid {
+  justify-content: flex-start;
 }
 .dp-appears .dp-more > summary {
-  margin-top: 0.35rem;
+  margin-top: 0.5rem;
 }
-@media (min-width: 900px) {
-  .dp-appears .appears {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-  }
+.dp-appears .dp-more[open] > .grid {
+  margin-top: 0;
+}
+
+/* The AniList bio reads as the page's main prose, like a title's "in short". */
+.dp-bio > p {
+  color: var(--dawn);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  max-width: 68ch;
+  margin: 0;
+}
+.dp-bio > p + p {
+  margin-top: 1rem;
 }

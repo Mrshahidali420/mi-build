@@ -81,3 +81,22 @@ export const countPhrase = (n) => `Appears in ${n} ${n === 1 ? 'title' : 'titles
  */
 const HERO_SAYS = new Set(['Japanese voice', 'English voice', 'From', 'Appears in'])
 export const factsBelowHero = (facts = []) => facts.filter(([term]) => !HERO_SAYS.has(term))
+
+/** The longest "Who is X?" answer bio before it is cut back to a whole sentence. */
+export const FAQ_BIO_MAX = 700
+
+/**
+ * The bio for the "Who is X?" answer. The whole bio when it is short enough;
+ * otherwise as many whole sentences as fit, and at least the first one. It
+ * never ends mid-sentence and never on "…": the old 220-letter cut left
+ * answers such as "...he shares a close relationship" in the FAQ and in the
+ * FAQPage markup. The same string feeds both, so they stay in step.
+ */
+export function faqBio(text, max = FAQ_BIO_MAX) {
+  const t = String(text || '').replace(/\s+/g, ' ').trim()
+  if (t.length <= max) return t
+  const ends = [...t.matchAll(/[.!?]["'’”)\]]?(?=\s|$)/g)].map((m) => m.index + m[0].length)
+  if (!ends.length) return t
+  const fit = ends.filter((end) => end <= max)
+  return t.slice(0, fit.length ? fit[fit.length - 1] : ends[0]).trim()
+}
