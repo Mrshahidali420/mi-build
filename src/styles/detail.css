@@ -881,3 +881,77 @@
 .dp-shop .crosslink {
   background: rgb(5 5 8 / 0.45);
 }
+
+/* ---------- character pages ---------------------------------------------------
+   The same hero, rail and sections as a title page (CharacterHero.astro). Only
+   what a character needs on top: a portrait-shaped cover, the linked facts
+   line, and the appearance groups. */
+
+.dp-hero__cover .cover--portrait {
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+/* Three short facts, one per line: a dot between long ones lands at the start
+   of a wrapped line and reads as a stray mark. */
+.dp-hero__facts {
+  display: block;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+.dp-hero__facts > span {
+  display: block;
+}
+.dp-hero__facts > span + span::before {
+  content: none;
+}
+.dp-hero__facts a {
+  color: var(--dawn);
+  text-decoration-color: rgb(240 163 184 / 0.5);
+  text-underline-offset: 0.18em;
+}
+.dp-hero__facts a:hover {
+  color: var(--day);
+  text-decoration-color: currentColor;
+}
+.dp-hero__lang {
+  color: var(--dawn-faint);
+  font-size: 0.86em;
+}
+/* No score and no My list on a character page: the rail is only the links. */
+.dp-rail > .dp-rail__nav:first-child {
+  margin-top: 0;
+}
+
+/* Where they show up: the title page's cover cards, one grid per medium. */
+.dp-appears .dp-sub:first-of-type {
+  margin-top: 0;
+}
+.dp-appears__n {
+  margin-left: 0.35rem;
+  color: var(--dawn-faint);
+  font-size: 0.86rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+/* Short rows sit under their own heading, not centred away from it. */
+.dp-appears .grid {
+  justify-content: flex-start;
+}
+.dp-appears .dp-more > summary {
+  margin-top: 0.5rem;
+}
+.dp-appears .dp-more[open] > .grid {
+  margin-top: 0;
+}
+
+/* The AniList bio reads as the page's main prose, like a title's "in short". */
+.dp-bio > p {
+  color: var(--dawn);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  max-width: 68ch;
+  margin: 0;
+}
+.dp-bio > p + p {
+  margin-top: 1rem;
+}

@@ -30,6 +30,10 @@ const {
   showAlike = false,
   languages = [],
   freePage,
+  // The character page names the story in its heading ("Where to read Solo
+  // Leveling") and passes its answer sentence, with a link, in the "answer"
+  // slot. Title pages pass neither and draw exactly as before.
+  heading,
 } = Astro.props
 
 const verb = isComic ? 'read' : 'watch'
@@ -49,12 +53,12 @@ const otherLanguages = languages.filter((l) => l !== 'English')
 
 <section class="answer dp-where" id={anchor} aria-labelledby="dp-where-head">
   <div class="answer__head">
-    <h2 id="dp-where-head">{isComic ? 'Read it on' : 'Watch it on'}</h2>
+    <h2 id="dp-where-head">{heading || (isComic ? 'Read it on' : 'Watch it on')}</h2>
     {countLine && <p class="answer__count">{countLine}</p>}
   </div>
 
   <p class="title-answer">
-    {answer}
+    <slot name="answer">{answer}</slot>
     {' '}
     <span class="title-answer__stamp">Checked {checked}.</span>
   </p>

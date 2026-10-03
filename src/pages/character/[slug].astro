@@ -1,6 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro'
-import Platforms from '../../components/Platforms.astro'
+import '../../styles/detail.css'
+import CharacterHero from '../../components/detail/CharacterHero.astro'
+import JumpNav from '../../components/detail/JumpNav.astro'
+import DetailRail from '../../components/detail/DetailRail.astro'
+import Shop from '../../components/detail/Shop.astro'
+import Faq from '../../components/detail/Faq.astro'
+import WhereTo from '../../components/detail/WhereTo.astro'
+import About from '../../components/detail/About.astro'
+import Cast from '../../components/detail/Cast.astro'
+import { groupAppearances, roleWord, voicesOf, factsBelowHero, faqBio } from '../../lib/character-page.mjs'
 import {
   kindOfAppearance,
   truncate,
@@ -9,15 +18,14 @@ import {
   genreSlug,
   parseHeight,
   parseFacts,
+  platform,
 } from '../../lib/format.js'
 import { loadCharacter, loadTitle, envOf, countryOf, notFound, unavailable } from '../../lib/runtime.js'
-import { characterFaq, faqJsonld, wordOf, verbOf, uniqueBySite, linksOf } from '../../lib/answers.mjs'
+import { characterFaq, faqJsonld, wordOf, verbOf, uniqueBySite, linksOf, freeSplit } from '../../lib/answers.mjs'
 import { characterShopLinks } from '../../lib/shop-links.js'
 // The merch page answers 404 when this gate says no, so the link obeys it too.
-import { hasCharacterBuyPage } from '../../lib/gates.mjs'
+import { hasCharacterBuyPage, hasCastPage } from '../../lib/gates.mjs'
 import { characterBuyCopy } from '../../lib/buy-copy.js'
-import BuyBox from '../../components/BuyBox.astro'
-import TopPicks from '../../components/TopPicks.astro'
 import { picksForPerson, picksShowFor } from '../../lib/picks.js'
 import { checkedISO, checkedLong } from '../../lib/checked.js'
 import { displayName } from '../../lib/names.mjs'
@@ -25,7 +33,6 @@ import Namesakes from '../../components/Namesakes.astro'
 import { storyName } from '../../lib/namesakes.mjs'
 import AlsoLookFor from '../../components/AlsoLookFor.astro'
 import { ageOf } from '../../lib/age.mjs'
-import { whereVoiceActorUrl } from '../../lib/where-links.mjs'
 
 // Rendered by the Worker on request, so the cast list has no ceiling.
 let person
@@ -161,12 +168,10 @@ const height = parseHeight(person.description)
 const voiced = person.appearsIn.find((a) => a.voice) || null
 // The English dub, from the same kind of row. Absent until the anime carries it.
 const voicedEn = person.appearsIn.find((a) => a.voiceEn) || null
-// Each voice actor's own page on the sister site, where WhereAnime has one
-// live (src/lib/where-links.mjs). The same person twice gets one link.
-const voiceLinks = [
-  voiced?.voiceWhere ? { name: voiced.voice, slug: voiced.voiceWhere } : null,
-  voicedEn?.voiceEnWhere ? { name: voicedEn.voiceEn, slug: voicedEn.voiceEnWhere } : null,
-].filter((row, i, rows) => row && rows.findIndex((r) => r?.slug === row.slug) === i)
+// The voices for the hero's facts line, each linked to its WhereAnime page
+// where the sister site has one. They used to be separate link boxes under the
+// table; now the hero line says them once (src/lib/character-page.mjs).
+const voices = voicesOf(person.appearsIn)
 
 // AniList's age as a person would say it: "17-" becomes "17 or older".
 const age = ageOf(person.age)?.text || ''
@@ -211,6 +216,7 @@ const facts = [
 const buys = characterShopLinks(person, series || lead, countryOf(Astro))
 // Hand-picked products, for readers on amazon.com only (see src/lib/picks.js).
 const picked = picksShowFor(countryOf(Astro)) ? picksForPerson(person, series || lead) : null
+const hasPicks = Boolean(picked?.picks?.length)
 const merchIsCharacter = buys.some((row) => row.kind === 'figures')
 const merchFirst = buys[0]?.kind === 'figures'
 // The words fit what the first row sells and name the story the face is
@@ -224,7 +230,7 @@ const { heading: buyHeading, sub: buySub } = characterBuyCopy({
 
 // Without the fact lines, so "Who is X?" opens on a sentence, not "Height:".
 const bioPlain = bio.trim() ? bioText(bio) : ''
-const faq = characterFaq(person, lead, leadKind, series, truncate(bioPlain, 220), height, voiced?.voice || '', bioFacts, voicedEn?.voiceEn || '')
+const faq = characterFaq(person, lead, leadKind, series, faqBio(bioPlain), height, voiced?.voice || '', bioFacts, voicedEn?.voiceEn || '')
 
 // The old description was the same sentence on every character page with only
 // the name swapped, which says nothing a searcher cannot already see in the
@@ -324,6 +330,62 @@ const pageTitle = withFormal && withFormal.length <= TITLE_ROOM ? withFormal : t
 // The date of the last nightly check against AniList, shared by every page.
 const updated = checkedISO
 
+// ---- the page layout (the redesign of 3 Oct 2026) ----------------------------
+// Same order of intent as a title page: who this is (hero), where to read or
+// watch the story, about, every appearance, the rest of the cast, one shop
+// box, questions. Each fact is said once: the hero line carries the role, the
+// voices and the title count, so the Quick facts card leaves those out.
+const whereId = verb === 'watch' ? 'watch' : 'read'
+const quickFacts = factsBelowHero(facts)
+const groups = groupAppearances(person.appearsIn)
+// The native spelling gets its own line under the name, as on a title page;
+// every other name stays on the "Also known as" line.
+const native = person.native && alternates.includes(person.native) ? person.native : ''
+const akaNames = alternates.filter((name) => name !== native)
+const showAbout = Boolean(bio.trim()) || quickFacts.length > 0 || !series
+const showShop = hasPicks || buys.length > 0
+// The merch page answers 404 when its gate says no, so the link obeys it too.
+const merchPage =
+  merchIsCharacter && hasCharacterBuyPage(person)
+    ? {
+        href: `/character/${person.slug}/buy`,
+        lead: 'The full merch page',
+        title: `Where to buy ${primary} merch`,
+        note: 'Figures, posters and apparel, in your own store',
+      }
+    : null
+
+// The where-to section uses the title page's own cards (WhereTo.astro), fed
+// with every language edition of the lead title's links, so its rows merge
+// and rank exactly as on that title's page.
+const allLinks = series ? linksOf(series) : []
+const freeLinks = []
+for (const link of allLinks) {
+  if (freeLinks.some((l) => l.site === link.site)) continue
+  if ((platform(link.site).note || '').toLowerCase().includes('free')) freeLinks.push(link)
+}
+const freeCount = freeSplit(allLinks).free.length
+const languages = leadKind !== 'anime' ? [...new Set(allLinks.map((l) => l.language).filter(Boolean))] : []
+// The lead story's full cast page, linked under the faces when it exists.
+const castPage =
+  series && hasCastPage(series)
+    ? {
+        href: `/${leadKind}/${series.slug}/characters`,
+        lead: 'Everyone in it',
+        title: `All characters in ${lead.title}`,
+        note: `${(series.characters || []).filter((c) => c.image).length} faces, each with its own page`,
+      }
+    : null
+
+const jumpLinks = [
+  series ? { id: whereId, label: verb === 'watch' ? 'Watch' : 'Read' } : null,
+  showAbout ? { id: 'about', label: 'About' } : null,
+  { id: 'appears', label: 'Appears in' },
+  siblings.length > 0 ? { id: 'others', label: 'Characters' } : null,
+  showShop ? { id: 'shop', label: 'Shop' } : null,
+  faq.length > 0 ? { id: 'faq', label: 'FAQ' } : null,
+].filter(Boolean)
+
 // schema.org Person also has jobTitle and affiliation. Filled only when the bio
 // states them, in the bio's own words. Rank is left out: "S-Class" is a grade,
 // not a job.
@@ -368,151 +430,165 @@ const jsonld = {
   jsonld={faq.length ? [jsonld, faqJsonld(faq)] : jsonld}
   crumbs={[{ name: 'Characters', href: '/character' }, { name: primary }]}
 >
-  <div class="shell">
-    <article class="person">
-      <div class="person__portrait">
-        <img src={person.image} alt={`${primary} portrait`} width="440" height="587" loading="eager" fetchpriority="high" decoding="async" />
-      </div>
-      <div>
-        <h1>{primary}{formal && <> <span class="person__formal">({formal})</span></>}</h1>
-        {/* One line for every other name: the native spelling first, then the
-            AniList alternatives. It used to be two lines, native and aliases. */}
-        {alternates.length > 0 && (
-          <p class="person__alias">Also known as {alternates.join(' · ')}</p>
-        )}
+  <div class="dp dp--person">
+    <CharacterHero
+      primary={primary}
+      formal={formal}
+      native={native}
+      aliases={akaNames}
+      image={person.image}
+      art={series?.banner || series?.cover || lead.cover}
+      artIsBanner={Boolean(series?.banner)}
+      role={lead.role}
+      lead={{ title: lead.title, href: `/${leadKind}/${lead.slug}` }}
+      voices={voices}
+      count={person.appearsIn.length}
+      genres={genres}
+      whereHref={series ? `#${whereId}` : '#appears'}
+      whereLabel={series ? (verb === 'watch' ? 'Where to watch' : 'Where to read') : 'Where they appear'}
+    />
+
+    <JumpNav links={jumpLinks} />
+
+    <div class="dp-shell dp-body">
+      <div class="dp-main">
+        {/* A better-known character owns this name, so the way across sits
+            right under the hero (see namesakesHigh above). */}
         {namesakesHigh && (
           <Namesakes name={primary} people={person.namesakes} high here={storyName(lead.title)} />
         )}
-        <p>
-          {primary} is a {lead.role === 'MAIN' ? 'main character' : 'character'} in the {word}{' '}
-          <a href={`/${leadKind}/${lead.slug}`}>{lead.title}</a>
-          {authors.length > 0 && <> by {authors.join(' and ')}</>}. Every official place to {verb}{' '}
-          that story is listed further down this page.{' '}
-          <span class="title-answer__stamp">Checked {checkedLong}.</span>
-        </p>
-        <dl class="facts">
-          {facts.map(([term, value]) => (
-            <div><dt>{term}</dt><dd>{value}</dd></div>
-          ))}
-        </dl>
-        {voiceLinks.map((va) => (
-          <p class="sister-link">
-            <a href={whereVoiceActorUrl(va.slug)}>All roles of {va.name} on WhereAnime</a>
-          </p>
-        ))}
-        {genres.length > 0 && (
-          <div class="chips">
-            {genres.map((genre) => (
-              <a href={`/genre/${genreSlug(genre)}`}>{genre}</a>
-            ))}
-          </div>
+
+        {series && (
+          <WhereTo
+            item={series}
+            isComic={leadKind !== 'anime'}
+            word={word}
+            links={allLinks}
+            heading={`Where to ${verb} ${lead.title}`}
+            checked={checkedLong}
+            freeLinks={freeLinks}
+            freeCount={freeCount}
+            languages={languages}
+          >
+            <Fragment slot="answer">
+              {primary} is a {lead.role === 'MAIN' ? 'main character' : 'character'} in the {word}{' '}
+              <a href={`/${leadKind}/${lead.slug}`}>{lead.title}</a>
+              {authors.length > 0 && <> by {authors.join(' and ')}</>}. Every official place to {verb}{' '}
+              that story is listed below.
+            </Fragment>
+          </WhereTo>
         )}
-      </div>
-    </article>
 
-    {/* Hand-picked products come first, as on title pages. */}
-    {picked && (
-      <TopPicks
-        heading={`Top picks for ${picked.from || primary}`}
-        sub={picked.byHand ? 'Real products on Amazon, picked by hand.' : 'Real products on Amazon, matched from publisher records.'}
-        byHand={picked.byHand}
-        picks={picked.picks}
-      />
-    )}
+        {showAbout && (
+          <About
+            title={primary}
+            heading={`About ${primary}`}
+            sub={bio.trim() ? 'From AniList, the same source as the rest of this page.' : null}
+            quickFacts={quickFacts}
+          >
+            {!series && (
+              <p class="overview">
+                {primary} is a {lead.role === 'MAIN' ? 'main character' : 'character'} in the {word}{' '}
+                <a href={`/${leadKind}/${lead.slug}`}>{lead.title}</a>
+                {authors.length > 0 && <> by {authors.join(' and ')}</>}.{' '}
+                <span class="title-answer__stamp">Checked {checkedLong}.</span>
+              </p>
+            )}
+            {bio.trim() && <div class="dp-bio" set:html={bioHtml(bio)} />}
+          </About>
+        )}
 
-    {buys.length > 0 && (
-      <BuyBox id="buy" heading={buyHeading} sub={buySub} rows={buys} support={!picked} />
-    )}
-
-    {merchIsCharacter && hasCharacterBuyPage(person) && (
-      <a class="crosslink" href={`/character/${person.slug}/buy`}>
-        <div>
-          <span class="crosslink__lead">The full merch page</span>
-          <span class="crosslink__title">Where to buy {primary} merch</span>
-          <span class="crosslink__lead">Figures, posters and apparel, in your own store</span>
-        </div>
-      </a>
-    )}
-
-    {bio.trim() && (
-      <section class="section">
-        <div class="section__head">
-          <h2>About {primary}</h2>
-          <p>From AniList, the same source as the rest of this page.</p>
-        </div>
-        <div class="synopsis" set:html={bioHtml(bio)} />
-      </section>
-    )}
-
-    {series && (
-      <Platforms
-        heading={`Where to ${verb} ${lead.title}`}
-        links={links}
-        verb={verb}
-        count={`${siteCount} official ${siteCount === 1 ? 'place' : 'places'}`}
-        empty={`No platform we track holds an official licence for ${lead.title} yet. This page is rebuilt every day, so a new one shows up here on its own.`}
-      />
-    )}
-
-    <section class="section">
-      <div class="section__head">
-        <h2>Where {primary} shows up</h2>
-        <p>Open a title to see the official apps that carry it.</p>
-      </div>
-      <ul class="appears">
-        {person.appearsIn.map((a) => (
-          <li>
-            <a href={`/${kindOfAppearance(a)}/${a.slug}`}>
-              <img src={a.cover} alt={`Cover of ${a.title}`} width="46" height="64" loading="lazy" decoding="async" />
-              <span><b>{a.title}</b><span>{kindOfAppearance(a)}</span></span>
-              <em>{a.role === 'MAIN' ? 'Main character' : a.role === 'SUPPORTING' ? 'Supporting' : 'Appears'}</em>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    {siblings.length > 0 && (
-      <section class="section">
-        <div class="section__head">
-          <h2>Other characters in {lead.title}</h2>
-          <p>Tap a face to see every other story that character turns up in.</p>
-        </div>
-        <ul class="people">
-          {siblings.map((mate) => (
-            <li>
-              <a href={`/character/${mate.slug}`}>
-                <img src={mate.image} alt={`${mate.name} portrait`} width="220" height="293" loading="lazy" decoding="async" />
-                <b>{mate.name}</b>
-                <span>{mate.role === 'MAIN' ? 'Main' : 'Supporting'}</span>
-              </a>
-            </li>
+        {/* Every appearance, as the title page's cover cards (the grid of
+            "You may also like"), grouped by medium. The first six of each
+            show; the rest fold, still in the HTML. */}
+        <section class="answer dp-more-like dp-appears" id="appears" aria-labelledby="dp-appears-head">
+          <div class="answer__head">
+            <h2 id="dp-appears-head">Where {primary} shows up</h2>
+            <p>Open a title to see the official apps that carry it.</p>
+          </div>
+          {groups.map((group) => (
+            <div class="dp-sub">
+              <h3>{group.label} <span class="dp-appears__n">{group.rows.length}</span></h3>
+              {[group.shown, group.folded].map((rows, fold) =>
+                rows.length === 0 ? null : fold ? (
+                  <details class="dp-more">
+                    <summary>Show all {group.rows.length}</summary>
+                    <ul class="grid">
+                      {rows.map((a) => (
+                        <li class="card">
+                          <a href={`/${kindOfAppearance(a)}/${a.slug}`}>
+                            <span class="card__art">
+                              <img src={a.cover} alt={`Cover of ${a.title}`} width="230" height="345" loading="lazy" decoding="async" />
+                            </span>
+                            <p class="card__title">{a.title}</p>
+                            <p class="card__meta"><span>{roleWord(a.role)}</span></p>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                ) : (
+                  <ul class="grid">
+                    {rows.map((a) => (
+                      <li class="card">
+                        <a href={`/${kindOfAppearance(a)}/${a.slug}`}>
+                          <span class="card__art">
+                            <img src={a.cover} alt={`Cover of ${a.title}`} width="230" height="345" loading="lazy" decoding="async" />
+                          </span>
+                          <p class="card__title">{a.title}</p>
+                          <p class="card__meta"><span>{roleWord(a.role)}</span></p>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                ),
+              )}
+            </div>
           ))}
-        </ul>
-      </section>
-    )}
+        </section>
 
-    {/* Other pages that share this name, worked out at build time by
-        make-shards.mjs (the Worker never holds the whole cast). A reader who
-        searched "Luna" may want a different Luna; this is the way across.
-        On the famous one's page it waits down here; on a lesser one's page
-        it sits under the title instead (see namesakesHigh above). */}
-    {!namesakesHigh && <Namesakes name={primary} people={person.namesakes} />}
+        <Cast
+          id="others"
+          heading={`Other characters in ${lead.title}`}
+          cast={siblings}
+          isComic={leadKind !== 'anime'}
+          castPage={castPage}
+        />
 
-    <AlsoLookFor path={Astro.url.pathname} />
+        {showShop && (
+          <Shop
+            title={primary}
+            picked={picked}
+            buys={buys}
+            buyCopy={{
+              heading: buyHeading,
+              sub: hasPicks
+                ? picked.byHand
+                  ? 'Real products on Amazon, picked by hand.'
+                  : 'Real products on Amazon, matched from publisher records.'
+                : buySub,
+            }}
+            buysHeading={buyHeading}
+            buysSub={buySub}
+            buyPage={merchPage}
+          />
+        )}
 
-    {faq.length > 0 && (
-      <section class="section">
-        <div class="section__head">
-          <h2>Common questions about {primary}</h2>
-          <p>Answered from the same facts as the rest of this page.</p>
-        </div>
-        <dl class="qa">
-          {faq.map((row) => (
-            <div><dt>{row.q}</dt><dd>{row.a}</dd></div>
-          ))}
-        </dl>
-      </section>
-    )}
+        <Faq
+          faq={faq}
+          heading={`Common questions about ${primary}`}
+          sub="Answered from the same facts as the rest of this page."
+        />
+
+        {/* Other pages that share this name, worked out at build time by
+            make-shards.mjs (the Worker never holds the whole cast). On the
+            famous one's page it waits down here. */}
+        {!namesakesHigh && <Namesakes name={primary} people={person.namesakes} frame="answer" />}
+
+        <AlsoLookFor path={Astro.url.pathname} frame="answer" />
+      </div>
+
+      <DetailRail links={jumpLinks} save={false} />
+    </div>
   </div>
 </Base>

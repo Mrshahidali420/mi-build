@@ -1,0 +1,124 @@
+---
+/**
+ * The top of a character page, drawn with the title hero's own classes
+ * (DetailHero.astro, src/styles/detail.css) so the two pages read as one
+ * site: the lead title's art behind, the portrait as the cover, the names,
+ * ONE facts line, the lead story's genres and the button to the platforms.
+ *
+ * The art behind is the lead title's banner, or its cover blurred when there
+ * is none. Phones get a 1x1 stand-in, the same rule as DetailHero.
+ *
+ * The facts line says the role, the voices and the title count once; the
+ * Quick facts card further down no longer repeats them. A voice actor's name
+ * links to their WhereAnime page when the sister site has one.
+ *
+ * props: primary, formal, native, aliases, image, art, artIsBanner,
+ *        role, lead { title, href }, voices [{ name, lang, where }], count,
+ *        genres, whereHref, whereLabel
+ */
+import { genreSlug } from '../../lib/format.js'
+import { rolePhrase, countPhrase } from '../../lib/character-page.mjs'
+import { whereVoiceActorUrl } from '../../lib/where-links.mjs'
+
+const {
+  primary,
+  formal,
+  native,
+  aliases = [],
+  image,
+  art,
+  artIsBanner = false,
+  role,
+  lead,
+  voices = [],
+  count = 0,
+  genres = [],
+  whereHref,
+  whereLabel,
+} = Astro.props
+
+const PIXEL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+---
+
+<section class="dp-hero dp-hero--person" aria-labelledby="dp-title">
+  {art && (
+    <div class={artIsBanner ? 'dp-hero__art' : 'dp-hero__art dp-hero__art--cover'} aria-hidden="true">
+      <picture>
+        <source media="(max-width: 700px)" srcset={PIXEL} />
+        <img src={art} alt="" width="1900" height="400" decoding="async" />
+      </picture>
+    </div>
+  )}
+
+  <div class="dp-shell dp-hero__inner">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <a href="/character">Characters</a>
+    </nav>
+
+    <div class="dp-hero__grid">
+      <div class="dp-hero__cover">
+        <img
+          class="cover cover--portrait"
+          src={image}
+          alt={`${primary} portrait`}
+          width="440"
+          height="587"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+
+      <div class="dp-hero__id">
+        <h1 id="dp-title">{primary}{formal && <> <span class="person__formal">({formal})</span></>}</h1>
+        {native && <p class="dp-hero__native">{native}</p>}
+        {aliases.length > 0 && <p class="dp-hero__aka">Also known as {aliases.join(' · ')}</p>}
+      </div>
+
+      <div class="dp-hero__info">
+        <p class="dp-hero__meta dp-hero__facts">
+          {lead && (
+            <span>
+              {rolePhrase(role)} <a href={lead.href}>{lead.title}</a>
+            </span>
+          )}
+          {voices.length > 0 && (
+            <span>
+              Voiced by{' '}
+              {voices.map((va, i) => (
+                <>
+                  {i > 0 && ' and '}
+                  {va.where ? (
+                    <a href={whereVoiceActorUrl(va.where)} title={`All roles of ${va.name} on WhereAnime`}>{va.name}</a>
+                  ) : (
+                    va.name
+                  )}{' '}
+                  <span class="dp-hero__lang">({va.lang})</span>
+                </>
+              ))}
+            </span>
+          )}
+          {/* One title is the lead title, already named above. */}
+          {count > 1 && <span>{countPhrase(count)}</span>}
+        </p>
+        {genres.length > 0 && (
+          <ul class="dp-genres" aria-label="Genres">
+            {genres.map((genre) => (
+              <li><a href={`/genre/${genreSlug(genre)}`}>{genre}</a></li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {whereHref && (
+        <div class="dp-hero__actions">
+          <a class="dp-btn dp-btn--go" href={whereHref}>
+            {whereLabel}
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" /></svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>

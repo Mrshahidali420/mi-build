@@ -8,13 +8,15 @@
  *
  * The Amazon Associates sentence stays in the footer and on /privacy only.
  *
- * props: title, picked, buys, buyCopy, buyPage
+ * props: title, picked, buys, buyCopy, buyPage, and optionally buysHeading /
+ * buysSub for the searches block under the picks (the character page keeps
+ * its own wording there; title pages use the defaults)
  */
 import TopPicks from '../TopPicks.astro'
 import BuyBox from '../BuyBox.astro'
 import { SUPPORT_LINE } from '../../lib/buy-copy.js'
 
-const { title, picked, buys = [], buyCopy = {}, buyPage } = Astro.props
+const { title, picked, buys = [], buyCopy = {}, buyPage, buysHeading, buysSub } = Astro.props
 const hasPicks = Boolean(picked && picked.picks && picked.picks.length)
 const heading = hasPicks ? `Top picks for ${picked.from || title}` : buyCopy.heading
 const show = hasPicks || buys.length > 0
@@ -33,8 +35,8 @@ const show = hasPicks || buys.length > 0
       {buys.length > 0 && (
         <BuyBox
           bare
-          heading={hasPicks ? 'Own a copy' : null}
-          sub={hasPicks ? `Books, discs and figures for ${title}, straight from Amazon.` : null}
+          heading={hasPicks ? buysHeading || 'Own a copy' : null}
+          sub={hasPicks ? buysSub || `Books, discs and figures for ${title}, straight from Amazon.` : null}
           rows={buys}
           support={false}
         />

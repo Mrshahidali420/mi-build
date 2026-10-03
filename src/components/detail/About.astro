@@ -8,12 +8,23 @@
  * A very long synopsis shows its opening and folds the rest behind "Read
  * more". The folded text stays in the HTML.
  *
- * props: title, overview, synopsis, synopsisCredit, quickFacts [[label, value]], trailer
+ * props: title, overview, synopsis, synopsisCredit, quickFacts [[label, value]], trailer,
+ * and optionally heading, sub and a default slot (the character page puts its
+ * AniList bio there; title pages pass none of them)
  */
-const { title, overview = { paragraphs: [] }, synopsis = '', synopsisCredit, quickFacts = [], trailer } = Astro.props
+const {
+  title,
+  overview = { paragraphs: [] },
+  synopsis = '',
+  synopsisCredit,
+  quickFacts = [],
+  trailer,
+  heading: headingOverride,
+  sub,
+} = Astro.props
 
 const paragraphs = overview.paragraphs || []
-const heading = paragraphs.length > 0 ? `${title} in short` : `About ${title}`
+const heading = headingOverride || (paragraphs.length > 0 ? `${title} in short` : `About ${title}`)
 
 // Fold only when there is a lot of it and a clean paragraph break to fold on.
 const LONG = 900
@@ -36,10 +47,12 @@ if (synopsis.length > LONG && parts.length > 1) {
 <section class="answer dp-about" id="about" aria-labelledby="dp-about-head">
   <div class="answer__head">
     <h2 id="dp-about-head">{heading}</h2>
+    {sub && <p>{sub}</p>}
   </div>
 
   <div class="dp-about__grid">
     <div class="dp-about__prose">
+      <slot />
       {paragraphs.map((line) => <p class="overview">{line}</p>)}
 
       {synopsis && (
