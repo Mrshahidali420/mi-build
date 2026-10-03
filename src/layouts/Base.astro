@@ -32,6 +32,8 @@ const {
   jsonld,
   crumbs = [],
   preloadImage,
+  // Optional media query for the preload, so a phone skips an image it never shows.
+  preloadMedia,
   noindex = false,
   // Set only by the 404 page. It makes the counter record the address that
   // was asked for, so a broken link can be found and fixed.
@@ -153,7 +155,7 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
     <link rel="preload" href={sairaLatin400Url} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={sairaStencilLatin400Url} as="font" type="font/woff2" crossorigin />
     <link rel="preconnect" href="https://s4.anilist.co" />
-    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} media={preloadMedia} fetchpriority="high" />}
 
     {graph && <script type="application/ld+json" set:html={JSON.stringify(graph).replace(/</g, '\\u003c')} />}
 

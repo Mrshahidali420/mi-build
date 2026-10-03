@@ -17,7 +17,9 @@ export default defineConfig({
     // page shares and the browser keeps for a year (public/_headers), so a
     // reader downloads it once per visit to the site, not once per page. The
     // Worker-rendered title and character pages link the same files.
-    inlineStylesheets: 'never',
+    // 'auto' still keeps that big file shared, but inlines the tiny ones
+    // (under 4 KB, like the font faces) so they stop blocking first paint.
+    inlineStylesheets: 'auto',
   },
   image: {
     // Covers are served straight from AniList's CDN, so no local processing.

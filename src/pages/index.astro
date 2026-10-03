@@ -121,10 +121,16 @@ const tinyCover = (url) =>
   description="Find any manhwa, manga, manhua or anime and see the official apps that carry it. No pirate mirrors — only licensed publishers and streaming platforms."
   jsonld={jsonld}
   preloadImage={heroBanner}
+  preloadMedia="(min-width: 701px)"
 >
   <section class="hero hero--home">
+    <!-- A phone shows this faded art at 42% behind the text, so it gets a 1x1
+         stand-in instead of a 264 KB download that held back the first paint. -->
     {heroBanner && (
-      <img class="hero__banner" src={heroBanner} alt="" width="1900" height="760" loading="eager" fetchpriority="high" decoding="async" />
+      <picture>
+        <source media="(max-width: 700px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+        <img class="hero__banner" src={heroBanner} alt="" width="1900" height="760" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
     )}
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="shell hero__inner">
