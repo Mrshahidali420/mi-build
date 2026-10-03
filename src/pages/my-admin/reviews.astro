@@ -1,0 +1,110 @@
+---
+/**
+ * Reviews. What readers wrote on the title pages, waiting for the owner, and
+ * what is already live, plus the star votes behind each title's average.
+ *
+ * Nothing a reader writes is public until it is approved here. Approve puts
+ * a review on its title page (and in the page's structured data) within ten
+ * minutes, with no build: the title page reads approved reviews from D1 each
+ * time it is drawn (src/lib/reviews-read.js). Delete throws a review away for
+ * good; Remove takes a live one down the same way.
+ *
+ * The buttons post to /my-admin/api/review (src/lib/review-actions.js). The
+ * tables are in db/migrations/0007-reviews.sql.
+ */
+import Admin from '../../layouts/Admin.astro'
+import Kpi from '../../components/admin/Kpi.astro'
+import ReviewList from '../../components/admin/ReviewList.astro'
+import { envOf } from '../../lib/runtime.js'
+import { gate, ask, askOne, num } from '../../lib/admin.js'
+import { PENDING_LIST, APPROVED_LIST, SCHEMA_FROM, SHOW_AVERAGE_FROM } from '../../lib/reviews.mjs'
+
+export const prerender = false
+
+const env = envOf(Astro)
+const { db, secret, signedIn, wrongWord } = await gate(Astro, env)
+if (secret && !signedIn && Astro.request.method !== 'POST') {
+  return Astro.redirect('/my-admin')
+}
+
+let pending = []
+let approved = []
+let votes = {}
+let rated = []
+if (signedIn) {
+  ;[pending, approved, votes, rated] = await Promise.all([
+    ask(db, PENDING_LIST),
+    ask(db, APPROVED_LIST),
+    askOne(db, 'SELECT COUNT(*) AS titles, COALESCE(SUM(votes), 0) AS votes FROM rating_totals'),
+    // The titles with the most votes. The names come from the reviews table
+    // when a title has one; a title with votes only is named by its id.
+    ask(
+      db,
+      `SELECT t.anilist_id, t.votes, t.total,
+         (SELECT r.title FROM reviews r WHERE r.anilist_id = t.anilist_id LIMIT 1) AS title
+       FROM rating_totals t ORDER BY t.votes DESC LIMIT 15`
+    ),
+  ])
+}
+const ratedRows = rated.map((r) => {
+  const avg = r.votes ? (Number(r.total) / Number(r.votes)).toFixed(1) : '0.0'
+  const shown = r.votes >= SCHEMA_FROM ? 'shown and in search results' : r.votes >= SHOW_AVERAGE_FROM ? 'shown on the page' : 'not shown yet'
+  return { name: r.title || `AniList #${r.anilist_id}`, avg, votes: Number(r.votes), shown }
+})
+---
+
+<Admin
+  title="Reviews"
+  here="/my-admin/reviews"
+  signedIn={signedIn}
+  secret={secret}
+  wrongWord={wrongWord}
+  note="What readers wrote on the title pages. Nothing is public until you approve it."
+>
+  <section class="kpis" aria-label="Reviews at a glance">
+    <Kpi label="Waiting for you" value={pending.length} mood={pending.length ? 'bad' : 'good'} hero />
+    <Kpi label="Live" value={approved.length} />
+    <Kpi label="Star votes" value={num(votes.votes)} unit={`on ${num(votes.titles)} titles`} />
+  </section>
+
+  <div class="panel wide">
+    <h2>Waiting for you</h2>
+    <p class="say">
+      Newest first. Approve puts a review on its title page within 10 minutes. Delete throws it
+      away for good. Links, web addresses, handles and HTML were already refused before a
+      review could get here, and each address can send 3 a day.
+    </p>
+    <ReviewList rows={pending} empty="Nothing waiting. New reviews show here." />
+  </div>
+
+  <div class="panel wide">
+    <h2>Live on the site</h2>
+    <p class="say">
+      Newest approval first. A title page shows its 10 newest. Remove takes a review down within
+      10 minutes.
+    </p>
+    <ReviewList rows={approved} live empty="No reviews live yet." />
+  </div>
+
+  <div class="panel wide">
+    <h2>Most rated titles</h2>
+    <p class="say">
+      The average shows on a title page from {SHOW_AVERAGE_FROM} votes, and goes into the page's
+      search markup from {SCHEMA_FROM}. A vote counts once per title per browser and address a
+      day.
+    </p>
+    {ratedRows.length === 0 && <p class="empty">No votes yet.</p>}
+    {ratedRows.length > 0 && (
+      <ol class="taps">
+        {ratedRows.map((row) => (
+          <li>
+            <span class="name">
+              <span>{row.name}</span>
+              <span class="sub">{row.avg} from {row.votes} {row.votes === 1 ? 'vote' : 'votes'} · {row.shown}</span>
+            </span>
+          </li>
+        ))}
+      </ol>
+    )}
+  </div>
+</Admin>

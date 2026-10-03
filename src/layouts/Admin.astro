@@ -9,7 +9,9 @@
  * It also marks this browser as the owner's, so that every OTHER page on the
  * site stops counting him from now on.
  */
-import { RANGES, withRange } from '../lib/admin.js'
+import { RANGES, withRange, ask } from '../lib/admin.js'
+import { envOf } from '../lib/runtime.js'
+import { PENDING_COUNT } from '../lib/reviews.mjs'
 // The whole look lives in its own file. Only this layout imports it.
 import '../styles/admin.css'
 // Self-hosted Saira, matching the weights admin.css actually asks for
@@ -47,8 +49,18 @@ const TABS = [
   { path: '/my-admin/search', label: 'Search' },
   { path: '/my-admin/money', label: 'Money' },
   { path: '/my-admin/homepage', label: 'Homepage' },
+  { path: '/my-admin/reviews', label: 'Reviews' },
   { path: '/my-admin/health', label: 'Health' },
 ]
+
+// How many reviews wait for the owner, beside the Reviews tab on every page,
+// so a new one is seen without opening the tab. One indexed count; a missing
+// table (before 0007 has run) reads as zero.
+let pendingReviews = 0
+if (signedIn) {
+  const rows = await ask(envOf(Astro)?.ANALYTICS, PENDING_COUNT)
+  pendingReviews = Number(rows[0]?.n) || 0
+}
 
 // The date switch says each range in one short word, so all five fit on a
 // 360 px phone in one row.
@@ -85,6 +97,9 @@ const SHORT = { today: 'Today', '24h': '24h', '7d': '7 days', '30d': '30 days', 
                 aria-current={item.path === tab ? 'page' : undefined}
               >
                 {item.label}
+                {item.path === '/my-admin/reviews' && pendingReviews > 0 && (
+                  <b class="tab-count" title={`${pendingReviews} waiting for you`}>{pendingReviews}</b>
+                )}
               </a>
             ))}
           </nav>

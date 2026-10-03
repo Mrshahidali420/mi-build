@@ -1,0 +1,105 @@
+---
+/**
+ * What readers think: one-tap stars, the average once three readers have
+ * voted, the reviews the owner approved, and a short form to write one.
+ *
+ * Everything a search engine should see (the line beside the stars and the
+ * approved reviews) is drawn here on the server from D1 (see
+ * src/lib/reviews-read.js). The script only takes taps and posts the form, so
+ * the block has its full height before any script runs and nothing below it
+ * moves. Review text is plain text and Astro escapes it like any other value;
+ * nothing here uses set:html.
+ *
+ * props: id (AniList id), kind, slug, title, rating (ratingOf), reviews
+ */
+import {
+  ratingLine,
+  reviewDate,
+  paragraphsOf,
+  TURNSTILE_SITEKEY,
+  MIN_TEXT,
+  MAX_TEXT,
+  MAX_NAME,
+  DEFAULT_NAME,
+} from '../lib/reviews.mjs'
+
+const { id, kind, slug, title, rating, reviews = [] } = Astro.props
+const STARS = [1, 2, 3, 4, 5]
+const starWord = (n) => `${n} of 5 stars`
+const STAR_PATH = 'M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z'
+---
+
+<section
+  class="answer rate"
+  id="reader-ratings"
+  aria-labelledby="rate-head"
+  data-rate
+  data-id={String(id)}
+  data-kind={kind}
+  data-slug={slug}
+  data-key={TURNSTILE_SITEKEY}
+>
+  <div class="answer__head">
+    <h2 id="rate-head">What readers think</h2>
+    <p class="answer__count" data-rate-line>{ratingLine(rating)}</p>
+  </div>
+
+  <div class="rate__ask">
+    <p class="rate__q" id="rate-q">Rate {title}</p>
+    <div class="rate__stars" role="group" aria-labelledby="rate-q" data-rate-stars>
+      {STARS.map((n) => (
+        <button type="button" data-stars={String(n)} aria-label={starWord(n)} aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d={STAR_PATH} /></svg>
+        </button>
+      ))}
+    </div>
+    <p class="rate__said" role="status" aria-live="polite" data-rate-said>One tap. No sign-in.</p>
+  </div>
+  <div class="rate__check" data-rate-check></div>
+
+  {reviews.length > 0 && (
+    <ol class="reviews" aria-label={`Reader reviews of ${title}`}>
+      {reviews.map((r) => (
+        <li class="review">
+          <p class="review__by">
+            <b>{r.name || DEFAULT_NAME}</b>
+            {Number.isInteger(r.stars) && (
+              <span class="review__stars" role="img" aria-label={starWord(r.stars)}>
+                {'★'.repeat(r.stars)}<span class="review__stars-off">{'★'.repeat(5 - r.stars)}</span>
+              </span>
+            )}
+            <time datetime={String(r.created_at || '').slice(0, 10)}>{reviewDate(r.created_at)}</time>
+          </p>
+          {paragraphsOf(r.body).map((line) => <p class="review__text">{line}</p>)}
+        </li>
+      ))}
+    </ol>
+  )}
+
+  <details class="rate__write" data-review>
+    <summary>Write a short review</summary>
+    <form class="review-form" data-review-form novalidate>
+      <p class="review-form__rule">
+        Plain words about the story, {MIN_TEXT} to {MAX_TEXT} characters. No links, web
+        addresses or handles. Every review is read before it appears here.
+      </p>
+      <label for="rv-name">Name <span>optional</span></label>
+      <input id="rv-name" name="name" maxlength={MAX_NAME} autocomplete="nickname" placeholder={DEFAULT_NAME} />
+      <label for="rv-stars">Score <span>optional</span></label>
+      <select id="rv-stars" name="stars">
+        <option value="">No score</option>
+        {[5, 4, 3, 2, 1].map((n) => <option value={String(n)}>{starWord(n)}</option>)}
+      </select>
+      <label for="rv-text">Your review</label>
+      <textarea id="rv-text" name="text" rows="6" maxlength={MAX_TEXT} required></textarea>
+      <p class="review-form__count" data-review-count>0 / {MAX_TEXT}</p>
+      <div class="rate__check" data-review-check></div>
+      <p class="review-form__said" role="status" aria-live="polite" data-review-said></p>
+      <button type="submit">Send review</button>
+    </form>
+  </details>
+</section>
+
+<script>
+  import './ratings.js'
+</script>

@@ -159,3 +159,39 @@ CREATE TABLE IF NOT EXISTS admin_log (
   anilist_id INTEGER,
   section TEXT NOT NULL DEFAULT '',
   note TEXT NOT NULL DEFAULT '');
+
+-- Reader ratings and written reviews on the title pages (0007-reviews.sql).
+-- No IP is stored: voter and sender are keyed hashes, blanked after two days.
+CREATE TABLE IF NOT EXISTS rating_votes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  anilist_id INTEGER NOT NULL CHECK (anilist_id > 0),
+  stars INTEGER NOT NULL CHECK (stars BETWEEN 1 AND 5),
+  day TEXT NOT NULL,
+  voter TEXT,
+  created_at TEXT NOT NULL,
+  UNIQUE (anilist_id, day, voter));
+CREATE INDEX IF NOT EXISTS rating_votes_day ON rating_votes(day) WHERE voter IS NOT NULL;
+CREATE TABLE IF NOT EXISTS rating_totals (
+  anilist_id INTEGER PRIMARY KEY CHECK (anilist_id > 0),
+  votes INTEGER NOT NULL DEFAULT 0,
+  total INTEGER NOT NULL DEFAULT 0,
+  updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS reviews (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  anilist_id INTEGER NOT NULL CHECK (anilist_id > 0),
+  kind TEXT NOT NULL,
+  slug TEXT NOT NULL,
+  title TEXT NOT NULL DEFAULT '',
+  name TEXT NOT NULL DEFAULT 'A reader',
+  body TEXT NOT NULL,
+  stars INTEGER CHECK (stars IS NULL OR stars BETWEEN 1 AND 5),
+  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved')),
+  created_at TEXT NOT NULL,
+  approved_at TEXT);
+CREATE INDEX IF NOT EXISTS reviews_title ON reviews(anilist_id, status, approved_at DESC);
+CREATE INDEX IF NOT EXISTS reviews_status ON reviews(status, created_at DESC);
+CREATE TABLE IF NOT EXISTS review_sends (
+  day TEXT NOT NULL,
+  sender TEXT NOT NULL,
+  n INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, sender)) WITHOUT ROWID;

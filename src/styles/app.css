@@ -5374,3 +5374,238 @@ html.mi-has-list .foryou[hidden] {
   .link-pills a,
   .link-pills a::after { transition: none; }
 }
+
+/* ---------- what readers think: stars, approved reviews, the form ---------
+ * src/components/Ratings.astro. Every line of text that changes after a tap
+ * has its height reserved, so nothing below the block moves when the script
+ * answers. The stars light rose up to the one under the pointer, the same
+ * light the rest of the page uses for "this is live". */
+
+.rate__ask {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  padding-top: 0.9rem;
+}
+.rate__q {
+  margin: 0;
+  color: var(--dawn-dim);
+  font-weight: 600;
+}
+.rate__stars {
+  display: flex;
+  margin-inline: -0.45rem;
+}
+.rate__stars button {
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--dawn-faint);
+  cursor: pointer;
+  transition: color 120ms var(--ease-dawn), transform 120ms var(--ease-dawn);
+}
+.rate__stars svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.rate__stars button.on {
+  color: var(--rose);
+}
+.rate__stars button.on svg {
+  fill: currentColor;
+}
+.rate__stars:not([data-locked]):hover button {
+  color: var(--rose);
+}
+.rate__stars:not([data-locked]):hover button svg {
+  fill: currentColor;
+}
+.rate__stars:not([data-locked]) button:hover ~ button {
+  color: var(--dawn-faint);
+}
+.rate__stars:not([data-locked]) button:hover ~ button svg {
+  fill: none;
+}
+.rate__stars:not([data-locked]) button:active {
+  transform: scale(0.92);
+}
+.rate__stars button:focus-visible {
+  outline: 2px solid var(--day);
+  outline-offset: -4px;
+}
+.rate__stars button:disabled {
+  cursor: default;
+}
+.rate__said {
+  flex-basis: 100%;
+  min-height: 1.5em;
+  margin: 0;
+  color: var(--dawn-dim);
+  font-size: 0.92rem;
+}
+.rate__check:empty {
+  display: none;
+}
+
+.reviews {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+.review {
+  padding-block: 1rem;
+  border-top: 1px solid rgb(36 65 143 / 0.45);
+}
+.review__by {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.75rem;
+  margin: 0 0 0.4rem;
+}
+.review__by b {
+  color: var(--dawn);
+}
+.review__stars {
+  color: var(--rose);
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+}
+.review__stars-off {
+  color: var(--cobalt-line);
+}
+.review__by time {
+  color: var(--dawn-faint);
+  font-size: 0.85rem;
+}
+.review__text {
+  max-width: var(--measure, 68ch);
+  margin: 0 0 0.5rem;
+  color: var(--dawn-dim);
+  overflow-wrap: anywhere;
+}
+
+.rate__write {
+  margin-top: 1rem;
+  border-top: 1px solid var(--cobalt);
+}
+.rate__write summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding-block: 0.5rem;
+  color: var(--rose-soft);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+.rate__write summary::-webkit-details-marker {
+  display: none;
+}
+.rate__write summary::before {
+  content: '+';
+  width: 1ch;
+  color: var(--dawn-faint);
+}
+.rate__write[open] summary::before {
+  content: '−';
+}
+.review-form {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 40rem;
+  padding-bottom: 1rem;
+}
+.review-form__rule {
+  margin: 0 0 0.4rem;
+  color: var(--dawn-dim);
+  font-size: 0.92rem;
+}
+.review-form label {
+  margin-top: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.review-form label span {
+  margin-left: 0.35rem;
+  color: var(--dawn-faint);
+  font-weight: 400;
+}
+.review-form :is(input, select, textarea) {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--sf-line-strong);
+  border-radius: 8px;
+  background: var(--night-sunk);
+  color: var(--dawn);
+  font: inherit;
+  font-size: 1rem;
+}
+.review-form textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+  line-height: 1.5;
+}
+.review-form :is(input, select, textarea):focus-visible {
+  outline: 2px solid var(--day);
+  outline-offset: 1px;
+  border-color: var(--rose);
+}
+.review-form__count {
+  margin: 0;
+  color: var(--dawn-faint);
+  font-size: 0.8rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.review-form__said {
+  min-height: 1.45em;
+  margin: 0;
+  color: var(--dawn-dim);
+  font-size: 0.92rem;
+}
+.review-form__said.bad {
+  color: var(--rose-soft);
+}
+.review-form button {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 1.2rem;
+  border: 1px solid var(--dawn);
+  border-radius: 8px;
+  background: var(--dawn);
+  color: var(--night);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 150ms var(--ease-dawn);
+}
+.review-form button:hover {
+  background: var(--day);
+}
+.review-form button:focus-visible {
+  outline: 2px solid var(--day);
+  outline-offset: 2px;
+}
+.review-form button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+/* The count beside "What readers think" can be a short sentence, so unlike
+   the other answer counts it may wrap on a narrow phone. */
+.rate .answer__count {
+  white-space: normal;
+  text-align: right;
+}

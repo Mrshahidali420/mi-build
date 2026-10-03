@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro'
 // The same sentence the buy links carry, so the two can never say different things.
 import { AMAZON_DISCLOSURE } from '../lib/shop-links.js'
 
-const updated = 'September 24, 2026'
+const updated = 'October 3, 2026'
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -12,7 +12,7 @@ const jsonld = {
   name: 'Privacy policy',
   url: 'https://manhwaindex.com/privacy',
   description: 'What manhwaindex collects, what it does not collect, and the third parties involved.',
-  dateModified: '2026-09-24',
+  dateModified: '2026-10-03',
 }
 ---
 
@@ -26,7 +26,7 @@ const jsonld = {
     <section class="section">
       <div class="section__head">
         <h1>Privacy policy</h1>
-        <p>Short version: no accounts, no logins, and nothing you type is stored by us, except the words of a search that found nothing (see below). Your saved list stays in your own browser.</p>
+        <p>Short version: no accounts, no logins, and nothing you type is stored by us, except the words of a search that found nothing and a review you choose to send (see below). Your saved list stays in your own browser.</p>
       </div>
 
       <div class="prose">
@@ -75,6 +75,38 @@ const jsonld = {
           <li>
             To delete it, use <strong>Clear my whole list</strong> on <a href="/my-list">My
             list</a>, or delete site data for manhwaindex.com in your browser settings.
+          </li>
+        </ul>
+
+        <h2 id="ratings">Ratings and reviews</h2>
+        <p>
+          Each title page lets you rate it from one to five stars and write a short review.
+          Both are optional and need no account.
+        </p>
+        <ul>
+          <li>
+            A star rating stores the title, the number of stars and the day. A review stores
+            the title, the name you type (or "A reader"), your words, the optional score and
+            the time it was sent. Reviews are read by us before they appear, and only
+            approved reviews are ever shown on the site, with the name you gave.
+          </li>
+          <li>
+            We do not store your IP address. To stop the same person voting twice on one day,
+            or sending more than three reviews a day, we keep a scrambled one-way code made
+            from your IP address and the day (for a vote, also your browser name and the
+            title). It cannot be turned back into
+            the address, and it is wiped after two days.
+          </li>
+          <li>
+            Your browser remembers which titles you rated, under the key <code>mi_rated</code>,
+            so the stars show your vote next time. Delete site data for manhwaindex.com to
+            clear it.
+          </li>
+          <li>
+            Before a rating or a review is accepted, Cloudflare Turnstile checks that a real
+            browser sent it (see below). To have a review you wrote taken down, write to
+            <a class="mailto" href="mailto:hello@manhwaindex.com">hello@manhwaindex.com</a>
+            with the title and the words you used.
           </li>
         </ul>
 
@@ -186,7 +218,7 @@ const jsonld = {
         </p>
         <p>
           We also use <strong>Cloudflare Turnstile</strong> to check that a real browser is
-          here before anything is counted. You never see it and you never have to click
+          here before anything is counted, and before a rating or a review is accepted. You never see it and you never have to click
           anything. It sets no advertising cookie and is not used to profile you. It exists
           because automated traffic was filling our own visit counts, and it runs once every
           thirty minutes rather than on every page.

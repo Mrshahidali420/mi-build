@@ -1,0 +1,53 @@
+---
+/**
+ * Reviews with the owner's buttons under each one: Approve and Delete for a
+ * pending review, Remove for a live one. The taps are handled by
+ * review-taps.js; the server checks every one (src/lib/review-actions.js).
+ * The review text is plain text and Astro escapes it; nothing here uses
+ * set:html.
+ *
+ * rows: [{ id, kind, slug, title, name, body, stars, created_at, approved_at? }]
+ * live: true for the approved list (Remove only).
+ */
+import { adminDateTime } from '../../lib/admin.js'
+
+const { rows = [], live = false, empty = 'Nothing here.' } = Astro.props
+const starsOf = (n) => (Number.isInteger(n) ? `${'★'.repeat(n)}${'☆'.repeat(5 - n)}` : 'no score')
+const when = (iso) => {
+  const ts = Date.parse(iso || '')
+  return Number.isNaN(ts) ? '' : adminDateTime(ts)
+}
+---
+
+{rows.length === 0 && <p class="empty">{empty}</p>}
+{rows.length > 0 && (
+  <ol class="taps reviews-admin">
+    {rows.map((row) => (
+      <li data-review-row data-id={String(row.id)} class:list={[live ? 'tone-good' : 'tone-amber']}>
+        <span class="name">
+          <a href={`/${row.kind}/${row.slug}#reader-ratings`}>{row.title || `${row.kind}/${row.slug}`}</a>
+          <span class="sub">
+            {starsOf(row.stars)} · {row.name} · written {when(row.created_at)}
+            {live && row.approved_at && ` · approved ${when(row.approved_at)}`}
+          </span>
+        </span>
+        <p class="review-body">{row.body}</p>
+        <div class="acts">
+          {live ? (
+            <button type="button" class="quiet" data-review-op="delete">Remove</button>
+          ) : (
+            <>
+              <button type="button" data-review-op="approve">Approve</button>
+              <button type="button" class="quiet" data-review-op="delete">Delete</button>
+            </>
+          )}
+        </div>
+        <p class="saved" role="status" aria-live="polite"></p>
+      </li>
+    ))}
+  </ol>
+)}
+
+<script>
+  import './review-taps.js'
+</script>

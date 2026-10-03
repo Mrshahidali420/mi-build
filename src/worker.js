@@ -10,8 +10,13 @@ import { runRollup } from './lib/rollup.js'
 import { cleanRow, INSERT_SQL } from './lib/beacon-rows.js'
 import { passProblem, readBeacon, beaconPlace, sign } from './lib/beacon-pass.js'
 import { rejectCounter, writeRejects } from './lib/reject-count.js'
+import { handleVote, handleReview, forgetSenders } from './lib/reviews-api.js'
+import { EDGE_HEADER } from './lib/reviews-read.js'
 
 // How long the edge keeps a rendered page. The data changes once a day.
+// A page that carries live numbers asks for less with the EDGE_HEADER header
+// (title pages: ten minutes, for reader ratings and approved reviews); it
+// can never ask for more.
 const CACHE_SECONDS = 86400
 
 // Every build writes a new builtAt. It goes in the cache key, so a page kept
@@ -169,6 +174,10 @@ async function issuePass(request, env, ctx) {
   })
 }
 
+// Where the rating stars and the review form post.
+const VOTE_PATH = '/_vote'
+const REVIEW_PATH = '/_review'
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url)
@@ -192,6 +201,11 @@ export default {
       }
       return issuePass(request, env, ctx)
     }
+
+    // A reader's star tap and a written review (src/lib/reviews-api.js). Both
+    // answer 405 to anything but POST, inside the handler.
+    if (url.pathname === VOTE_PATH) return handleVote(request, env)
+    if (url.pathname === REVIEW_PATH) return handleReview(request, env)
 
     if (url.pathname === BEACON_PATH) {
       if (request.method !== 'POST') {
@@ -231,7 +245,10 @@ export default {
     const type = response.headers.get('content-type') || ''
     if (response.status === 200 && type.includes('text/html')) {
       const kept = new Response(response.body, response)
-      kept.headers.set('cache-control', `public, max-age=0, s-maxage=${CACHE_SECONDS}`)
+      const asked = Number(kept.headers.get(EDGE_HEADER))
+      const seconds = asked > 0 && asked < CACHE_SECONDS ? Math.floor(asked) : CACHE_SECONDS
+      kept.headers.delete(EDGE_HEADER)
+      kept.headers.set('cache-control', `public, max-age=0, s-maxage=${seconds}`)
       ctx.waitUntil(cache.put(cacheKey, kept.clone()))
       return kept
     }
@@ -245,5 +262,7 @@ export default {
    */
   async scheduled(controller, env, ctx) {
     ctx.waitUntil(runRollup(env && env.ANALYTICS))
+    // Blank the two-day-old hashes that stop repeat votes and reviews.
+    ctx.waitUntil(forgetSenders(env && env.ANALYTICS))
   },
 }

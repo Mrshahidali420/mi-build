@@ -33,6 +33,14 @@ import { needsAlike } from '../../lib/alike.mjs'
 import { checkedISO, checkedLong } from '../../lib/checked.js'
 import { sectionOf, SECTIONS } from '../../lib/section.mjs'
 import { seasonLabel, seasonPath, seasonWhen } from '../../lib/season-core.mjs'
+import Ratings from '../../components/Ratings.astro'
+import { aggregateJsonld, reviewsJsonld } from '../../lib/reviews.mjs'
+import {
+  readTitleReviews,
+  EDGE_HEADER,
+  TITLE_EDGE_SECONDS,
+  DEGRADED_EDGE_SECONDS,
+} from '../../lib/reviews-read.js'
 
 // This page is rendered by the Worker when someone asks for it. It is not
 // built as a file, so the number of titles has no ceiling.
@@ -53,6 +61,13 @@ if (!item) return notFound(Astro)
 const isComic = item.kind !== 'anime'
 // The slug alone is not proof: a manhwa must not answer on /manga/.
 if (sectionOf(item) !== kind) return notFound(Astro)
+
+// Our own readers' stars and the reviews the owner approved, read live from
+// D1 so an approval shows without a build (src/lib/reviews-read.js). Started
+// here and awaited below, so the read overlaps the work in between. It never
+// throws and gives up after a fraction of a second; then the block shows no
+// numbers, and the Worker keeps this copy for a minute instead of ten.
+const voicesRead = readTitleReviews(envOf(Astro)?.ANALYTICS, item.id)
 
 const word = isComic ? formatWord(item) : 'anime'
 const links = isComic ? item.readLinks : item.watchLinks
@@ -218,6 +233,10 @@ const director = people('Director')
 const musicBy = people('Music')
 const creator = people('Original Creator', 'Original Story')
 
+const voices = await voicesRead
+Astro.response.headers.set(EDGE_HEADER, String(voices.ok ? TITLE_EDGE_SECONDS : DEGRADED_EDGE_SECONDS))
+const readerRating = aggregateJsonld(voices.rating)
+
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': isComic ? 'Book' : 'TVSeries',
@@ -241,12 +260,19 @@ const jsonld = {
   // and AniList never gives one, so every trailer we described was marked
   // invalid in Search Console. A made-up date would be worse than no block.
   // The trailer still plays further down the page.
-  // No aggregateRating. The score is AniList's, not our readers', and Google's
-  // rules forbid marking up ratings taken from another site. Counting
-  // favourites as ratings made it worse. One manual action for "spammy
-  // structured data" would hit every title page at once. The score still
-  // shows on the page as plain text; favourites are described as what they
-  // are: people who marked the title a favourite.
+  // The AniList score is never marked up. It is AniList's, not our readers',
+  // and Google's rules forbid marking up ratings taken from another site.
+  // Counting favourites as ratings made it worse. One manual action for
+  // "spammy structured data" would hit every title page at once. The score
+  // still shows on the page as plain text; favourites are described as what
+  // they are: people who marked the title a favourite.
+  //
+  // The aggregateRating below is different: it is our own readers' stars,
+  // given on this page and printed on it in "What readers think". It is only
+  // added from five votes (SCHEMA_FROM in src/lib/reviews.mjs), and the
+  // reviews only once the owner approved them, the same ones the page draws.
+  ...(readerRating ? { aggregateRating: readerRating } : {}),
+  ...(voices.reviews.length ? { review: reviewsJsonld(voices.reviews) } : {}),
   ...(item.favourites
     ? {
         interactionStatistic: {
@@ -750,6 +776,15 @@ const updatedLong = checkedLong
           </section>
         )
       }
+
+      <Ratings
+        id={item.id}
+        kind={kind}
+        slug={item.slug}
+        title={item.title}
+        rating={voices.rating}
+        reviews={voices.reviews}
+      />
 
       {!isComic && <Themes themes={item.themes} title={item.title} country={countryOf(Astro)} />}
 

@@ -632,3 +632,10 @@ footer { color: var(--faint); font-size: 12px; margin: 28px 0 40px; line-height:
   /* After a full-width lead card, an odd one out at the end takes the row. */
   .kpis:has(.hero) .kpi:last-child:nth-child(even) { grid-column: 1 / -1; }
 }
+
+/* Reviews tab (src/pages/my-admin/reviews.astro): the waiting count beside
+   the tab name is a plain number in the accent colour, the review text sits
+   under its title, and a row that was approved or deleted fades back. */
+nav.tabs a .tab-count { margin-left: 6px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.reviews-admin .review-body { margin: 8px 0 0; white-space: pre-line; overflow-wrap: anywhere; line-height: 1.5; }
+.reviews-admin li.done { opacity: .6; }
