@@ -206,7 +206,7 @@ export async function handleReview(request, env, { now = Date.now(), verify = ve
   } catch {
     return answer(503, { ok: false, error: 'Not saved just now. Try again later.' })
   }
-  return answer(200, { ok: true, message: 'Thank you. Your review shows here once it has been read.' })
+  return answer(200, { ok: true, message: 'Thank you. Your review is checked first and shows here within 24 hours.' })
 }
 
 /**

@@ -38,7 +38,6 @@ import { aggregateJsonld, reviewsJsonld } from '../../lib/reviews.mjs'
 import {
   readTitleReviews,
   EDGE_HEADER,
-  TITLE_EDGE_SECONDS,
   DEGRADED_EDGE_SECONDS,
 } from '../../lib/reviews-read.js'
 
@@ -234,7 +233,10 @@ const musicBy = people('Music')
 const creator = people('Original Creator', 'Original Story')
 
 const voices = await voicesRead
-Astro.response.headers.set(EDGE_HEADER, String(voices.ok ? TITLE_EDGE_SECONDS : DEGRADED_EDGE_SECONDS))
+// Owner's choice (3 Oct 2026): title pages keep the full day at the edge, so new
+// votes and approved reviews show within 24 hours. Only a page drawn while D1
+// was slow asks for a short life, so the gap is not frozen for a day.
+if (!voices.ok) Astro.response.headers.set(EDGE_HEADER, String(DEGRADED_EDGE_SECONDS))
 const readerRating = aggregateJsonld(voices.rating)
 
 const jsonld = {

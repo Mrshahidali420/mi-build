@@ -160,12 +160,12 @@ test('text is kept tidy, names default to "A reader"', () => {
 
 // ------------------------------------------------------------ checking a body
 
-const review = (over = {}) => ({ kind: 'manhwa', slug: 'solo-leveling', text: GOOD_TEXT, token: 't', ...over })
+const review = (over = {}) => ({ kind: 'manhwa', slug: 'solo-leveling', name: 'Mina', text: GOOD_TEXT, token: 't', ...over })
 
 test('a good review passes, with the defaults filled in', () => {
   const { value, error } = checkReview(review())
   assert.equal(error, undefined)
-  assert.deepEqual(value, { kind: 'manhwa', slug: 'solo-leveling', name: DEFAULT_NAME, text: GOOD_TEXT, stars: null, token: 't' })
+  assert.deepEqual(value, { kind: 'manhwa', slug: 'solo-leveling', name: 'Mina', text: GOOD_TEXT, stars: null, token: 't' })
   assert.equal(checkReview(review({ name: 'Sana', stars: 4 })).value.stars, 4)
   assert.equal(checkReview(review({ stars: null })).value.stars, null)
   // A long review near the limit is fine.
@@ -180,6 +180,8 @@ test('a review is refused, with the field named, when it breaks a rule', () => {
     [review({ text: `${GOOD_TEXT} <b>bold</b>` }), 'text', /HTML/],
     [review({ text: `${GOOD_TEXT} Read it on mangasite.com` }), 'text', /mangasite\.com/],
     [review({ text: `${GOOD_TEXT} sooooooooo good` }), 'text', /repeated/],
+    [review({ name: '' }), 'name', /display name/],
+    [review({ name: '   ' }), 'name', /display name/],
     [review({ name: 'visit mysite.net' }), 'name', /link/],
     [review({ name: '@reader' }), 'name', /handle/],
     [review({ name: 'x'.repeat(41) }), 'name', /40/],
@@ -397,7 +399,7 @@ test('reviews: pending until approved, then on the page; removed again on delete
   const { db, env } = world()
   const res = await handleReview(reviewPost(), env, { now: NOW, verify: yes })
   assert.equal(res.status, 200)
-  assert.match((await res.json()).message, /once it has been read/)
+  assert.match((await res.json()).message, /within 24 hours/)
 
   // Saved, but not public.
   let page = await readTitleReviews(db, 151)

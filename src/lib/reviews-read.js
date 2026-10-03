@@ -18,9 +18,8 @@ const READ_MS = 600
 // The header a page uses to tell the Worker how long the edge may keep it.
 // The Worker reads it, removes it and caps it at its own day (src/worker.js).
 export const EDGE_HEADER = 'x-mi-edge'
-// A title page carries live numbers now, so it is kept for ten minutes
-// instead of a day: a vote or an approval reaches every reader within that.
-export const TITLE_EDGE_SECONDS = 600
+// A title page keeps the Worker's full day, so a vote or an approval reaches
+// every reader within 24 hours (the owner's choice over a ten-minute life).
 // A page drawn while the database did not answer is kept for one minute.
 export const DEGRADED_EDGE_SECONDS = 60
 

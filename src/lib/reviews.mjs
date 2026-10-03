@@ -239,6 +239,9 @@ export function checkReview(body) {
   if (body.name !== undefined && typeof body.name !== 'string') return { error: 'The name must be text.', field: 'name' }
   if (typeof body.text !== 'string') return { error: 'Write your review first.', field: 'text' }
 
+  // A display name is required: it is shown with the review and named as the
+  // author in the Review markup.
+  if (!cleanText(body.name || '').trim()) return { error: 'Add a display name.', field: 'name' }
   const name = cleanName(body.name || '')
   if (lengthOf(name) > MAX_NAME) return { error: `Keep the name under ${MAX_NAME} characters.`, field: 'name' }
   const nameLink = linkProblem(name)
