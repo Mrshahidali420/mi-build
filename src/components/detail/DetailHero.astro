@@ -37,6 +37,11 @@ const count = isComic
     ? `${item.episodes} episodes`
     : null
 const meta = [count, item.startYear ? String(item.startYear) : null].filter(Boolean)
+// The clock time of the next episode, when it is known to the minute. Once it
+// passes, the browser flips "Not out yet" and "Next episode" to say it is out
+// (Countdown.astro), since the cached page is only rebuilt once a day.
+const exactAt = ahead && ahead.at && !ahead.dateOnly ? ahead.at : null
+const startsAt = item.status === 'NOT_YET_RELEASED' ? exactAt : null
 // Sub or dub gets its own tag, the first thing an anime viewer checks.
 const audio = dub ? { short: dub.state === 'dub' ? 'Sub · Dub' : 'Sub only', full: dubLabel(dub) } : null
 ---
@@ -89,7 +94,14 @@ const audio = dub ? { short: dub.state === 'dub' ? 'Sub · Dub' : 'Sub only', fu
           </p>
         )}
         <p class="dp-hero__meta">
-          <span class={live ? 'dp-status dp-status--live' : 'dp-status'}>{statusWord(item.status)}</span>
+          <span
+            class={live ? 'dp-status dp-status--live' : 'dp-status'}
+            data-out-at={startsAt}
+            data-out-text={startsAt ? statusWord('RELEASING') : null}
+            data-out-class={startsAt ? 'dp-status--live' : null}
+          >
+            {statusWord(item.status)}
+          </span>
           {meta.map((part) => <span>{part}</span>)}
         </p>
         {(item.genres.length > 0 || audio) && (
@@ -118,7 +130,13 @@ const audio = dub ? { short: dub.state === 'dub' ? 'Sub · Dub' : 'Sub only', fu
 
     {ahead && (
       <p class="next-ep dp-hero__next">
-        <span class="next-ep__tag">{ahead.tag}</span>
+        <span
+          class="next-ep__tag"
+          data-out-at={exactAt}
+          data-out-text={exactAt ? 'Out now' : null}
+        >
+          {ahead.tag}
+        </span>
         <span class="next-ep__num">{ahead.label}</span>
         {ahead.at && <Countdown at={ahead.at} local={!ahead.dateOnly} />}
         <a class="next-ep__all" href={ahead.href}>{ahead.linkText}</a>

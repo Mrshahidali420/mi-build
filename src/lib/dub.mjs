@@ -26,6 +26,9 @@ export function dubOf(item) {
   const cast = (item.characters || []).filter((c) => c && c.name)
   const english = cast.filter((c) => c.voiceEn).map((c) => ({ name: c.name, voice: c.voiceEn }))
   if (english.length) return { state: 'dub', english }
+  // A show not out yet has no dub cast because no dub is made yet; saying
+  // "Sub only" before episode 1 would be a guess, so say nothing.
+  if (item.status === 'NOT_YET_RELEASED') return null
   // "No English credit" only means something on a record fetched since the
   // English voices were asked for. The staff credits arrived in that same
   // change (23 Sep 2026), so a record that has them was fetched with it; an

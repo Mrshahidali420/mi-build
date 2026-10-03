@@ -43,6 +43,16 @@ const utc = new Date(at * 1000).toLocaleDateString('en-US', {
         : phrase(at - now)
       node.classList.toggle('countdown--soon', at - now > 0 && at - now < DAY)
     }
+    // The page is built once a day, so a show can start between builds. Once
+    // its time has passed, the words around the clock catch up too: the
+    // "Not out yet" status and the "Next episode" tag say it is out.
+    for (const node of document.querySelectorAll('[data-out-at]')) {
+      const at = Number(node.dataset.outAt)
+      if (!at || now < at) continue
+      if (node.dataset.outText) node.textContent = node.dataset.outText
+      if (node.dataset.outClass) node.classList.add(node.dataset.outClass)
+      node.removeAttribute('data-out-at')
+    }
   }
 
   paint()
