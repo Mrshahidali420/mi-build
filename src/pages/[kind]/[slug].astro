@@ -31,6 +31,7 @@ import { picksForTitle, picksShowFor, booksKnown } from '../../lib/picks.js'
 import Themes from '../../components/Themes.astro'
 import EpisodeList from '../../components/EpisodeList.astro'
 import { dubOf } from '../../lib/dub.mjs'
+import { startedByClock } from '../../lib/started.mjs'
 import { whereAnimeUrl } from '../../lib/where-links.mjs'
 import { needsAlike } from '../../lib/alike.mjs'
 import { checkedISO, checkedLong } from '../../lib/checked.js'
@@ -59,6 +60,9 @@ try {
   return unavailable(Astro, e)
 }
 if (!item) return notFound(Astro)
+// AniList can keep "not yet released" for days after episode 1 airs; once that
+// episode's own time has passed, the page says the show is out.
+item = startedByClock(item, Math.floor(Date.now() / 1000))
 
 const isComic = item.kind !== 'anime'
 // The slug alone is not proof: a manhwa must not answer on /manga/.
