@@ -36,20 +36,23 @@ if (signedIn) {
     ask(db, PENDING_LIST),
     ask(db, APPROVED_LIST),
     askOne(db, 'SELECT COUNT(*) AS titles, COALESCE(SUM(votes), 0) AS votes FROM rating_totals'),
-    // The titles with the most votes. The names come from the reviews table
-    // when a title has one; a title with votes only is named by its id.
+    // The titles with the most votes, named from rated_titles (each vote
+    // saves its title), or from a review; the id only as a last resort.
     ask(
       db,
-      `SELECT t.anilist_id, t.votes, t.total,
-         (SELECT r.title FROM reviews r WHERE r.anilist_id = t.anilist_id LIMIT 1) AS title
-       FROM rating_totals t ORDER BY t.votes DESC LIMIT 15`
+      `SELECT t.anilist_id, t.votes, t.total, n.kind, n.slug,
+         COALESCE(NULLIF(n.title, ''),
+           (SELECT r.title FROM reviews r WHERE r.anilist_id = t.anilist_id LIMIT 1)) AS title
+       FROM rating_totals t LEFT JOIN rated_titles n ON n.anilist_id = t.anilist_id
+       ORDER BY t.votes DESC LIMIT 15`
     ),
   ])
 }
 const ratedRows = rated.map((r) => {
   const avg = r.votes ? (Number(r.total) / Number(r.votes)).toFixed(1) : '0.0'
   const shown = r.votes >= SCHEMA_FROM ? 'shown and in search results' : r.votes >= SHOW_AVERAGE_FROM ? 'shown on the page' : 'not shown yet'
-  return { name: r.title || `AniList #${r.anilist_id}`, avg, votes: Number(r.votes), shown }
+  const href = r.kind && r.slug ? `/${r.kind}/${r.slug}#reader-ratings` : null
+  return { name: r.title || `AniList #${r.anilist_id}`, href, avg, votes: Number(r.votes), shown }
 })
 ---
 
@@ -99,7 +102,7 @@ const ratedRows = rated.map((r) => {
         {ratedRows.map((row) => (
           <li>
             <span class="name">
-              <span>{row.name}</span>
+              {row.href ? <a href={row.href}>{row.name}</a> : <span>{row.name}</span>}
               <span class="sub">{row.avg} from {row.votes} {row.votes === 1 ? 'vote' : 'votes'} · {row.shown}</span>
             </span>
           </li>

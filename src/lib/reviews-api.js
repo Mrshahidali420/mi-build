@@ -33,6 +33,7 @@ import {
   VOTE_INSERT,
   TOTALS_RECOUNT,
   TOTALS_READ,
+  RATED_TITLE_SAVE,
   REVIEW_INSERT,
   SENDS_READ,
   SENDS_BUMP,
@@ -159,6 +160,7 @@ export async function handleVote(request, env, { now = Date.now(), verify = veri
     const out = await db.batch([
       db.prepare(VOTE_INSERT).bind(item.id, vote.stars, day, voter, at),
       db.prepare(TOTALS_RECOUNT).bind(item.id, at, item.id),
+      db.prepare(RATED_TITLE_SAVE).bind(item.id, vote.kind, vote.slug, String(item.title || '').slice(0, 200)),
     ])
     counted = Number(out?.[0]?.meta?.changes) > 0
     row = await db.prepare(TOTALS_READ).bind(item.id).first()

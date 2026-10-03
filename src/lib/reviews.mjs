@@ -365,6 +365,9 @@ export const TOTALS_RECOUNT = `INSERT INTO rating_totals (anilist_id, votes, tot
   ON CONFLICT(anilist_id) DO UPDATE SET votes = excluded.votes, total = excluded.total,
     updated_at = excluded.updated_at`
 export const TOTALS_READ = 'SELECT votes, total FROM rating_totals WHERE anilist_id = ?'
+// The voted title's name and page, for the admin list (migration 0008).
+export const RATED_TITLE_SAVE = `INSERT INTO rated_titles (anilist_id, kind, slug, title) VALUES (?, ?, ?, ?)
+  ON CONFLICT(anilist_id) DO UPDATE SET kind = excluded.kind, slug = excluded.slug, title = excluded.title`
 export const APPROVED_READ = `SELECT id, name, body, stars, created_at FROM reviews
   WHERE anilist_id = ? AND status = 'approved' ORDER BY approved_at DESC LIMIT ${SHOW_REVIEWS}`
 
