@@ -25,6 +25,7 @@ import { loadTitle, envOf, countryOf, notFound, unavailable } from '../../lib/ru
 import { titleFaq, faqJsonld, freeSplit } from '../../lib/answers.mjs'
 import { coverage, adaptationAnswer, readingOrder, upcoming } from '../../lib/computed.mjs'
 import { shopLinks } from '../../lib/shop-links.js'
+import { trialFor } from '../../lib/shop-shelf.js'
 import { titleBuyCopy } from '../../lib/buy-copy.js'
 import { hasFreePage, hasLikePage, hasCastPage, hasBuyPage } from '../../lib/gates.mjs'
 import { picksForTitle, picksShowFor, booksKnown } from '../../lib/picks.js'
@@ -519,7 +520,16 @@ const jumpLinks = [
 
         {/* Straight under the platforms: placed after Related (3 Oct 2026),
             Amazon clicks fell from about 2 an hour to 2 in 15 hours. */}
-        <Shop title={item.title} picked={picked} buys={buys} buyCopy={buyCopy} buyPage={buyPage} />
+        <Shop
+          title={item.title}
+          item={item}
+          picked={picked}
+          buys={buys}
+          buyCopy={buyCopy}
+          buyPage={buyPage}
+          trial={trialFor(item, countryOf(Astro))}
+          art={{ cover: item.cover, banner: item.banner, portrait: cast[0]?.image }}
+        />
 
         <About
           title={item.title}

@@ -857,30 +857,7 @@
   margin: 0 0 0.25rem;
 }
 
-/* ---------- the shop: one box ----------------------------------------------- */
-
-.dp-shop .buybox__sub {
-  margin: 1.6rem 0 0.8rem;
-}
-.dp-shop .buybox__sub h3 {
-  margin: 0;
-  font-size: 1.02rem;
-  color: var(--dawn);
-}
-.dp-shop .buybox__sub p {
-  margin: 0.25rem 0 0;
-  color: var(--dawn-faint);
-  font-size: 0.88rem;
-}
-.dp-shop .picks--bare {
-  display: block;
-}
-.dp-shop .buys__support {
-  margin-top: 1rem;
-}
-.dp-shop .crosslink {
-  background: rgb(5 5 8 / 0.45);
-}
+/* ---------- the shop: see shop-shelf.css (imported by Shop.astro) ------------ */
 
 /* ---------- character pages ---------------------------------------------------
    The same hero, rail and sections as a title page (CharacterHero.astro). Only
