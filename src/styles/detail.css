@@ -217,6 +217,18 @@
   color: var(--dawn);
   font-weight: 600;
 }
+.dp-audio {
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--line, rgb(255 255 255 / 0.18));
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.dp-audio--dub {
+  border-color: var(--rose);
+  color: var(--dawn);
+}
 .dp-status--live {
   display: inline-flex;
   align-items: center;

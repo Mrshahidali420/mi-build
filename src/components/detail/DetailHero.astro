@@ -36,7 +36,9 @@ const count = isComic
   : item.episodes
     ? `${item.episodes} episodes`
     : null
-const meta = [count, item.startYear ? String(item.startYear) : null, dub ? dubLabel(dub) : null].filter(Boolean)
+const meta = [count, item.startYear ? String(item.startYear) : null].filter(Boolean)
+// Sub or dub gets its own tag, the first thing an anime viewer checks.
+const audio = dub ? { short: dub.state === 'dub' ? 'Sub · Dub' : 'Sub only', full: dubLabel(dub) } : null
 ---
 
 <section class="dp-hero" aria-labelledby="dp-title">
@@ -89,6 +91,12 @@ const meta = [count, item.startYear ? String(item.startYear) : null, dub ? dubLa
         <p class="dp-hero__meta">
           <span class={live ? 'dp-status dp-status--live' : 'dp-status'}>{statusWord(item.status)}</span>
           {meta.map((part) => <span>{part}</span>)}
+          {audio && (
+            <span class={dub.state === 'dub' ? 'dp-audio dp-audio--dub' : 'dp-audio'} title={audio.full}>
+              <span class="sr-only">{audio.full}</span>
+              <span aria-hidden="true">{audio.short}</span>
+            </span>
+          )}
         </p>
         {item.genres.length > 0 && (
           <ul class="dp-genres" aria-label="Genres">

@@ -40,6 +40,26 @@ test('history rows become dated rows, oldest first, with titles where named', ()
   ])
 })
 
+test('titles counted across seasons are shifted to this season\'s own numbers', () => {
+  // Season 3 of 3: the platform calls its episodes 25 to 36.
+  const item = show({
+    status: 'FINISHED',
+    streamingEpisodes: [{ title: 'Episode 36 - The End' }, { title: 'Episode 26 - Second' }, { title: 'Episode 25 - First' }],
+  })
+  const rows = buildEpisodes(item, weekly(1, 12))
+  assert.equal(rows[0][1], 'First')
+  assert.equal(rows[1][1], 'Second')
+  assert.equal(rows[11][1], 'The End')
+  assert.equal(rows[5][1], '')
+})
+
+test('titles inside the season are never shifted', () => {
+  const item = show({ streamingEpisodes: [{ title: 'Episode 12 - Last' }, { title: 'Episode 1 - First' }] })
+  const rows = buildEpisodes(item, weekly(1, 12))
+  assert.equal(rows[0][1], 'First')
+  assert.equal(rows[11][1], 'Last')
+})
+
 test('an episode seen twice keeps its first air date', () => {
   const history = [
     { at: T0 + 30 * DAY, episode: 1 },

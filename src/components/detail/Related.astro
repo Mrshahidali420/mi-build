@@ -12,6 +12,10 @@ import { pathOf } from '../../lib/format.js'
 const { item, isComic, related = [], order, bridge, family = [], relationLabel = {}, familyWord } = Astro.props
 
 const hasOriginal = !isComic && related.length > 0
+// A show based on both a novel and its manga lists two cards with one title;
+// the word says which is which.
+const COMIC_WORD = { JP: 'manga', KR: 'manhwa', CN: 'manhua', TW: 'manhua' }
+const originalWord = (rel) => (rel.kind === 'novel' ? 'novel' : rel.kind === 'comic' ? COMIC_WORD[rel.country] || 'comic' : null)
 const any = isComic || hasOriginal || bridge || order || family.length > 0
 const heading = isComic ? 'Reading order and related' : 'Watch order and related'
 ---
@@ -87,7 +91,9 @@ const heading = isComic ? 'Reading order and related' : 'Watch order and related
           {related.map((rel) => (
             <a class="crosslink" href={pathOf(rel)}>
               <div>
-                <span class="crosslink__lead">The anime is based on this</span>
+                <span class="crosslink__lead">
+                  {originalWord(rel) ? `The ${originalWord(rel)} the anime is based on` : 'The anime is based on this'}
+                </span>
                 <span class="crosslink__title">{rel.title}</span>
                 <span class="crosslink__lead">
                   {rel.readCount ? `${rel.readCount} official reading options` : 'No official reader yet'}

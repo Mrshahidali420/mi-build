@@ -370,7 +370,11 @@ export function shape(media, kind = kindOfMedia(media)) {
       // no English platform can mark an official link "Japanese only" from a
       // fact, not from the address alone. See src/lib/alike.mjs.
       .map((l) => ({ site: l.site, url: l.url, type: l.type, ...(l.language ? { language: l.language } : {}) })),
-    streamingEpisodes: (media.streamingEpisodes || []).slice(0, 3).map((e) => ({ title: e.title, url: e.url, site: e.site })),
+    // Every episode's title, for the episode list on the title page. Only the
+    // first three keep their address; nothing reads the rest, and it is size.
+    streamingEpisodes: (media.streamingEpisodes || []).map((e, i) =>
+      i < 3 ? { title: e.title, url: e.url, site: e.site } : { title: e.title, site: e.site },
+    ),
     studios: media.studios?.nodes?.map((s) => s.name) || [],
     // Only the first four staff rows, as when the query asked for four: the
     // wider list must not drag a "Touch-up Art" credit into the author line.

@@ -30,10 +30,14 @@ const { links = [] } = Astro.props
   const root = document.documentElement
   const mast = document.querySelector('.masthead')
   const setMast = () => {
-    if (mast) root.style.setProperty('--mast-h', `${Math.round(mast.getBoundingClientRect().height)}px`)
+    // Rounded down, so the chips tuck under the header's edge instead of
+    // leaving a sliver of page showing between the two bars on a phone.
+    if (mast) root.style.setProperty('--mast-h', `${Math.floor(mast.getBoundingClientRect().height)}px`)
   }
   setMast()
   addEventListener('resize', setMast, { passive: true })
+  // The header changes height after load too (web fonts, the menu).
+  if (mast && 'ResizeObserver' in window) new ResizeObserver(setMast).observe(mast)
 
   const lists = [...document.querySelectorAll('[data-jump]')]
   const ids = [...new Set(lists.flatMap((nav) => [...nav.querySelectorAll('a[href^="#"]')].map((a) => a.hash.slice(1))))]

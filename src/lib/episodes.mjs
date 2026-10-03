@@ -78,11 +78,24 @@ function datesOf(item, history, window) {
   return dates
 }
 
-function titlesOf(item) {
+/**
+ * Titles by this season's own episode number. Platforms often count across
+ * seasons (season 3 episode 1 is "Episode 49"), so when every named number
+ * runs past the season's last episode, they are shifted down to end on it.
+ */
+function titlesOf(item, last) {
+  const parsed = (item.streamingEpisodes || [])
+    .map((stream) => parseStreamingTitle(stream && stream.title))
+    .filter((p) => p && p.title)
   const titles = new Map()
-  for (const stream of item.streamingEpisodes || []) {
-    const parsed = parseStreamingTitle(stream && stream.title)
-    if (parsed && parsed.title && !titles.has(parsed.number)) titles.set(parsed.number, parsed.title)
+  if (!parsed.length) return titles
+  const numbers = parsed.map((p) => p.number)
+  const high = Math.max(...numbers)
+  const low = Math.min(...numbers)
+  const offset = last > 0 && low > last && high - last < low ? high - last : 0
+  for (const p of parsed) {
+    const n = p.number - offset
+    if (n >= 1 && !titles.has(n)) titles.set(n, p.title)
   }
   return titles
 }
@@ -100,11 +113,10 @@ export function buildEpisodes(item, history = [], window = []) {
   // A finished show's own count is the truth; anything past it is a rerun
   // numbering or a data slip. A show still airing may run past its planned count.
   const cap = item.status === 'FINISHED' && item.episodes > 0 ? item.episodes : Infinity
-  const titles = titlesOf(item)
-  const rows = [...dates.keys()]
-    .filter((n) => n <= cap)
-    .sort((a, b) => a - b)
-    .map((n) => [n, titles.get(n) || '', dates.get(n)])
+  const numbers = [...dates.keys()].filter((n) => n <= cap).sort((a, b) => a - b)
+  const last = item.episodes > 0 ? item.episodes : numbers[numbers.length - 1] || 0
+  const titles = titlesOf(item, last)
+  const rows = numbers.map((n) => [n, titles.get(n) || '', dates.get(n)])
   return rows.length >= MIN_DATED_EPISODES ? rows : []
 }
 
