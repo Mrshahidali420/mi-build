@@ -23,7 +23,6 @@ import sairaStencilLatin400Url from '@fontsource/saira-stencil-one/files/saira-s
 // The shell shows only three numbers and eight genre names, so it reads a
 // tiny file instead of the catalog. That keeps the Worker bundle small.
 import stats from '../../data/site-stats.json'
-import SiteNav from '../components/SiteNav.astro'
 
 const {
   title,
@@ -45,7 +44,22 @@ const site = 'https://manhwaindex.com'
 // build.format 'file' leaves '.html' on Astro.url.pathname; public URLs never carry it.
 const cleanPath = canonical.replace(/\.html$/, '').replace(/^\/index$/, '/') || '/'
 const canonicalUrl = new URL(cleanPath, site).href
-// The header links live in src/components/SiteNav.astro.
+const nav = [
+  { href: '/manhwa', label: 'Manhwa' },
+  { href: '/manga', label: 'Manga' },
+  { href: '/manhua', label: 'Manhua' },
+  { href: '/novel', label: 'Novels' },
+  { href: '/anime', label: 'Anime' },
+  { href: '/shop', label: 'Shop' },
+  { href: '/genre', label: 'Genres' },
+  { href: '/where-to-read', label: 'Where to Read' },
+  { href: '/where-to-watch', label: 'Where to Watch' },
+  { href: '/schedule', label: 'Schedule' },
+  { href: '/mood', label: 'Moods' },
+  { href: '/character', label: 'Characters' },
+  // The reader's own saved titles, kept in their browser (src/pages/my-list.astro).
+  { href: '/my-list', label: 'My list' },
+]
 const here = Astro.url.pathname
 const footGenres = stats.genres
 
@@ -734,7 +748,16 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
             <span id="finder-status" class="sr-only" aria-live="polite"></span>
           </form>
 
-          <SiteNav here={here} />
+          <nav aria-label="Browse">
+            <a href="/" class="nav-home">Home</a>
+            {
+              nav.map((item) => (
+                <a href={item.href} aria-current={here.startsWith(item.href) ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
         </div>
       </div>
     </header>
