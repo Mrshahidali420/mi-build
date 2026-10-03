@@ -1,0 +1,78 @@
+---
+/**
+ * The header links. Five shelves stay in the row, everything else sits under
+ * "Browse", and My list closes the row.
+ *
+ * Every link is a plain <a> in the HTML, so a crawler sees all of them. The
+ * Browse list opens with CSS (hover and focus-within); the small script only
+ * keeps aria-expanded honest and lets Escape or a second tap close it. On a
+ * phone the whole nav lives in the menu panel and the Browse list is drawn
+ * open, as a flat run of links (see .nav-more in app.css).
+ */
+const { here = '/' } = Astro.props
+
+const shelves = [
+  { href: '/manhwa', label: 'Manhwa' },
+  { href: '/manga', label: 'Manga' },
+  { href: '/manhua', label: 'Manhua' },
+  { href: '/novel', label: 'Novels' },
+  { href: '/anime', label: 'Anime' },
+]
+const browse = [
+  { href: '/genre', label: 'Genres' },
+  { href: '/schedule', label: 'Schedule' },
+  { href: '/mood', label: 'Moods' },
+  { href: '/character', label: 'Characters' },
+  { href: '/shop', label: 'Shop' },
+  { href: '/where-to-read', label: 'Where to Read' },
+  { href: '/where-to-watch', label: 'Where to Watch' },
+]
+const current = (href) => (here.startsWith(href) ? 'page' : undefined)
+const browseHere = browse.some((link) => here.startsWith(link.href))
+---
+
+<nav aria-label="Browse">
+  <a href="/" class="nav-home">Home</a>
+  {shelves.map((link) => <a href={link.href} aria-current={current(link.href)}>{link.label}</a>)}
+  <div class={browseHere ? 'nav-more nav-more--here' : 'nav-more'} data-nav-more>
+    <button type="button" class="nav-more__btn" aria-expanded="false" aria-controls="nav-more-list">
+      Browse
+      <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" /></svg>
+    </button>
+    <ul class="nav-more__list" id="nav-more-list">
+      {browse.map((link) => (
+        <li><a href={link.href} aria-current={current(link.href)}>{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+  {/* The reader's own saved titles, kept in their browser (src/pages/my-list.astro). */}
+  <a href="/my-list" aria-current={current('/my-list')}>My list</a>
+</nav>
+
+<script>
+  const box = document.querySelector('[data-nav-more]')
+  const btn = box?.querySelector('.nav-more__btn')
+  if (box && btn) {
+    // With the script running, focus alone no longer opens the list (CSS
+    // :focus-within is the no-script fallback), so Escape can really close it.
+    box.classList.add('nav-more--js')
+    const set = (open) => {
+      btn.setAttribute('aria-expanded', String(open))
+      box.classList.toggle('nav-more--open', open)
+      if (!open) btn.blur()
+    }
+    btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'))
+    box.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        set(false)
+        btn.focus()
+      }
+    })
+    box.addEventListener('focusout', (e) => {
+      if (!box.contains(e.relatedTarget)) set(false)
+    })
+    document.addEventListener('click', (e) => {
+      if (!box.contains(e.target)) set(false)
+    })
+  }
+</script>

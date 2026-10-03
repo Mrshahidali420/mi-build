@@ -324,6 +324,92 @@ img {
   transform: scaleX(1);
 }
 
+/* "Browse": the second-tier links in one small panel under the row. The
+ * panel opens on hover, on a tap (the script sets .nav-more--open) and, with
+ * no script, on keyboard focus. Every link is in the HTML either way. */
+.nav-more {
+  position: relative;
+}
+.nav-more__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0;
+  border: 0;
+  background: none;
+  color: var(--dawn-dim);
+  font: inherit;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: color 150ms var(--ease-dawn);
+}
+.nav-more__btn svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: rotate 180ms var(--ease-dawn);
+}
+.nav-more__btn:hover,
+.nav-more--here .nav-more__btn,
+.nav-more--open .nav-more__btn {
+  color: var(--day);
+}
+.nav-more--open .nav-more__btn svg {
+  rotate: 180deg;
+}
+.nav-more__list {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 50%;
+  translate: -50% 0;
+  z-index: 20;
+  min-width: 13.5rem;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  border: 1px solid var(--sf-line-strong, var(--cobalt-line));
+  border-radius: 12px;
+  background: var(--night-raised);
+  box-shadow: 0 18px 40px -14px rgb(0 0 0 / 0.75);
+}
+/* a bridge over the gap, so the pointer can travel from the word to the panel */
+.nav-more::after {
+  content: '';
+  position: absolute;
+  inset: 100% 0 auto;
+  height: 0.5rem;
+}
+.nav-more--open .nav-more__list,
+.nav-more:not(.nav-more--js):focus-within .nav-more__list {
+  display: block;
+}
+@media (hover: hover) {
+  .nav-more:hover .nav-more__list {
+    display: block;
+  }
+}
+.masthead nav .nav-more__list a {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.masthead nav .nav-more__list a::after {
+  display: none;
+}
+.masthead nav .nav-more__list a:hover,
+.masthead nav .nav-more__list a:focus-visible {
+  background: rgb(22 51 125 / 0.35);
+}
+.masthead nav .nav-more__list a[aria-current='page'] {
+  box-shadow: inset 2px 0 0 var(--rose);
+}
+
 /* ---------- header search: the console ----------------------------------- */
 
 .finder {
@@ -2957,6 +3043,36 @@ main:has(.title-page) {
   }
   .nav-home {
     display: block;
+  }
+  /* In the phone menu the Browse links are part of the flat list. */
+  .nav-more__btn,
+  .nav-more::after {
+    display: none;
+  }
+  .nav-more__list,
+  .nav-more:hover .nav-more__list {
+    display: block;
+    position: static;
+    translate: none;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .masthead nav .nav-more__list a {
+    display: block;
+    min-height: 0;
+    padding: 0.6rem 0;
+    border-radius: 0;
+  }
+  .masthead nav .nav-more__list a:hover,
+  .masthead nav .nav-more__list a:focus-visible {
+    background: none;
+  }
+  .masthead nav .nav-more__list a[aria-current='page'] {
+    box-shadow: none;
   }
   .finder {
     max-width: none;
