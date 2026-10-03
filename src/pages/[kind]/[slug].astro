@@ -516,8 +516,9 @@ const updatedLong = checkedLong
       {alsoKnown.length > 0 && (
         <p class="title-head__aka">Also known as {alsoKnown.join(' · ')}</p>
       )}
+      {/* The status is not repeated here: the pill row just below says it,
+          with the live dot when it is still running. */}
       <ul class="title-head__meta">
-        <li>{statusWord(item.status)}</li>
         {item.startYear && <li>{item.startYear}</li>}
         {isComic && item.chapters && <li>{item.chapters} chapters</li>}
         {!isComic && item.episodes && <li>{item.episodes} episodes</li>}
