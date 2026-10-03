@@ -20,7 +20,9 @@ import { checkedText, checkedISO } from '../lib/checked.js'
 // withVerdict: print the one-line "cheapest way in" above the table. Only the
 // title page asks for it. The free page already says the same thing in its
 // opening line, and saying it twice reads as filler.
-const { heading, links, empty, count, verb = 'read', withVerdict = false } = Astro.props
+// id: an explicit anchor (the character page's hero button jumps here). The
+// "lead" slot prints under the heading; only the character page fills it.
+const { heading, links, empty, count, verb = 'read', withVerdict = false, id } = Astro.props
 
 // "Free to read" / "Free to watch" — the reader's own word for what they want.
 const freeLabel = `Free to ${verb}`
@@ -34,7 +36,7 @@ const verdict = withVerdict ? bestValue(rows, verb === 'watch' ? 'anime' : 'comi
 // The anime page's table is the one the /where-to-watch lists link into
 // (/anime/<slug>#watch). Only there: withVerdict marks the title page, and
 // the comic pages keep their markup exactly as it was (Full Bloom included).
-const anchor = withVerdict && verb === 'watch' ? 'watch' : undefined
+const anchor = id || (withVerdict && verb === 'watch' ? 'watch' : undefined)
 ---
 
 <section class="answer" id={anchor}>
@@ -42,6 +44,8 @@ const anchor = withVerdict && verb === 'watch' ? 'watch' : undefined
     <h2>{heading}</h2>
     {rows.length > 0 && <p class="answer__count">{count}</p>}
   </div>
+
+  <slot name="lead" />
 
   {
     rows.length > 0 ? (

@@ -8,12 +8,15 @@
  * (MyListButton.astro) and copies that button's label and pressed state, so
  * the two can never disagree and the page keeps one popover and one set of ids.
  *
- * props: score (0-100 or null), malScore, links [{ id, label }]
+ * props: score (0-100 or null), malScore, links [{ id, label }], save (false
+ * on a page with no My list button, such as a character page: the box then
+ * shows only when there is a score)
  */
-const { score, malScore, links = [] } = Astro.props
+const { score, malScore, links = [], save = true } = Astro.props
 ---
 
 <aside class="dp-rail" aria-label="Quick links">
+  {(save || score || malScore) && (
   <div class="dp-rail__box">
     {(score || malScore) && (
       <p class="dp-rail__score">
@@ -29,11 +32,14 @@ const { score, malScore, links = [] } = Astro.props
         )}
       </p>
     )}
-    <button type="button" class="dp-rail__save" aria-pressed="false" data-rail-save>
-      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" /></svg>
-      <span data-rail-label>Add to my list</span>
-    </button>
+    {save && (
+      <button type="button" class="dp-rail__save" aria-pressed="false" data-rail-save>
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" /></svg>
+        <span data-rail-label>Add to my list</span>
+      </button>
+    )}
   </div>
+  )}
 
   {links.length > 1 && (
     <nav class="dp-rail__nav" aria-label="On this page" data-jump>
