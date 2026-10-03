@@ -101,6 +101,24 @@ export function searchLift(s, baseDays = 30) {
   return ((s.g7 || 0) + SEARCHING.shrink7) / (7 * r30 + SEARCHING.shrink7)
 }
 
+/**
+ * The links a cover's colour bars are drawn from (CoverGrid.astro): where to
+ * watch for anime, where to read for everything else.
+ */
+const linksOf = (item) => (item?.kind === 'anime' ? item.watchLinks : item?.readLinks)
+
+/** Whether the record says anything about its links at all. Catalog records always do. */
+const linksKnown = (item) => Array.isArray(item?.readLinks) || Array.isArray(item?.watchLinks)
+
+/**
+ * Does the cover show at least one official platform? False exactly when the
+ * card prints "no official link yet".
+ */
+export function hasOfficialLink(item) {
+  const links = linksOf(item)
+  return Array.isArray(links) && links.length > 0
+}
+
 /** Why the search-engine side does not qualify, or null. */
 export function webMiss(s, ctx = {}) {
   const people = s.gPeople7 || 0
@@ -134,6 +152,9 @@ export function siteMiss(s, ctx = {}) {
  */
 export function searchingMiss(s, title, ctx = {}) {
   if (!s) return 'no numbers this week'
+  // Hot this week sends people somewhere to read or watch, so a cover that
+  // says "no official link yet" has no place on it (owner, 3 Oct 2026).
+  if (linksKnown(title) && !hasOfficialLink(title)) return 'no official link yet'
   const web = webMiss(s, ctx)
   const site = siteMiss(s, ctx)
   if (web && site) return (s.gPeople7 || 0) >= (s.sPeople7 || 0) * SEARCHING.siteWeight ? web : site

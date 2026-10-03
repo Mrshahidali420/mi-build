@@ -10,6 +10,7 @@ import { upcomingAnime, upcomingRow } from '../lib/schedule.mjs'
 import { loadHomeAuto, homeShelf } from '../lib/home-auto.js'
 import { PRIORITY, adultReason } from '../lib/home-plan.mjs'
 import { newSeasonShelf } from '../lib/season-shelf.mjs'
+import { hasOfficialLink } from '../lib/home-searching.mjs'
 import homeRules from '../../data/home-rules.json'
 import HomeShelf from '../components/HomeShelf.astro'
 
@@ -47,11 +48,11 @@ const comingSoonHref = coming.big.length ? '/schedule#big-releases' : '/schedule
 
 // One shelf per catalog, all visible at once. Arrows scroll each shelf.
 const rows = [
-  { id: 'manhwa', label: 'Trending manhwa', items: manhwa.slice(0, 18), base: '/manhwa', all: manhwa.length, note: 'The colour bars under each cover show which platforms carry it.' },
-  { id: 'anime', label: 'Trending anime', items: animeByPopularity.slice(0, 18), base: '/anime', all: anime.length, note: 'Each one links back to the manga or manhwa it came from.' },
-  { id: 'manga', label: 'Trending manga', items: manga.slice(0, 18), base: '/manga', all: manga.length, note: '' },
-  { id: 'manhua', label: 'Trending manhua', items: manhua.slice(0, 18), base: '/manhua', all: manhua.length, note: '' },
-  { id: 'novel', label: 'Trending novels', items: novelsByPopularity.slice(0, 18), base: '/novel', all: novelsByPopularity.length, note: 'Light novels and web novels, with the stores that sell them in English.' },
+  { id: 'manhwa', label: 'Trending manhwa', items: manhwa.filter(hasOfficialLink).slice(0, 18), base: '/manhwa', all: manhwa.length, note: 'The colour bars under each cover show which platforms carry it.' },
+  { id: 'anime', label: 'Trending anime', items: animeByPopularity.filter(hasOfficialLink).slice(0, 18), base: '/anime', all: anime.length, note: 'Each one links back to the manga or manhwa it came from.' },
+  { id: 'manga', label: 'Trending manga', items: manga.filter(hasOfficialLink).slice(0, 18), base: '/manga', all: manga.length, note: '' },
+  { id: 'manhua', label: 'Trending manhua', items: manhua.filter(hasOfficialLink).slice(0, 18), base: '/manhua', all: manhua.length, note: '' },
+  { id: 'novel', label: 'Trending novels', items: novelsByPopularity.filter(hasOfficialLink).slice(0, 18), base: '/novel', all: novelsByPopularity.length, note: 'Light novels and web novels, with the stores that sell them in English.' },
 ]
 
 // The self-updating shelves, planned each night from what readers did (see
@@ -70,7 +71,9 @@ const homePlan = loadHomeAuto()
 const shelfOf = {}
 const shownSoFar = new Set(onPage)
 for (const key of PRIORITY) {
-  const shelf = homeShelf(homePlan, key, { lookup: inIndex, onPage: shownSoFar })
+  // A cover that says "no official link yet" has no place on the homepage
+  // (owner, 4 Oct 2026); the planner's next pick fills its slot.
+  const shelf = homeShelf(homePlan, key, { lookup: inIndex, onPage: shownSoFar, keep: hasOfficialLink })
   if (!shelf) continue
   shelfOf[key] = shelf
   for (const item of shelf.items) shownSoFar.add(item.id)
@@ -83,7 +86,7 @@ const risingShelf = shelfOf.rising
 // auto shelves use, and never a cover the page already shows.
 const seasonShelf = newSeasonShelf(anime, {
   onPage: shownSoFar,
-  keep: (item) => !adultReason(item, homeRules),
+  keep: (item) => !adultReason(item, homeRules) && hasOfficialLink(item),
 })
 if (seasonShelf) for (const item of seasonShelf.items) shownSoFar.add(item.id)
 // Hot this week (planned as "People are searching for") goes first, right
