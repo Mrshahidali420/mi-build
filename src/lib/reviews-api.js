@@ -52,13 +52,13 @@ const MAX_REVIEW_BODY = 12288
 // How long a hash that spots repeats is kept, in days.
 const FORGET_AFTER_DAYS = 2
 
-const answer = (status, body) =>
+export const answer = (status, body) =>
   new Response(JSON.stringify(body), {
     status,
     headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' },
   })
 
-const dayOf = (now) => new Date(now).toISOString().slice(0, 10)
+export const dayOf = (now) => new Date(now).toISOString().slice(0, 10)
 
 /**
  * Ask Cloudflare whether a Turnstile ticket is good. A ticket works once and
@@ -113,7 +113,7 @@ async function findTitle(env, kind, slug) {
  * The parts every door shares: method, origin, body, the database and the
  * key. Returns { body, db } or { refused }.
  */
-async function opening(request, env, max) {
+export async function opening(request, env, max) {
   if (request.method !== 'POST') {
     return { refused: new Response(null, { status: 405, headers: { allow: 'POST', 'cache-control': 'no-store' } }) }
   }
@@ -126,7 +126,7 @@ async function opening(request, env, max) {
   return { body: read.body, db }
 }
 
-const ipOf = (request) => request.headers.get('cf-connecting-ip') || ''
+export const ipOf = (request) => request.headers.get('cf-connecting-ip') || ''
 
 /**
  * One tap on the stars. `verify` is swapped in tests; the Worker uses the

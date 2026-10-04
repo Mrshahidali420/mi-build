@@ -204,3 +204,23 @@ CREATE TABLE IF NOT EXISTS rated_titles (
   kind TEXT NOT NULL,
   slug TEXT NOT NULL,
   title TEXT NOT NULL DEFAULT '');
+
+-- Messages from /feedback, /contact and /advertise (0009-messages.sql).
+-- No IP is stored: sender is a keyed hash, blanked after two days.
+CREATE TABLE IF NOT EXISTS messages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  kind TEXT NOT NULL CHECK (kind IN ('feedback', 'contact', 'sponsor')),
+  name TEXT NOT NULL DEFAULT '',
+  email TEXT NOT NULL DEFAULT '',
+  topic TEXT NOT NULL DEFAULT '',
+  page TEXT NOT NULL DEFAULT '',
+  company TEXT NOT NULL DEFAULT '',
+  website TEXT NOT NULL DEFAULT '',
+  budget TEXT NOT NULL DEFAULT '',
+  body TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'done')),
+  day TEXT NOT NULL,
+  sender TEXT,
+  created_at TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS messages_status ON messages(status, created_at DESC);
+CREATE INDEX IF NOT EXISTS messages_day ON messages(day) WHERE sender IS NOT NULL;

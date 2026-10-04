@@ -639,3 +639,7 @@ footer { color: var(--faint); font-size: 12px; margin: 28px 0 40px; line-height:
 nav.tabs a .tab-count { margin-left: 6px; color: var(--accent); font-variant-numeric: tabular-nums; }
 .reviews-admin .review-body { margin: 8px 0 0; white-space: pre-line; overflow-wrap: anywhere; line-height: 1.5; }
 .reviews-admin li.done { opacity: .6; }
+
+/* Messages tab (src/pages/my-admin/messages.astro): a reader's message keeps
+   its own line breaks, exactly as written. */
+.messages-admin .message-body { white-space: pre-wrap; }

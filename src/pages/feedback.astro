@@ -1,0 +1,33 @@
+---
+export const prerender = true
+import Base from '../layouts/Base.astro'
+import MessageForm from '../components/MessageForm.astro'
+---
+
+<Base
+  title="Send feedback — manhwaindex"
+  description="Tell manhwaindex about a wrong or dead link, a missing title or platform, or anything on a page that looks off. Every message is read."
+  canonical="/feedback"
+>
+  <div class="shell">
+    <section class="section">
+      <div class="section__head">
+        <h1>Send feedback</h1>
+        <p>
+          A dead link, a missing platform, a wrong date, or an idea for the site. Every message is
+          read by the person who runs it.
+        </p>
+      </div>
+
+      <MessageForm kind="feedback" send="Send feedback" />
+
+      <div class="prose">
+        <p class="prose__note">
+          Writing about a business matter? Use the <a href="/contact">contact form</a>, or see
+          <a href="/advertise">Advertise or get listed</a>. Copyright notices go to the
+          <a href="/dmca">takedown page</a>.
+        </p>
+      </div>
+    </section>
+  </div>
+</Base>

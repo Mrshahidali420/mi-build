@@ -1,0 +1,95 @@
+---
+export const prerender = true
+import Base from '../layouts/Base.astro'
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'How we check links',
+  url: 'https://manhwaindex.com/how-we-check-links',
+  description: 'The rules manhwaindex follows before a reading or streaming link appears on a page.',
+}
+---
+
+<Base
+  title="How we check links — manhwaindex"
+  description="The rules behind every link on manhwaindex: what counts as official, how often links are re-checked, what 'no official link yet' means, and how to report a wrong one."
+  canonical="/how-we-check-links"
+  jsonld={jsonld}
+>
+  <div class="shell">
+    <section class="section">
+      <div class="section__head">
+        <h1>How we check links</h1>
+        <p>Every platform on a title page has passed the same rules. Here they are.</p>
+      </div>
+
+      <div class="prose">
+        <h2>1. What counts as official</h2>
+        <p>
+          A link is official when it goes to the publisher, a licensor, or an app or
+          streaming service that holds the rights in at least one country. For comics and
+          novels that is a fixed list of known platforms, among them WEBTOON, Tapas,
+          Tappytoon, Lezhin, Manta, Piccoma, KakaoPage, MANGA Plus, VIZ, Yen Press, Seven
+          Seas, Kodansha, Azuki, Comikey, INKR, BookWalker, J-Novel Club and Kobo. For anime
+          it is a licensed streaming service such as Crunchyroll, Netflix, HIDIVE or Prime
+          Video.
+        </p>
+        <p>
+          A site that is not on the list never appears, however many readers use it. Scan
+          sites, mirrors and "free reader" apps without a licence are never linked, and never
+          will be.
+        </p>
+
+        <h2>2. Where the links come from</h2>
+        <p>
+          The starting list of links for each title comes from
+          <a href="https://anilist.co" rel="noopener">AniList</a>, where volunteers record
+          each title's official pages. Every link is then filtered through the rules above.
+          Readers' reports and hand fixes come on top.
+        </p>
+
+        <h2>3. How often they are checked</h2>
+        <p>
+          Four times a day, every six hours, the whole catalog is compared with the source
+          data. A title whose details changed is fetched again. A link that has gone from
+          the source is gone from the page at the next check, and a new one appears the
+          same way. Each list on a title page shows the date it was last checked.
+        </p>
+
+        <h2>4. Free, paid and language</h2>
+        <ul>
+          <li><strong>Free</strong> means the platform lets you read or watch at least part of it without paying, sometimes with ads or a wait timer.</li>
+          <li><strong>Paid</strong> means coins, a subscription or buying volumes.</li>
+          <li><strong>Language</strong> is shown when a release is not in English, so a Korean-only or Japanese-only link is marked as such.</li>
+        </ul>
+        <p>
+          Terms change often. The platform's own page is always the last word on price.
+        </p>
+
+        <h2>5. "No official link yet"</h2>
+        <p>
+          Some series have no licensed release in any language we can link to. Their pages
+          say so plainly instead of guessing, point to licensed titles that are close to
+          them, and show the original publisher where it is known. When a licence is
+          announced and recorded, the link appears at the next check.
+        </p>
+
+        <h2>6. What we leave out</h2>
+        <ul>
+          <li>Adult titles are not listed.</li>
+          <li>A title can be removed for good when its content crosses a line. Removals are listed on <a href="/updates">Updates</a>.</li>
+          <li>The official platform lists are never paid. No platform pays to appear or to appear first. Sponsored spots, when there are any, are always labeled "Sponsored" and sit apart from those lists.</li>
+        </ul>
+
+        <h2>7. Report a wrong link</h2>
+        <p>
+          Write to <a class="mailto" href="mailto:hello@manhwaindex.com">hello@manhwaindex.com</a>
+          with the page and what is wrong. Every report is read and checked, and the page is
+          fixed by hand when the report is right. Rights holders can also use the
+          <a href="/dmca">copyright page</a>.
+        </p>
+      </div>
+    </section>
+  </div>
+</Base>

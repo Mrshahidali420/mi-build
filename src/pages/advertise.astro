@@ -1,0 +1,49 @@
+---
+export const prerender = true
+import Base from '../layouts/Base.astro'
+import MessageForm from '../components/MessageForm.astro'
+---
+
+<Base
+  title="Advertise or get listed on manhwaindex"
+  description="Sponsored spots and listing requests for apps, publishers, shops, events and creators in anime, manga, manhwa, manhua and novels. Every paid spot is labeled Sponsored."
+  canonical="/advertise"
+>
+  <div class="shell">
+    <section class="section">
+      <div class="section__head">
+        <h1>Advertise or get listed</h1>
+        <p>For anyone whose work belongs next to anime, manga, manhwa, manhua and novels.</p>
+      </div>
+
+      <div class="prose">
+        <h2>Who it is for</h2>
+        <ul>
+          <li>Reading and streaming apps, and official publishers.</li>
+          <li>Shops that sell books, figures, merch or art.</li>
+          <li>Events, conventions and fan meetups.</li>
+          <li>Creators: artists, writers, translators with official releases, video makers.</li>
+          <li>Anything else that is about anime, manga, manhwa, manhua or novels.</li>
+        </ul>
+
+        <h2>What is on offer</h2>
+        <ul>
+          <li><strong>A sponsored spot</strong>: a clearly marked space on chosen pages or sections.</li>
+          <li><strong>A listing request</strong>: ask for a platform, a title or a page to be added. Official platforms are listed for free when they meet the rules on <a href="/how-we-check-links">How we check links</a>.</li>
+          <li><strong>A partnership</strong>: something else that helps readers. Tell us the idea.</li>
+        </ul>
+
+        <h2>The rules</h2>
+        <ul>
+          <li>Every paid placement is labeled <strong>Sponsored</strong>.</li>
+          <li>Paid spots are kept apart from the official where to read and where to watch lists. No one can pay to appear in those lists or to appear first.</li>
+          <li>It must be related to anime, manga, manhwa, manhua or novels.</li>
+          <li>Piracy, adult, gambling and crypto offers are refused.</li>
+        </ul>
+        <p>Write below. You get a reply by email, usually within a few days.</p>
+      </div>
+
+      <MessageForm kind="sponsor" send="Send request" />
+    </section>
+  </div>
+</Base>

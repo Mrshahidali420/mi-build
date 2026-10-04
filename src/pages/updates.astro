@@ -1,0 +1,70 @@
+---
+export const prerender = true
+import Base from '../layouts/Base.astro'
+import { UPDATES } from '../lib/site-updates.js'
+
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'manhwaindex updates',
+  url: 'https://manhwaindex.com/updates',
+  description: 'A dated list of what changed on manhwaindex.',
+  dateModified: UPDATES[0]?.date,
+}
+---
+
+<Base
+  title="Updates — what changed on manhwaindex"
+  description="A dated list of the changes made to manhwaindex: new features, fixed links, new platforms and titles removed, newest first."
+  canonical="/updates"
+  jsonld={jsonld}
+>
+  <div class="shell">
+    <section class="section">
+      <div class="section__head">
+        <h1>Updates</h1>
+        <p>What changed on the site, newest first. Titles and links themselves refresh every six hours and are not listed here.</p>
+      </div>
+
+      <div class="prose">
+        <ol class="updates">
+          {UPDATES.map((u) => (
+            <li>
+              <time datetime={u.date}>{u.dateText}</time>
+              <h2>{u.title}</h2>
+              <p>{u.text}</p>
+            </li>
+          ))}
+        </ol>
+        <p>
+          Spotted a wrong link or a missing title? Write to
+          <a class="mailto" href="mailto:hello@manhwaindex.com">hello@manhwaindex.com</a>.
+          See also <a href="/how-we-check-links">How we check links</a>.
+        </p>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .updates {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+  .updates li {
+    padding: 1rem 0;
+    border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent);
+  }
+  .updates time {
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+  .updates h2 {
+    font-size: 1.05rem;
+    margin: 0.2rem 0 0.3rem;
+  }
+  .updates p {
+    margin: 0;
+  }
+</style>

@@ -37,6 +37,9 @@ const {
 } = Astro.props
 
 const verb = isComic ? 'read' : 'watch'
+// "Report a problem" opens the one feedback page; the form names this page
+// from the referrer, so no per-page feedback URL exists for crawlers.
+const reportHref = '/feedback'
 const Verb = isComic ? 'Read' : 'Watch'
 const anchor = isComic ? 'read' : 'watch'
 const rows = rankedRows(links)
@@ -142,6 +145,8 @@ const otherLanguages = languages.filter((l) => l !== 'English')
         <p class="compare__checked">
           We checked these on <time datetime={checkedISO}>{checkedText}</time>. Platforms
           change their terms, so the platform's own page is the last word.
+          <a href="/how-we-check-links">How we check links</a>.
+          <a href={reportHref} rel="nofollow">Report a problem with this page</a>.
         </p>
       </>
     ) : (

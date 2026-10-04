@@ -1,0 +1,92 @@
+---
+/**
+ * Messages. What readers sent from /feedback (the footer link on every page
+ * and "Report a problem" under the where-to lists), /contact and /advertise.
+ * Private to the owner: nothing here is ever shown on the site.
+ *
+ * Mark done moves a message to Done; Delete throws it away for good. The
+ * buttons post to /my-admin/api/message (src/lib/message-actions.js). The
+ * table is in db/migrations/0009-messages.sql.
+ */
+import Admin from '../../layouts/Admin.astro'
+import Kpi from '../../components/admin/Kpi.astro'
+import MessageList from '../../components/admin/MessageList.astro'
+import { envOf } from '../../lib/runtime.js'
+import { gate, ask } from '../../lib/admin.js'
+import {
+  MESSAGES_NEW_LIST,
+  MESSAGES_KIND_LIST,
+  MESSAGES_DONE_LIST,
+  MESSAGES_NEW_BY_KIND,
+  DAILY_MESSAGES,
+  MAX_NEW,
+} from '../../lib/messages.mjs'
+
+export const prerender = false
+
+const env = envOf(Astro)
+const { db, secret, signedIn, wrongWord } = await gate(Astro, env)
+if (secret && !signedIn && Astro.request.method !== 'POST') {
+  return Astro.redirect('/my-admin')
+}
+
+// The filter: all new messages, one kind of new message, or the done ones.
+const FILTERS = [
+  { key: 'new', label: 'All new' },
+  { key: 'feedback', label: 'Feedback' },
+  { key: 'contact', label: 'Contact' },
+  { key: 'sponsor', label: 'Sponsor' },
+  { key: 'done', label: 'Done' },
+]
+const asked = Astro.url.searchParams.get('show') || 'new'
+const show = FILTERS.find((f) => f.key === asked) || FILTERS[0]
+
+let rows = []
+let byKind = {}
+if (signedIn) {
+  const listing =
+    show.key === 'new'
+      ? ask(db, MESSAGES_NEW_LIST)
+      : show.key === 'done'
+        ? ask(db, MESSAGES_DONE_LIST)
+        : ask(db, MESSAGES_KIND_LIST, show.key)
+  const [list, counts] = await Promise.all([listing, ask(db, MESSAGES_NEW_BY_KIND)])
+  rows = list
+  byKind = Object.fromEntries(counts.map((c) => [c.kind, Number(c.n) || 0]))
+}
+const waiting = (byKind.feedback || 0) + (byKind.contact || 0) + (byKind.sponsor || 0)
+const countOf = (key) => (key === 'new' ? waiting : key === 'done' ? 0 : byKind[key] || 0)
+const hrefOf = (key) => (key === 'new' ? '/my-admin/messages' : `/my-admin/messages?show=${key}`)
+---
+
+<Admin
+  title="Messages"
+  here="/my-admin/messages"
+  signedIn={signedIn}
+  secret={secret}
+  wrongWord={wrongWord}
+  note="What readers sent from the feedback, contact and advertise forms. Only you see these."
+>
+  <section class="kpis" aria-label="Messages at a glance">
+    <Kpi label="New" value={waiting} mood={waiting ? 'bad' : 'good'} hero />
+    <Kpi label="Feedback" value={byKind.feedback || 0} />
+    <Kpi label="Contact" value={byKind.contact || 0} />
+    <Kpi label="Sponsor" value={byKind.sponsor || 0} />
+  </section>
+
+  <div class="panel wide">
+    <h2>{show.label}</h2>
+    <nav class="chips" aria-label="Show">
+      {FILTERS.map((f) => (
+        <a href={hrefOf(f.key)} aria-current={f.key === show.key ? 'page' : undefined}>
+          {f.label}{countOf(f.key) ? ` (${countOf(f.key)})` : ''}
+        </a>
+      ))}
+    </nav>
+    <p class="say">
+      Newest first. Mark done keeps a message under Done; Delete throws it away for good. Each
+      address can send {DAILY_MESSAGES} a day, and the forms pause when {MAX_NEW} are new.
+    </p>
+    <MessageList rows={rows} empty={show.key === 'done' ? 'Nothing marked done yet.' : 'No new messages.'} />
+  </div>
+</Admin>
