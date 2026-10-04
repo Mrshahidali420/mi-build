@@ -1,0 +1,45 @@
+---
+/**
+ * A grid of guide cards: the hub (/guides), the homepage "Guides" row and the
+ * "More guides" blocks on guide pages.
+ *
+ * Pass rows that went through assignCardImages (src/lib/guides.mjs), so each
+ * card carries its own `card` picture and no two cards on a page repeat one.
+ * Character art on AniList is a 230 x 345 portrait, so the frame is a 3:4
+ * portrait kept near that size: above the text on phones (two columns),
+ * beside it from 640 px up, never stretched into a blurry wide crop.
+ *
+ * Props: guides, lines (show the one-line description, default true),
+ * label (aria-label of the list, optional).
+ */
+import '../styles/guide-cards.css'
+
+const { guides = [], lines = true, label } = Astro.props
+---
+
+<ul class="gcards" aria-label={label}>
+  {
+    guides.map((g) => (
+      <li class="gcard">
+        <a href={`/guides/${g.slug}`}>
+          <span class:list={['gcard__art', { 'gcard__art--wide': g.card?.wide }]}>
+            {g.card && (
+              <img
+                src={g.card.src}
+                alt={g.card.alt}
+                width={g.card.width}
+                height={g.card.height}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+          </span>
+          <span class="gcard__text">
+            <span class="gcard__title">{g.title}</span>
+            {lines && g.description && <span class="gcard__line">{g.description}</span>}
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

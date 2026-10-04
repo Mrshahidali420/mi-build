@@ -8,7 +8,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
    "imageAlt": "Naruto Shippuden key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m20",
+    "m1735",
+    "m269",
+    "m21",
+    "m813",
+    "m21175",
+    "m6702",
+    "m97938",
+    "m249",
+    "m235",
+    "m121",
+    "m113415"
+   ],
+   "series": 1735
   },
   {
    "slug": "anime-power-systems-explained",
@@ -18,7 +33,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11061-8WkkTZ6duKpq.jpg",
    "imageAlt": "Hunter x Hunter key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m1735",
+    "m11061",
+    "m21",
+    "m113415",
+    "m101922",
+    "m21459",
+    "m813",
+    "m269",
+    "m20474",
+    "m5114",
+    "m105398",
+    "m97940"
+   ],
+   "series": 11061
   },
   {
    "slug": "anime-watch-order",
@@ -28,7 +58,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/10087-32MFY9VnJQ7I.jpg",
    "imageAlt": "Fate/Zero key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m10087",
+    "m5081",
+    "m223",
+    "m20",
+    "m16498",
+    "m113415",
+    "m101922",
+    "m21355",
+    "m14719",
+    "m5114",
+    "m21202",
+    "m11757"
+   ],
+   "series": 10087
   },
   {
    "slug": "attack-on-titan-nine-titans",
@@ -38,7 +83,19 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-8jpFCOcDmneX.jpg",
    "imageAlt": "Attack on Titan key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c199551",
+    "c40882",
+    "c46488",
+    "c46484",
+    "c46490",
+    "c125661",
+    "c125603",
+    "c125662",
+    "c205015"
+   ],
+   "series": 16498
   },
   {
    "slug": "attack-on-titan-watch-order",
@@ -48,7 +105,21 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-8jpFCOcDmneX.jpg",
    "imageAlt": "Attack on Titan key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m16498",
+    "m20958",
+    "m99147",
+    "m104578",
+    "m110277",
+    "m131681",
+    "m146984",
+    "m162314",
+    "m20811",
+    "m99634",
+    "m18397"
+   ],
+   "series": 16498
   },
   {
    "slug": "best-manhwa-to-read",
@@ -58,7 +129,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/105398-4UrEhdqZukrg.jpg",
    "imageAlt": "Solo Leveling manhwa cover art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m105398",
+    "m119257",
+    "m85143",
+    "m106929",
+    "m140407",
+    "m132144",
+    "m86848",
+    "m113488",
+    "m100954",
+    "m103995",
+    "m113055",
+    "m118408"
+   ],
+   "series": 105398
   },
   {
    "slug": "bleach-strongest-characters",
@@ -68,7 +154,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/116674-l2YlIyJzvGSV.jpg",
    "imageAlt": "Bleach: Thousand-Year Blood War key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c68537",
+    "c5",
+    "c1086",
+    "c5726",
+    "c74359",
+    "c909",
+    "c135187",
+    "c239946",
+    "c3845",
+    "c71949",
+    "c1088",
+    "c210"
+   ],
+   "series": 116674
   },
   {
    "slug": "chainsaw-man-devils",
@@ -78,7 +179,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127230-o8IRwCGVr9KW.jpg",
    "imageAlt": "Chainsaw Man anime key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c170266",
+    "c137080",
+    "c282872",
+    "c294475",
+    "c208942",
+    "c212321",
+    "c301803",
+    "c172887",
+    "c290671",
+    "c152231",
+    "c157240",
+    "c174282"
+   ],
+   "series": 127230
   },
   {
    "slug": "chainsaw-man-strongest-devils",
@@ -88,7 +204,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127230-o8IRwCGVr9KW.jpg",
    "imageAlt": "Chainsaw Man anime key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c170266",
+    "c137080",
+    "c212321",
+    "c208942",
+    "c301803",
+    "c347492",
+    "c282872",
+    "c294475",
+    "c172887",
+    "c152231",
+    "c148740",
+    "c137079"
+   ],
+   "series": 127230
   },
   {
    "slug": "demon-slayer-hashira",
@@ -98,7 +229,19 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/166240-YdxoEhrfwNk0.jpg",
    "imageAlt": "Demon Slayer Hashira Training arc key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c137778",
+    "c137774",
+    "c130050",
+    "c137777",
+    "c136069",
+    "c129133",
+    "c136071",
+    "c136072",
+    "c136070"
+   ],
+   "series": 166240
   },
   {
    "slug": "demon-slayer-strongest-characters",
@@ -108,7 +251,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101922-33MtJGsUSxga.jpg",
    "imageAlt": "Demon Slayer Kimetsu no Yaiba key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c149220",
+    "c129132",
+    "c141918",
+    "c126071",
+    "c137778",
+    "c144591",
+    "c141694",
+    "c137774",
+    "c130050",
+    "c137777",
+    "c136069",
+    "c260323"
+   ],
+   "series": 101922
   },
   {
    "slug": "demon-slayer-strongest-demons",
@@ -118,7 +276,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/145139-V01Prh6UzfRk.jpg",
    "imageAlt": "Demon Slayer Swordsmith Village arc key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c129132",
+    "c141918",
+    "c144591",
+    "c141694",
+    "c260323",
+    "c139736",
+    "c205590",
+    "c139735",
+    "c165862",
+    "c139734",
+    "c139739",
+    "c139737"
+   ],
+   "series": 145139
   },
   {
    "slug": "demon-slayer-watch-order",
@@ -128,7 +301,17 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101922-33MtJGsUSxga.jpg",
    "imageAlt": "Demon Slayer Kimetsu no Yaiba key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m101922",
+    "m112151",
+    "m129874",
+    "m142329",
+    "m145139",
+    "m166240",
+    "m178788"
+   ],
+   "series": 101922
   },
   {
    "slug": "dragon-ball-power-levels",
@@ -138,7 +321,19 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/813-03ZLvWJgR6Wd.jpg",
    "imageAlt": "Dragon Ball Z key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c3694",
+    "c246",
+    "c6134",
+    "c913",
+    "c5224",
+    "c2093",
+    "c6155",
+    "c914",
+    "c2159"
+   ],
+   "series": 813
   },
   {
    "slug": "dragon-ball-watch-order",
@@ -148,7 +343,18 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/813-03ZLvWJgR6Wd.jpg",
    "imageAlt": "Dragon Ball Z key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m223",
+    "m813",
+    "m6033",
+    "m170083",
+    "m21175",
+    "m101302",
+    "m133898",
+    "m225"
+   ],
+   "series": 813
   },
   {
    "slug": "easiest-anime-characters-to-cosplay",
@@ -158,7 +364,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127230-o8IRwCGVr9KW.jpg",
    "imageAlt": "Chainsaw Man key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c89",
+    "c80",
+    "c137081",
+    "c137080",
+    "c137079",
+    "c1",
+    "c127212",
+    "c127518",
+    "c27",
+    "c36765",
+    "c176754",
+    "c138102"
+   ],
+   "series": 127230
   },
   {
    "slug": "easy-anime-cosplay-ideas",
@@ -168,7 +389,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/132405-LnPQaqaksEpN.jpg",
    "imageAlt": "My Dress-Up Darling key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c71",
+    "c130102",
+    "c73935",
+    "c89616",
+    "c257562",
+    "c6866",
+    "c64769",
+    "c138100",
+    "c40",
+    "c127691",
+    "c133676",
+    "c126071"
+   ],
+   "series": 132405
   },
   {
    "slug": "fate-watch-order",
@@ -178,7 +414,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/19603.jpg",
    "imageAlt": "Fate/stay night Unlimited Blade Works key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m19603",
+    "m20792",
+    "m20791",
+    "m21718",
+    "m21719",
+    "m10087",
+    "m11741",
+    "m356",
+    "m106918",
+    "m98035",
+    "m97815",
+    "m103276"
+   ],
+   "series": 19603
   },
   {
    "slug": "goku-power-levels",
@@ -188,7 +439,19 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/813-03ZLvWJgR6Wd.jpg",
    "imageAlt": "Dragon Ball Z key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c6155",
+    "c913",
+    "c6134",
+    "c3694",
+    "c3908",
+    "c1012",
+    "c76348",
+    "c126257",
+    "c4945"
+   ],
+   "series": 813
   },
   {
    "slug": "goku-vs-luffy",
@@ -198,7 +461,14 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21175-Qo9gdGPUm4Im.jpg",
    "imageAlt": "Dragon Ball Super key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c246",
+    "c40",
+    "c126257",
+    "c46109"
+   ],
+   "series": 21175
   },
   {
    "slug": "goku-vs-vegeta",
@@ -208,7 +478,13 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/813-03ZLvWJgR6Wd.jpg",
    "imageAlt": "Dragon Ball Z key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c246",
+    "c913",
+    "c76348"
+   ],
+   "series": 813
   },
   {
    "slug": "how-to-read-manga",
@@ -218,7 +494,18 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/108556-iCiPfU0GU4OM.jpg",
    "imageAlt": "Spy x Family manga cover",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m30104",
+    "m108556",
+    "m118586",
+    "m30021",
+    "m65243",
+    "m105778",
+    "m105398",
+    "m85143"
+   ],
+   "series": 108556
   },
   {
    "slug": "hunter-x-hunter-strongest-characters",
@@ -228,7 +515,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11061-8WkkTZ6duKpq.jpg",
    "imageAlt": "Hunter x Hunter (2011) key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c23277",
+    "c14489",
+    "c30",
+    "c12300",
+    "c43953",
+    "c41135",
+    "c59",
+    "c60",
+    "c58",
+    "c26",
+    "c31",
+    "c28"
+   ],
+   "series": 11061
   },
   {
    "slug": "is-luffy-the-strongest",
@@ -238,7 +540,18 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
    "imageAlt": "Monkey D. Luffy from One Piece",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c40",
+    "c46109",
+    "c727",
+    "c3331",
+    "c2064",
+    "c8064",
+    "c22687",
+    "c128130"
+   ],
+   "series": 21
   },
   {
    "slug": "isekai-anime-not-overpowered",
@@ -248,7 +561,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108268-JbUzGiUlmCTy.jpg",
    "imageAlt": "Ascendance of a Bookworm key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m21355",
+    "m21428",
+    "m108268",
+    "m21202",
+    "m99263",
+    "m108465",
+    "m153",
+    "m104647",
+    "m154384",
+    "m97617",
+    "m103632",
+    "m123"
+   ],
+   "series": 108268
   },
   {
    "slug": "jjk-sorcerer-grades",
@@ -258,7 +586,19 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/113415-jQBSkxWAAk83.jpg",
    "imageAlt": "Jujutsu Kaisen key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c127691",
+    "c129571",
+    "c133704",
+    "c137975",
+    "c157115",
+    "c126635",
+    "c133700",
+    "c134167",
+    "c133701"
+   ],
+   "series": 113415
   },
   {
    "slug": "jjk-special-grade-sorcerers",
@@ -268,7 +608,21 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/113415-jQBSkxWAAk83.jpg",
    "imageAlt": "Jujutsu Kaisen key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c127691",
+    "c129571",
+    "c196502",
+    "c133699",
+    "c133701",
+    "c208533",
+    "c133702",
+    "c156991",
+    "c172743",
+    "c204383",
+    "c276133"
+   ],
+   "series": 113415
   },
   {
    "slug": "jjk-strongest-characters",
@@ -278,7 +632,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/145064-esDtAY2He7sk.jpg",
    "imageAlt": "Jujutsu Kaisen Season 2 key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c133701",
+    "c127691",
+    "c127212",
+    "c129571",
+    "c289584",
+    "c196502",
+    "c134167",
+    "c162722",
+    "c197584",
+    "c248143",
+    "c133702",
+    "c248818"
+   ],
+   "series": 145064
   },
   {
    "slug": "jujutsu-kaisen-watch-order",
@@ -288,7 +657,16 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/113415-jQBSkxWAAk83.jpg",
    "imageAlt": "Jujutsu Kaisen key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m113415",
+    "m131573",
+    "m145064",
+    "m172463",
+    "m192809",
+    "m204066"
+   ],
+   "series": 113415
   },
   {
    "slug": "male-anime-cosplay-ideas",
@@ -298,7 +676,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21507-Qx8bGsLXUgLo.jpg",
    "imageAlt": "Mob Psycho 100 key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c89334",
+    "c80",
+    "c137081",
+    "c1",
+    "c126635",
+    "c127212",
+    "c14",
+    "c4003",
+    "c85",
+    "c45627",
+    "c62",
+    "c130050"
+   ],
+   "series": 21507
   },
   {
    "slug": "monogatari-watch-order",
@@ -308,7 +701,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n5081-0Zcn5GOFYHMc.jpg",
    "imageAlt": "Bakemonogatari key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m5081",
+    "m9260",
+    "m21399",
+    "m21400",
+    "m11597",
+    "m15689",
+    "m17074",
+    "m20593",
+    "m20918",
+    "m21262",
+    "m21520",
+    "m21745"
+   ],
+   "series": 5081
   },
   {
    "slug": "naruto-best-fights",
@@ -318,7 +726,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
    "imageAlt": "Naruto Shippuden key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c13",
+    "c306",
+    "c307",
+    "c3180",
+    "c14",
+    "c17",
+    "c2423",
+    "c728",
+    "c1694",
+    "c2007",
+    "c1900",
+    "c12464"
+   ],
+   "series": 1735
   },
   {
    "slug": "naruto-filler-list",
@@ -328,7 +751,18 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
    "imageAlt": "Naruto Shippuden key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c85",
+    "c14",
+    "c57883",
+    "m20",
+    "c4775",
+    "c2423",
+    "c17",
+    "c1555"
+   ],
+   "series": 1735
   },
   {
    "slug": "naruto-strongest-characters",
@@ -338,7 +772,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
    "imageAlt": "Naruto Shippuden key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c126069",
+    "c17",
+    "c13",
+    "c53901",
+    "c57883",
+    "c3149",
+    "c12464",
+    "c307",
+    "c85",
+    "c2535",
+    "c14",
+    "c3180"
+   ],
+   "series": 1735
   },
   {
    "slug": "naruto-teachers-ranked",
@@ -348,7 +797,19 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20-HHxhPj5JD13a.jpg",
    "imageAlt": "Naruto key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c2423",
+    "c85",
+    "c2011",
+    "c24486",
+    "c18473",
+    "c7302",
+    "c2535",
+    "c2006",
+    "c10791"
+   ],
+   "series": 20
   },
   {
    "slug": "naruto-vs-sasuke",
@@ -358,7 +819,12 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
    "imageAlt": "Naruto Shippuden key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c17",
+    "c13"
+   ],
+   "series": 1735
   },
   {
    "slug": "naruto-watch-order",
@@ -368,7 +834,15 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
    "imageAlt": "Naruto Shippuden key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m20",
+    "m1735",
+    "m16870",
+    "m21220",
+    "m97938"
+   ],
+   "series": 1735
   },
   {
    "slug": "one-piece-bounties",
@@ -378,7 +852,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
    "imageAlt": "One Piece key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c4883",
+    "c2751",
+    "c46109",
+    "c54495",
+    "c727",
+    "c3331",
+    "c2064",
+    "c725",
+    "c40",
+    "c13767",
+    "c14989",
+    "c2749"
+   ],
+   "series": 21
   },
   {
    "slug": "one-piece-strongest-characters",
@@ -388,7 +877,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
    "imageAlt": "One Piece key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c40",
+    "c727",
+    "c3331",
+    "c2751",
+    "c46109",
+    "c2064",
+    "c54495",
+    "c8064",
+    "c22687",
+    "c21093",
+    "c2752",
+    "c17142"
+   ],
+   "series": 21
   },
   {
    "slug": "one-piece-strongest-marines-pirates",
@@ -398,7 +902,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
    "imageAlt": "One Piece key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c4883",
+    "c2751",
+    "c40",
+    "c727",
+    "c8064",
+    "c46109",
+    "c3331",
+    "c54495",
+    "c22687",
+    "c2064",
+    "c2752",
+    "c21093"
+   ],
+   "series": 21
   },
   {
    "slug": "re-zero-watch-order",
@@ -408,7 +927,16 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21355-f9SjOfEJMk5P.jpg",
    "imageAlt": "Re:ZERO -Starting Life in Another World- key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "m21355",
+    "m100049",
+    "m108632",
+    "m119661",
+    "m163134",
+    "m189046"
+   ],
+   "series": 21355
   },
   {
    "slug": "solo-leveling-monarchs",
@@ -418,7 +946,19 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/176496-5oY4k2NRqlYs.jpg",
    "imageAlt": "Solo Leveling Season 2 key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c198257",
+    "c253680",
+    "c360018",
+    "c360010",
+    "c209181",
+    "c209184",
+    "m105398",
+    "c207013",
+    "c306643"
+   ],
+   "series": 176496
   },
   {
    "slug": "solo-leveling-s-rank-hunters",
@@ -428,7 +968,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/151807-37yfQA3ym8PA.jpg",
    "imageAlt": "Solo Leveling anime key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c129928",
+    "c184540",
+    "c184553",
+    "c208458",
+    "c306506",
+    "c181154",
+    "c138792",
+    "c138789",
+    "c306505",
+    "c138794",
+    "c136077",
+    "c136075"
+   ],
+   "series": 151807
   },
   {
    "slug": "solo-leveling-strongest-characters",
@@ -438,7 +993,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/151807-37yfQA3ym8PA.jpg",
    "imageAlt": "Solo Leveling anime key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c129928",
+    "c198257",
+    "c253680",
+    "c249400",
+    "c159849",
+    "c138790",
+    "c184540",
+    "c184553",
+    "c145722",
+    "c208458",
+    "c181154",
+    "c138789"
+   ],
+   "series": 151807
   },
   {
    "slug": "strongest-anime-characters",
@@ -448,7 +1018,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21175-Qo9gdGPUm4Im.jpg",
    "imageAlt": "Dragon Ball Super key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c146259",
+    "c37832",
+    "c2257",
+    "c76348",
+    "c246",
+    "c73935",
+    "c68537",
+    "c129928",
+    "c126069",
+    "c1086",
+    "c40",
+    "c23277"
+   ],
+   "series": 21175
   },
   {
    "slug": "super-saiyan-forms-explained",
@@ -458,7 +1043,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21175-Qo9gdGPUm4Im.jpg",
    "imageAlt": "Dragon Ball Super key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c246",
+    "c2707",
+    "m813",
+    "c2093",
+    "m20635",
+    "m225",
+    "m14837",
+    "m20778",
+    "m21175",
+    "c913",
+    "c4945",
+    "m133898"
+   ],
+   "series": 21175
   },
   {
    "slug": "tallest-anime-characters",
@@ -468,7 +1068,22 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
    "imageAlt": "One Piece key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c54495",
+    "c46109",
+    "c7454",
+    "c7453",
+    "c2751",
+    "c124077",
+    "c22687",
+    "c18938",
+    "c4298",
+    "c914",
+    "c137778",
+    "c89224"
+   ],
+   "series": 21
   },
   {
    "slug": "what-is-power-scaling",
@@ -478,7 +1093,16 @@
    "updated": "2026-10-04",
    "image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21087-sHb9zUZFsHe1.jpg",
    "imageAlt": "One-Punch Man key art",
-   "wide": true
+   "wide": true,
+   "picks": [
+    "c246",
+    "c73935",
+    "c127691",
+    "c40",
+    "c17",
+    "c129928"
+   ],
+   "series": 21087
   }
  ],
  "featured": {

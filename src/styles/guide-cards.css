@@ -1,0 +1,99 @@
+/* ---------- guide cards: src/components/GuideCards.astro ----------
+ * A 3:4 portrait and the guide's title. Phones: two columns, picture on
+ * top. From 640 px: the picture sits beside the text at about its own
+ * size (AniList portraits are 230 px wide), so it stays sharp.
+ * ------------------------------------------------------------------ */
+
+.gcards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 0.9rem;
+}
+.gcard a {
+  display: grid;
+  gap: 0.55rem;
+  align-content: start;
+  text-decoration: none;
+  color: inherit;
+}
+.gcard__art {
+  display: block;
+  aspect-ratio: 3 / 4;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--night-raised);
+  border: 1px solid var(--sf-line, var(--cobalt));
+}
+.gcard__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: scale 300ms var(--ease-dawn);
+}
+.gcard__art--wide img {
+  object-position: center;
+}
+.gcard a:hover .gcard__art img {
+  scale: 1.03;
+}
+.gcard__text {
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  min-width: 0;
+}
+.gcard__title {
+  font-weight: 800;
+  font-size: 0.98rem;
+  line-height: 1.22;
+}
+.gcard a:hover .gcard__title {
+  text-decoration: underline;
+  text-decoration-color: var(--rose);
+}
+.gcard__line {
+  color: var(--dawn-dim);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .gcards {
+    gap: 1.75rem 1.5rem;
+  }
+  .gcard a {
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .gcard__title {
+    font-size: 1.05rem;
+    margin-top: 0.1rem;
+  }
+}
+@media (min-width: 960px) {
+  .gcards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem 1.75rem;
+  }
+  .gcard a {
+    grid-template-columns: 124px minmax(0, 1fr);
+  }
+  .gcard__title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gcard__art img {
+    transition: none;
+  }
+}

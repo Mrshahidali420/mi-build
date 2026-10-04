@@ -7,10 +7,19 @@
 export const prerender = true
 import Base from '../../layouts/Base.astro'
 import '../../styles/guides.css'
+import GuideCards from '../../components/GuideCards.astro'
+import mediaMap from '../../../data/guide-media.json'
 import { guidesByCategory, allGuides } from '../../lib/guides-registry.js'
+import { assignCardImages } from '../../lib/guides.mjs'
 
 const site = 'https://manhwaindex.com'
-const groups = guidesByCategory()
+// Walk every card on the page in display order, so no two share a picture.
+const byGroup = guidesByCategory()
+const carded = assignCardImages(byGroup.flatMap((g) => g.guides), mediaMap)
+const groups = byGroup.map((group) => ({
+  ...group,
+  guides: group.guides.map((g) => carded.find((c) => c.slug === g.slug)),
+}))
 const all = allGuides()
 const description =
   'Anime and manga guides from manhwaindex: strongest characters ranked by real feats, power systems explained, watch orders, cosplay ideas and data from official platforms.'
@@ -81,28 +90,7 @@ const jsonld = {
       groups.map((group) => (
         <section class="guide-group" id={group.key} aria-labelledby={`g-${group.key}`}>
           <h2 id={`g-${group.key}`}>{group.label}</h2>
-          <ul class="guide-tiles">
-            {group.guides.map((g) => (
-                <li class="guide-tile">
-                  <a href={`/guides/${g.slug}`}>
-                    <span class:list={['guide-tile__art', { 'guide-tile__art--tall': !g.wide }]}>
-                      {g.image && (
-                        <img
-                          src={g.image}
-                          alt={g.imageAlt}
-                          width={g.wide ? 1900 : 460}
-                          height={g.wide ? 400 : 650}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      )}
-                    </span>
-                    <span class="guide-tile__title">{g.title}</span>
-                    <span class="guide-tile__line">{g.description}</span>
-                  </a>
-                </li>
-            ))}
-          </ul>
+          <GuideCards guides={group.guides} />
         </section>
       ))
     }

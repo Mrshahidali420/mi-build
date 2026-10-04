@@ -112,6 +112,38 @@
   }
 }
 
+/* a wide banner hero: the #1 entry's portrait beside the title on wide
+   screens, so two guides about one series do not open alike */
+.guide-lead {
+  display: none;
+  margin: 0;
+}
+@media (min-width: 760px) {
+  .guide-head--lead {
+    grid-template-columns: minmax(0, 1fr) 176px;
+    align-items: end;
+  }
+  .guide-head--lead .guide-lead {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .guide-head--lead .guide-hero {
+    grid-column: 1 / -1;
+  }
+  .guide-lead img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--sf-r, 12px);
+    background: var(--night-raised);
+    border: 1px solid var(--sf-line, var(--cobalt));
+  }
+}
+
 /* ---------- the written body ---------- */
 
 .guide-body {
@@ -320,34 +352,6 @@
 .guide-note a {
   color: var(--rose);
 }
-.guide-related {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.25rem;
-}
-.guide-related a {
-  display: grid;
-  gap: 0.55rem;
-  text-decoration: none;
-}
-.guide-related img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 8px;
-  background: var(--night-raised);
-}
-.guide-related span {
-  font-weight: 700;
-  line-height: 1.25;
-}
-.guide-related a:hover span {
-  text-decoration: underline;
-}
-
 /* ---------- the hub ---------- */
 
 .guide-hub__head {
@@ -371,66 +375,6 @@
 .guide-group > h2 {
   margin-bottom: 1.25rem;
 }
-.guide-tiles {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-  gap: 1.75rem 1.5rem;
-}
-.guide-tile a {
-  display: grid;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: inherit;
-}
-.guide-tile__art {
-  display: block;
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--night-raised);
-  border: 1px solid var(--sf-line, var(--cobalt));
-  aspect-ratio: 16 / 8;
-}
-.guide-tile__art img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: scale 300ms var(--ease-dawn);
-}
-.guide-tile__art--tall img {
-  object-position: center 22%;
-}
-.guide-tile a:hover .guide-tile__art img {
-  scale: 1.03;
-}
-.guide-tile__title {
-  font-weight: 800;
-  font-size: 1.15rem;
-  line-height: 1.2;
-  margin-top: 0.2rem;
-}
-.guide-tile a:hover .guide-tile__title {
-  text-decoration: underline;
-  text-decoration-color: var(--rose);
-}
-.guide-tile__line {
-  color: var(--dawn-dim);
-  font-size: 0.92rem;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .guide-tile__art img {
-    transition: none;
-  }
-}
-
 /* ---------- data guides: ranked rows and count tables ----------
  * src/components/DataList.astro. Number, small cover, title, fact line and
  * platforms, ruled like the entry cards above. A list, not a table, so a

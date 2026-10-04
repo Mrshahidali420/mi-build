@@ -134,6 +134,97 @@ export function heroOf(guide, mediaMap = {}) {
   return null
 }
 
+/** Entries in rank order; unranked entries keep their file order, after the ranked ones. */
+export function byRank(entries = []) {
+  return entries
+    .map((entry, i) => ({ entry, i }))
+    .sort((a, b) => (a.entry.rank ?? Infinity) - (b.entry.rank ?? Infinity) || a.i - b.i)
+    .map((row) => row.entry)
+}
+
+/** How many entry pictures a guide offers its card in guide-index.json. */
+export const CARD_PICKS = 12
+
+/** The c<id> / m<id> keys of a guide's entries in rank order, for its card picture. */
+export function picksOf(guide, max = CARD_PICKS) {
+  const keys = []
+  for (const entry of byRank(guide.entries)) {
+    const key = entry.character ? charKey(entry.character) : entry.media ? mediaKey(entry.media) : null
+    if (key && !keys.includes(key)) keys.push(key)
+    if (keys.length >= max) break
+  }
+  return keys
+}
+
+/**
+ * The portrait shown beside the title of a guide whose hero is a wide
+ * banner: its #1 entry's character art, so two guides about one series do
+ * not open on the same screen. Null when the #1 entry has no character art.
+ */
+export function leadPortrait(guide, mediaMap = {}) {
+  const first = byRank(guide.entries || [])[0]
+  const person = first?.character ? mediaMap[charKey(first.character)] : null
+  if (!person?.image) return null
+  return { src: person.image, width: 230, height: 345, alt: first.alt || person.name || first.heading }
+}
+
+/**
+ * Every picture a guide's card could use, best first: its entries' art in
+ * rank order (character portrait, or a title's cover), then its series
+ * cover, then the series banner. A data guide lists its own `pictures`
+ * (covers of its top entries). The hub row's `image` is the last resort.
+ */
+export function cardPictures(guide, mediaMap = {}) {
+  const out = []
+  const add = (src, alt, width, height, wide = false) => {
+    if (src && !out.some((p) => p.src === src)) out.push({ src, alt: alt || guide.title, width, height, wide })
+  }
+  for (const pic of guide.pictures || []) add(pic.src, pic.alt, 460, 650)
+  for (const key of guide.picks || []) {
+    const row = mediaMap[key]
+    if (!row) continue
+    if (key.startsWith('c')) add(row.image, row.name, 230, 345)
+    else add(row.cover, row.title ? `Cover of ${row.title}` : '', 460, 650)
+  }
+  const series = guide.series ? mediaMap[mediaKey(guide.series)] : null
+  if (series) {
+    add(series.cover, `Cover of ${series.title}`, 460, 650)
+    add(series.banner, series.title, 1900, 400, true)
+  }
+  add(guide.image, guide.imageAlt, guide.wide ? 1900 : 460, guide.wide ? 400 : 650, !!guide.wide)
+  return out
+}
+
+/**
+ * Give each guide card on one page its own picture. Guides are walked in
+ * display order; each takes the first of its cardPictures not already used
+ * on the page. Only when every one is taken does it reuse its first choice.
+ * `used` holds pictures the page shows elsewhere (its own entry cards).
+ * Returns new rows with `card: { src, alt, width, height, wide }` (or null).
+ */
+export function assignCardImages(guides = [], mediaMap = {}, { used = [] } = {}) {
+  const taken = new Set(used.filter(Boolean))
+  return guides.map((guide) => {
+    const pictures = cardPictures(guide, mediaMap)
+    const card = pictures.find((p) => !taken.has(p.src)) || pictures[0] || null
+    if (card) taken.add(card.src)
+    return { ...guide, card }
+  })
+}
+
+/**
+ * The guides sitemap (/sitemap-guides.xml): the hub, then every written
+ * guide with the day its text last changed, then every data guide, which is
+ * rebuilt from the catalog on each deploy and so carries the build day.
+ */
+export function guideSitemapUrls(site, written = [], data = [], builtDay = '') {
+  return [
+    { loc: `${site}/guides`, lastmod: builtDay || undefined, priority: '0.8' },
+    ...written.map((g) => ({ loc: `${site}/guides/${g.slug}`, lastmod: isoDay(g.updated) || undefined, priority: '0.7' })),
+    ...data.map((g) => ({ loc: `${site}/guides/${g.slug}`, lastmod: builtDay || undefined, priority: '0.7' })),
+  ]
+}
+
 /** YYYY-MM-DD from a Date or a date string. */
 export const isoDay = (date) => {
   const d = date instanceof Date ? date : new Date(date)
@@ -173,6 +264,8 @@ export function buildGuideIndex(guides = [], mediaMap = {}) {
         if (top) add(mediaKey(top), guide.slug)
       }
       const hero = heroOf(guide, mediaMap)
+      const first = byRank(guide.entries)[0]
+      const series = guide.hero?.media || (first ? seriesIdOf(first, mediaMap) : null)
       return {
         slug: guide.slug,
         title: guide.title,
@@ -182,6 +275,8 @@ export function buildGuideIndex(guides = [], mediaMap = {}) {
         image: hero?.src || null,
         imageAlt: hero?.alt || guide.title,
         wide: !!hero?.wide,
+        picks: picksOf(guide),
+        series,
       }
     })
   const sorted = Object.fromEntries(Object.keys(featured).sort().map((k) => [k, featured[k]]))

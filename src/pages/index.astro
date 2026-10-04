@@ -15,9 +15,13 @@ import homeRules from '../../data/home-rules.json'
 import HomeShelf from '../components/HomeShelf.astro'
 import { guidesByCategory } from '../lib/guides-registry.js'
 import { spreadPicks } from '../lib/data-guides.mjs'
+import { assignCardImages } from '../lib/guides.mjs'
+import guideMedia from '../../data/guide-media.json'
+import GuideCards from '../components/GuideCards.astro'
 
-// One row of guides near the end, one from each hub group first.
-const homeGuides = spreadPicks(guidesByCategory(), 8)
+// One block of guides near the end, one from each hub group first; six
+// fill two rows of three on desktop and three rows of two on phones.
+const homeGuides = assignCardImages(spreadPicks(guidesByCategory(), 6), guideMedia)
 
 const manhwa = comicsOfCountry('KR')
 const manga = comicsOfCountry('JP')
@@ -550,54 +554,9 @@ const tinyCover = (url) =>
               All guides →
             </a>
           </div>
-          <ul class="home-guides">
-            {homeGuides.map((g) => (
-              <li>
-                <a href={`/guides/${g.slug}`}>
-                  <img src={g.image} alt="" width="320" height="180" loading="lazy" decoding="async" />
-                  <span>{g.title}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <GuideCards guides={homeGuides} label="Guides" />
         </section>
       )
     }
   </div>
 </Base>
-
-<style>
-  /* The "Guides" row: a picture and a title per guide, same frame as the hub tiles. */
-  .home-guides {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
-    gap: 1.25rem 1rem;
-  }
-  .home-guides a {
-    display: grid;
-    gap: 0.45rem;
-    text-decoration: none;
-    color: inherit;
-  }
-  .home-guides img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: center 22%;
-    border-radius: 8px;
-    background: var(--night-raised);
-    border: 1px solid var(--sf-line, var(--cobalt));
-  }
-  .home-guides span {
-    font-weight: 700;
-    line-height: 1.25;
-  }
-  .home-guides a:hover span {
-    text-decoration: underline;
-    text-decoration-color: var(--rose);
-  }
-</style>

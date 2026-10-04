@@ -14,7 +14,20 @@ import '../../styles/guides.css'
 import mediaMap from '../../../data/guide-media.json'
 import { faqJsonld } from '../../lib/answers.mjs'
 import { guideBySlug } from '../../lib/guides-registry.js'
-import { GUIDE_CATEGORIES, splitBody, cardOf, heroOf, isoDay, longDay, wordCount, methodNote } from '../../lib/guides.mjs'
+import GuideCards from '../../components/GuideCards.astro'
+import GuideComments from '../../components/GuideComments.astro'
+import {
+  GUIDE_CATEGORIES,
+  splitBody,
+  cardOf,
+  heroOf,
+  leadPortrait,
+  assignCardImages,
+  isoDay,
+  longDay,
+  wordCount,
+  methodNote,
+} from '../../lib/guides.mjs'
 
 export async function getStaticPaths() {
   const guides = await getCollection('guides')
@@ -32,7 +45,13 @@ const hero = heroOf(data, mediaMap)
 const cards = data.entries.map((entry) => cardOf(entry, mediaMap))
 const { before, after } = splitBody(guide.rendered?.html || '')
 const minutes = Math.max(1, Math.round(wordCount(guide.body || '', data.entries) / 230))
-const related = data.related.map(guideBySlug).filter(Boolean)
+// Beside a wide banner, the #1 entry's portrait, so guides about one series
+// do not open on the same screen.
+const lead = hero?.wide ? leadPortrait(data, mediaMap) : null
+// "More guides" cards skip every picture this page already shows.
+const related = assignCardImages(data.related.map(guideBySlug).filter(Boolean), mediaMap, {
+  used: [hero?.src, lead?.src, ...cards.map((c) => c.image)],
+})
 const updatedIso = isoDay(data.updated)
 const ranked = cards.some((c) => c.rank)
 const note = methodNote(data.category)
@@ -86,7 +105,7 @@ const jsonld = [article, itemList, data.faq.length ? faqJsonld(data.faq) : null]
       <span aria-current="page">{data.title}</span>
     </nav>
 
-    <header class:list={['guide-head', { 'guide-head--portrait': hero && !hero.wide }]}>
+    <header class:list={['guide-head', { 'guide-head--portrait': hero && !hero.wide, 'guide-head--lead': lead }]}>
       <div class="guide-head__text">
         {category && <p class="guide-kicker"><a href={`/guides#${category.key}`}>{category.label}</a></p>}
         <h1>{data.title}</h1>
@@ -97,6 +116,13 @@ const jsonld = [article, itemList, data.faq.length ? faqJsonld(data.faq) : null]
           <span aria-hidden="true">·</span> manhwaindex
         </p>
       </div>
+      {
+        lead && (
+          <figure class="guide-lead">
+            <img src={lead.src} alt={lead.alt} width={lead.width} height={lead.height} loading="lazy" decoding="async" />
+          </figure>
+        )
+      }
       {
         hero && (
           <figure class:list={['guide-hero', { 'guide-hero--wide': hero.wide }]}>
@@ -201,18 +227,11 @@ const jsonld = [article, itemList, data.faq.length ? faqJsonld(data.faq) : null]
       related.length > 0 && (
         <section class="guide-section" aria-labelledby="guide-related">
           <h2 id="guide-related">More guides</h2>
-          <ul class="guide-related">
-            {related.map((g) => (
-              <li>
-                <a href={`/guides/${g.slug}`}>
-                  {g.image && <img src={g.image} alt="" width="320" height="180" loading="lazy" decoding="async" />}
-                  <span>{g.title}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <GuideCards guides={related} lines={false} />
         </section>
       )
     }
+
+    <GuideComments slug={guide.id} title={data.title} />
   </article>
 </Base>

@@ -15,7 +15,9 @@ import Base from '../layouts/Base.astro'
 import '../styles/guides.css'
 import { faqJsonld } from '../lib/answers.mjs'
 import { guideBySlug, DATA_GUIDES } from '../lib/guides-registry.js'
-import { GUIDE_CATEGORIES, isoDay, longDay } from '../lib/guides.mjs'
+import { GUIDE_CATEGORIES, isoDay, longDay, assignCardImages } from '../lib/guides.mjs'
+import GuideCards from './GuideCards.astro'
+import GuideComments from './GuideComments.astro'
 
 const { slug, title, description, category, keywords = [], hero, items = [], faq = [], minutes = 4 } = Astro.props
 
@@ -57,11 +59,16 @@ const itemList = items.length
   : null
 const jsonld = [article, itemList, faq.length ? faqJsonld(faq) : null].filter(Boolean)
 
-// The other data guides, as "More guides".
-const related = DATA_GUIDES.filter((g) => g.slug !== slug)
-  .map((g) => guideBySlug(g.slug))
-  .filter(Boolean)
-  .slice(0, 6)
+// The other data guides, as "More guides", each with a cover this page does
+// not already open on.
+const related = assignCardImages(
+  DATA_GUIDES.filter((g) => g.slug !== slug)
+    .map((g) => guideBySlug(g.slug))
+    .filter(Boolean)
+    .slice(0, 6),
+  {},
+  { used: [hero?.src] },
+)
 ---
 
 <Base
@@ -144,18 +151,11 @@ const related = DATA_GUIDES.filter((g) => g.slug !== slug)
       related.length > 0 && (
         <section class="guide-section" aria-labelledby="guide-related">
           <h2 id="guide-related">More guides</h2>
-          <ul class="guide-related">
-            {related.map((g) => (
-              <li>
-                <a href={`/guides/${g.slug}`}>
-                  {g.image && <img src={g.image} alt="" width="320" height="180" loading="lazy" decoding="async" />}
-                  <span>{g.title}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <GuideCards guides={related} lines={false} />
         </section>
       )
     }
+
+    <GuideComments slug={slug} title={title} />
   </article>
 </Base>

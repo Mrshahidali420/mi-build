@@ -19,6 +19,12 @@ import {
   longDay,
   CATEGORY_KEYS,
   FEATURED_MAX,
+  byRank,
+  picksOf,
+  cardPictures,
+  assignCardImages,
+  leadPortrait,
+  guideSitemapUrls,
 } from '../src/lib/guides.mjs'
 import { readGuideFiles, parseGuide } from '../scripts/guide-files.mjs'
 
@@ -147,6 +153,72 @@ test('parseGuide reads frontmatter and body', () => {
 const readData = (name) => JSON.parse(readFileSync(join(process.cwd(), 'data', name), 'utf8'))
 const guides = readGuideFiles()
 const media = readData('guide-media.json')
+
+test('byRank and picksOf: rank order, unranked last, keys once, capped', () => {
+  const entries = [{ rank: 2, character: 99 }, { character: 5 }, { rank: 1, character: 17 }, { rank: 3, media: 20 }, { rank: 4, character: 17 }]
+  assert.deepEqual(byRank(entries).map((e) => e.character ?? e.media), [17, 99, 20, 17, 5])
+  assert.deepEqual(picksOf({ entries }), ['c17', 'c99', 'm20', 'c5'])
+  assert.deepEqual(picksOf({ entries }, 2), ['c17', 'c99'])
+})
+
+test('cardPictures: entry art in rank order, then series cover, then banner', () => {
+  const guide = { title: 'G', picks: ['c17', 'c99', 'm20', 'c404'], series: 1735, image: 'https://img/b1735.jpg', wide: true }
+  assert.deepEqual(cardPictures(guide, MEDIA).map((p) => p.src), [
+    'https://img/c17.png',
+    'https://img/c99.png',
+    'https://img/m20.jpg',
+    'https://img/m1735.jpg',
+    'https://img/b1735.jpg',
+  ])
+  const first = cardPictures(guide, MEDIA)[0]
+  assert.deepEqual([first.width, first.height, first.alt], [230, 345, 'Naruto Uzumaki'])
+  // A data guide lists its own covers.
+  const data = { title: 'D', pictures: [{ src: 'https://img/x.jpg', alt: 'Cover of X' }], image: 'https://img/x.jpg' }
+  assert.deepEqual(cardPictures(data, MEDIA).map((p) => p.src), ['https://img/x.jpg'])
+})
+
+test('assignCardImages: no two cards on a page share a picture', () => {
+  const naruto = (slug, picks) => ({ slug, title: slug, picks, series: 1735, image: 'https://img/b1735.jpg', wide: true })
+  const guides = [naruto('a', ['c17', 'c99']), naruto('b', ['c17', 'c99']), naruto('c', ['c17']), naruto('d', ['c17']), naruto('e', ['c17'])]
+  const out = assignCardImages(guides, MEDIA)
+  assert.deepEqual(out.map((g) => g.card.src), [
+    'https://img/c17.png',
+    'https://img/c99.png',
+    'https://img/m1735.jpg',
+    'https://img/b1735.jpg',
+    // Every picture is taken: the guide falls back to its first choice.
+    'https://img/c17.png',
+  ])
+  // New rows: the input is left alone.
+  assert.equal(guides[0].card, undefined)
+  // Pictures the page already shows are skipped.
+  assert.equal(assignCardImages([guides[0]], MEDIA, { used: ['https://img/c17.png'] })[0].card.src, 'https://img/c99.png')
+  assert.equal(assignCardImages([{ slug: 'x', title: 'x' }], MEDIA)[0].card, null)
+})
+
+test('leadPortrait: the #1 entry character art, or null', () => {
+  const lead = leadPortrait({ entries: [{ rank: 2, character: 99 }, { rank: 1, character: 17, heading: 'Naruto' }] }, MEDIA)
+  assert.deepEqual(lead, { src: 'https://img/c17.png', width: 230, height: 345, alt: 'Naruto Uzumaki' })
+  assert.equal(leadPortrait({ entries: [{ rank: 1, media: 20 }] }, MEDIA), null)
+  assert.equal(leadPortrait({ entries: [] }, MEDIA), null)
+})
+
+test('guideSitemapUrls: hub, written guides with their day, data guides with the build day', () => {
+  const urls = guideSitemapUrls('https://s', [{ slug: 'a', updated: '2026-10-01' }, { slug: 'b', updated: new Date('2026-09-30') }], [{ slug: 'd', updated: '2026-01-01' }], '2026-10-05')
+  assert.deepEqual(urls, [
+    { loc: 'https://s/guides', lastmod: '2026-10-05', priority: '0.8' },
+    { loc: 'https://s/guides/a', lastmod: '2026-10-01', priority: '0.7' },
+    { loc: 'https://s/guides/b', lastmod: '2026-09-30', priority: '0.7' },
+    { loc: 'https://s/guides/d', lastmod: '2026-10-05', priority: '0.7' },
+  ])
+})
+
+test('the sitemap lists the guides in their own part, not in core', () => {
+  const code = readFileSync(join(process.cwd(), 'src/lib/sitemap-urls.js'), 'utf8')
+  assert.ok(code.includes("split('guides', guideSitemapUrls("))
+  const core = code.slice(code.indexOf('function coreUrls'), code.indexOf('const comicUrls'))
+  assert.ok(!core.includes('/guides'))
+})
 
 test('data/guide-index.json is in step with the guides (run npm run guides:media)', () => {
   assert.deepEqual(readData('guide-index.json'), JSON.parse(JSON.stringify(buildGuideIndex(guides, media))))
