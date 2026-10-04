@@ -128,6 +128,16 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
 <html lang="en" data-missing={missing ? '1' : undefined}>
   <head>
     <meta charset="utf-8" />
+    <!-- Ezoic. The consent scripts must come before any other script; then the
+         standalone ad loader. Ads appear only once Ezoic turns them on for the
+         site. Declared in /privacy. -->
+    <script is:inline src="https://cmp.gatekeeperconsent.com/min.js" data-cfasync="false"></script>
+    <script is:inline src="https://the.gatekeeperconsent.com/cmp.min.js" data-cfasync="false"></script>
+    <script is:inline async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
+    <script is:inline>
+      window.ezstandalone = window.ezstandalone || {}
+      ezstandalone.cmd = ezstandalone.cmd || []
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
