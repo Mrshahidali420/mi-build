@@ -33,7 +33,8 @@ test('an unknown trial builds no link', () => {
 test('Prime Video sits beside an anime, Kindle Unlimited beside a comic or a novel', () => {
   assert.equal(trialFor(anime, 'US').kind, 'trial-prime')
   assert.equal(trialFor(manhwa, 'US').kind, 'trial-ku')
-  assert.equal(trialFor({ kind: 'novel', country: 'JP' }, 'US').kind, 'trial-ku')
+  assert.equal(trialFor({ kind: 'novel', country: 'JP' }, 'US').kind, 'trial-audible')
+  assert.equal(trialUrl('audible', 'US'), 'https://www.amazon.com/hz/audible/mlp?tag=manhwaindex-20')
   assert.equal(trialFor(null, 'US'), null)
 })
 

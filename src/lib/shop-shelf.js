@@ -42,6 +42,14 @@ export const TRIALS = {
     note: 'Free trial for new members, on Amazon',
     cta: 'Start free trial',
   },
+  audible: {
+    kind: 'trial-audible',
+    path: '/hz/audible/mlp',
+    object: 'reader',
+    label: 'Listen on Audible',
+    note: 'Free trial for new members, on Amazon',
+    cta: 'Start free trial',
+  },
 }
 
 /**
@@ -57,12 +65,14 @@ export function trialUrl(which, country) {
 }
 
 /**
- * Which trial fits a title page: Prime Video beside an anime, Kindle
- * Unlimited beside a comic or a novel. Null without a page kind.
+ * Which trial fits a title page: Prime beside an anime, Audible beside a
+ * novel (light novels are sold as audiobooks, and it pays the most after
+ * Prime), Kindle Unlimited beside a comic. Null without a page kind.
  */
+const TRIAL_OF_KIND = { anime: 'prime', novel: 'audible' }
 export function trialFor(item, country) {
   if (!item || !item.kind) return null
-  const which = item.kind === 'anime' ? 'prime' : 'ku'
+  const which = TRIAL_OF_KIND[item.kind] || 'ku'
   return { ...TRIALS[which], url: trialUrl(which, country) }
 }
 

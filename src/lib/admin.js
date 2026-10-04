@@ -471,8 +471,9 @@ const SHOPS = {
   plush: 'Plushies',
   apparel: 'Clothes',
   merch: 'Merch',
-  'trial-prime': 'Prime Video trial',
+  'trial-prime': 'Prime trial',
   'trial-ku': 'Kindle Unlimited trial',
+  'trial-audible': 'Audible trial',
 }
 export function shopName(kind) {
   const bare = String(kind || 'merch').replace(/^pick_/, '')
