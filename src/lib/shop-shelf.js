@@ -28,7 +28,7 @@ import { formatWord } from './format.js'
 export const TRIALS = {
   prime: {
     kind: 'trial-prime',
-    path: '/gp/video/primesignup',
+    path: '/prime',
     object: 'screen',
     label: 'Watch with Prime Video',
     note: 'Free trial for new members, on Amazon',
@@ -36,7 +36,7 @@ export const TRIALS = {
   },
   ku: {
     kind: 'trial-ku',
-    path: '/kindle-dbs/hz/signup',
+    path: '/kindleunlimited',
     object: 'reader',
     label: 'Read with Kindle Unlimited',
     note: 'Free trial for new members, on Amazon',

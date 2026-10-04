@@ -11,15 +11,15 @@ const anime = { kind: 'anime', title: 'Some Show', country: 'JP' }
 const manhwa = { kind: 'manga', title: 'Some Story', country: 'KR' }
 
 test('the Prime Video trial uses the US store and tag by default', () => {
-  assert.equal(trialUrl('prime', 'US'), 'https://www.amazon.com/gp/video/primesignup?tag=manhwaindex-20')
-  assert.equal(trialUrl('ku', undefined), 'https://www.amazon.com/kindle-dbs/hz/signup?tag=manhwaindex-20')
+  assert.equal(trialUrl('prime', 'US'), 'https://www.amazon.com/prime?tag=manhwaindex-20')
+  assert.equal(trialUrl('ku', undefined), 'https://www.amazon.com/kindleunlimited?tag=manhwaindex-20')
 })
 
 test('a trial link follows the reader to their own store and tag', () => {
   const uk = storeFor('GB')
-  assert.equal(trialUrl('ku', 'GB'), `https://${uk.host}/kindle-dbs/hz/signup?tag=${uk.tag}`)
+  assert.equal(trialUrl('ku', 'GB'), `https://${uk.host}/kindleunlimited?tag=${uk.tag}`)
   const de = storeFor('AT')
-  assert.equal(trialUrl('prime', 'AT'), `https://${de.host}/gp/video/primesignup?tag=${de.tag}`)
+  assert.equal(trialUrl('prime', 'AT'), `https://${de.host}/prime?tag=${de.tag}`)
 })
 
 test('a country with no store of its own falls back to the US link', () => {
