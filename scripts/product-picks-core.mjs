@@ -83,8 +83,10 @@ const byDisc = (x, y) => DISC_RANK[x.product_type] - DISC_RANK[y.product_type] |
 const pickOf = (record, t) => ({ a: String(record.amazon_asin).toUpperCase(), n: cleanName(record.name), t })
 
 /** The picks for one title's records: volume 1, a box set, a disc. */
-export function picksOfRecords(records) {
-  const usable = records.filter((r) => validAsin(r.amazon_asin) && cleanName(r.name).length > 0)
+export function picksOfRecords(records, ebooks = new Set()) {
+  const usable = records.filter(
+    (r) => validAsin(r.amazon_asin) && cleanName(r.name).length > 0 && !ebooks.has(String(r.amazon_asin).toUpperCase())
+  )
   const first = usable.filter((r) => VOLUME_TYPES.has(r.product_type)).sort(byVolume)[0]
   const box = usable.filter((r) => BOX_TYPES.has(r.product_type)).sort(bySureness)[0]
   const disc = usable.filter((r) => r.product_type in DISC_RANK).sort(byDisc)[0]
@@ -109,12 +111,17 @@ export function picksOfRecords(records) {
  *   handTitles   the hand picks' `titles` (data/picks.json). A title picked by
  *                hand is left out here, so the hand picks always win.
  *   sites        which records belong to this site ("both" is shared)
+ *   ebooks       ISBNs Open Library lists as eBook editions
+ *                (data/pick-isbn-formats.json). A Kindle book sells under a
+ *                B0 ASIN, so /dp/<eBook ISBN> is a 404 and such a record is
+ *                never a pick.
  *
  * A title with book records but no usable ASIN is NOT listed as having no
  * English books: the books exist, only the link to them is missing, so its
  * search row still finds them.
  */
-export function buildProductPicks({ records, checkedIds, handTitles = {}, sites }) {
+export function buildProductPicks({ records, checkedIds, handTitles = {}, sites, ebooks = [] }) {
+  const skip = new Set([...ebooks].map((a) => String(a).toUpperCase()))
   const wanted = new Set(sites)
   const byTitle = new Map()
   for (const r of records) {
@@ -127,7 +134,7 @@ export function buildProductPicks({ records, checkedIds, handTitles = {}, sites 
   const titles = {}
   for (const id of [...byTitle.keys()].sort((a, b) => a - b)) {
     if (handTitles[String(id)]) continue
-    const picks = picksOfRecords(byTitle.get(id))
+    const picks = picksOfRecords(byTitle.get(id), skip)
     if (picks.length) titles[String(id)] = picks
   }
 

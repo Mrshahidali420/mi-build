@@ -40,7 +40,13 @@ function main(folder = '../amazon-products/products') {
     .map((row) => row.anilist_id)
   const handTitles = readJson('data/picks.json').titles || {}
 
-  const { titles, noEnglishBooks: empty } = buildProductPicks({ records, checkedIds, handTitles, sites: SITES })
+  const { titles, noEnglishBooks: empty } = buildProductPicks({
+    records,
+    checkedIds,
+    handTitles,
+    sites: SITES,
+    ebooks: readJson(new URL('../data/pick-isbn-formats.json', import.meta.url)).ebook,
+  })
   const noEnglishBooks = HIDE_EMPTY_BOOKS ? empty : []
   writeJsonAtomic(OUT, { updated: new Date().toISOString().slice(0, 10), titles, noEnglishBooks })
 

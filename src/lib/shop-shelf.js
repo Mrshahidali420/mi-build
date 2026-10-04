@@ -118,10 +118,46 @@ function labelOf(row, item) {
   return row.label
 }
 
+// The volume number a pick's name gives: "Vol. 1", "Volume 2", "Tome 1",
+// "T01", or a bare number at the end ("That Time I Got Reincarnated as a
+// Slime 1", "My Dress-Up Darling 01"). Null when it names none.
+export function volumeOf(name) {
+  const text = String(name || '')
+  const found =
+    text.match(/\bvol(?:ume)?\.?\s*0*(\d{1,3})\b/i) ||
+    text.match(/\btome\s*0*(\d{1,3})\b/i) ||
+    text.match(/\bT0*(\d{1,3})\b/) ||
+    text.match(/\s0*(\d{1,2})\s*$/)
+  return found ? Number(found[1]) : null
+}
+
+const BOX_SET = /box\s*set|collection|books?\s+set|\bset\s+of\b|\bvol(?:ume)?s?\.?\s*\d+\s*-\s*\d+|\bvolumes\s+\d+\s*-\s*\d+/i
+export const isBoxSet = (name) => BOX_SET.test(String(name || ''))
+
+/**
+ * The small line above a picked product: what it is, in a reader's words.
+ * "Light novel · Vol. 1", "Manhwa · Vol. 1", "Manga box set", "Blu-ray".
+ * `pick.type` is worked out in picks-core.js (pickType) and is null when the
+ * pick cannot be told honestly; then it says "English edition".
+ */
+export function pickKicker(pick) {
+  if (!pick) return ''
+  if (pick.t === 'disc') {
+    if (/blu-?ray/i.test(pick.n)) return 'Blu-ray'
+    if (/\bdvd\b/i.test(pick.n)) return 'DVD'
+    return PICK_LABELS.disc
+  }
+  if (pick.t !== 'book') return PICK_LABELS[pick.t] || 'Merch'
+  if (isBoxSet(pick.n)) return pick.type ? `${pick.type} box set` : 'Box set'
+  const what = pick.type || 'English edition'
+  const vol = volumeOf(pick.n)
+  return vol ? `${what} · Vol. ${vol}` : what
+}
+
 // The books search starts a reader at the beginning, so its book wears a
 // "Vol. 1" tab. A picked book only wears it when its own name says it is the
 // first volume: a box set or an omnibus must not.
-const isFirstVolume = (name) => /\bvol(ume)?\.?\s*0?1\b(?!\d)/i.test(String(name || ''))
+const isFirstVolume = (name) => volumeOf(name) === 1 && !isBoxSet(name)
 
 /**
  * Every card for one page, in order: the real product first (a pick from
@@ -132,7 +168,7 @@ const isFirstVolume = (name) => /\bvol(ume)?\.?\s*0?1\b(?!\d)/i.test(String(name
  * then come from the rows). `pickUrl` is passed in, so the one link builder
  * in picks.js stays the only one.
  */
-export function shelfCards({ item = null, buys = [], picks = [], byHand = true, trial = null, art = {}, pickUrl }) {
+export function shelfCards({ item = null, buys = [], picks = [], trial = null, art = {}, pickUrl }) {
   const cards = []
   const [lead, ...rest] = pickUrl ? picks : []
 
@@ -145,7 +181,7 @@ export function shelfCards({ item = null, buys = [], picks = [], byHand = true, 
       url: pickUrl(lead.a),
       object,
       art: artFor(object, art),
-      kicker: byHand ? `${PICK_LABELS[lead.t] || 'Merch'} · picked by hand` : `${PICK_LABELS[lead.t] || 'Merch'} · English edition`,
+      kicker: pickKicker(lead),
       label: lead.n,
       note: 'The exact product, not a search',
       cta: 'View on Amazon',

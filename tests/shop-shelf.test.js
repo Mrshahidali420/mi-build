@@ -2,7 +2,7 @@
 // the order and tracking names of every card Shop.astro draws.
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { trialUrl, trialFor, bookLabel, objectOf, artFor, shelfCards, TRIALS } from '../src/lib/shop-shelf.js'
+import { trialUrl, trialFor, bookLabel, objectOf, artFor, shelfCards, TRIALS, pickKicker, volumeOf } from '../src/lib/shop-shelf.js'
 import { shopLinks, storeFor } from '../src/lib/shop-links.js'
 import { BUY_SOURCES } from '../src/lib/beacon-rows.js'
 
@@ -106,16 +106,16 @@ test('the real product leads, and the other picks wait under the cards', () => {
   assert.equal(cards[0].url, pickUrl('1569319006'))
   assert.equal(cards[0].lead, true)
   assert.equal(cards[0].tab, 'Vol. 1')
-  assert.match(cards[0].kicker, /picked by hand/)
+  assert.equal(cards[0].kicker, 'English edition · Vol. 1')
   assert.equal(cards.filter((c) => c.lead).length, 1)
   assert.deepEqual(rest.map((p) => p.a), ['1421525828', 'B09PR99KT7'])
   assert.equal(cards.at(-1).aff, 'trial-ku')
 })
 
-test('a box set wears no Vol. 1 tab, and a matched pick never claims a person chose it', () => {
-  const { cards } = shelfCards({ picks: [{ a: '1421525828', n: 'Naruto Box Set 1', t: 'book' }], byHand: false, pickUrl })
+test('a box set wears no Vol. 1 tab and says it is a box set', () => {
+  const { cards } = shelfCards({ picks: [{ a: '1421525828', n: 'Naruto Box Set 1', t: 'book', type: 'Manga' }], pickUrl })
   assert.equal(cards[0].tab, null)
-  assert.doesNotMatch(cards[0].kicker, /hand/)
+  assert.equal(cards[0].kicker, 'Manga box set')
 })
 
 test('a character page keeps its rows own labels and gets no trial', () => {
@@ -130,4 +130,25 @@ test('a character page keeps its rows own labels and gets no trial', () => {
 
 test('nothing to sell draws nothing', () => {
   assert.deepEqual(shelfCards({ pickUrl }), { cards: [], rest: [] })
+})
+
+test('a pick label says what the thing is', () => {
+  assert.equal(pickKicker({ t: 'book', n: 'That Time I Got Reincarnated as a Slime 1', type: 'Light novel' }), 'Light novel · Vol. 1')
+  assert.equal(pickKicker({ t: 'book', n: 'Solo Leveling, Vol. 1 (comic)', type: 'Manhwa' }), 'Manhwa · Vol. 1')
+  assert.equal(pickKicker({ t: 'book', n: 'Nano Machine T01', type: 'Manhwa' }), 'Manhwa · Vol. 1')
+  assert.equal(pickKicker({ t: 'book', n: 'My Dress-Up Darling 01', type: 'Manga' }), 'Manga · Vol. 1')
+  assert.equal(pickKicker({ t: 'book', n: 'Vinland Saga Manga Set, Volumes 1-13', type: 'Manga' }), 'Manga box set')
+  assert.equal(pickKicker({ t: 'book', n: 'Some Story, Vol. 2', type: null }), 'English edition · Vol. 2')
+  assert.equal(pickKicker({ t: 'book', n: 'NieR:Automata: Long Story Short', type: null }), 'English edition')
+  assert.equal(pickKicker({ t: 'disc', n: 'Some Show Season 1 Blu-ray' }), 'Blu-ray')
+  assert.equal(pickKicker({ t: 'disc', n: 'Some Show Complete DVD' }), 'DVD')
+  assert.equal(pickKicker({ t: 'disc', n: 'Some Show' }), 'Blu-ray / DVD')
+  assert.equal(pickKicker({ t: 'figure', n: 'x' }), 'Figure')
+})
+
+test('volume numbers come from the name, never a guess', () => {
+  assert.equal(volumeOf('Fullmetal Alchemist: Fullmetal Edition, Vol. 1'), 1)
+  assert.equal(volumeOf('Le retour du clan Hwasan - Tome 1 (1)'), 1)
+  assert.equal(volumeOf('86-EIGHTY-SIX, Vol. 1'), 1)
+  assert.equal(volumeOf('Death Note Complete Box Set'), null)
 })

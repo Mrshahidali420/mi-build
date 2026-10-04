@@ -132,14 +132,19 @@ const PRODUCTS = {
 }
 
 test('hand picks win, product picks fill in, and say they were not chosen by hand', () => {
-  assert.deepEqual(picksForTitleIn(HAND, { id: 10 }, PRODUCTS), { picks: HAND.titles[10], byHand: true, from: null })
-  assert.deepEqual(picksForTitleIn(HAND, { id: 20 }, PRODUCTS), { picks: PRODUCTS.titles[20], byHand: false, from: null })
+  assert.deepEqual(picksForTitleIn(HAND, { id: 10 }, PRODUCTS), { picks: HAND.titles[10], byHand: true, from: null, owner: { id: 10 } })
+  assert.deepEqual(picksForTitleIn(HAND, { id: 20 }, PRODUCTS), { picks: PRODUCTS.titles[20], byHand: false, from: null, owner: { id: 20 } })
   const anime = { id: 21, relations: [{ id: 20, relation: 'SOURCE', title: 'The Manga' }] }
   assert.equal(picksForTitleIn(HAND, anime, PRODUCTS).from, 'The Manga')
   assert.equal(picksForTitleIn(HAND, { id: 99 }, PRODUCTS), null)
   // The manga of a hand-picked anime keeps the anime's hand picks, as before.
   const manga = { id: 20, relations: [{ id: 10, relation: 'ADAPTATION', title: 'The Anime' }] }
-  assert.deepEqual(picksForTitleIn(HAND, manga, PRODUCTS), { picks: HAND.titles[10], byHand: true, from: 'The Anime' })
+  assert.deepEqual(picksForTitleIn(HAND, manga, PRODUCTS), {
+    picks: HAND.titles[10],
+    byHand: true,
+    from: 'The Anime',
+    owner: manga.relations[0],
+  })
 })
 
 const kinds = (item) => shopLinks(item, 'US', { books: booksKnownIn(HAND, item, PRODUCTS) }).map((r) => r.kind)

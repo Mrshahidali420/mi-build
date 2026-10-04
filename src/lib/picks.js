@@ -23,8 +23,9 @@
  */
 import data from '../../data/picks.json'
 import products from '../../data/product-picks.json'
+import formats from '../../data/pick-isbn-formats.json'
 import { storeFor } from './shop-links.js'
-import { US_HOST, PICK_LABELS, picksForTitleIn, booksKnownIn } from './picks-core.js'
+import { US_HOST, PICK_LABELS, picksForTitleIn, booksKnownIn, pickType } from './picks-core.js'
 
 export { PICK_LABELS }
 
@@ -38,7 +39,13 @@ export const picksShowFor = (country) => storeFor(country).host === US_HOST
  * picks-core.js). `byHand` is false when they were matched from publisher
  * records rather than chosen by a person.
  */
-export const picksForTitle = (item) => picksForTitleIn(data, item, products)
+export const picksForTitle = (item) => picksForTitleIn(data, item, products, formats)
+
+/**
+ * What a book pick is ("Light novel", "Manga", ...), or null when it cannot be
+ * told honestly. `owner` is the record the picks were filed under (picked.owner).
+ */
+export const pickTypeOf = (pick, owner, item) => pickType(pick, owner, formats, item)
 
 /**
  * Whether the buy box should offer a "Shop books" search for this title. False
@@ -57,9 +64,11 @@ export const picksForCharacter = (person) =>
  */
 export function picksForPerson(person, story) {
   const own = picksForCharacter(person)
-  if (own) return { picks: own, from: null, byHand: true }
+  if (own) return { picks: own, from: null, byHand: true, owner: null }
   const series = picksForTitle(story)
-  return series ? { picks: series.picks, from: series.from || story.title, byHand: series.byHand } : null
+  return series
+    ? { picks: series.picks, from: series.from || story.title, byHand: series.byHand, owner: series.owner }
+    : null
 }
 
 // Every title id with its own picks. The shop page lists these.

@@ -24,15 +24,17 @@
  * item, so its cards keep the rows' own labels ("Attack on Titan books").
  */
 import { SUPPORT_LINE } from '../../lib/buy-copy.js'
-import { pickUrl } from '../../lib/picks.js'
-import { shelfCards } from '../../lib/shop-shelf.js'
+import { pickUrl, pickTypeOf } from '../../lib/picks.js'
+import { shelfCards, pickKicker } from '../../lib/shop-shelf.js'
 import '../../styles/shop-shelf.css'
 
 const { title, item = null, picked, buys = [], buyCopy = {}, buyPage, trial = null, art = {} } = Astro.props
-const picks = (picked && picked.picks) || []
+// Each pick learns what it is (light novel, manga, ...) from the record it was
+// filed under, so its label never has to guess.
+const picks = ((picked && picked.picks) || []).map((pick) => ({ ...pick, type: pickTypeOf(pick, picked.owner, item) }))
 const hasPicks = picks.length > 0
 const heading = hasPicks ? `Top picks for ${picked.from || title}` : buyCopy.heading
-const { cards, rest } = shelfCards({ item, buys, picks, byHand: picked?.byHand !== false, trial, art, pickUrl })
+const { cards, rest } = shelfCards({ item, buys, picks, trial, art, pickUrl })
 const show = cards.length > 0
 const initials = String(title || '').slice(0, 40)
 ---
@@ -94,7 +96,10 @@ const initials = String(title || '').slice(0, 40)
           {rest.map((pick) => (
             <li>
               <a href={pickUrl(pick.a)} rel="noopener nofollow sponsored" target="_blank" data-aff={`pick_${pick.t}`} data-aff-src="pick">
-                <span class="buy__label">{pick.n}</span>
+                <span class="shelf__more-what">
+                  <span class="shelf__kicker">{pickKicker(pick)}</span>
+                  <span class="buy__label">{pick.n}</span>
+                </span>
                 <span class="shelf__more-go">View on Amazon</span>
               </a>
             </li>

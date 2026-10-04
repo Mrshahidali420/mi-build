@@ -514,6 +514,10 @@
   outline: 2px solid var(--day);
   outline-offset: 2px;
 }
+.shelf__more-what {
+  display: grid;
+  gap: 0.1rem;
+}
 .shelf__more-go {
   color: var(--rose);
   font-size: 0.82rem;
