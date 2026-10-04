@@ -1,46 +1,120 @@
 ---
 /**
- * One shopping section. It used to be two boxes on the page: "Top picks"
- * (hand-picked Amazon products, US store only) near the top and "Own a copy"
- * (Amazon searches) under the platforms. Both now sit here, under one
- * heading, with the support line said once. Picks, tags and the per-country
- * store routing are unchanged: they come from the same components and libs.
+ * The shop shelf: every Amazon link of a title or character page, as a row of
+ * drawn objects a scrolling reader stops on.
+ *
+ * Each card holds an object made in CSS around art we already have (the
+ * AniList cover, the banner, the character portrait): a book with a spine and
+ * page edges, a Blu-ray case with the disc sliding out, a figure on its
+ * display base, a framed print, a shirt, a screen, an e-reader. Never an
+ * Amazon product photo: those only come through the Product Advertising API,
+ * and copying them breaks the Associates agreement.
+ *
+ * What each card is (object, words, link, tracking names) is worked out in
+ * src/lib/shop-shelf.js. The links still come from shop-links.js and picks.js,
+ * so the tags and the per-country store routing are the ones the rows used.
+ * Every link keeps data-aff (the shop kind) and data-aff-src (pick, buybox,
+ * trial) and a .buy__label, which is what the click tracker in Base.astro
+ * reads.
  *
  * The Amazon Associates sentence stays in the footer and on /privacy only.
  *
- * props: title, picked, buys, buyCopy, buyPage, and optionally buysHeading /
- * buysSub for the searches block under the picks (the character page keeps
- * its own wording there; title pages use the defaults)
+ * props: title, picked, buys, buyCopy, buyPage, art ({ cover, banner,
+ * portrait }), and on a title page item and trial. A character page passes no
+ * item, so its cards keep the rows' own labels ("Attack on Titan books").
  */
-import TopPicks from '../TopPicks.astro'
-import BuyBox from '../BuyBox.astro'
 import { SUPPORT_LINE } from '../../lib/buy-copy.js'
+import { pickUrl, pickTypeOf } from '../../lib/picks.js'
+import { shelfCards, pickKicker } from '../../lib/shop-shelf.js'
+import '../../styles/shop-shelf.css'
 
-const { title, picked, buys = [], buyCopy = {}, buyPage, buysHeading, buysSub } = Astro.props
-const hasPicks = Boolean(picked && picked.picks && picked.picks.length)
+const { title, item = null, picked, buys = [], buyCopy = {}, buyPage, trial = null, art = {} } = Astro.props
+// Each pick learns what it is (light novel, manga, ...) from the record it was
+// filed under, so its label never has to guess.
+const picks = ((picked && picked.picks) || []).map((pick) => ({ ...pick, type: pickTypeOf(pick, picked.owner, item) }))
+const hasPicks = picks.length > 0
 const heading = hasPicks ? `Top picks for ${picked.from || title}` : buyCopy.heading
-const show = hasPicks || buys.length > 0
+const { cards, rest } = shelfCards({ item, buys, picks, trial, art, pickUrl })
+const show = cards.length > 0
+const initials = String(title || '').slice(0, 40)
 ---
 
 {
   show && (
-    <section class="buybox dp-shop" id="shop" aria-labelledby="dp-shop-head">
-      <div class="buybox__head">
+    <section class="dp-shop" id="shop" aria-labelledby="dp-shop-head">
+      <div class="answer__head dp-shop__head">
+        <p class="dp-shop__kicker">Own it</p>
         <h2 id="dp-shop-head">{heading}</h2>
         {buyCopy.sub && <p>{buyCopy.sub}</p>}
       </div>
 
-      {hasPicks && <TopPicks bare byHand={picked.byHand} picks={picked.picks} support={false} />}
+      <ul class="shelf" aria-label={`Shop ${title} on Amazon`}>
+        {cards.map((card) => (
+          <li class={card.lead ? 'shelf__item shelf__item--lead' : 'shelf__item'}>
+            <a
+              class={`shelf__card shelf__card--${card.object}`}
+              href={card.url}
+              rel="noopener nofollow sponsored"
+              target="_blank"
+              data-aff={card.aff}
+              data-aff-src={card.src}
+            >
+              <span class="shelf__stage" aria-hidden="true">
+                <span class={`obj obj--${card.object}`}>
+                  {card.object === 'case' && <span class="obj__disc" />}
+                  <span class="obj__face">
+                    {card.object === 'case' && <span class="obj__strip">Blu-ray</span>}
+                    {card.art ? (
+                      <img src={card.art} alt="" width="230" height="345" loading="lazy" decoding="async" />
+                    ) : (
+                      <span class="obj__type">{initials}</span>
+                    )}
+                    {card.object === 'screen' && <span class="obj__play" />}
+                  </span>
+                  {card.tab && <span class="obj__tab">{card.tab}</span>}
+                  {(card.object === 'stand' || card.object === 'screen') && <span class="obj__base" />}
+                </span>
+              </span>
+              <span class="shelf__text">
+                {card.kicker && <span class="shelf__kicker">{card.kicker}</span>}
+                <span class="buy__label shelf__label">{card.label}</span>
+                {card.note && <span class="shelf__note">{card.note}</span>}
+                <span class="shelf__go">
+                  {card.cta}
+                  <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                    <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
 
-      {buys.length > 0 && (
-        <BuyBox
-          bare
-          heading={hasPicks ? buysHeading || 'Own a copy' : null}
-          sub={hasPicks ? buysSub || `Books, discs and figures for ${title}, straight from Amazon.` : null}
-          rows={buys}
-          support={false}
-        />
+      {rest.length > 0 && (
+        <ul class="shelf__more" aria-label="More real products">
+          {rest.map((pick) => (
+            <li>
+              <a href={pickUrl(pick.a)} rel="noopener nofollow sponsored" target="_blank" data-aff={`pick_${pick.t}`} data-aff-src="pick">
+                <span class="shelf__more-what">
+                  <span class="shelf__kicker">{pickKicker(pick)}</span>
+                  <span class="buy__label">{pick.n}</span>
+                </span>
+                <span class="shelf__more-go">View on Amazon</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       )}
+
+      <p class="buys__note dp-shop__note">
+        {hasPicks &&
+          (picked.byHand !== false
+            ? 'The first card was chosen by hand on Amazon. '
+            : 'The first card is the official English edition, found in publisher records. ')}
+        We hold no stock and ship nothing. Each link opens Amazon itself, so the price and the stock you see are
+        theirs and are right at the moment you look.
+      </p>
 
       <p class="buys__support">{SUPPORT_LINE}</p>
 

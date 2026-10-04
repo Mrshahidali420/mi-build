@@ -44,8 +44,9 @@ export const SEARCH_NAMES = new Set(['search_pick', 'search_none'])
 const TITLE_ACTS = new Set(['list_add', 'list_remove', 'list_status', 'list_toggle', 'feed_click', 'home_click'])
 
 // Where an Amazon link sat: the hand-picked Top picks, the BuyBox on a title
-// page, the /shop page, or the theme songs box.
-export const BUY_SOURCES = new Set(['pick', 'buybox', 'shop', 'themes'])
+// page, the /shop page, the theme songs box, or a membership trial card on the
+// shop shelf (Prime Video, Kindle Unlimited).
+export const BUY_SOURCES = new Set(['pick', 'buybox', 'shop', 'themes', 'trial'])
 
 // The longest time on page we believe: 30 minutes. A tab left open all night
 // must not pull the average up.

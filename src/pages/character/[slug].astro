@@ -568,9 +568,8 @@ const jsonld = {
                   : 'Real products on Amazon, matched from publisher records.'
                 : buySub,
             }}
-            buysHeading={buyHeading}
-            buysSub={buySub}
             buyPage={merchPage}
+            art={{ cover: series?.cover || lead.cover, banner: series?.banner, portrait: person.image }}
           />
         )}
 
