@@ -146,7 +146,6 @@ const otherLanguages = languages.filter((l) => l !== 'English')
           We checked these on <time datetime={checkedISO}>{checkedText}</time>. Platforms
           change their terms, so the platform's own page is the last word.
           <a href="/how-we-check-links">How we check links</a>.
-          <a href={reportHref} rel="nofollow">Report a problem with this page</a>.
         </p>
       </>
     ) : (
@@ -161,6 +160,11 @@ const otherLanguages = languages.filter((l) => l !== 'English')
       </div>
     )
   }
+
+  <a class="report-row" href={reportHref} rel="nofollow">
+    <span>Something wrong on this page?</span>
+    <span class="report-row__go">Tell us <span aria-hidden="true">→</span></span>
+  </a>
 
   {isComic && languages.length > 0 && (
     <p class="langs">
