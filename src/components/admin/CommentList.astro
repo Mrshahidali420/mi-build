@@ -1,0 +1,61 @@
+---
+/**
+ * Guide comments with the owner's buttons under each: Approve and Delete for
+ * a pending comment, Remove for a live one (a delete takes the replies under
+ * it too). The taps are handled by comment-taps.js; the server checks every
+ * one (src/lib/comment-actions.js). Name and text are plain text that Astro
+ * escapes; nothing here uses set:html.
+ *
+ * rows: [{ id, guide, parent_id, name, body, status, created_at, approved_at,
+ *          parent_name, parent_body }]
+ * live: true for the approved list (Remove only).
+ */
+import { adminDateTime } from '../../lib/admin.js'
+import { guideBySlug } from '../../lib/guides-registry.js'
+
+const { rows = [], live = false, empty = 'Nothing here.' } = Astro.props
+const when = (iso) => {
+  const ts = Date.parse(iso || '')
+  return Number.isNaN(ts) ? '' : adminDateTime(ts)
+}
+const titleOf = (slug) => guideBySlug(slug)?.title || slug
+---
+
+{rows.length === 0 && <p class="empty">{empty}</p>}
+{rows.length > 0 && (
+  <ol class="taps reviews-admin comments-admin">
+    {rows.map((row) => (
+      <li data-comment-row data-id={String(row.id)} class:list={[live ? 'tone-good' : 'tone-amber']}>
+        <span class="name">
+          <a href={`/guides/${row.guide}#comments`}>{titleOf(row.guide)}</a>
+          <span class="sub">
+            {row.name} · written {when(row.created_at)}
+            {live && row.approved_at && ` · approved ${when(row.approved_at)}`}
+          </span>
+          {row.parent_id && (
+            <span class="sub reply-to">
+              Reply to {row.parent_name || `comment ${row.parent_id} (gone)`}
+              {row.parent_body && `: “${row.parent_body}${row.parent_body.length >= 160 ? '…' : ''}”`}
+            </span>
+          )}
+        </span>
+        <p class="review-body comment-body">{row.body}</p>
+        <div class="acts">
+          {live ? (
+            <button type="button" class="quiet" data-comment-op="delete">Remove</button>
+          ) : (
+            <>
+              <button type="button" data-comment-op="approve">Approve</button>
+              <button type="button" class="quiet" data-comment-op="delete">Delete</button>
+            </>
+          )}
+        </div>
+        <p class="saved" role="status" aria-live="polite"></p>
+      </li>
+    ))}
+  </ol>
+)}
+
+<script>
+  import './comment-taps.js'
+</script>

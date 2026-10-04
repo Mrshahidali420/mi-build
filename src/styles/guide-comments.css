@@ -1,0 +1,108 @@
+/* ---------- guide comments: src/components/GuideComments.astro ----------
+ * The review cards and the review form from app.css (.review, .review-form),
+ * at the guide's reading width. Replies sit one step in, ruled on the left.
+ * ------------------------------------------------------------------------ */
+
+.gc {
+  margin-top: 2.75rem;
+  max-width: 54rem;
+  scroll-margin-top: 5rem;
+}
+.gc [hidden] {
+  display: none !important;
+}
+.gc > h2 {
+  margin-bottom: 0.5rem;
+}
+.gc__status {
+  margin: 0 0 0.75rem;
+  color: var(--dawn-dim);
+  font-size: 0.92rem;
+}
+.gc__list {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+}
+.gc__replies {
+  display: grid;
+  gap: 0.9rem;
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0 0 0 0.95rem;
+  border-left: 2px solid var(--cobalt);
+}
+.gc__to {
+  margin: 0.15rem 0 0;
+  color: var(--dawn-faint);
+  font-size: 0.82rem;
+}
+.gc__text {
+  white-space: pre-wrap;
+}
+.gc__reply-btn,
+.gc__cancel {
+  min-height: 44px;
+  padding: 0 0.2rem;
+  border: 0;
+  background: none;
+  color: var(--rose-soft);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.gc__reply-btn:hover,
+.gc__cancel:hover {
+  color: var(--day);
+}
+.gc__reply-btn:focus-visible,
+.gc__cancel:focus-visible {
+  outline: 2px solid var(--day);
+  outline-offset: 2px;
+}
+.gc__form {
+  max-width: 40rem;
+  padding-top: 0.25rem;
+}
+.gc__item .gc__form {
+  margin-top: 0.5rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--cobalt);
+}
+.gc__form-h {
+  margin: 0;
+  font-size: 1.1rem;
+}
+.gc__replying {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.75rem;
+  margin: 0;
+  color: var(--dawn-dim);
+  font-size: 0.9rem;
+}
+.gc .review-form .gc__cancel {
+  width: auto;
+  min-height: 44px;
+  border: 0;
+  background: none;
+  color: var(--rose-soft);
+  font-weight: 400;
+}
+.gc__done {
+  max-width: 40rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--sf-line-strong);
+  border-radius: 8px;
+  color: var(--dawn);
+}
+@media (hover: hover) {
+  .gc .review-form .gc__cancel:hover {
+    background: none;
+  }
+}

@@ -1,0 +1,47 @@
+---
+/**
+ * The "Comments" section at the end of every guide: written guides
+ * ([slug].astro) and data guides (DataGuide.astro).
+ *
+ * The page is built as a file, so the comments are not in it. The script
+ * (guide-comments.js) reads the approved ones from /_comments?guide=<slug>,
+ * which the Worker keeps at the edge for five minutes, and draws them with
+ * textContent only. The form posts to /_comment with a fresh Turnstile
+ * ticket; nothing shows until the owner approves it at /my-admin/comments.
+ * The rules are the title-page reviews' (src/lib/guide-comments.mjs).
+ *
+ * Without JavaScript the section says so and the form is not shown.
+ */
+import '../styles/guide-comments.css'
+import { TURNSTILE_SITEKEY } from '../lib/reviews.mjs'
+import { MAX_COMMENT, MAX_COMMENT_NAME } from '../lib/guide-comments.mjs'
+
+const { slug, title } = Astro.props
+---
+
+<section class="gc" id="comments" aria-labelledby="gc-h" data-guide-comments data-guide={slug}>
+  <h2 id="gc-h">Comments</h2>
+  <p class="gc__status" data-gc-status>Comments need JavaScript to load.</p>
+  <ol class="gc__list" data-gc-list aria-label={`Comments on ${title}`} hidden></ol>
+
+  <form class="review-form gc__form" data-gc-form data-key={TURNSTILE_SITEKEY} novalidate hidden>
+    <h3 class="gc__form-h" data-gc-form-h>Add a comment</h3>
+    <p class="gc__replying" data-gc-replying hidden>
+      <span data-gc-replying-text></span>
+      <button type="button" class="gc__cancel" data-gc-cancel>Cancel reply</button>
+    </p>
+    <label for="gc-name">Name</label>
+    <input id="gc-name" name="name" maxlength={MAX_COMMENT_NAME} autocomplete="nickname" required />
+    <label for="gc-body">Comment</label>
+    <textarea id="gc-body" name="body" rows="5" maxlength={MAX_COMMENT} required></textarea>
+    <p class="review-form__count" data-gc-count>0 / {MAX_COMMENT}</p>
+    <div class="rate__check" data-gc-check></div>
+    <p class="review-form__said" role="status" aria-live="polite" data-gc-said></p>
+    <p class="review-form__note">Comments are read before they go live. No links.</p>
+    <button type="submit">Send comment</button>
+  </form>
+</section>
+
+<script>
+  import './guide-comments.js'
+</script>

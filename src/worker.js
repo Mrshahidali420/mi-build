@@ -13,6 +13,8 @@ import { rejectCounter, writeRejects } from './lib/reject-count.js'
 import { handleVote, handleReview, forgetSenders } from './lib/reviews-api.js'
 import { EDGE_HEADER } from './lib/reviews-read.js'
 import { handleMessage, forgetMessageSenders } from './lib/messages-api.js'
+import { handleComment, handleCommentsRead, forgetCommentSenders } from './lib/guide-comments-api.js'
+import { guideBySlug } from './lib/guides-registry.js'
 
 // How long the edge keeps a rendered page. The data changes once a day.
 // A page that carries live numbers asks for less with the EDGE_HEADER header
@@ -180,6 +182,11 @@ const VOTE_PATH = '/_vote'
 const REVIEW_PATH = '/_review'
 // Where the feedback, contact and advertise forms post.
 const MESSAGE_PATH = '/_message'
+// Where a guide's comment form posts, and where the guide reads its comments.
+const COMMENT_PATH = '/_comment'
+const COMMENTS_PATH = '/_comments'
+// A comment may only name a guide the site has (written or data guide).
+const hasGuide = (slug) => guideBySlug(slug) !== null
 
 export default {
   async fetch(request, env, ctx) {
@@ -211,6 +218,10 @@ export default {
     if (url.pathname === REVIEW_PATH) return handleReview(request, env)
     // A message from /feedback, /contact or /advertise (src/lib/messages-api.js).
     if (url.pathname === MESSAGE_PATH) return handleMessage(request, env)
+    // A guide comment, and a guide's approved comments, kept at the edge for
+    // five minutes (src/lib/guide-comments-api.js).
+    if (url.pathname === COMMENT_PATH) return handleComment(request, env, { hasGuide })
+    if (url.pathname === COMMENTS_PATH) return handleCommentsRead(request, env, ctx, { cache: caches.default, hasGuide })
 
     if (url.pathname === BEACON_PATH) {
       if (request.method !== 'POST') {
@@ -267,8 +278,10 @@ export default {
    */
   async scheduled(controller, env, ctx) {
     ctx.waitUntil(runRollup(env && env.ANALYTICS))
-    // Blank the two-day-old hashes that stop repeat votes and reviews.
+    // Blank the two-day-old hashes that stop repeat votes, reviews, messages
+    // and comments.
     ctx.waitUntil(forgetSenders(env && env.ANALYTICS))
     ctx.waitUntil(forgetMessageSenders(env && env.ANALYTICS))
+    ctx.waitUntil(forgetCommentSenders(env && env.ANALYTICS))
   },
 }

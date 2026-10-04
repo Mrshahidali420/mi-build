@@ -13,6 +13,7 @@ import { RANGES, withRange, ask } from '../lib/admin.js'
 import { envOf } from '../lib/runtime.js'
 import { PENDING_COUNT } from '../lib/reviews.mjs'
 import { MESSAGES_NEW_COUNT } from '../lib/messages.mjs'
+import { COMMENTS_PENDING_COUNT } from '../lib/guide-comments.mjs'
 // The whole look lives in its own file. Only this layout imports it.
 import '../styles/admin.css'
 // Self-hosted Saira, matching the weights admin.css actually asks for
@@ -52,20 +53,28 @@ const TABS = [
   { path: '/my-admin/homepage', label: 'Homepage' },
   { path: '/my-admin/reviews', label: 'Reviews' },
   { path: '/my-admin/messages', label: 'Messages' },
+  { path: '/my-admin/comments', label: 'Comments' },
   { path: '/my-admin/health', label: 'Health' },
 ]
 
 // How many reviews wait for the owner, beside the Reviews tab on every page,
 // so a new one is seen without opening the tab. One indexed count; a missing
 // table (before 0007 has run) reads as zero.
-// The same for new reader messages (before 0009 has run, zero).
+// The same for new reader messages (before 0009 has run, zero) and guide
+// comments waiting for approval (before 0010 has run, zero).
 let pendingReviews = 0
 let newMessages = 0
+let pendingComments = 0
 if (signedIn) {
   const db = envOf(Astro)?.ANALYTICS
-  const [reviewRows, messageRows] = await Promise.all([ask(db, PENDING_COUNT), ask(db, MESSAGES_NEW_COUNT)])
+  const [reviewRows, messageRows, commentRows] = await Promise.all([
+    ask(db, PENDING_COUNT),
+    ask(db, MESSAGES_NEW_COUNT),
+    ask(db, COMMENTS_PENDING_COUNT),
+  ])
   pendingReviews = Number(reviewRows[0]?.n) || 0
   newMessages = Number(messageRows[0]?.n) || 0
+  pendingComments = Number(commentRows[0]?.n) || 0
 }
 
 // The date switch says each range in one short word, so all five fit on a
@@ -108,6 +117,9 @@ const SHORT = { today: 'Today', '24h': '24h', '7d': '7 days', '30d': '30 days', 
                 )}
                 {item.path === '/my-admin/messages' && newMessages > 0 && (
                   <b class="tab-count" title={`${newMessages} new`}>{newMessages}</b>
+                )}
+                {item.path === '/my-admin/comments' && pendingComments > 0 && (
+                  <b class="tab-count" title={`${pendingComments} waiting for you`}>{pendingComments}</b>
                 )}
               </a>
             ))}

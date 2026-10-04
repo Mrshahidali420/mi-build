@@ -1,0 +1,72 @@
+---
+/**
+ * Comments. What readers wrote under the guides (/guides/<slug>), waiting for
+ * the owner, and what is already live.
+ *
+ * Nothing a reader writes is public until it is approved here. A guide page
+ * loads its approved comments from /_comments, which the edge keeps for five
+ * minutes (src/lib/guide-comments-api.js), so an approval or a removal can
+ * take that long to show. Delete throws a comment away for good, with every
+ * reply under it; Remove takes a live one down the same way.
+ *
+ * The buttons post to /my-admin/api/comment (src/lib/comment-actions.js).
+ * The table is in db/migrations/0010-guide-comments.sql.
+ */
+import Admin from '../../layouts/Admin.astro'
+import Kpi from '../../components/admin/Kpi.astro'
+import CommentList from '../../components/admin/CommentList.astro'
+import { envOf } from '../../lib/runtime.js'
+import { gate, ask } from '../../lib/admin.js'
+import {
+  COMMENTS_PENDING_LIST,
+  COMMENTS_APPROVED_LIST,
+  DAILY_COMMENTS,
+  MAX_PENDING_COMMENTS,
+} from '../../lib/guide-comments.mjs'
+
+export const prerender = false
+
+const env = envOf(Astro)
+const { db, secret, signedIn, wrongWord } = await gate(Astro, env)
+if (secret && !signedIn && Astro.request.method !== 'POST') {
+  return Astro.redirect('/my-admin')
+}
+
+let pending = []
+let approved = []
+if (signedIn) {
+  ;[pending, approved] = await Promise.all([ask(db, COMMENTS_PENDING_LIST), ask(db, COMMENTS_APPROVED_LIST)])
+}
+---
+
+<Admin
+  title="Comments"
+  here="/my-admin/comments"
+  signedIn={signedIn}
+  secret={secret}
+  wrongWord={wrongWord}
+  note="What readers wrote under the guides. Nothing is public until you approve it."
+>
+  <section class="kpis" aria-label="Comments at a glance">
+    <Kpi label="Waiting for you" value={pending.length} mood={pending.length ? 'bad' : 'good'} hero />
+    <Kpi label="Live" value={approved.length} />
+  </section>
+
+  <div class="panel wide">
+    <h2>Waiting for you</h2>
+    <p class="say">
+      Newest first. Approve puts a comment on its guide; the guide keeps its comment list for 5
+      minutes, so it can take that long to show. Delete throws a comment away for good, with any
+      replies under it. Links, web addresses, handles and HTML were already refused before a
+      comment could get here; each address can send {DAILY_COMMENTS} a day, and the form pauses
+      when more than {MAX_PENDING_COMMENTS} wait.
+    </p>
+    <CommentList rows={pending} empty="Nothing waiting. New comments show here." />
+  </div>
+
+  <div class="panel wide">
+    <h2>Live on the site</h2>
+    <p class="say">Newest approval first. Remove takes a comment and its replies down within 5 minutes.</p>
+    <CommentList rows={approved} live empty="No comments live yet." />
+  </div>
+</Admin>
