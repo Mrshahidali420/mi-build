@@ -1,4 +1,102 @@
 {
+ "c1": {
+  "id": 1,
+  "name": "Spike Spiegel",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1-ChxaldmieFlQ.png",
+  "media": [
+   1,
+   5,
+   4037
+  ],
+  "path": "/character/spike-spiegel"
+ },
+ "c1012": {
+  "id": 1012,
+  "name": "Majin Boo",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/1012.jpg",
+  "media": [
+   813,
+   21175,
+   225
+  ],
+  "path": "/character/majin-boo"
+ },
+ "c10791": {
+  "id": 10791,
+  "name": "Ebisu",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n10791-YRA5IXwEQRsW.png",
+  "media": [
+   20,
+   1735,
+   30011
+  ],
+  "path": "/character/ebisu"
+ },
+ "c1081": {
+  "id": 1081,
+  "name": "Ulquiorra Cifer",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1081-xLTqHfLL2I2W.png",
+  "media": [
+   269,
+   30012,
+   8247
+  ],
+  "path": "/character/ulquiorra-cifer"
+ },
+ "c1086": {
+  "id": 1086,
+  "name": "Sousuke Aizen",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1086-qR9218BjZTC0.png",
+  "media": [
+   269,
+   116674,
+   30012
+  ],
+  "path": "/character/sousuke-aizen"
+ },
+ "c1088": {
+  "id": 1088,
+  "name": "Jirou Sakuranosuke Shunsui Kyouraku",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1088-6oO10CmxZ1lP.jpg",
+  "media": [
+   269,
+   116674,
+   159322
+  ],
+  "path": "/character/jirou-sakuranosuke-shunsui-kyouraku"
+ },
+ "c1168": {
+  "id": 1168,
+  "name": "Mayuri Kurotsuchi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1168-y2jsGtlJVv4z.png",
+  "media": [
+   269,
+   116674,
+   159322
+  ],
+  "path": "/character/mayuri-kurotsuchi"
+ },
+ "c12300": {
+  "id": 12300,
+  "name": "Neferpitou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b12300-kYzopQUTLa9A.png",
+  "media": [
+   11061,
+   30026
+  ],
+  "path": "/character/neferpitou"
+ },
+ "c124077": {
+  "id": 124077,
+  "name": "Katakuri Charlotte",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b124077-TODX2ThCdyx2.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/katakuri-charlotte"
+ },
  "c12464": {
   "id": 12464,
   "name": "Hashirama Senju",
@@ -20,6 +118,39 @@
    30011
   ],
   "path": "/character/tobirama-senju"
+ },
+ "c125603": {
+  "id": 125603,
+  "name": "Pieck Finger",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b125603-Z2rgiHUGbAmY.png",
+  "media": [
+   110277,
+   131681,
+   146984
+  ],
+  "path": "/character/pieck-finger"
+ },
+ "c125661": {
+  "id": 125661,
+  "name": "Zeke",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b125661-FiqFvAtNlL0v.png",
+  "media": [
+   20958,
+   99147,
+   110277
+  ],
+  "path": "/character/zeke"
+ },
+ "c125662": {
+  "id": 125662,
+  "name": "Porco Galliard",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b125662-an9dgh4LZ016.png",
+  "media": [
+   110277,
+   131681,
+   53390
+  ],
+  "path": "/character/porco-galliard"
  },
  "c126069": {
   "id": 126069,
@@ -43,6 +174,50 @@
   ],
   "path": "/character/tanjirou-kamado"
  },
+ "c126257": {
+  "id": 126257,
+  "name": "Jiren",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126257-nGjgbsnxZkUB.png",
+  "media": [
+   21175,
+   101302,
+   86508
+  ],
+  "path": "/character/jiren"
+ },
+ "c126635": {
+  "id": 126635,
+  "name": "Megumi Fushiguro",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126635-L0y3I92JSUkN.png",
+  "media": [
+   113415,
+   145064,
+   172463
+  ],
+  "path": "/character/megumi-fushiguro"
+ },
+ "c127212": {
+  "id": 127212,
+  "name": "Yuuji Itadori",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127212-FVm2tD0erQ5B.png",
+  "media": [
+   113415,
+   145064,
+   172463
+  ],
+  "path": "/character/yuuji-itadori"
+ },
+ "c127518": {
+  "id": 127518,
+  "name": "Nezuko Kamado",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127518-NRlq1CQ1v1ro.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/nezuko-kamado"
+ },
  "c127691": {
   "id": 127691,
   "name": "Satoru Gojou",
@@ -53,6 +228,71 @@
    131573
   ],
   "path": "/character/satoru-gojou"
+ },
+ "c128130": {
+  "id": 128130,
+  "name": "Imu",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b128130-X9N46ajhSMOi.png",
+  "media": [
+   21,
+   30013
+  ],
+  "path": "/character/imu"
+ },
+ "c129131": {
+  "id": 129131,
+  "name": "Zenitsu Agatsuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129131-FZrQ7lSlxmEr.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/zenitsu-agatsuma"
+ },
+ "c129132": {
+  "id": 129132,
+  "name": "Muzan Kibutsuji",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129132-4nIZakUZ1o8W.jpg",
+  "media": [
+   101922,
+   142329,
+   145139
+  ],
+  "path": "/character/muzan-kibutsuji"
+ },
+ "c129133": {
+  "id": 129133,
+  "name": "Kyoujurou Rengoku",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129133-VlTPowwt68rJ.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/kyoujurou-rengoku"
+ },
+ "c129571": {
+  "id": 129571,
+  "name": "Yuuta Okkotsu",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129571-GHJk7gviHOOw.jpg",
+  "media": [
+   113415,
+   145064,
+   131573
+  ],
+  "path": "/character/yuuta-okkotsu"
+ },
+ "c129928": {
+  "id": 129928,
+  "name": "Jin-U Seong",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129928-BCEjVaP0AQSw.png",
+  "media": [
+   151807,
+   176496,
+   105398
+  ],
+  "path": "/character/sung-jin-woo"
  },
  "c13": {
   "id": 13,
@@ -65,6 +305,17 @@
   ],
   "path": "/character/sasuke-uchiha"
  },
+ "c130050": {
+  "id": 130050,
+  "name": "Giyuu Tomioka",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b130050-qsLThJs5VIbz.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/giyuu-tomioka"
+ },
  "c130102": {
   "id": 130102,
   "name": "Denji",
@@ -75,6 +326,17 @@
    171627
   ],
   "path": "/character/denji"
+ },
+ "c13018": {
+  "id": 13018,
+  "name": "Sengoku",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b13018-kJjHsIg6Zw7Q.png",
+  "media": [
+   21,
+   30013,
+   12859
+  ],
+  "path": "/character/sengoku"
  },
  "c133676": {
   "id": 133676,
@@ -87,6 +349,237 @@
   ],
   "path": "/character/marin-kitagawa"
  },
+ "c133699": {
+  "id": 133699,
+  "name": "Suguru Getou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133699-FCnXaISgazAi.png",
+  "media": [
+   113415,
+   145064,
+   131573
+  ],
+  "path": "/character/suguru-getou"
+ },
+ "c133700": {
+  "id": 133700,
+  "name": "Nobara Kugisaki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133700-f6sOO3TcgLV6.png",
+  "media": [
+   113415,
+   145064,
+   172463
+  ],
+  "path": "/character/nobara-kugisaki"
+ },
+ "c133701": {
+  "id": 133701,
+  "name": "Sukuna",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133701-rCQuDpHr3UZL.png",
+  "media": [
+   113415,
+   145064,
+   172463
+  ],
+  "path": "/character/sukuna"
+ },
+ "c133702": {
+  "id": 133702,
+  "name": "Mahito",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133702-Y7JRG5vAvjIL.png",
+  "media": [
+   113415,
+   145064,
+   101517
+  ],
+  "path": "/character/mahito"
+ },
+ "c133704": {
+  "id": 133704,
+  "name": "Kento Nanami",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133704-8wLTGjc234q2.png",
+  "media": [
+   113415,
+   145064,
+   131573
+  ],
+  "path": "/character/kento-nanami"
+ },
+ "c134167": {
+  "id": 134167,
+  "name": "Maki Zenin",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b134167-5TCytk45YByD.png",
+  "media": [
+   113415,
+   145064,
+   131573
+  ],
+  "path": "/character/maki-zenin"
+ },
+ "c135187": {
+  "id": 135187,
+  "name": "Gerard Valkyrie",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b135187-W88g77Uq7ufv.png",
+  "media": [
+   159322,
+   30012,
+   169755
+  ],
+  "path": "/character/gerard-valkyrie"
+ },
+ "c136069": {
+  "id": 136069,
+  "name": "Muichirou Tokitou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136069-6PLglx4tETUX.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/muichirou-tokitou"
+ },
+ "c136070": {
+  "id": 136070,
+  "name": "Shinobu Kochou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136070-MC9LLxJsHyHE.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/shinobu-kochou"
+ },
+ "c136071": {
+  "id": 136071,
+  "name": "Tengen Uzui",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136071-99Kexnnn2PiV.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/tengen-uzui"
+ },
+ "c136072": {
+  "id": 136072,
+  "name": "Mitsuri Kanroji",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136072-xVwyRUKdpybi.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/mitsuri-kanroji"
+ },
+ "c136075": {
+  "id": 136075,
+  "name": "Dong-Su Hwang",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136075-M6VRrZyHpaI5.png",
+  "media": [
+   151807,
+   176496,
+   105398
+  ],
+  "path": "/character/dong-su-hwang"
+ },
+ "c136077": {
+  "id": 136077,
+  "name": "Yun-Ho Baek",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136077-IIMqRmMK5Fgs.png",
+  "media": [
+   151807,
+   176496,
+   105398
+  ],
+  "path": "/character/baek-yoon-ho"
+ },
+ "c137079": {
+  "id": 137079,
+  "name": "Power",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137079-6yLEUYR3bmpr.png",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/power"
+ },
+ "c137080": {
+  "id": 137080,
+  "name": "Makima",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137080-UHcynYNjb5ZU.png",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/makima"
+ },
+ "c137081": {
+  "id": 137081,
+  "name": "Aki Hayakawa",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137081-TSrUR3mUJL6r.png",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/aki-hayakawa"
+ },
+ "c13767": {
+  "id": 13767,
+  "name": "Law Trafalgar",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b13767-U604OJN9dxCn.jpg",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/law-trafalgar"
+ },
+ "c137774": {
+  "id": 137774,
+  "name": "Sanemi Shinazugawa",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137774-O1iYrnGLB71l.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/sanemi-shinazugawa"
+ },
+ "c137777": {
+  "id": 137777,
+  "name": "Obanai Iguro",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137777-kGViiNyx0wa7.jpg",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/obanai-iguro"
+ },
+ "c137778": {
+  "id": 137778,
+  "name": "Gyoumei Himejima",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137778-H4Uzb9cSCvZ6.jpg",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/gyoumei-himejima"
+ },
+ "c137975": {
+  "id": 137975,
+  "name": "Aoi Toudou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b137975-6TH7PiLWJaqy.png",
+  "media": [
+   113415,
+   145064,
+   131573
+  ],
+  "path": "/character/aoi-toudou"
+ },
  "c138100": {
   "id": 138100,
   "name": "Anya Forger",
@@ -97,6 +590,115 @@
    158927
   ],
   "path": "/character/anya-forger"
+ },
+ "c138102": {
+  "id": 138102,
+  "name": "Yor Forger",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138102-ZOAu9jI2d5ke.png",
+  "media": [
+   140960,
+   142838,
+   158927
+  ],
+  "path": "/character/yor-forger"
+ },
+ "c138789": {
+  "id": 138789,
+  "name": "Hae-In Cha",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138789-AhE8m0LWjE7E.png",
+  "media": [
+   151807,
+   176496,
+   105398
+  ],
+  "path": "/character/hae-in-cha"
+ },
+ "c138790": {
+  "id": 138790,
+  "name": "Il-Hwan Seong",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138790-i3DFMscWID9D.jpg",
+  "media": [
+   176496,
+   105398,
+   179445
+  ],
+  "path": "/character/sung-il-hwan"
+ },
+ "c138792": {
+  "id": 138792,
+  "name": "Geon-Hui Go",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138792-TXFrDA1wpbmo.png",
+  "media": [
+   151807,
+   176496,
+   105398
+  ],
+  "path": "/character/go-gun-hee"
+ },
+ "c138794": {
+  "id": 138794,
+  "name": "Jong-In Choi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138794-dZNdO0pvZ659.png",
+  "media": [
+   151807,
+   176496,
+   105398
+  ],
+  "path": "/character/jong-in-choi"
+ },
+ "c139734": {
+  "id": 139734,
+  "name": "Daki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b139734-ZEy1ccFcwjaK.jpg",
+  "media": [
+   142329,
+   87216,
+   136382
+  ],
+  "path": "/character/daki"
+ },
+ "c139735": {
+  "id": 139735,
+  "name": "Gyuutarou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b139735-o4G63Po27zND.png",
+  "media": [
+   142329,
+   129874,
+   87216
+  ],
+  "path": "/character/gyuutarou"
+ },
+ "c139736": {
+  "id": 139736,
+  "name": "Nakime",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b139736-CrfqAqlktDTP.png",
+  "media": [
+   101922,
+   145139,
+   166240
+  ],
+  "path": "/character/nakime"
+ },
+ "c139737": {
+  "id": 139737,
+  "name": "Enmu",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b139737-1YaFT0Xvxwaz.png",
+  "media": [
+   101922,
+   112151,
+   129874
+  ],
+  "path": "/character/enmu"
+ },
+ "c139739": {
+  "id": 139739,
+  "name": "Rui",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b139739-BP0eUt2P9pRv.png",
+  "media": [
+   101922,
+   87216
+  ],
+  "path": "/character/rui"
  },
  "c14": {
   "id": 14,
@@ -109,6 +711,256 @@
   ],
   "path": "/character/itachi-uchiha"
  },
+ "c141694": {
+  "id": 141694,
+  "name": "Akaza",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b141694-0COi0GVXPuEn.png",
+  "media": [
+   112151,
+   142329,
+   145139
+  ],
+  "path": "/character/akaza"
+ },
+ "c141918": {
+  "id": 141918,
+  "name": "Kokushibo",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b141918-Bfgq88XJFOPz.png",
+  "media": [
+   145139,
+   87216,
+   178788
+  ],
+  "path": "/character/kokushibo"
+ },
+ "c144591": {
+  "id": 144591,
+  "name": "Douma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b144591-v2yrXtHorZFS.png",
+  "media": [
+   142329,
+   145139,
+   87216
+  ],
+  "path": "/character/douma"
+ },
+ "c14489": {
+  "id": 14489,
+  "name": "Isaac Netero",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b14489-WgGsdlQJka65.jpg",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/isaac-netero"
+ },
+ "c145722": {
+  "id": 145722,
+  "name": "Igris",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b145722-qSJ71S6vpeeM.png",
+  "media": [
+   151807,
+   176496,
+   105398
+  ],
+  "path": "/character/igris"
+ },
+ "c146259": {
+  "id": 146259,
+  "name": "Zeno",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b146259-JOcHMVKvRiWB.png",
+  "media": [
+   21175,
+   102352
+  ],
+  "path": "/character/zeno-dragon-ball-super"
+ },
+ "c148740": {
+  "id": 148740,
+  "name": "Reze",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b148740-ceAibPxLW8rR.png",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/reze"
+ },
+ "c148789": {
+  "id": 148789,
+  "name": "Byeong-Gu Min",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b148789-HmGZf4RUzEFw.png",
+  "media": [
+   151807,
+   176496,
+   105398
+  ],
+  "path": "/character/min-byung-gu"
+ },
+ "c149220": {
+  "id": 149220,
+  "name": "Yoriichi Tsugikuni",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b149220-OuBk7B3O6WD6.jpg",
+  "media": [
+   142329,
+   145139,
+   87216
+  ],
+  "path": "/character/yoriichi-tsugikuni"
+ },
+ "c14989": {
+  "id": 14989,
+  "name": "Kid Eustass",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b14989-uykLqnBTdAc2.jpg",
+  "media": [
+   21,
+   30013,
+   105143
+  ],
+  "path": "/character/kid-eustass"
+ },
+ "c152231": {
+  "id": 152231,
+  "name": "Tenshi no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b152231-jiMRx9je7H6y.png",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/tenshi-no-akuma"
+ },
+ "c1555": {
+  "id": 1555,
+  "name": "Hinata Hyuuga",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1555-Q41GLTV3FvYF.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/hinata-hyuuga"
+ },
+ "c156991": {
+  "id": 156991,
+  "name": "Jougo",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b156991-niYjdp9CxO4w.png",
+  "media": [
+   113415,
+   145064,
+   101517
+  ],
+  "path": "/character/jougo"
+ },
+ "c157115": {
+  "id": 157115,
+  "name": "Toge Inumaki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b157115-kdhRYQdVhH95.png",
+  "media": [
+   113415,
+   145064,
+   131573
+  ],
+  "path": "/character/toge-inumaki"
+ },
+ "c157116": {
+  "id": 157116,
+  "name": "Chousou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b157116-2jYQf3y8NeTZ.png",
+  "media": [
+   113415,
+   145064,
+   172463
+  ],
+  "path": "/character/chousou"
+ },
+ "c157232": {
+  "id": 157232,
+  "name": "Beam",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b157232-5GuWeqoFN9Kq.jpg",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/beam"
+ },
+ "c157240": {
+  "id": 157240,
+  "name": "Eien no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b157240-dQJO3S7285nW.png",
+  "media": [
+   127230,
+   105778
+  ],
+  "path": "/character/eien-no-akuma"
+ },
+ "c157241": {
+  "id": 157241,
+  "name": "Samurai Sword",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b157241-GkgQVzkFrmUD.jpg",
+  "media": [
+   127230,
+   105778
+  ],
+  "path": "/character/samurai-sword"
+ },
+ "c159849": {
+  "id": 159849,
+  "name": "Beru ",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b159849-p0Szb7KzD2DD.png",
+  "media": [
+   176496,
+   105398,
+   179445
+  ],
+  "path": "/character/beru"
+ },
+ "c162722": {
+  "id": 162722,
+  "name": "Touji Fushiguro",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b162722-btzdghBizxKS.jpg",
+  "media": [
+   145064,
+   172463,
+   101517
+  ],
+  "path": "/character/touji-fushiguro"
+ },
+ "c16342": {
+  "id": 16342,
+  "name": "Hancock Boa",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b16342-kVOF6V5Q94go.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/hancock-boa"
+ },
+ "c165862": {
+  "id": 165862,
+  "name": "Kaigaku",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b165862-G9PpuvlEsfdN.jpg",
+  "media": [
+   101922,
+   166240,
+   87216
+  ],
+  "path": "/character/kaigaku"
+ },
+ "c1694": {
+  "id": 1694,
+  "name": "Neji Hyuuga",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1694-TL4obouDwJ7k.jpg",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/neji-hyuuga"
+ },
  "c17": {
   "id": 17,
   "name": "Naruto Uzumaki",
@@ -119,6 +971,112 @@
    97938
   ],
   "path": "/character/naruto-uzumaki"
+ },
+ "c170266": {
+  "id": 170266,
+  "name": "Pochita",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b170266-bBXPkNJnd3mg.png",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/pochita"
+ },
+ "c17142": {
+  "id": 17142,
+  "name": "Rayleigh Silvers",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b17142-OXOpztWZIE2A.png",
+  "media": [
+   21,
+   30013,
+   105143
+  ],
+  "path": "/character/rayleigh-silvers"
+ },
+ "c172743": {
+  "id": 172743,
+  "name": "Hanami",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b172743-4Y5SXqED6A3G.jpg",
+  "media": [
+   113415,
+   145064,
+   101517
+  ],
+  "path": "/character/hanami"
+ },
+ "c172887": {
+  "id": 172887,
+  "name": "Mirai no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b172887-qMCjXPXMSKRk.png",
+  "media": [
+   127230,
+   105778
+  ],
+  "path": "/character/mirai-no-akuma"
+ },
+ "c174282": {
+  "id": 174282,
+  "name": "Zombie no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b174282-YFLwuvogHMod.png",
+  "media": [
+   127230,
+   105778
+  ],
+  "path": "/character/zombie-no-akuma"
+ },
+ "c176754": {
+  "id": 176754,
+  "name": "Frieren",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b176754-PCnpqIOkjhFk.png",
+  "media": [
+   154587,
+   182255,
+   118586
+  ],
+  "path": "/character/frieren"
+ },
+ "c181154": {
+  "id": 181154,
+  "name": "Goto Ryuji",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b181154-cYOPK6mij2kI.png",
+  "media": [
+   176496,
+   105398
+  ],
+  "path": "/character/goto-ryuji"
+ },
+ "c184540": {
+  "id": 184540,
+  "name": "Thomas Andre",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b184540-JNscGAnjHExA.png",
+  "media": [
+   176496,
+   105398,
+   179445
+  ],
+  "path": "/character/thomas-andre"
+ },
+ "c184553": {
+  "id": 184553,
+  "name": "Zhigang Liu",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b184553-8dz0Dw1bvQ8G.png",
+  "media": [
+   176496,
+   105398
+  ],
+  "path": "/character/zhigang-liu"
+ },
+ "c184555": {
+  "id": 184555,
+  "name": "Dong-Wook Ma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b184555-NMCZb01p2Aqp.png",
+  "media": [
+   176496,
+   105398,
+   179445
+  ],
+  "path": "/character/dong-wook-ma"
  },
  "c18473": {
   "id": 18473,
@@ -131,6 +1089,297 @@
   ],
   "path": "/character/killer-bee"
  },
+ "c18938": {
+  "id": 18938,
+  "name": "Jinbe",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b18938-yZANEfjsVhW4.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/jinbe"
+ },
+ "c1900": {
+  "id": 1900,
+  "name": "Sasori",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1900-Dpd9wVWtlvIx.png",
+  "media": [
+   1735,
+   30011,
+   155348
+  ],
+  "path": "/character/sasori"
+ },
+ "c196502": {
+  "id": 196502,
+  "name": "Yuki Tsukumo",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b196502-aBvtPFr9lGm2.png",
+  "media": [
+   113415,
+   145064,
+   172463
+  ],
+  "path": "/character/yuki-tsukumo"
+ },
+ "c197584": {
+  "id": 197584,
+  "name": "Kinji Hakari",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b197584-fK7Jc6DLfx7e.jpg",
+  "media": [
+   113415,
+   172463,
+   101517
+  ],
+  "path": "/character/kinji-hakari"
+ },
+ "c198257": {
+  "id": 198257,
+  "name": "Ashborn",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b198257-qi06d0qgcX1Y.png",
+  "media": [
+   105398
+  ],
+  "path": "/character/ashborn"
+ },
+ "c199551": {
+  "id": 199551,
+  "name": "Ymir Fritz",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b199551-UNzb9vgcbOIx.png",
+  "media": [
+   131681,
+   146984,
+   53390
+  ],
+  "path": "/character/ymir-fritz"
+ },
+ "c2006": {
+  "id": 2006,
+  "name": "Yamato",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2006-FTCz2Eu3cXsI.png",
+  "media": [
+   1735,
+   30011,
+   10589
+  ],
+  "path": "/character/yamato"
+ },
+ "c2007": {
+  "id": 2007,
+  "name": "Shikamaru Nara",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2007-QaesJlIZDifj.jpg",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/shikamaru-nara"
+ },
+ "c2011": {
+  "id": 2011,
+  "name": "Iruka Umino",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2011-WUBm7wMCA6cE.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/iruka-umino"
+ },
+ "c204383": {
+  "id": 204383,
+  "name": "Dagon",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b204383-5oTlVPpaCnM2.jpg",
+  "media": [
+   113415,
+   145064,
+   101517
+  ],
+  "path": "/character/dagon"
+ },
+ "c205015": {
+  "id": 205015,
+  "name": "Lara Tybur",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b205015-MgmgKmwFBbRA.png",
+  "media": [
+   110277,
+   53390
+  ],
+  "path": "/character/lara-tybur"
+ },
+ "c205590": {
+  "id": 205590,
+  "name": "Gyokko",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b205590-mNWuXG5oPw4g.jpg",
+  "media": [
+   145139,
+   87216
+  ],
+  "path": "/character/gyokko"
+ },
+ "c2064": {
+  "id": 2064,
+  "name": "Dracule Mihawk",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n2064-OpnF4nLi6bvL.png",
+  "media": [
+   21,
+   30013,
+   105143
+  ],
+  "path": "/character/dracule-mihawk"
+ },
+ "c207013": {
+  "id": 207013,
+  "name": "Yogumunt",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b207013-KfQDMebcmS7k.png",
+  "media": [
+   105398
+  ],
+  "path": "/character/yogumunt"
+ },
+ "c208458": {
+  "id": 208458,
+  "name": "Christopher Reed",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b208458-p4bX3kbfUl1N.jpg",
+  "media": [
+   105398
+  ],
+  "path": "/character/christopher-reed"
+ },
+ "c208533": {
+  "id": 208533,
+  "name": "Rika Orimoto",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b208533-EXiA1hR5l585.jpg",
+  "media": [
+   131573,
+   172463,
+   105469
+  ],
+  "path": "/character/rika-orimoto"
+ },
+ "c208942": {
+  "id": 208942,
+  "name": "Juu no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b208942-xAA6MWq0eLVg.png",
+  "media": [
+   105778
+  ],
+  "path": "/character/juu-no-akuma"
+ },
+ "c209181": {
+  "id": 209181,
+  "name": "Querehsha",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b209181-4wEID01Jgmne.jpg",
+  "media": [
+   105398
+  ],
+  "path": "/character/querehsha"
+ },
+ "c209184": {
+  "id": 209184,
+  "name": "Legia",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b209184-w70Ft3HJEgRd.png",
+  "media": [
+   105398
+  ],
+  "path": "/character/legia"
+ },
+ "c2093": {
+  "id": 2093,
+  "name": "Gohan Son",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2093-kdFZhqcNSsqW.png",
+  "media": [
+   813,
+   21175,
+   225
+  ],
+  "path": "/character/gohan-son"
+ },
+ "c210": {
+  "id": 210,
+  "name": "Kisuke Urahara",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b210-mw01NrQfRjzT.png",
+  "media": [
+   269,
+   116674,
+   159322
+  ],
+  "path": "/character/kisuke-urahara"
+ },
+ "c21093": {
+  "id": 21093,
+  "name": "Borsalino",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b21093-Pc4kOjUn3ZkZ.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/borsalino"
+ },
+ "c212321": {
+  "id": 212321,
+  "name": "Yami no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b212321-sReZKv8a1zaL.png",
+  "media": [
+   105778
+  ],
+  "path": "/character/yami-no-akuma"
+ },
+ "c2159": {
+  "id": 2159,
+  "name": "Kuririn",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2159-qtEuMYyOUkwY.jpg",
+  "media": [
+   813,
+   223,
+   21175
+  ],
+  "path": "/character/kuririn"
+ },
+ "c2257": {
+  "id": 2257,
+  "name": "Simon",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2257-jnalsdnIX1vN.jpg",
+  "media": [
+   2001,
+   4565,
+   4107
+  ],
+  "path": "/character/simon"
+ },
+ "c22687": {
+  "id": 22687,
+  "name": "Sakazuki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b22687-tCQVpj6wZhRk.jpg",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/sakazuki"
+ },
+ "c23277": {
+  "id": 23277,
+  "name": "Meruem",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b23277-EYmIxzL64Mji.png",
+  "media": [
+   11061,
+   30026
+  ],
+  "path": "/character/meruem"
+ },
+ "c239946": {
+  "id": 239946,
+  "name": "Lille Barro",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b239946-B6xoVJN0F6pa.png",
+  "media": [
+   116674,
+   159322,
+   30012
+  ],
+  "path": "/character/lille-barro"
+ },
  "c2405": {
   "id": 2405,
   "name": "Kabuto Yakushi",
@@ -141,6 +1390,68 @@
    97938
   ],
   "path": "/character/kabuto-yakushi"
+ },
+ "c2423": {
+  "id": 2423,
+  "name": "Jiraiya",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2423-RO5MyoXSA9OL.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/jiraiya"
+ },
+ "c24486": {
+  "id": 24486,
+  "name": "Fukasaku",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/24486.jpg",
+  "media": [
+   1735,
+   30011
+  ],
+  "path": "/character/fukasaku"
+ },
+ "c246": {
+  "id": 246,
+  "name": "Gokuu Son",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/246-wsRRr6z1kii8.png",
+  "media": [
+   813,
+   223,
+   21175
+  ],
+  "path": "/character/gokuu-son"
+ },
+ "c248143": {
+  "id": 248143,
+  "name": "Hajime Kashimo",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b248143-w5ZilMdkvpbe.jpg",
+  "media": [
+   172463,
+   101517,
+   209895
+  ],
+  "path": "/character/hajime-kashimo"
+ },
+ "c248818": {
+  "id": 248818,
+  "name": "Hiromi Higuruma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b248818-G9R6TqqElpvG.png",
+  "media": [
+   172463,
+   101517
+  ],
+  "path": "/character/hiromi-higuruma"
+ },
+ "c249400": {
+  "id": 249400,
+  "name": "Bellion",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b249400-qE9nSrstYOHp.jpg",
+  "media": [
+   105398
+  ],
+  "path": "/character/bellion"
  },
  "c2535": {
   "id": 2535,
@@ -153,6 +1464,15 @@
   ],
   "path": "/character/minato-namikaze"
  },
+ "c253680": {
+  "id": 253680,
+  "name": "Antares",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b253680-bwoS2mJpmKGN.png",
+  "media": [
+   105398
+  ],
+  "path": "/character/antares-solo-leveling"
+ },
  "c257562": {
   "id": 257562,
   "name": "Hitori Gotou",
@@ -164,6 +1484,245 @@
   ],
   "path": "/character/hitori-gotou"
  },
+ "c26": {
+  "id": 26,
+  "name": "Ging Freecss",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/26-VpZXIwOdcz8p.jpg",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/ging-freecss"
+ },
+ "c260323": {
+  "id": 260323,
+  "name": "Hantengu",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b260323-2zytvxsXp7rG.png",
+  "media": [
+   145139,
+   87216
+  ],
+  "path": "/character/hantengu"
+ },
+ "c2672": {
+  "id": 2672,
+  "name": "Kisame Hoshigaki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/2672-oxbHx8n3N7WY.jpg",
+  "media": [
+   20,
+   1735,
+   30011
+  ],
+  "path": "/character/kisame-hoshigaki"
+ },
+ "c27": {
+  "id": 27,
+  "name": "Killua Zoldyck",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b27-Z5O02kQUydpT.jpg",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/killua-zoldyck"
+ },
+ "c2707": {
+  "id": 2707,
+  "name": "Trunks",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2707-YKWmn4q87oF8.png",
+  "media": [
+   813,
+   21175,
+   225
+  ],
+  "path": "/character/trunks"
+ },
+ "c271788": {
+  "id": 271788,
+  "name": "Aramaki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b271788-IkVQTycoaNPY.png",
+  "media": [
+   21,
+   30013
+  ],
+  "path": "/character/aramaki-one-piece"
+ },
+ "c2749": {
+  "id": 2749,
+  "name": "Crocodile",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2749-e8ebEBN1SlS2.png",
+  "media": [
+   21,
+   30013,
+   105143
+  ],
+  "path": "/character/crocodile"
+ },
+ "c2751": {
+  "id": 2751,
+  "name": "Newgate Edward",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2751-NnzW0N2vCTjX.jpg",
+  "media": [
+   21,
+   30013,
+   182469
+  ],
+  "path": "/character/newgate-edward"
+ },
+ "c2752": {
+  "id": 2752,
+  "name": "Kuzan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2752-0ENS2a39muDz.png",
+  "media": [
+   21,
+   30013,
+   12859
+  ],
+  "path": "/character/kuzan"
+ },
+ "c276133": {
+  "id": 276133,
+  "name": "Kurourushi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b276133-L0BZ2BWJGaiR.jpg",
+  "media": [
+   172463,
+   101517
+  ],
+  "path": "/character/kurourushi"
+ },
+ "c28": {
+  "id": 28,
+  "name": "Kurapika",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b28-ivA7UGnfE40a.png",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/kurapika"
+ },
+ "c282872": {
+  "id": 282872,
+  "name": "Yoru",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b282872-taoHfD0JGiZG.jpg",
+  "media": [
+   105778
+  ],
+  "path": "/character/yoru-chainsaw-man"
+ },
+ "c289584": {
+  "id": 289584,
+  "name": "Kenjaku",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b289584-KndGudJZm5Ik.jpg",
+  "media": [
+   113415,
+   145064,
+   172463
+  ],
+  "path": "/character/kenjaku"
+ },
+ "c290671": {
+  "id": 290671,
+  "name": "Kitsune no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b290671-YaauAZvHLnyo.png",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/kitsune-no-akuma"
+ },
+ "c294475": {
+  "id": 294475,
+  "name": "Kiga no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b294475-3DOVtMBudU9f.jpg",
+  "media": [
+   105778
+  ],
+  "path": "/character/kiga-no-akuma"
+ },
+ "c30": {
+  "id": 30,
+  "name": "Gon Freecss",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b30-lyFExKyDhefc.jpg",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/gon-freecss"
+ },
+ "c301803": {
+  "id": 301803,
+  "name": "Rakka no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b301803-LNY3TmVxZAgQ.jpg",
+  "media": [
+   105778
+  ],
+  "path": "/character/rakka-no-akuma"
+ },
+ "c305": {
+  "id": 305,
+  "name": "Sanji",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b305-6lisPmHtCnLT.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/sanji"
+ },
+ "c306": {
+  "id": 306,
+  "name": "Rock Lee",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b306-oUTOO45xInXt.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/rock-lee"
+ },
+ "c306505": {
+  "id": 306505,
+  "name": "Lennart Niermann",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b306505-DcSr0ys4uIaQ.png",
+  "media": [
+   105398
+  ],
+  "path": "/character/lennart-niermann"
+ },
+ "c306506": {
+  "id": 306506,
+  "name": "Siddharth Bachchan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/default.jpg",
+  "media": [
+   105398
+  ],
+  "path": "/character/siddharth-bachchan"
+ },
+ "c306512": {
+  "id": 306512,
+  "name": "Tae-Gyu Lim",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b306512-A5Lr0OJQWuLG.png",
+  "media": [
+   176496,
+   105398,
+   179445
+  ],
+  "path": "/character/tae-gyu-lim"
+ },
+ "c306643": {
+  "id": 306643,
+  "name": "Baran",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b306643-8Aq0WVzFu0Yn.png",
+  "media": [
+   176496,
+   105398
+  ],
+  "path": "/character/baran-solo-leveling"
+ },
  "c307": {
   "id": 307,
   "name": "Guy Might",
@@ -174,6 +1733,17 @@
    97938
   ],
   "path": "/character/guy-might"
+ },
+ "c31": {
+  "id": 31,
+  "name": "Hisoka Morow",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b31-FZckOuu7L1un.png",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/hisoka-morow"
  },
  "c3149": {
   "id": 3149,
@@ -197,6 +1767,112 @@
   ],
   "path": "/character/pain"
  },
+ "c3331": {
+  "id": 3331,
+  "name": "Teach Marshall",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b3331-7ZJDc4BNv9Yp.jpg",
+  "media": [
+   21,
+   30013,
+   105143
+  ],
+  "path": "/character/teach-marshall"
+ },
+ "c347492": {
+  "id": 347492,
+  "name": "Oi no Akuma",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b347492-BEMdPULyAwRQ.png",
+  "media": [
+   105778
+  ],
+  "path": "/character/oi-no-akuma"
+ },
+ "c360010": {
+  "id": 360010,
+  "name": "Rakan",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b360010-m54zQfD9eY6q.png",
+  "media": [
+   176496,
+   105398
+  ],
+  "path": "/character/rakan-solo-leveling"
+ },
+ "c360018": {
+  "id": 360018,
+  "name": "Sillad",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b360018-cSSguPJzQI69.png",
+  "media": [
+   176496,
+   105398
+  ],
+  "path": "/character/sillad"
+ },
+ "c36765": {
+  "id": 36765,
+  "name": "Kazuto Kirigaya",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b36765-BnLbXg0Tzzh9.png",
+  "media": [
+   11757,
+   20594,
+   100182
+  ],
+  "path": "/character/kazuto-kirigaya"
+ },
+ "c3694": {
+  "id": 3694,
+  "name": "Freeza",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b3694-bDfOdSSdFfPv.png",
+  "media": [
+   813,
+   21175,
+   225
+  ],
+  "path": "/character/freeza"
+ },
+ "c36976": {
+  "id": 36976,
+  "name": "Atsushi Murasakibara",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b36976-fVmQY9GqvHHa.png",
+  "media": [
+   11771,
+   16894,
+   20725
+  ],
+  "path": "/character/atsushi-murasakibara"
+ },
+ "c37832": {
+  "id": 37832,
+  "name": "Madoka Kaname",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b37832-lzVj5IkUciLd.jpg",
+  "media": [
+   9756,
+   11981,
+   104051
+  ],
+  "path": "/character/madoka-kaname"
+ },
+ "c3845": {
+  "id": 3845,
+  "name": "Retsu Unohana",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b3845-B0r5OCEkdJOR.png",
+  "media": [
+   269,
+   116674,
+   30012
+  ],
+  "path": "/character/retsu-unohana"
+ },
+ "c3908": {
+  "id": 3908,
+  "name": "Cell",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/3908.jpg",
+  "media": [
+   813,
+   225,
+   6033
+  ],
+  "path": "/character/cell"
+ },
  "c40": {
   "id": 40,
   "name": "Luffy Monkey",
@@ -207,6 +1883,168 @@
    141902
   ],
   "path": "/character/luffy-monkey"
+ },
+ "c4003": {
+  "id": 4003,
+  "name": "Joutarou Kuujou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b4003-gWDSEGbeOAll.png",
+  "media": [
+   14719,
+   20474,
+   21450
+  ],
+  "path": "/character/joutarou-kuujou"
+ },
+ "c40882": {
+  "id": 40882,
+  "name": "Eren Yeager",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40882-dsj7IP943WFF.jpg",
+  "media": [
+   16498,
+   20958,
+   99147
+  ],
+  "path": "/character/eren-yeager"
+ },
+ "c41135": {
+  "id": 41135,
+  "name": "Shaiapouf",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n41135-tTO36i1YAA5L.jpg",
+  "media": [
+   11061,
+   30026
+  ],
+  "path": "/character/shaiapouf"
+ },
+ "c4298": {
+  "id": 4298,
+  "name": "Sajin Komamura",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b4298-nuazBlSaHL7y.png",
+  "media": [
+   269,
+   116674,
+   159322
+  ],
+  "path": "/character/sajin-komamura"
+ },
+ "c43953": {
+  "id": 43953,
+  "name": "Menthuthuyoupi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/43953.jpg",
+  "media": [
+   11061,
+   30026
+  ],
+  "path": "/character/menthuthuyoupi"
+ },
+ "c45627": {
+  "id": 45627,
+  "name": "Levi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b45627-CR68RyZmddGG.png",
+  "media": [
+   16498,
+   20958,
+   99147
+  ],
+  "path": "/character/levi"
+ },
+ "c46109": {
+  "id": 46109,
+  "name": "Kaidou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b46109-MT7Hm4Bk93In.png",
+  "media": [
+   21,
+   30013
+  ],
+  "path": "/character/kaidou-one-piece"
+ },
+ "c46484": {
+  "id": 46484,
+  "name": "Reiner Braun",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b46484-P6A2GjNQn49F.png",
+  "media": [
+   16498,
+   20958,
+   99147
+  ],
+  "path": "/character/reiner-braun"
+ },
+ "c46488": {
+  "id": 46488,
+  "name": "Bertolt Hoover",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b46488-wm6HvkdkHoZu.jpg",
+  "media": [
+   16498,
+   20958,
+   99147
+  ],
+  "path": "/character/bertolt-hoover"
+ },
+ "c46490": {
+  "id": 46490,
+  "name": "Annie Leonhart",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b46490-tan274Ifc1Jf.jpg",
+  "media": [
+   16498,
+   20958,
+   110277
+  ],
+  "path": "/character/annie-leonhart"
+ },
+ "c4775": {
+  "id": 4775,
+  "name": "Asuma Sarutobi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b4775-skviHvjIQHiE.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/asuma-sarutobi"
+ },
+ "c4883": {
+  "id": 4883,
+  "name": "Roger Gold",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b4883-0t76xH00sehO.png",
+  "media": [
+   21,
+   30013,
+   105143
+  ],
+  "path": "/character/roger-gold"
+ },
+ "c4945": {
+  "id": 4945,
+  "name": "Broly",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b4945-iE59qIP7TxPu.png",
+  "media": [
+   101302,
+   133898,
+   901
+  ],
+  "path": "/character/broly"
+ },
+ "c5": {
+  "id": 5,
+  "name": "Ichigo Kurosaki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b5-a7bkJgjhhigE.png",
+  "media": [
+   269,
+   116674,
+   159322
+  ],
+  "path": "/character/ichigo-kurosaki"
+ },
+ "c5224": {
+  "id": 5224,
+  "name": "Nappa",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/5224.jpg",
+  "media": [
+   813,
+   225,
+   101302
+  ],
+  "path": "/character/nappa"
  },
  "c53901": {
   "id": 53901,
@@ -219,6 +2057,39 @@
   ],
   "path": "/character/madara-uchiha"
  },
+ "c54495": {
+  "id": 54495,
+  "name": "Linlin Charlotte",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b54495-3x1TzSzPEOLd.jpg",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/linlin-charlotte"
+ },
+ "c57": {
+  "id": 57,
+  "name": "Illumi Zoldyck",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b57-pTFguojSOQZW.png",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/illumi-zoldyck"
+ },
+ "c5726": {
+  "id": 5726,
+  "name": "Genryuusai Yamamoto",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b5726-mO7kc8Abka9J.jpg",
+  "media": [
+   269,
+   116674,
+   30012
+  ],
+  "path": "/character/genryuusai-yamamoto"
+ },
  "c57883": {
   "id": 57883,
   "name": "Hagoromo Ootsutsuki",
@@ -230,6 +2101,83 @@
   ],
   "path": "/character/hagoromo-ootsutsuki"
  },
+ "c58": {
+  "id": 58,
+  "name": "Chrollo Lucilfer",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b58-USOmsz3nursi.jpg",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/chrollo-lucilfer"
+ },
+ "c5836": {
+  "id": 5836,
+  "name": "Uvogin",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/5836.jpg",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/uvogin"
+ },
+ "c59": {
+  "id": 59,
+  "name": "Zeno Zoldyck",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n59-6mnrlhnGe2mw.png",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/zeno-zoldyck"
+ },
+ "c60": {
+  "id": 60,
+  "name": "Silva Zoldyck",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/60.jpg",
+  "media": [
+   11061,
+   136,
+   30026
+  ],
+  "path": "/character/silva-zoldyck"
+ },
+ "c6134": {
+  "id": 6134,
+  "name": "Ginyu",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/6134.jpg",
+  "media": [
+   813,
+   21175,
+   101302
+  ],
+  "path": "/character/ginyu"
+ },
+ "c6155": {
+  "id": 6155,
+  "name": "Raditz",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/6155.jpg",
+  "media": [
+   813,
+   101302,
+   6033
+  ],
+  "path": "/character/raditz"
+ },
+ "c62": {
+  "id": 62,
+  "name": "Zoro Roronoa",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b62-S7oAeA9WInjV.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/zoro-roronoa"
+ },
  "c64769": {
   "id": 64769,
   "name": "Shouyou Hinata",
@@ -240,6 +2188,17 @@
    21698
   ],
   "path": "/character/shouyou-hinata"
+ },
+ "c68537": {
+  "id": 68537,
+  "name": "Yhwach",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b68537-1bRB5OdseCp0.jpg",
+  "media": [
+   116674,
+   159322,
+   30012
+  ],
+  "path": "/character/yhwach"
  },
  "c6866": {
   "id": 6866,
@@ -262,6 +2221,61 @@
   ],
   "path": "/character/l-lawliet"
  },
+ "c71949": {
+  "id": 71949,
+  "name": "Jugram Haschwalth",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71949-wcakVhS04k9t.png",
+  "media": [
+   116674,
+   159322,
+   30012
+  ],
+  "path": "/character/jugram-haschwalth"
+ },
+ "c725": {
+  "id": 725,
+  "name": "Buggy",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n725-g04AaiaK5f9B.png",
+  "media": [
+   21,
+   30013,
+   105143
+  ],
+  "path": "/character/buggy"
+ },
+ "c727": {
+  "id": 727,
+  "name": "Shanks",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b727-wUJx7M1z5xON.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/shanks"
+ },
+ "c728": {
+  "id": 728,
+  "name": "Zabuza Momochi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b728-zHw77BzLzQKT.jpg",
+  "media": [
+   20,
+   1735,
+   30011
+  ],
+  "path": "/character/zabuza-momochi"
+ },
+ "c7302": {
+  "id": 7302,
+  "name": "Kushina Uzumaki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b7302-KQ6ddZtOkvUf.png",
+  "media": [
+   1735,
+   30011,
+   13667
+  ],
+  "path": "/character/kushina-uzumaki"
+ },
  "c73935": {
   "id": 73935,
   "name": "Saitama",
@@ -272,6 +2286,83 @@
    74347
   ],
   "path": "/character/saitama"
+ },
+ "c74359": {
+  "id": 74359,
+  "name": "Ichibe Hyousube",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b74359-ruMPBJV92Ncr.jpg",
+  "media": [
+   116674,
+   159322,
+   30012
+  ],
+  "path": "/character/ichibe-hyousube"
+ },
+ "c7453": {
+  "id": 7453,
+  "name": "Kuma Bartholomew",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b7453-c3MArieFBs9w.png",
+  "media": [
+   21,
+   30013,
+   182469
+  ],
+  "path": "/character/kuma-bartholomew"
+ },
+ "c7454": {
+  "id": 7454,
+  "name": "Moria Gecko",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b7454-WN77wNFvGtp8.png",
+  "media": [
+   21,
+   30013,
+   182469
+  ],
+  "path": "/character/moria-gecko"
+ },
+ "c76348": {
+  "id": 76348,
+  "name": "Beerus",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b76348-pGWrznfxgPIV.png",
+  "media": [
+   21175,
+   101302,
+   14837
+  ],
+  "path": "/character/beerus"
+ },
+ "c80": {
+  "id": 80,
+  "name": "Light Yagami",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b80-26EhwSsSqQ50.png",
+  "media": [
+   1535,
+   20931,
+   30021
+  ],
+  "path": "/character/light-yagami"
+ },
+ "c8064": {
+  "id": 8064,
+  "name": "Garp",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b8064-dPltKaZ8RAsj.jpg",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/garp"
+ },
+ "c82259": {
+  "id": 82259,
+  "name": "Isshou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b82259-NFdvvcSHup7Z.jpg",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/isshou"
  },
  "c85": {
   "id": 85,
@@ -284,6 +2375,50 @@
   ],
   "path": "/character/kakashi-hatake"
  },
+ "c89": {
+  "id": 89,
+  "name": "Shinji Ikari",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89-ZtZhXkh1rITn.png",
+  "media": [
+   30,
+   32,
+   2759
+  ],
+  "path": "/character/shinji-ikari"
+ },
+ "c89224": {
+  "id": 89224,
+  "name": "Toshinori Yagi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89224-K6KEuQAuYKzq.jpg",
+  "media": [
+   21459,
+   21856,
+   100166
+  ],
+  "path": "/character/toshinori-yagi"
+ },
+ "c89334": {
+  "id": 89334,
+  "name": "Arataka Reigen",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89334-OPj1hCzvrt7X.png",
+  "media": [
+   21507,
+   101338,
+   140439
+  ],
+  "path": "/character/arataka-reigen"
+ },
+ "c89517": {
+  "id": 89517,
+  "name": "Lev Haiba",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89517-qVTrohFmBcSM.png",
+  "media": [
+   20992,
+   21698,
+   106625
+  ],
+  "path": "/character/lev-haiba"
+ },
  "c89616": {
   "id": 89616,
   "name": "Shigeo Kageyama",
@@ -295,6 +2430,124 @@
   ],
   "path": "/character/shigeo-kageyama"
  },
+ "c907": {
+  "id": 907,
+  "name": "Byakuya Kuchiki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b907-kgnDKeMtEN5y.png",
+  "media": [
+   269,
+   116674,
+   159322
+  ],
+  "path": "/character/byakuya-kuchiki"
+ },
+ "c909": {
+  "id": 909,
+  "name": "Kenpachi Zaraki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b909-slhoFBon7oiH.jpg",
+  "media": [
+   269,
+   116674,
+   159322
+  ],
+  "path": "/character/kenpachi-zaraki"
+ },
+ "c913": {
+  "id": 913,
+  "name": "Vegeta",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b913-NIFkKazWM8VO.png",
+  "media": [
+   813,
+   21175,
+   225
+  ],
+  "path": "/character/vegeta"
+ },
+ "c914": {
+  "id": 914,
+  "name": "Piccolo",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b914-KuS8AWjqBrqa.jpg",
+  "media": [
+   813,
+   223,
+   21175
+  ],
+  "path": "/character/piccolo"
+ },
+ "c9323": {
+  "id": 9323,
+  "name": "Marco",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b9323-tGArly93xBZv.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/marco"
+ },
+ "m1": {
+  "id": 1,
+  "title": "Cowboy Bebop",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1-GCsPm7waJ4kS.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-OquNCNB6srGe.jpg",
+  "path": "/anime/cowboy-bebop"
+ },
+ "m100049": {
+  "id": 100049,
+  "title": "Re:ZERO -Starting Life in Another World- OVAs",
+  "type": "ANIME",
+  "format": "OVA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx100049-mgvPLctBJprp.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100049-jlQ24bwYluey.jpg",
+  "path": "/anime/re-zero-starting-life-in-another-world-ovas"
+ },
+ "m100166": {
+  "id": 100166,
+  "title": "My Hero Academia Season 3",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100166-jUCZYbzn2XLw.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100166-k7RXwN5vZg0r.jpg",
+  "path": "/anime/my-hero-academia-season-3"
+ },
+ "m100182": {
+  "id": 100182,
+  "title": "Sword Art Online: Alicization",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx100182-KctPmCJ2smHQ.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100182-8iGTeJ2kYRDt.jpg",
+  "path": "/anime/sword-art-online-alicization"
+ },
+ "m100815": {
+  "id": 100815,
+  "title": "Zoku Owarimonogatari",
+  "type": "ANIME",
+  "format": "OVA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100815-cZbnM9Bjth8W.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100815-bglW3E780lwq.jpg",
+  "path": "/anime/zoku-owarimonogatari"
+ },
+ "m10087": {
+  "id": 10087,
+  "title": "Fate/Zero",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10087-M4Hd9qrHGrXk.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/10087-32MFY9VnJQ7I.jpg",
+  "path": "/anime/fate-zero"
+ },
+ "m100954": {
+  "id": 100954,
+  "title": "Sweet Home",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx100954-xY0Vw2sRRo8t.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/100954-y7f4uDwqvDny.jpg",
+  "path": "/manhwa/sweet-home"
+ },
  "m101099": {
   "id": 101099,
   "title": "HUNGRY DAYS: Aoharu ka yo.",
@@ -304,6 +2557,15 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101099-KarIxewMysiK.jpg",
   "path": "/anime/hungry-days-aoharu-ka-yo"
  },
+ "m101302": {
+  "id": 101302,
+  "title": "Dragon Ball Super: Broly",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101302-7L0lcwYeFQQM.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101302-2ix6Nti3Y11Q.jpg",
+  "path": "/anime/dragon-ball-super-broly"
+ },
  "m101338": {
   "id": 101338,
   "title": "Mob Psycho 100 II",
@@ -312,6 +2574,15 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101338-rokVscjRYzdP.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101338-Rl54Qhx71dUq.jpg",
   "path": "/anime/mob-psycho-100-ii"
+ },
+ "m101517": {
+  "id": 101517,
+  "title": "Jujutsu Kaisen",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101517-H3TdM3g5ZUe9.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/101517-FrJtb3Th3HtF.jpg",
+  "path": "/manga/jujutsu-kaisen"
  },
  "m101583": {
   "id": 101583,
@@ -331,6 +2602,114 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101922-33MtJGsUSxga.jpg",
   "path": "/anime/demon-slayer-kimetsu-no-yaiba"
  },
+ "m102352": {
+  "id": 102352,
+  "title": "Super Dragon Ball Heroes",
+  "type": "ANIME",
+  "format": "ONA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b102352-iTBUsIV9x7KH.jpg",
+  "banner": null,
+  "path": "/anime/super-dragon-ball-heroes"
+ },
+ "m103275": {
+  "id": 103275,
+  "title": "Fate/Grand Order Absolute Demonic Front: Babylonia",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx103275-SN0wwshS3tWA.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103275-9vSzr7YzbXQb.jpg",
+  "path": "/anime/fate-grand-order-absolute-demonic-front-babylonia"
+ },
+ "m103276": {
+  "id": 103276,
+  "title": "Fate/Grand Order Divine Realm of the Round Table: Camelot - Wandering; Agateram",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx103276-7QhBwJs0O6Gi.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103276-Al60Ha42yp1h.jpg",
+  "path": "/anime/fate-grand-order-divine-realm-of-the-round-table-camelot-wandering-agateram"
+ },
+ "m103277": {
+  "id": 103277,
+  "title": "Fate/Grand Order Divine Realm of the Round Table: Camelot - Paladin; Agateram",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx103277-BuAfaC3dKOUp.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103277-aTpOhNwE5a94.jpg",
+  "path": "/anime/fate-grand-order-divine-realm-of-the-round-table-camelot-paladin-agateram"
+ },
+ "m103632": {
+  "id": 103632,
+  "title": "So I'm a Spider, So What?",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx103632-2wsy9wFUdm1C.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103632-N4ssExnvLw74.jpg",
+  "path": "/anime/so-i-m-a-spider-so-what"
+ },
+ "m103995": {
+  "id": 103995,
+  "title": "True Beauty",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx103995-eE7WHxOy77TB.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/103995-luxu2XzOn6SC.jpg",
+  "path": "/manhwa/true-beauty"
+ },
+ "m104051": {
+  "id": 104051,
+  "title": "Magia Record: Puella Magi Madoka Magica Side Story",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx104051-tFMIbiffwBLs.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/104051-6yiBdkd5OkZt.jpg",
+  "path": "/anime/magia-record-puella-magi-madoka-magica-side-story"
+ },
+ "m104578": {
+  "id": 104578,
+  "title": "Attack on Titan Season 3 Part 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx104578-k61nx3LPjvgd.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/104578-z7SadpYEuAsy.jpg",
+  "path": "/anime/attack-on-titan-season-3-part-2"
+ },
+ "m104647": {
+  "id": 104647,
+  "title": "My Next Life as a Villainess: All Routes Lead to Doom!",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx104647-dMGZSavRxHcM.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/104647-emIYPiyZZJnl.jpg",
+  "path": "/anime/my-next-life-as-a-villainess-all-routes-lead-to-doom"
+ },
+ "m105143": {
+  "id": 105143,
+  "title": "One Piece: Stampede",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx105143-5uBDmhvMr6At.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/105143-y8oSKa8PSsgK.jpg",
+  "path": "/anime/one-piece-stampede"
+ },
+ "m105398": {
+  "id": 105398,
+  "title": "Solo Leveling",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105398-b673Vt5ZSuz3.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/105398-4UrEhdqZukrg.jpg",
+  "path": "/manhwa/solo-leveling"
+ },
+ "m105469": {
+  "id": 105469,
+  "title": "Jujutsu Kaisen 0",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105469-IvLF5yIf6LBC.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/105469-bFlz61UBbNvb.jpg",
+  "path": "/manga/jujutsu-kaisen-0"
+ },
  "m105778": {
   "id": 105778,
   "title": "Chainsaw Man",
@@ -339,6 +2718,96 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105778-euxXZEIfDY2u.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-ppHaMwown6c9.jpg",
   "path": "/manga/chainsaw-man"
+ },
+ "m10589": {
+  "id": 10589,
+  "title": "Naruto Shippuden the Movie: Blood Prison",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10589-VhXWWMm24Dso.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/10589-s5r2dzqohuU7.jpg",
+  "path": "/anime/naruto-shippuden-the-movie-blood-prison"
+ },
+ "m106625": {
+  "id": 106625,
+  "title": "HAIKYU!! TO THE TOP",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx106625-UR22wB2NuNVi.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/106625-wab2Mx4NQqPQ.jpg",
+  "path": "/anime/haikyu-to-the-top"
+ },
+ "m106918": {
+  "id": 106918,
+  "title": "Lord El-Melloi II's Case Files {Rail Zeppelin} Grace note",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx106918-4T0AdnCg8d64.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/106918-rfoPP8HknWAM.jpg",
+  "path": "/anime/lord-el-melloi-ii-s-case-files-rail-zeppelin-grace-note"
+ },
+ "m106929": {
+  "id": 106929,
+  "title": "Eleceed",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx106929-flAUvHZDUz5v.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/106929-jYmT1n3Z0m46.jpg",
+  "path": "/manhwa/eleceed"
+ },
+ "m108268": {
+  "id": 108268,
+  "title": "Ascendance of a Bookworm",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx108268-Dtt82uOi3vq5.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108268-JbUzGiUlmCTy.jpg",
+  "path": "/anime/ascendance-of-a-bookworm"
+ },
+ "m108465": {
+  "id": 108465,
+  "title": "Mushoku Tensei: Jobless Reincarnation",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx108465-1ANspF1EWyFx.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108465-RgsRpTMhP9Sv.jpg",
+  "path": "/anime/mushoku-tensei-jobless-reincarnation"
+ },
+ "m108556": {
+  "id": 108556,
+  "title": "SPY x FAMILY",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx108556-NHjkz0BNJhLx.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/108556-iCiPfU0GU4OM.jpg",
+  "path": "/manga/spy-x-family"
+ },
+ "m108632": {
+  "id": 108632,
+  "title": "Re:ZERO -Starting Life in Another World- Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx108632-lQWnmw7XaNOK.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108632-yeLbrgPN4Oni.jpg",
+  "path": "/anime/re-zero-starting-life-in-another-world-season-2"
+ },
+ "m110277": {
+  "id": 110277,
+  "title": "Attack on Titan Final Season",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx110277-sKUNXAsWMNFw.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/110277-iuGn6F5bK1U1.jpg",
+  "path": "/anime/attack-on-titan-final-season"
+ },
+ "m11061": {
+  "id": 11061,
+  "title": "Hunter x Hunter (2011)",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11061-y5gsT1hoHuHw.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11061-8WkkTZ6duKpq.jpg",
+  "path": "/anime/hunter-x-hunter-2011"
  },
  "m112151": {
   "id": 112151,
@@ -349,6 +2818,15 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/112151-eHCBz19nf2yC.jpg",
   "path": "/anime/demon-slayer-kimetsu-no-yaiba-the-movie-mugen-train"
  },
+ "m113055": {
+  "id": 113055,
+  "title": "The Remarried Empress",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx113055-pGB4A5nzhFdF.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/113055-DBbT3IccXVqx.jpg",
+  "path": "/manhwa/the-remarried-empress"
+ },
  "m113415": {
   "id": 113415,
   "title": "JUJUTSU KAISEN",
@@ -357,6 +2835,141 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113415-LHBAeoZDIsnF.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/113415-jQBSkxWAAk83.jpg",
   "path": "/anime/jujutsu-kaisen"
+ },
+ "m113488": {
+  "id": 113488,
+  "title": "Weak Hero",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx113488-0ghq0eEnftk0.jpg",
+  "banner": null,
+  "path": "/manhwa/weak-hero"
+ },
+ "m11597": {
+  "id": 11597,
+  "title": "Nisemonogatari",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11597-x2vd4KSHcI1S.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11597-GAiesUhFN9U9.jpg",
+  "path": "/anime/nisemonogatari"
+ },
+ "m116674": {
+  "id": 116674,
+  "title": "BLEACH: Thousand-Year Blood War",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx116674-p3zK4PUX2Aag.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/116674-l2YlIyJzvGSV.jpg",
+  "path": "/anime/bleach-thousand-year-blood-war"
+ },
+ "m116756": {
+  "id": 116756,
+  "title": "Fate/Grand Order Final Singularity - Grand Temple of Time: Solomon",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx116756-jIU2HrnEsDjR.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/116756-Bb7BkeRMTpaP.jpg",
+  "path": "/anime/fate-grand-order-final-singularity-grand-temple-of-time-solomon"
+ },
+ "m11741": {
+  "id": 11741,
+  "title": "Fate/Zero Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11741-oEy1fJHYm2zJ.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11741-TWwZCgsK5aXh.jpg",
+  "path": "/anime/fate-zero-season-2"
+ },
+ "m11757": {
+  "id": 11757,
+  "title": "Sword Art Online",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11757-SxYDUzdr9rh2.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11757-TlEEV9weG4Ag.jpg",
+  "path": "/anime/sword-art-online"
+ },
+ "m11771": {
+  "id": 11771,
+  "title": "Kuroko's Basketball",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11771-uvr44RAwRxPw.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11771-Bjm9Q0ow0nEh.jpg",
+  "path": "/anime/kuroko-s-basketball"
+ },
+ "m118408": {
+  "id": 118408,
+  "title": "Villains Are Destined to Die",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx118408-zZuOINqjBZYn.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/118408-FT9bkwTdii7D.jpg",
+  "path": "/manhwa/villains-are-destined-to-die"
+ },
+ "m118586": {
+  "id": 118586,
+  "title": "Frieren: Beyond Journey’s End",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx118586-CXKgWikBFQgS.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/118586-R1c7mc72oPvS.jpg",
+  "path": "/manga/frieren-beyond-journey-s-end"
+ },
+ "m119257": {
+  "id": 119257,
+  "title": "Omniscient Reader",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx119257-Pi21aq3ey9GG.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/119257-RtxJMRCunHXc.jpg",
+  "path": "/manhwa/omniscient-reader"
+ },
+ "m119661": {
+  "id": 119661,
+  "title": "Re:ZERO -Starting Life in Another World- Season 2 Part 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx119661-GDbUZxrZMz01.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/119661-9C7DvtL7yfCu.jpg",
+  "path": "/anime/re-zero-starting-life-in-another-world-season-2-part-2"
+ },
+ "m11981": {
+  "id": 11981,
+  "title": "Puella Magi Madoka Magica the Movie -Rebellion-",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b11981-koz1IoISs3eU.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11981-kfpR0i6kwMLM.jpg",
+  "path": "/anime/puella-magi-madoka-magica-the-movie-rebellion"
+ },
+ "m121": {
+  "id": 121,
+  "title": "Fullmetal Alchemist",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx121-zjmixZ428Mwv.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/121-t5K7c8WRuPWl.jpg",
+  "path": "/anime/fullmetal-alchemist"
+ },
+ "m123": {
+  "id": 123,
+  "title": "Fushigi Yugi: The Mysterious Play",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx123-nTVq4CHgK5Ly.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/123-aB3o7LLZrWWV.png",
+  "path": "/anime/fushigi-yugi-the-mysterious-play"
+ },
+ "m123739": {
+  "id": 123739,
+  "title": "Under the Oak Tree",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx123739-qDrNrU0ZD6UX.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/123739-TAaqjpGPEaop.jpg",
+  "path": "/manhwa/under-the-oak-tree"
  },
  "m127230": {
   "id": 127230,
@@ -376,6 +2989,24 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127549-9j4uHXMStHGX.jpg",
   "path": "/anime/slow-loop"
  },
+ "m12859": {
+  "id": 12859,
+  "title": "One Piece Film: Z",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx12859-uQFENDPzMWz6.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/12859-XjlBW6o2YwUb.jpg",
+  "path": "/anime/one-piece-film-z"
+ },
+ "m129874": {
+  "id": 129874,
+  "title": "Demon Slayer: Kimetsu no Yaiba Mugen Train Arc",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx129874-g6ZKXB94Hui1.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/129874-3ipZzS50i9Ta.jpg",
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-mugen-train-arc"
+ },
  "m130003": {
   "id": 130003,
   "title": "BOCCHI THE ROCK!",
@@ -394,6 +3025,24 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/131573-3veuVz5p0z2I.jpg",
   "path": "/anime/jujutsu-kaisen-0"
  },
+ "m131681": {
+  "id": 131681,
+  "title": "Attack on Titan Final Season Part 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131681-5ooUqvqNtee1.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/131681-3tNurPRsqsfz.jpg",
+  "path": "/anime/attack-on-titan-final-season-part-2"
+ },
+ "m132144": {
+  "id": 132144,
+  "title": "Return of the Blossoming Blade",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx132144-i5B4VnG9sRgh.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/132144-tITrsibdFo3n.jpg",
+  "path": "/manhwa/return-of-the-blossoming-blade"
+ },
  "m132405": {
   "id": 132405,
   "title": "My Dress-Up Darling",
@@ -403,6 +3052,33 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/132405-LnPQaqaksEpN.jpg",
   "path": "/anime/my-dress-up-darling"
  },
+ "m133898": {
+  "id": 133898,
+  "title": "Dragon Ball Super: SUPER HERO",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx133898-KdQ7fWTG06n4.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/133898-MYeTtAsD6KjA.jpg",
+  "path": "/anime/dragon-ball-super-super-hero"
+ },
+ "m136": {
+  "id": 136,
+  "title": "Hunter x Hunter",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx136-gj0bbCpDNrKG.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/136-uHALFo2vGOGd.jpg",
+  "path": "/anime/hunter-x-hunter"
+ },
+ "m136382": {
+  "id": 136382,
+  "title": "Demon Slayer: Kimetsu Academy",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx136382-MbpgvJ8eBy4d.jpg",
+  "banner": null,
+  "path": "/manga/demon-slayer-kimetsu-academy"
+ },
  "m13667": {
   "id": 13667,
   "title": "Road to Ninja: Naruto the Movie",
@@ -411,6 +3087,15 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx13667-gAKuIXI2avRq.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/13667-7Cpxg5sCOVpw.jpg",
   "path": "/anime/road-to-ninja-naruto-the-movie"
+ },
+ "m140407": {
+  "id": 140407,
+  "title": "The Greatest Estate Developer",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx140407-fJQr0fmqq1IO.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/140407-WMGs02Q3fFUb.jpg",
+  "path": "/manhwa/the-greatest-estate-developer"
  },
  "m140439": {
   "id": 140439,
@@ -466,6 +3151,60 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/145064-esDtAY2He7sk.jpg",
   "path": "/anime/jujutsu-kaisen-season-2"
  },
+ "m145139": {
+  "id": 145139,
+  "title": "Demon Slayer: Kimetsu no Yaiba Swordsmith Village Arc",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx145139-rRimpHGWLhym.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/145139-V01Prh6UzfRk.jpg",
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-swordsmith-village-arc"
+ },
+ "m146984": {
+  "id": 146984,
+  "title": "Attack on Titan Final Season THE FINAL CHAPTERS Special 1",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx146984-GXrLeT6vQqyP.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/146984-yAkTtW2AExVj.jpg",
+  "path": "/anime/attack-on-titan-final-season-the-final-chapters-special-1"
+ },
+ "m14719": {
+  "id": 14719,
+  "title": "JoJo's Bizarre Adventure (TV)",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx14719-VT5dRzTBSZ0w.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/14719-m7Hv2AxcNNjM.jpg",
+  "path": "/anime/jojo-s-bizarre-adventure-tv"
+ },
+ "m14837": {
+  "id": 14837,
+  "title": "Dragon Ball Z: Battle of Gods",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/14837.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/14837-dMPlW45GA8BE.jpg",
+  "path": "/anime/dragon-ball-z-battle-of-gods"
+ },
+ "m151807": {
+  "id": 151807,
+  "title": "Solo Leveling",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx151807-it355ZgzquUd.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/151807-37yfQA3ym8PA.jpg",
+  "path": "/anime/solo-leveling"
+ },
+ "m153": {
+  "id": 153,
+  "title": "The Twelve Kingdoms",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx153-pLhZPQCYk7hl.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/153-69eJS2eBYxus.jpg",
+  "path": "/anime/the-twelve-kingdoms"
+ },
  "m1535": {
   "id": 1535,
   "title": "Death Note",
@@ -474,6 +3213,24 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-kUgkcrfOrkUM.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1535.jpg",
   "path": "/anime/death-note"
+ },
+ "m154384": {
+  "id": 154384,
+  "title": "Tearmoon Empire",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154384-3tpmugzrVpE9.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154384-G8o38tiGCqbR.jpg",
+  "path": "/anime/tearmoon-empire"
+ },
+ "m154587": {
+  "id": 154587,
+  "title": "Frieren: Beyond Journey’s End",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154587-qQTzQnEJJ3oB.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154587-ivXNJ23SM1xB.jpg",
+  "path": "/anime/frieren-beyond-journey-s-end"
  },
  "m154768": {
   "id": 154768,
@@ -484,6 +3241,15 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154768-EuZd63IcqsVq.jpg",
   "path": "/anime/my-dress-up-darling-season-2"
  },
+ "m154966": {
+  "id": 154966,
+  "title": "Fate/strange Fake -Whispers of Dawn-",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154966-eQRCmSrCh96j.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154966-xIvcAtzwOZk6.jpg",
+  "path": "/anime/fate-strange-fake-whispers-of-dawn"
+ },
  "m155348": {
   "id": 155348,
   "title": "ROAD OF NARUTO",
@@ -492,6 +3258,24 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx155348-4ipji8SvTjyh.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/155348-I6f4TQKslVx2.jpg",
   "path": "/anime/road-of-naruto"
+ },
+ "m15689": {
+  "id": 15689,
+  "title": "Nekomonogatari Black",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx15689-1Na3FwWgGk8v.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/15689-OkvbPqAXnJd5.jpg",
+  "path": "/anime/nekomonogatari-black"
+ },
+ "m1575": {
+  "id": 1575,
+  "title": "Code Geass: Lelouch of the Rebellion",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1575-hsmWM2ydNm1m.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1575.jpg",
+  "path": "/anime/code-geass-lelouch-of-the-rebellion"
  },
  "m158927": {
   "id": 158927,
@@ -502,6 +3286,60 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/158927-zXtbXUO5iKzX.jpg",
   "path": "/anime/spy-x-family-season-2"
  },
+ "m159322": {
+  "id": 159322,
+  "title": "BLEACH: Thousand-Year Blood War - The Separation",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx159322-Sp1GflRhE6Po.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/159322-biJjvtNkhkxR.jpg",
+  "path": "/anime/bleach-thousand-year-blood-war-the-separation"
+ },
+ "m162314": {
+  "id": 162314,
+  "title": "Attack on Titan Final Season THE FINAL CHAPTERS Special 2",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx162314-qIWdAAFtvY8J.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/162314-N5M4XMz6O1j4.jpg",
+  "path": "/anime/attack-on-titan-final-season-the-final-chapters-special-2"
+ },
+ "m163134": {
+  "id": 163134,
+  "title": "Re:ZERO -Starting Life in Another World- Season 3",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx163134-yieRFbvUOH9a.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/163134-CqaXjXVivwJ5.jpg",
+  "path": "/anime/re-zero-starting-life-in-another-world-season-3"
+ },
+ "m16498": {
+  "id": 16498,
+  "title": "Attack on Titan",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-buvcRTBx4NSm.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-8jpFCOcDmneX.jpg",
+  "path": "/anime/attack-on-titan"
+ },
+ "m166240": {
+  "id": 166240,
+  "title": "Demon Slayer: Kimetsu no Yaiba Hashira Training Arc",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx166240-PBV7zukIHW7V.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/166240-YdxoEhrfwNk0.jpg",
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-hashira-training-arc"
+ },
+ "m166617": {
+  "id": 166617,
+  "title": "Fate/strange Fake",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx166617-34fpC9y47tTx.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/166617-P4w3p0H4lE1O.jpg",
+  "path": "/anime/fate-strange-fake"
+ },
  "m16870": {
   "id": 16870,
   "title": "The Last: Naruto the Movie",
@@ -510,6 +3348,42 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16870-BD4K9rzlhCP4.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16870-xz6KbaGC0jas.jpg",
   "path": "/anime/the-last-naruto-the-movie"
+ },
+ "m16894": {
+  "id": 16894,
+  "title": "Kuroko's Basketball 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16894-iXt8GDs1L6dr.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16894-L8kzeV6tFSII.jpg",
+  "path": "/anime/kuroko-s-basketball-2"
+ },
+ "m169755": {
+  "id": 169755,
+  "title": "BLEACH: Thousand-Year Blood War - The Conflict",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx169755-Rqb7MjnzdTc6.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/169755-hCWjp9ajjMYV.jpg",
+  "path": "/anime/bleach-thousand-year-blood-war-the-conflict"
+ },
+ "m170083": {
+  "id": 170083,
+  "title": "Dragon Ball DAIMA",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx170083-GTwRrhTApcLR.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/170083-SYCCWWlq3hqF.jpg",
+  "path": "/anime/dragon-ball-daima"
+ },
+ "m17074": {
+  "id": 17074,
+  "title": "Monogatari Series Second Season",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx17074-xMhVAZsEDH66.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/17074-4tGsvEIjba22.jpg",
+  "path": "/anime/monogatari-series-second-season"
  },
  "m171627": {
   "id": 171627,
@@ -520,6 +3394,15 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/171627-7esVHhgw69rn.jpg",
   "path": "/anime/chainsaw-man-the-movie-reze-arc"
  },
+ "m172463": {
+  "id": 172463,
+  "title": "JUJUTSU KAISEN Season 3: The Culling Game Part 1",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx172463-LnXqHzt74SJL.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/172463-3J2o3qQZadFJ.jpg",
+  "path": "/anime/jujutsu-kaisen-season-3-the-culling-game-part-1"
+ },
  "m1735": {
   "id": 1735,
   "title": "Naruto: Shippuden",
@@ -528,6 +3411,69 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1735-kGfVm0YqCPcu.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
   "path": "/anime/naruto-shippuden"
+ },
+ "m173533": {
+  "id": 173533,
+  "title": "MONOGATARI Series: OFF & MONSTER Season",
+  "type": "ANIME",
+  "format": "ONA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx173533-9DN3nHtT2FBm.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/173533-5s5IHtcgBwta.jpg",
+  "path": "/anime/monogatari-series-off-and-monster-season"
+ },
+ "m176496": {
+  "id": 176496,
+  "title": "Solo Leveling Season 2 -Arise from the Shadow-",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx176496-9BDMjAZGEbq4.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/176496-5oY4k2NRqlYs.jpg",
+  "path": "/anime/solo-leveling-season-2-arise-from-the-shadow"
+ },
+ "m178788": {
+  "id": 178788,
+  "title": "Demon Slayer: Kimetsu no Yaiba Infinity Castle",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178788-zm3gtpB9TpRt.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/178788-tSHb5MiaNBNL.jpg",
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-infinity-castle"
+ },
+ "m179445": {
+  "id": 179445,
+  "title": "Solo Leveling: Ragnarok",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx179445-ho0nb7baJ1a5.jpg",
+  "banner": null,
+  "path": "/manhwa/solo-leveling-ragnarok"
+ },
+ "m182255": {
+  "id": 182255,
+  "title": "Frieren: Beyond Journey’s End Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182255-butzrqd4I0aC.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/182255-wyHvp6zJbWsO.jpg",
+  "path": "/anime/frieren-beyond-journey-s-end-season-2"
+ },
+ "m182469": {
+  "id": 182469,
+  "title": "ONE PIECE FAN LETTER",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182469-JQ808NBPxmgn.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/182469-obNr7bznMzN7.jpg",
+  "path": "/anime/one-piece-fan-letter"
+ },
+ "m18397": {
+  "id": 18397,
+  "title": "Attack on Titan OVA",
+  "type": "ANIME",
+  "format": "OVA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx18397-AnpwhLkSjYL1.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/18397-rG4Vpg67Kr0j.jpg",
+  "path": "/anime/attack-on-titan-ova"
  },
  "m186712": {
   "id": 186712,
@@ -538,6 +3484,42 @@
   "banner": null,
   "path": "/anime/bocchi-the-rock-2nd-season"
  },
+ "m189046": {
+  "id": 189046,
+  "title": "Re:ZERO -Starting Life in Another World- Season 4",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx189046-yaHWtS5FII46.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/189046-MDk2CaVuRWpb.jpg",
+  "path": "/anime/re-zero-starting-life-in-another-world-season-4"
+ },
+ "m192809": {
+  "id": 192809,
+  "title": "JUJUTSU KAISEN: Hidden Inventory / Premature Death – The Movie",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx192809-wRlqABGsx2Qs.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/192809-GYqoYK9Sfhkk.jpg",
+  "path": "/anime/jujutsu-kaisen-hidden-inventory-premature-death-the-movie"
+ },
+ "m19603": {
+  "id": 19603,
+  "title": "Fate/stay night: Unlimited Blade Works",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx19603-ycT0pyEgDVQu.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/19603.jpg",
+  "path": "/anime/fate-stay-night-unlimited-blade-works"
+ },
+ "m199": {
+  "id": 199,
+  "title": "Spirited Away",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx199-sWefXJvXkDOb.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/199-Sm2RU5PSqw7T.jpg",
+  "path": "/anime/spirited-away"
+ },
  "m20": {
   "id": 20,
   "title": "Naruto",
@@ -547,6 +3529,24 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20-HHxhPj5JD13a.jpg",
   "path": "/anime/naruto"
  },
+ "m2001": {
+  "id": 2001,
+  "title": "Gurren Lagann",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx2001-XwRnjzGeFWRQ.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/2001-3eWhvkau8NV3.jpg",
+  "path": "/anime/gurren-lagann"
+ },
+ "m204066": {
+  "id": 204066,
+  "title": "JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins-",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204066-Gb5k7j6Cpbng.jpg",
+  "banner": null,
+  "path": "/anime/jujutsu-kaisen-execution-shibuya-incident-x-the-culling-game-begins"
+ },
  "m20464": {
   "id": 20464,
   "title": "HAIKYU!!",
@@ -555,6 +3555,123 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20464-ooZUyBe4ptp9.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20464-PpYjO9cPN1gs.jpg",
   "path": "/anime/haikyu"
+ },
+ "m20474": {
+  "id": 20474,
+  "title": "JoJo's Bizarre Adventure: Stardust Crusaders",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20474-xuqem5GBlBtb.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20474-peBLuUVAzNC3.jpg",
+  "path": "/anime/jojo-s-bizarre-adventure-stardust-crusaders"
+ },
+ "m20593": {
+  "id": 20593,
+  "title": "Hanamonogatari",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20593-ri6S0Qt3mFkv.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20593-axzVzexiYwqs.png",
+  "path": "/anime/hanamonogatari"
+ },
+ "m20594": {
+  "id": 20594,
+  "title": "Sword Art Online II",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx20594-FhRgZ1H9Istt.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20594-BZOLwqidcS1G.jpg",
+  "path": "/anime/sword-art-online-ii"
+ },
+ "m20635": {
+  "id": 20635,
+  "title": "Dragon Ball Z Kai: The Final Chapters",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20635-gUYy4KZfYRb0.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20635-2eB3QP44dM1M.jpg",
+  "path": "/anime/dragon-ball-z-kai-the-final-chapters"
+ },
+ "m20725": {
+  "id": 20725,
+  "title": "Kuroko's Basketball 3",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20725-DLu8VlkGFQKc.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20725-ATMoU6GgyT5G.jpg",
+  "path": "/anime/kuroko-s-basketball-3"
+ },
+ "m20778": {
+  "id": 20778,
+  "title": "Dragon Ball Z: Resurrection 'F'",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20778-HYEes09iv8fJ.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20778-wi4bZxwjT3c6.jpg",
+  "path": "/anime/dragon-ball-z-resurrection-f"
+ },
+ "m20791": {
+  "id": 20791,
+  "title": "Fate/stay night [Heaven's Feel] I. presage flower",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20791-yPCX5GJuMH2k.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20791-oJEIboUcTf4o.jpg",
+  "path": "/anime/fate-stay-night-heaven-s-feel-i-presage-flower"
+ },
+ "m20792": {
+  "id": 20792,
+  "title": "Fate/stay night: Unlimited Blade Works 2nd Season",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20792-Q53sZsUAh5FF.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20792-tYnEdWy6Yi0I.jpg",
+  "path": "/anime/fate-stay-night-unlimited-blade-works-2nd-season"
+ },
+ "m20811": {
+  "id": 20811,
+  "title": "Attack on Titan: No Regrets",
+  "type": "ANIME",
+  "format": "OVA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20811-IvXLdxZkYNcP.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20811-LpRmeR6sDtX1.jpg",
+  "path": "/anime/attack-on-titan-no-regrets"
+ },
+ "m20918": {
+  "id": 20918,
+  "title": "Tsukimonogatari",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20918-8Gp6nJpbjFgr.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20918-5k02zgWVjDZi.jpg",
+  "path": "/anime/tsukimonogatari"
+ },
+ "m20931": {
+  "id": 20931,
+  "title": "Death Parade",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx20931-bktYqOcxPERi.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20931-xDhiTPZmtS3u.jpg",
+  "path": "/anime/death-parade"
+ },
+ "m20958": {
+  "id": 20958,
+  "title": "Attack on Titan Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20958-HuFJyr54Mmir.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20958-Y7eQdz9VENBD.jpg",
+  "path": "/anime/attack-on-titan-season-2"
+ },
+ "m209895": {
+  "id": 209895,
+  "title": "Jujutsu Kaisen: Shimetsu Kaiyuu - Kouhen",
+  "type": "ANIME",
+  "format": null,
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx209895-vTRv4YqkdAbX.jpg",
+  "banner": null,
+  "path": "/anime/jujutsu-kaisen-shimetsu-kaiyuu-kouhen"
  },
  "m20992": {
   "id": 20992,
@@ -583,6 +3700,96 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21087-sHb9zUZFsHe1.jpg",
   "path": "/anime/one-punch-man"
  },
+ "m21175": {
+  "id": 21175,
+  "title": "Dragon Ball Super",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21175-EH06qlfF8TnB.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21175-Qo9gdGPUm4Im.jpg",
+  "path": "/anime/dragon-ball-super"
+ },
+ "m21202": {
+  "id": 21202,
+  "title": "KONOSUBA -God's blessing on this wonderful world!",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21202-mPOr80AEjUcZ.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21202-UWijdV7RMnXo.jpg",
+  "path": "/anime/konosuba-god-s-blessing-on-this-wonderful-world"
+ },
+ "m21220": {
+  "id": 21220,
+  "title": "Boruto: Naruto the Movie",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21220-3cWAUtR1Ih5h.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21220-tdeNPd6YFzIo.jpg",
+  "path": "/anime/boruto-naruto-the-movie"
+ },
+ "m21262": {
+  "id": 21262,
+  "title": "Owarimonogatari",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21262-jfbv9hvjymMW.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21262-nlSoKZSaxyJo.jpg",
+  "path": "/anime/owarimonogatari"
+ },
+ "m21355": {
+  "id": 21355,
+  "title": "Re:ZERO -Starting Life in Another World-",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21355-wRVUrGxpvIQQ.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21355-f9SjOfEJMk5P.jpg",
+  "path": "/anime/re-zero-starting-life-in-another-world"
+ },
+ "m21399": {
+  "id": 21399,
+  "title": "Kizumonogatari Part 2: Nekketsu",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21399-VTAdAqc8u5AE.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21399-vCKFTNkrYLIz.jpg",
+  "path": "/anime/kizumonogatari-part-2-nekketsu"
+ },
+ "m21400": {
+  "id": 21400,
+  "title": "Kizumonogatari Part 3: Reiketsu",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21400-38ykNo3j4xXo.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21400-5zcYUeVBptdG.jpg",
+  "path": "/anime/kizumonogatari-part-3-reiketsu"
+ },
+ "m21428": {
+  "id": 21428,
+  "title": "Grimgar of Fantasy and Ash",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21428-dFVIHeZ8McBe.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21428-WXeLTDwfmKI5.jpg",
+  "path": "/anime/grimgar-of-fantasy-and-ash"
+ },
+ "m21450": {
+  "id": 21450,
+  "title": "JoJo's Bizarre Adventure: Diamond is Unbreakable",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21450-D7XFwEQjZ5GA.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21450-5mgIkvOWnF9Z.jpg",
+  "path": "/anime/jojo-s-bizarre-adventure-diamond-is-unbreakable"
+ },
+ "m21459": {
+  "id": 21459,
+  "title": "My Hero Academia",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21459-nYh85uj2Fuwr.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21459-yeVkolGKdGUV.jpg",
+  "path": "/anime/my-hero-academia"
+ },
  "m21507": {
   "id": 21507,
   "title": "Mob Psycho 100",
@@ -591,6 +3798,15 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21507-6YUSbh2m0N1p.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21507-Qx8bGsLXUgLo.jpg",
   "path": "/anime/mob-psycho-100"
+ },
+ "m21520": {
+  "id": 21520,
+  "title": "Koyomimonogatari",
+  "type": "ANIME",
+  "format": "ONA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21520-nZKCr7PZrv7e.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21520-iaWBW3LJHil9.jpg",
+  "path": "/anime/koyomimonogatari"
  },
  "m21698": {
   "id": 21698,
@@ -601,6 +3817,96 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21698-jVFRIHAENS5B.jpg",
   "path": "/anime/haikyu-3rd-season"
  },
+ "m21718": {
+  "id": 21718,
+  "title": "Fate/stay night [Heaven's Feel] II. lost butterfly",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21718-Hjj26Sapx1bd.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21718-7NXra2yezc9T.jpg",
+  "path": "/anime/fate-stay-night-heaven-s-feel-ii-lost-butterfly"
+ },
+ "m21719": {
+  "id": 21719,
+  "title": "Fate/stay night [Heaven’s Feel] III. spring song",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21719-MSdTlkno0Z0u.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21719-D361L20cvUXL.jpg",
+  "path": "/anime/fate-stay-night-heaven-s-feel-iii-spring-song"
+ },
+ "m21745": {
+  "id": 21745,
+  "title": "Owarimonogatari Second Season",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21745-VrhhJjZNdBXV.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21745-5psGR43Ck4RZ.jpg",
+  "path": "/anime/owarimonogatari-second-season"
+ },
+ "m21856": {
+  "id": 21856,
+  "title": "My Hero Academia Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21856-gutauxhWAwn6.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21856-wtSHgeHFmzdG.jpg",
+  "path": "/anime/my-hero-academia-season-2"
+ },
+ "m223": {
+  "id": 223,
+  "title": "Dragon Ball",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx223-scE5uJfXqqj8.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/223-vyRuUBBYfcUb.jpg",
+  "path": "/anime/dragon-ball"
+ },
+ "m225": {
+  "id": 225,
+  "title": "Dragon Ball GT",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx225-pzkDUVy7tKxH.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/225-gMgT7ZPEFvQ7.jpg",
+  "path": "/anime/dragon-ball-gt"
+ },
+ "m235": {
+  "id": 235,
+  "title": "Detective Conan",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx235-MyYT7K3chBdO.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/235-MTmiz0uB0fMd.jpg",
+  "path": "/anime/detective-conan"
+ },
+ "m249": {
+  "id": 249,
+  "title": "InuYasha",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx249-jVBkyLnBvnRE.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/249-9ufXhmXxncry.jpg",
+  "path": "/anime/inuyasha"
+ },
+ "m269": {
+  "id": 269,
+  "title": "Bleach",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx269-d2GmRkJbMopq.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/269-08ar2HJOUAuL.jpg",
+  "path": "/anime/bleach"
+ },
+ "m2759": {
+  "id": 2759,
+  "title": "Evangelion: 1.0 You Are (Not) Alone",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx2759-S0ATamQtDwlW.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/2759-wndNbYSgvph1.jpg",
+  "path": "/anime/evangelion-1-0-you-are-not-alone"
+ },
  "m2994": {
   "id": 2994,
   "title": "Death Note: Relight",
@@ -610,6 +3916,15 @@
   "banner": null,
   "path": "/anime/death-note-relight"
  },
+ "m30": {
+  "id": 30,
+  "title": "Neon Genesis Evangelion",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx30-AI1zr74Dh4ye.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/30-gEMoHHIqxDgN.jpg",
+  "path": "/anime/neon-genesis-evangelion"
+ },
  "m30011": {
   "id": 30011,
   "title": "Naruto",
@@ -618,6 +3933,15 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/nx30011-9yUF1dXWgDOx.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30011-pkX1O0EFqvV7.jpg",
   "path": "/manga/naruto"
+ },
+ "m30012": {
+  "id": 30012,
+  "title": "Bleach",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30012-1epmVfTSv2rr.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30012-RpbdVc2yNxhw.jpg",
+  "path": "/manga/bleach"
  },
  "m30013": {
   "id": 30013,
@@ -637,6 +3961,96 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/n30021-eZbrTpIjv10E.jpg",
   "path": "/manga/death-note"
  },
+ "m30026": {
+  "id": 30026,
+  "title": "Hunter x Hunter",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30026-uCvXMudMzmwI.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30026-JXfraiazLTQe.jpg",
+  "path": "/manga/hunter-x-hunter"
+ },
+ "m30104": {
+  "id": 30104,
+  "title": "Yotsuba&!",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30104-sUVzNlTWZ5cu.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30104-CDra9ye7UPGI.jpg",
+  "path": "/manga/yotsuba-and"
+ },
+ "m32": {
+  "id": 32,
+  "title": "Neon Genesis Evangelion: The End of Evangelion",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx32-5JYsv0wc122I.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n32-BH9yHJBQqeOa.jpg",
+  "path": "/anime/neon-genesis-evangelion-the-end-of-evangelion"
+ },
+ "m356": {
+  "id": 356,
+  "title": "Fate/stay night",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx356-mTpMvtillumS.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/356-0VzS7BcObayT.jpg",
+  "path": "/anime/fate-stay-night"
+ },
+ "m4037": {
+  "id": 4037,
+  "title": "Cowboy Bebop: Yoseatsume Blues",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx4037-zpDbjycoZhNI.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n4037-1rwmIePHBzB7.jpg",
+  "path": "/anime/cowboy-bebop-yoseatsume-blues"
+ },
+ "m4107": {
+  "id": 4107,
+  "title": "Gurren Lagann The Movie: Childhood's End",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx4107-WaS60WNsKZuu.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/4107-AEaJQo7InYJ1.png",
+  "path": "/anime/gurren-lagann-the-movie-childhood-s-end"
+ },
+ "m4565": {
+  "id": 4565,
+  "title": "Gurren Lagann The Movie: The Lights in the Sky are Stars",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx4565-FbFYEBTJSPyr.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/4565-Ngb9pZ0nuf8s.png",
+  "path": "/anime/gurren-lagann-the-movie-the-lights-in-the-sky-are-stars"
+ },
+ "m5": {
+  "id": 5,
+  "title": "Cowboy Bebop: The Movie - Knockin' on Heaven's Door",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5-NozHwXWdNLCz.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/5-VOcSZFepDDhm.jpg",
+  "path": "/anime/cowboy-bebop-the-movie-knockin-on-heaven-s-door"
+ },
+ "m5081": {
+  "id": 5081,
+  "title": "Bakemonogatari",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5081-9GocceQ5Z865.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n5081-0Zcn5GOFYHMc.jpg",
+  "path": "/anime/bakemonogatari"
+ },
+ "m5114": {
+  "id": 5114,
+  "title": "Fullmetal Alchemist: Brotherhood",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5114-nSWCgQlmOMtj.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/5114-q0V5URebphSG.jpg",
+  "path": "/anime/fullmetal-alchemist-brotherhood"
+ },
  "m512": {
   "id": 512,
   "title": "Kiki's Delivery Service",
@@ -645,6 +4059,51 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx512-UwP8X4BR8YoM.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/512-Ssp3EE2NdeoA.jpg",
   "path": "/anime/kiki-s-delivery-service"
+ },
+ "m53390": {
+  "id": 53390,
+  "title": "Attack on Titan",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx53390-1RsuABC34P9D.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/53390-6Uru5rrjh8zv.jpg",
+  "path": "/manga/attack-on-titan"
+ },
+ "m59983": {
+  "id": 59983,
+  "title": "Noblesse",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx59983-cfSjrRxuAlAD.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/n59983-epdj2CSommgv.jpg",
+  "path": "/manhwa/noblesse"
+ },
+ "m6033": {
+  "id": 6033,
+  "title": "Dragon Ball Z Kai",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx6033-TKDWyjZN3dXk.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/6033-oyoKAT6qBUba.png",
+  "path": "/anime/dragon-ball-z-kai"
+ },
+ "m65243": {
+  "id": 65243,
+  "title": "Haikyu!!",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx65243-mR4MnJFmfaOF.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/65243-naohhXW4M4b9.jpg",
+  "path": "/manga/haikyu"
+ },
+ "m6702": {
+  "id": 6702,
+  "title": "Fairy Tail",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b6702-KI4qgSMyI8Pm.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/6702-VSHyctSAeUBS.jpg",
+  "path": "/anime/fairy-tail"
  },
  "m74347": {
   "id": 74347,
@@ -655,6 +4114,114 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/74347-xAQI9BxcpWM3.jpg",
   "path": "/manga/one-punch-man"
  },
+ "m813": {
+  "id": 813,
+  "title": "Dragon Ball Z",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx813-ZhnFNOeCU5dQ.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/813-03ZLvWJgR6Wd.jpg",
+  "path": "/anime/dragon-ball-z"
+ },
+ "m8247": {
+  "id": 8247,
+  "title": "Bleach the Movie: Hell Verse",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx8247-VppsQKlgXoXr.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/8247-M9lIhb1pWRTn.jpg",
+  "path": "/anime/bleach-the-movie-hell-verse"
+ },
+ "m85141": {
+  "id": 85141,
+  "title": "The God of High School",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx85141-qHR957V3FVco.png",
+  "banner": null,
+  "path": "/manhwa/the-god-of-high-school"
+ },
+ "m85143": {
+  "id": 85143,
+  "title": "Tower of God",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx85143-23oup3ETbFJk.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/85143-IKyCdaJKfa2M.jpg",
+  "path": "/manhwa/tower-of-god"
+ },
+ "m86508": {
+  "id": 86508,
+  "title": "Dragon Ball Super",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx86508-QSahE7mTFEXl.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/86508-TVTGeOJ3Azmc.jpg",
+  "path": "/manga/dragon-ball-super"
+ },
+ "m86848": {
+  "id": 86848,
+  "title": "Lookism",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx86848-4CSItSclJUvi.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/86848-RZa2gMxQ378D.jpg",
+  "path": "/manhwa/lookism"
+ },
+ "m87216": {
+  "id": 87216,
+  "title": "Demon Slayer: Kimetsu no Yaiba",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx87216-c9bSNVD10UuD.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/87216-TVKEGfSxAqKs.jpg",
+  "path": "/manga/demon-slayer-kimetsu-no-yaiba"
+ },
+ "m901": {
+  "id": 901,
+  "title": "Dragon Ball Z: Broly - The Legendary Super Saiyan",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/901-gB41PQJWFXjp.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/901-MS08KTgF7UUu.jpg",
+  "path": "/anime/dragon-ball-z-broly-the-legendary-super-saiyan"
+ },
+ "m9253": {
+  "id": 9253,
+  "title": "Steins;Gate",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9253-tIUXF2gfU8Sg.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n9253-JIhmKgBKsWUN.jpg",
+  "path": "/anime/steins-gate"
+ },
+ "m9260": {
+  "id": 9260,
+  "title": "Kizumonogatari Part 1: Tekketsu",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9260-cl7sczYOpTeW.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/9260-69LbBxcWN2tA.jpg",
+  "path": "/anime/kizumonogatari-part-1-tekketsu"
+ },
+ "m9756": {
+  "id": 9756,
+  "title": "Puella Magi Madoka Magica",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9756-QnUGwlwwnsuN.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/9756-d5M8NffgJJHB.jpg",
+  "path": "/anime/puella-magi-madoka-magica"
+ },
+ "m97617": {
+  "id": 97617,
+  "title": "Restaurant to Another World",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx97617-TmRRraupfbT5.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97617-yjsKEVRcjQWk.jpg",
+  "path": "/anime/restaurant-to-another-world"
+ },
  "m97668": {
   "id": 97668,
   "title": "One-Punch Man Season 2",
@@ -664,6 +4231,15 @@
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97668-8Yo3iH2fxbKR.jpg",
   "path": "/anime/one-punch-man-season-2"
  },
+ "m97815": {
+  "id": 97815,
+  "title": "Fate/Grand Order: First Order",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97815-NnWheNnaKCmS.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97815-SV1vR4GlLRIq.jpg",
+  "path": "/anime/fate-grand-order-first-order"
+ },
  "m97938": {
   "id": 97938,
   "title": "Boruto: Naruto Next Generations",
@@ -672,5 +4248,50 @@
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97938-BnF6M5yTaNB1.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97938-cT6wkSRifTEC.jpg",
   "path": "/anime/boruto-naruto-next-generations"
+ },
+ "m97940": {
+  "id": 97940,
+  "title": "Black Clover",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97940-fyh8o7gNbha0.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97940-1URQdQ4U1a0b.jpg",
+  "path": "/anime/black-clover"
+ },
+ "m98035": {
+  "id": 98035,
+  "title": "Fate/Apocrypha",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx98035-rdkjeqUUsG2j.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98035-hbrEf8ulDnAe.jpg",
+  "path": "/anime/fate-apocrypha"
+ },
+ "m99147": {
+  "id": 99147,
+  "title": "Attack on Titan Season 3",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx99147-AiPDD8cwlCfi.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/99147-HACsFVrynFf5.jpg",
+  "path": "/anime/attack-on-titan-season-3"
+ },
+ "m99263": {
+  "id": 99263,
+  "title": "The Rising of the Shield Hero",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx99263-LcazQwdlWzMy.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/99263-IwkmdCTsDY1t.jpg",
+  "path": "/anime/the-rising-of-the-shield-hero"
+ },
+ "m99634": {
+  "id": 99634,
+  "title": "Attack on Titan: Lost Girls",
+  "type": "ANIME",
+  "format": "OVA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx99634-9u4hdvWwmC2s.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/99634-m8hKbCnDL2ue.png",
+  "path": "/anime/attack-on-titan-lost-girls"
  }
 }

@@ -1,0 +1,143 @@
+---
+/**
+ * D1. /guides/free-manhwa-official-apps — the most popular manhwa with a
+ * free official option, by the same rule as the /<kind>/<slug>/free pages
+ * (freeSplit in answers.mjs). Counted from the catalog on every build.
+ */
+export const prerender = true
+import DataGuide from '../../components/DataGuide.astro'
+import DataList from '../../components/DataList.astro'
+import { comicsOfCountry, hubSlugOf } from '../../lib/catalog.js'
+import { pathOfTitle } from '../../lib/section.mjs'
+import { factsFor } from '../../lib/platform-facts.js'
+import { dataGuide } from '../../lib/guides-registry.js'
+import { freeRows, countPlatforms, platformLabel, notAdult, thumbOf, factLine, num, percent, listWords } from '../../lib/data-guides.mjs'
+import homeRules from '../../../data/home-rules.json'
+
+const slug = 'free-manhwa-official-apps'
+const meta = dataGuide(slug)
+const LIST_SIZE = 50
+
+const manhwa = comicsOfCountry('KR')
+const keep = notAdult(homeRules)
+const everyFree = freeRows(manhwa, { limit: Infinity, keep })
+const rows = everyFree.slice(0, LIST_SIZE)
+const withLinks = manhwa.filter((m) => (m.readLinks || []).length > 0 && keep(m)).length
+const platforms = countPlatforms(rows)
+const top = rows[0]?.item
+const englishFree = everyFree.filter((r) => r.english).length
+
+const hero = top ? { src: top.cover, alt: `Cover of ${top.title}` } : null
+const list = rows.map(({ item, free }) => ({
+  title: item.title,
+  path: pathOfTitle(item),
+  cover: thumbOf(item.cover),
+  sub: factLine(item),
+  platforms: free.map(platformLabel).join(', '),
+  extra: { href: `${pathOfTitle(item)}/free`, text: `How to read ${item.title} free` },
+}))
+const topNames = platforms.slice(0, 3).map((p) => p.site)
+
+const faq = [
+  {
+    q: 'Can you read manhwa for free legally?',
+    a: `Yes. ${num(everyFree.length)} of the manhwa on manhwaindex have at least one official platform that gives part or all of the story away, usually with adverts or a wait between chapters. ${listWords(topNames)} carry the most of the popular ones.`,
+  },
+  {
+    q: 'Which app has the most free manhwa?',
+    a: `Among the ${rows.length} most popular manhwa with a free option, ${platforms[0]?.site} carries ${platforms[0]?.count}, then ${platforms[1]?.site} with ${platforms[1]?.count} and ${platforms[2]?.site} with ${platforms[2]?.count}.`,
+  },
+  {
+    q: 'Is everything free on these apps?',
+    a: 'Rarely. Most free platforms give away the older chapters and charge for the newest, or unlock one chapter at a time on a timer. Each title page says how the free part works on each platform.',
+  },
+  {
+    q: 'Are these apps available in English?',
+    a: `Not all of them. ${num(englishFree)} of the free titles have a free platform in English. Platforms shown with a language in brackets carry that title only in that language.`,
+  },
+]
+---
+
+<DataGuide
+  slug={slug}
+  title={meta.title}
+  description={meta.description}
+  category={meta.category}
+  keywords={['free manhwa apps', 'read manhwa free legally', 'free manhwa', 'where to read manhwa for free', 'free webtoon apps']}
+  hero={hero}
+  items={rows.map(({ item }) => ({ name: item.title, path: pathOfTitle(item), image: item.cover }))}
+  faq={faq}
+  minutes={5}
+>
+  <p>
+    You do not need a pirate site to read manhwa for free. The official apps that publish Korean comics
+    give a lot of them away, paid for by adverts, by a wait between chapters, or by charging only for the
+    newest episodes. Of the {num(withLinks)} manhwa on manhwaindex with an official platform,
+    <strong>{num(everyFree.length)}</strong> ({percent(everyFree.length, withLinks)}) can be started free on at
+    least one of them.
+  </p>
+  <p>
+    Below are the {rows.length} most popular of those, with the free platforms named for each, so you can
+    open the one that works where you live. {top && <>The most popular right now is <a href={pathOfTitle(top)}>{top.title}</a>.</>}
+  </p>
+
+  <h2>How this list is made</h2>
+  <p>
+    Every manhwa on this site carries the official platforms that publish it. A platform counts as free when its own model lets you read part of the story without
+    paying: all of it, all but the newest chapters, the first chapters, or one chapter on a timer. A platform
+    that only offers a trial, or nothing free at all, does not count, and neither does one we hold no facts for.
+    This is the same rule as the "read free" page of each title. The list is then sorted by popularity on
+    AniList, and titles kept off our homepage for adult content are left out.
+  </p>
+
+  <h2>The free platforms in this list</h2>
+  <p>How many of the {rows.length} titles below each platform carries free, and how its free part works.</p>
+  <table class="dg-table">
+    <thead>
+      <tr>
+        <th scope="col">Platform</th>
+        <th scope="col" class="n">Titles</th>
+        <th scope="col">Free part</th>
+        <th scope="col">After that</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        platforms.map((p) => {
+          const facts = factsFor(p.site)
+          const hub = hubSlugOf(p.site)
+          return (
+            <tr>
+              <td>{hub ? <a href={`/platform/${hub}`}>{p.site}</a> : p.site}</td>
+              <td class="n">{p.count}</td>
+              <td>{facts.free || 'Not known'}</td>
+              <td>{facts.pay || 'Not known'}</td>
+            </tr>
+          )
+        })
+      }
+    </tbody>
+  </table>
+
+  <h2>The {rows.length} most popular free manhwa</h2>
+  <p>
+    English platforms are listed first. A language in brackets means that platform carries the title only in
+    that language.
+  </p>
+  <DataList rows={list} label="The most popular manhwa with a free official option" platformsLabel="Free on" />
+
+  <h2>What "free" means on each app</h2>
+  <p>
+    <strong>WEBTOON</strong> and <strong>Tapas</strong> are the easiest start for English readers: most chapters
+    are free, and only the newest ones cost coins or a wait. <strong>KakaoPage</strong>,
+    <strong>Kakao Webtoon</strong> and <strong>Piccoma</strong> use a timer: one chapter unlocks every few hours
+    if you are willing to wait. <strong>Tappytoon</strong> and <strong>Lezhin</strong> give away the opening
+    chapters and sell the rest. Korean-language apps such as <strong>Naver Webtoon</strong> and
+    <strong>Naver Series</strong> are free in the same ways, but only in Korean.
+  </p>
+  <p>
+    Free chapters change all the time: a platform may lock older chapters, run a free-to-read event, or drop a
+    title when its licence ends. If something here no longer matches what you see, the title's own page lists
+    every official platform, free or not, and says how each one charges.
+  </p>
+</DataGuide>

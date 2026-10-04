@@ -430,3 +430,96 @@
     transition: none;
   }
 }
+
+/* ---------- data guides: ranked rows and count tables ----------
+ * src/components/DataList.astro. Number, small cover, title, fact line and
+ * platforms, ruled like the entry cards above. A list, not a table, so a
+ * phone never scrolls sideways.
+ * ------------------------------------------------------------------ */
+
+.dg-list {
+  list-style: none;
+  margin: 1.5rem 0 2.25rem;
+  padding: 0;
+}
+.dg-row {
+  display: grid;
+  grid-template-columns: 2.1rem 56px minmax(0, 1fr);
+  gap: 0 0.9rem;
+  align-items: start;
+  padding-block: 0.9rem;
+  border-top: 1px solid var(--cobalt);
+}
+.dg-row:last-child {
+  border-bottom: 1px solid var(--cobalt);
+}
+.dg-row__num {
+  font-family: var(--stencil);
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--rose);
+  padding-top: 0.15rem;
+}
+.dg-row__art img {
+  display: block;
+  width: 56px;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--night-raised);
+  border: 1px solid var(--sf-line, var(--cobalt));
+}
+.dg-row__text {
+  min-width: 0;
+}
+.guide-body .dg-row__title {
+  font-size: 1.05rem;
+  line-height: 1.25;
+  margin: 0 0 0.2rem;
+}
+.dg-row__title a {
+  text-decoration: none;
+}
+.dg-row__title a:hover {
+  text-decoration: underline;
+}
+.guide-body .dg-row__sub,
+.guide-body .dg-row__on,
+.guide-body .dg-row__more {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--dawn-dim);
+}
+.dg-row__on span {
+  font-family: var(--stencil);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--dawn-faint);
+  margin-right: 0.3rem;
+}
+.dg-row__more a {
+  color: var(--rose-soft);
+}
+@media (min-width: 640px) {
+  .dg-row {
+    grid-template-columns: 2.6rem 72px minmax(0, 1fr);
+    gap: 0 1.2rem;
+  }
+  .dg-row__art img {
+    width: 72px;
+  }
+}
+
+/* the count tables keep numbers right-aligned so they compare at a glance */
+.guide-body .dg-table td.n,
+.guide-body .dg-table th.n {
+  text-align: right;
+  padding-right: 0;
+  padding-left: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+

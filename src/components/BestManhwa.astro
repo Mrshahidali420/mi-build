@@ -1,0 +1,104 @@
+---
+/**
+ * The body of the three "best <genre> manhwa" data guides
+ * (src/pages/guides/best-<genre>-manhwa.astro). The ranking is
+ * bestInGenre in data-guides.mjs: the most popular manhwa of the genre with
+ * an official platform, ranked by AniList score. The page passes the
+ * genre-specific writing: slot "intro" opens the guide, the default slot
+ * closes it.
+ */
+import DataGuide from './DataGuide.astro'
+import DataList from './DataList.astro'
+import { comicsOfCountry, genreSlug } from '../lib/catalog.js'
+import { pathOfTitle } from '../lib/section.mjs'
+import { dataGuide } from '../lib/guides-registry.js'
+import {
+  bestInGenre,
+  englishFirst,
+  platformLabel,
+  notAdult,
+  thumbOf,
+  factLine,
+  countPlatforms,
+  isEnglish,
+  num,
+  listWords,
+  BEST_POOL,
+} from '../lib/data-guides.mjs'
+import homeRules from '../../data/home-rules.json'
+
+const { slug, genre, keywords = [] } = Astro.props
+const meta = dataGuide(slug)
+const word = genre.toLowerCase()
+
+const manhwa = comicsOfCountry('KR')
+const rows = bestInGenre(manhwa, genre, { keep: notAdult(homeRules) })
+const inGenre = manhwa.filter((m) => (m.genres || []).includes(genre)).length
+const top = rows[0]?.item
+const next = rows.slice(1, 3).map((r) => r.item.title)
+const hero = top ? { src: top.cover, alt: `Cover of ${top.title}` } : null
+const english = rows.filter((r) => r.platforms.some(isEnglish)).length
+const where = countPlatforms(rows, (row) => row.platforms)
+
+const list = rows.map(({ item, platforms }) => ({
+  title: item.title,
+  path: pathOfTitle(item),
+  cover: thumbOf(item.cover),
+  sub: factLine(item),
+  platforms: englishFirst(platforms).map(platformLabel).join(', '),
+}))
+
+const faq = [
+  {
+    q: `What is the best ${word} manhwa?`,
+    a: top
+      ? `By reader score among the most popular ${word} manhwa with an official release, ${top.title} comes first, rated ${top.score}% on AniList.${next.length ? ` ${listWords(next)} follow.` : ''}`
+      : `No ${word} manhwa qualifies right now.`,
+  },
+  {
+    q: `Where can I read ${word} manhwa legally?`,
+    a: `${listWords(where.slice(0, 4).map((p) => p.site))} carry the most titles on this list. ${english} of the ${rows.length} have an official English edition${english < rows.length ? '; the others are available in Korean or other languages' : ''}.`,
+  },
+  {
+    q: 'How is this list ranked?',
+    a: `We take the ${BEST_POOL} most popular ${word} manhwa on AniList that have an official platform and a score, then rank them by average reader score, with popularity breaking ties.`,
+  },
+]
+---
+
+<DataGuide
+  slug={slug}
+  title={meta.title}
+  description={meta.description}
+  category={meta.category}
+  keywords={keywords}
+  hero={hero}
+  items={rows.map(({ item }) => ({ name: item.title, path: pathOfTitle(item), image: item.cover }))}
+  faq={faq}
+  minutes={5}
+>
+  <slot name="intro" />
+
+  <h2>How this list is made</h2>
+  <p>
+    There are {num(inGenre)} {word} manhwa on manhwaindex. To keep the list to stories you can actually read, we
+    take the {BEST_POOL} most popular of them on AniList that have at least one official platform and a reader score,
+    then rank those by their average score, with popularity breaking ties. That keeps out obscure titles with a
+    handful of glowing votes, and it keeps out anything you could only find on a pirate site. Titles kept off our
+    homepage for adult content are left out. The list is rebuilt with the catalog, so it moves when scores do.
+  </p>
+  <p>
+    {english} of the {rows.length} titles below have an official English edition. English platforms are listed
+    first; a language in brackets means that platform carries the title only in that language.
+  </p>
+
+  <h2>The {rows.length} best {word} manhwa</h2>
+  <DataList rows={list} label={`The best ${word} manhwa on official platforms`} platformsLabel="Read on" />
+
+  <slot />
+
+  <p>
+    Want more? The <a href={`/genre/${genreSlug(genre)}`}>{word} genre page</a> lists every {word} title on this site,
+    and each title page shows every official place to read it, free or paid.
+  </p>
+</DataGuide>

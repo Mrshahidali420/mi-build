@@ -1,0 +1,32 @@
+---
+/** D15. /guides/best-fantasy-manhwa — see src/components/BestManhwa.astro. */
+export const prerender = true
+import BestManhwa from '../../components/BestManhwa.astro'
+---
+
+<BestManhwa
+  slug="best-fantasy-manhwa"
+  genre="Fantasy"
+  keywords={['best fantasy manhwa', 'fantasy manhwa', 'best fantasy webtoons', 'fantasy manhwa to read', 'top fantasy manhwa']}
+>
+  <Fragment slot="intro">
+    <p>
+      Fantasy is the biggest genre in manhwa and the widest. It covers game-like worlds with status windows and
+      levels, reincarnation into a novel the hero once read, sword-and-sorcery kingdoms, and the romance fantasy
+      that fills the palace and duchy stories. Many of the most-read manhwa of the last ten years started as web
+      novels in this genre.
+    </p>
+    <p>
+      This list keeps to fantasy manhwa you can read on an official platform, ranked by what readers scored them.
+      Each title links to its page, with every official platform and how much of it is free.
+    </p>
+  </Fragment>
+
+  <h2>Reading fantasy manhwa on the official apps</h2>
+  <p>
+    Fantasy is spread across every app. WEBTOON and Tapas carry many of the long-running adventure series, and
+    Tappytoon, Lezhin and Manta hold a large share of the licensed romance fantasy. A lot of fantasy manhwa are
+    adapted from web novels, and the original novel is often published officially too. It is usually far ahead of
+    the comic, if you cannot wait for the next chapter.
+  </p>
+</BestManhwa>

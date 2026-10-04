@@ -1,0 +1,150 @@
+---
+/**
+ * D2. /guides/where-to-watch-this-season-anime — this season's anime with a
+ * legal stream, most popular first. The season is the build date's, by
+ * AniList's months (season-core.mjs), so the page moves on by itself.
+ */
+export const prerender = true
+import DataGuide from '../../components/DataGuide.astro'
+import DataList from '../../components/DataList.astro'
+import { anime, hubSlugOf } from '../../lib/catalog.js'
+import { seasonLabel, seasonPath, seasonKey, hubSeasonKeys } from '../../lib/season-core.mjs'
+import { factsFor, PAY } from '../../lib/platform-facts.js'
+import { dataGuide } from '../../lib/guides-registry.js'
+import { seasonRows, countPlatforms, notAdult, thumbOf, factLine, num, listWords } from '../../lib/data-guides.mjs'
+import homeRules from '../../../data/home-rules.json'
+
+const slug = 'where-to-watch-this-season-anime'
+const meta = dataGuide(slug)
+const LIST_SIZE = 60
+
+const { year, season, rows: all, unstreamed } = seasonRows(anime, { keep: notAdult(homeRules) })
+const rows = all.slice(0, LIST_SIZE)
+const label = `${seasonLabel(season)} ${year}`
+const services = countPlatforms(all, (row) => row.streams)
+const hasHub = hubSeasonKeys(anime).has(seasonKey(year, season))
+const top = rows[0]?.item
+const freeServices = services.filter((s) => factsFor(s.site).pay === PAY.ADS).map((s) => s.site)
+
+const hero = top ? { src: top.cover, alt: `Cover of ${top.title}` } : null
+const list = rows.map(({ item, streams }) => ({
+  title: item.title,
+  path: `/anime/${item.slug}`,
+  cover: thumbOf(item.cover),
+  sub: factLine(item),
+  platforms: streams.map((s) => s.site).join(', '),
+}))
+
+const faq = [
+  {
+    q: `Where can I watch ${label} anime legally?`,
+    a: services.length
+      ? `${listWords(services.slice(0, 4).map((s) => s.site))} carry the most of this season's shows. ${services[0].site} alone streams ${services[0].count} of the ${all.length} titles with a legal stream on record.`
+      : 'No legal streams are on record for this season yet. Check back once the season starts.',
+  },
+  {
+    q: 'Which streaming service has the most anime this season?',
+    a: services.length
+      ? `${services[0].site}, with ${services[0].count} of this season's titles${services[1] ? `, ahead of ${services[1].site} with ${services[1].count}` : ''}.`
+      : 'None yet: no legal streams are on record for this season so far.',
+  },
+  {
+    q: 'Can I watch this season’s anime for free?',
+    a: freeServices.length
+      ? `Some of it. ${listWords(freeServices)} ${freeServices.length > 1 ? 'are' : 'is'} free with adverts, and Crunchyroll lets you watch the first episodes of many shows without paying. Everything else needs a subscription.`
+      : 'Mostly not. A few services offer the first episodes free, but most of this season needs a subscription.',
+  },
+  {
+    q: 'Why is a show missing from this list?',
+    a: `Only shows with a legal stream on record are listed. ${num(unstreamed)} other titles this season have none yet, often because they are licensed late or stream only in Japan.`,
+  },
+]
+---
+
+<DataGuide
+  slug={slug}
+  title={meta.title}
+  description={meta.description}
+  category={meta.category}
+  keywords={['where to watch anime legally', 'this season anime where to watch', `${label.toLowerCase()} anime`, 'anime streaming this season', 'legal anime streaming']}
+  hero={hero}
+  items={rows.map(({ item }) => ({ name: item.title, path: `/anime/${item.slug}`, image: item.cover }))}
+  faq={faq}
+  minutes={4}
+>
+  <p>
+    The <strong>{label}</strong> anime season has <strong>{all.length}</strong> titles with a legal stream on
+    record so far. This page lists them with the official services that carry each one, most popular first,
+    so you can see in one place where to watch the shows everyone is talking about this season.
+    {top && <> The most popular right now is <a href={`/anime/${top.slug}`}>{top.title}</a>.</>}
+  </p>
+  <p>
+    {
+      hasHub ? (
+        <>For every show in the season, streamed or not, with air dates, see the <a href={seasonPath(year, season)}>{label} season page</a>.</>
+      ) : (
+        <>Streaming deals are often announced in the first weeks of a season, so expect this list to grow.</>
+      )
+    }
+  </p>
+
+  <h2>How this list is made</h2>
+  <p>
+    AniList files every anime under the season it starts in: winter is January to March, spring April to
+    June, summer July to September and fall October to December. This page takes the season of the day it was
+    built, keeps the titles with at least one official streaming link on record, and sorts them by how many
+    AniList users have them on a list. Titles kept off our homepage for adult content are left out. The site is
+    rebuilt several times a day, so new streaming deals show up here soon after they appear.
+  </p>
+
+  <h2>Which services carry this season</h2>
+  <p>How many of this season's streamed titles each service carries. One show is often on several.</p>
+  <table class="dg-table">
+    <thead>
+      <tr>
+        <th scope="col">Service</th>
+        <th scope="col" class="n">Shows</th>
+        <th scope="col">How you pay</th>
+        <th scope="col">Where it works</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        services.map((s) => {
+          const facts = factsFor(s.site)
+          const hub = hubSlugOf(s.site)
+          return (
+            <tr>
+              <td>{hub ? <a href={`/platform/${hub}`}>{s.site}</a> : s.site}</td>
+              <td class="n">{s.count}</td>
+              <td>{facts.pay || 'Not known'}</td>
+              <td>{facts.region || 'Not known'}</td>
+            </tr>
+          )
+        })
+      }
+    </tbody>
+  </table>
+
+  <h2>{label} anime and where to stream them</h2>
+  {rows.length > 0 ? (
+    <DataList rows={list} label={`${label} anime with a legal stream`} platformsLabel="Stream on" />
+  ) : (
+    <p>No show this season has a legal stream on record yet. Check back as the season starts.</p>
+  )}
+  {all.length > rows.length && (
+    <p>
+      That is the top {rows.length} by popularity. The other {all.length - rows.length} streamed titles are on the
+      {hasHub ? <> <a href={seasonPath(year, season)}>{label} season page</a></> : ' season page'}.
+    </p>
+  )}
+
+  <h2>Before you press play</h2>
+  <p>
+    Streaming rights are sold country by country, so a show listed on a service may not be on that service where
+    you live. Each title page shows the services and, where we know it, the regions they cover. Some services
+    also release episodes a few days after Japan, or hold the whole season back and release it at once, which
+    is common on Netflix. If a show is not on any service near you yet, its page is the place to check again: the
+    links there update with every rebuild.
+  </p>
+</DataGuide>
