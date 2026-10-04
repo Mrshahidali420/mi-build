@@ -1,0 +1,676 @@
+{
+ "c12464": {
+  "id": 12464,
+  "name": "Hashirama Senju",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n12464-fcgqkCPZoREw.png",
+  "media": [
+   20,
+   1735,
+   30011
+  ],
+  "path": "/character/hashirama-senju"
+ },
+ "c12465": {
+  "id": 12465,
+  "name": "Tobirama Senju",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/n12465-y8ByDAvzC5cA.png",
+  "media": [
+   20,
+   1735,
+   30011
+  ],
+  "path": "/character/tobirama-senju"
+ },
+ "c126069": {
+  "id": 126069,
+  "name": "Kaguya Ootsutsuki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126069-CYxn8C4AHwiD.png",
+  "media": [
+   1735,
+   30011,
+   155348
+  ],
+  "path": "/character/kaguya-ootsutsuki"
+ },
+ "c126071": {
+  "id": 126071,
+  "name": "Tanjirou Kamado",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b126071-BTNEc1nRIv68.png",
+  "media": [
+   101922,
+   112151,
+   142329
+  ],
+  "path": "/character/tanjirou-kamado"
+ },
+ "c127691": {
+  "id": 127691,
+  "name": "Satoru Gojou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127691-9zqh1xpIubn7.png",
+  "media": [
+   113415,
+   145064,
+   131573
+  ],
+  "path": "/character/satoru-gojou"
+ },
+ "c13": {
+  "id": 13,
+  "name": "Sasuke Uchiha",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b13-SISLEw1oAD7a.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/sasuke-uchiha"
+ },
+ "c130102": {
+  "id": 130102,
+  "name": "Denji",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b130102-FO1VHNnEnLlB.png",
+  "media": [
+   127230,
+   105778,
+   171627
+  ],
+  "path": "/character/denji"
+ },
+ "c133676": {
+  "id": 133676,
+  "name": "Marin Kitagawa",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b133676-kV2czE3C8Qls.png",
+  "media": [
+   132405,
+   154768,
+   101583
+  ],
+  "path": "/character/marin-kitagawa"
+ },
+ "c138100": {
+  "id": 138100,
+  "name": "Anya Forger",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b138100-4Li0tWRCa5bQ.png",
+  "media": [
+   140960,
+   142838,
+   158927
+  ],
+  "path": "/character/anya-forger"
+ },
+ "c14": {
+  "id": 14,
+  "name": "Itachi Uchiha",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b14-9Kb1E5oel1ke.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/itachi-uchiha"
+ },
+ "c17": {
+  "id": 17,
+  "name": "Naruto Uzumaki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b17-phjcWCkRuIhu.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/naruto-uzumaki"
+ },
+ "c18473": {
+  "id": 18473,
+  "name": "Killer Bee",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b18473-AiI3mk28a1Nm.png",
+  "media": [
+   1735,
+   97938,
+   16870
+  ],
+  "path": "/character/killer-bee"
+ },
+ "c2405": {
+  "id": 2405,
+  "name": "Kabuto Yakushi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2405-CqbcGW2tfaMV.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/kabuto-yakushi"
+ },
+ "c2535": {
+  "id": 2535,
+  "name": "Minato Namikaze",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2535-Xq9WKNPJQEt3.png",
+  "media": [
+   20,
+   1735,
+   30011
+  ],
+  "path": "/character/minato-namikaze"
+ },
+ "c257562": {
+  "id": 257562,
+  "name": "Hitori Gotou",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b257562-Ru35NYPfsqhY.png",
+  "media": [
+   130003,
+   186712,
+   127549
+  ],
+  "path": "/character/hitori-gotou"
+ },
+ "c307": {
+  "id": 307,
+  "name": "Guy Might",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b307-xieUEdhdTVwQ.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/guy-might"
+ },
+ "c3149": {
+  "id": 3149,
+  "name": "Tobi",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b3149-j6cl8A9yup51.png",
+  "media": [
+   1735,
+   30011,
+   13667
+  ],
+  "path": "/character/tobi"
+ },
+ "c3180": {
+  "id": 3180,
+  "name": "Pain",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b3180-ITMGBLWNBOgV.png",
+  "media": [
+   20,
+   1735,
+   16870
+  ],
+  "path": "/character/pain"
+ },
+ "c40": {
+  "id": 40,
+  "name": "Luffy Monkey",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40-MNypXsxSRb1R.png",
+  "media": [
+   21,
+   30013,
+   141902
+  ],
+  "path": "/character/luffy-monkey"
+ },
+ "c53901": {
+  "id": 53901,
+  "name": "Madara Uchiha",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b53901-HnRKSoHMG5Vg.png",
+  "media": [
+   1735,
+   30011,
+   155348
+  ],
+  "path": "/character/madara-uchiha"
+ },
+ "c57883": {
+  "id": 57883,
+  "name": "Hagoromo Ootsutsuki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b57883-TrjcL1LU7qnj.png",
+  "media": [
+   1735,
+   30011,
+   155348
+  ],
+  "path": "/character/hagoromo-ootsutsuki"
+ },
+ "c64769": {
+  "id": 64769,
+  "name": "Shouyou Hinata",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b64769-WoWlCMLLgJ14.png",
+  "media": [
+   20464,
+   20992,
+   21698
+  ],
+  "path": "/character/shouyou-hinata"
+ },
+ "c6866": {
+  "id": 6866,
+  "name": "Kiki",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b6866-Fe38ZMNvevnF.png",
+  "media": [
+   512,
+   101099
+  ],
+  "path": "/character/kiki-kikis-delivery-service"
+ },
+ "c71": {
+  "id": 71,
+  "name": "L Lawliet",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71-1W4panC53vfs.png",
+  "media": [
+   1535,
+   30021,
+   2994
+  ],
+  "path": "/character/l-lawliet"
+ },
+ "c73935": {
+  "id": 73935,
+  "name": "Saitama",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b73935-ON5d0mAcrItd.jpg",
+  "media": [
+   21087,
+   97668,
+   74347
+  ],
+  "path": "/character/saitama"
+ },
+ "c85": {
+  "id": 85,
+  "name": "Kakashi Hatake",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b85-mkVBh2yjxjmx.png",
+  "media": [
+   20,
+   1735,
+   97938
+  ],
+  "path": "/character/kakashi-hatake"
+ },
+ "c89616": {
+  "id": 89616,
+  "name": "Shigeo Kageyama",
+  "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89616-dXmdOc7L6SDi.png",
+  "media": [
+   21507,
+   101338,
+   140439
+  ],
+  "path": "/character/shigeo-kageyama"
+ },
+ "m101099": {
+  "id": 101099,
+  "title": "HUNGRY DAYS: Aoharu ka yo.",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b101099-3AoCbJWTj2cV.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101099-KarIxewMysiK.jpg",
+  "path": "/anime/hungry-days-aoharu-ka-yo"
+ },
+ "m101338": {
+  "id": 101338,
+  "title": "Mob Psycho 100 II",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101338-rokVscjRYzdP.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101338-Rl54Qhx71dUq.jpg",
+  "path": "/anime/mob-psycho-100-ii"
+ },
+ "m101583": {
+  "id": 101583,
+  "title": "My Dress-Up Darling",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101583-VI1PT2QGGT8W.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/101583-cSP6zPHQzjQD.jpg",
+  "path": "/manga/my-dress-up-darling"
+ },
+ "m101922": {
+  "id": 101922,
+  "title": "Demon Slayer: Kimetsu no Yaiba",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101922-WBsBl0ClmgYL.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101922-33MtJGsUSxga.jpg",
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba"
+ },
+ "m105778": {
+  "id": 105778,
+  "title": "Chainsaw Man",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105778-euxXZEIfDY2u.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-ppHaMwown6c9.jpg",
+  "path": "/manga/chainsaw-man"
+ },
+ "m112151": {
+  "id": 112151,
+  "title": "Demon Slayer -Kimetsu no Yaiba- The Movie: Mugen Train",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx112151-1qlQwPB1RrJe.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/112151-eHCBz19nf2yC.jpg",
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-the-movie-mugen-train"
+ },
+ "m113415": {
+  "id": 113415,
+  "title": "JUJUTSU KAISEN",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113415-LHBAeoZDIsnF.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/113415-jQBSkxWAAk83.jpg",
+  "path": "/anime/jujutsu-kaisen"
+ },
+ "m127230": {
+  "id": 127230,
+  "title": "Chainsaw Man",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127230-DdP4vAdssLoz.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127230-o8IRwCGVr9KW.jpg",
+  "path": "/anime/chainsaw-man"
+ },
+ "m127549": {
+  "id": 127549,
+  "title": "Slow Loop",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127549-fr324YPdXb3D.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127549-9j4uHXMStHGX.jpg",
+  "path": "/anime/slow-loop"
+ },
+ "m130003": {
+  "id": 130003,
+  "title": "BOCCHI THE ROCK!",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx130003-HTDmeL4RGeJ4.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/130003-5F90a7BtsPQN.jpg",
+  "path": "/anime/bocchi-the-rock"
+ },
+ "m131573": {
+  "id": 131573,
+  "title": "JUJUTSU KAISEN 0",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131573-rpl82vDEDRm6.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/131573-3veuVz5p0z2I.jpg",
+  "path": "/anime/jujutsu-kaisen-0"
+ },
+ "m132405": {
+  "id": 132405,
+  "title": "My Dress-Up Darling",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx132405-qP7FQYGmNI3d.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/132405-LnPQaqaksEpN.jpg",
+  "path": "/anime/my-dress-up-darling"
+ },
+ "m13667": {
+  "id": 13667,
+  "title": "Road to Ninja: Naruto the Movie",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx13667-gAKuIXI2avRq.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/13667-7Cpxg5sCOVpw.jpg",
+  "path": "/anime/road-to-ninja-naruto-the-movie"
+ },
+ "m140439": {
+  "id": 140439,
+  "title": "Mob Psycho 100 III",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx140439-bPKmhe1wNxc9.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/140439-r9SRh0q0UgX1.jpg",
+  "path": "/anime/mob-psycho-100-iii"
+ },
+ "m140960": {
+  "id": 140960,
+  "title": "SPY x FAMILY",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx140960-Kb6R5nYQfjmP.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/140960-Z7xSvkRxHKfj.jpg",
+  "path": "/anime/spy-x-family"
+ },
+ "m141902": {
+  "id": 141902,
+  "title": "One Piece Film: Red",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx141902-fTyoTk8F8qOl.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/141902-SvnRSXnN7DWC.jpg",
+  "path": "/anime/one-piece-film-red"
+ },
+ "m142329": {
+  "id": 142329,
+  "title": "Demon Slayer: Kimetsu no Yaiba Entertainment District Arc",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx142329-kET1PIXJv2eW.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/142329-i413SzLmToZN.jpg",
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-entertainment-district-arc"
+ },
+ "m142838": {
+  "id": 142838,
+  "title": "SPY x FAMILY Cour 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx142838-26JrqcFU1ljB.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/142838-tynuN00wxmKO.jpg",
+  "path": "/anime/spy-x-family-cour-2"
+ },
+ "m145064": {
+  "id": 145064,
+  "title": "JUJUTSU KAISEN Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx145064-hSNRJM03pvv1.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/145064-esDtAY2He7sk.jpg",
+  "path": "/anime/jujutsu-kaisen-season-2"
+ },
+ "m1535": {
+  "id": 1535,
+  "title": "Death Note",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-kUgkcrfOrkUM.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1535.jpg",
+  "path": "/anime/death-note"
+ },
+ "m154768": {
+  "id": 154768,
+  "title": "My Dress-Up Darling Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154768-DHHvNd4MjV1p.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154768-EuZd63IcqsVq.jpg",
+  "path": "/anime/my-dress-up-darling-season-2"
+ },
+ "m155348": {
+  "id": 155348,
+  "title": "ROAD OF NARUTO",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx155348-4ipji8SvTjyh.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/155348-I6f4TQKslVx2.jpg",
+  "path": "/anime/road-of-naruto"
+ },
+ "m158927": {
+  "id": 158927,
+  "title": "SPY x FAMILY Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b158927-lfO85WVguYgc.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/158927-zXtbXUO5iKzX.jpg",
+  "path": "/anime/spy-x-family-season-2"
+ },
+ "m16870": {
+  "id": 16870,
+  "title": "The Last: Naruto the Movie",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16870-BD4K9rzlhCP4.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16870-xz6KbaGC0jas.jpg",
+  "path": "/anime/the-last-naruto-the-movie"
+ },
+ "m171627": {
+  "id": 171627,
+  "title": "Chainsaw Man – The Movie: Reze Arc",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx171627-ZN9D7P46yHnw.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/171627-7esVHhgw69rn.jpg",
+  "path": "/anime/chainsaw-man-the-movie-reze-arc"
+ },
+ "m1735": {
+  "id": 1735,
+  "title": "Naruto: Shippuden",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1735-kGfVm0YqCPcu.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
+  "path": "/anime/naruto-shippuden"
+ },
+ "m186712": {
+  "id": 186712,
+  "title": "Bocchi the Rock! 2nd Season",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx186712-d5I2TjUQcHuI.jpg",
+  "banner": null,
+  "path": "/anime/bocchi-the-rock-2nd-season"
+ },
+ "m20": {
+  "id": 20,
+  "title": "Naruto",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20-dE6UHbFFg1A5.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20-HHxhPj5JD13a.jpg",
+  "path": "/anime/naruto"
+ },
+ "m20464": {
+  "id": 20464,
+  "title": "HAIKYU!!",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20464-ooZUyBe4ptp9.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20464-PpYjO9cPN1gs.jpg",
+  "path": "/anime/haikyu"
+ },
+ "m20992": {
+  "id": 20992,
+  "title": "HAIKYU!! 2nd Season",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20992-aHgNbcalVEqk.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20992-QMdqxEjAIAit.jpg",
+  "path": "/anime/haikyu-2nd-season"
+ },
+ "m21": {
+  "id": 21,
+  "title": "ONE PIECE",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-ELSYx3yMPcKM.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
+  "path": "/anime/one-piece"
+ },
+ "m21087": {
+  "id": 21087,
+  "title": "One-Punch Man",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21087-B5DHjqZ3kW4b.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21087-sHb9zUZFsHe1.jpg",
+  "path": "/anime/one-punch-man"
+ },
+ "m21507": {
+  "id": 21507,
+  "title": "Mob Psycho 100",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21507-6YUSbh2m0N1p.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21507-Qx8bGsLXUgLo.jpg",
+  "path": "/anime/mob-psycho-100"
+ },
+ "m21698": {
+  "id": 21698,
+  "title": "HAIKYU!! 3rd Season",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21698-RL71mr1YU5Io.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21698-jVFRIHAENS5B.jpg",
+  "path": "/anime/haikyu-3rd-season"
+ },
+ "m2994": {
+  "id": 2994,
+  "title": "Death Note: Relight",
+  "type": "ANIME",
+  "format": "SPECIAL",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b2994-mlofkz5GpkIu.jpg",
+  "banner": null,
+  "path": "/anime/death-note-relight"
+ },
+ "m30011": {
+  "id": 30011,
+  "title": "Naruto",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/nx30011-9yUF1dXWgDOx.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30011-pkX1O0EFqvV7.jpg",
+  "path": "/manga/naruto"
+ },
+ "m30013": {
+  "id": 30013,
+  "title": "One Piece",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30013-BeslEMqiPhlk.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30013-hbbRZqC5MjYh.jpg",
+  "path": "/manga/one-piece"
+ },
+ "m30021": {
+  "id": 30021,
+  "title": "Death Note",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30021-FE6kmrfpuKyb.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/n30021-eZbrTpIjv10E.jpg",
+  "path": "/manga/death-note"
+ },
+ "m512": {
+  "id": 512,
+  "title": "Kiki's Delivery Service",
+  "type": "ANIME",
+  "format": "MOVIE",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx512-UwP8X4BR8YoM.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/512-Ssp3EE2NdeoA.jpg",
+  "path": "/anime/kiki-s-delivery-service"
+ },
+ "m74347": {
+  "id": 74347,
+  "title": "One-Punch Man",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx74347-sZpmNJ5xLwRK.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/74347-xAQI9BxcpWM3.jpg",
+  "path": "/manga/one-punch-man"
+ },
+ "m97668": {
+  "id": 97668,
+  "title": "One-Punch Man Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97668-nC8gQrXVxt7k.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97668-8Yo3iH2fxbKR.jpg",
+  "path": "/anime/one-punch-man-season-2"
+ },
+ "m97938": {
+  "id": 97938,
+  "title": "Boruto: Naruto Next Generations",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97938-BnF6M5yTaNB1.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97938-cT6wkSRifTEC.jpg",
+  "path": "/anime/boruto-naruto-next-generations"
+ }
+}
