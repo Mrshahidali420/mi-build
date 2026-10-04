@@ -2,6 +2,9 @@
 export const prerender = true
 import Base from '../layouts/Base.astro'
 import { comics, anime, charactersWithPages } from '../lib/catalog.js'
+import { UPDATES } from '../lib/site-updates.js'
+
+const latest = UPDATES[0]
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -9,19 +12,20 @@ const jsonld = {
   name: 'About manhwaindex',
   url: 'https://manhwaindex.com/about',
   description:
-    'What manhwaindex is, where its data comes from, and why it only ever links to official platforms.',
+    'Who runs manhwaindex, how official links are chosen and checked, and how to report a wrong link.',
   publisher: {
     '@type': 'Organization',
     name: 'manhwaindex',
     url: 'https://manhwaindex.com',
     email: 'hello@manhwaindex.com',
+    founder: { '@type': 'Person', name: 'Shahid Ali' },
   },
 }
 ---
 
 <Base
   title="About manhwaindex — an index of official reading and streaming links"
-  description="manhwaindex is a free catalog that tells you where a manhwa, manga, manhua or anime is legally available. No hosted chapters, no mirrors, no pirate links."
+  description="Who runs manhwaindex, how each official reading and streaming link is chosen and checked, and how to report a link that is wrong."
   canonical="/about"
   jsonld={jsonld}
 >
@@ -33,50 +37,79 @@ const jsonld = {
       </div>
 
       <div class="prose">
-        <h2>What this site is</h2>
+        <h2>Who runs it</h2>
         <p>
-          manhwaindex is a free catalog of {comics.length.toLocaleString()} comics,
-          {anime.length.toLocaleString()} anime and {charactersWithPages.length.toLocaleString()} characters.
-          Each title page lists the official apps and platforms that carry it, what they
-          cost, and whether an adaptation exists.
+          manhwaindex is run by Shahid Ali as a hobby. It exists for one plain problem:
+          finding the legal place to read a series means searching across many apps, and
+          each one carries a different part of the market. This site does that search once
+          and keeps the answer current.
         </p>
-        <p class="prose__note">
-          We never host chapters or episodes. Every outbound link goes to a publisher,
-          a licensor or a streaming service that holds the rights.
+        <p>
+          There is no company behind it and no publisher paying for a place on a page. The
+          site is paid for by Amazon links and, later, ads. Neither one decides which
+          platform a page shows first.
         </p>
 
-        <h2>Why it exists</h2>
+        <h2>What is here</h2>
         <p>
-          Finding a series is easy. Finding the legal place to read it is not. Rights are
-          split across dozens of apps, they differ by region, and they move. This index
-          keeps that answer in one place so readers do not end up on a scan site by default.
+          A catalog of {comics.length.toLocaleString()} comics and novels,
+          {anime.length.toLocaleString()} anime and {charactersWithPages.length.toLocaleString()}
+          characters. Each title page answers four questions: where it is official, whether
+          it is free there, which language it is in, and what to read or watch next.
+        </p>
+        <p class="prose__note">
+          We never host chapters or episodes. Every outbound link goes to a publisher, a
+          licensor or a streaming service that holds the rights.
+        </p>
+
+        <h2>What is checked, and what is done by hand</h2>
+        <ul>
+          <li>
+            <strong>Only official platforms.</strong> A reading link appears only when it
+            points at one of a fixed list of publishers and licensed apps. Everything else is
+            left out, however popular.
+          </li>
+          <li>
+            <strong>Re-checked every six hours.</strong> Titles and links are compared with
+            the source data four times a day, and a link that is gone from the source is
+            gone from the page at the next check.
+          </li>
+          <li>
+            <strong>Reports are fixed by hand.</strong> A wrong or dead link that a reader
+            reports is checked and fixed, and a missing title can be added on request.
+          </li>
+          <li>
+            <strong>Some titles are left out on purpose.</strong> Adult titles are never
+            listed, and a title can be removed for good when its content crosses a line.
+          </li>
+        </ul>
+        <p>
+          The full rules are on <a href="/how-we-check-links">How we check links</a>. What
+          changed lately is on <a href="/updates">Updates</a>{latest && (
+            <> (last change: <time datetime={latest.date}>{latest.dateText}</time>)</>
+          )}.
         </p>
 
         <h2>Where the data comes from</h2>
         <p>
           Titles, synopses, cover art, scores and character profiles come from
           <a href="https://anilist.co" rel="noopener">AniList</a>, a community-run media
-          database with a public API. Scores are also cross-checked against
-          <a href="https://myanimelist.net" rel="noopener">MyAnimeList</a>. Cover art and
-          artwork belong to their publishers and are shown for identification only.
+          database with a public API. Scores are cross-checked against
+          <a href="https://myanimelist.net" rel="noopener">MyAnimeList</a>. Opening and
+          ending songs come from AnimeThemes. Cover art belongs to its publishers and is
+          shown to identify the title.
         </p>
         <p>
-          The whole index rebuilds automatically every day at 02:00 UTC. New titles appear
-          on their own, and dead links drop out on their own.
+          What this site adds on top: which platforms are official, which are free, the
+          language of each release, reading and watch order, reader ratings and reviews,
+          and the "if you liked this" lists.
         </p>
-
-        <h2>How links are chosen</h2>
-        <ul>
-          <li><strong>Official only.</strong> Publishers, licensors and licensed streaming services.</li>
-          <li><strong>Free first.</strong> When a platform has a free or ad-supported tier, we say so.</li>
-          <li><strong>No aggregators.</strong> No scan sites, no mirrors, no unofficial readers, ever.</li>
-        </ul>
 
         <h2>Corrections</h2>
         <p>
-          Availability changes constantly. If a link is wrong or a title is missing a
-          platform, tell us at <a class="mailto" href="mailto:hello@manhwaindex.com">hello@manhwaindex.com</a>
-          and we will fix it.
+          Availability changes all the time. If a link is wrong or a title is missing a
+          platform, write to <a class="mailto" href="mailto:hello@manhwaindex.com">hello@manhwaindex.com</a>
+          or use the <a href="/contact">contact page</a>. Each report is read and checked.
         </p>
         <p>
           manhwaindex is independent. It is not affiliated with, endorsed by, or sponsored
