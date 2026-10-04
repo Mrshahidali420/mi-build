@@ -1,0 +1,38 @@
+---
+/**
+ * "Featured in": links to the guides that rank or list this character or
+ * title. Renders nothing on a page no guide covers, which is almost every
+ * page.
+ *
+ * The Worker draws title and character pages on request, so this reads the
+ * small data/guide-index.json (written by `npm run guides:media`) and never
+ * the guide collection itself.
+ *
+ * props: character (AniList character id) or media (AniList media id), and
+ * frame ('answer' on title and character pages, like AlsoLookFor).
+ */
+import guideIndex from '../../data/guide-index.json'
+import { featuredIn } from '../lib/guides.mjs'
+
+const { character, media, frame = 'answer' } = Astro.props
+const links = featuredIn(guideIndex, { character, media })
+const head = frame === 'answer' ? 'answer__head' : 'section__head'
+---
+
+{
+  links.length > 0 && (
+    <section class={frame} aria-labelledby="featured-in">
+      <div class={head}>
+        <h2 id="featured-in">Featured in</h2>
+        <p>Guides on this site that include {character ? 'this character' : 'this story'}.</p>
+      </div>
+      <ul class="link-pills">
+        {links.map((link) => (
+          <li>
+            <a href={link.path}>{link.title}</a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

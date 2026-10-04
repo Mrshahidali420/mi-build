@@ -15,6 +15,7 @@ import { seasonHubs } from './seasons.mjs'
 import { sectionOf } from './section.mjs'
 import { MOODS } from './moods.mjs'
 import { watchListPages } from './watch-list-data.js'
+import { allGuides } from './guides-registry.js'
 // Written by scripts/make-shards.mjs on every build. It holds only the answer
 // pages that passed their own gate, so the sitemap never offers a thin page.
 import answerUrls from '../../data/answer-urls.json'
@@ -49,6 +50,9 @@ function coreUrls() {
     { loc: `${SITE}/schedule`, priority: '0.9' },
     { loc: `${SITE}/mood`, priority: '0.9' },
     ...MOODS.map((mood) => ({ loc: `${SITE}/mood/${mood.slug}`, priority: '0.8' })),
+    { loc: `${SITE}/guides`, priority: '0.8' },
+    // Each guide carries the date its text last changed.
+    ...allGuides().map((g) => ({ loc: `${SITE}/guides/${g.slug}`, lastmod: g.updated || undefined, priority: '0.7' })),
     { loc: `${SITE}/shop`, priority: '0.7' },
     { loc: `${SITE}/about`, priority: '0.5' },
     { loc: `${SITE}/how-we-check-links`, priority: '0.5' },

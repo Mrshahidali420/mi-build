@@ -15,7 +15,8 @@
     "ingest:full": "node --max-old-space-size=6000 scripts/ingest-full.mjs",
     "ingest:daily": "node --max-old-space-size=6000 scripts/ingest-daily.mjs",
     "ingest:characters": "node --max-old-space-size=6000 scripts/ingest-characters.mjs",
-    "ingest:novels": "node --max-old-space-size=6000 scripts/ingest-novels.mjs"
+    "ingest:novels": "node --max-old-space-size=6000 scripts/ingest-novels.mjs",
+    "guides:media": "node --max-old-space-size=4000 scripts/guide-media.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
@@ -25,6 +26,7 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
+    "js-yaml": "^4.3.2",
     "wrangler": "^4.20.0"
   },
   "license": "UNLICENSED",
