@@ -29,11 +29,16 @@ function start(form) {
     said.classList.toggle('bad', Boolean(bad))
   }
 
-  // The page the reader came from, from ?page=. A bad one is left out.
+  // The page the reader came from: ?page= when given, else the referrer when
+  // it is this site. A bad one is left out.
   const page = input('page')
   if (page) {
     try {
-      const given = cleanPage(new URLSearchParams(location.search).get('page') || '')
+      let given = cleanPage(new URLSearchParams(location.search).get('page') || '')
+      if (!given && document.referrer) {
+        const from = new URL(document.referrer)
+        if (from.origin === location.origin && from.pathname !== location.pathname) given = cleanPage(from.pathname)
+      }
       if (given) page.value = given
     } catch {}
   }

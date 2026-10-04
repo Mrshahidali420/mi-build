@@ -37,9 +37,9 @@ const {
 } = Astro.props
 
 const verb = isComic ? 'read' : 'watch'
-// "Report a problem" names this page on the feedback form.
-const reportPath = Astro.url.pathname.replace(/\.html$/, '') || '/'
-const reportHref = `/feedback?page=${encodeURIComponent(reportPath)}`
+// "Report a problem" opens the one feedback page; the form names this page
+// from the referrer, so no per-page feedback URL exists for crawlers.
+const reportHref = '/feedback'
 const Verb = isComic ? 'Read' : 'Watch'
 const anchor = isComic ? 'read' : 'watch'
 const rows = rankedRows(links)

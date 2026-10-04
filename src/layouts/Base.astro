@@ -61,9 +61,9 @@ const nav = [
   { href: '/my-list', label: 'My list' },
 ]
 const here = Astro.url.pathname
-// "Send feedback" carries the page it was sent from (read by /feedback).
-const herePath = here.replace(/\.html$/, '').replace(/^\/index$/, '/') || '/'
-const feedbackHref = herePath === '/feedback' ? '/feedback' : `/feedback?page=${encodeURIComponent(herePath)}`
+// "Send feedback" is one plain address on every page, so crawlers see one URL,
+// not one per page. The form reads the page the reader came from (referrer).
+const feedbackHref = '/feedback'
 const footGenres = stats.genres
 
 // The search box says how much there is to search. It used to say a number
