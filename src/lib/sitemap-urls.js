@@ -54,6 +54,8 @@ function coreUrls() {
     { loc: `${SITE}/how-we-check-links`, priority: '0.5' },
     { loc: `${SITE}/updates`, priority: '0.5' },
     { loc: `${SITE}/contact`, priority: '0.4' },
+    { loc: `${SITE}/feedback`, priority: '0.3' },
+    { loc: `${SITE}/advertise`, priority: '0.3' },
     { loc: `${SITE}/terms`, priority: '0.3' },
     { loc: `${SITE}/privacy`, priority: '0.3' },
     { loc: `${SITE}/dmca`, priority: '0.3' },

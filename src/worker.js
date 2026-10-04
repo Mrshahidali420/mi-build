@@ -12,6 +12,7 @@ import { passProblem, readBeacon, beaconPlace, sign } from './lib/beacon-pass.js
 import { rejectCounter, writeRejects } from './lib/reject-count.js'
 import { handleVote, handleReview, forgetSenders } from './lib/reviews-api.js'
 import { EDGE_HEADER } from './lib/reviews-read.js'
+import { handleMessage, forgetMessageSenders } from './lib/messages-api.js'
 
 // How long the edge keeps a rendered page. The data changes once a day.
 // A page that carries live numbers asks for less with the EDGE_HEADER header
@@ -177,6 +178,8 @@ async function issuePass(request, env, ctx) {
 // Where the rating stars and the review form post.
 const VOTE_PATH = '/_vote'
 const REVIEW_PATH = '/_review'
+// Where the feedback, contact and advertise forms post.
+const MESSAGE_PATH = '/_message'
 
 export default {
   async fetch(request, env, ctx) {
@@ -206,6 +209,8 @@ export default {
     // answer 405 to anything but POST, inside the handler.
     if (url.pathname === VOTE_PATH) return handleVote(request, env)
     if (url.pathname === REVIEW_PATH) return handleReview(request, env)
+    // A message from /feedback, /contact or /advertise (src/lib/messages-api.js).
+    if (url.pathname === MESSAGE_PATH) return handleMessage(request, env)
 
     if (url.pathname === BEACON_PATH) {
       if (request.method !== 'POST') {
@@ -264,5 +269,6 @@ export default {
     ctx.waitUntil(runRollup(env && env.ANALYTICS))
     // Blank the two-day-old hashes that stop repeat votes and reviews.
     ctx.waitUntil(forgetSenders(env && env.ANALYTICS))
+    ctx.waitUntil(forgetMessageSenders(env && env.ANALYTICS))
   },
 }

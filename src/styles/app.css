@@ -5694,6 +5694,23 @@ html.mi-has-list .foryou[hidden] {
   cursor: progress;
 }
 
+/* the feedback, contact and advertise forms (MessageForm.astro): the review
+   form's look, at reading width, with room before what follows */
+.message-form {
+  max-width: 40rem;
+  margin: 0 0 2.5rem;
+  padding-top: 0;
+}
+.message-form__done {
+  max-width: 40rem;
+  margin: 0 0 2.5rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--sf-line-strong);
+  border-radius: 8px;
+  color: var(--dawn);
+  font-size: 1rem;
+}
+
 /* approved reviews: one quiet card each */
 .reviews {
   display: grid;

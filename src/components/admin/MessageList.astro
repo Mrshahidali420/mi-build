@@ -1,0 +1,60 @@
+---
+/**
+ * Reader messages with the owner's buttons under each: Mark done (new ones
+ * only) and Delete. The taps are handled by message-taps.js; the server
+ * checks every one (src/lib/message-actions.js). Every field is plain text
+ * that Astro escapes; nothing here uses set:html. The page is a site path
+ * and the website an http(s) address, both checked before saving
+ * (src/lib/messages.mjs) and again here, so both are safe as links.
+ *
+ * rows: [{ id, kind, name, email, topic, page, company, website, budget, body, status, created_at }]
+ */
+import { adminDateTime } from '../../lib/admin.js'
+
+const { rows = [], empty = 'Nothing here.' } = Astro.props
+const KIND = { feedback: 'Feedback', contact: 'Contact', sponsor: 'Sponsor' }
+const when = (iso) => {
+  const ts = Date.parse(iso || '')
+  return Number.isNaN(ts) ? '' : adminDateTime(ts)
+}
+const safePage = (page) => (typeof page === 'string' && page.startsWith('/') && !page.startsWith('//') ? page : '')
+const safeSite = (site) => (typeof site === 'string' && /^https?:\/\//i.test(site) ? site : '')
+const toneOf = (row) => (row.status === 'done' ? 'tone-good' : row.kind === 'sponsor' ? 'tone-bad' : 'tone-amber')
+const sponsorBits = (row) => [row.company && `Company: ${row.company}`, row.budget && `Budget: ${row.budget}`].filter(Boolean).join(' · ')
+---
+
+{rows.length === 0 && <p class="empty">{empty}</p>}
+{rows.length > 0 && (
+  <ol class="taps reviews-admin messages-admin">
+    {rows.map((row) => (
+      <li data-message-row data-id={String(row.id)} class={toneOf(row)}>
+        <span class="name">
+          <span>{KIND[row.kind] || row.kind}{row.topic ? ` · ${row.topic}` : ''}</span>
+          <span class="sub">
+            {when(row.created_at)} · {row.name || 'No name'} ·{' '}
+            {row.email ? <a href={`mailto:${row.email}`}>{row.email}</a> : 'no email'}
+          </span>
+          {safePage(row.page) && (
+            <span class="sub">Page: <a href={safePage(row.page)}>{row.page}</a></span>
+          )}
+          {row.kind === 'sponsor' && sponsorBits(row) && <span class="sub">{sponsorBits(row)}</span>}
+          {row.kind === 'sponsor' && safeSite(row.website) && (
+            <span class="sub">
+              Website: <a href={safeSite(row.website)} rel="noopener noreferrer nofollow" target="_blank">{row.website}</a>
+            </span>
+          )}
+        </span>
+        <p class="review-body message-body">{row.body}</p>
+        <div class="acts">
+          {row.status !== 'done' && <button type="button" data-message-op="done">Mark done</button>}
+          <button type="button" class="quiet" data-message-op="delete">Delete</button>
+        </div>
+        <p class="saved" role="status" aria-live="polite"></p>
+      </li>
+    ))}
+  </ol>
+)}
+
+<script>
+  import './message-taps.js'
+</script>

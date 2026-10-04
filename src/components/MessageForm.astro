@@ -1,0 +1,78 @@
+---
+/**
+ * One reader form that reaches the owner's /my-admin/messages: feedback,
+ * contact or sponsor. The page stays static (prerendered); the script posts
+ * JSON to /_message with a fresh Turnstile ticket, and the Worker checks
+ * every field again (src/lib/messages-api.js). The look is the review form's
+ * (.review-form in app.css).
+ *
+ * kind: 'feedback' | 'contact' | 'sponsor'
+ */
+import { TURNSTILE_SITEKEY } from '../lib/reviews.mjs'
+import {
+  TOPICS,
+  MAX_BODY,
+  MAX_NAME,
+  MAX_EMAIL,
+  MAX_PAGE,
+  MAX_COMPANY,
+  MAX_WEBSITE,
+  MAX_BUDGET,
+} from '../lib/messages.mjs'
+
+const { kind, send = 'Send message' } = Astro.props
+const topics = TOPICS[kind] || []
+const id = (name) => `msg-${kind}-${name}`
+const needsEmail = kind !== 'feedback'
+const topicLabel = kind === 'sponsor' ? 'What you want' : kind === 'feedback' ? 'What is it about' : 'Topic'
+---
+
+<form class="review-form message-form" data-message-form data-kind={kind} data-key={TURNSTILE_SITEKEY} novalidate>
+  {kind === 'feedback' && (
+    <>
+      <label for={id('page')}>Page <span>optional</span></label>
+      <input id={id('page')} name="page" maxlength={MAX_PAGE} inputmode="url" autocomplete="off" placeholder="/manhwa/solo-leveling" />
+    </>
+  )}
+
+  <label for={id('name')}>Name <span>optional</span></label>
+  <input id={id('name')} name="name" maxlength={MAX_NAME} autocomplete="name" />
+
+  <label for={id('email')}>Email {!needsEmail && <span>optional, only if you want a reply</span>}</label>
+  <input id={id('email')} name="email" type="email" maxlength={MAX_EMAIL} autocomplete="email" inputmode="email" required={needsEmail} />
+
+  {kind === 'sponsor' && (
+    <>
+      <label for={id('company')}>Company or project <span>optional</span></label>
+      <input id={id('company')} name="company" maxlength={MAX_COMPANY} autocomplete="organization" />
+      <label for={id('website')}>Website <span>optional</span></label>
+      <input id={id('website')} name="website" type="url" maxlength={MAX_WEBSITE} inputmode="url" placeholder="https://" />
+    </>
+  )}
+
+  <label for={id('topic')}>{topicLabel} {kind === 'feedback' && <span>optional</span>}</label>
+  <select id={id('topic')} name="topic" required={kind !== 'feedback'}>
+    <option value="">Choose one</option>
+    {topics.map((t) => <option value={t}>{t}</option>)}
+  </select>
+
+  {kind === 'sponsor' && (
+    <>
+      <label for={id('budget')}>Budget <span>optional</span></label>
+      <input id={id('budget')} name="budget" maxlength={MAX_BUDGET} placeholder="For example: $100 a month" />
+    </>
+  )}
+
+  <label for={id('body')}>Message</label>
+  <textarea id={id('body')} name="body" rows="7" maxlength={MAX_BODY} required></textarea>
+  <p class="review-form__count" data-message-count>0 / {MAX_BODY}</p>
+
+  <div class="rate__check" data-message-check></div>
+  <p class="review-form__said" role="status" aria-live="polite" data-message-said></p>
+  <p class="review-form__note">Only the site owner reads this. Your address is never shown or shared.</p>
+  <button type="submit">{send}</button>
+</form>
+
+<script>
+  import './message-form.js'
+</script>

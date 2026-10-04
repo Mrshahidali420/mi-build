@@ -7,6 +7,7 @@
  * plain words: what changed for the reader, not how it was built.
  */
 const ENTRIES = [
+  ['2026-10-04', 'Feedback and contact forms', 'You can now send feedback from any page, write to us through the contact form, and ask about sponsored spots on the new Advertise page.'],
   ['2026-10-04', 'Shop shelf', 'The Amazon box on title pages became a shelf of cards that say what each item is ("Manhwa · Vol. 1", "Light novel · Vol. 3"). Book links that led to a missing Amazon page were removed.'],
   ['2026-10-04', 'Homepage', 'The homepage no longer shows titles that have no official link yet, so every cover leads somewhere you can read or watch.'],
   ['2026-10-04', 'Trust pages', 'New pages: How we check links, Updates and Terms. The About page now says who runs the site and what is checked by hand.'],

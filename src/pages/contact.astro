@@ -1,6 +1,7 @@
 ---
 export const prerender = true
 import Base from '../layouts/Base.astro'
+import MessageForm from '../components/MessageForm.astro'
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -23,7 +24,7 @@ const jsonld = {
 
 <Base
   title="Contact manhwaindex — corrections, missing titles and takedowns"
-  description="Email manhwaindex about a wrong link, a missing platform, a copyright takedown, or a business enquiry. We reply to every message."
+  description="Write to manhwaindex about a wrong link, a missing platform, a copyright takedown, or a business enquiry. We reply to every message."
   canonical="/contact"
   jsonld={jsonld}
 >
@@ -31,11 +32,13 @@ const jsonld = {
     <section class="section">
       <div class="section__head">
         <h1>Contact</h1>
-        <p>Email is the only channel. We read everything and reply within a few days.</p>
+        <p>Write through the form or by email. We read everything and reply within a few days.</p>
       </div>
 
+      <MessageForm kind="contact" />
+
       <div class="prose">
-        <h2>General, corrections and missing titles</h2>
+        <h2>Or email: general, corrections and missing titles</h2>
         <p>
           <a class="mailto" href="mailto:hello@manhwaindex.com">hello@manhwaindex.com</a>
         </p>
@@ -44,7 +47,7 @@ const jsonld = {
           <li>A reading or streaming link that is wrong, dead or region-locked.</li>
           <li>An official platform we missed for a title.</li>
           <li>A title that is not in the index yet.</li>
-          <li>Advertising, partnership or press enquiries.</li>
+          <li>Advertising, partnership or press enquiries. For sponsored spots, see <a href="/advertise">Advertise or get listed</a>.</li>
         </ul>
         <p class="prose__note">
           Please include the page address. It makes the fix far faster.
