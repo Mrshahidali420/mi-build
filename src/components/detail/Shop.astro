@@ -100,7 +100,12 @@ const initials = String(title || '').slice(0, 40)
                   <span class="shelf__kicker">{pickKicker(pick)}</span>
                   <span class="buy__label">{pick.n}</span>
                 </span>
-                <span class="shelf__more-go">View on Amazon</span>
+                <span class="shelf__more-go">
+                  Amazon
+                  <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                    <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
               </a>
             </li>
           ))}
@@ -108,12 +113,7 @@ const initials = String(title || '').slice(0, 40)
       )}
 
       <p class="buys__note dp-shop__note">
-        {hasPicks &&
-          (picked.byHand !== false
-            ? 'The first card was chosen by hand on Amazon. '
-            : 'The first card is the official English edition, found in publisher records. ')}
-        We hold no stock and ship nothing. Each link opens Amazon itself, so the price and the stock you see are
-        theirs and are right at the moment you look.
+        Each link opens Amazon, where the price and stock are always current.
       </p>
 
       <p class="buys__support">{SUPPORT_LINE}</p>
