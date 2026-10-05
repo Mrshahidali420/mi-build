@@ -26,10 +26,15 @@ const head = frame === 'answer' ? 'answer__head' : 'section__head'
         <h2 id="featured-in">Featured in</h2>
         <p>Guides on this site that include {character ? 'this character' : 'this story'}.</p>
       </div>
-      <ul class="link-pills">
+      <ul class="featured-guides">
         {links.map((link) => (
           <li>
-            <a href={link.path}>{link.title}</a>
+            <a class="featured-guide" href={link.path}>
+              {link.image && (
+                <img src={link.image} alt={link.imageAlt || ''} width="1900" height="400" loading="lazy" decoding="async" />
+              )}
+              <span class="featured-guide__title">{link.title}</span>
+            </a>
           </li>
         ))}
       </ul>
