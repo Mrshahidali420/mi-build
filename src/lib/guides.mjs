@@ -315,7 +315,7 @@ export function featuredIn(index, { character, media } = {}) {
     .map((slug) => bySlug.get(slug))
     .filter(Boolean)
     .slice(0, FEATURED_MAX)
-    .map((g) => ({ slug: g.slug, title: g.title, path: `/guides/${g.slug}` }))
+    .map((g) => ({ slug: g.slug, title: g.title, path: `/guides/${g.slug}`, image: g.image || null, imageAlt: g.imageAlt || '' }))
 }
 
 /**

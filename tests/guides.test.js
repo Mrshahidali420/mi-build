@@ -112,7 +112,7 @@ test('featuredIn returns links for a character or a title, capped', () => {
     featured: { c17: ['g0', 'g1', 'g2', 'g3', 'g4', 'g5'], m20: ['g2', 'missing'] },
   }
   assert.equal(featuredIn(index, { character: 17 }).length, FEATURED_MAX)
-  assert.deepEqual(featuredIn(index, { media: 20 }), [{ slug: 'g2', title: 'Guide 2', path: '/guides/g2' }])
+  assert.deepEqual(featuredIn(index, { media: 20 }), [{ slug: 'g2', title: 'Guide 2', path: '/guides/g2', image: null, imageAlt: '' }])
   assert.deepEqual(featuredIn(index, { media: 1 }), [])
   assert.deepEqual(featuredIn(index, {}), [])
   assert.deepEqual(featuredIn(null, { media: 20 }), [])

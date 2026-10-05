@@ -5839,3 +5839,47 @@ html.mi-has-list .foryou[hidden] {
   font-weight: 700;
   white-space: nowrap;
 }
+
+/* "Featured in" on title and character pages: each guide with its own wide
+   banner, so the block reads as guides, not as a list of buttons. */
+.featured-guides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+@media (min-width: 760px) {
+  .featured-guides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.featured-guide {
+  display: block;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--dawn) 14%, transparent);
+  border-radius: 12px;
+  color: var(--dawn);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.featured-guide:hover {
+  border-color: var(--rose);
+  transform: translateY(-2px);
+}
+.featured-guide:focus-visible {
+  outline: 2px solid var(--day);
+  outline-offset: 2px;
+}
+.featured-guide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 6;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.featured-guide__title {
+  display: block;
+  padding: 0.75rem 0.9rem 0.85rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
