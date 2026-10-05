@@ -1,0 +1,42 @@
+---
+/**
+ * The ranked rows of a data guide: number, cover thumbnail, title linked to
+ * its page, one fact line and the platforms. A list rather than a <table> so
+ * it reads on a phone without sideways scrolling.
+ *
+ * rows: [{ title, path, cover, alt, sub, platforms, extra: { href, text } }]
+ * cover is a thumbnail URL (thumbOf in data-guides.mjs) or null.
+ */
+const { rows = [], label = 'The list', platformsLabel = 'On' } = Astro.props
+---
+
+<ol class="dg-list" aria-label={label}>
+  {
+    rows.map((row, i) => (
+      <li class="dg-row">
+        <span class="dg-row__num" aria-hidden="true">
+          {String(i + 1).padStart(2, '0')}
+        </span>
+        <a class="dg-row__art" href={row.path} tabindex="-1" aria-hidden="true">
+          {row.cover && <img src={row.cover} alt="" width="230" height="325" loading="lazy" decoding="async" />}
+        </a>
+        <div class="dg-row__text">
+          <h3 class="dg-row__title">
+            <a href={row.path}>{row.title}</a>
+          </h3>
+          {row.sub && <p class="dg-row__sub">{row.sub}</p>}
+          {row.platforms && (
+            <p class="dg-row__on">
+              <span>{platformsLabel}</span> {row.platforms}
+            </p>
+          )}
+          {row.extra && (
+            <p class="dg-row__more">
+              <a href={row.extra.href}>{row.extra.text}</a>
+            </p>
+          )}
+        </div>
+      </li>
+    ))
+  }
+</ol>

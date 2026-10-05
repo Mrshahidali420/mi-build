@@ -1,0 +1,40 @@
+---
+/**
+ * A grid of guide cards: the hub (/guides), the homepage "Guides" row and the
+ * "More guides" blocks on guide pages.
+ *
+ * Every guide row carries its own `image`/`imageAlt`/`wide` straight from
+ * data/guide-index.json (npm run guides:media assigns each guide a unique
+ * wide banner site-wide, see assignBanners in src/lib/guides.mjs), so no
+ * per-page picture juggling is needed here any more: a plain wide image on
+ * top, title and a one-line description underneath. `wide: false` (the rare
+ * guide that fell back to a cover) still renders in the same wide frame,
+ * just cropped to favour the top of the picture.
+ *
+ * Props: guides, lines (show the one-line description, default true),
+ * label (aria-label of the list, optional).
+ */
+import '../styles/guide-cards.css'
+
+const { guides = [], lines = true, label } = Astro.props
+---
+
+<ul class="gcards" aria-label={label}>
+  {
+    guides.map((g) => (
+      <li class="gcard">
+        <a href={`/guides/${g.slug}`}>
+          <span class:list={['gcard__art', { 'gcard__art--cover': g.image && g.wide === false }]}>
+            {g.image && (
+              <img src={g.image} alt={g.imageAlt || g.title} width="1200" height="500" loading="lazy" decoding="async" />
+            )}
+          </span>
+          <span class="gcard__text">
+            <span class="gcard__title">{g.title}</span>
+            {lines && g.description && <span class="gcard__line">{g.description}</span>}
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

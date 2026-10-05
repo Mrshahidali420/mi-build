@@ -1,0 +1,32 @@
+---
+/** D14. /guides/best-action-manhwa — see src/components/BestManhwa.astro. */
+export const prerender = true
+import BestManhwa from '../../components/BestManhwa.astro'
+---
+
+<BestManhwa
+  slug="best-action-manhwa"
+  genre="Action"
+  keywords={['best action manhwa', 'action manhwa', 'best action webtoons', 'action manhwa to read', 'top action manhwa']}
+>
+  <Fragment slot="intro">
+    <p>
+      Action manhwa are behind most of the genre's big crossover hits: hunters clearing dungeons, returners who
+      go back in time to fix their mistakes, martial artists climbing the murim, and regressors who remember how
+      the world ends. Full-colour vertical scrolling suits fight scenes, and the best of them move like a storyboard.
+    </p>
+    <p>
+      This list keeps to action manhwa you can read on an official platform, ranked by what readers scored them.
+      Each title links to its page, with every official platform and whether you can start free.
+    </p>
+  </Fragment>
+
+  <h2>Reading action manhwa on the official apps</h2>
+  <p>
+    Most of the big action series run on WEBTOON, Tapas and Tappytoon in English, and on Naver Webtoon and
+    KakaoPage in Korean, where new chapters usually appear first. WEBTOON and Tapas let you read most of a series
+    free and charge only for the newest chapters, which makes them the cheapest way to catch up on a long action
+    series. Several of the titles here also have an anime adaptation; their title pages link to it, with the
+    services that stream it.
+  </p>
+</BestManhwa>

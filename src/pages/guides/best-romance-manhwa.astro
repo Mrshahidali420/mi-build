@@ -1,0 +1,33 @@
+---
+/** D13. /guides/best-romance-manhwa — see src/components/BestManhwa.astro. */
+export const prerender = true
+import BestManhwa from '../../components/BestManhwa.astro'
+---
+
+<BestManhwa
+  slug="best-romance-manhwa"
+  genre="Romance"
+  keywords={['best romance manhwa', 'romance manhwa', 'best romance webtoons', 'romance manhwa to read', 'top romance manhwa']}
+>
+  <Fragment slot="intro">
+    <p>
+      Romance is the genre manhwa does best. Korean webcomic apps built their audience on it, and it shows in the
+      range: palace intrigue and villainess stories set in invented European empires, quiet campus and office
+      romances, second chances, contract marriages and slow burns that take a hundred chapters to reach a first
+      kiss. A lot of it is also hard to find legally, because only some series ever get an English licence.
+    </p>
+    <p>
+      This list keeps to romance manhwa you can read on an official platform, ranked by what readers actually
+      scored them. Every title links to its page, which names each platform and how much of the story is free.
+    </p>
+  </Fragment>
+
+  <h2>Reading romance manhwa on the official apps</h2>
+  <p>
+    Romance is where the paid apps compete hardest. Tappytoon and Lezhin hold many of the licensed fantasy and
+    historical romances, WEBTOON and Tapas carry a large free-to-start selection, and Manta charges one monthly
+    price for its whole library. Many romance series on these lists are labelled "romance fantasy": the story
+    happens in a fantasy kingdom, and the relationship is the plot. If you liked one, the title page shows similar
+    picks, all with official links.
+  </p>
+</BestManhwa>

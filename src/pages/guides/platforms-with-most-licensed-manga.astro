@@ -1,0 +1,174 @@
+---
+/**
+ * D3. /guides/platforms-with-most-licensed-manga — official reading
+ * platforms ranked by how many manga, manhwa and manhua they carry in the
+ * catalog (read links, one title counted once per platform).
+ */
+export const prerender = true
+import DataGuide from '../../components/DataGuide.astro'
+import { comics, hubSlugOf, genreSlug } from '../../lib/catalog.js'
+import { pathOfTitle } from '../../lib/section.mjs'
+import { factsFor } from '../../lib/platform-facts.js'
+import { dataGuide } from '../../lib/guides-registry.js'
+import { platformTally, num, percent, listWords } from '../../lib/data-guides.mjs'
+
+const slug = 'platforms-with-most-licensed-manga'
+const meta = dataGuide(slug)
+const TABLE_SIZE = 25
+const NOTES = 6
+
+const tally = platformTally(comics)
+const table = tally.slice(0, TABLE_SIZE)
+const linked = comics.filter((c) => (c.readLinks || []).length > 0).length
+const leader = (key) => [...tally].sort((a, b) => b[key] - a[key])[0]
+const leaders = {
+  manhwa: leader('manhwa'),
+  manga: leader('manga'),
+  manhua: leader('manhua'),
+  english: leader('english'),
+}
+const englishTop = [...tally].sort((a, b) => b.english - a.english).filter((p) => p.english > 0).slice(0, 5)
+const anchor = (site) => `p-${genreSlug(site)}`
+const platformPath = (site) => (hubSlugOf(site) ? `/platform/${hubSlugOf(site)}` : `/guides/${slug}#${anchor(site)}`)
+
+// The hero: the most popular manga with an official platform, so the page
+// opens on a cover readers know.
+// The unique banner npm run guides:media assigned this guide (src/lib/guides.mjs assignBanners).
+const hero = meta.image ? { src: meta.image, alt: meta.imageAlt || meta.title, wide: meta.wide } : null
+
+const mix = (p) => {
+  const parts = [
+    p.manhwa ? `${num(p.manhwa)} manhwa` : '',
+    p.manga ? `${num(p.manga)} manga` : '',
+    p.manhua ? `${num(p.manhua)} manhua` : '',
+  ].filter(Boolean)
+  return listWords(parts)
+}
+const costLine = (site) => {
+  const f = factsFor(site)
+  if (!f.pay) return ''
+  const region = f.region ? ` It works in: ${f.region}.` : ''
+  return `How you pay: ${f.pay.toLowerCase()}. Free without paying: ${(f.free || 'not known').toLowerCase()}.${region}`
+}
+
+const faq = [
+  {
+    q: 'Which platform has the most licensed manga?',
+    a: `${leaders.manga.site}, with ${num(leaders.manga.manga)} manga in our records. For all three kinds together, ${tally[0].site} leads with ${num(tally[0].total)} titles.`,
+  },
+  {
+    q: 'Which platform has the most manhwa?',
+    a: `${leaders.manhwa.site}, with ${num(leaders.manhwa.manhwa)} manhwa. Most of its catalogue is in Korean; for English, ${englishTop[0]?.site} carries the most titles of any platform (${num(englishTop[0]?.english)}).`,
+  },
+  {
+    q: 'Which platform has the most manhua?',
+    a: `${leaders.manhua.site}, with ${num(leaders.manhua.manhua)} manhua, most of them in Chinese.`,
+  },
+  {
+    q: 'Which platform has the most titles in English?',
+    a: `${listWords(englishTop.slice(0, 3).map((p) => `${p.site} (${num(p.english)})`))} carry the most titles in English among the comics on manhwaindex.`,
+  },
+]
+---
+
+<DataGuide
+  slug={slug}
+  title={meta.title}
+  description={meta.description}
+  category={meta.category}
+  keywords={['manga platforms', 'best manga app', 'which manga app has the most manga', 'manhwa platforms', 'legal manga sites']}
+  hero={hero}
+  items={table.map((p) => ({ name: p.site, path: platformPath(p.site) }))}
+  faq={faq}
+  minutes={5}
+>
+  <p>
+    Manga, manhwa and manhua are spread across dozens of official apps, and most of them are strong in one
+    kind of comic and one language. Out of the {num(comics.length)} comics on manhwaindex,
+    {num(linked)} ({percent(linked, comics.length)}) have at least one official platform on record, and
+    those links point to {num(tally.length)} different platforms. This guide counts how many titles each one
+    carries.
+  </p>
+  <p>
+    <strong>{tally[0].site}</strong> carries the most of any platform, {num(tally[0].total)} titles.
+    The leaders by kind are {leaders.manhwa.site} for manhwa, {leaders.manga.site} for manga and
+    {leaders.manhua.site} for manhua, and {leaders.english.site} carries the most in English.
+  </p>
+
+  <h2>How the count works</h2>
+  <p>
+    Every comic page on this site lists the official places to read it. For this guide each platform gets one
+    point per title it carries, however many editions or languages it offers that title in. Manhwa are Korean
+    comics, manga Japanese and manhua Chinese or Taiwanese, by the country the work comes from. Light novels are
+    left out. "In English" counts the titles a platform carries in English. A big number is not the same as a
+    big library you can read: many of the largest platforms publish only in Korean, Japanese or Chinese, so
+    check the English column if that is what you read.
+  </p>
+
+  <h2>The {table.length} biggest platforms</h2>
+  <table class="dg-table">
+    <thead>
+      <tr>
+        <th scope="col">Platform</th>
+        <th scope="col" class="n">Titles</th>
+        <th scope="col" class="n">Manhwa</th>
+        <th scope="col" class="n">Manga</th>
+        <th scope="col" class="n">Manhua</th>
+        <th scope="col" class="n">In English</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        table.map((p) => (
+          <tr id={anchor(p.site)}>
+            <td>{hubSlugOf(p.site) ? <a href={`/platform/${hubSlugOf(p.site)}`}>{p.site}</a> : p.site}</td>
+            <td class="n">{num(p.total)}</td>
+            <td class="n">{num(p.manhwa)}</td>
+            <td class="n">{num(p.manga)}</td>
+            <td class="n">{num(p.manhua)}</td>
+            <td class="n">{num(p.english)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h2>Notes on the top platforms</h2>
+  {
+    tally.slice(0, NOTES).map((p) => (
+      <>
+        <h3>{p.site}</h3>
+        <p>
+          {num(p.total)} titles here: {mix(p)}
+          {p.english ? `, ${num(p.english)} of them in English` : ', none of them in English'}. {costLine(p.site)}{' '}
+          {p.top.length > 0 && (
+            <>
+              Its biggest titles on this site:{' '}
+              {p.top.map((item, i) => (
+                <>
+                  {i > 0 && (i === p.top.length - 1 ? ' and ' : ', ')}
+                  <a href={pathOfTitle(item)}>{item.title}</a>
+                </>
+              ))}
+              .
+            </>
+          )}
+        </p>
+      </>
+    ))
+  }
+
+  <h2>The best bets for English readers</h2>
+  <p>
+    Ranked by titles in English, the leaders are{' '}
+    {englishTop.map((p, i) => (
+      <>
+        {i > 0 && (i === englishTop.length - 1 ? ' and ' : ', ')}
+        <strong>{p.site}</strong> ({num(p.english)})
+      </>
+    ))}
+    . For a side-by-side view of what each one costs and which are free, see{' '}
+    <a href="/where-to-read">where to read manhwa, manga and manhua</a>, or the
+    <a href="/guides/manhwa-official-english-release"> guide to manhwa with an official English release</a>.
+  </p>
+</DataGuide>

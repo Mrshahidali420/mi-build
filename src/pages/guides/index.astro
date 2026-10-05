@@ -1,0 +1,93 @@
+---
+/**
+ * The guides hub: /guides. Every written guide and every data guide, grouped
+ * by category (src/lib/guides-registry.js), with the method the rankings
+ * follow. Built as a file.
+ */
+export const prerender = true
+import Base from '../../layouts/Base.astro'
+import '../../styles/guides.css'
+import GuideCards from '../../components/GuideCards.astro'
+import { guidesByCategory, allGuides } from '../../lib/guides-registry.js'
+
+const site = 'https://manhwaindex.com'
+// Every guide already carries its own unique banner from data/guide-index.json
+// / data/guide-data-banners.json (npm run guides:media), so no per-page
+// picture juggling is needed here.
+const groups = guidesByCategory()
+const all = allGuides()
+const description =
+  'Anime and manga guides from manhwaindex: strongest characters ranked by real feats, power systems explained, watch orders, cosplay ideas and data from official platforms.'
+
+const jsonld = {
+  '@type': 'CollectionPage',
+  '@id': `${site}/guides#page`,
+  name: 'Anime and manga guides',
+  url: `${site}/guides`,
+  description,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: all.length,
+    itemListElement: all.map((g, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: g.title,
+      url: `${site}/guides/${g.slug}`,
+    })),
+  },
+}
+---
+
+<Base
+  title="Anime and Manga Guides: Rankings, Explainers and Cosplay — manhwaindex"
+  description={description}
+  canonical="/guides"
+  jsonld={jsonld}
+  crumbs={[{ name: 'Guides' }]}
+>
+  <div class="guide shell guide-hub">
+    <nav class="guide-crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Guides</span>
+    </nav>
+
+    <header class="guide-hub__head">
+      <h1>Guides</h1>
+      <p class="guide-dek">
+        Rankings, explainers, watch orders and cosplay ideas for the stories this site indexes.
+        Each guide links straight to the official places to watch or read the series it covers,
+        so you can go from "who is the strongest?" to the first episode in one click.
+      </p>
+    </header>
+
+    <section class="guide-method prose" id="how-these-guides-are-made" aria-labelledby="g-method">
+      <h2 id="g-method">How these guides are made</h2>
+      <p>
+        <strong>Rankings use feats, not opinions.</strong> A character's place comes from what the
+        anime and manga show: who they beat, what they survived, and what the story states plainly.
+        Fan theories and games do not count, and when the anime and manga differ, the manga decides.
+      </p>
+      <p>
+        <strong>Data guides use this site's own records.</strong> They are counted from the same
+        official-platform data as every title page and refresh with it, so each shows the date it
+        was last updated.
+      </p>
+      <p>
+        <strong>Spot a mistake?</strong> Write to
+        <a href="mailto:hello@manhwaindex.com">hello@manhwaindex.com</a> and it is checked by hand.
+        Character and cover art comes from <a href="https://anilist.co" rel="noopener">AniList</a>
+        and belongs to its publishers.
+      </p>
+    </section>
+
+    {
+      groups.map((group) => (
+        <section class="guide-group" id={group.key} aria-labelledby={`g-${group.key}`}>
+          <h2 id={`g-${group.key}`}>{group.label}</h2>
+          <GuideCards guides={group.guides} />
+        </section>
+      ))
+    }
+  </div>
+</Base>

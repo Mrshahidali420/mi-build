@@ -224,3 +224,20 @@ CREATE TABLE IF NOT EXISTS messages (
   created_at TEXT NOT NULL);
 CREATE INDEX IF NOT EXISTS messages_status ON messages(status, created_at DESC);
 CREATE INDEX IF NOT EXISTS messages_day ON messages(day) WHERE sender IS NOT NULL;
+
+-- Reader comments on the guides, with one level of replies (0010-guide-comments.sql).
+-- No IP is stored: sender is a keyed hash, blanked after two days.
+CREATE TABLE IF NOT EXISTS guide_comments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  guide TEXT NOT NULL,
+  parent_id INTEGER,
+  name TEXT NOT NULL,
+  body TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved')),
+  day TEXT NOT NULL,
+  sender TEXT,
+  created_at TEXT NOT NULL,
+  approved_at TEXT);
+CREATE INDEX IF NOT EXISTS guide_comments_guide ON guide_comments(guide, status, created_at);
+CREATE INDEX IF NOT EXISTS guide_comments_status ON guide_comments(status, created_at DESC);
+CREATE INDEX IF NOT EXISTS guide_comments_day ON guide_comments(day) WHERE sender IS NOT NULL;

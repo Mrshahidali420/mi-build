@@ -1,0 +1,147 @@
+---
+/**
+ * D4. /guides/manhwa-official-english-release — how many manhwa have an
+ * official English edition, and the 50 most popular that do.
+ */
+export const prerender = true
+import DataGuide from '../../components/DataGuide.astro'
+import DataList from '../../components/DataList.astro'
+import { comicsOfCountry } from '../../lib/catalog.js'
+import { pathOfTitle } from '../../lib/section.mjs'
+import { dataGuide } from '../../lib/guides-registry.js'
+import { englishSplit, countPlatforms, notAdult, thumbOf, factLine, num, percent, listWords } from '../../lib/data-guides.mjs'
+import homeRules from '../../../data/home-rules.json'
+
+const slug = 'manhwa-official-english-release'
+const meta = dataGuide(slug)
+
+const manhwa = comicsOfCountry('KR')
+const split = englishSplit(manhwa, { limit: 50, keep: notAdult(homeRules) })
+const { rows } = split
+const linked = split.english + split.otherOnly
+const englishPlatforms = countPlatforms(englishSplit(manhwa, { limit: Infinity }).rows, (row) => row.english)
+const inTop = countPlatforms(rows, (row) => row.english)
+const top = rows[0]?.item
+// The unique banner npm run guides:media assigned this guide (src/lib/guides.mjs assignBanners).
+const hero = meta.image ? { src: meta.image, alt: meta.imageAlt || meta.title, wide: meta.wide } : null
+
+const list = rows.map(({ item, english }) => ({
+  title: item.title,
+  path: pathOfTitle(item),
+  cover: thumbOf(item.cover),
+  sub: factLine(item),
+  platforms: english.map((p) => p.site).join(', '),
+}))
+
+const faq = [
+  {
+    q: 'How many manhwa are officially translated into English?',
+    a: `${num(split.english)} of the ${num(split.total)} manhwa on manhwaindex have at least one official English edition on record, about ${percent(split.english, split.total)}.`,
+  },
+  {
+    q: 'Where can I read manhwa in English legally?',
+    a: `${listWords(englishPlatforms.slice(0, 4).map((p) => p.site))} carry the most manhwa in English. Each title page lists every official platform and language for that title.`,
+  },
+  {
+    q: 'Why is my favourite manhwa only in Korean?',
+    a: `An English edition needs a licence and a translation, and many series never get one, or get one years later. ${num(split.otherOnly)} manhwa here have official editions only in other languages, mostly Korean.`,
+  },
+  {
+    q: 'Is a fan translation an official English release?',
+    a: 'No. Only editions published by the rights holder or a licensed partner count here. Fan scans are not listed on manhwaindex.',
+  },
+]
+---
+
+<DataGuide
+  slug={slug}
+  title={meta.title}
+  description={meta.description}
+  category={meta.category}
+  keywords={['manhwa in english', 'official english manhwa', 'licensed manhwa', 'manhwa english translation', 'where to read manhwa in english']}
+  hero={hero}
+  items={rows.map(({ item }) => ({ name: item.title, path: pathOfTitle(item), image: item.cover }))}
+  faq={faq}
+  minutes={5}
+>
+  <p>
+    Most manhwa are never published in English. Korean apps release thousands of series, and only some are
+    licensed and translated by an English publisher. Here is how the numbers look across the
+    <strong>{num(split.total)}</strong> manhwa on manhwaindex, and the {rows.length} most popular you can read in
+    English on an official platform today.
+  </p>
+
+  <h2>The numbers</h2>
+  <table class="dg-table">
+    <thead>
+      <tr>
+        <th scope="col">Manhwa on manhwaindex</th>
+        <th scope="col" class="n">Titles</th>
+        <th scope="col" class="n">Share</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>With an official English edition</td>
+        <td class="n">{num(split.english)}</td>
+        <td class="n">{percent(split.english, split.total)}</td>
+      </tr>
+      <tr>
+        <td>Official editions in other languages only</td>
+        <td class="n">{num(split.otherOnly)}</td>
+        <td class="n">{percent(split.otherOnly, split.total)}</td>
+      </tr>
+      <tr>
+        <td>No official platform on record</td>
+        <td class="n">{num(split.none)}</td>
+        <td class="n">{percent(split.none, split.total)}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Put another way: of the {num(linked)} manhwa with any official platform, {percent(split.english, linked)} can be
+    read in English. The rest are available in Korean, and often in Japanese, Chinese, Thai or French, but not yet
+    in English.
+  </p>
+
+  <h2>How this is counted</h2>
+  <p>
+    Each manhwa on this site lists the official platforms that publish it, with the language of each edition. A
+    title counts as having an English release when at least one of those editions is in English, whether it is a
+    webcomic app or a printed book from a publisher such as Yen Press. Only manhwa, Korean comics, are counted here;
+    Japanese manga and Chinese manhua are left out. The list below is sorted by popularity on AniList, and titles kept off our
+    homepage for adult content are left out of the list but counted in the numbers above.
+  </p>
+
+  <h2>Where the English editions are</h2>
+  <p>The platforms that carry the most manhwa in English, across the whole catalogue:</p>
+  <table class="dg-table">
+    <thead>
+      <tr>
+        <th scope="col">Platform</th>
+        <th scope="col" class="n">Manhwa in English</th>
+        <th scope="col" class="n">In the top {rows.length}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        englishPlatforms.slice(0, 12).map((p) => (
+          <tr>
+            <td>{p.site}</td>
+            <td class="n">{num(p.count)}</td>
+            <td class="n">{num(inTop.find((t) => t.site === p.site)?.count || 0)}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+
+  <h2>The {rows.length} most popular manhwa in English</h2>
+  <DataList rows={list} label="The most popular manhwa with an official English edition" platformsLabel="In English on" />
+
+  <p>
+    Looking for something specific? Every manhwa page on this site shows which languages it is officially
+    available in. For the apps themselves, see <a href="/where-to-read">where to read manhwa</a> or the
+    <a href="/guides/platforms-with-most-licensed-manga">platforms with the most licensed titles</a>.
+  </p>
+</DataGuide>

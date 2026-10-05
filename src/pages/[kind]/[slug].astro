@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro'
 import AlsoLookFor from '../../components/AlsoLookFor.astro'
+import FeaturedIn from '../../components/FeaturedIn.astro'
 import '../../styles/detail.css'
 import DetailHero from '../../components/detail/DetailHero.astro'
 import JumpNav from '../../components/detail/JumpNav.astro'
@@ -575,6 +576,8 @@ const jumpLinks = [
         />
 
         <Faq faq={faq} />
+
+        <FeaturedIn media={item.id} />
 
         <AlsoLookFor path={Astro.url.pathname} frame="answer" />
 

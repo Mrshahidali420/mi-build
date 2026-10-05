@@ -32,6 +32,7 @@ import { displayName } from '../../lib/names.mjs'
 import Namesakes from '../../components/Namesakes.astro'
 import { storyName } from '../../lib/namesakes.mjs'
 import AlsoLookFor from '../../components/AlsoLookFor.astro'
+import FeaturedIn from '../../components/FeaturedIn.astro'
 import { ageOf } from '../../lib/age.mjs'
 
 // Rendered by the Worker on request, so the cast list has no ceiling.
@@ -578,6 +579,8 @@ const jsonld = {
           heading={`Common questions about ${primary}`}
           sub="Answered from the same facts as the rest of this page."
         />
+
+        <FeaturedIn character={person.id} />
 
         {/* Other pages that share this name, worked out at build time by
             make-shards.mjs (the Worker never holds the whole cast). On the

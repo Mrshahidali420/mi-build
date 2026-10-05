@@ -15,6 +15,8 @@ import { seasonHubs } from './seasons.mjs'
 import { sectionOf } from './section.mjs'
 import { MOODS } from './moods.mjs'
 import { watchListPages } from './watch-list-data.js'
+import { writtenGuides, DATA_GUIDES } from './guides-registry.js'
+import { guideSitemapUrls } from './guides.mjs'
 // Written by scripts/make-shards.mjs on every build. It holds only the answer
 // pages that passed their own gate, so the sitemap never offers a thin page.
 import answerUrls from '../../data/answer-urls.json'
@@ -182,11 +184,16 @@ function split(name, urls) {
 }
 
 /**
- * Every sub-sitemap, in crawl order: skeleton first, then titles, then
- * characters. Each entry becomes one /sitemap-<name>.xml file.
+ * Every sub-sitemap, in crawl order: skeleton and guides first, then titles,
+ * then characters. Each entry becomes one /sitemap-<name>.xml file.
  */
 export const sitemapParts = [
   ...split('core', coreUrls()),
+  // The hub and every guide, written and data, in their own file
+  // (/sitemap-guides.xml). A written guide carries the day its text last
+  // changed; the hub and the data guides, rebuilt from the catalog on every
+  // deploy, carry the build day.
+  ...split('guides', guideSitemapUrls(SITE, writtenGuides(), DATA_GUIDES, new Date().toISOString().slice(0, 10))),
   ...split('manhwa', comicUrls('KR')),
   ...split('manga', [...comicUrls('JP'), ...otherComicUrls()]),
   ...split('manhua', comicUrls('CN')),

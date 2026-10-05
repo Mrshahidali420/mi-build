@@ -1,0 +1,30 @@
+{
+ "free-manhwa-official-apps": {
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/119257-RtxJMRCunHXc.jpg",
+  "isFallbackCover": false
+ },
+ "where-to-watch-this-season-anime": {
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/161645-oqzTZYIvviWI.jpg",
+  "isFallbackCover": false
+ },
+ "platforms-with-most-licensed-manga": {
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/101517-FrJtb3Th3HtF.jpg",
+  "isFallbackCover": false
+ },
+ "manhwa-official-english-release": {
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/85143-IKyCdaJKfa2M.jpg",
+  "isFallbackCover": false
+ },
+ "best-romance-manhwa": {
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/121565-XOo9IHjQSYvK.jpg",
+  "isFallbackCover": false
+ },
+ "best-action-manhwa": {
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/144957-nHOZxp7Kgxmk.jpg",
+  "isFallbackCover": false
+ },
+ "best-fantasy-manhwa": {
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/140407-WMGs02Q3fFUb.jpg",
+  "isFallbackCover": false
+ }
+}

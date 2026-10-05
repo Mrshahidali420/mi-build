@@ -1,0 +1,157 @@
+---
+/**
+ * The frame of a data guide: /guides/<slug> pages built from the catalog at
+ * build time (src/pages/guides/<slug>.astro), not from Markdown.
+ *
+ * Same look as a written guide (src/pages/guides/[slug].astro): crumbs,
+ * kicker, title, dek, "Updated" line, a hero picture (a portrait cover, or
+ * a banner when hero.wide), the body, a FAQ, the
+ * "where these numbers come from" note and links to the other data guides.
+ * The page passes the written text and its tables in the default slot.
+ *
+ * JSON-LD: Article + ItemList (+ FAQPage). Base adds the BreadcrumbList.
+ */
+import Base from '../layouts/Base.astro'
+import '../styles/guides.css'
+import { faqJsonld } from '../lib/answers.mjs'
+import { guideBySlug, DATA_GUIDES } from '../lib/guides-registry.js'
+import { GUIDE_CATEGORIES, isoDay, longDay } from '../lib/guides.mjs'
+import GuideCards from './GuideCards.astro'
+import GuideComments from './GuideComments.astro'
+
+const { slug, title, description, category, keywords = [], hero, items = [], faq = [], minutes = 4 } = Astro.props
+
+const site = 'https://manhwaindex.com'
+const path = `/guides/${slug}`
+const url = `${site}${path}`
+// Built as a file on every deploy, so the build day is the day the numbers were counted.
+const built = new Date()
+const builtIso = isoDay(built)
+const cat = GUIDE_CATEGORIES.find((c) => c.key === category)
+
+const article = {
+  '@type': 'Article',
+  '@id': `${url}#article`,
+  headline: title,
+  description,
+  url,
+  mainEntityOfPage: url,
+  dateModified: builtIso,
+  ...(hero?.src ? { image: hero.src } : {}),
+  keywords: keywords.join(', '),
+  author: { '@id': `${site}/#organization` },
+  publisher: { '@id': `${site}/#organization` },
+}
+const itemList = items.length
+  ? {
+      '@type': 'ItemList',
+      name: title,
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      numberOfItems: items.length,
+      itemListElement: items.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        url: `${site}${item.path}`,
+        ...(item.image ? { image: item.image } : {}),
+      })),
+    }
+  : null
+const jsonld = [article, itemList, faq.length ? faqJsonld(faq) : null].filter(Boolean)
+
+// The other data guides, as "More guides". guideBySlug already carries each
+// one's own unique banner (data/guide-data-banners.json).
+const related = DATA_GUIDES.filter((g) => g.slug !== slug)
+  .map((g) => guideBySlug(g.slug))
+  .filter(Boolean)
+  .slice(0, 6)
+---
+
+<Base
+  title={`${title} — manhwaindex`}
+  description={description}
+  canonical={path}
+  image={hero?.src}
+  jsonld={jsonld}
+  crumbs={[{ name: 'Guides', href: '/guides' }, { name: title }]}
+  preloadImage={hero?.src}
+>
+  <article class="guide shell">
+    <nav class="guide-crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/guides">Guides</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{title}</span>
+    </nav>
+
+    <header class="guide-head">
+      <div class="guide-head__text">
+        {cat && <p class="guide-kicker"><a href={`/guides#${cat.key}`}>{cat.label}</a></p>}
+        <h1>{title}</h1>
+        <p class="guide-dek">{description}</p>
+        <p class="guide-meta">
+          Updated <time datetime={builtIso}>{longDay(built)}</time>
+          <span aria-hidden="true">·</span> {minutes} min read
+          <span aria-hidden="true">·</span> manhwaindex
+        </p>
+      </div>
+      {
+        hero?.src && (
+          <figure class:list={['guide-hero', { 'guide-hero--wide': hero.wide, 'guide-hero--cover': !hero.wide }]}>
+            <img
+              src={hero.src}
+              alt={hero.alt}
+              width={hero.wide ? 1900 : 460}
+              height={hero.wide ? 400 : 650}
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </figure>
+        )
+      }
+    </header>
+
+    <div class="guide-body prose dg">
+      <slot />
+    </div>
+
+    {
+      faq.length > 0 && (
+        <section class="guide-section" aria-labelledby="guide-faq">
+          <h2 id="guide-faq">Common questions</h2>
+          <div class="qa2">
+            {faq.map((row, i) => (
+              <details open={i === 0}>
+                <summary>{row.q}</summary>
+                <p class="qa2__a">{row.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <aside class="guide-note">
+      <h2>Where these numbers come from</h2>
+      <p>
+        This guide is counted from manhwaindex's own records of official platforms, the same data behind
+        every title page, and it is rebuilt with that data, so the lists change when a platform adds or drops a
+        title. Read the full method on the <a href="/guides#how-these-guides-are-made">guides page</a>, or see
+        <a href="/how-we-check-links">how we check links</a>.
+      </p>
+    </aside>
+
+    {
+      related.length > 0 && (
+        <section class="guide-section" aria-labelledby="guide-related">
+          <h2 id="guide-related">More guides</h2>
+          <GuideCards guides={related} lines={false} />
+        </section>
+      )
+    }
+
+    <GuideComments slug={slug} title={title} />
+  </article>
+</Base>

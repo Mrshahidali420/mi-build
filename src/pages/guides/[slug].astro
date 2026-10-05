@@ -1,0 +1,220 @@
+---
+/**
+ * One written guide: /guides/<slug>, from src/content/guides/<slug>.md.
+ *
+ * Built as a file. Names, pictures and site links for the entries come from
+ * data/guide-media.json (`npm run guides:media`), so the build never calls
+ * AniList. The body is split at the <!-- entries --> line (or after the
+ * first two paragraphs) and the ranked cards go in between.
+ */
+export const prerender = true
+import { getCollection } from 'astro:content'
+import Base from '../../layouts/Base.astro'
+import '../../styles/guides.css'
+import mediaMap from '../../../data/guide-media.json'
+import { faqJsonld } from '../../lib/answers.mjs'
+import { guideBySlug } from '../../lib/guides-registry.js'
+import GuideCards from '../../components/GuideCards.astro'
+import GuideComments from '../../components/GuideComments.astro'
+import { GUIDE_CATEGORIES, splitBody, cardOf, isoDay, longDay, wordCount, methodNote } from '../../lib/guides.mjs'
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides')
+  return guides.map((guide) => ({ params: { slug: guide.id }, props: { guide } }))
+}
+
+const { guide } = Astro.props
+const data = guide.data
+const site = 'https://manhwaindex.com'
+const path = `/guides/${guide.id}`
+const url = `${site}${path}`
+
+const category = GUIDE_CATEGORIES.find((c) => c.key === data.category)
+// The banner npm run guides:media assigned this guide, unique site-wide
+// (src/lib/guides.mjs assignBanners), read from data/guide-index.json via
+// guides-registry. A guide with no assignment yet (the script has not run)
+// has no hero picture rather than a broken or stale one.
+const row = guideBySlug(guide.id)
+const hero = row?.image
+  ? { src: row.image, alt: row.imageAlt || data.title, width: row.wide ? 1900 : 460, height: row.wide ? 400 : 650, wide: row.wide, isFallbackCover: !!row.isFallbackCover }
+  : null
+const cards = data.entries.map((entry) => cardOf(entry, mediaMap))
+const { before, after } = splitBody(guide.rendered?.html || '')
+const minutes = Math.max(1, Math.round(wordCount(guide.body || '', data.entries) / 230))
+const related = data.related.map(guideBySlug).filter(Boolean)
+const updatedIso = isoDay(data.updated)
+const ranked = cards.some((c) => c.rank)
+const note = methodNote(data.category)
+
+const article = {
+  '@type': 'Article',
+  '@id': `${url}#article`,
+  headline: data.title,
+  description: data.description,
+  url,
+  mainEntityOfPage: url,
+  dateModified: updatedIso,
+  ...(hero ? { image: hero.src } : {}),
+  keywords: data.keywords.join(', '),
+  author: { '@id': `${site}/#organization` },
+  publisher: { '@id': `${site}/#organization` },
+}
+const itemList = cards.length
+  ? {
+      '@type': 'ItemList',
+      name: data.title,
+      itemListOrder: ranked ? 'https://schema.org/ItemListOrderAscending' : 'https://schema.org/ItemListUnordered',
+      numberOfItems: cards.length,
+      itemListElement: cards.map((card, i) => ({
+        '@type': 'ListItem',
+        position: card.rank || i + 1,
+        name: card.heading,
+        url: card.characterPath ? `${site}${card.characterPath}` : `${url}#entry-${i + 1}`,
+        ...(card.image ? { image: card.image } : {}),
+      })),
+    }
+  : null
+const jsonld = [article, itemList, data.faq.length ? faqJsonld(data.faq) : null].filter(Boolean)
+---
+
+<Base
+  title={`${data.title} — manhwaindex`}
+  description={data.description}
+  canonical={path}
+  image={hero?.src}
+  jsonld={jsonld}
+  crumbs={[{ name: 'Guides', href: '/guides' }, { name: data.title }]}
+  preloadImage={hero?.src}
+>
+  <article class="guide shell">
+    <nav class="guide-crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/guides">Guides</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{data.title}</span>
+    </nav>
+
+    <header class="guide-head">
+      <div class="guide-head__text">
+        {category && <p class="guide-kicker"><a href={`/guides#${category.key}`}>{category.label}</a></p>}
+        <h1>{data.title}</h1>
+        <p class="guide-dek">{data.description}</p>
+        <p class="guide-meta">
+          Updated <time datetime={updatedIso}>{longDay(data.updated)}</time>
+          <span aria-hidden="true">·</span> {minutes} min read
+          <span aria-hidden="true">·</span> manhwaindex
+        </p>
+      </div>
+      {
+        hero && (
+          <figure class:list={['guide-hero', { 'guide-hero--wide': hero.wide, 'guide-hero--cover': !hero.wide }]}>
+            <img
+              src={hero.src}
+              alt={hero.alt}
+              width={hero.width}
+              height={hero.height}
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </figure>
+        )
+      }
+    </header>
+
+    <div class="guide-body prose" set:html={before} />
+
+    {
+      cards.length > 0 && (
+        <ol class="guide-entries" aria-label={ranked ? 'The ranking' : 'The list'}>
+          {cards.map((card, i) => (
+            <li class="g-card" id={`entry-${i + 1}`}>
+              {card.image && (
+                <figure class="g-card__art">
+                  <img src={card.image} alt={card.alt} width={card.width} height={card.height} loading="lazy" decoding="async" />
+                </figure>
+              )}
+              <div class="g-card__head">
+                {card.rank && (
+                  <p class="g-card__num">
+                    <span class="sr-only">Number </span>
+                    {String(card.rank).padStart(2, '0')}
+                  </p>
+                )}
+                <h3 class="g-card__name">
+                  {card.characterPath ? <a href={card.characterPath}>{card.heading}</a> : card.heading}
+                </h3>
+                {card.seriesTitle && (
+                  <p class="g-card__from">
+                    {card.seriesPath ? <a href={card.seriesPath}>{card.seriesTitle}</a> : card.seriesTitle}
+                  </p>
+                )}
+              </div>
+              <div class="g-card__body">
+                <p class="g-card__text">{card.text}</p>
+                {card.stats.length > 0 && (
+                  <dl class="g-card__stats">
+                    {card.stats.map((s) => (
+                      <div>
+                        <dt>{s.label}</dt>
+                        <dd>{s.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                {(card.seriesPath || card.characterPath) && (
+                  <p class="g-card__links">
+                    {card.seriesPath && (
+                      <a href={card.seriesPath}>
+                        Where to {card.verb} {card.seriesTitle}
+                      </a>
+                    )}
+                    {card.characterPath && <a href={card.characterPath}>{card.heading}: profile and voice actors</a>}
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      )
+    }
+
+    {after.trim() && <div class="guide-body prose" set:html={after} />}
+
+    {
+      data.faq.length > 0 && (
+        <section class="guide-section" aria-labelledby="guide-faq">
+          <h2 id="guide-faq">Common questions</h2>
+          <div class="qa2">
+            {data.faq.map((row, i) => (
+              <details open={i === 0}>
+                <summary>{row.q}</summary>
+                <p class="qa2__a">{row.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <aside class="guide-note">
+      <h2>{note.heading}</h2>
+      <p>
+        {note.text} Read the full method on the
+        <a href="/guides#how-these-guides-are-made">guides page</a>.
+      </p>
+    </aside>
+
+    {
+      related.length > 0 && (
+        <section class="guide-section" aria-labelledby="guide-related">
+          <h2 id="guide-related">More guides</h2>
+          <GuideCards guides={related} lines={false} />
+        </section>
+      )
+    }
+
+    <GuideComments slug={guide.id} title={data.title} />
+  </article>
+</Base>

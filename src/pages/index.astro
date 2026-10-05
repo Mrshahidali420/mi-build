@@ -13,6 +13,15 @@ import { newSeasonShelf } from '../lib/season-shelf.mjs'
 import { hasOfficialLink } from '../lib/home-searching.mjs'
 import homeRules from '../../data/home-rules.json'
 import HomeShelf from '../components/HomeShelf.astro'
+import { guidesByCategory } from '../lib/guides-registry.js'
+import { spreadPicks } from '../lib/data-guides.mjs'
+import GuideCards from '../components/GuideCards.astro'
+
+// One block of guides near the end, one from each hub group first; six
+// fill two rows of three on desktop and three rows of two on phones. Each
+// already carries its own unique banner from data/guide-index.json /
+// data/guide-data-banners.json (npm run guides:media).
+const homeGuides = spreadPicks(guidesByCategory(), 6)
 
 const manhwa = comicsOfCountry('KR')
 const manga = comicsOfCountry('JP')
@@ -532,5 +541,22 @@ const tinyCover = (url) =>
         <li><a href="/genre">All genres →</a></li>
       </ul>
     </section>
+
+    {
+      homeGuides.length > 0 && (
+        <section class="section" data-phase="day" aria-labelledby="home-guides-h">
+          <div class="section__head section__head--row">
+            <div>
+              <h2 id="home-guides-h">Guides</h2>
+              <p>Rankings, watch orders and lists built from our own platform data.</p>
+            </div>
+            <a class="section__more section__more--cta" href="/guides">
+              All guides →
+            </a>
+          </div>
+          <GuideCards guides={homeGuides} label="Guides" />
+        </section>
+      )
+    }
   </div>
 </Base>
