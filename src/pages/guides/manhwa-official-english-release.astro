@@ -22,12 +22,8 @@ const linked = split.english + split.otherOnly
 const englishPlatforms = countPlatforms(englishSplit(manhwa, { limit: Infinity }).rows, (row) => row.english)
 const inTop = countPlatforms(rows, (row) => row.english)
 const top = rows[0]?.item
-// The wide banner of the top title when it has one, else its cover.
-const hero = top
-  ? top.banner
-    ? { src: top.banner, alt: `${top.title} banner`, wide: true }
-    : { src: top.cover, alt: `Cover of ${top.title}` }
-  : null
+// The unique banner npm run guides:media assigned this guide (src/lib/guides.mjs assignBanners).
+const hero = meta.image ? { src: meta.image, alt: meta.imageAlt || meta.title, wide: meta.wide } : null
 
 const list = rows.map(({ item, english }) => ({
   title: item.title,

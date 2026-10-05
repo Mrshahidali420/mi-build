@@ -36,7 +36,8 @@ const rows = bestInGenre(manhwa, genre, { keep: notAdult(homeRules) })
 const inGenre = manhwa.filter((m) => (m.genres || []).includes(genre)).length
 const top = rows[0]?.item
 const next = rows.slice(1, 3).map((r) => r.item.title)
-const hero = top ? { src: top.cover, alt: `Cover of ${top.title}` } : null
+// The unique banner npm run guides:media assigned this guide (src/lib/guides.mjs assignBanners).
+const hero = meta.image ? { src: meta.image, alt: meta.imageAlt || meta.title, wide: meta.wide } : null
 const english = rows.filter((r) => r.platforms.some(isEnglish)).length
 const where = countPlatforms(rows, (row) => row.platforms)
 

@@ -27,7 +27,8 @@ const platforms = countPlatforms(rows)
 const top = rows[0]?.item
 const englishFree = everyFree.filter((r) => r.english).length
 
-const hero = top ? { src: top.cover, alt: `Cover of ${top.title}` } : null
+// The unique banner npm run guides:media assigned this guide (src/lib/guides.mjs assignBanners).
+const hero = meta.image ? { src: meta.image, alt: meta.imageAlt || meta.title, wide: meta.wide } : null
 const list = rows.map(({ item, free }) => ({
   title: item.title,
   path: pathOfTitle(item),

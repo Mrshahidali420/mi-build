@@ -6,7 +6,7 @@
  */
 export const prerender = true
 import DataGuide from '../../components/DataGuide.astro'
-import { comics, comicsOfCountry, hubSlugOf, genreSlug } from '../../lib/catalog.js'
+import { comics, hubSlugOf, genreSlug } from '../../lib/catalog.js'
 import { pathOfTitle } from '../../lib/section.mjs'
 import { factsFor } from '../../lib/platform-facts.js'
 import { dataGuide } from '../../lib/guides-registry.js'
@@ -33,8 +33,8 @@ const platformPath = (site) => (hubSlugOf(site) ? `/platform/${hubSlugOf(site)}`
 
 // The hero: the most popular manga with an official platform, so the page
 // opens on a cover readers know.
-const heroItem = comicsOfCountry('JP').find((c) => (c.readLinks || []).length > 0)
-const hero = heroItem ? { src: heroItem.cover, alt: `Cover of ${heroItem.title}` } : null
+// The unique banner npm run guides:media assigned this guide (src/lib/guides.mjs assignBanners).
+const hero = meta.image ? { src: meta.image, alt: meta.imageAlt || meta.title, wide: meta.wide } : null
 
 const mix = (p) => {
   const parts = [

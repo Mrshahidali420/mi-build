@@ -157,59 +157,74 @@ export function picksOf(guide, max = CARD_PICKS) {
 }
 
 /**
- * The portrait shown beside the title of a guide whose hero is a wide
- * banner: its #1 entry's character art, so two guides about one series do
- * not open on the same screen. Null when the #1 entry has no character art.
+ * Assigns every guide exactly one WIDE banner image, unique across the
+ * whole site. Pure and network-free: `guides` is a plain list of
+ * candidate descriptions (not the Markdown frontmatter) and `media` is a
+ * plain id -> record map, both built by scripts/guide-media.mjs from
+ * AniList data.
+ *
+ * Each guide row looks like:
+ *   { slug, heroMedia: id|null, franchiseMedia: [id, ...], entryMedia: [id, ...], importance }
+ * `media[id]` looks like: { banner, cover, type: 'ANIME'|'MANGA', popularity }
+ *
+ * Preference order per guide, before any claiming: (1) its own hero
+ * media's banner, (2) franchise-related banners, most popular anime
+ * first then most popular manga, (3) its entries' media banners.
+ *
+ * Guides claim a banner greedily, most important guide first (lowest
+ * `importance` wins ties go to input order). A guide takes the first
+ * candidate in its own list not already claimed by an earlier guide. A
+ * guide with no free candidate anywhere falls back to its hero media's
+ * cover image, rendered wide by the caller, and is flagged
+ * `isFallbackCover: true`.
+ *
+ * Returns one row per input guide, in the input's original order:
+ *   [{ slug, banner, isFallbackCover }]
  */
-export function leadPortrait(guide, mediaMap = {}) {
-  const first = byRank(guide.entries || [])[0]
-  const person = first?.character ? mediaMap[charKey(first.character)] : null
-  if (!person?.image) return null
-  return { src: person.image, width: 230, height: 345, alt: first.alt || person.name || first.heading }
-}
+export function assignBanners(guides = [], media = {}) {
+  const taken = new Set()
+  const bannerOf = (id) => media[id]?.banner || null
 
-/**
- * Every picture a guide's card could use, best first: its entries' art in
- * rank order (character portrait, or a title's cover), then its series
- * cover, then the series banner. A data guide lists its own `pictures`
- * (covers of its top entries). The hub row's `image` is the last resort.
- */
-export function cardPictures(guide, mediaMap = {}) {
-  const out = []
-  const add = (src, alt, width, height, wide = false) => {
-    if (src && !out.some((p) => p.src === src)) out.push({ src, alt: alt || guide.title, width, height, wide })
-  }
-  for (const pic of guide.pictures || []) add(pic.src, pic.alt, 460, 650)
-  for (const key of guide.picks || []) {
-    const row = mediaMap[key]
-    if (!row) continue
-    if (key.startsWith('c')) add(row.image, row.name, 230, 345)
-    else add(row.cover, row.title ? `Cover of ${row.title}` : '', 460, 650)
-  }
-  const series = guide.series ? mediaMap[mediaKey(guide.series)] : null
-  if (series) {
-    add(series.cover, `Cover of ${series.title}`, 460, 650)
-    add(series.banner, series.title, 1900, 400, true)
-  }
-  add(guide.image, guide.imageAlt, guide.wide ? 1900 : 460, guide.wide ? 400 : 650, !!guide.wide)
-  return out
-}
+  const byImportance = guides
+    .map((guide, i) => ({ guide, i }))
+    .sort((a, b) => (a.guide.importance ?? Infinity) - (b.guide.importance ?? Infinity) || a.i - b.i)
 
-/**
- * Give each guide card on one page its own picture. Guides are walked in
- * display order; each takes the first of its cardPictures not already used
- * on the page. Only when every one is taken does it reuse its first choice.
- * `used` holds pictures the page shows elsewhere (its own entry cards).
- * Returns new rows with `card: { src, alt, width, height, wide }` (or null).
- */
-export function assignCardImages(guides = [], mediaMap = {}, { used = [] } = {}) {
-  const taken = new Set(used.filter(Boolean))
-  return guides.map((guide) => {
-    const pictures = cardPictures(guide, mediaMap)
-    const card = pictures.find((p) => !taken.has(p.src)) || pictures[0] || null
-    if (card) taken.add(card.src)
-    return { ...guide, card }
-  })
+  const bySlug = new Map()
+  for (const { guide } of byImportance) {
+    const seen = new Set()
+    const candidates = []
+    const add = (id) => {
+      const banner = bannerOf(id)
+      if (banner && !seen.has(banner)) {
+        seen.add(banner)
+        candidates.push(banner)
+      }
+    }
+
+    if (guide.heroMedia) add(guide.heroMedia)
+
+    const franchise = (guide.franchiseMedia || [])
+      .map((id) => ({ id, row: media[id] }))
+      .filter(({ row }) => row?.banner)
+      .sort((a, b) => {
+        const animeFirst = (a.row.type === 'ANIME' ? 0 : 1) - (b.row.type === 'ANIME' ? 0 : 1)
+        return animeFirst || (b.row.popularity ?? 0) - (a.row.popularity ?? 0)
+      })
+    for (const { id } of franchise) add(id)
+
+    for (const id of guide.entryMedia || []) add(id)
+
+    let banner = candidates.find((src) => !taken.has(src)) || null
+    let isFallbackCover = false
+    if (!banner) {
+      banner = (guide.heroMedia && media[guide.heroMedia]?.cover) || null
+      isFallbackCover = true
+    }
+    if (banner) taken.add(banner)
+    bySlug.set(guide.slug, { slug: guide.slug, banner, isFallbackCover })
+  }
+
+  return guides.map((guide) => bySlug.get(guide.slug))
 }
 
 /**

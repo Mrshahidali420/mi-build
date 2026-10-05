@@ -92,55 +92,20 @@
   height: auto;
   object-fit: cover;
 }
-.guide-hero--wide img {
+/* every guide hero is wide now: a franchise banner, or (rarely) a cover
+   image, flagged guide-hero--cover, cropped to favour the top so a portrait
+   cover does not show mostly empty background */
+.guide-hero--wide img,
+.guide-hero--cover img {
   aspect-ratio: 2 / 1;
 }
-/* a portrait (no banner): a framed cover beside the title on wide screens */
-.guide-head--portrait .guide-hero {
-  width: min(220px, 55vw);
+.guide-hero--cover img {
+  object-position: center 20%;
 }
 @media (min-width: 760px) {
-  .guide-hero--wide img {
+  .guide-hero--wide img,
+  .guide-hero--cover img {
     aspect-ratio: 3 / 1;
-  }
-  .guide-head--portrait {
-    grid-template-columns: minmax(0, 1fr) 240px;
-    align-items: end;
-  }
-  .guide-head--portrait .guide-hero {
-    width: 100%;
-  }
-}
-
-/* a wide banner hero: the #1 entry's portrait beside the title on wide
-   screens, so two guides about one series do not open alike */
-.guide-lead {
-  display: none;
-  margin: 0;
-}
-@media (min-width: 760px) {
-  .guide-head--lead {
-    grid-template-columns: minmax(0, 1fr) 176px;
-    align-items: end;
-  }
-  .guide-head--lead .guide-lead {
-    display: block;
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .guide-head--lead .guide-hero {
-    grid-column: 1 / -1;
-  }
-  .guide-lead img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    object-position: center top;
-    border-radius: var(--sf-r, 12px);
-    background: var(--night-raised);
-    border: 1px solid var(--sf-line, var(--cobalt));
   }
 }
 

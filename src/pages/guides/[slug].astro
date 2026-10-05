@@ -16,18 +16,7 @@ import { faqJsonld } from '../../lib/answers.mjs'
 import { guideBySlug } from '../../lib/guides-registry.js'
 import GuideCards from '../../components/GuideCards.astro'
 import GuideComments from '../../components/GuideComments.astro'
-import {
-  GUIDE_CATEGORIES,
-  splitBody,
-  cardOf,
-  heroOf,
-  leadPortrait,
-  assignCardImages,
-  isoDay,
-  longDay,
-  wordCount,
-  methodNote,
-} from '../../lib/guides.mjs'
+import { GUIDE_CATEGORIES, splitBody, cardOf, isoDay, longDay, wordCount, methodNote } from '../../lib/guides.mjs'
 
 export async function getStaticPaths() {
   const guides = await getCollection('guides')
@@ -41,17 +30,18 @@ const path = `/guides/${guide.id}`
 const url = `${site}${path}`
 
 const category = GUIDE_CATEGORIES.find((c) => c.key === data.category)
-const hero = heroOf(data, mediaMap)
+// The banner npm run guides:media assigned this guide, unique site-wide
+// (src/lib/guides.mjs assignBanners), read from data/guide-index.json via
+// guides-registry. A guide with no assignment yet (the script has not run)
+// has no hero picture rather than a broken or stale one.
+const row = guideBySlug(guide.id)
+const hero = row?.image
+  ? { src: row.image, alt: row.imageAlt || data.title, width: row.wide ? 1900 : 460, height: row.wide ? 400 : 650, wide: row.wide, isFallbackCover: !!row.isFallbackCover }
+  : null
 const cards = data.entries.map((entry) => cardOf(entry, mediaMap))
 const { before, after } = splitBody(guide.rendered?.html || '')
 const minutes = Math.max(1, Math.round(wordCount(guide.body || '', data.entries) / 230))
-// Beside a wide banner, the #1 entry's portrait, so guides about one series
-// do not open on the same screen.
-const lead = hero?.wide ? leadPortrait(data, mediaMap) : null
-// "More guides" cards skip every picture this page already shows.
-const related = assignCardImages(data.related.map(guideBySlug).filter(Boolean), mediaMap, {
-  used: [hero?.src, lead?.src, ...cards.map((c) => c.image)],
-})
+const related = data.related.map(guideBySlug).filter(Boolean)
 const updatedIso = isoDay(data.updated)
 const ranked = cards.some((c) => c.rank)
 const note = methodNote(data.category)
@@ -105,7 +95,7 @@ const jsonld = [article, itemList, data.faq.length ? faqJsonld(data.faq) : null]
       <span aria-current="page">{data.title}</span>
     </nav>
 
-    <header class:list={['guide-head', { 'guide-head--portrait': hero && !hero.wide, 'guide-head--lead': lead }]}>
+    <header class="guide-head">
       <div class="guide-head__text">
         {category && <p class="guide-kicker"><a href={`/guides#${category.key}`}>{category.label}</a></p>}
         <h1>{data.title}</h1>
@@ -117,15 +107,8 @@ const jsonld = [article, itemList, data.faq.length ? faqJsonld(data.faq) : null]
         </p>
       </div>
       {
-        lead && (
-          <figure class="guide-lead">
-            <img src={lead.src} alt={lead.alt} width={lead.width} height={lead.height} loading="lazy" decoding="async" />
-          </figure>
-        )
-      }
-      {
         hero && (
-          <figure class:list={['guide-hero', { 'guide-hero--wide': hero.wide }]}>
+          <figure class:list={['guide-hero', { 'guide-hero--wide': hero.wide, 'guide-hero--cover': !hero.wide }]}>
             <img
               src={hero.src}
               alt={hero.alt}

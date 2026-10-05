@@ -2492,7 +2492,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1-GCsPm7waJ4kS.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-OquNCNB6srGe.jpg",
-  "path": "/anime/cowboy-bebop"
+  "path": "/anime/cowboy-bebop",
+  "popularity": 470579
  },
  "m100049": {
   "id": 100049,
@@ -2501,7 +2502,8 @@
   "format": "OVA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx100049-mgvPLctBJprp.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100049-jlQ24bwYluey.jpg",
-  "path": "/anime/re-zero-starting-life-in-another-world-ovas"
+  "path": "/anime/re-zero-starting-life-in-another-world-ovas",
+  "popularity": 113353
  },
  "m100166": {
   "id": 100166,
@@ -2510,7 +2512,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100166-jUCZYbzn2XLw.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100166-k7RXwN5vZg0r.jpg",
-  "path": "/anime/my-hero-academia-season-3"
+  "path": "/anime/my-hero-academia-season-3",
+  "popularity": 603905
  },
  "m100182": {
   "id": 100182,
@@ -2519,7 +2522,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx100182-KctPmCJ2smHQ.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100182-8iGTeJ2kYRDt.jpg",
-  "path": "/anime/sword-art-online-alicization"
+  "path": "/anime/sword-art-online-alicization",
+  "popularity": 290821
+ },
+ "m100568": {
+  "id": 100568,
+  "title": "The Horizon",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx100568-4BC0PsdwU4bL.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/100568-BuzmQ7WSwG5H.jpg",
+  "popularity": 64937,
+  "path": "/manhwa/the-horizon"
  },
  "m100815": {
   "id": 100815,
@@ -2528,7 +2542,8 @@
   "format": "OVA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx100815-cZbnM9Bjth8W.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/100815-bglW3E780lwq.jpg",
-  "path": "/anime/zoku-owarimonogatari"
+  "path": "/anime/zoku-owarimonogatari",
+  "popularity": 86372
  },
  "m10087": {
   "id": 10087,
@@ -2537,7 +2552,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10087-M4Hd9qrHGrXk.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/10087-32MFY9VnJQ7I.jpg",
-  "path": "/anime/fate-zero"
+  "path": "/anime/fate-zero",
+  "popularity": 349921
  },
  "m100954": {
   "id": 100954,
@@ -2546,7 +2562,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx100954-xY0Vw2sRRo8t.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/100954-y7f4uDwqvDny.jpg",
-  "path": "/manhwa/sweet-home"
+  "path": "/manhwa/sweet-home",
+  "popularity": 56055
  },
  "m101099": {
   "id": 101099,
@@ -2555,7 +2572,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b101099-3AoCbJWTj2cV.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101099-KarIxewMysiK.jpg",
-  "path": "/anime/hungry-days-aoharu-ka-yo"
+  "path": "/anime/hungry-days-aoharu-ka-yo",
+  "popularity": 3106
  },
  "m101302": {
   "id": 101302,
@@ -2564,7 +2582,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101302-7L0lcwYeFQQM.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101302-2ix6Nti3Y11Q.jpg",
-  "path": "/anime/dragon-ball-super-broly"
+  "path": "/anime/dragon-ball-super-broly",
+  "popularity": 124732
  },
  "m101338": {
   "id": 101338,
@@ -2573,7 +2592,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101338-rokVscjRYzdP.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101338-Rl54Qhx71dUq.jpg",
-  "path": "/anime/mob-psycho-100-ii"
+  "path": "/anime/mob-psycho-100-ii",
+  "popularity": 451815
  },
  "m101517": {
   "id": 101517,
@@ -2582,7 +2602,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101517-H3TdM3g5ZUe9.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/101517-FrJtb3Th3HtF.jpg",
-  "path": "/manga/jujutsu-kaisen"
+  "path": "/manga/jujutsu-kaisen",
+  "popularity": 254241
  },
  "m101583": {
   "id": 101583,
@@ -2591,7 +2612,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx101583-VI1PT2QGGT8W.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/101583-cSP6zPHQzjQD.jpg",
-  "path": "/manga/my-dress-up-darling"
+  "path": "/manga/my-dress-up-darling",
+  "popularity": 100514
  },
  "m101922": {
   "id": 101922,
@@ -2600,7 +2622,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx101922-WBsBl0ClmgYL.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101922-33MtJGsUSxga.jpg",
-  "path": "/anime/demon-slayer-kimetsu-no-yaiba"
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba",
+  "popularity": 1000699
  },
  "m102352": {
   "id": 102352,
@@ -2609,7 +2632,8 @@
   "format": "ONA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b102352-iTBUsIV9x7KH.jpg",
   "banner": null,
-  "path": "/anime/super-dragon-ball-heroes"
+  "path": "/anime/super-dragon-ball-heroes",
+  "popularity": 26731
  },
  "m103275": {
   "id": 103275,
@@ -2618,7 +2642,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx103275-SN0wwshS3tWA.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103275-9vSzr7YzbXQb.jpg",
-  "path": "/anime/fate-grand-order-absolute-demonic-front-babylonia"
+  "path": "/anime/fate-grand-order-absolute-demonic-front-babylonia",
+  "popularity": 84329
  },
  "m103276": {
   "id": 103276,
@@ -2627,7 +2652,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx103276-7QhBwJs0O6Gi.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103276-Al60Ha42yp1h.jpg",
-  "path": "/anime/fate-grand-order-divine-realm-of-the-round-table-camelot-wandering-agateram"
+  "path": "/anime/fate-grand-order-divine-realm-of-the-round-table-camelot-wandering-agateram",
+  "popularity": 37431
  },
  "m103277": {
   "id": 103277,
@@ -2636,7 +2662,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx103277-BuAfaC3dKOUp.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103277-aTpOhNwE5a94.jpg",
-  "path": "/anime/fate-grand-order-divine-realm-of-the-round-table-camelot-paladin-agateram"
+  "path": "/anime/fate-grand-order-divine-realm-of-the-round-table-camelot-paladin-agateram",
+  "popularity": 31884
  },
  "m103632": {
   "id": 103632,
@@ -2645,7 +2672,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx103632-2wsy9wFUdm1C.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/103632-N4ssExnvLw74.jpg",
-  "path": "/anime/so-i-m-a-spider-so-what"
+  "path": "/anime/so-i-m-a-spider-so-what",
+  "popularity": 154769
  },
  "m103995": {
   "id": 103995,
@@ -2654,7 +2682,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx103995-eE7WHxOy77TB.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/103995-luxu2XzOn6SC.jpg",
-  "path": "/manhwa/true-beauty"
+  "path": "/manhwa/true-beauty",
+  "popularity": 15919
  },
  "m104051": {
   "id": 104051,
@@ -2663,7 +2692,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx104051-tFMIbiffwBLs.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/104051-6yiBdkd5OkZt.jpg",
-  "path": "/anime/magia-record-puella-magi-madoka-magica-side-story"
+  "path": "/anime/magia-record-puella-magi-madoka-magica-side-story",
+  "popularity": 57251
  },
  "m104578": {
   "id": 104578,
@@ -2672,7 +2702,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx104578-k61nx3LPjvgd.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/104578-z7SadpYEuAsy.jpg",
-  "path": "/anime/attack-on-titan-season-3-part-2"
+  "path": "/anime/attack-on-titan-season-3-part-2",
+  "popularity": 615020
  },
  "m104647": {
   "id": 104647,
@@ -2681,7 +2712,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx104647-dMGZSavRxHcM.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/104647-emIYPiyZZJnl.jpg",
-  "path": "/anime/my-next-life-as-a-villainess-all-routes-lead-to-doom"
+  "path": "/anime/my-next-life-as-a-villainess-all-routes-lead-to-doom",
+  "popularity": 148640
+ },
+ "m104677": {
+  "id": 104677,
+  "title": "Her Tale of Shim Chong",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx104677-p6TjXRd1gsDY.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/104677-ngRPiEmJYbgQ.jpg",
+  "popularity": 12075,
+  "path": "/manhwa/her-tale-of-shim-chong"
  },
  "m105143": {
   "id": 105143,
@@ -2690,7 +2732,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx105143-5uBDmhvMr6At.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/105143-y8oSKa8PSsgK.jpg",
-  "path": "/anime/one-piece-stampede"
+  "path": "/anime/one-piece-stampede",
+  "popularity": 62429
  },
  "m105398": {
   "id": 105398,
@@ -2699,7 +2742,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105398-b673Vt5ZSuz3.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/105398-4UrEhdqZukrg.jpg",
-  "path": "/manhwa/solo-leveling"
+  "path": "/manhwa/solo-leveling",
+  "popularity": 286357
  },
  "m105469": {
   "id": 105469,
@@ -2708,7 +2752,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105469-IvLF5yIf6LBC.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/105469-bFlz61UBbNvb.jpg",
-  "path": "/manga/jujutsu-kaisen-0"
+  "path": "/manga/jujutsu-kaisen-0",
+  "popularity": 72224
  },
  "m105778": {
   "id": 105778,
@@ -2717,7 +2762,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx105778-euxXZEIfDY2u.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/105778-ppHaMwown6c9.jpg",
-  "path": "/manga/chainsaw-man"
+  "path": "/manga/chainsaw-man",
+  "popularity": 333901
  },
  "m10589": {
   "id": 10589,
@@ -2726,7 +2772,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx10589-VhXWWMm24Dso.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/10589-s5r2dzqohuU7.jpg",
-  "path": "/anime/naruto-shippuden-the-movie-blood-prison"
+  "path": "/anime/naruto-shippuden-the-movie-blood-prison",
+  "popularity": 58346
  },
  "m106625": {
   "id": 106625,
@@ -2735,7 +2782,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx106625-UR22wB2NuNVi.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/106625-wab2Mx4NQqPQ.jpg",
-  "path": "/anime/haikyu-to-the-top"
+  "path": "/anime/haikyu-to-the-top",
+  "popularity": 295504
  },
  "m106918": {
   "id": 106918,
@@ -2744,7 +2792,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx106918-4T0AdnCg8d64.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/106918-rfoPP8HknWAM.jpg",
-  "path": "/anime/lord-el-melloi-ii-s-case-files-rail-zeppelin-grace-note"
+  "path": "/anime/lord-el-melloi-ii-s-case-files-rail-zeppelin-grace-note",
+  "popularity": 54592
  },
  "m106929": {
   "id": 106929,
@@ -2753,7 +2802,18 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx106929-flAUvHZDUz5v.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/106929-jYmT1n3Z0m46.jpg",
-  "path": "/manhwa/eleceed"
+  "path": "/manhwa/eleceed",
+  "popularity": 46823
+ },
+ "m107521": {
+  "id": 107521,
+  "title": "Who Made Me a Princess",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx107521-M4x3AUb7UGIM.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/107521-mIv5O0dYsbFf.jpg",
+  "popularity": 40414,
+  "path": "/manhwa/who-made-me-a-princess"
  },
  "m108268": {
   "id": 108268,
@@ -2762,7 +2822,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx108268-Dtt82uOi3vq5.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108268-JbUzGiUlmCTy.jpg",
-  "path": "/anime/ascendance-of-a-bookworm"
+  "path": "/anime/ascendance-of-a-bookworm",
+  "popularity": 119891
  },
  "m108465": {
   "id": 108465,
@@ -2771,7 +2832,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx108465-1ANspF1EWyFx.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108465-RgsRpTMhP9Sv.jpg",
-  "path": "/anime/mushoku-tensei-jobless-reincarnation"
+  "path": "/anime/mushoku-tensei-jobless-reincarnation",
+  "popularity": 463032
  },
  "m108556": {
   "id": 108556,
@@ -2780,7 +2842,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx108556-NHjkz0BNJhLx.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/108556-iCiPfU0GU4OM.jpg",
-  "path": "/manga/spy-x-family"
+  "path": "/manga/spy-x-family",
+  "popularity": 160125
  },
  "m108632": {
   "id": 108632,
@@ -2789,7 +2852,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx108632-lQWnmw7XaNOK.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/108632-yeLbrgPN4Oni.jpg",
-  "path": "/anime/re-zero-starting-life-in-another-world-season-2"
+  "path": "/anime/re-zero-starting-life-in-another-world-season-2",
+  "popularity": 383685
  },
  "m110277": {
   "id": 110277,
@@ -2798,7 +2862,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx110277-sKUNXAsWMNFw.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/110277-iuGn6F5bK1U1.jpg",
-  "path": "/anime/attack-on-titan-final-season"
+  "path": "/anime/attack-on-titan-final-season",
+  "popularity": 647081
  },
  "m11061": {
   "id": 11061,
@@ -2807,7 +2872,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11061-y5gsT1hoHuHw.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11061-8WkkTZ6duKpq.jpg",
-  "path": "/anime/hunter-x-hunter-2011"
+  "path": "/anime/hunter-x-hunter-2011",
+  "popularity": 846229
  },
  "m112151": {
   "id": 112151,
@@ -2816,7 +2882,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx112151-1qlQwPB1RrJe.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/112151-eHCBz19nf2yC.jpg",
-  "path": "/anime/demon-slayer-kimetsu-no-yaiba-the-movie-mugen-train"
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-the-movie-mugen-train",
+  "popularity": 511702
  },
  "m113055": {
   "id": 113055,
@@ -2825,7 +2892,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx113055-pGB4A5nzhFdF.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/113055-DBbT3IccXVqx.jpg",
-  "path": "/manhwa/the-remarried-empress"
+  "path": "/manhwa/the-remarried-empress",
+  "popularity": 20888
  },
  "m113415": {
   "id": 113415,
@@ -2834,7 +2902,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx113415-LHBAeoZDIsnF.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/113415-jQBSkxWAAk83.jpg",
-  "path": "/anime/jujutsu-kaisen"
+  "path": "/anime/jujutsu-kaisen",
+  "popularity": 979876
  },
  "m113488": {
   "id": 113488,
@@ -2843,7 +2912,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx113488-0ghq0eEnftk0.jpg",
   "banner": null,
-  "path": "/manhwa/weak-hero"
+  "path": "/manhwa/weak-hero",
+  "popularity": 22037
  },
  "m11597": {
   "id": 11597,
@@ -2852,7 +2922,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11597-x2vd4KSHcI1S.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11597-GAiesUhFN9U9.jpg",
-  "path": "/anime/nisemonogatari"
+  "path": "/anime/nisemonogatari",
+  "popularity": 187083
  },
  "m116674": {
   "id": 116674,
@@ -2861,7 +2932,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx116674-p3zK4PUX2Aag.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/116674-l2YlIyJzvGSV.jpg",
-  "path": "/anime/bleach-thousand-year-blood-war"
+  "path": "/anime/bleach-thousand-year-blood-war",
+  "popularity": 209778
  },
  "m116756": {
   "id": 116756,
@@ -2870,7 +2942,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx116756-jIU2HrnEsDjR.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/116756-Bb7BkeRMTpaP.jpg",
-  "path": "/anime/fate-grand-order-final-singularity-grand-temple-of-time-solomon"
+  "path": "/anime/fate-grand-order-final-singularity-grand-temple-of-time-solomon",
+  "popularity": 31302
  },
  "m11741": {
   "id": 11741,
@@ -2879,7 +2952,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11741-oEy1fJHYm2zJ.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11741-TWwZCgsK5aXh.jpg",
-  "path": "/anime/fate-zero-season-2"
+  "path": "/anime/fate-zero-season-2",
+  "popularity": 243453
  },
  "m11757": {
   "id": 11757,
@@ -2888,7 +2962,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11757-SxYDUzdr9rh2.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11757-TlEEV9weG4Ag.jpg",
-  "path": "/anime/sword-art-online"
+  "path": "/anime/sword-art-online",
+  "popularity": 723624
  },
  "m11771": {
   "id": 11771,
@@ -2897,7 +2972,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11771-uvr44RAwRxPw.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11771-Bjm9Q0ow0nEh.jpg",
-  "path": "/anime/kuroko-s-basketball"
+  "path": "/anime/kuroko-s-basketball",
+  "popularity": 288222
  },
  "m118408": {
   "id": 118408,
@@ -2906,7 +2982,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx118408-zZuOINqjBZYn.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/118408-FT9bkwTdii7D.jpg",
-  "path": "/manhwa/villains-are-destined-to-die"
+  "path": "/manhwa/villains-are-destined-to-die",
+  "popularity": 43326
  },
  "m118586": {
   "id": 118586,
@@ -2915,7 +2992,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx118586-CXKgWikBFQgS.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/118586-R1c7mc72oPvS.jpg",
-  "path": "/manga/frieren-beyond-journey-s-end"
+  "path": "/manga/frieren-beyond-journey-s-end",
+  "popularity": 85890
  },
  "m119257": {
   "id": 119257,
@@ -2924,7 +3002,18 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx119257-Pi21aq3ey9GG.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/119257-RtxJMRCunHXc.jpg",
-  "path": "/manhwa/omniscient-reader"
+  "path": "/manhwa/omniscient-reader",
+  "popularity": 132907
+ },
+ "m119521": {
+  "id": 119521,
+  "title": "The Legend of the Northern Blade",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx119521-qYqxFvn0NnXo.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/119521-CPhjvDuMReVg.jpg",
+  "popularity": 47005,
+  "path": "/manhwa/the-legend-of-the-northern-blade"
  },
  "m119661": {
   "id": 119661,
@@ -2933,7 +3022,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx119661-GDbUZxrZMz01.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/119661-9C7DvtL7yfCu.jpg",
-  "path": "/anime/re-zero-starting-life-in-another-world-season-2-part-2"
+  "path": "/anime/re-zero-starting-life-in-another-world-season-2-part-2",
+  "popularity": 310972
  },
  "m11981": {
   "id": 11981,
@@ -2942,7 +3032,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b11981-koz1IoISs3eU.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11981-kfpR0i6kwMLM.jpg",
-  "path": "/anime/puella-magi-madoka-magica-the-movie-rebellion"
+  "path": "/anime/puella-magi-madoka-magica-the-movie-rebellion",
+  "popularity": 120273
  },
  "m121": {
   "id": 121,
@@ -2951,7 +3042,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx121-zjmixZ428Mwv.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/121-t5K7c8WRuPWl.jpg",
-  "path": "/anime/fullmetal-alchemist"
+  "path": "/anime/fullmetal-alchemist",
+  "popularity": 267929
+ },
+ "m121565": {
+  "id": 121565,
+  "title": "Seasons of Blossom",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx121565-JaDVhpjegXvw.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/121565-XOo9IHjQSYvK.jpg",
+  "popularity": 20337,
+  "path": "/manhwa/seasons-of-blossom"
  },
  "m123": {
   "id": 123,
@@ -2960,7 +3062,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx123-nTVq4CHgK5Ly.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/123-aB3o7LLZrWWV.png",
-  "path": "/anime/fushigi-yugi-the-mysterious-play"
+  "path": "/anime/fushigi-yugi-the-mysterious-play",
+  "popularity": 21772
  },
  "m123739": {
   "id": 123739,
@@ -2969,7 +3072,18 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx123739-qDrNrU0ZD6UX.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/123739-TAaqjpGPEaop.jpg",
-  "path": "/manhwa/under-the-oak-tree"
+  "path": "/manhwa/under-the-oak-tree",
+  "popularity": 18431
+ },
+ "m126297": {
+  "id": 126297,
+  "title": "Teenage Mercenary",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx126297-SPiM7QtUnJ4P.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/126297-Axr0Xm5JFnhz.jpg",
+  "popularity": 56656,
+  "path": "/manhwa/teenage-mercenary"
  },
  "m127230": {
   "id": 127230,
@@ -2978,7 +3092,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127230-DdP4vAdssLoz.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127230-o8IRwCGVr9KW.jpg",
-  "path": "/anime/chainsaw-man"
+  "path": "/anime/chainsaw-man",
+  "popularity": 639000
  },
  "m127549": {
   "id": 127549,
@@ -2987,7 +3102,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127549-fr324YPdXb3D.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127549-9j4uHXMStHGX.jpg",
-  "path": "/anime/slow-loop"
+  "path": "/anime/slow-loop",
+  "popularity": 28956
+ },
+ "m128067": {
+  "id": 128067,
+  "title": "SSS-Class Revival Hunter",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx128067-wnLBg6Cy1ncs.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/128067-F2qRPwWiCG7b.jpg",
+  "popularity": 68582,
+  "path": "/manhwa/sss-class-revival-hunter"
  },
  "m12859": {
   "id": 12859,
@@ -2996,7 +3122,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx12859-uQFENDPzMWz6.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/12859-XjlBW6o2YwUb.jpg",
-  "path": "/anime/one-piece-film-z"
+  "path": "/anime/one-piece-film-z",
+  "popularity": 64815
  },
  "m129874": {
   "id": 129874,
@@ -3005,7 +3132,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx129874-g6ZKXB94Hui1.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/129874-3ipZzS50i9Ta.jpg",
-  "path": "/anime/demon-slayer-kimetsu-no-yaiba-mugen-train-arc"
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-mugen-train-arc",
+  "popularity": 363829
  },
  "m130003": {
   "id": 130003,
@@ -3014,7 +3142,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx130003-HTDmeL4RGeJ4.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/130003-5F90a7BtsPQN.jpg",
-  "path": "/anime/bocchi-the-rock"
+  "path": "/anime/bocchi-the-rock",
+  "popularity": 268383
+ },
+ "m130429": {
+  "id": 130429,
+  "title": "I Shall Master this Family!",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx130429-m3PuqOmxBgoo.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/130429-AEQPOcAgJ6yU.jpg",
+  "popularity": 25331,
+  "path": "/manhwa/i-shall-master-this-family"
  },
  "m131573": {
   "id": 131573,
@@ -3023,7 +3162,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131573-rpl82vDEDRm6.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/131573-3veuVz5p0z2I.jpg",
-  "path": "/anime/jujutsu-kaisen-0"
+  "path": "/anime/jujutsu-kaisen-0",
+  "popularity": 440401
  },
  "m131681": {
   "id": 131681,
@@ -3032,7 +3172,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx131681-5ooUqvqNtee1.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/131681-3tNurPRsqsfz.jpg",
-  "path": "/anime/attack-on-titan-final-season-part-2"
+  "path": "/anime/attack-on-titan-final-season-part-2",
+  "popularity": 444265
  },
  "m132144": {
   "id": 132144,
@@ -3041,7 +3182,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx132144-i5B4VnG9sRgh.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/132144-tITrsibdFo3n.jpg",
-  "path": "/manhwa/return-of-the-blossoming-blade"
+  "path": "/manhwa/return-of-the-blossoming-blade",
+  "popularity": 45221
  },
  "m132405": {
   "id": 132405,
@@ -3050,7 +3192,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx132405-qP7FQYGmNI3d.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/132405-LnPQaqaksEpN.jpg",
-  "path": "/anime/my-dress-up-darling"
+  "path": "/anime/my-dress-up-darling",
+  "popularity": 433829
  },
  "m133898": {
   "id": 133898,
@@ -3059,7 +3202,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx133898-KdQ7fWTG06n4.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/133898-MYeTtAsD6KjA.jpg",
-  "path": "/anime/dragon-ball-super-super-hero"
+  "path": "/anime/dragon-ball-super-super-hero",
+  "popularity": 54020
  },
  "m136": {
   "id": 136,
@@ -3068,7 +3212,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx136-gj0bbCpDNrKG.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/136-uHALFo2vGOGd.jpg",
-  "path": "/anime/hunter-x-hunter"
+  "path": "/anime/hunter-x-hunter",
+  "popularity": 135537
  },
  "m136382": {
   "id": 136382,
@@ -3077,7 +3222,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx136382-MbpgvJ8eBy4d.jpg",
   "banner": null,
-  "path": "/manga/demon-slayer-kimetsu-academy"
+  "path": "/manga/demon-slayer-kimetsu-academy",
+  "popularity": 2741
  },
  "m13667": {
   "id": 13667,
@@ -3086,7 +3232,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx13667-gAKuIXI2avRq.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/13667-7Cpxg5sCOVpw.jpg",
-  "path": "/anime/road-to-ninja-naruto-the-movie"
+  "path": "/anime/road-to-ninja-naruto-the-movie",
+  "popularity": 73834
  },
  "m140407": {
   "id": 140407,
@@ -3095,7 +3242,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx140407-fJQr0fmqq1IO.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/140407-WMGs02Q3fFUb.jpg",
-  "path": "/manhwa/the-greatest-estate-developer"
+  "path": "/manhwa/the-greatest-estate-developer",
+  "popularity": 69615
  },
  "m140439": {
   "id": 140439,
@@ -3104,7 +3252,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx140439-bPKmhe1wNxc9.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/140439-r9SRh0q0UgX1.jpg",
-  "path": "/anime/mob-psycho-100-iii"
+  "path": "/anime/mob-psycho-100-iii",
+  "popularity": 266728
  },
  "m140960": {
   "id": 140960,
@@ -3113,7 +3262,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx140960-Kb6R5nYQfjmP.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/140960-Z7xSvkRxHKfj.jpg",
-  "path": "/anime/spy-x-family"
+  "path": "/anime/spy-x-family",
+  "popularity": 574545
  },
  "m141902": {
   "id": 141902,
@@ -3122,7 +3272,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx141902-fTyoTk8F8qOl.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/141902-SvnRSXnN7DWC.jpg",
-  "path": "/anime/one-piece-film-red"
+  "path": "/anime/one-piece-film-red",
+  "popularity": 79052
  },
  "m142329": {
   "id": 142329,
@@ -3131,7 +3282,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx142329-kET1PIXJv2eW.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/142329-i413SzLmToZN.jpg",
-  "path": "/anime/demon-slayer-kimetsu-no-yaiba-entertainment-district-arc"
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-entertainment-district-arc",
+  "popularity": 487892
  },
  "m142838": {
   "id": 142838,
@@ -3140,7 +3292,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx142838-26JrqcFU1ljB.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/142838-tynuN00wxmKO.jpg",
-  "path": "/anime/spy-x-family-cour-2"
+  "path": "/anime/spy-x-family-cour-2",
+  "popularity": 331274
  },
  "m145064": {
   "id": 145064,
@@ -3149,7 +3302,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx145064-hSNRJM03pvv1.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/145064-esDtAY2He7sk.jpg",
-  "path": "/anime/jujutsu-kaisen-season-2"
+  "path": "/anime/jujutsu-kaisen-season-2",
+  "popularity": 496483
  },
  "m145139": {
   "id": 145139,
@@ -3158,7 +3312,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx145139-rRimpHGWLhym.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/145139-V01Prh6UzfRk.jpg",
-  "path": "/anime/demon-slayer-kimetsu-no-yaiba-swordsmith-village-arc"
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-swordsmith-village-arc",
+  "popularity": 376527
  },
  "m146984": {
   "id": 146984,
@@ -3167,7 +3322,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx146984-GXrLeT6vQqyP.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/146984-yAkTtW2AExVj.jpg",
-  "path": "/anime/attack-on-titan-final-season-the-final-chapters-special-1"
+  "path": "/anime/attack-on-titan-final-season-the-final-chapters-special-1",
+  "popularity": 252608
  },
  "m14719": {
   "id": 14719,
@@ -3176,7 +3332,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx14719-VT5dRzTBSZ0w.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/14719-m7Hv2AxcNNjM.jpg",
-  "path": "/anime/jojo-s-bizarre-adventure-tv"
+  "path": "/anime/jojo-s-bizarre-adventure-tv",
+  "popularity": 481845
  },
  "m14837": {
   "id": 14837,
@@ -3185,7 +3342,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/14837.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/14837-dMPlW45GA8BE.jpg",
-  "path": "/anime/dragon-ball-z-battle-of-gods"
+  "path": "/anime/dragon-ball-z-battle-of-gods",
+  "popularity": 75786
  },
  "m151807": {
   "id": 151807,
@@ -3194,7 +3352,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx151807-it355ZgzquUd.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/151807-37yfQA3ym8PA.jpg",
-  "path": "/anime/solo-leveling"
+  "path": "/anime/solo-leveling",
+  "popularity": 451504
  },
  "m153": {
   "id": 153,
@@ -3203,7 +3362,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx153-pLhZPQCYk7hl.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/153-69eJS2eBYxus.jpg",
-  "path": "/anime/the-twelve-kingdoms"
+  "path": "/anime/the-twelve-kingdoms",
+  "popularity": 41600
  },
  "m1535": {
   "id": 1535,
@@ -3212,7 +3372,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1535-kUgkcrfOrkUM.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1535.jpg",
-  "path": "/anime/death-note"
+  "path": "/anime/death-note",
+  "popularity": 968403
  },
  "m154384": {
   "id": 154384,
@@ -3221,7 +3382,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154384-3tpmugzrVpE9.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154384-G8o38tiGCqbR.jpg",
-  "path": "/anime/tearmoon-empire"
+  "path": "/anime/tearmoon-empire",
+  "popularity": 36162
  },
  "m154587": {
   "id": 154587,
@@ -3230,7 +3392,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154587-qQTzQnEJJ3oB.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154587-ivXNJ23SM1xB.jpg",
-  "path": "/anime/frieren-beyond-journey-s-end"
+  "path": "/anime/frieren-beyond-journey-s-end",
+  "popularity": 486264
  },
  "m154768": {
   "id": 154768,
@@ -3239,7 +3402,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154768-DHHvNd4MjV1p.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154768-EuZd63IcqsVq.jpg",
-  "path": "/anime/my-dress-up-darling-season-2"
+  "path": "/anime/my-dress-up-darling-season-2",
+  "popularity": 194557
  },
  "m154966": {
   "id": 154966,
@@ -3248,7 +3412,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154966-eQRCmSrCh96j.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/154966-xIvcAtzwOZk6.jpg",
-  "path": "/anime/fate-strange-fake-whispers-of-dawn"
+  "path": "/anime/fate-strange-fake-whispers-of-dawn",
+  "popularity": 53218
  },
  "m155348": {
   "id": 155348,
@@ -3257,7 +3422,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx155348-4ipji8SvTjyh.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/155348-I6f4TQKslVx2.jpg",
-  "path": "/anime/road-of-naruto"
+  "path": "/anime/road-of-naruto",
+  "popularity": 21032
  },
  "m15689": {
   "id": 15689,
@@ -3266,7 +3432,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx15689-1Na3FwWgGk8v.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/15689-OkvbPqAXnJd5.jpg",
-  "path": "/anime/nekomonogatari-black"
+  "path": "/anime/nekomonogatari-black",
+  "popularity": 151294
  },
  "m1575": {
   "id": 1575,
@@ -3275,7 +3442,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1575-hsmWM2ydNm1m.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1575.jpg",
-  "path": "/anime/code-geass-lelouch-of-the-rebellion"
+  "path": "/anime/code-geass-lelouch-of-the-rebellion",
+  "popularity": 504743
  },
  "m158927": {
   "id": 158927,
@@ -3284,7 +3452,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b158927-lfO85WVguYgc.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/158927-zXtbXUO5iKzX.jpg",
-  "path": "/anime/spy-x-family-season-2"
+  "path": "/anime/spy-x-family-season-2",
+  "popularity": 240230
+ },
+ "m159042": {
+  "id": 159042,
+  "title": "Reincarnated as a Sword Season 2",
+  "type": "ANIME",
+  "format": "ONA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx159042-GGFwlDskc5vR.png",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/159042-X0mqyaUFBkms.jpg",
+  "popularity": 44699,
+  "path": "/anime/reincarnated-as-a-sword-season-2"
  },
  "m159322": {
   "id": 159322,
@@ -3293,7 +3472,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx159322-Sp1GflRhE6Po.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/159322-biJjvtNkhkxR.jpg",
-  "path": "/anime/bleach-thousand-year-blood-war-the-separation"
+  "path": "/anime/bleach-thousand-year-blood-war-the-separation",
+  "popularity": 145553
+ },
+ "m159441": {
+  "id": 159441,
+  "title": "Pick Me Up",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx159441-9W8201jAT9Yv.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/159441-ozFKHuPOjxhB.jpg",
+  "popularity": 45357,
+  "path": "/manhwa/pick-me-up"
  },
  "m162314": {
   "id": 162314,
@@ -3302,7 +3492,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx162314-qIWdAAFtvY8J.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/162314-N5M4XMz6O1j4.jpg",
-  "path": "/anime/attack-on-titan-final-season-the-final-chapters-special-2"
+  "path": "/anime/attack-on-titan-final-season-the-final-chapters-special-2",
+  "popularity": 168787
  },
  "m163134": {
   "id": 163134,
@@ -3311,7 +3502,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx163134-yieRFbvUOH9a.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/163134-CqaXjXVivwJ5.jpg",
-  "path": "/anime/re-zero-starting-life-in-another-world-season-3"
+  "path": "/anime/re-zero-starting-life-in-another-world-season-3",
+  "popularity": 199522
  },
  "m16498": {
   "id": 16498,
@@ -3320,7 +3512,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16498-buvcRTBx4NSm.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16498-8jpFCOcDmneX.jpg",
-  "path": "/anime/attack-on-titan"
+  "path": "/anime/attack-on-titan",
+  "popularity": 1062004
  },
  "m166240": {
   "id": 166240,
@@ -3329,7 +3522,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx166240-PBV7zukIHW7V.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/166240-YdxoEhrfwNk0.jpg",
-  "path": "/anime/demon-slayer-kimetsu-no-yaiba-hashira-training-arc"
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-hashira-training-arc",
+  "popularity": 280241
  },
  "m166617": {
   "id": 166617,
@@ -3338,7 +3532,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx166617-34fpC9y47tTx.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/166617-P4w3p0H4lE1O.jpg",
-  "path": "/anime/fate-strange-fake"
+  "path": "/anime/fate-strange-fake",
+  "popularity": 83314
  },
  "m16870": {
   "id": 16870,
@@ -3347,7 +3542,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16870-BD4K9rzlhCP4.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16870-xz6KbaGC0jas.jpg",
-  "path": "/anime/the-last-naruto-the-movie"
+  "path": "/anime/the-last-naruto-the-movie",
+  "popularity": 143915
  },
  "m16894": {
   "id": 16894,
@@ -3356,7 +3552,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx16894-iXt8GDs1L6dr.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/16894-L8kzeV6tFSII.jpg",
-  "path": "/anime/kuroko-s-basketball-2"
+  "path": "/anime/kuroko-s-basketball-2",
+  "popularity": 183966
  },
  "m169755": {
   "id": 169755,
@@ -3365,7 +3562,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx169755-Rqb7MjnzdTc6.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/169755-hCWjp9ajjMYV.jpg",
-  "path": "/anime/bleach-thousand-year-blood-war-the-conflict"
+  "path": "/anime/bleach-thousand-year-blood-war-the-conflict",
+  "popularity": 120013
  },
  "m170083": {
   "id": 170083,
@@ -3374,7 +3572,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx170083-GTwRrhTApcLR.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/170083-SYCCWWlq3hqF.jpg",
-  "path": "/anime/dragon-ball-daima"
+  "path": "/anime/dragon-ball-daima",
+  "popularity": 60977
  },
  "m17074": {
   "id": 17074,
@@ -3383,7 +3582,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx17074-xMhVAZsEDH66.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/17074-4tGsvEIjba22.jpg",
-  "path": "/anime/monogatari-series-second-season"
+  "path": "/anime/monogatari-series-second-season",
+  "popularity": 172518
  },
  "m171627": {
   "id": 171627,
@@ -3392,7 +3592,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx171627-ZN9D7P46yHnw.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/171627-7esVHhgw69rn.jpg",
-  "path": "/anime/chainsaw-man-the-movie-reze-arc"
+  "path": "/anime/chainsaw-man-the-movie-reze-arc",
+  "popularity": 242759
  },
  "m172463": {
   "id": 172463,
@@ -3401,7 +3602,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx172463-LnXqHzt74SJL.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/172463-3J2o3qQZadFJ.jpg",
-  "path": "/anime/jujutsu-kaisen-season-3-the-culling-game-part-1"
+  "path": "/anime/jujutsu-kaisen-season-3-the-culling-game-part-1",
+  "popularity": 263467
  },
  "m1735": {
   "id": 1735,
@@ -3410,7 +3612,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx1735-kGfVm0YqCPcu.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/1735.jpg",
-  "path": "/anime/naruto-shippuden"
+  "path": "/anime/naruto-shippuden",
+  "popularity": 614410
  },
  "m173533": {
   "id": 173533,
@@ -3419,7 +3622,18 @@
   "format": "ONA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx173533-9DN3nHtT2FBm.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/173533-5s5IHtcgBwta.jpg",
-  "path": "/anime/monogatari-series-off-and-monster-season"
+  "path": "/anime/monogatari-series-off-and-monster-season",
+  "popularity": 42550
+ },
+ "m175946": {
+  "id": 175946,
+  "title": "Myst, Might, Mayhem",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx175946-rx6eIfakvWYV.jpg",
+  "banner": null,
+  "popularity": 19985,
+  "path": "/manhwa/myst-might-mayhem"
  },
  "m176496": {
   "id": 176496,
@@ -3428,7 +3642,28 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx176496-9BDMjAZGEbq4.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/176496-5oY4k2NRqlYs.jpg",
-  "path": "/anime/solo-leveling-season-2-arise-from-the-shadow"
+  "path": "/anime/solo-leveling-season-2-arise-from-the-shadow",
+  "popularity": 313465
+ },
+ "m177706": {
+  "id": 177706,
+  "title": "The Knight Only Lives Today",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx177706-3r8dnAr8Prjq.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/177706-Hss6QY0ZfzVf.jpg",
+  "popularity": 27438,
+  "path": "/manhwa/the-knight-only-lives-today"
+ },
+ "m178083": {
+  "id": 178083,
+  "title": "Tokyo Revengers: Santen Sensou-hen",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178083-bg7pg6TCHwtG.jpg",
+  "banner": null,
+  "popularity": 29682,
+  "path": "/anime/tokyo-revengers-santen-sensou-hen"
  },
  "m178788": {
   "id": 178788,
@@ -3437,7 +3672,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx178788-zm3gtpB9TpRt.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/178788-tSHb5MiaNBNL.jpg",
-  "path": "/anime/demon-slayer-kimetsu-no-yaiba-infinity-castle"
+  "path": "/anime/demon-slayer-kimetsu-no-yaiba-infinity-castle",
+  "popularity": 201071
  },
  "m179445": {
   "id": 179445,
@@ -3446,7 +3682,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx179445-ho0nb7baJ1a5.jpg",
   "banner": null,
-  "path": "/manhwa/solo-leveling-ragnarok"
+  "path": "/manhwa/solo-leveling-ragnarok",
+  "popularity": 33332
  },
  "m182255": {
   "id": 182255,
@@ -3455,7 +3692,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182255-butzrqd4I0aC.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/182255-wyHvp6zJbWsO.jpg",
-  "path": "/anime/frieren-beyond-journey-s-end-season-2"
+  "path": "/anime/frieren-beyond-journey-s-end-season-2",
+  "popularity": 228678
  },
  "m182469": {
   "id": 182469,
@@ -3464,7 +3702,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx182469-JQ808NBPxmgn.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/182469-obNr7bznMzN7.jpg",
-  "path": "/anime/one-piece-fan-letter"
+  "path": "/anime/one-piece-fan-letter",
+  "popularity": 58940
  },
  "m18397": {
   "id": 18397,
@@ -3473,7 +3712,8 @@
   "format": "OVA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx18397-AnpwhLkSjYL1.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/18397-rG4Vpg67Kr0j.jpg",
-  "path": "/anime/attack-on-titan-ova"
+  "path": "/anime/attack-on-titan-ova",
+  "popularity": 132026
  },
  "m186712": {
   "id": 186712,
@@ -3482,7 +3722,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx186712-d5I2TjUQcHuI.jpg",
   "banner": null,
-  "path": "/anime/bocchi-the-rock-2nd-season"
+  "path": "/anime/bocchi-the-rock-2nd-season",
+  "popularity": 40858
+ },
+ "m187944": {
+  "id": 187944,
+  "title": "My Bias Gets on the Last Train",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx187944-gzNbL7zeY7Ma.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/187944-G78YqHH7LkrR.jpg",
+  "popularity": 19724,
+  "path": "/manhwa/my-bias-gets-on-the-last-train"
  },
  "m189046": {
   "id": 189046,
@@ -3491,7 +3742,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx189046-yaHWtS5FII46.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/189046-MDk2CaVuRWpb.jpg",
-  "path": "/anime/re-zero-starting-life-in-another-world-season-4"
+  "path": "/anime/re-zero-starting-life-in-another-world-season-4",
+  "popularity": 147503
+ },
+ "m189123": {
+  "id": 189123,
+  "title": "Blue Box Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx189123-0secXELIhkIW.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/189123-s2oirY2r1Svy.jpg",
+  "popularity": 38022,
+  "path": "/anime/blue-box-season-2"
  },
  "m192809": {
   "id": 192809,
@@ -3500,7 +3762,38 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx192809-wRlqABGsx2Qs.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/192809-GYqoYK9Sfhkk.jpg",
-  "path": "/anime/jujutsu-kaisen-hidden-inventory-premature-death-the-movie"
+  "path": "/anime/jujutsu-kaisen-hidden-inventory-premature-death-the-movie",
+  "popularity": 29641
+ },
+ "m195516": {
+  "id": 195516,
+  "title": "The Apothecary Diaries Season 3",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx195516-MJpUZlOberqH.jpg",
+  "banner": null,
+  "popularity": 86261,
+  "path": "/anime/the-apothecary-diaries-season-3"
+ },
+ "m195539": {
+  "id": 195539,
+  "title": "Cyberpunk: Edgerunners 2",
+  "type": "ANIME",
+  "format": "ONA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx195539-jaarfaxv6K0Z.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/195539-2obqrBzqrOSR.jpg",
+  "popularity": 72548,
+  "path": "/anime/cyberpunk-edgerunners-2"
+ },
+ "m195604": {
+  "id": 195604,
+  "title": "Black Clover Season 2",
+  "type": "ANIME",
+  "format": "TV",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx195604-tSZcfKbVqSEG.jpg",
+  "banner": null,
+  "popularity": 75739,
+  "path": "/anime/black-clover-season-2"
  },
  "m19603": {
   "id": 19603,
@@ -3509,7 +3802,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx19603-ycT0pyEgDVQu.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/19603.jpg",
-  "path": "/anime/fate-stay-night-unlimited-blade-works"
+  "path": "/anime/fate-stay-night-unlimited-blade-works",
+  "popularity": 266925
  },
  "m199": {
   "id": 199,
@@ -3518,7 +3812,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx199-sWefXJvXkDOb.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/199-Sm2RU5PSqw7T.jpg",
-  "path": "/anime/spirited-away"
+  "path": "/anime/spirited-away",
+  "popularity": 483658
  },
  "m20": {
   "id": 20,
@@ -3527,7 +3822,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20-dE6UHbFFg1A5.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20-HHxhPj5JD13a.jpg",
-  "path": "/anime/naruto"
+  "path": "/anime/naruto",
+  "popularity": 730543
  },
  "m2001": {
   "id": 2001,
@@ -3536,7 +3832,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx2001-XwRnjzGeFWRQ.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/2001-3eWhvkau8NV3.jpg",
-  "path": "/anime/gurren-lagann"
+  "path": "/anime/gurren-lagann",
+  "popularity": 382698
  },
  "m204066": {
   "id": 204066,
@@ -3545,7 +3842,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx204066-Gb5k7j6Cpbng.jpg",
   "banner": null,
-  "path": "/anime/jujutsu-kaisen-execution-shibuya-incident-x-the-culling-game-begins"
+  "path": "/anime/jujutsu-kaisen-execution-shibuya-incident-x-the-culling-game-begins",
+  "popularity": 21779
  },
  "m20464": {
   "id": 20464,
@@ -3554,7 +3852,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20464-ooZUyBe4ptp9.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20464-PpYjO9cPN1gs.jpg",
-  "path": "/anime/haikyu"
+  "path": "/anime/haikyu",
+  "popularity": 586785
  },
  "m20474": {
   "id": 20474,
@@ -3563,7 +3862,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20474-xuqem5GBlBtb.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20474-peBLuUVAzNC3.jpg",
-  "path": "/anime/jojo-s-bizarre-adventure-stardust-crusaders"
+  "path": "/anime/jojo-s-bizarre-adventure-stardust-crusaders",
+  "popularity": 346945
  },
  "m20593": {
   "id": 20593,
@@ -3572,7 +3872,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20593-ri6S0Qt3mFkv.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20593-axzVzexiYwqs.png",
-  "path": "/anime/hanamonogatari"
+  "path": "/anime/hanamonogatari",
+  "popularity": 123348
  },
  "m20594": {
   "id": 20594,
@@ -3581,7 +3882,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx20594-FhRgZ1H9Istt.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20594-BZOLwqidcS1G.jpg",
-  "path": "/anime/sword-art-online-ii"
+  "path": "/anime/sword-art-online-ii",
+  "popularity": 454278
  },
  "m20635": {
   "id": 20635,
@@ -3590,7 +3892,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20635-gUYy4KZfYRb0.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20635-2eB3QP44dM1M.jpg",
-  "path": "/anime/dragon-ball-z-kai-the-final-chapters"
+  "path": "/anime/dragon-ball-z-kai-the-final-chapters",
+  "popularity": 54886
  },
  "m20725": {
   "id": 20725,
@@ -3599,7 +3902,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20725-DLu8VlkGFQKc.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20725-ATMoU6GgyT5G.jpg",
-  "path": "/anime/kuroko-s-basketball-3"
+  "path": "/anime/kuroko-s-basketball-3",
+  "popularity": 163672
  },
  "m20778": {
   "id": 20778,
@@ -3608,7 +3912,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20778-HYEes09iv8fJ.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20778-wi4bZxwjT3c6.jpg",
-  "path": "/anime/dragon-ball-z-resurrection-f"
+  "path": "/anime/dragon-ball-z-resurrection-f",
+  "popularity": 60838
  },
  "m20791": {
   "id": 20791,
@@ -3617,7 +3922,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20791-yPCX5GJuMH2k.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20791-oJEIboUcTf4o.jpg",
-  "path": "/anime/fate-stay-night-heaven-s-feel-i-presage-flower"
+  "path": "/anime/fate-stay-night-heaven-s-feel-i-presage-flower",
+  "popularity": 146589
  },
  "m20792": {
   "id": 20792,
@@ -3626,7 +3932,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20792-Q53sZsUAh5FF.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20792-tYnEdWy6Yi0I.jpg",
-  "path": "/anime/fate-stay-night-unlimited-blade-works-2nd-season"
+  "path": "/anime/fate-stay-night-unlimited-blade-works-2nd-season",
+  "popularity": 205591
  },
  "m20811": {
   "id": 20811,
@@ -3635,7 +3942,8 @@
   "format": "OVA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20811-IvXLdxZkYNcP.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20811-LpRmeR6sDtX1.jpg",
-  "path": "/anime/attack-on-titan-no-regrets"
+  "path": "/anime/attack-on-titan-no-regrets",
+  "popularity": 153891
  },
  "m20918": {
   "id": 20918,
@@ -3644,7 +3952,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20918-8Gp6nJpbjFgr.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20918-5k02zgWVjDZi.jpg",
-  "path": "/anime/tsukimonogatari"
+  "path": "/anime/tsukimonogatari",
+  "popularity": 121832
  },
  "m20931": {
   "id": 20931,
@@ -3653,7 +3962,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx20931-bktYqOcxPERi.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20931-xDhiTPZmtS3u.jpg",
-  "path": "/anime/death-parade"
+  "path": "/anime/death-parade",
+  "popularity": 469724
  },
  "m20958": {
   "id": 20958,
@@ -3662,7 +3972,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20958-HuFJyr54Mmir.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20958-Y7eQdz9VENBD.jpg",
-  "path": "/anime/attack-on-titan-season-2"
+  "path": "/anime/attack-on-titan-season-2",
+  "popularity": 738363
  },
  "m209895": {
   "id": 209895,
@@ -3671,7 +3982,8 @@
   "format": null,
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx209895-vTRv4YqkdAbX.jpg",
   "banner": null,
-  "path": "/anime/jujutsu-kaisen-shimetsu-kaiyuu-kouhen"
+  "path": "/anime/jujutsu-kaisen-shimetsu-kaiyuu-kouhen",
+  "popularity": 25297
  },
  "m20992": {
   "id": 20992,
@@ -3680,7 +3992,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20992-aHgNbcalVEqk.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20992-QMdqxEjAIAit.jpg",
-  "path": "/anime/haikyu-2nd-season"
+  "path": "/anime/haikyu-2nd-season",
+  "popularity": 401003
  },
  "m21": {
   "id": 21,
@@ -3689,7 +4002,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21-ELSYx3yMPcKM.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
-  "path": "/anime/one-piece"
+  "path": "/anime/one-piece",
+  "popularity": 756738
  },
  "m21087": {
   "id": 21087,
@@ -3698,7 +4012,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21087-B5DHjqZ3kW4b.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21087-sHb9zUZFsHe1.jpg",
-  "path": "/anime/one-punch-man"
+  "path": "/anime/one-punch-man",
+  "popularity": 771450
  },
  "m21175": {
   "id": 21175,
@@ -3707,7 +4022,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21175-EH06qlfF8TnB.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21175-Qo9gdGPUm4Im.jpg",
-  "path": "/anime/dragon-ball-super"
+  "path": "/anime/dragon-ball-super",
+  "popularity": 219606
  },
  "m21202": {
   "id": 21202,
@@ -3716,7 +4032,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21202-mPOr80AEjUcZ.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21202-UWijdV7RMnXo.jpg",
-  "path": "/anime/konosuba-god-s-blessing-on-this-wonderful-world"
+  "path": "/anime/konosuba-god-s-blessing-on-this-wonderful-world",
+  "popularity": 521829
  },
  "m21220": {
   "id": 21220,
@@ -3725,7 +4042,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21220-3cWAUtR1Ih5h.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21220-tdeNPd6YFzIo.jpg",
-  "path": "/anime/boruto-naruto-the-movie"
+  "path": "/anime/boruto-naruto-the-movie",
+  "popularity": 99216
  },
  "m21262": {
   "id": 21262,
@@ -3734,7 +4052,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21262-jfbv9hvjymMW.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21262-nlSoKZSaxyJo.jpg",
-  "path": "/anime/owarimonogatari"
+  "path": "/anime/owarimonogatari",
+  "popularity": 130712
  },
  "m21355": {
   "id": 21355,
@@ -3743,7 +4062,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21355-wRVUrGxpvIQQ.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21355-f9SjOfEJMk5P.jpg",
-  "path": "/anime/re-zero-starting-life-in-another-world"
+  "path": "/anime/re-zero-starting-life-in-another-world",
+  "popularity": 627787
  },
  "m21399": {
   "id": 21399,
@@ -3752,7 +4072,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21399-VTAdAqc8u5AE.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21399-vCKFTNkrYLIz.jpg",
-  "path": "/anime/kizumonogatari-part-2-nekketsu"
+  "path": "/anime/kizumonogatari-part-2-nekketsu",
+  "popularity": 144065
  },
  "m21400": {
   "id": 21400,
@@ -3761,7 +4082,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21400-38ykNo3j4xXo.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21400-5zcYUeVBptdG.jpg",
-  "path": "/anime/kizumonogatari-part-3-reiketsu"
+  "path": "/anime/kizumonogatari-part-3-reiketsu",
+  "popularity": 148620
  },
  "m21428": {
   "id": 21428,
@@ -3770,7 +4092,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21428-dFVIHeZ8McBe.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21428-WXeLTDwfmKI5.jpg",
-  "path": "/anime/grimgar-of-fantasy-and-ash"
+  "path": "/anime/grimgar-of-fantasy-and-ash",
+  "popularity": 184583
  },
  "m21450": {
   "id": 21450,
@@ -3779,7 +4102,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21450-D7XFwEQjZ5GA.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21450-5mgIkvOWnF9Z.jpg",
-  "path": "/anime/jojo-s-bizarre-adventure-diamond-is-unbreakable"
+  "path": "/anime/jojo-s-bizarre-adventure-diamond-is-unbreakable",
+  "popularity": 317706
  },
  "m21459": {
   "id": 21459,
@@ -3788,7 +4112,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21459-nYh85uj2Fuwr.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21459-yeVkolGKdGUV.jpg",
-  "path": "/anime/my-hero-academia"
+  "path": "/anime/my-hero-academia",
+  "popularity": 879298
  },
  "m21507": {
   "id": 21507,
@@ -3797,7 +4122,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21507-6YUSbh2m0N1p.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21507-Qx8bGsLXUgLo.jpg",
-  "path": "/anime/mob-psycho-100"
+  "path": "/anime/mob-psycho-100",
+  "popularity": 630558
  },
  "m21520": {
   "id": 21520,
@@ -3806,7 +4132,8 @@
   "format": "ONA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21520-nZKCr7PZrv7e.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21520-iaWBW3LJHil9.jpg",
-  "path": "/anime/koyomimonogatari"
+  "path": "/anime/koyomimonogatari",
+  "popularity": 87173
  },
  "m21698": {
   "id": 21698,
@@ -3815,7 +4142,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21698-RL71mr1YU5Io.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21698-jVFRIHAENS5B.jpg",
-  "path": "/anime/haikyu-3rd-season"
+  "path": "/anime/haikyu-3rd-season",
+  "popularity": 364342
  },
  "m21718": {
   "id": 21718,
@@ -3824,7 +4152,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21718-Hjj26Sapx1bd.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21718-7NXra2yezc9T.jpg",
-  "path": "/anime/fate-stay-night-heaven-s-feel-ii-lost-butterfly"
+  "path": "/anime/fate-stay-night-heaven-s-feel-ii-lost-butterfly",
+  "popularity": 131250
  },
  "m21719": {
   "id": 21719,
@@ -3833,7 +4162,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21719-MSdTlkno0Z0u.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21719-D361L20cvUXL.jpg",
-  "path": "/anime/fate-stay-night-heaven-s-feel-iii-spring-song"
+  "path": "/anime/fate-stay-night-heaven-s-feel-iii-spring-song",
+  "popularity": 119981
  },
  "m21745": {
   "id": 21745,
@@ -3842,7 +4172,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21745-VrhhJjZNdBXV.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21745-5psGR43Ck4RZ.jpg",
-  "path": "/anime/owarimonogatari-second-season"
+  "path": "/anime/owarimonogatari-second-season",
+  "popularity": 124241
  },
  "m21856": {
   "id": 21856,
@@ -3851,7 +4182,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21856-gutauxhWAwn6.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21856-wtSHgeHFmzdG.jpg",
-  "path": "/anime/my-hero-academia-season-2"
+  "path": "/anime/my-hero-academia-season-2",
+  "popularity": 658838
  },
  "m223": {
   "id": 223,
@@ -3860,7 +4192,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx223-scE5uJfXqqj8.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/223-vyRuUBBYfcUb.jpg",
-  "path": "/anime/dragon-ball"
+  "path": "/anime/dragon-ball",
+  "popularity": 235939
  },
  "m225": {
   "id": 225,
@@ -3869,7 +4202,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx225-pzkDUVy7tKxH.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/225-gMgT7ZPEFvQ7.jpg",
-  "path": "/anime/dragon-ball-gt"
+  "path": "/anime/dragon-ball-gt",
+  "popularity": 130152
  },
  "m235": {
   "id": 235,
@@ -3878,7 +4212,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx235-MyYT7K3chBdO.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/235-MTmiz0uB0fMd.jpg",
-  "path": "/anime/detective-conan"
+  "path": "/anime/detective-conan",
+  "popularity": 80365
  },
  "m249": {
   "id": 249,
@@ -3887,7 +4222,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx249-jVBkyLnBvnRE.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/249-9ufXhmXxncry.jpg",
-  "path": "/anime/inuyasha"
+  "path": "/anime/inuyasha",
+  "popularity": 174229
  },
  "m269": {
   "id": 269,
@@ -3896,7 +4232,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx269-d2GmRkJbMopq.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/269-08ar2HJOUAuL.jpg",
-  "path": "/anime/bleach"
+  "path": "/anime/bleach",
+  "popularity": 526375
  },
  "m2759": {
   "id": 2759,
@@ -3905,7 +4242,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx2759-S0ATamQtDwlW.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/2759-wndNbYSgvph1.jpg",
-  "path": "/anime/evangelion-1-0-you-are-not-alone"
+  "path": "/anime/evangelion-1-0-you-are-not-alone",
+  "popularity": 145727
  },
  "m2994": {
   "id": 2994,
@@ -3914,7 +4252,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b2994-mlofkz5GpkIu.jpg",
   "banner": null,
-  "path": "/anime/death-note-relight"
+  "path": "/anime/death-note-relight",
+  "popularity": 44530
  },
  "m30": {
   "id": 30,
@@ -3923,7 +4262,18 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx30-AI1zr74Dh4ye.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/30-gEMoHHIqxDgN.jpg",
-  "path": "/anime/neon-genesis-evangelion"
+  "path": "/anime/neon-genesis-evangelion",
+  "popularity": 498546
+ },
+ "m30002": {
+  "id": 30002,
+  "title": "Berserk",
+  "type": "MANGA",
+  "format": "MANGA",
+  "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30002-Cul4OeN7bYtn.jpg",
+  "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30002-3TuoSMl20fUX.jpg",
+  "popularity": 246398,
+  "path": "/manga/berserk"
  },
  "m30011": {
   "id": 30011,
@@ -3932,7 +4282,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/nx30011-9yUF1dXWgDOx.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30011-pkX1O0EFqvV7.jpg",
-  "path": "/manga/naruto"
+  "path": "/manga/naruto",
+  "popularity": 99772
  },
  "m30012": {
   "id": 30012,
@@ -3941,7 +4292,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30012-1epmVfTSv2rr.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30012-RpbdVc2yNxhw.jpg",
-  "path": "/manga/bleach"
+  "path": "/manga/bleach",
+  "popularity": 121908
  },
  "m30013": {
   "id": 30013,
@@ -3950,7 +4302,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30013-BeslEMqiPhlk.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30013-hbbRZqC5MjYh.jpg",
-  "path": "/manga/one-piece"
+  "path": "/manga/one-piece",
+  "popularity": 234168
  },
  "m30021": {
   "id": 30021,
@@ -3959,7 +4312,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30021-FE6kmrfpuKyb.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/n30021-eZbrTpIjv10E.jpg",
-  "path": "/manga/death-note"
+  "path": "/manga/death-note",
+  "popularity": 100269
  },
  "m30026": {
   "id": 30026,
@@ -3968,7 +4322,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30026-uCvXMudMzmwI.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30026-JXfraiazLTQe.jpg",
-  "path": "/manga/hunter-x-hunter"
+  "path": "/manga/hunter-x-hunter",
+  "popularity": 109982
  },
  "m30104": {
   "id": 30104,
@@ -3977,7 +4332,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx30104-sUVzNlTWZ5cu.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/30104-CDra9ye7UPGI.jpg",
-  "path": "/manga/yotsuba-and"
+  "path": "/manga/yotsuba-and",
+  "popularity": 64161
  },
  "m32": {
   "id": 32,
@@ -3986,7 +4342,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx32-5JYsv0wc122I.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n32-BH9yHJBQqeOa.jpg",
-  "path": "/anime/neon-genesis-evangelion-the-end-of-evangelion"
+  "path": "/anime/neon-genesis-evangelion-the-end-of-evangelion",
+  "popularity": 255270
  },
  "m356": {
   "id": 356,
@@ -3995,7 +4352,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx356-mTpMvtillumS.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/356-0VzS7BcObayT.jpg",
-  "path": "/anime/fate-stay-night"
+  "path": "/anime/fate-stay-night",
+  "popularity": 190241
  },
  "m4037": {
   "id": 4037,
@@ -4004,7 +4362,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx4037-zpDbjycoZhNI.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n4037-1rwmIePHBzB7.jpg",
-  "path": "/anime/cowboy-bebop-yoseatsume-blues"
+  "path": "/anime/cowboy-bebop-yoseatsume-blues",
+  "popularity": 13387
  },
  "m4107": {
   "id": 4107,
@@ -4013,7 +4372,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx4107-WaS60WNsKZuu.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/4107-AEaJQo7InYJ1.png",
-  "path": "/anime/gurren-lagann-the-movie-childhood-s-end"
+  "path": "/anime/gurren-lagann-the-movie-childhood-s-end",
+  "popularity": 43887
  },
  "m4565": {
   "id": 4565,
@@ -4022,7 +4382,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx4565-FbFYEBTJSPyr.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/4565-Ngb9pZ0nuf8s.png",
-  "path": "/anime/gurren-lagann-the-movie-the-lights-in-the-sky-are-stars"
+  "path": "/anime/gurren-lagann-the-movie-the-lights-in-the-sky-are-stars",
+  "popularity": 53432
  },
  "m5": {
   "id": 5,
@@ -4031,7 +4392,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5-NozHwXWdNLCz.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/5-VOcSZFepDDhm.jpg",
-  "path": "/anime/cowboy-bebop-the-movie-knockin-on-heaven-s-door"
+  "path": "/anime/cowboy-bebop-the-movie-knockin-on-heaven-s-door",
+  "popularity": 84939
  },
  "m5081": {
   "id": 5081,
@@ -4040,7 +4402,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5081-9GocceQ5Z865.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n5081-0Zcn5GOFYHMc.jpg",
-  "path": "/anime/bakemonogatari"
+  "path": "/anime/bakemonogatari",
+  "popularity": 344274
  },
  "m5114": {
   "id": 5114,
@@ -4049,7 +4412,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5114-nSWCgQlmOMtj.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/5114-q0V5URebphSG.jpg",
-  "path": "/anime/fullmetal-alchemist-brotherhood"
+  "path": "/anime/fullmetal-alchemist-brotherhood",
+  "popularity": 733923
  },
  "m512": {
   "id": 512,
@@ -4058,7 +4422,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx512-UwP8X4BR8YoM.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/512-Ssp3EE2NdeoA.jpg",
-  "path": "/anime/kiki-s-delivery-service"
+  "path": "/anime/kiki-s-delivery-service",
+  "popularity": 187808
  },
  "m53390": {
   "id": 53390,
@@ -4067,7 +4432,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx53390-1RsuABC34P9D.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/53390-6Uru5rrjh8zv.jpg",
-  "path": "/manga/attack-on-titan"
+  "path": "/manga/attack-on-titan",
+  "popularity": 227537
  },
  "m59983": {
   "id": 59983,
@@ -4076,7 +4442,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx59983-cfSjrRxuAlAD.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/n59983-epdj2CSommgv.jpg",
-  "path": "/manhwa/noblesse"
+  "path": "/manhwa/noblesse",
+  "popularity": 35268
  },
  "m6033": {
   "id": 6033,
@@ -4085,7 +4452,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx6033-TKDWyjZN3dXk.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/6033-oyoKAT6qBUba.png",
-  "path": "/anime/dragon-ball-z-kai"
+  "path": "/anime/dragon-ball-z-kai",
+  "popularity": 98632
  },
  "m65243": {
   "id": 65243,
@@ -4094,7 +4462,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx65243-mR4MnJFmfaOF.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/65243-naohhXW4M4b9.jpg",
-  "path": "/manga/haikyu"
+  "path": "/manga/haikyu",
+  "popularity": 102313
  },
  "m6702": {
   "id": 6702,
@@ -4103,7 +4472,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b6702-KI4qgSMyI8Pm.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/6702-VSHyctSAeUBS.jpg",
-  "path": "/anime/fairy-tail"
+  "path": "/anime/fairy-tail",
+  "popularity": 382271
  },
  "m74347": {
   "id": 74347,
@@ -4112,7 +4482,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx74347-sZpmNJ5xLwRK.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/74347-xAQI9BxcpWM3.jpg",
-  "path": "/manga/one-punch-man"
+  "path": "/manga/one-punch-man",
+  "popularity": 174264
  },
  "m813": {
   "id": 813,
@@ -4121,7 +4492,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx813-ZhnFNOeCU5dQ.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/813-03ZLvWJgR6Wd.jpg",
-  "path": "/anime/dragon-ball-z"
+  "path": "/anime/dragon-ball-z",
+  "popularity": 260913
  },
  "m8247": {
   "id": 8247,
@@ -4130,7 +4502,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx8247-VppsQKlgXoXr.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/8247-M9lIhb1pWRTn.jpg",
-  "path": "/anime/bleach-the-movie-hell-verse"
+  "path": "/anime/bleach-the-movie-hell-verse",
+  "popularity": 45200
  },
  "m85141": {
   "id": 85141,
@@ -4139,7 +4512,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx85141-qHR957V3FVco.png",
   "banner": null,
-  "path": "/manhwa/the-god-of-high-school"
+  "path": "/manhwa/the-god-of-high-school",
+  "popularity": 55241
  },
  "m85143": {
   "id": 85143,
@@ -4148,7 +4522,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx85143-23oup3ETbFJk.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/85143-IKyCdaJKfa2M.jpg",
-  "path": "/manhwa/tower-of-god"
+  "path": "/manhwa/tower-of-god",
+  "popularity": 100448
  },
  "m86508": {
   "id": 86508,
@@ -4157,7 +4532,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx86508-QSahE7mTFEXl.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/86508-TVTGeOJ3Azmc.jpg",
-  "path": "/manga/dragon-ball-super"
+  "path": "/manga/dragon-ball-super",
+  "popularity": 35225
  },
  "m86848": {
   "id": 86848,
@@ -4166,7 +4542,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx86848-4CSItSclJUvi.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/86848-RZa2gMxQ378D.jpg",
-  "path": "/manhwa/lookism"
+  "path": "/manhwa/lookism",
+  "popularity": 46289
  },
  "m87216": {
   "id": 87216,
@@ -4175,7 +4552,8 @@
   "format": "MANGA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx87216-c9bSNVD10UuD.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/manga/banner/87216-TVKEGfSxAqKs.jpg",
-  "path": "/manga/demon-slayer-kimetsu-no-yaiba"
+  "path": "/manga/demon-slayer-kimetsu-no-yaiba",
+  "popularity": 210990
  },
  "m901": {
   "id": 901,
@@ -4184,7 +4562,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/901-gB41PQJWFXjp.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/901-MS08KTgF7UUu.jpg",
-  "path": "/anime/dragon-ball-z-broly-the-legendary-super-saiyan"
+  "path": "/anime/dragon-ball-z-broly-the-legendary-super-saiyan",
+  "popularity": 42065
  },
  "m9253": {
   "id": 9253,
@@ -4193,7 +4572,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9253-tIUXF2gfU8Sg.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n9253-JIhmKgBKsWUN.jpg",
-  "path": "/anime/steins-gate"
+  "path": "/anime/steins-gate",
+  "popularity": 598950
  },
  "m9260": {
   "id": 9260,
@@ -4202,7 +4582,8 @@
   "format": "MOVIE",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9260-cl7sczYOpTeW.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/9260-69LbBxcWN2tA.jpg",
-  "path": "/anime/kizumonogatari-part-1-tekketsu"
+  "path": "/anime/kizumonogatari-part-1-tekketsu",
+  "popularity": 167792
  },
  "m9756": {
   "id": 9756,
@@ -4211,7 +4592,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9756-QnUGwlwwnsuN.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/9756-d5M8NffgJJHB.jpg",
-  "path": "/anime/puella-magi-madoka-magica"
+  "path": "/anime/puella-magi-madoka-magica",
+  "popularity": 329030
  },
  "m97617": {
   "id": 97617,
@@ -4220,7 +4602,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx97617-TmRRraupfbT5.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97617-yjsKEVRcjQWk.jpg",
-  "path": "/anime/restaurant-to-another-world"
+  "path": "/anime/restaurant-to-another-world",
+  "popularity": 79743
  },
  "m97668": {
   "id": 97668,
@@ -4229,7 +4612,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97668-nC8gQrXVxt7k.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97668-8Yo3iH2fxbKR.jpg",
-  "path": "/anime/one-punch-man-season-2"
+  "path": "/anime/one-punch-man-season-2",
+  "popularity": 470047
  },
  "m97815": {
   "id": 97815,
@@ -4238,7 +4622,8 @@
   "format": "SPECIAL",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97815-NnWheNnaKCmS.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97815-SV1vR4GlLRIq.jpg",
-  "path": "/anime/fate-grand-order-first-order"
+  "path": "/anime/fate-grand-order-first-order",
+  "popularity": 71844
  },
  "m97938": {
   "id": 97938,
@@ -4247,7 +4632,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97938-BnF6M5yTaNB1.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97938-cT6wkSRifTEC.jpg",
-  "path": "/anime/boruto-naruto-next-generations"
+  "path": "/anime/boruto-naruto-next-generations",
+  "popularity": 226356
  },
  "m97940": {
   "id": 97940,
@@ -4256,7 +4642,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx97940-fyh8o7gNbha0.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/97940-1URQdQ4U1a0b.jpg",
-  "path": "/anime/black-clover"
+  "path": "/anime/black-clover",
+  "popularity": 589517
  },
  "m98035": {
   "id": 98035,
@@ -4265,7 +4652,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx98035-rdkjeqUUsG2j.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/98035-hbrEf8ulDnAe.jpg",
-  "path": "/anime/fate-apocrypha"
+  "path": "/anime/fate-apocrypha",
+  "popularity": 132848
  },
  "m99147": {
   "id": 99147,
@@ -4274,7 +4662,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx99147-AiPDD8cwlCfi.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/99147-HACsFVrynFf5.jpg",
-  "path": "/anime/attack-on-titan-season-3"
+  "path": "/anime/attack-on-titan-season-3",
+  "popularity": 690795
  },
  "m99263": {
   "id": 99263,
@@ -4283,7 +4672,8 @@
   "format": "TV",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx99263-LcazQwdlWzMy.jpg",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/99263-IwkmdCTsDY1t.jpg",
-  "path": "/anime/the-rising-of-the-shield-hero"
+  "path": "/anime/the-rising-of-the-shield-hero",
+  "popularity": 463787
  },
  "m99634": {
   "id": 99634,
@@ -4292,6 +4682,7 @@
   "format": "OVA",
   "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx99634-9u4hdvWwmC2s.png",
   "banner": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/99634-m8hKbCnDL2ue.png",
-  "path": "/anime/attack-on-titan-lost-girls"
+  "path": "/anime/attack-on-titan-lost-girls",
+  "popularity": 96092
  }
 }

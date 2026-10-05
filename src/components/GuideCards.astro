@@ -3,11 +3,13 @@
  * A grid of guide cards: the hub (/guides), the homepage "Guides" row and the
  * "More guides" blocks on guide pages.
  *
- * Pass rows that went through assignCardImages (src/lib/guides.mjs), so each
- * card carries its own `card` picture and no two cards on a page repeat one.
- * Character art on AniList is a 230 x 345 portrait, so the frame is a 3:4
- * portrait kept near that size: above the text on phones (two columns),
- * beside it from 640 px up, never stretched into a blurry wide crop.
+ * Every guide row carries its own `image`/`imageAlt`/`wide` straight from
+ * data/guide-index.json (npm run guides:media assigns each guide a unique
+ * wide banner site-wide, see assignBanners in src/lib/guides.mjs), so no
+ * per-page picture juggling is needed here any more: a plain wide image on
+ * top, title and a one-line description underneath. `wide: false` (the rare
+ * guide that fell back to a cover) still renders in the same wide frame,
+ * just cropped to favour the top of the picture.
  *
  * Props: guides, lines (show the one-line description, default true),
  * label (aria-label of the list, optional).
@@ -22,16 +24,9 @@ const { guides = [], lines = true, label } = Astro.props
     guides.map((g) => (
       <li class="gcard">
         <a href={`/guides/${g.slug}`}>
-          <span class:list={['gcard__art', { 'gcard__art--wide': g.card?.wide }]}>
-            {g.card && (
-              <img
-                src={g.card.src}
-                alt={g.card.alt}
-                width={g.card.width}
-                height={g.card.height}
-                loading="lazy"
-                decoding="async"
-              />
+          <span class:list={['gcard__art', { 'gcard__art--cover': g.image && g.wide === false }]}>
+            {g.image && (
+              <img src={g.image} alt={g.imageAlt || g.title} width="1200" height="500" loading="lazy" decoding="async" />
             )}
           </span>
           <span class="gcard__text">

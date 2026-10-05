@@ -21,9 +21,7 @@ import {
   FEATURED_MAX,
   byRank,
   picksOf,
-  cardPictures,
-  assignCardImages,
-  leadPortrait,
+  assignBanners,
   guideSitemapUrls,
 } from '../src/lib/guides.mjs'
 import { readGuideFiles, parseGuide } from '../scripts/guide-files.mjs'
@@ -161,46 +159,59 @@ test('byRank and picksOf: rank order, unranked last, keys once, capped', () => {
   assert.deepEqual(picksOf({ entries }, 2), ['c17', 'c99'])
 })
 
-test('cardPictures: entry art in rank order, then series cover, then banner', () => {
-  const guide = { title: 'G', picks: ['c17', 'c99', 'm20', 'c404'], series: 1735, image: 'https://img/b1735.jpg', wide: true }
-  assert.deepEqual(cardPictures(guide, MEDIA).map((p) => p.src), [
-    'https://img/c17.png',
-    'https://img/c99.png',
-    'https://img/m20.jpg',
-    'https://img/m1735.jpg',
-    'https://img/b1735.jpg',
-  ])
-  const first = cardPictures(guide, MEDIA)[0]
-  assert.deepEqual([first.width, first.height, first.alt], [230, 345, 'Naruto Uzumaki'])
-  // A data guide lists its own covers.
-  const data = { title: 'D', pictures: [{ src: 'https://img/x.jpg', alt: 'Cover of X' }], image: 'https://img/x.jpg' }
-  assert.deepEqual(cardPictures(data, MEDIA).map((p) => p.src), ['https://img/x.jpg'])
+// id -> { banner, cover, type, popularity }, for assignBanners.
+const BANNERS = {
+  20: { banner: 'https://img/b20.jpg', cover: 'https://img/cv20.jpg', type: 'ANIME', popularity: 100 },
+  1735: { banner: 'https://img/b1735.jpg', cover: 'https://img/cv1735.jpg', type: 'ANIME', popularity: 200 },
+  30011: { banner: 'https://img/b30011.jpg', cover: 'https://img/cv30011.jpg', type: 'MANGA', popularity: 300 },
+  813: { banner: 'https://img/b813.jpg', cover: 'https://img/cv813.jpg', type: 'ANIME', popularity: 50 },
+  999: { banner: null, cover: 'https://img/cv999.jpg', type: 'ANIME', popularity: 10 },
+}
+
+test('assignBanners: a guide prefers its own hero banner first', () => {
+  const guides = [{ slug: 'a', heroMedia: 1735, franchiseMedia: [20], entryMedia: [], importance: 0 }]
+  assert.deepEqual(assignBanners(guides, BANNERS), [{ slug: 'a', banner: 'https://img/b1735.jpg', isFallbackCover: false }])
 })
 
-test('assignCardImages: no two cards on a page share a picture', () => {
-  const naruto = (slug, picks) => ({ slug, title: slug, picks, series: 1735, image: 'https://img/b1735.jpg', wide: true })
-  const guides = [naruto('a', ['c17', 'c99']), naruto('b', ['c17', 'c99']), naruto('c', ['c17']), naruto('d', ['c17']), naruto('e', ['c17'])]
-  const out = assignCardImages(guides, MEDIA)
-  assert.deepEqual(out.map((g) => g.card.src), [
-    'https://img/c17.png',
-    'https://img/c99.png',
-    'https://img/m1735.jpg',
-    'https://img/b1735.jpg',
-    // Every picture is taken: the guide falls back to its first choice.
-    'https://img/c17.png',
-  ])
-  // New rows: the input is left alone.
-  assert.equal(guides[0].card, undefined)
-  // Pictures the page already shows are skipped.
-  assert.equal(assignCardImages([guides[0]], MEDIA, { used: ['https://img/c17.png'] })[0].card.src, 'https://img/c99.png')
-  assert.equal(assignCardImages([{ slug: 'x', title: 'x' }], MEDIA)[0].card, null)
+test('assignBanners: franchise banners rank anime before manga, then by popularity', () => {
+  const guides = [{ slug: 'a', heroMedia: null, franchiseMedia: [30011, 20, 813], entryMedia: [], importance: 0 }]
+  // 20 and 813 are both anime: 20 is more popular, so it is picked over 813
+  // and over the manga candidate 30011, even though 30011 is listed first.
+  assert.deepEqual(assignBanners(guides, BANNERS)[0].banner, 'https://img/b20.jpg')
 })
 
-test('leadPortrait: the #1 entry character art, or null', () => {
-  const lead = leadPortrait({ entries: [{ rank: 2, character: 99 }, { rank: 1, character: 17, heading: 'Naruto' }] }, MEDIA)
-  assert.deepEqual(lead, { src: 'https://img/c17.png', width: 230, height: 345, alt: 'Naruto Uzumaki' })
-  assert.equal(leadPortrait({ entries: [{ rank: 1, media: 20 }] }, MEDIA), null)
-  assert.equal(leadPortrait({ entries: [] }, MEDIA), null)
+test('assignBanners: entry media is the last resort before falling back', () => {
+  const guides = [{ slug: 'a', heroMedia: 999, franchiseMedia: [], entryMedia: [813], importance: 0 }]
+  assert.deepEqual(assignBanners(guides, BANNERS)[0], { slug: 'a', banner: 'https://img/b813.jpg', isFallbackCover: false })
+})
+
+test('assignBanners: unique across guides, importance decides who picks first', () => {
+  const same = (slug, importance) => ({ slug, heroMedia: null, franchiseMedia: [20, 813], entryMedia: [], importance })
+  // b is listed first but a is more important (lower number), so a claims
+  // the better (more popular) candidate first.
+  const out = assignBanners([same('b', 5), same('a', 1)], BANNERS)
+  // Output keeps the input order.
+  assert.deepEqual(out.map((g) => g.slug), ['b', 'a'])
+  const bySlug = Object.fromEntries(out.map((g) => [g.slug, g.banner]))
+  assert.equal(bySlug.a, 'https://img/b20.jpg')
+  assert.equal(bySlug.b, 'https://img/b813.jpg')
+  assert.notEqual(bySlug.a, bySlug.b)
+})
+
+test('assignBanners: no free candidate anywhere falls back to the hero cover, flagged', () => {
+  const guides = [
+    { slug: 'a', heroMedia: 20, franchiseMedia: [], entryMedia: [], importance: 0 },
+    // b wants the same single banner as a and has nothing else to offer.
+    { slug: 'b', heroMedia: 20, franchiseMedia: [], entryMedia: [], importance: 1 },
+  ]
+  const out = assignBanners(guides, BANNERS)
+  assert.deepEqual(out[0], { slug: 'a', banner: 'https://img/b20.jpg', isFallbackCover: false })
+  assert.deepEqual(out[1], { slug: 'b', banner: 'https://img/cv20.jpg', isFallbackCover: true })
+})
+
+test('assignBanners: a hero with no banner anywhere and no cover returns null', () => {
+  const guides = [{ slug: 'a', heroMedia: null, franchiseMedia: [], entryMedia: [], importance: 0 }]
+  assert.deepEqual(assignBanners(guides, BANNERS), [{ slug: 'a', banner: null, isFallbackCover: true }])
 })
 
 test('guideSitemapUrls: hub, written guides with their day, data guides with the build day', () => {
@@ -221,7 +232,39 @@ test('the sitemap lists the guides in their own part, not in core', () => {
 })
 
 test('data/guide-index.json is in step with the guides (run npm run guides:media)', () => {
-  assert.deepEqual(readData('guide-index.json'), JSON.parse(JSON.stringify(buildGuideIndex(guides, media))))
+  // image/wide/banner/isFallbackCover come from assignBanners, a separate
+  // AniList-backed pass (scripts/guide-media.mjs); everything else here must
+  // still match buildGuideIndex exactly.
+  const built = JSON.parse(JSON.stringify(buildGuideIndex(guides, media)))
+  const onDisk = readData('guide-index.json')
+  assert.deepEqual(onDisk.featured, built.featured)
+  const strip = ({ image, wide, isFallbackCover, banner, ...rest }) => rest
+  assert.deepEqual(onDisk.guides.map(strip), built.guides.map(strip))
+})
+
+test('every written guide has its own banner on disk, and no two share one', () => {
+  // assignBanners writes its result into each row's image/wide/isFallbackCover
+  // (scripts/guide-media.mjs), so `image` is the assigned banner here.
+  const onDisk = readData('guide-index.json')
+  const seen = new Map()
+  for (const g of onDisk.guides) {
+    assert.ok(g.image, `${g.slug}: missing a banner (run npm run guides:media)`)
+    const earlier = seen.get(g.image)
+    assert.ok(!earlier, `${g.slug} and ${earlier}: duplicate banner ${g.image}`)
+    seen.set(g.image, g.slug)
+  }
+})
+
+test('every data guide has its own banner too, unique against the written guides', () => {
+  const onDisk = readData('guide-index.json')
+  const dataBanners = readData('guide-data-banners.json')
+  const seen = new Map(onDisk.guides.map((g) => [g.image, g.slug]))
+  for (const [slug, row] of Object.entries(dataBanners)) {
+    assert.ok(row?.banner, `${slug}: missing a banner (run npm run guides:media)`)
+    const earlier = seen.get(row.banner)
+    assert.ok(!earlier, `${slug} and ${earlier}: duplicate banner ${row.banner}`)
+    seen.set(row.banner, slug)
+  }
 })
 
 test('every id a guide names has its media record', () => {

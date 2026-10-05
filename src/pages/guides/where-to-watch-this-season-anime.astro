@@ -26,7 +26,8 @@ const hasHub = hubSeasonKeys(anime).has(seasonKey(year, season))
 const top = rows[0]?.item
 const freeServices = services.filter((s) => factsFor(s.site).pay === PAY.ADS).map((s) => s.site)
 
-const hero = top ? { src: top.cover, alt: `Cover of ${top.title}` } : null
+// The unique banner npm run guides:media assigned this guide (src/lib/guides.mjs assignBanners).
+const hero = meta.image ? { src: meta.image, alt: meta.imageAlt || meta.title, wide: meta.wide } : null
 const list = rows.map(({ item, streams }) => ({
   title: item.title,
   path: `/anime/${item.slug}`,

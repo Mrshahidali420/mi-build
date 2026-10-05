@@ -15,7 +15,7 @@ import Base from '../layouts/Base.astro'
 import '../styles/guides.css'
 import { faqJsonld } from '../lib/answers.mjs'
 import { guideBySlug, DATA_GUIDES } from '../lib/guides-registry.js'
-import { GUIDE_CATEGORIES, isoDay, longDay, assignCardImages } from '../lib/guides.mjs'
+import { GUIDE_CATEGORIES, isoDay, longDay } from '../lib/guides.mjs'
 import GuideCards from './GuideCards.astro'
 import GuideComments from './GuideComments.astro'
 
@@ -59,16 +59,12 @@ const itemList = items.length
   : null
 const jsonld = [article, itemList, faq.length ? faqJsonld(faq) : null].filter(Boolean)
 
-// The other data guides, as "More guides", each with a cover this page does
-// not already open on.
-const related = assignCardImages(
-  DATA_GUIDES.filter((g) => g.slug !== slug)
-    .map((g) => guideBySlug(g.slug))
-    .filter(Boolean)
-    .slice(0, 6),
-  {},
-  { used: [hero?.src] },
-)
+// The other data guides, as "More guides". guideBySlug already carries each
+// one's own unique banner (data/guide-data-banners.json).
+const related = DATA_GUIDES.filter((g) => g.slug !== slug)
+  .map((g) => guideBySlug(g.slug))
+  .filter(Boolean)
+  .slice(0, 6)
 ---
 
 <Base
@@ -89,7 +85,7 @@ const related = assignCardImages(
       <span aria-current="page">{title}</span>
     </nav>
 
-    <header class:list={['guide-head', { 'guide-head--portrait': hero?.src && !hero.wide }]}>
+    <header class="guide-head">
       <div class="guide-head__text">
         {cat && <p class="guide-kicker"><a href={`/guides#${cat.key}`}>{cat.label}</a></p>}
         <h1>{title}</h1>
@@ -102,7 +98,7 @@ const related = assignCardImages(
       </div>
       {
         hero?.src && (
-          <figure class:list={['guide-hero', { 'guide-hero--wide': hero.wide }]}>
+          <figure class:list={['guide-hero', { 'guide-hero--wide': hero.wide, 'guide-hero--cover': !hero.wide }]}>
             <img
               src={hero.src}
               alt={hero.alt}

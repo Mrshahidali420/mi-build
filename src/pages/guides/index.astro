@@ -8,18 +8,13 @@ export const prerender = true
 import Base from '../../layouts/Base.astro'
 import '../../styles/guides.css'
 import GuideCards from '../../components/GuideCards.astro'
-import mediaMap from '../../../data/guide-media.json'
 import { guidesByCategory, allGuides } from '../../lib/guides-registry.js'
-import { assignCardImages } from '../../lib/guides.mjs'
 
 const site = 'https://manhwaindex.com'
-// Walk every card on the page in display order, so no two share a picture.
-const byGroup = guidesByCategory()
-const carded = assignCardImages(byGroup.flatMap((g) => g.guides), mediaMap)
-const groups = byGroup.map((group) => ({
-  ...group,
-  guides: group.guides.map((g) => carded.find((c) => c.slug === g.slug)),
-}))
+// Every guide already carries its own unique banner from data/guide-index.json
+// / data/guide-data-banners.json (npm run guides:media), so no per-page
+// picture juggling is needed here.
+const groups = guidesByCategory()
 const all = allGuides()
 const description =
   'Anime and manga guides from manhwaindex: strongest characters ranked by real feats, power systems explained, watch orders, cosplay ideas and data from official platforms.'
