@@ -133,17 +133,6 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
 <html lang="en" data-missing={missing ? '1' : undefined}>
   <head>
     <meta charset="utf-8" />
-    <!-- Ezoic. The consent scripts must come before any other script; then the
-         standalone ad loader. Ads appear only once Ezoic turns them on for the
-         site. Declared in /privacy. -->
-    <script is:inline data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
-    <script is:inline data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
-    <script is:inline async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
-    <script is:inline>
-      window.ezstandalone = window.ezstandalone || {}
-      ezstandalone.cmd = ezstandalone.cmd || []
-    </script>
-    <script is:inline src="https://ezoicanalytics.com/analytics.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -681,9 +670,9 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
       })
     </script>
 
-    <!-- Google AdSense: the account meta tag only. Ezoic asks for no other ad
-         network's code on the page; AdSense demand reaches the site through
-         Ezoic. -->
+    <!-- Google AdSense: the account meta tag only (site verification). No ad
+         script is loaded; Ezoic was removed on 10 Oct 2026 after it turned the
+         site down. -->
     <meta name="google-adsense-account" content="ca-pub-2789392733984505" />
     <!-- Monetag site verification only. No Monetag ad script or service worker. -->
     <meta name="monetag" content="a5dc3d4d32d7f7e64a24d10b6378be31" />

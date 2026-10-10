@@ -34,7 +34,8 @@ import { indexWhereLinks, attachWhereLinks } from '../src/lib/where-links.mjs'
 import { licensedPools, alikeFor } from '../src/lib/alike.mjs'
 import { migrateAliasedLinksAll } from '../src/lib/platform-aliases.mjs'
 import { fixNovelAppearanceKindsAll } from '../src/lib/novel-appearance-kind.mjs'
-import { attachCharacterFacts } from '../src/lib/character-facts.mjs'
+import { attachCharacterFacts, isThinCharacter, isNoindexCharacter } from '../src/lib/character-facts.mjs'
+import { loadIndexKeep } from '../src/lib/index-keep.js'
 import { castContext, withCastFacts } from '../src/lib/cast-facts.mjs'
 import { recSetOf, byLikeRank, likeExtras } from '../src/lib/like-facts.mjs'
 import { readingChain, adaptationOf, sameMedium, ADAPT_RELATIONS } from './lib/title-graph.mjs'
@@ -653,7 +654,11 @@ async function main() {
   const namesakes = attachNamesakes(pages)
   console.log(`  namesakes listed on ${namesakes.linked} of ${pages.length} character pages, near the top on ${namesakes.high}`)
   // Years, costars and other roles of the same voice (src/lib/character-facts.mjs).
-  const people = attachCharacterFacts(pages, titles)
+  // The thinnest pages Google has not shown go noindex (isNoindexCharacter).
+  const keep = loadIndexKeep(ROOT)
+  const people = attachCharacterFacts(pages, titles).map((p) => (isNoindexCharacter(p, keep) ? { ...p, noindex: true } : p))
+  const thin = pages.filter(isThinCharacter).length
+  console.log(`  thin character pages ${thin}, kept indexed by data/index-keep.json ${thin - people.filter((p) => p.noindex).length}`)
   const cast = castContext(people)
   const t = writeShards(join(OUT, 't'), titles.map((item) => withCastFacts(item, cast)), TITLE_SHARDS, (item) =>
     titleKey(kindOf(item), item.slug))

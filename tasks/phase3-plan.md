@@ -42,7 +42,7 @@ same on 4 Oct ("low value content"). Builds on tasks/adsense-fix-plan.md.
    link to /how-we-check-links.
 4. Worker stays template logic over one record; whole-catalog work happens in
    `make-shards.mjs` on Actions, stored as small fact fields.
-5. No AI mention, no badges or pills, homepage unchanged. No noindex anywhere.
+5. No AI mention, no badges or pills, homepage unchanged. No noindex anywhere, except (owner, 10 Oct 2026) thin character pages with no bio, no voice and one title that had no Google impression in 90 days (isNoindexCharacter, data/index-keep.json).
 
 ## Steps
 

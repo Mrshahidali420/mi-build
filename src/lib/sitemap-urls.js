@@ -21,6 +21,8 @@ import { guideSitemapUrls } from './guides.mjs'
 // pages that passed their own gate, so the sitemap never offers a thin page.
 import answerUrls from '../../data/answer-urls.json'
 import { PAGES_CHANGED, titleLastmod } from './lastmod.mjs'
+import { isNoindexCharacter } from './character-facts.mjs'
+import { loadIndexKeep } from './index-keep.js'
 
 export const SITE = 'https://manhwaindex.com'
 
@@ -163,8 +165,11 @@ const animeUrls = () =>
     caption: `Cover of ${item.title}`,
   }))
 
-const characterUrls = () =>
-  charactersWithPages.map((person) => ({
+// A noindexed character page (isNoindexCharacter: thin, and no Google
+// impression in the keep list) stays live and linked but leaves the sitemap.
+const characterUrls = () => {
+  const keep = loadIndexKeep()
+  return charactersWithPages.filter((person) => !isNoindexCharacter(person, keep)).map((person) => ({
     loc: `${SITE}/character/${person.slug}`,
     // Character records carry no AniList edit date, so the template date it is.
     lastmod: PAGES_CHANGED,
@@ -172,6 +177,7 @@ const characterUrls = () =>
     image: person.image,
     caption: `${person.name} portrait`,
   }))
+}
 
 /** Split a long list into numbered parts, so no single file is huge. */
 function split(name, urls) {

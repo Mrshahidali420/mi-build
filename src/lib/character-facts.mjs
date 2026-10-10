@@ -21,6 +21,26 @@ import { titleKey } from './shard-key.js'
 import { displayName } from './names.mjs'
 import { voicesOf } from './character-page.mjs'
 
+/**
+ * The thinnest character pages (owner decision, 10 Oct 2026, after the
+ * September 2026 spam update and the AdSense and Ezoic rejections): no bio,
+ * no voice actor in any appearance, and exactly one title. Such a page has
+ * nothing the title's own cast list does not already say.
+ */
+export function isThinCharacter(rec) {
+  const rows = rec?.appearsIn || []
+  return !String(rec?.description || '').trim() && rows.length === 1 && !rows.some((a) => a && (a.voice || a.voiceEn))
+}
+
+/**
+ * Thin, and not on the keep list: the page answers with
+ * <meta name="robots" content="noindex, follow"> and leaves the sitemap. A
+ * thin page Google already shows (data/index-keep.json: any impression in the
+ * last 90 days) stays indexed. Nothing else on the site is ever noindexed.
+ * @param keep Set of "/character/<slug>" paths
+ */
+export const isNoindexCharacter = (rec, keep = new Set()) => isThinCharacter(rec) && !keep.has(`/character/${rec.slug}`)
+
 export const COSTARS_MAX = 4
 export const COSTARS_MIN_SHARED = 2
 export const VA_OTHER_MAX = 3

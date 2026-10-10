@@ -1,7 +1,7 @@
 # AdSense "Low-value content" fix plan (4 Oct 2026)
 
 AdSense rejected manhwaindex.com on 4 Oct 2026. Audit: scratchpad `adsense-audit.md`
-(copied facts below). Owner rules that hold: never noindex or hide a page; fatten
+(copied facts below). Owner rules that hold: never noindex or hide a page (superseded 10 Oct 2026 for one class: thin character pages with no Google impressions, see src/lib/character-facts.mjs isNoindexCharacter); fatten
 thin pages; no AI mention; no personal details beyond "Shahid Ali, runs it as a hobby".
 
 ## What Google sees today
@@ -55,6 +55,6 @@ real page with an intro, a table and short written notes. Start with 12:
 - [ ] Tick "I confirm" and click "Request review" only after the owner says go.
 
 ## Not in this plan
-- No noindex, no removing pages, no sitemap cuts (owner rule).
+- No noindex, no removing pages, no sitemap cuts (owner rule; since 10 Oct 2026 except thin character pages with no impressions, which are noindexed and left out of the sitemap).
 - No ad placements until Ezoic answers.
 - Every phase gets a tunnel preview first and goes live only on the owner's "go".

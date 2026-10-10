@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro'
 // The same sentence the buy links carry, so the two can never say different things.
 import { AMAZON_DISCLOSURE } from '../lib/shop-links.js'
 
-const updated = 'October 3, 2026'
+const updated = 'October 10, 2026'
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -159,9 +159,8 @@ const jsonld = {
 
         <h2>Advertising</h2>
         <p>
-          This site displays ads served by <strong>Ezoic</strong> and its partners, and may
-          display ads from <strong>Google AdSense</strong> and other third-party vendors.
-          A consent box lets you choose which advertising cookies you allow.
+          This site may display ads from <strong>Google AdSense</strong> and other
+          third-party vendors.
         </p>
         <ul>
           <li>
@@ -179,8 +178,6 @@ const jsonld = {
             <a href="https://www.aboutads.info/choices/" rel="noopener nofollow">aboutads.info</a>.
           </li>
         </ul>
-        <!-- Ezoic fills this with its own list of ad partners and their cookies. -->
-        <span id="ezoic-privacy-policy-embed"></span>
 
         <h2>Amazon affiliate links</h2>
         <p>

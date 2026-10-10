@@ -46,6 +46,9 @@ try {
   return unavailable(Astro, e)
 }
 if (!person || !person.image || !person.appearsIn?.length) return notFound(Astro)
+// person.noindex: set at build time for the thinnest pages Google has not
+// shown (isNoindexCharacter in src/lib/character-facts.mjs). The page stays
+// live and linked; it only asks search engines not to index it.
 
 // The name fans search leads the page. AniList's full name is in Western order
 // ("Jin-U Seong"), but a Korean or Chinese character is searched family name
@@ -436,6 +439,7 @@ const jsonld = {
   title={pageTitle}
   description={description}
   canonical={`/character/${person.slug}`}
+  noindex={Boolean(person.noindex)}
   image={person.image}
   jsonld={faq.length ? [jsonld, faqJsonld(faq)] : jsonld}
   crumbs={[{ name: 'Characters', href: '/character' }, { name: primary }]}

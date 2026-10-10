@@ -11,8 +11,10 @@
  * Two rules hold for every hint here:
  *   - A small number says nothing. Every rule has a floor, so one visitor
  *     cannot fill the page with advice.
- *   - Never "noindex" a page. A thin page that already ranks is made fuller,
- *     never hidden from Google.
+ *   - Never suggest "noindex". A thin page that already ranks is made fuller,
+ *     never hidden from Google. The one exception is fixed in code, not
+ *     advised here: the thinnest character pages with no Google impressions
+ *     (isNoindexCharacter in src/lib/character-facts.mjs, owner, 10 Oct 2026).
  */
 import { FLOORS } from './home-plan.mjs'
 

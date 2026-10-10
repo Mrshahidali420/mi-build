@@ -32,12 +32,17 @@ export function castContext(people) {
   return { bySlug, keysOf }
 }
 
-function leadFacts(person, ownKey) {
+const bestOf = (rows) => rows.reduce((a, b) => (!a || (b.popularity || 0) > (a.popularity || 0) ? b : a), null)
+
+function leadFacts(person, ownKey, ownTitle) {
   const others = (person.appearsIn || []).filter((row) => keyOf(row) !== ownKey)
-  const best = others.reduce((a, b) => (!a || (b.popularity || 0) > (a.popularity || 0) ? b : a), null)
+  // The best known title with a name of its own; when every other title
+  // shares this one's name (Solo Leveling and its anime), its medium is kept
+  // so the page can say "the anime Solo Leveling".
+  const best = bestOf(others.filter((row) => row.title !== ownTitle)) || bestOf(others)
   const va = (person.vaOther || [])[0]
   return {
-    more: best ? { n: others.length, top: best.title } : { n: 0 },
+    more: best ? { n: others.length, top: best.title, ...(best.title === ownTitle ? { kind: sectionOf(best) } : {}) } : { n: 0 },
     ...(va ? { va } : {}),
   }
 }
@@ -47,7 +52,7 @@ export function withCastFacts(item, { bySlug, keysOf }) {
   const ownKey = keyOf(item)
   const characters = (item.characters || []).map((c) => {
     const person = c.role === 'MAIN' && bySlug.get(c.slug)
-    return person ? { ...c, ...leadFacts(person, ownKey) } : c
+    return person ? { ...c, ...leadFacts(person, ownKey, item.title) } : c
   })
   const known = (item.characters || []).map((c) => bySlug.get(c.slug)).filter(Boolean)
   const top = known.reduce((a, b) => ((b.favourites || 0) > (a?.favourites || 0) ? b : a), null)

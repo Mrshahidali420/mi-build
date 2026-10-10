@@ -29,7 +29,7 @@ export function leadLine(c, { anime = false } = {}) {
   const voice = voiced(c, anime)
   if (voice) bits.push(voice)
   if (c.more?.n > 0) {
-    bits.push(`in ${c.more.n} other ${c.more.n === 1 ? 'title' : 'titles'} too${c.more.top ? `, the best known ${esc(c.more.top)}` : ''}`)
+    bits.push(`in ${c.more.n} other ${c.more.n === 1 ? 'title' : 'titles'} too${!c.more.top ? '' : c.more.kind ? `, ${c.more.n === 1 ? "" : "among them "}the ${c.more.kind} ${esc(c.more.top)}` : `, the best known ${esc(c.more.top)}`}`)
   } else if (c.more) {
     bits.push('in no other title AniList lists')
   }
