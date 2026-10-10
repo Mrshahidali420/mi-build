@@ -19,7 +19,6 @@
 import { factsFor, FREE, PAY } from './platform-facts.js'
 import { displayName } from './names.mjs'
 import { ageOf } from './age.mjs'
-import { dubFaq } from './dub.mjs'
 
 /* -------------------------------------------------------------- tiny words */
 
@@ -143,7 +142,6 @@ export function bestValue(rows, kind) {
   const top = rows[0]
   if (!top || !top.facts.free) return null
   const unit = unitOf(kind)
-  const verb = verbOf(kind)
   const site = top.link.site
   const free = top.facts.free
 
@@ -156,10 +154,11 @@ export function bestValue(rows, kind) {
   else return null
 
   const region = top.facts.region && top.facts.region !== 'Worldwide' ? ` in ${top.facts.region}` : ''
-  const account = top.facts.account ? ' You do need an account.' : ' No account needed.'
-  // Only say "everything below" when there IS something below.
-  const rest = rows.length > 1 ? ` Everything below is the same ${verb} for more money.` : ''
-  return `Cheapest legal way in: ${site}${region}. It gives you ${what}.${account}${rest}`
+  // One sentence: the stock lines that used to follow it ("No account
+  // needed.", "Everything below is the same read for more money.") read the
+  // same on every page.
+  const account = top.facts.account ? ', though it asks you to sign in' : ', with no account needed'
+  return `Cheapest legal way in: ${site}${region}, which gives you ${what}${account}.`
 }
 
 /* ------------------------------------------------------------ free or not */
@@ -397,132 +396,7 @@ export function songWords(row) {
   return by ? `"${row.title}" by ${by}` : `"${row.title}"`
 }
 
-/** One answer per kind, from its first song. Empty unless the record has songs. */
-function songFaq(item, kind) {
-  if (kind !== 'anime' || !Array.isArray(item.themes)) return []
-  const out = []
-  for (const [type, noun] of [['OP', 'opening'], ['ED', 'ending']]) {
-    const rows = item.themes.filter((r) => r.type === type)
-    if (!rows.length) continue
-    const first = rows[0]
-    const when = episodesWords(first)
-    out.push({
-      q: `What is the ${noun} song of ${item.title}?`,
-      a:
-        (rows.length === 1
-          ? `The ${noun} is ${songWords(first)}`
-          : `${item.title} has ${rows.length} ${noun} songs. The first is ${songWords(first)}`) +
-        `${when ? `, used on ${when}` : ''}.` +
-        (rows.length > 1 ? ` The song list on this page has the others.` : ''),
-    })
-  }
-  return out
-}
-
-/* ------------------------------------------- the "is it on X" question set */
-
-// The platforms people name in a search box. Everything else is a long tail
-// nobody types. Keeping the list short keeps the questions worth reading.
-const ASKED_ABOUT = {
-  anime: ['Crunchyroll', 'Netflix', 'Hulu', 'Amazon Prime Video'],
-  comic: ['WEBTOON', 'Tapas', 'MANGA Plus', 'VIZ'],
-  novel: ['J-Novel Club', 'BookWalker', 'Kobo', 'Amazon Kindle'],
-}
-
-/**
- * The questions a visitor types instead of reading a table: "is it on
- * Netflix", "is it free", "do I need an account". Answered from the same
- * facts, so the answers can never drift away from the table above them.
- */
-export function titleFaq(item, kind) {
-  const verb = verbOf(kind)
-  const word = wordOf(kind)
-  const unit = unitOf(kind)
-  const links = uniqueBySite(linksOf(item))
-  const names = links.map((l) => l.site)
-  const onIt = new Set(names)
-  const { free } = freeSplit(links)
-  const faq = []
-
-  faq.push({
-    q: `Where can I ${verb} ${item.title} legally?`,
-    a: links.length
-      ? `On ${listWords(names)}. Each one holds a licence for ${item.title}.`
-      : `Nowhere yet. No platform we track has an official licence for ${item.title}.`,
-  })
-
-  faq.push({
-    q: `Is ${item.title} free to ${verb}?`,
-    a: free.length
-      ? `Partly. ${listWords(free.map((r) => r.link.site))} ` +
-        `${free.length === 1 ? 'gives' : 'give'} you some of it without paying. ` +
-        `The table on this page says how much.`
-      : links.length
-        ? `No. Every official platform that carries ${item.title} asks for money first.`
-        : `There is nothing to pay for yet, because no platform has licensed it.`,
-  })
-
-  // People search "has X ended" / "is X completed". Answer it in plain words
-  // from the same status the table shows.
-  const ended = {
-    FINISHED: `Yes. ${item.title} has finished.`,
-    RELEASING: `No. ${item.title} is still releasing, so new ${unit} are still coming out.`,
-    HIATUS: `Not yet. ${item.title} is on hiatus: it has paused, but it has not ended.`,
-    CANCELLED: `It stopped. ${item.title} was cancelled before its planned end.`,
-  }[item.status]
-  if (ended) faq.push({ q: `Has ${item.title} ended?`, a: ended })
-
-  for (const site of ASKED_ABOUT[kind] || ASKED_ABOUT.comic) {
-    if (faq.length >= 6) break
-    if (onIt.has(site)) {
-      const facts = factsFor(site)
-      faq.push({
-        q: `Is ${item.title} on ${site}?`,
-        a:
-          `Yes. ${site} carries ${item.title}. ` +
-          `${facts.pay ? `${facts.pay}. ` : ''}` +
-          `${facts.free ? `Free part: ${facts.free.toLowerCase()}. ` : ''}` +
-          `${facts.region ? `It works in: ${facts.region.toLowerCase()}.` : ''}`.trim(),
-      })
-    } else if (links.length > 0 && faq.length < 5) {
-      faq.push({
-        q: `Is ${item.title} on ${site}?`,
-        a: `No. ${site} does not carry ${item.title} in any region we track. ${listWords(names)} ${
-          names.length === 1 ? 'does' : 'do'
-        }.`,
-      })
-    }
-  }
-
-  const leads = (item.characters || [])
-    .filter((c) => c.role === 'MAIN' && c.name)
-    .map((c) => c.name)
-    .slice(0, 4)
-  if (leads.length) {
-    faq.push({
-      q: `Who is the main character of ${item.title}?`,
-      a:
-        (leads.length === 1
-          ? `${leads[0]} is the main character of ${item.title}.`
-          : `${item.title} follows ${listWords(leads)}.`),
-    })
-  }
-
-  if (item.chapters || item.episodes) {
-    faq.push({
-      q: `How many ${unit} does ${item.title} have?`,
-      a: `${item.chapters || item.episodes} ${unit}, and it is ${
-        STATUS_WORD[item.status] || 'listed'
-      }, by AniList's count.`,
-    })
-  }
-
-  // The dub and song questions ride on top of the usual seven, so no page
-  // loses a question it had before. The dub one shows only when the cast
-  // list can answer it (src/lib/dub.mjs).
-  const dub = kind === 'anime' ? dubFaq(item) : null
-  return [...faq.slice(0, 7), ...(dub ? [dub] : []), ...songFaq(item, kind)]
-}
+// The title page FAQ lives in src/lib/title-faq.mjs.
 
 /**
  * The questions a person types after a character's name: "who is X", "what

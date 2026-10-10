@@ -225,6 +225,8 @@ function precompute(titles, handoff = null) {
   const alikeThin = (p) => ({
     ...thin(p),
     readLinks: (p.readLinks || []).filter((l) => l.language === 'English').slice(0, 6).map((l) => ({ site: l.site })),
+    // The page says why each pick fits ("also complete, at 120 chapters").
+    ...(p.chapters ? { chapters: p.chapters } : {}),
   })
   let alikeCount = 0
   // id -> the ids of the reader picks we also hold, best first. The title

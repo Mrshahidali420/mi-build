@@ -114,21 +114,16 @@ export function adaptationAnswer(item, kind) {
     const src = adapt.source
     if (!src) return null
     const lines = []
+    // Only this pair's own facts: the general lines that used to follow
+    // ("one episode carries a few chapters...") read the same on every page.
+    const same = String(src.title || '').toLowerCase() === String(item.title || '').toLowerCase()
     lines.push(
-      `${item.title} is drawn first and animated second. The original is a ${wordOf(src.kind)}${
-        src.chapters ? ` of ${src.chapters} chapters` : ''
-      }, and it is ${STATUS_TAIL[src.status] || 'listed'}.`,
+      `${item.title} is drawn from the ${wordOf(src.kind)}${same ? ' of the same name' : ` ${src.title}`}${
+        src.chapters ? `, which runs to ${src.chapters} chapters` : ''
+      } and is ${STATUS_TAIL[src.status] || 'listed'}${
+        item.episodes ? `; this anime has ${item.episodes} ${item.episodes === 1 ? 'episode' : 'episodes'}` : ''
+      }.`,
     )
-    if (item.episodes) {
-      lines.push(
-        `This anime has ${item.episodes} ${item.episodes === 1 ? 'episode' : 'episodes'}. One episode carries a few chapters, so the anime shows you a slice of the book, never the whole of it.`,
-      )
-    }
-    if (src.chapters) {
-      lines.push(
-        `If the anime stopped too soon for you, the ${wordOf(src.kind)} is where the story keeps going.`,
-      )
-    }
     return { heading: `The anime and the ${wordOf(src.kind)}`, lines, link: src }
   }
 
@@ -153,15 +148,13 @@ export function adaptationAnswer(item, kind) {
 
   if (item.chapters) {
     lines.push(
-      `The ${word} runs to ${item.chapters} chapters and is ${STATUS_TAIL[item.status] || 'listed'}. An episode carries a few chapters at a time, so the anime is a slice of the ${word}, not a replacement for it.`,
+      `The ${word} runs to ${item.chapters} chapters and is ${STATUS_TAIL[item.status] || 'listed'}.`,
     )
   }
   if (coming.length) {
     lines.push(
       `More is coming: ${listWords(coming.map((s) => s.title))} ${coming.length === 1 ? 'is' : 'are'} ${STATUS_TAIL[coming[0].status]}.`,
     )
-  } else if (item.chapters) {
-    lines.push(`Finished the anime? The ${word} carries the story on from there.`)
   }
 
   return { heading: `The anime and the ${word}`, lines, shows }

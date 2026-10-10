@@ -3,7 +3,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { dubOf, dubLabel, dubFaq } from '../src/lib/dub.mjs'
-import { titleFaq } from '../src/lib/answers.mjs'
+import { titleFaq } from '../src/lib/title-faq.mjs'
 
 const anime = (characters, extra = {}) => ({
   kind: 'anime',
@@ -63,7 +63,7 @@ test('the dub answer names up to three English credits, from the record only', (
     ])
   )
   assert.equal(faq.q, 'Is Frieren dubbed in English?')
-  assert.match(faq.a, /^Yes\. AniList lists an English dub cast for Frieren: /)
+  assert.match(faq.a, /^Yes, AniList lists an English dub cast for Frieren: /)
   assert.match(faq.a, /Mallorie Rodak voices Frieren, Jill Harris voices Fern and Jordan Dash Cruz voices Stark\./)
   assert.doesNotMatch(faq.a, /Chris Niosi/)
 })

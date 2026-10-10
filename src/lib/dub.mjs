@@ -54,20 +54,20 @@ export function dubFaq(item) {
   if (!dub) return null
   const q = `Is ${item.title} dubbed in English?`
   if (dub.state === 'sub') {
+    const lead = (item.characters || []).find((c) => c && c.role === 'MAIN' && c.voice)
     return {
       q,
       a:
-        `AniList lists no English dub cast for ${item.title}, only the Japanese one, so as far as ` +
-        `we can tell it is watched in Japanese with subtitles. If an English cast is credited, ` +
-        `this page says so.`,
+        `AniList lists no English dub cast for ${item.title}, only the Japanese one${lead ? `, led by ${lead.voice} as ${lead.name}` : ''}, ` +
+        `so as far as we can tell it is watched in Japanese with subtitles.`,
     }
   }
   const named = dub.english.slice(0, NAMED_IN_ANSWER).map((c) => `${c.voice} voices ${c.name}`)
   return {
     q,
     a:
-      `Yes. AniList lists an English dub cast for ${item.title}: ${listWords(named)}. ` +
-      `Not every platform carries the dub in every region, so check the audio options ` +
-      `on the one you pick.`,
+      // Only this cast: the general "check the audio options" line read the
+      // same on every dubbed show.
+      `Yes, AniList lists an English dub cast for ${item.title}: ${listWords(named)}.`,
   }
 }

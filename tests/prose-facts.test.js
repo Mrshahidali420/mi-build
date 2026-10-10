@@ -57,7 +57,9 @@ test('a title with links says where; one with none says so instead', () => {
   const bare = manhwa()
   assert.ok(keys(bare, 'manhwa').includes('none'))
   assert.ok(!keys(bare, 'manhwa').includes('where'))
-  assert.match(all(bare, 'manhwa'), /no publisher has released it in English/)
+  // What we list, never a claim that nobody published it.
+  assert.match(all(bare, 'manhwa'), /we list no official English edition/)
+  assert.doesNotMatch(all(bare, 'manhwa'), /no publisher/)
 })
 
 test('English is only claimed for a link that says English', () => {

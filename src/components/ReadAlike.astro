@@ -14,6 +14,7 @@
  */
 import CoverGrid from './CoverGrid.astro'
 import { japaneseLinks } from '../lib/alike.mjs'
+import { sectionOf } from '../lib/section.mjs'
 
 const { item, word, languages = [] } = Astro.props
 
@@ -28,7 +29,12 @@ const others = languages.filter((l) => l && l !== 'English')
 const why = others.length
   ? `The only official platforms we list for ${item.title} are in ${others.join(', ')}.`
   : `We list no official English platform for ${item.title} yet.`
-const lead = picks.length
+// Why each pick fits, one line each, written at build time from the pick's
+// own facts (src/lib/prose-nolink.mjs). A record from an older build has
+// none and keeps the one shared sentence.
+const whyLines = item.overview?.alikeWhy || []
+const reasons = picks.map((pick, i) => ({ pick, line: whyLines[i] || '' })).filter((row) => row.line)
+const lead = picks.length && !reasons.length
   ? `${why} These ${picks.length} share its genres and each has an official English platform today.`
   : why
 // The heading promises something to read. With no picks and no Japanese page
@@ -47,6 +53,18 @@ const hasBlock = picks.length > 0 || jp.length > 0
   }
 
   {picks.length > 0 && <CoverGrid items={picks} badges />}
+
+  {
+    reasons.length > 0 && (
+      <ul class="alike__why">
+        {reasons.map(({ pick, line }) => (
+          <li>
+            <a href={`/${sectionOf(pick)}/${pick.slug}`}>{pick.title}</a> {line}
+          </li>
+        ))}
+      </ul>
+    )
+  }
 
   {
     jp.length > 0 && (
@@ -129,12 +147,18 @@ const hasBlock = picks.length > 0 || jp.length > 0
   .alike__jp-head b {
     color: var(--day);
   }
-  .alike__jp ul {
+  .alike__jp ul,
+  .alike__why {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     gap: 0.35rem;
+  }
+  .alike__why {
+    margin: 1rem 0 0;
+    font-size: 0.88rem;
+    color: var(--dawn-dim);
   }
   .alike__jp li {
     display: flex;
@@ -142,12 +166,14 @@ const hasBlock = picks.length > 0 || jp.length > 0
     gap: 0.3rem 0.6rem;
     align-items: baseline;
   }
+  .alike__why a,
   .alike__jp a {
     color: var(--day);
     text-decoration: none;
     border-bottom: 1px solid var(--cobalt-line);
     overflow-wrap: anywhere;
   }
+  .alike__why a:hover,
   .alike__jp a:hover {
     border-bottom-color: var(--rose);
   }

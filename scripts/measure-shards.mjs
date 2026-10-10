@@ -29,6 +29,11 @@ import { PLATFORMS, FALLBACK } from '../src/lib/platforms.js'
 import { formatWord, statusWord, platform } from '../src/lib/format.js'
 import { coverage, adaptationAnswer, readingOrder } from '../src/lib/computed.mjs'
 import * as currentAnswers from '../src/lib/answers.mjs'
+import { mask, sentencesOf } from './measure-core.mjs'
+
+// Step 2 moved the title FAQ into its own module. Older checkouts have it in
+// answers.mjs only.
+const newTitleFaq = await import('../src/lib/title-faq.mjs').then((m) => m.titleFaq).catch(() => null)
 
 // The FAQ text, from today's answers.mjs, or from an older copy named in
 // MEASURE_ANSWERS (used once to measure the page as it was before Step 1).
@@ -63,7 +68,7 @@ export function loadSample({ n = 2000, files = 40, seed = 7, dir = SHARDS } = {}
 }
 
 /** One record by section and slug, read from its own shard (cached per file). */
-function finder(dir = SHARDS) {
+export function finder(dir = SHARDS) {
   const cache = new Map()
   return (section, slug) => {
     const key = titleKey(section, slug)
@@ -88,7 +93,7 @@ function sitesOf(p) {
   return sites.length ? sites : null
 }
 
-function withAdaptSites(item, find) {
+export function withAdaptSites(item, find) {
   const adapt = item.adapt
   if (!adapt) return item
   if (adapt.shows) {
@@ -103,6 +108,25 @@ function withAdaptSites(item, find) {
     return sites ? { ...item, adapt: { ...adapt, source: { ...adapt.source, sites } } } : item
   }
   return item
+}
+
+/** Mirrors alike.mjs/make-shards for picks stored before tags, sameAuthor and chapters existed. */
+export function withAlikeFacts(item, find) {
+  if (!item.alike?.length || item.alike.some((p) => 'tags' in p || 'sameAuthor' in p || 'chapters' in p)) return item
+  const tags = new Set((item.tags || []).slice(0, 8))
+  const authors = new Set((item.authors || []).map((a) => a && a.name).filter(Boolean))
+  const alike = item.alike.map((pick) => {
+    const full = find(sectionOf(pick), pick.slug)
+    if (!full) return pick
+    const sharedTags = (full.tags || []).filter((t) => tags.has(t)).slice(0, 3)
+    return {
+      ...pick,
+      ...(full.chapters ? { chapters: full.chapters } : {}),
+      ...(sharedTags.length ? { tags: sharedTags } : {}),
+      ...((full.authors || []).some((a) => a && authors.has(a.name)) ? { sameAuthor: true } : {}),
+    }
+  })
+  return { ...item, alike }
 }
 
 /** Rank in its section, from the sample itself (the build uses the whole catalog). */
@@ -180,7 +204,9 @@ export function pageText(item, mode, { rankOf = new Map(), find = () => null } =
   const links = linksOf(item)
   const reach = links.length ? coverage(links, section)?.line || '' : ''
   let parts
+  let alikeText = ''
   if (mode === 'old') {
+    alikeText = readAlikeText(item, null)
     const overview = item.overview || {}
     parts = [
       oldAnswer(item, word),
@@ -189,19 +215,22 @@ export function pageText(item, mode, { rankOf = new Map(), find = () => null } =
       reach,
     ]
   } else {
-    const full = withAdaptSites(item, find)
+    const full = withAlikeFacts(withAdaptSites(item, find), find)
     const overview = buildOverview(full, section, noteOf, rankOf.get(item.id) || null)
     const page = { ...full, overview }
     // The reach line is no longer printed on title pages (WhereTo titlePage).
     // Nor is the "No official platform listed yet" box: the glance says it.
     parts = [titleAnswer(page, word), ...aboutParagraphs(overview)]
+    alikeText = readAlikeText(full, overview.alikeWhy)
   }
   const own = parts.filter(Boolean).join(' ')
   return {
     site: own,
     // Everything else on the page the site writes from the record: the "best
     // way in" line, the anime/comic and reading-order lines, the FAQ.
-    page: [own, ...pageExtras(item, section)].filter(Boolean).join(' '),
+    page: [own, ...pageExtras(item, section, mode)].filter(Boolean).join(' '),
+    // The same plus the "Read something like it" block (counted from Step 2 on).
+    pageAlike: [own, alikeText, ...pageExtras(item, section, mode)].filter(Boolean).join(' '),
     other: synopsisOf(item),
     names: namesOf(item),
     hasLinks: links.length > 0,
@@ -209,12 +238,30 @@ export function pageText(item, mode, { rankOf = new Map(), find = () => null } =
   }
 }
 
-function pageExtras(item, section) {
+/**
+ * The "Read something like it" block's own words (src/components/ReadAlike.astro):
+ * its lead, and since Step 2 one line per pick. The save button's text is UI
+ * and left out.
+ */
+function readAlikeText(item, why) {
+  if (item.kind === 'anime' || !(item.readLinks || []).every((l) => l.language && l.language !== 'English')) return ''
+  const picks = item.alike || []
+  const others = [...new Set((item.readLinks || []).map((l) => l.language))].filter((l) => l && l !== 'English')
+  const lead = others.length
+    ? `The only official platforms we list for ${item.title} are in ${others.join(', ')}.`
+    : `We list no official English platform for ${item.title} yet.`
+  if (!picks.length) return lead
+  if (!why) return `${lead} These ${picks.length} share its genres and each has an official English platform today.`
+  return [lead, ...picks.map((p, i) => [p.title, why[i]].filter(Boolean).join(' '))].join(' ')
+}
+
+function pageExtras(item, section, mode) {
   const links = linksOf(item)
   const verdict = links.length ? answers.bestValue(answers.rankedRows(links), item.kind === 'anime' ? 'anime' : 'comic') : ''
   const bridge = adaptationAnswer(item, section)
   const order = readingOrder(item, section)
-  const faq = answers.titleFaq(item, section).flatMap(({ q, a }) => [q, a])
+  const faqOf = mode === 'old' || !newTitleFaq ? answers.titleFaq : newTitleFaq
+  const faq = faqOf(item, section).flatMap(({ q, a }) => [q, a])
   return [verdict, ...(bridge?.lines || []), order?.line || '', ...faq]
 }
 
@@ -231,11 +278,25 @@ export function measureRecords(records, mode) {
   }
   const scope = (text) =>
     Object.fromEntries(Object.entries(groups).map(([name, fn]) => [name, summarize(rows.filter(fn).map((r) => ({ ...r, site: text(r) })))]))
+  // The opening sentence of the page's own text: exact, and with names and
+  // numbers masked (the skeleton a reader would notice from page to page).
+  const opening = Object.fromEntries(
+    Object.entries(groups).map(([name, fn]) => {
+      const firsts = rows.filter(fn).map((r) => ({ exact: sentencesOf(r.site)[0] || '', names: r.names }))
+      const top = (list) => {
+        const n = new Map()
+        for (const s of list) n.set(s, (n.get(s) || 0) + 1)
+        const [sentence, count] = [...n].sort((a, b) => b[1] - a[1])[0] || ['', 0]
+        return { sentence, share: Math.round((count / Math.max(1, list.length)) * 1000) / 1000 }
+      }
+      return [name, { exact: top(firsts.map((f) => f.exact)), masked: top(firsts.map((f) => mask(f.exact, f.names))) }]
+    }),
+  )
   return {
     rows,
     // own: the text this step rewrites (opening paragraph + "in short").
     // page: own plus every other site-written line built from the record.
-    report: { own: scope((r) => r.site), page: scope((r) => r.page) },
+    report: { own: scope((r) => r.site), page: scope((r) => r.page), pageAlike: scope((r) => r.pageAlike), opening },
   }
 }
 
@@ -263,7 +324,8 @@ async function main() {
   const { rows, report } = measureRecords(records, mode)
   const date = a.date || new Date().toISOString().slice(0, 10)
   const out = { date, label, mode, source: 'shards', sample: rows.length, seed: Number(a.seed) || 7, report }
-  for (const [scopeName, groups] of Object.entries(report)) {
+  for (const [name, o] of Object.entries(report.opening)) console.log(`opening ${name.padEnd(15)} exact ${o.exact.share}  masked ${o.masked.share}  "${o.masked.sentence.slice(0, 90)}"`)
+  for (const [scopeName, groups] of Object.entries({ own: report.own, page: report.page, pageAlike: report.pageAlike })) {
     for (const [name, r] of Object.entries(groups)) {
       console.log(
         `${scopeName.padEnd(5)}${name.padEnd(15)} pages ${String(r.pages).padStart(5)}  site words median ${r.medianSiteWords} p10 ${r.p10SiteWords}  all words median ${r.medianWords}  site share ${r.siteShare}  near-dup ${r.nearDupRate}  top sentence ${r.topSentences[0]?.share ?? 0}`,

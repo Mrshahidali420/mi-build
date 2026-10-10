@@ -1,0 +1,1733 @@
+{
+  "date": "2026-10-10",
+  "label": "step2",
+  "mode": "new",
+  "source": "shards",
+  "sample": 2000,
+  "seed": 7,
+  "report": {
+    "own": {
+      "all": {
+        "pages": 2000,
+        "medianWords": 133,
+        "p10Words": 59,
+        "medianSiteWords": 81,
+        "p10SiteWords": 52,
+        "siteShare": 0.644,
+        "nearDupRate": 0.398,
+        "topSentences": [
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are romance; also complete, at 152 chapters.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "The closest licensed read we list is Tokyo Revengers, in English on Kodansha: both are drama and romance; also complete, at 279 chapters.",
+            "pages": 44,
+            "share": 0.022
+          },
+          {
+            "sentence": "Readers tag it shoujo.",
+            "pages": 34,
+            "share": 0.017
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 33,
+            "share": 0.017
+          },
+          {
+            "sentence": "AniList members score it 54 out of 100.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "AniList members score it 63 out of 100.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are comedy and romance; also complete, at 152 chapters.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "AniList members score it 55 out of 100.",
+            "pages": 29,
+            "share": 0.015
+          },
+          {
+            "sentence": "AniList members score it 56 out of 100.",
+            "pages": 28,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 57 out of 100.",
+            "pages": 28,
+            "share": 0.014
+          },
+          {
+            "sentence": "The closest licensed read we list is Chainsaw Man, in English on MANGA Plus: both are drama; also complete, at 232 chapters.",
+            "pages": 28,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 62 out of 100.",
+            "pages": 26,
+            "share": 0.013
+          },
+          {
+            "sentence": "AniList members score it 64 out of 100.",
+            "pages": 26,
+            "share": 0.013
+          },
+          {
+            "sentence": "AniList members score it 58 out of 100.",
+            "pages": 25,
+            "share": 0.013
+          },
+          {
+            "sentence": "AniList members score it 53 out of 100.",
+            "pages": 23,
+            "share": 0.012
+          },
+          {
+            "sentence": "The closest licensed read we list is Chainsaw Man, in English on MANGA Plus: both are comedy; also complete, at 232 chapters.",
+            "pages": 23,
+            "share": 0.012
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at nhk.or.jp for it.",
+            "pages": 22,
+            "share": 0.011
+          },
+          {
+            "sentence": "The closest licensed read we list is Here U Are, in English on WEBTOON: both are romance; also complete, at 157 chapters.",
+            "pages": 21,
+            "share": 0.011
+          },
+          {
+            "sentence": "AniList members score it 60 out of 100.",
+            "pages": 20,
+            "share": 0.01
+          }
+        ]
+      },
+      "titleWithLinks": {
+        "pages": 464,
+        "medianWords": 214,
+        "p10Words": 105,
+        "medianSiteWords": 134,
+        "p10SiteWords": 68,
+        "siteShare": 0.658,
+        "nearDupRate": 0.276,
+        "topSentences": [
+          {
+            "sentence": "Of its 2 official platforms, Naver Webtoon gives the most away: everything but the newest chapters.",
+            "pages": 20,
+            "share": 0.043
+          },
+          {
+            "sentence": "Naver Webtoon works without an account; Naver Series asks you to sign in.",
+            "pages": 19,
+            "share": 0.041
+          },
+          {
+            "sentence": "New chapters have been coming out since 2024.",
+            "pages": 14,
+            "share": 0.03
+          },
+          {
+            "sentence": "AniList members score it 53 out of 100.",
+            "pages": 13,
+            "share": 0.028
+          },
+          {
+            "sentence": "AniList members score it 64 out of 100.",
+            "pages": 13,
+            "share": 0.028
+          },
+          {
+            "sentence": "AniList members score it 55 out of 100.",
+            "pages": 12,
+            "share": 0.026
+          },
+          {
+            "sentence": "New chapters have been coming out since 2022.",
+            "pages": 12,
+            "share": 0.026
+          },
+          {
+            "sentence": "New chapters have been coming out since 2025.",
+            "pages": 12,
+            "share": 0.026
+          },
+          {
+            "sentence": "Of its 2 official platforms, YouTube gives the most away: all of it.",
+            "pages": 12,
+            "share": 0.026
+          },
+          {
+            "sentence": "AniList members score it 57 out of 100.",
+            "pages": 11,
+            "share": 0.024
+          },
+          {
+            "sentence": "Of its 3 official platforms, Tapas gives the most away: everything but the newest chapters; Tapas runs on coins.",
+            "pages": 11,
+            "share": 0.024
+          },
+          {
+            "sentence": "Naver Webtoon and WEBTOON work without an account; Naver Series asks you to sign in.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "New chapters have been coming out since 2023.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "New chapters have been coming out since 2026.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "None of them works worldwide: Naver Series serves Korea and Naver Webtoon serves Korea.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "Of its 3 official platforms, Naver Webtoon gives the most away: everything but the newest chapters, as does WEBTOON.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "About one in 2 members who finished it marked it a favourite.",
+            "pages": 9,
+            "share": 0.019
+          },
+          {
+            "sentence": "None of them works worldwide: Naver Webtoon serves Korea and Naver Series serves Korea.",
+            "pages": 9,
+            "share": 0.019
+          },
+          {
+            "sentence": "Tapas works without an account; KakaoPage and Kakao Webtoon ask you to sign in.",
+            "pages": 9,
+            "share": 0.019
+          },
+          {
+            "sentence": "Tapas works worldwide, but KakaoPage serves Korea and Kakao Webtoon serves Korea.",
+            "pages": 9,
+            "share": 0.019
+          }
+        ]
+      },
+      "titleNoLinks": {
+        "pages": 1536,
+        "medianWords": 113,
+        "p10Words": 55,
+        "medianSiteWords": 74,
+        "p10SiteWords": 50,
+        "siteShare": 0.637,
+        "nearDupRate": 0.434,
+        "topSentences": [
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are romance; also complete, at 152 chapters.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "The closest licensed read we list is Tokyo Revengers, in English on Kodansha: both are drama and romance; also complete, at 279 chapters.",
+            "pages": 36,
+            "share": 0.023
+          },
+          {
+            "sentence": "Readers tag it shoujo.",
+            "pages": 34,
+            "share": 0.022
+          },
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are comedy and romance; also complete, at 152 chapters.",
+            "pages": 29,
+            "share": 0.019
+          },
+          {
+            "sentence": "AniList members score it 54 out of 100.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 25,
+            "share": 0.016
+          },
+          {
+            "sentence": "The closest licensed read we list is Chainsaw Man, in English on MANGA Plus: both are drama; also complete, at 232 chapters.",
+            "pages": 25,
+            "share": 0.016
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at nhk.or.jp for it.",
+            "pages": 22,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 63 out of 100.",
+            "pages": 22,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 56 out of 100.",
+            "pages": 21,
+            "share": 0.014
+          },
+          {
+            "sentence": "The closest licensed read we list is Chainsaw Man, in English on MANGA Plus: both are comedy; also complete, at 232 chapters.",
+            "pages": 21,
+            "share": 0.014
+          },
+          {
+            "sentence": "The closest licensed read we list is Here U Are, in English on WEBTOON: both are romance; also complete, at 157 chapters.",
+            "pages": 21,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 58 out of 100.",
+            "pages": 19,
+            "share": 0.012
+          },
+          {
+            "sentence": "AniList members score it 62 out of 100.",
+            "pages": 18,
+            "share": 0.012
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at kadokawa.co.jp for it.",
+            "pages": 17,
+            "share": 0.011
+          },
+          {
+            "sentence": "AniList members score it 55 out of 100.",
+            "pages": 17,
+            "share": 0.011
+          },
+          {
+            "sentence": "AniList members score it 57 out of 100.",
+            "pages": 17,
+            "share": 0.011
+          },
+          {
+            "sentence": "Readers tag it male protagonist.",
+            "pages": 16,
+            "share": 0.01
+          },
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are romance and slice of life; also complete, at 152 chapters.",
+            "pages": 16,
+            "share": 0.01
+          }
+        ]
+      },
+      "anime": {
+        "pages": 366,
+        "medianWords": 142,
+        "p10Words": 61,
+        "medianSiteWords": 103,
+        "p10SiteWords": 42,
+        "siteShare": 0.692,
+        "nearDupRate": 0.197,
+        "topSentences": [
+          {
+            "sentence": "AniList lists an official Japanese page at nhk.or.jp for it.",
+            "pages": 22,
+            "share": 0.06
+          },
+          {
+            "sentence": "It is also listed as Minna no Uta.",
+            "pages": 15,
+            "share": 0.041
+          },
+          {
+            "sentence": "AniList members score it 63 out of 100.",
+            "pages": 13,
+            "share": 0.036
+          },
+          {
+            "sentence": "AniList members score it 55 out of 100.",
+            "pages": 12,
+            "share": 0.033
+          },
+          {
+            "sentence": "Of its 2 official platforms, YouTube gives the most away: all of it.",
+            "pages": 12,
+            "share": 0.033
+          },
+          {
+            "sentence": "AniList members score it 66 out of 100.",
+            "pages": 11,
+            "share": 0.03
+          },
+          {
+            "sentence": "It has been announced, with no start date yet.",
+            "pages": 11,
+            "share": 0.03
+          },
+          {
+            "sentence": "AniList members score it 53 out of 100.",
+            "pages": 10,
+            "share": 0.027
+          },
+          {
+            "sentence": "AniList members score it 57 out of 100.",
+            "pages": 10,
+            "share": 0.027
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 10,
+            "share": 0.027
+          },
+          {
+            "sentence": "All 2 episodes aired as an OVA.",
+            "pages": 9,
+            "share": 0.025
+          },
+          {
+            "sentence": "AniList members score it 43 out of 100.",
+            "pages": 9,
+            "share": 0.025
+          },
+          {
+            "sentence": "AniList members score it 54 out of 100.",
+            "pages": 8,
+            "share": 0.022
+          },
+          {
+            "sentence": "AniList members score it 64 out of 100.",
+            "pages": 8,
+            "share": 0.022
+          },
+          {
+            "sentence": "AniList members score it 49 out of 100.",
+            "pages": 7,
+            "share": 0.019
+          },
+          {
+            "sentence": "AniList members score it 62 out of 100.",
+            "pages": 7,
+            "share": 0.019
+          },
+          {
+            "sentence": "It is an original Japanese music video.",
+            "pages": 7,
+            "share": 0.019
+          },
+          {
+            "sentence": "All 13 episodes aired.",
+            "pages": 6,
+            "share": 0.016
+          },
+          {
+            "sentence": "AniList members score it 56 out of 100.",
+            "pages": 6,
+            "share": 0.016
+          },
+          {
+            "sentence": "AniList members score it 65 out of 100.",
+            "pages": 6,
+            "share": 0.016
+          }
+        ]
+      },
+      "novel": {
+        "pages": 144,
+        "medianWords": 112,
+        "p10Words": 58,
+        "medianSiteWords": 79,
+        "p10SiteWords": 56,
+        "siteShare": 0.635,
+        "nearDupRate": 0.326,
+        "topSentences": [
+          {
+            "sentence": "The closest licensed read we list is Re:ZERO -Starting Life in Another World-, in English on Yen Press: both are action and fantasy.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at kadokawa.co.jp for it.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 5,
+            "share": 0.035
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at mfbunkoj.jp for it.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "The closest licensed read we list is Re:ZERO -Starting Life in Another World-, in English on Yen Press: both are fantasy and romance.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "The closest licensed read we list is Re:ZERO -Starting Life in Another World-, in English on Yen Press: both are fantasy and romance; also still coming out.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "The closest licensed read we list is That Time I Got Reincarnated as a Slime, in English on Yen Press: both are adventure, comedy and fantasy; complete at 168 chapters.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "About one in 4 members who finished it marked it a favourite.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It is also filed under fantasy.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It is also filed under supernatural.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It is complete at 22 chapters across 3 volumes.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It sits on 52 AniList plan-to-read lists.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "The closest licensed read we list is My Youth Romantic Comedy Is Wrong, As I Expected, in English on Yen Press: both are comedy and romance; complete at 168 chapters.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "The closest licensed read we list is Three Days of Happiness, in English on Yen Press: both are romance; also complete, at 15 chapters.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at dengekibunko.jp for it.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at fantasiabunko.jp for it.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 60 out of 100.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It is complete at 13 chapters across 2 volumes.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It sits on 55 AniList plan-to-read lists.",
+            "pages": 2,
+            "share": 0.014
+          }
+        ]
+      }
+    },
+    "page": {
+      "all": {
+        "pages": 2000,
+        "medianWords": 181,
+        "p10Words": 79,
+        "medianSiteWords": 124,
+        "p10SiteWords": 67,
+        "siteShare": 0.751,
+        "nearDupRate": 0.475,
+        "topSentences": [
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are romance; also complete, at 152 chapters.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "Cheapest legal way in: YouTube, which gives you the whole thing, for nothing, with no account needed.",
+            "pages": 63,
+            "share": 0.032
+          },
+          {
+            "sentence": "1 more part follows it.",
+            "pages": 50,
+            "share": 0.025
+          },
+          {
+            "sentence": "Yes, it finished in 2021.",
+            "pages": 49,
+            "share": 0.025
+          },
+          {
+            "sentence": "No, it has been coming out since 2025.",
+            "pages": 48,
+            "share": 0.024
+          },
+          {
+            "sentence": "The closest licensed read we list is Tokyo Revengers, in English on Kodansha: both are drama and romance; also complete, at 279 chapters.",
+            "pages": 44,
+            "share": 0.022
+          },
+          {
+            "sentence": "1 part comes before it, so read that one first.",
+            "pages": 41,
+            "share": 0.021
+          },
+          {
+            "sentence": "Yes, it finished in 2016.",
+            "pages": 41,
+            "share": 0.021
+          },
+          {
+            "sentence": "Yes, it finished in 2022.",
+            "pages": 40,
+            "share": 0.02
+          },
+          {
+            "sentence": "Tencent Comics has it in Chinese.",
+            "pages": 39,
+            "share": 0.02
+          },
+          {
+            "sentence": "Yes, it finished in 2020.",
+            "pages": 39,
+            "share": 0.02
+          },
+          {
+            "sentence": "Yes, it finished in 2015.",
+            "pages": 38,
+            "share": 0.019
+          },
+          {
+            "sentence": "Yes, it finished in 2023.",
+            "pages": 38,
+            "share": 0.019
+          },
+          {
+            "sentence": "Yes, it finished in 2019.",
+            "pages": 37,
+            "share": 0.019
+          },
+          {
+            "sentence": "Cheapest legal way in: Tapas, which gives you every chapter but the newest, for nothing, with no account needed.",
+            "pages": 36,
+            "share": 0.018
+          },
+          {
+            "sentence": "Yes, it finished in 2014.",
+            "pages": 36,
+            "share": 0.018
+          },
+          {
+            "sentence": "Cheapest legal way in: Crunchyroll, which gives you the opening episodes, for nothing, though it asks you to sign in.",
+            "pages": 35,
+            "share": 0.018
+          },
+          {
+            "sentence": "In part: Crunchyroll gives the first episodes free.",
+            "pages": 35,
+            "share": 0.018
+          },
+          {
+            "sentence": "No, it has been coming out since 2026.",
+            "pages": 35,
+            "share": 0.018
+          },
+          {
+            "sentence": "No, it has been coming out since 2024.",
+            "pages": 34,
+            "share": 0.017
+          }
+        ]
+      },
+      "titleWithLinks": {
+        "pages": 464,
+        "medianWords": 332,
+        "p10Words": 171,
+        "medianSiteWords": 255,
+        "p10SiteWords": 127,
+        "siteShare": 0.79,
+        "nearDupRate": 0.5,
+        "topSentences": [
+          {
+            "sentence": "Cheapest legal way in: YouTube, which gives you the whole thing, for nothing, with no account needed.",
+            "pages": 63,
+            "share": 0.136
+          },
+          {
+            "sentence": "Tencent Comics has it in Chinese.",
+            "pages": 39,
+            "share": 0.084
+          },
+          {
+            "sentence": "Cheapest legal way in: Tapas, which gives you every chapter but the newest, for nothing, with no account needed.",
+            "pages": 36,
+            "share": 0.078
+          },
+          {
+            "sentence": "Cheapest legal way in: Crunchyroll, which gives you the opening episodes, for nothing, though it asks you to sign in.",
+            "pages": 35,
+            "share": 0.075
+          },
+          {
+            "sentence": "In part: Crunchyroll gives the first episodes free.",
+            "pages": 35,
+            "share": 0.075
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 34,
+            "share": 0.073
+          },
+          {
+            "sentence": "Tapas is the cheapest way in: it keeps everything but the newest chapters free.",
+            "pages": 34,
+            "share": 0.073
+          },
+          {
+            "sentence": "Naver Webtoon has it in Korean and Naver Series has it in Korean.",
+            "pages": 31,
+            "share": 0.067
+          },
+          {
+            "sentence": "In English, on Tapas.",
+            "pages": 30,
+            "share": 0.065
+          },
+          {
+            "sentence": "YouTube is the cheapest way in: it has all of it free.",
+            "pages": 29,
+            "share": 0.063
+          },
+          {
+            "sentence": "Cheapest legal way in: KakaoPage in Korea, which gives you one chapter at a time, for nothing, if you wait, though it asks you to sign in.",
+            "pages": 28,
+            "share": 0.06
+          },
+          {
+            "sentence": "Cheapest legal way in: Naver Webtoon in Korea, which gives you every chapter but the newest, for nothing, with no account needed.",
+            "pages": 28,
+            "share": 0.06
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 28,
+            "share": 0.06
+          },
+          {
+            "sentence": "In part: YouTube has all of it free.",
+            "pages": 27,
+            "share": 0.058
+          },
+          {
+            "sentence": "Cheapest legal way in: WEBTOON, which gives you every chapter but the newest, for nothing, with no account needed.",
+            "pages": 25,
+            "share": 0.054
+          },
+          {
+            "sentence": "WEBTOON is the cheapest way in: it keeps everything but the newest chapters free.",
+            "pages": 24,
+            "share": 0.052
+          },
+          {
+            "sentence": "Cheapest legal way in: Webnovel, which gives you every chapter but the newest, for nothing, with no account needed.",
+            "pages": 23,
+            "share": 0.05
+          },
+          {
+            "sentence": "1 more part follows it.",
+            "pages": 22,
+            "share": 0.047
+          },
+          {
+            "sentence": "Naver Webtoon is the cheapest way in: it keeps everything but the newest chapters free.",
+            "pages": 22,
+            "share": 0.047
+          },
+          {
+            "sentence": "KakaoPage is the cheapest way in: it unlocks one chapter at a time on a free timer.",
+            "pages": 21,
+            "share": 0.045
+          }
+        ]
+      },
+      "titleNoLinks": {
+        "pages": 1536,
+        "medianWords": 150,
+        "p10Words": 73,
+        "medianSiteWords": 107,
+        "p10SiteWords": 64,
+        "siteShare": 0.727,
+        "nearDupRate": 0.467,
+        "topSentences": [
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are romance; also complete, at 152 chapters.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "No, it has been coming out since 2025.",
+            "pages": 36,
+            "share": 0.023
+          },
+          {
+            "sentence": "The closest licensed read we list is Tokyo Revengers, in English on Kodansha: both are drama and romance; also complete, at 279 chapters.",
+            "pages": 36,
+            "share": 0.023
+          },
+          {
+            "sentence": "Yes, it finished in 2016.",
+            "pages": 35,
+            "share": 0.023
+          },
+          {
+            "sentence": "Readers tag it shoujo.",
+            "pages": 34,
+            "share": 0.022
+          },
+          {
+            "sentence": "Yes, it finished in 2021.",
+            "pages": 33,
+            "share": 0.021
+          },
+          {
+            "sentence": "Yes, it finished in 2014.",
+            "pages": 31,
+            "share": 0.02
+          },
+          {
+            "sentence": "1 part comes before it, so read that one first.",
+            "pages": 30,
+            "share": 0.02
+          },
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are comedy and romance; also complete, at 152 chapters.",
+            "pages": 29,
+            "share": 0.019
+          },
+          {
+            "sentence": "1 more part follows it.",
+            "pages": 28,
+            "share": 0.018
+          },
+          {
+            "sentence": "Yes, it finished in 2019.",
+            "pages": 28,
+            "share": 0.018
+          },
+          {
+            "sentence": "AniList members score it 54 out of 100.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "Yes, it finished in 2020.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "Yes, it finished in 2023.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 25,
+            "share": 0.016
+          },
+          {
+            "sentence": "No, it has been coming out since 2026.",
+            "pages": 25,
+            "share": 0.016
+          },
+          {
+            "sentence": "The closest licensed read we list is Chainsaw Man, in English on MANGA Plus: both are drama; also complete, at 232 chapters.",
+            "pages": 25,
+            "share": 0.016
+          },
+          {
+            "sentence": "Yes, it finished in 2012.",
+            "pages": 25,
+            "share": 0.016
+          },
+          {
+            "sentence": "Yes, it finished in 2015.",
+            "pages": 25,
+            "share": 0.016
+          }
+        ]
+      },
+      "anime": {
+        "pages": 366,
+        "medianWords": 236,
+        "p10Words": 92,
+        "medianSiteWords": 199,
+        "p10SiteWords": 69,
+        "siteShare": 0.822,
+        "nearDupRate": 0.336,
+        "topSentences": [
+          {
+            "sentence": "Cheapest legal way in: YouTube, which gives you the whole thing, for nothing, with no account needed.",
+            "pages": 63,
+            "share": 0.172
+          },
+          {
+            "sentence": "Cheapest legal way in: Crunchyroll, which gives you the opening episodes, for nothing, though it asks you to sign in.",
+            "pages": 35,
+            "share": 0.096
+          },
+          {
+            "sentence": "In part: Crunchyroll gives the first episodes free.",
+            "pages": 35,
+            "share": 0.096
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 34,
+            "share": 0.093
+          },
+          {
+            "sentence": "YouTube is the cheapest way in: it has all of it free.",
+            "pages": 29,
+            "share": 0.079
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 28,
+            "share": 0.077
+          },
+          {
+            "sentence": "In part: YouTube has all of it free.",
+            "pages": 27,
+            "share": 0.074
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at nhk.or.jp for it.",
+            "pages": 22,
+            "share": 0.06
+          },
+          {
+            "sentence": "We list no official English stream yet, but AniList lists an official Japanese page at nhk.or.jp.",
+            "pages": 22,
+            "share": 0.06
+          },
+          {
+            "sentence": "1 more part follows it.",
+            "pages": 21,
+            "share": 0.057
+          },
+          {
+            "sentence": "Yes, it finished in 2016.",
+            "pages": 21,
+            "share": 0.057
+          },
+          {
+            "sentence": "1 part comes before it, so watch that one first.",
+            "pages": 20,
+            "share": 0.055
+          },
+          {
+            "sentence": "There are 2 ending songs.",
+            "pages": 20,
+            "share": 0.055
+          },
+          {
+            "sentence": "Yes, it finished in 2015.",
+            "pages": 18,
+            "share": 0.049
+          },
+          {
+            "sentence": "Yes, it finished in 2021.",
+            "pages": 16,
+            "share": 0.044
+          },
+          {
+            "sentence": "It is also listed as Minna no Uta.",
+            "pages": 15,
+            "share": 0.041
+          },
+          {
+            "sentence": "There are 2 opening songs.",
+            "pages": 15,
+            "share": 0.041
+          },
+          {
+            "sentence": "Yes, it finished in 2020.",
+            "pages": 14,
+            "share": 0.038
+          },
+          {
+            "sentence": "Yes, it finished in 2022.",
+            "pages": 14,
+            "share": 0.038
+          },
+          {
+            "sentence": "AniList members score it 63 out of 100.",
+            "pages": 13,
+            "share": 0.036
+          }
+        ]
+      },
+      "novel": {
+        "pages": 144,
+        "medianWords": 163,
+        "p10Words": 79,
+        "medianSiteWords": 122,
+        "p10SiteWords": 76,
+        "siteShare": 0.726,
+        "nearDupRate": 0.319,
+        "topSentences": [
+          {
+            "sentence": "Yes, it finished in 2014.",
+            "pages": 9,
+            "share": 0.063
+          },
+          {
+            "sentence": "No, it has been coming out since 2020.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "No, it has been coming out since 2022.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "The closest licensed read we list is Re:ZERO -Starting Life in Another World-, in English on Yen Press: both are action and fantasy.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at kadokawa.co.jp for it.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "In English, on J-Novel Club.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "No, it has been coming out since 2023.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "No, it has been coming out since 2025.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "We list no official English edition yet, but AniList lists an official Japanese page at kadokawa.co.jp.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "No, it has been coming out since 2019.",
+            "pages": 6,
+            "share": 0.042
+          },
+          {
+            "sentence": "No, it has been coming out since 2021.",
+            "pages": 6,
+            "share": 0.042
+          },
+          {
+            "sentence": "Yes, it finished in 2017.",
+            "pages": 6,
+            "share": 0.042
+          },
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 5,
+            "share": 0.035
+          },
+          {
+            "sentence": "Yes, it finished in 2012.",
+            "pages": 5,
+            "share": 0.035
+          },
+          {
+            "sentence": "Yes, it finished in 2015.",
+            "pages": 5,
+            "share": 0.035
+          },
+          {
+            "sentence": "Yes, it finished in 2016.",
+            "pages": 5,
+            "share": 0.035
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at mfbunkoj.jp for it.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "No, it has been coming out since 2018.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "The closest licensed read we list is Re:ZERO -Starting Life in Another World-, in English on Yen Press: both are fantasy and romance.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "The closest licensed read we list is Re:ZERO -Starting Life in Another World-, in English on Yen Press: both are fantasy and romance; also still coming out.",
+            "pages": 4,
+            "share": 0.028
+          }
+        ]
+      }
+    },
+    "pageAlike": {
+      "all": {
+        "pages": 2000,
+        "medianWords": 281,
+        "p10Words": 155,
+        "medianSiteWords": 231,
+        "p10SiteWords": 125,
+        "siteShare": 0.822,
+        "nearDupRate": 0.43,
+        "topSentences": [
+          {
+            "sentence": "In English on VIZ.",
+            "pages": 959,
+            "share": 0.48
+          },
+          {
+            "sentence": "In English on Kodansha.",
+            "pages": 864,
+            "share": 0.432
+          },
+          {
+            "sentence": "In English on MANGA Plus.",
+            "pages": 833,
+            "share": 0.417
+          },
+          {
+            "sentence": "In English on Yen Press.",
+            "pages": 803,
+            "share": 0.402
+          },
+          {
+            "sentence": "In English on Seven Seas Entertainment.",
+            "pages": 480,
+            "share": 0.24
+          },
+          {
+            "sentence": "In English on WEBTOON.",
+            "pages": 267,
+            "share": 0.134
+          },
+          {
+            "sentence": "In English on Webnovel.",
+            "pages": 111,
+            "share": 0.056
+          },
+          {
+            "sentence": "A Silent Voice Both are romance; also complete, at 64 chapters.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "Dandadan Both are romance.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "Horimiya Both are romance; also complete, at 152 chapters.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "Kaguya-sama: Love is War Both are romance; also complete, at 281 chapters.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "Komi Can't Communicate Both are romance; also complete, at 537 chapters.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are romance; also complete, at 152 chapters.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "Tokyo Revengers Both are romance; also complete, at 279 chapters.",
+            "pages": 101,
+            "share": 0.051
+          },
+          {
+            "sentence": "In English on Tapas.",
+            "pages": 88,
+            "share": 0.044
+          },
+          {
+            "sentence": "In English on INKR.",
+            "pages": 78,
+            "share": 0.039
+          },
+          {
+            "sentence": "In English on Comikey.",
+            "pages": 74,
+            "share": 0.037
+          },
+          {
+            "sentence": "In English on J-Novel Club.",
+            "pages": 74,
+            "share": 0.037
+          },
+          {
+            "sentence": "Cheapest legal way in: YouTube, which gives you the whole thing, for nothing, with no account needed.",
+            "pages": 63,
+            "share": 0.032
+          },
+          {
+            "sentence": "In English on Lezhin.",
+            "pages": 58,
+            "share": 0.029
+          }
+        ]
+      },
+      "titleWithLinks": {
+        "pages": 464,
+        "medianWords": 374,
+        "p10Words": 184,
+        "medianSiteWords": 303,
+        "p10SiteWords": 127,
+        "siteShare": 0.808,
+        "nearDupRate": 0.459,
+        "topSentences": [
+          {
+            "sentence": "In English on VIZ.",
+            "pages": 86,
+            "share": 0.185
+          },
+          {
+            "sentence": "In English on MANGA Plus.",
+            "pages": 84,
+            "share": 0.181
+          },
+          {
+            "sentence": "In English on Kodansha.",
+            "pages": 68,
+            "share": 0.147
+          },
+          {
+            "sentence": "Cheapest legal way in: YouTube, which gives you the whole thing, for nothing, with no account needed.",
+            "pages": 63,
+            "share": 0.136
+          },
+          {
+            "sentence": "In English on Yen Press.",
+            "pages": 53,
+            "share": 0.114
+          },
+          {
+            "sentence": "In English on WEBTOON.",
+            "pages": 44,
+            "share": 0.095
+          },
+          {
+            "sentence": "Tencent Comics has it in Chinese.",
+            "pages": 39,
+            "share": 0.084
+          },
+          {
+            "sentence": "Cheapest legal way in: Tapas, which gives you every chapter but the newest, for nothing, with no account needed.",
+            "pages": 36,
+            "share": 0.078
+          },
+          {
+            "sentence": "Cheapest legal way in: Crunchyroll, which gives you the opening episodes, for nothing, though it asks you to sign in.",
+            "pages": 35,
+            "share": 0.075
+          },
+          {
+            "sentence": "In part: Crunchyroll gives the first episodes free.",
+            "pages": 35,
+            "share": 0.075
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 34,
+            "share": 0.073
+          },
+          {
+            "sentence": "Tapas is the cheapest way in: it keeps everything but the newest chapters free.",
+            "pages": 34,
+            "share": 0.073
+          },
+          {
+            "sentence": "Naver Webtoon has it in Korean and Naver Series has it in Korean.",
+            "pages": 31,
+            "share": 0.067
+          },
+          {
+            "sentence": "In English, on Tapas.",
+            "pages": 30,
+            "share": 0.065
+          },
+          {
+            "sentence": "YouTube is the cheapest way in: it has all of it free.",
+            "pages": 29,
+            "share": 0.063
+          },
+          {
+            "sentence": "Cheapest legal way in: KakaoPage in Korea, which gives you one chapter at a time, for nothing, if you wait, though it asks you to sign in.",
+            "pages": 28,
+            "share": 0.06
+          },
+          {
+            "sentence": "Cheapest legal way in: Naver Webtoon in Korea, which gives you every chapter but the newest, for nothing, with no account needed.",
+            "pages": 28,
+            "share": 0.06
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 28,
+            "share": 0.06
+          },
+          {
+            "sentence": "In part: YouTube has all of it free.",
+            "pages": 27,
+            "share": 0.058
+          },
+          {
+            "sentence": "Cheapest legal way in: WEBTOON, which gives you every chapter but the newest, for nothing, with no account needed.",
+            "pages": 25,
+            "share": 0.054
+          }
+        ]
+      },
+      "titleNoLinks": {
+        "pages": 1536,
+        "medianWords": 260,
+        "p10Words": 149,
+        "medianSiteWords": 221,
+        "p10SiteWords": 117,
+        "siteShare": 0.828,
+        "nearDupRate": 0.421,
+        "topSentences": [
+          {
+            "sentence": "In English on VIZ.",
+            "pages": 873,
+            "share": 0.568
+          },
+          {
+            "sentence": "In English on Kodansha.",
+            "pages": 796,
+            "share": 0.518
+          },
+          {
+            "sentence": "In English on Yen Press.",
+            "pages": 750,
+            "share": 0.488
+          },
+          {
+            "sentence": "In English on MANGA Plus.",
+            "pages": 749,
+            "share": 0.488
+          },
+          {
+            "sentence": "In English on Seven Seas Entertainment.",
+            "pages": 457,
+            "share": 0.298
+          },
+          {
+            "sentence": "In English on WEBTOON.",
+            "pages": 223,
+            "share": 0.145
+          },
+          {
+            "sentence": "A Silent Voice Both are romance; also complete, at 64 chapters.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "Dandadan Both are romance.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "Horimiya Both are romance; also complete, at 152 chapters.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "Kaguya-sama: Love is War Both are romance; also complete, at 281 chapters.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "Komi Can't Communicate Both are romance; also complete, at 537 chapters.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "The closest licensed read we list is Horimiya, in English on Yen Press: both are romance; also complete, at 152 chapters.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "Tokyo Revengers Both are romance; also complete, at 279 chapters.",
+            "pages": 97,
+            "share": 0.063
+          },
+          {
+            "sentence": "In English on Webnovel.",
+            "pages": 88,
+            "share": 0.057
+          },
+          {
+            "sentence": "In English on INKR.",
+            "pages": 74,
+            "share": 0.048
+          },
+          {
+            "sentence": "In English on J-Novel Club.",
+            "pages": 72,
+            "share": 0.047
+          },
+          {
+            "sentence": "In English on Comikey.",
+            "pages": 69,
+            "share": 0.045
+          },
+          {
+            "sentence": "In English on Tapas.",
+            "pages": 65,
+            "share": 0.042
+          },
+          {
+            "sentence": "In English on Lezhin.",
+            "pages": 57,
+            "share": 0.037
+          },
+          {
+            "sentence": "In English on Tappytoon.",
+            "pages": 45,
+            "share": 0.029
+          }
+        ]
+      },
+      "anime": {
+        "pages": 366,
+        "medianWords": 236,
+        "p10Words": 92,
+        "medianSiteWords": 199,
+        "p10SiteWords": 69,
+        "siteShare": 0.822,
+        "nearDupRate": 0.336,
+        "topSentences": [
+          {
+            "sentence": "Cheapest legal way in: YouTube, which gives you the whole thing, for nothing, with no account needed.",
+            "pages": 63,
+            "share": 0.172
+          },
+          {
+            "sentence": "Cheapest legal way in: Crunchyroll, which gives you the opening episodes, for nothing, though it asks you to sign in.",
+            "pages": 35,
+            "share": 0.096
+          },
+          {
+            "sentence": "In part: Crunchyroll gives the first episodes free.",
+            "pages": 35,
+            "share": 0.096
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 34,
+            "share": 0.093
+          },
+          {
+            "sentence": "YouTube is the cheapest way in: it has all of it free.",
+            "pages": 29,
+            "share": 0.079
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 28,
+            "share": 0.077
+          },
+          {
+            "sentence": "In part: YouTube has all of it free.",
+            "pages": 27,
+            "share": 0.074
+          },
+          {
+            "sentence": "AniList lists an official Japanese page at nhk.or.jp for it.",
+            "pages": 22,
+            "share": 0.06
+          },
+          {
+            "sentence": "We list no official English stream yet, but AniList lists an official Japanese page at nhk.or.jp.",
+            "pages": 22,
+            "share": 0.06
+          },
+          {
+            "sentence": "1 more part follows it.",
+            "pages": 21,
+            "share": 0.057
+          },
+          {
+            "sentence": "Yes, it finished in 2016.",
+            "pages": 21,
+            "share": 0.057
+          },
+          {
+            "sentence": "1 part comes before it, so watch that one first.",
+            "pages": 20,
+            "share": 0.055
+          },
+          {
+            "sentence": "There are 2 ending songs.",
+            "pages": 20,
+            "share": 0.055
+          },
+          {
+            "sentence": "Yes, it finished in 2015.",
+            "pages": 18,
+            "share": 0.049
+          },
+          {
+            "sentence": "Yes, it finished in 2021.",
+            "pages": 16,
+            "share": 0.044
+          },
+          {
+            "sentence": "It is also listed as Minna no Uta.",
+            "pages": 15,
+            "share": 0.041
+          },
+          {
+            "sentence": "There are 2 opening songs.",
+            "pages": 15,
+            "share": 0.041
+          },
+          {
+            "sentence": "Yes, it finished in 2020.",
+            "pages": 14,
+            "share": 0.038
+          },
+          {
+            "sentence": "Yes, it finished in 2022.",
+            "pages": 14,
+            "share": 0.038
+          },
+          {
+            "sentence": "AniList members score it 63 out of 100.",
+            "pages": 13,
+            "share": 0.036
+          }
+        ]
+      },
+      "novel": {
+        "pages": 144,
+        "medianWords": 288,
+        "p10Words": 201,
+        "medianSiteWords": 250,
+        "p10SiteWords": 194,
+        "siteShare": 0.837,
+        "nearDupRate": 0.292,
+        "topSentences": [
+          {
+            "sentence": "In English on Yen Press.",
+            "pages": 131,
+            "share": 0.91
+          },
+          {
+            "sentence": "In English on Seven Seas Entertainment.",
+            "pages": 60,
+            "share": 0.417
+          },
+          {
+            "sentence": "In English on J-Novel Club.",
+            "pages": 59,
+            "share": 0.41
+          },
+          {
+            "sentence": "Is It Wrong to Try to Pick Up Girls in a Dungeon?",
+            "pages": 44,
+            "share": 0.306
+          },
+          {
+            "sentence": "Konosuba: God's Blessing on This Wonderful World!",
+            "pages": 42,
+            "share": 0.292
+          },
+          {
+            "sentence": "In English on Kodansha.",
+            "pages": 14,
+            "share": 0.097
+          },
+          {
+            "sentence": "In English on VIZ.",
+            "pages": 10,
+            "share": 0.069
+          },
+          {
+            "sentence": "I’m the Evil Lord of an Intergalactic Empire!",
+            "pages": 10,
+            "share": 0.069
+          },
+          {
+            "sentence": "Yes, it finished in 2014.",
+            "pages": 9,
+            "share": 0.063
+          },
+          {
+            "sentence": "A Certain Magical Index Both are action and fantasy; also complete, at 132 chapters.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "Are You Busy?",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "Both are action and fantasy.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "No, it has been coming out since 2020.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "No, it has been coming out since 2022.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "Overlord Both are action and fantasy.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "Re:ZERO -Starting Life in Another World- Both are action and fantasy.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "Sword Art Online Both are action and fantasy.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "The Eminence in Shadow Both are action and fantasy.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "The closest licensed read we list is Re:ZERO -Starting Life in Another World-, in English on Yen Press: both are action and fantasy.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "Will You Save Us?",
+            "pages": 8,
+            "share": 0.056
+          }
+        ]
+      }
+    },
+    "opening": {
+      "all": {
+        "exact": {
+          "sentence": "Susume!",
+          "share": 0.001
+        },
+        "masked": {
+          "sentence": "n and n stream n officially.",
+          "share": 0.026
+        }
+      },
+      "titleWithLinks": {
+        "exact": {
+          "sentence": "There is no official English edition of Young Black Jack yet, but Piccoma in Japanese, Naver Series in Korean and KakaoPage in Korean publish it.",
+          "share": 0.002
+        },
+        "masked": {
+          "sentence": "n and n stream n officially.",
+          "share": 0.11
+        }
+      },
+      "titleNoLinks": {
+        "exact": {
+          "sentence": "Susume!",
+          "share": 0.001
+        },
+        "masked": {
+          "sentence": "n a # -chapter, one-volume n romance manga, ended in # and we list no official n edition of it.",
+          "share": 0.028
+        }
+      },
+      "anime": {
+        "exact": {
+          "sentence": "The Day the Earth Moved, a Japanese drama anime film, based on a novel, first aired in 1997, and no service we track streams it officially.",
+          "share": 0.003
+        },
+        "masked": {
+          "sentence": "n and n stream n officially.",
+          "share": 0.139
+        }
+      },
+      "novel": {
+        "exact": {
+          "sentence": "The Do-Over Damsel Conquers the Dragon Emperor, a Japanese action, comedy and drama novel, has been animated, but we list no official English edition of the novel.",
+          "share": 0.007
+        },
+        "masked": {
+          "sentence": "n has one official n home: n .",
+          "share": 0.042
+        }
+      }
+    }
+  }
+}

@@ -121,7 +121,19 @@ export function alikeFor(item, pools, { handoff = null, thin = (p) => p } = {}) 
       (b.cand.popularity || 0) - (a.cand.popularity || 0) ||
       a.cand.id - b.cand.id,
   )
-  return short.slice(0, ALIKE_MAX).map(({ cand, g }) => ({ ...thin(cand), shared: g.slice(0, 3) }))
+  // Why each pick fits, kept as small facts so the page can say it in a line
+  // (src/lib/prose-nolink.mjs): the tags both carry and a shared author.
+  const authors = new Set((item.authors || []).map((a) => a && a.name).filter(Boolean))
+  return short.slice(0, ALIKE_MAX).map(({ cand, g }) => {
+    const sharedTags = (cand.tags || []).filter((t) => tags.has(t)).slice(0, 3)
+    const sameAuthor = (cand.authors || []).some((a) => a && authors.has(a.name))
+    return {
+      ...thin(cand),
+      shared: g.slice(0, 3),
+      ...(sharedTags.length ? { tags: sharedTags } : {}),
+      ...(sameAuthor ? { sameAuthor: true } : {}),
+    }
+  })
 }
 
 // Shops and social accounts are not a place to read, whatever their address.
@@ -133,6 +145,28 @@ const hostOf = (url) => {
   } catch {
     return ''
   }
+}
+
+const LANGUAGE_OF_TLD = { jp: 'Japanese', kr: 'Korean', cn: 'Chinese', tw: 'Chinese' }
+
+/**
+ * Every official page AniList lists for a title (INFO links only: a
+ * publisher page or the title's own site, never a shop or a social account),
+ * with its host and, when AniList or the address says so, its language.
+ */
+export function officialPages(item, max = 3) {
+  const seen = new Set()
+  const out = []
+  for (const link of item.otherLinks || []) {
+    if (link.type && link.type !== 'INFO') continue
+    const host = hostOf(link.url)
+    if (!host || NOT_A_READER.test(host) || seen.has(host) || !/^https?:\/\//i.test(link.url)) continue
+    seen.add(host)
+    const language = link.language || LANGUAGE_OF_TLD[host.split('.').pop()] || null
+    out.push({ site: link.site || host, url: link.url, host, language })
+    if (out.length >= max) break
+  }
+  return out
 }
 
 /**
