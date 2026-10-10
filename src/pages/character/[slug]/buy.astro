@@ -20,6 +20,7 @@ import { characterBuyAnswer } from '../../../lib/buy.mjs'
 import { characterBuyCopy } from '../../../lib/buy-copy.js'
 import { displayName } from '../../../lib/names.mjs'
 import { hasCharacterBuyPage, hasBuyPage } from '../../../lib/gates.mjs'
+import { isNoindexed } from '../../../lib/thin-pages.mjs'
 import { ageOf } from '../../../lib/age.mjs'
 
 let person
@@ -241,7 +242,7 @@ const jsonld = [
 
       {
         /* Only when the story's own buy page exists, or this is a door to a 404. */
-        series && hasBuyPage(series) && (
+        series && hasBuyPage(series) && !isNoindexed(series, 'buy') && (
           <a class="crosslink" href={`${seriesHome}/buy`}>
             <div>
               <span class="crosslink__lead">The story itself</span>

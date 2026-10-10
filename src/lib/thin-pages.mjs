@@ -63,3 +63,23 @@ export const noindexCharacterBuy = (person, keep = new Set()) =>
 
 /** What the page reads: is this sub-page flagged? */
 export const isNoindexed = (item, page) => Array.isArray(item?.noindex) && item.noindex.includes(page)
+
+/**
+ * A character's /buy page as a link target: only while it is indexed. A
+ * noindexed one stays live, but the wall points at the profile's shop box.
+ */
+export const characterBuyLinkable = (person, keep = new Set()) =>
+  hasCharacterBuyPage(person) && !person?.noindexBuy && !noindexCharacterBuy(person, keep)
+
+/**
+ * A cast list with the faces whose pages are indexed ahead of the noindexed
+ * ones (c.noindex, set by make-shards.mjs), within each role, so a short grid
+ * spends its links on pages Google can keep. Nobody is dropped. Pure.
+ */
+export function indexedFirst(cast = []) {
+  const roles = [...new Set(cast.map((c) => c.role))]
+  return roles.flatMap((role) => {
+    const group = cast.filter((c) => c.role === role)
+    return [...group.filter((c) => !c.noindex), ...group.filter((c) => c.noindex)]
+  })
+}

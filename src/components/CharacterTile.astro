@@ -10,13 +10,18 @@
  *     profile carries one, with the story's books and, for a known face, their
  *     own figures. So every card gets a Merch door, and none of them opens a
  *     thin page or leaves the site straight from the wall.
+ * A noindexed buy page (all of them, unless Google already shows it: see
+ * src/lib/thin-pages.mjs) is not linked from the wall; its card opens the
+ * profile's box instead. The wall is prerendered, so data/index-keep.json is
+ * read from disk at build time and never reaches the Worker.
  */
 import { kindOfAppearance } from '../lib/catalog.js'
-import { hasCharacterBuyPage } from '../lib/gates.mjs'
+import { characterBuyLinkable } from '../lib/thin-pages.mjs'
+import { indexKeepOnce } from '../lib/index-keep.js'
 import { displayName } from '../lib/names.mjs'
 
 const { person, eager = false } = Astro.props
-const buyPage = hasCharacterBuyPage(person)
+const buyPage = characterBuyLinkable(person, indexKeepOnce())
 // characterShopLinks gives nothing for a name under two letters, so the
 // profile would have no box to jump to.
 const merch = buyPage || String(person.name || '').trim().length >= 2

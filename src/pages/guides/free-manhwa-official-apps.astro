@@ -9,6 +9,8 @@ import DataGuide from '../../components/DataGuide.astro'
 import DataList from '../../components/DataList.astro'
 import { comicsOfCountry, hubSlugOf } from '../../lib/catalog.js'
 import { pathOfTitle } from '../../lib/section.mjs'
+import { noindexSubpages } from '../../lib/thin-pages.mjs'
+import { indexKeepOnce } from '../../lib/index-keep.js'
 import { factsFor } from '../../lib/platform-facts.js'
 import { dataGuide } from '../../lib/guides-registry.js'
 import { freeRows, countPlatforms, platformLabel, notAdult, thumbOf, factLine, num, percent, listWords } from '../../lib/data-guides.mjs'
@@ -35,7 +37,10 @@ const list = rows.map(({ item, free }) => ({
   cover: thumbOf(item.cover),
   sub: factLine(item),
   platforms: free.map(platformLabel).join(', '),
-  extra: { href: `${pathOfTitle(item)}/free`, text: `How to read ${item.title} free` },
+  // A noindexed /free page stays live but is not linked from the guide.
+  extra: noindexSubpages(item, indexKeepOnce()).includes('free')
+    ? null
+    : { href: `${pathOfTitle(item)}/free`, text: `How to read ${item.title} free` },
 }))
 const topNames = platforms.slice(0, 3).map((p) => p.site)
 

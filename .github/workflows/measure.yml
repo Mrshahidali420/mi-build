@@ -104,6 +104,9 @@ jobs:
       - name: Measure the title sub-pages (/characters, /like, /free)
         run: node --max-old-space-size=6000 scripts/measure-subpages.mjs --mode new --label "$LABEL-subpages"
 
+      - name: Measure the internal link graph
+        run: node --max-old-space-size=6000 scripts/measure-links.mjs --label "$LABEL"
+
       - name: Measure the pages as they were at the old ref
         if: env.OLD_REF != ''
         run: |

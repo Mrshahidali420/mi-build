@@ -209,7 +209,7 @@ const jsonld = [
 
       {
         /* Only when the free page exists. With no free platform it answers 404. */
-        hasFreePage(item) && (
+        hasFreePage(item) && !isNoindexed(item, 'free') && (
           <a class="crosslink" href={`${home}/free`}>
             <div>
               <span class="crosslink__lead">Not ready to pay yet?</span>

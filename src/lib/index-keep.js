@@ -16,3 +16,7 @@ export function loadIndexKeep(root = process.cwd()) {
   if (!existsSync(file)) return new Set()
   return new Set(JSON.parse(readFileSync(file, 'utf8')).paths || [])
 }
+
+// Read once per build: the character wall asks for it on every card.
+let cached = null
+export const indexKeepOnce = (root = process.cwd()) => (cached ||= loadIndexKeep(root))

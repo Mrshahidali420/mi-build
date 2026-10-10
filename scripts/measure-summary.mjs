@@ -8,11 +8,14 @@
  */
 import { readFileSync } from 'node:fs'
 import { basename } from 'node:path'
+import { linksMarkdown } from './measure-links.mjs'
 
 const pct = (n) => (typeof n === 'number' ? `${Math.round(n * 1000) / 10}%` : '-')
 
 function table(file) {
-  const { label, sample, report } = JSON.parse(readFileSync(file, 'utf8'))
+  const json = JSON.parse(readFileSync(file, 'utf8'))
+  if (json.kind === 'links') return linksMarkdown(json)
+  const { label, sample, report } = json
   const lines = [`### ${label || basename(file)} (${sample} pages)`, '', '| scope | group | pages | own words median | site share | near-dup | top sentence |', '|---|---|---|---|---|---|---|']
   for (const scope of ['own', 'page']) {
     for (const [group, r] of Object.entries(report[scope] || {})) {

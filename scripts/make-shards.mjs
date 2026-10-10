@@ -666,9 +666,12 @@ async function main() {
   console.log(`  thin character pages ${thin}, kept indexed by data/index-keep.json ${thin - people.filter((p) => p.noindex).length}`)
   const cast = castContext(people)
   // Thin sub-pages Google has not shown go noindex (src/lib/thin-pages.mjs).
+  // Each face on a title's cast list carries its page's noindex flag, so the
+  // grids can list the indexed pages first (indexedFirst in thin-pages.mjs).
   const flagged = (item) => {
     const noindex = noindexSubpages(item, keep)
-    return noindex.length ? { ...item, noindex } : item
+    const characters = (item.characters || []).map((ch) => (cast.bySlug.get(ch.slug)?.noindex ? { ...ch, noindex: true } : ch))
+    return { ...item, ...(item.characters ? { characters } : {}), ...(noindex.length ? { noindex } : {}) }
   }
   const t = writeShards(join(OUT, 't'), titles.map((item) => flagged(withCastFacts(item, cast))), TITLE_SHARDS, (item) =>
     titleKey(kindOf(item), item.slug))

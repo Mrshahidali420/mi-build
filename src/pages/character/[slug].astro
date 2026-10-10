@@ -27,6 +27,7 @@ import { characterProfile } from '../../lib/character-profile.mjs'
 import { characterShopLinks } from '../../lib/shop-links.js'
 // The merch page answers 404 when this gate says no, so the link obeys it too.
 import { hasCharacterBuyPage, hasCastPage } from '../../lib/gates.mjs'
+import { isNoindexed } from '../../lib/thin-pages.mjs'
 import { characterBuyCopy } from '../../lib/buy-copy.js'
 import { picksForPerson, picksShowFor } from '../../lib/picks.js'
 import { checkedISO, checkedLong } from '../../lib/checked.js'
@@ -359,7 +360,7 @@ const showAbout = Boolean(bio.trim()) || quickFacts.length > 0 || Boolean(profil
 const showShop = hasPicks || buys.length > 0
 // The merch page answers 404 when its gate says no, so the link obeys it too.
 const merchPage =
-  merchIsCharacter && hasCharacterBuyPage(person)
+  merchIsCharacter && hasCharacterBuyPage(person) && !person.noindexBuy
     ? {
         href: `/character/${person.slug}/buy`,
         lead: 'The full merch page',
@@ -381,7 +382,7 @@ const freeCount = freeSplit(allLinks).free.length
 const languages = leadKind !== 'anime' ? [...new Set(allLinks.map((l) => l.language).filter(Boolean))] : []
 // The lead story's full cast page, linked under the faces when it exists.
 const castPage =
-  series && hasCastPage(series)
+  series && hasCastPage(series) && !isNoindexed(series, 'characters')
     ? {
         href: `/${leadKind}/${series.slug}/characters`,
         lead: 'Everyone in it',

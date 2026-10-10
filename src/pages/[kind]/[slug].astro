@@ -30,6 +30,8 @@ import { shopLinks } from '../../lib/shop-links.js'
 import { trialFor } from '../../lib/shop-shelf.js'
 import { titleBuyCopy } from '../../lib/buy-copy.js'
 import { hasFreePage, hasLikePage, hasCastPage, hasBuyPage } from '../../lib/gates.mjs'
+// A noindexed sub-page stays live but is not linked from here (src/lib/thin-pages.mjs).
+import { isNoindexed, indexedFirst } from '../../lib/thin-pages.mjs'
 import { picksForTitle, picksShowFor, booksKnown } from '../../lib/picks.js'
 import Themes from '../../components/Themes.astro'
 import EpisodeList from '../../components/EpisodeList.astro'
@@ -307,7 +309,7 @@ const jsonld = {
 }
 // The first twelve faces. An anime record also names the voices; the Cast
 // block prints them under each face (src/components/detail/Cast.astro).
-const cast = charactersOf(item).slice(0, 12)
+const cast = indexedFirst(charactersOf(item)).slice(0, 12)
 // Sub or dub, from the whole cast list, not just the twelve faces shown.
 // Says nothing when the record has no voice credits (src/lib/dub.mjs).
 const dub = isComic ? null : dubOf(item)
@@ -395,7 +397,7 @@ const faq = titleFaq(item, kind)
 // Each answer page is linked from the section it answers: the free page from
 // Watch / Read, the buy page from the shop, the "like" page from the picks at
 // the end, the full cast from the cast grid.
-const freePage = hasFreePage(item)
+const freePage = hasFreePage(item) && !isNoindexed(item, 'free')
   ? {
       href: `/${kind}/${item.slug}/free`,
       lead: 'The free question',
@@ -406,7 +408,7 @@ const freePage = hasFreePage(item)
 // A reader who has decided they want to OWN it is asking a different
 // question from the table above. Only stories people really search for get
 // that page, so the link only shows when the page exists.
-const buyPage = hasBuyPage(item)
+const buyPage = hasBuyPage(item) && !isNoindexed(item, 'buy')
   ? {
       href: `/${kind}/${item.slug}/buy`,
       lead: 'If you want to own it',
@@ -416,7 +418,7 @@ const buyPage = hasBuyPage(item)
         : 'Discs, figures, art books and posters, in your own store',
     }
   : null
-const likePage = hasLikePage(item)
+const likePage = hasLikePage(item) && !isNoindexed(item, 'like')
   ? {
       href: `/${kind}/${item.slug}/like`,
       lead: 'If you finished it',
@@ -426,7 +428,7 @@ const likePage = hasLikePage(item)
   : null
 // A whole cast list. The block above only shows the first twelve faces, and
 // people search for the rest by the story name.
-const castPage = hasCastPage(item)
+const castPage = hasCastPage(item) && !isNoindexed(item, 'characters')
   ? {
       href: `/${kind}/${item.slug}/characters`,
       lead: 'Everyone in it',

@@ -226,7 +226,7 @@ const jsonld = [
       {
         /* Only when the page exists. An empty "similar" page is a worse
            click than no click, so it answers 404. */
-        hasLikePage(item) && (
+        hasLikePage(item) && !isNoindexed(item, 'like') && (
           <a class="crosslink" href={`${home}/like`}>
             <div>
               <span class="crosslink__lead">Finished it already?</span>
@@ -241,7 +241,7 @@ const jsonld = [
         /* A reader who just learned a story is worth reading is the readiest
            buyer we ever get. The buy page only exists for stories people
            search for, so the link is gated the same way. */
-        hasBuyPage(item) && (
+        hasBuyPage(item) && !isNoindexed(item, 'buy') && (
           <a class="crosslink" href={`${home}/buy`}>
             <div>
               <span class="crosslink__lead">Want to own it?</span>
