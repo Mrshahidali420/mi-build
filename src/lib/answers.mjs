@@ -447,10 +447,8 @@ export function titleFaq(item, kind) {
   faq.push({
     q: `Where can I ${verb} ${item.title} legally?`,
     a: links.length
-      ? `On ${listWords(names)}. Each one holds a licence for ${item.title}. ` +
-        `manhwaindex carries no ${unit} and links only to the platform itself.`
-      : `Nowhere yet. No platform we track has an official licence for ${item.title}. ` +
-        `This page updates every day, so a new licence shows up here on its own.`,
+      ? `On ${listWords(names)}. Each one holds a licence for ${item.title}.`
+      : `Nowhere yet. No platform we track has an official licence for ${item.title}.`,
   })
 
   faq.push({
@@ -506,9 +504,7 @@ export function titleFaq(item, kind) {
       a:
         (leads.length === 1
           ? `${leads[0]} is the main character of ${item.title}.`
-          : `${item.title} follows ${listWords(leads)}.`) +
-        ` Every face in the cast has its own page on this site, with age, ` +
-        `height and every other title they turn up in.`,
+          : `${item.title} follows ${listWords(leads)}.`),
     })
   }
 
@@ -517,7 +513,7 @@ export function titleFaq(item, kind) {
       q: `How many ${unit} does ${item.title} have?`,
       a: `${item.chapters || item.episodes} ${unit}, and it is ${
         STATUS_WORD[item.status] || 'listed'
-      }. That count comes from AniList and is refreshed every day.`,
+      }, by AniList's count.`,
     })
   }
 

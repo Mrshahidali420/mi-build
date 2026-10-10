@@ -33,6 +33,7 @@ import { picksForTitle, picksShowFor, booksKnown } from '../../lib/picks.js'
 import Themes from '../../components/Themes.astro'
 import EpisodeList from '../../components/EpisodeList.astro'
 import { dubOf } from '../../lib/dub.mjs'
+import { titleAnswer, aboutParagraphs, ledeOf } from '../../lib/title-answer.mjs'
 import { startedByClock } from '../../lib/started.mjs'
 import { whereAnimeUrl } from '../../lib/where-links.mjs'
 import { needsAlike } from '../../lib/alike.mjs'
@@ -115,7 +116,7 @@ const freeNow = freeSplit(links).free.length
 
 // Our own words, written at build time from the facts in the record. This is
 // the main text of the page. See src/lib/prose.mjs.
-const overview = item.overview || { lede: '', paragraphs: [] }
+const overview = { lede: ledeOf(item.overview), paragraphs: aboutParagraphs(item.overview) }
 
 // The publisher blurb is somebody else's writing, so it sits under our own
 // text and keeps its credit. AniList puts that credit inside the blurb.
@@ -378,28 +379,11 @@ const languages = isComic ? [...new Set(links.map((l) => l.language).filter(Bool
 const hasEnglish = languages.includes('English')
 const otherLanguages = languages.filter((l) => l !== 'English')
 
-// One flowing sentence that answers the question the visitor arrived with.
-// Search engines and AI assistants quote a sentence like this; a table of
-// links alone gives them nothing to lift.
-const listWords = (names) =>
-  names.length === 1
-    ? names[0]
-    : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`
-
+// The opening paragraph of Read / Watch: this title's own "at a glance" facts,
+// written at build time (src/lib/prose.mjs, via src/lib/title-answer.mjs).
+// The site-wide promises live on /how-we-check-links, linked once under it.
 const verb = isComic ? 'read' : 'watch'
-const authorPart = item.authors?.length ? ` by ${item.authors.map((a) => a.name).join(', ')}` : ''
-const countPart = isComic
-  ? item.chapters ? ` It has ${item.chapters} chapters.` : ''
-  : item.episodes ? ` It has ${item.episodes} episodes.` : ''
-const freePart = freeLinks.length
-  ? ` ${listWords(freeLinks.map((l) => l.site))} ${freeLinks.length === 1 ? 'has' : 'have'} free chapters or a free tier.`
-  : ''
-
-const answer = links.length
-  ? `You can legally ${verb} ${item.title}, a ${statusWord(item.status).toLowerCase()} ${word}${authorPart}, on ${listWords(platformNames)}.` +
-    `${freePart}${countPart} Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.`
-  : `${item.title} is a ${statusWord(item.status).toLowerCase()} ${word}${authorPart} with no official English ${isComic ? 'publisher' : 'streaming platform'} yet.` +
-    `${countPart} When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.`
+const answer = titleAnswer(item, word)
 
 // The questions people type instead of reading a table. Both the block and
 // the two answer pages below are built from this same record, so they can
@@ -517,6 +501,7 @@ const jumpLinks = [
           showAlike={needsAlike(item)}
           languages={languages}
           freePage={freePage}
+          titlePage
         />
 
         {/* Straight under the platforms: placed after Related (3 Oct 2026),

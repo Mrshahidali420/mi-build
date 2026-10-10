@@ -34,6 +34,10 @@ const {
   // Leveling") and passes its answer sentence, with a link, in the "answer"
   // slot. Title pages pass neither and draw exactly as before.
   heading,
+  // Title pages open with their own "at a glance" paragraph and link the
+  // site-wide promises once, to /how-we-check-links, instead of repeating a
+  // date stamp and the same closing lines on every page.
+  titlePage = false,
 } = Astro.props
 
 const verb = isComic ? 'read' : 'watch'
@@ -63,7 +67,11 @@ const otherLanguages = languages.filter((l) => l !== 'English')
   <p class="title-answer">
     <slot name="answer">{answer}</slot>
     {' '}
-    <span class="title-answer__stamp">Checked {checked}.</span>
+    {titlePage ? (
+      <a class="title-answer__stamp" href="/how-we-check-links">How we check links</a>
+    ) : (
+      <span class="title-answer__stamp">Checked {checked}.</span>
+    )}
   </p>
 
   {
@@ -142,13 +150,17 @@ const otherLanguages = languages.filter((l) => l !== 'English')
           })}
         </ul>
 
-        <p class="compare__checked">
-          We checked these on <time datetime={checkedISO}>{checkedText}</time>. Platforms
-          change their terms, so the platform's own page is the last word.
-          <a href="/how-we-check-links">How we check links</a>.
-        </p>
+        {!titlePage && (
+          <p class="compare__checked">
+            We checked these on <time datetime={checkedISO}>{checkedText}</time>. Platforms
+            change their terms, so the platform's own page is the last word.
+            <a href="/how-we-check-links">How we check links</a>.
+          </p>
+        )}
       </>
-    ) : (
+    ) : titlePage ? null : (
+      // A title page's own opening paragraph already says there is no
+      // official place yet, in words that fit that title.
       <div class="empty">
         <p>
           <strong>No official platform listed yet.</strong>
@@ -188,7 +200,8 @@ const otherLanguages = languages.filter((l) => l !== 'English')
           </li>
         ))}
       </ul>
-      <p class="overview">{reach.line}</p>
+      {/* A title page already says this in its own opening paragraph. */}
+      {!titlePage && <p class="overview">{reach.line}</p>}
     </div>
   )}
 

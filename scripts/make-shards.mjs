@@ -409,6 +409,9 @@ function adaptationOf(item, byId) {
       // The airing clock travels with the show, so a comic page can say when
       // its own anime airs next without loading the anime record.
       nextEpisode: show.nextEpisode || null,
+      // Where the anime streams, so a comic with no official link of its own
+      // can still say where its story can be watched (src/lib/prose.mjs).
+      ...adaptSites(show),
     }))
     shows.sort((a, b) => (a.startYear || 9999) - (b.startYear || 9999))
     return shows.length ? { shows } : null
@@ -423,8 +426,22 @@ function adaptationOf(item, byId) {
       kind: kindOf(src),
       chapters: src.chapters || null,
       status: src.status,
+      ...adaptSites(src),
     },
   }
+}
+
+const ADAPT_SITES_MAX = 3
+
+/**
+ * The first few official platforms of the other side of an adaptation: where
+ * the anime streams, or, for the book, where it is read in English. Stored
+ * only when there is one, so most records pay nothing for it.
+ */
+function adaptSites(p) {
+  const links = p.kind === 'anime' ? p.watchLinks || [] : (p.readLinks || []).filter((l) => l.language === 'English')
+  const sites = [...new Set(links.map((l) => l.site).filter(Boolean))].slice(0, ADAPT_SITES_MAX)
+  return sites.length ? { sites } : {}
 }
 
 const noteOf = (site) => (PLATFORMS[site] || FALLBACK).note

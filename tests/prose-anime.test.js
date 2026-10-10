@@ -11,5 +11,5 @@ test('an empty adaptation list does not claim an anime exists', () => {
 
 test('a listed adaptation still says it has its own page', () => {
   const t = text(comic({ animeInIndex: [{ slug: 'x', title: 'X' }] }))
-  assert.match(t, /There is an anime version, and it has its own page on this site\./)
+  assert.match(t, /There is an anime version of (it|Yakuza Lover), with its own page here\./)
 })

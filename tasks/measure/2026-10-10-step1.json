@@ -1,0 +1,1124 @@
+{
+  "date": "2026-10-10",
+  "label": "step1",
+  "mode": "new",
+  "source": "shards",
+  "sample": 2000,
+  "seed": 7,
+  "report": {
+    "own": {
+      "all": {
+        "pages": 2000,
+        "medianWords": 114,
+        "p10Words": 41,
+        "medianSiteWords": 61,
+        "p10SiteWords": 35,
+        "siteShare": 0.6,
+        "nearDupRate": 0.535,
+        "topSentences": [
+          {
+            "sentence": "Readers tag it shoujo.",
+            "pages": 34,
+            "share": 0.017
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 33,
+            "share": 0.017
+          },
+          {
+            "sentence": "It is a Japanese romance one-shot manga: a single, complete chapter.",
+            "pages": 32,
+            "share": 0.016
+          },
+          {
+            "sentence": "AniList members score it 54 out of 100.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "AniList members score it 63 out of 100.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "AniList members score it 55 out of 100.",
+            "pages": 29,
+            "share": 0.015
+          },
+          {
+            "sentence": "AniList members score it 56 out of 100.",
+            "pages": 28,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 57 out of 100.",
+            "pages": 28,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 62 out of 100.",
+            "pages": 26,
+            "share": 0.013
+          },
+          {
+            "sentence": "AniList members score it 64 out of 100.",
+            "pages": 26,
+            "share": 0.013
+          },
+          {
+            "sentence": "AniList members score it 58 out of 100.",
+            "pages": 25,
+            "share": 0.013
+          },
+          {
+            "sentence": "AniList members score it 53 out of 100.",
+            "pages": 23,
+            "share": 0.012
+          },
+          {
+            "sentence": "AniList members score it 60 out of 100.",
+            "pages": 20,
+            "share": 0.01
+          },
+          {
+            "sentence": "Of its 2 official platforms, Naver Webtoon gives the most away: everything but the newest chapters.",
+            "pages": 20,
+            "share": 0.01
+          },
+          {
+            "sentence": "It is also listed as Minna no Uta.",
+            "pages": 19,
+            "share": 0.01
+          },
+          {
+            "sentence": "Naver Webtoon works without an account; Naver Series asks you to sign in.",
+            "pages": 19,
+            "share": 0.01
+          },
+          {
+            "sentence": "AniList members score it 66 out of 100.",
+            "pages": 17,
+            "share": 0.009
+          },
+          {
+            "sentence": "AniList members score it 65 out of 100.",
+            "pages": 16,
+            "share": 0.008
+          },
+          {
+            "sentence": "Readers tag it male protagonist.",
+            "pages": 16,
+            "share": 0.008
+          }
+        ]
+      },
+      "titleWithLinks": {
+        "pages": 464,
+        "medianWords": 206,
+        "p10Words": 98,
+        "medianSiteWords": 128,
+        "p10SiteWords": 65,
+        "siteShare": 0.648,
+        "nearDupRate": 0.278,
+        "topSentences": [
+          {
+            "sentence": "Of its 2 official platforms, Naver Webtoon gives the most away: everything but the newest chapters.",
+            "pages": 20,
+            "share": 0.043
+          },
+          {
+            "sentence": "Naver Webtoon works without an account; Naver Series asks you to sign in.",
+            "pages": 19,
+            "share": 0.041
+          },
+          {
+            "sentence": "New chapters have been coming out since 2024.",
+            "pages": 14,
+            "share": 0.03
+          },
+          {
+            "sentence": "AniList members score it 53 out of 100.",
+            "pages": 13,
+            "share": 0.028
+          },
+          {
+            "sentence": "AniList members score it 64 out of 100.",
+            "pages": 13,
+            "share": 0.028
+          },
+          {
+            "sentence": "AniList members score it 55 out of 100.",
+            "pages": 12,
+            "share": 0.026
+          },
+          {
+            "sentence": "New chapters have been coming out since 2022.",
+            "pages": 12,
+            "share": 0.026
+          },
+          {
+            "sentence": "New chapters have been coming out since 2025.",
+            "pages": 12,
+            "share": 0.026
+          },
+          {
+            "sentence": "Of its 2 official platforms, YouTube gives the most away: all of it.",
+            "pages": 12,
+            "share": 0.026
+          },
+          {
+            "sentence": "AniList members score it 57 out of 100.",
+            "pages": 11,
+            "share": 0.024
+          },
+          {
+            "sentence": "Of its 3 official platforms, Tapas gives the most away: everything but the newest chapters; Tapas runs on coins.",
+            "pages": 11,
+            "share": 0.024
+          },
+          {
+            "sentence": "Naver Webtoon and WEBTOON work without an account; Naver Series asks you to sign in.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "New chapters have been coming out since 2023.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "New chapters have been coming out since 2026.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "None of them works worldwide: Naver Series serves Korea and Naver Webtoon serves Korea.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "Of its 3 official platforms, Naver Webtoon gives the most away: everything but the newest chapters, as does WEBTOON.",
+            "pages": 10,
+            "share": 0.022
+          },
+          {
+            "sentence": "About one in 2 members who finished it marked it a favourite.",
+            "pages": 9,
+            "share": 0.019
+          },
+          {
+            "sentence": "None of them works worldwide: Naver Webtoon serves Korea and Naver Series serves Korea.",
+            "pages": 9,
+            "share": 0.019
+          },
+          {
+            "sentence": "Tapas works without an account; KakaoPage and Kakao Webtoon ask you to sign in.",
+            "pages": 9,
+            "share": 0.019
+          },
+          {
+            "sentence": "Tapas works worldwide, but KakaoPage serves Korea and Kakao Webtoon serves Korea.",
+            "pages": 9,
+            "share": 0.019
+          }
+        ]
+      },
+      "titleNoLinks": {
+        "pages": 1536,
+        "medianWords": 94,
+        "p10Words": 38,
+        "medianSiteWords": 53,
+        "p10SiteWords": 34,
+        "siteShare": 0.573,
+        "nearDupRate": 0.612,
+        "topSentences": [
+          {
+            "sentence": "Readers tag it shoujo.",
+            "pages": 34,
+            "share": 0.022
+          },
+          {
+            "sentence": "It is a Japanese romance one-shot manga: a single, complete chapter.",
+            "pages": 32,
+            "share": 0.021
+          },
+          {
+            "sentence": "AniList members score it 54 out of 100.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 25,
+            "share": 0.016
+          },
+          {
+            "sentence": "AniList members score it 63 out of 100.",
+            "pages": 22,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 56 out of 100.",
+            "pages": 21,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 58 out of 100.",
+            "pages": 19,
+            "share": 0.012
+          },
+          {
+            "sentence": "It is also listed as Minna no Uta.",
+            "pages": 19,
+            "share": 0.012
+          },
+          {
+            "sentence": "AniList members score it 62 out of 100.",
+            "pages": 18,
+            "share": 0.012
+          },
+          {
+            "sentence": "AniList members score it 55 out of 100.",
+            "pages": 17,
+            "share": 0.011
+          },
+          {
+            "sentence": "AniList members score it 57 out of 100.",
+            "pages": 17,
+            "share": 0.011
+          },
+          {
+            "sentence": "Readers tag it male protagonist.",
+            "pages": 16,
+            "share": 0.01
+          },
+          {
+            "sentence": "Readers tag it seinen.",
+            "pages": 15,
+            "share": 0.01
+          },
+          {
+            "sentence": "AniList members score it 60 out of 100.",
+            "pages": 14,
+            "share": 0.009
+          },
+          {
+            "sentence": "AniList members score it 64 out of 100.",
+            "pages": 13,
+            "share": 0.008
+          },
+          {
+            "sentence": "It is a Japanese comedy and romance one-shot manga: a single, complete chapter.",
+            "pages": 13,
+            "share": 0.008
+          },
+          {
+            "sentence": "It is a Japanese one-shot manga: a single, complete chapter.",
+            "pages": 13,
+            "share": 0.008
+          },
+          {
+            "sentence": "Readers tag it josei.",
+            "pages": 13,
+            "share": 0.008
+          },
+          {
+            "sentence": "AniList members score it 49 out of 100.",
+            "pages": 11,
+            "share": 0.007
+          }
+        ]
+      },
+      "anime": {
+        "pages": 366,
+        "medianWords": 142,
+        "p10Words": 53,
+        "medianSiteWords": 102,
+        "p10SiteWords": 38,
+        "siteShare": 0.688,
+        "nearDupRate": 0.219,
+        "topSentences": [
+          {
+            "sentence": "It is also listed as Minna no Uta.",
+            "pages": 19,
+            "share": 0.052
+          },
+          {
+            "sentence": "AniList members score it 63 out of 100.",
+            "pages": 13,
+            "share": 0.036
+          },
+          {
+            "sentence": "AniList members score it 55 out of 100.",
+            "pages": 12,
+            "share": 0.033
+          },
+          {
+            "sentence": "Of its 2 official platforms, YouTube gives the most away: all of it.",
+            "pages": 12,
+            "share": 0.033
+          },
+          {
+            "sentence": "AniList members score it 66 out of 100.",
+            "pages": 11,
+            "share": 0.03
+          },
+          {
+            "sentence": "It has been announced, with no start date yet.",
+            "pages": 11,
+            "share": 0.03
+          },
+          {
+            "sentence": "AniList members score it 53 out of 100.",
+            "pages": 10,
+            "share": 0.027
+          },
+          {
+            "sentence": "AniList members score it 57 out of 100.",
+            "pages": 10,
+            "share": 0.027
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 10,
+            "share": 0.027
+          },
+          {
+            "sentence": "All 2 episodes aired as an OVA.",
+            "pages": 9,
+            "share": 0.025
+          },
+          {
+            "sentence": "AniList members score it 43 out of 100.",
+            "pages": 9,
+            "share": 0.025
+          },
+          {
+            "sentence": "AniList members score it 54 out of 100.",
+            "pages": 8,
+            "share": 0.022
+          },
+          {
+            "sentence": "AniList members score it 64 out of 100.",
+            "pages": 8,
+            "share": 0.022
+          },
+          {
+            "sentence": "AniList members score it 49 out of 100.",
+            "pages": 7,
+            "share": 0.019
+          },
+          {
+            "sentence": "AniList members score it 62 out of 100.",
+            "pages": 7,
+            "share": 0.019
+          },
+          {
+            "sentence": "It is an original Japanese music video.",
+            "pages": 7,
+            "share": 0.019
+          },
+          {
+            "sentence": "All 13 episodes aired.",
+            "pages": 6,
+            "share": 0.016
+          },
+          {
+            "sentence": "AniList members score it 56 out of 100.",
+            "pages": 6,
+            "share": 0.016
+          },
+          {
+            "sentence": "AniList members score it 65 out of 100.",
+            "pages": 6,
+            "share": 0.016
+          },
+          {
+            "sentence": "AniList members score it 68 out of 100.",
+            "pages": 6,
+            "share": 0.016
+          }
+        ]
+      },
+      "novel": {
+        "pages": 144,
+        "medianWords": 78,
+        "p10Words": 35,
+        "medianSiteWords": 52,
+        "p10SiteWords": 34,
+        "siteShare": 0.549,
+        "nearDupRate": 0.479,
+        "topSentences": [
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 5,
+            "share": 0.035
+          },
+          {
+            "sentence": "It is also filed under supernatural.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "About one in 4 members who finished it marked it a favourite.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It is also filed under slice of life.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It is complete at 22 chapters across 3 volumes.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It sits on 52 AniList plan-to-read lists.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "AniList members score it 59 out of 100.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "AniList members score it 60 out of 100.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It is a Japanese comedy, fantasy and romance novel: finished in 4 volumes.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It is a Japanese fantasy and romance novel: 9 chapters in one volume, all out.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It is complete at 13 chapters across 2 volumes.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It sits on 54 AniList plan-to-read lists.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It sits on 55 AniList plan-to-read lists.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It sits on 61 AniList plan-to-read lists.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "It sits on 71 AniList plan-to-read lists.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "New chapters have been coming out since 2020.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "New chapters have been coming out since 2022.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "New chapters have been coming out since 2023.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "Readers tag it female harem.",
+            "pages": 2,
+            "share": 0.014
+          },
+          {
+            "sentence": "Readers tag it shoujo.",
+            "pages": 2,
+            "share": 0.014
+          }
+        ]
+      }
+    },
+    "page": {
+      "all": {
+        "pages": 2000,
+        "medianWords": 207,
+        "p10Words": 110,
+        "medianSiteWords": 146,
+        "p10SiteWords": 100,
+        "siteShare": 0.784,
+        "nearDupRate": 0.851,
+        "topSentences": [
+          {
+            "sentence": "Yes.",
+            "pages": 1702,
+            "share": 0.851
+          },
+          {
+            "sentence": "Nowhere yet.",
+            "pages": 1536,
+            "share": 0.768
+          },
+          {
+            "sentence": "There is nothing to pay for yet, because no platform has licensed it.",
+            "pages": 1536,
+            "share": 0.768
+          },
+          {
+            "sentence": "The table on this page says how much.",
+            "pages": 391,
+            "share": 0.196
+          },
+          {
+            "sentence": "Partly.",
+            "pages": 389,
+            "share": 0.195
+          },
+          {
+            "sentence": "No account needed.",
+            "pages": 235,
+            "share": 0.118
+          },
+          {
+            "sentence": "1 chapters, and it is finished, by AniList's count.",
+            "pages": 223,
+            "share": 0.112
+          },
+          {
+            "sentence": "1 episodes, and it is finished, by AniList's count.",
+            "pages": 173,
+            "share": 0.087
+          },
+          {
+            "sentence": "Everything below is the same read for more money.",
+            "pages": 171,
+            "share": 0.086
+          },
+          {
+            "sentence": "You do need an account.",
+            "pages": 156,
+            "share": 0.078
+          },
+          {
+            "sentence": "It works in: worldwide.",
+            "pages": 149,
+            "share": 0.075
+          },
+          {
+            "sentence": "It gives you every chapter but the newest, for nothing.",
+            "pages": 131,
+            "share": 0.066
+          },
+          {
+            "sentence": "It gives you one chapter at a time, for nothing, if you wait.",
+            "pages": 100,
+            "share": 0.05
+          },
+          {
+            "sentence": "One episode carries a few chapters, so the anime shows you a slice of the book, never the whole of it.",
+            "pages": 99,
+            "share": 0.05
+          },
+          {
+            "sentence": "If an English cast is credited, this page says so.",
+            "pages": 98,
+            "share": 0.049
+          },
+          {
+            "sentence": "5 chapters, and it is finished, by AniList's count.",
+            "pages": 80,
+            "share": 0.04
+          },
+          {
+            "sentence": "Free part: all but the newest.",
+            "pages": 80,
+            "share": 0.04
+          },
+          {
+            "sentence": "6 chapters, and it is finished, by AniList's count.",
+            "pages": 69,
+            "share": 0.035
+          },
+          {
+            "sentence": "Not every platform carries the dub in every region, so check the audio options on the one you pick.",
+            "pages": 68,
+            "share": 0.034
+          },
+          {
+            "sentence": "It gives you the whole thing, for nothing.",
+            "pages": 66,
+            "share": 0.033
+          }
+        ]
+      },
+      "titleWithLinks": {
+        "pages": 464,
+        "medianWords": 375,
+        "p10Words": 232,
+        "medianSiteWords": 294,
+        "p10SiteWords": 195,
+        "siteShare": 0.819,
+        "nearDupRate": 0.718,
+        "topSentences": [
+          {
+            "sentence": "Yes.",
+            "pages": 403,
+            "share": 0.869
+          },
+          {
+            "sentence": "The table on this page says how much.",
+            "pages": 391,
+            "share": 0.843
+          },
+          {
+            "sentence": "Partly.",
+            "pages": 389,
+            "share": 0.838
+          },
+          {
+            "sentence": "No account needed.",
+            "pages": 235,
+            "share": 0.506
+          },
+          {
+            "sentence": "Everything below is the same read for more money.",
+            "pages": 171,
+            "share": 0.369
+          },
+          {
+            "sentence": "You do need an account.",
+            "pages": 156,
+            "share": 0.336
+          },
+          {
+            "sentence": "It works in: worldwide.",
+            "pages": 149,
+            "share": 0.321
+          },
+          {
+            "sentence": "It gives you every chapter but the newest, for nothing.",
+            "pages": 131,
+            "share": 0.282
+          },
+          {
+            "sentence": "It gives you one chapter at a time, for nothing, if you wait.",
+            "pages": 100,
+            "share": 0.216
+          },
+          {
+            "sentence": "Free part: all but the newest.",
+            "pages": 80,
+            "share": 0.172
+          },
+          {
+            "sentence": "It gives you the whole thing, for nothing.",
+            "pages": 66,
+            "share": 0.142
+          },
+          {
+            "sentence": "Cheapest legal way in: YouTube.",
+            "pages": 63,
+            "share": 0.136
+          },
+          {
+            "sentence": "Free tier, or monthly plan.",
+            "pages": 63,
+            "share": 0.136
+          },
+          {
+            "sentence": "One episode carries a few chapters, so the anime shows you a slice of the book, never the whole of it.",
+            "pages": 57,
+            "share": 0.123
+          },
+          {
+            "sentence": "Free part: the first episodes.",
+            "pages": 56,
+            "share": 0.121
+          },
+          {
+            "sentence": "1 episodes, and it is finished, by AniList's count.",
+            "pages": 52,
+            "share": 0.112
+          },
+          {
+            "sentence": "Not every platform carries the dub in every region, so check the audio options on the one you pick.",
+            "pages": 52,
+            "share": 0.112
+          },
+          {
+            "sentence": "Everything below is the same watch for more money.",
+            "pages": 51,
+            "share": 0.11
+          },
+          {
+            "sentence": "Free with ads.",
+            "pages": 44,
+            "share": 0.095
+          },
+          {
+            "sentence": "YouTube gives you some of it without paying.",
+            "pages": 40,
+            "share": 0.086
+          }
+        ]
+      },
+      "titleNoLinks": {
+        "pages": 1536,
+        "medianWords": 173,
+        "p10Words": 106,
+        "medianSiteWords": 131,
+        "p10SiteWords": 97,
+        "siteShare": 0.762,
+        "nearDupRate": 0.891,
+        "topSentences": [
+          {
+            "sentence": "Nowhere yet.",
+            "pages": 1536,
+            "share": 1
+          },
+          {
+            "sentence": "There is nothing to pay for yet, because no platform has licensed it.",
+            "pages": 1536,
+            "share": 1
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 1299,
+            "share": 0.846
+          },
+          {
+            "sentence": "1 chapters, and it is finished, by AniList's count.",
+            "pages": 216,
+            "share": 0.141
+          },
+          {
+            "sentence": "1 episodes, and it is finished, by AniList's count.",
+            "pages": 121,
+            "share": 0.079
+          },
+          {
+            "sentence": "5 chapters, and it is finished, by AniList's count.",
+            "pages": 80,
+            "share": 0.052
+          },
+          {
+            "sentence": "If an English cast is credited, this page says so.",
+            "pages": 64,
+            "share": 0.042
+          },
+          {
+            "sentence": "6 chapters, and it is finished, by AniList's count.",
+            "pages": 63,
+            "share": 0.041
+          },
+          {
+            "sentence": "4 chapters, and it is finished, by AniList's count.",
+            "pages": 42,
+            "share": 0.027
+          },
+          {
+            "sentence": "8 chapters, and it is finished, by AniList's count.",
+            "pages": 42,
+            "share": 0.027
+          },
+          {
+            "sentence": "One episode carries a few chapters, so the anime shows you a slice of the book, never the whole of it.",
+            "pages": 42,
+            "share": 0.027
+          },
+          {
+            "sentence": "12 chapters, and it is finished, by AniList's count.",
+            "pages": 39,
+            "share": 0.025
+          },
+          {
+            "sentence": "Readers tag it shoujo.",
+            "pages": 34,
+            "share": 0.022
+          },
+          {
+            "sentence": "7 chapters, and it is finished, by AniList's count.",
+            "pages": 32,
+            "share": 0.021
+          },
+          {
+            "sentence": "It is a Japanese romance one-shot manga: a single, complete chapter.",
+            "pages": 32,
+            "share": 0.021
+          },
+          {
+            "sentence": "1 part comes before it, so read that one first.",
+            "pages": 30,
+            "share": 0.02
+          },
+          {
+            "sentence": "1 more part follows it.",
+            "pages": 28,
+            "share": 0.018
+          },
+          {
+            "sentence": "10 chapters, and it is finished, by AniList's count.",
+            "pages": 28,
+            "share": 0.018
+          },
+          {
+            "sentence": "AniList members score it 54 out of 100.",
+            "pages": 26,
+            "share": 0.017
+          },
+          {
+            "sentence": "If the anime stopped too soon for you, the manga is where the story keeps going.",
+            "pages": 26,
+            "share": 0.017
+          }
+        ]
+      },
+      "anime": {
+        "pages": 366,
+        "medianWords": 293,
+        "p10Words": 129,
+        "medianSiteWords": 247,
+        "p10SiteWords": 112,
+        "siteShare": 0.852,
+        "nearDupRate": 0.705,
+        "topSentences": [
+          {
+            "sentence": "Yes.",
+            "pages": 348,
+            "share": 0.951
+          },
+          {
+            "sentence": "Nowhere yet.",
+            "pages": 209,
+            "share": 0.571
+          },
+          {
+            "sentence": "There is nothing to pay for yet, because no platform has licensed it.",
+            "pages": 209,
+            "share": 0.571
+          },
+          {
+            "sentence": "1 episodes, and it is finished, by AniList's count.",
+            "pages": 173,
+            "share": 0.473
+          },
+          {
+            "sentence": "The table on this page says how much.",
+            "pages": 121,
+            "share": 0.331
+          },
+          {
+            "sentence": "Partly.",
+            "pages": 119,
+            "share": 0.325
+          },
+          {
+            "sentence": "One episode carries a few chapters, so the anime shows you a slice of the book, never the whole of it.",
+            "pages": 99,
+            "share": 0.27
+          },
+          {
+            "sentence": "If an English cast is credited, this page says so.",
+            "pages": 98,
+            "share": 0.268
+          },
+          {
+            "sentence": "No account needed.",
+            "pages": 86,
+            "share": 0.235
+          },
+          {
+            "sentence": "It works in: worldwide.",
+            "pages": 69,
+            "share": 0.189
+          },
+          {
+            "sentence": "Not every platform carries the dub in every region, so check the audio options on the one you pick.",
+            "pages": 68,
+            "share": 0.186
+          },
+          {
+            "sentence": "It gives you the whole thing, for nothing.",
+            "pages": 66,
+            "share": 0.18
+          },
+          {
+            "sentence": "Cheapest legal way in: YouTube.",
+            "pages": 63,
+            "share": 0.172
+          },
+          {
+            "sentence": "If the anime stopped too soon for you, the manga is where the story keeps going.",
+            "pages": 59,
+            "share": 0.161
+          },
+          {
+            "sentence": "Free part: the first episodes.",
+            "pages": 56,
+            "share": 0.153
+          },
+          {
+            "sentence": "Free tier, or monthly plan.",
+            "pages": 56,
+            "share": 0.153
+          },
+          {
+            "sentence": "Everything below is the same watch for more money.",
+            "pages": 51,
+            "share": 0.139
+          },
+          {
+            "sentence": "12 episodes, and it is finished, by AniList's count.",
+            "pages": 45,
+            "share": 0.123
+          },
+          {
+            "sentence": "YouTube gives you some of it without paying.",
+            "pages": 40,
+            "share": 0.109
+          },
+          {
+            "sentence": "The song list on this page has the others.",
+            "pages": 39,
+            "share": 0.107
+          }
+        ]
+      },
+      "novel": {
+        "pages": 144,
+        "medianWords": 197,
+        "p10Words": 101,
+        "medianSiteWords": 141,
+        "p10SiteWords": 99,
+        "siteShare": 0.765,
+        "nearDupRate": 0.799,
+        "topSentences": [
+          {
+            "sentence": "Nowhere yet.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "There is nothing to pay for yet, because no platform has licensed it.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 91,
+            "share": 0.632
+          },
+          {
+            "sentence": "J-Novel Club does.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "On J-Novel Club.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "8 chapters, and it is finished, by AniList's count.",
+            "pages": 6,
+            "share": 0.042
+          },
+          {
+            "sentence": "7 chapters, and it is finished, by AniList's count.",
+            "pages": 5,
+            "share": 0.035
+          },
+          {
+            "sentence": "There is an anime version of it, with its own page here.",
+            "pages": 5,
+            "share": 0.035
+          },
+          {
+            "sentence": "6 chapters, and it is finished, by AniList's count.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "9 chapters, and it is finished, by AniList's count.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "It is also filed under supernatural.",
+            "pages": 4,
+            "share": 0.028
+          },
+          {
+            "sentence": "1 part comes before it, so read that one first.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "22 chapters, and it is finished, by AniList's count.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "4 chapters, and it is finished, by AniList's count.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "About one in 4 members who finished it marked it a favourite.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "An episode carries a few chapters at a time, so the anime is a slice of the novel, not a replacement for it.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "Finished the anime?",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It is also filed under slice of life.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It is complete at 22 chapters across 3 volumes.",
+            "pages": 3,
+            "share": 0.021
+          },
+          {
+            "sentence": "It sits on 52 AniList plan-to-read lists.",
+            "pages": 3,
+            "share": 0.021
+          }
+        ]
+      }
+    }
+  }
+}

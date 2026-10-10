@@ -1,0 +1,1124 @@
+{
+  "date": "2026-10-10",
+  "label": "baseline",
+  "mode": "old",
+  "source": "shards",
+  "sample": 2000,
+  "seed": 7,
+  "report": {
+    "own": {
+      "all": {
+        "pages": 2000,
+        "medianWords": 195,
+        "p10Words": 142,
+        "medianSiteWords": 152,
+        "p10SiteWords": 133,
+        "siteShare": 0.746,
+        "nearDupRate": 0.989,
+        "topSentences": [
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here as soon as it appears.",
+            "pages": 1536,
+            "share": 0.768
+          },
+          {
+            "sentence": "No official platform listed yet.",
+            "pages": 1532,
+            "share": 0.766
+          },
+          {
+            "sentence": "When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.",
+            "pages": 1523,
+            "share": 0.762
+          },
+          {
+            "sentence": "The story is finished, so you can read it start to end.",
+            "pages": 1334,
+            "share": 0.667
+          },
+          {
+            "sentence": "That usually changes once a series gets popular, so it is worth checking back.",
+            "pages": 1327,
+            "share": 0.664
+          },
+          {
+            "sentence": "Platforms change their terms, so the platform's own page is the last word.",
+            "pages": 464,
+            "share": 0.232
+          },
+          {
+            "sentence": "Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.",
+            "pages": 461,
+            "share": 0.231
+          },
+          {
+            "sentence": "The story is finished, so you can watch it start to end.",
+            "pages": 350,
+            "share": 0.175
+          },
+          {
+            "sentence": "New parts are still coming out.",
+            "pages": 291,
+            "share": 0.146
+          },
+          {
+            "sentence": "1 official platform carries it.",
+            "pages": 237,
+            "share": 0.119
+          },
+          {
+            "sentence": "It has 1 chapters.",
+            "pages": 232,
+            "share": 0.116
+          },
+          {
+            "sentence": "It holds 1 chapters.",
+            "pages": 219,
+            "share": 0.11
+          },
+          {
+            "sentence": "It may be region-locked or not licensed yet.",
+            "pages": 209,
+            "share": 0.105
+          },
+          {
+            "sentence": "1 of them lets you start without paying.",
+            "pages": 194,
+            "share": 0.097
+          },
+          {
+            "sentence": "It has 1 episodes.",
+            "pages": 173,
+            "share": 0.087
+          },
+          {
+            "sentence": "It holds 1 episodes.",
+            "pages": 173,
+            "share": 0.087
+          },
+          {
+            "sentence": "None of them is worldwide.",
+            "pages": 124,
+            "share": 0.062
+          },
+          {
+            "sentence": "No English edition yet.",
+            "pages": 117,
+            "share": 0.059
+          },
+          {
+            "sentence": "None of them serve English yet.",
+            "pages": 117,
+            "share": 0.059
+          },
+          {
+            "sentence": "2 official platforms carry it.",
+            "pages": 99,
+            "share": 0.05
+          }
+        ]
+      },
+      "titleWithLinks": {
+        "pages": 464,
+        "medianWords": 228,
+        "p10Words": 153,
+        "medianSiteWords": 152,
+        "p10SiteWords": 127,
+        "siteShare": 0.686,
+        "nearDupRate": 0.953,
+        "topSentences": [
+          {
+            "sentence": "Platforms change their terms, so the platform's own page is the last word.",
+            "pages": 464,
+            "share": 1
+          },
+          {
+            "sentence": "Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.",
+            "pages": 461,
+            "share": 0.994
+          },
+          {
+            "sentence": "1 official platform carries it.",
+            "pages": 237,
+            "share": 0.511
+          },
+          {
+            "sentence": "The story is finished, so you can read it start to end.",
+            "pages": 225,
+            "share": 0.485
+          },
+          {
+            "sentence": "1 of them lets you start without paying.",
+            "pages": 194,
+            "share": 0.418
+          },
+          {
+            "sentence": "The story is finished, so you can watch it start to end.",
+            "pages": 148,
+            "share": 0.319
+          },
+          {
+            "sentence": "None of them is worldwide.",
+            "pages": 124,
+            "share": 0.267
+          },
+          {
+            "sentence": "No English edition yet.",
+            "pages": 117,
+            "share": 0.252
+          },
+          {
+            "sentence": "None of them serve English yet.",
+            "pages": 117,
+            "share": 0.252
+          },
+          {
+            "sentence": "2 official platforms carry it.",
+            "pages": 99,
+            "share": 0.213
+          },
+          {
+            "sentence": "2 of them let you start without paying.",
+            "pages": 90,
+            "share": 0.194
+          },
+          {
+            "sentence": "New parts are still coming out.",
+            "pages": 80,
+            "share": 0.172
+          },
+          {
+            "sentence": "Every one of them asks for money first.",
+            "pages": 73,
+            "share": 0.157
+          },
+          {
+            "sentence": "3 official platforms carry it.",
+            "pages": 70,
+            "share": 0.151
+          },
+          {
+            "sentence": "There are 2 official places to read it.",
+            "pages": 69,
+            "share": 0.149
+          },
+          {
+            "sentence": "English is one of the 1 language on offer: English.",
+            "pages": 68,
+            "share": 0.147
+          },
+          {
+            "sentence": "All of them serve English.",
+            "pages": 65,
+            "share": 0.14
+          },
+          {
+            "sentence": "The official languages are Korean.",
+            "pages": 62,
+            "share": 0.134
+          },
+          {
+            "sentence": "3 of them let you start without paying.",
+            "pages": 60,
+            "share": 0.129
+          },
+          {
+            "sentence": "There are 3 official places to read it.",
+            "pages": 55,
+            "share": 0.119
+          }
+        ]
+      },
+      "titleNoLinks": {
+        "pages": 1536,
+        "medianWords": 186,
+        "p10Words": 141,
+        "medianSiteWords": 152,
+        "p10SiteWords": 134,
+        "siteShare": 0.766,
+        "nearDupRate": 1,
+        "topSentences": [
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here as soon as it appears.",
+            "pages": 1536,
+            "share": 1
+          },
+          {
+            "sentence": "No official platform listed yet.",
+            "pages": 1532,
+            "share": 0.997
+          },
+          {
+            "sentence": "When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.",
+            "pages": 1523,
+            "share": 0.992
+          },
+          {
+            "sentence": "That usually changes once a series gets popular, so it is worth checking back.",
+            "pages": 1327,
+            "share": 0.864
+          },
+          {
+            "sentence": "The story is finished, so you can read it start to end.",
+            "pages": 1109,
+            "share": 0.722
+          },
+          {
+            "sentence": "It has 1 chapters.",
+            "pages": 217,
+            "share": 0.141
+          },
+          {
+            "sentence": "New parts are still coming out.",
+            "pages": 211,
+            "share": 0.137
+          },
+          {
+            "sentence": "It may be region-locked or not licensed yet.",
+            "pages": 209,
+            "share": 0.136
+          },
+          {
+            "sentence": "It holds 1 chapters.",
+            "pages": 204,
+            "share": 0.133
+          },
+          {
+            "sentence": "The story is finished, so you can watch it start to end.",
+            "pages": 202,
+            "share": 0.132
+          },
+          {
+            "sentence": "It has 1 episodes.",
+            "pages": 121,
+            "share": 0.079
+          },
+          {
+            "sentence": "It holds 1 episodes.",
+            "pages": 121,
+            "share": 0.079
+          },
+          {
+            "sentence": "It has 5 chapters.",
+            "pages": 81,
+            "share": 0.053
+          },
+          {
+            "sentence": "It holds 5 chapters and 1 volumes.",
+            "pages": 75,
+            "share": 0.049
+          },
+          {
+            "sentence": "It holds 1 volumes.",
+            "pages": 74,
+            "share": 0.048
+          },
+          {
+            "sentence": "Readers file it under romance.",
+            "pages": 69,
+            "share": 0.045
+          },
+          {
+            "sentence": "There is an anime version, and it has its own page on this site.",
+            "pages": 64,
+            "share": 0.042
+          },
+          {
+            "sentence": "It has 6 chapters.",
+            "pages": 63,
+            "share": 0.041
+          },
+          {
+            "sentence": "It holds 6 chapters and 1 volumes.",
+            "pages": 62,
+            "share": 0.04
+          },
+          {
+            "sentence": "It sits in romance.",
+            "pages": 55,
+            "share": 0.036
+          }
+        ]
+      },
+      "anime": {
+        "pages": 366,
+        "medianWords": 183,
+        "p10Words": 137,
+        "medianSiteWords": 145,
+        "p10SiteWords": 122,
+        "siteShare": 0.746,
+        "nearDupRate": 0.986,
+        "topSentences": [
+          {
+            "sentence": "The story is finished, so you can watch it start to end.",
+            "pages": 350,
+            "share": 0.956
+          },
+          {
+            "sentence": "It may be region-locked or not licensed yet.",
+            "pages": 209,
+            "share": 0.571
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here as soon as it appears.",
+            "pages": 209,
+            "share": 0.571
+          },
+          {
+            "sentence": "No official platform listed yet.",
+            "pages": 205,
+            "share": 0.56
+          },
+          {
+            "sentence": "When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.",
+            "pages": 205,
+            "share": 0.56
+          },
+          {
+            "sentence": "It has 1 episodes.",
+            "pages": 173,
+            "share": 0.473
+          },
+          {
+            "sentence": "It holds 1 episodes.",
+            "pages": 173,
+            "share": 0.473
+          },
+          {
+            "sentence": "Platforms change their terms, so the platform's own page is the last word.",
+            "pages": 157,
+            "share": 0.429
+          },
+          {
+            "sentence": "Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.",
+            "pages": 154,
+            "share": 0.421
+          },
+          {
+            "sentence": "1 official platform carries it.",
+            "pages": 101,
+            "share": 0.276
+          },
+          {
+            "sentence": "1 of them lets you start without paying.",
+            "pages": 92,
+            "share": 0.251
+          },
+          {
+            "sentence": "All of them serve English.",
+            "pages": 54,
+            "share": 0.148
+          },
+          {
+            "sentence": "It has 12 episodes.",
+            "pages": 51,
+            "share": 0.139
+          },
+          {
+            "sentence": "It holds 12 episodes.",
+            "pages": 51,
+            "share": 0.139
+          },
+          {
+            "sentence": "YouTube has free chapters or a free tier.",
+            "pages": 40,
+            "share": 0.109
+          },
+          {
+            "sentence": "YouTube costs nothing.",
+            "pages": 39,
+            "share": 0.107
+          },
+          {
+            "sentence": "Every one of them asks for money first.",
+            "pages": 36,
+            "share": 0.098
+          },
+          {
+            "sentence": "Crunchyroll has free chapters or a free tier.",
+            "pages": 35,
+            "share": 0.096
+          },
+          {
+            "sentence": "There is one official place to watch it: YouTube.",
+            "pages": 34,
+            "share": 0.093
+          },
+          {
+            "sentence": "2 official platforms carry it.",
+            "pages": 30,
+            "share": 0.082
+          }
+        ]
+      },
+      "novel": {
+        "pages": 144,
+        "medianWords": 198,
+        "p10Words": 143,
+        "medianSiteWords": 159,
+        "p10SiteWords": 135,
+        "siteShare": 0.76,
+        "nearDupRate": 0.993,
+        "topSentences": [
+          {
+            "sentence": "No official platform listed yet.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "That usually changes once a series gets popular, so it is worth checking back.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here as soon as it appears.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.",
+            "pages": 132,
+            "share": 0.917
+          },
+          {
+            "sentence": "The story is finished, so you can read it start to end.",
+            "pages": 87,
+            "share": 0.604
+          },
+          {
+            "sentence": "New parts are still coming out.",
+            "pages": 57,
+            "share": 0.396
+          },
+          {
+            "sentence": "It holds 1 volumes.",
+            "pages": 12,
+            "share": 0.083
+          },
+          {
+            "sentence": "There is an anime version, and it has its own page on this site.",
+            "pages": 12,
+            "share": 0.083
+          },
+          {
+            "sentence": "1 official platform carries it.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "English is one of the 1 language on offer: English.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "Every one of them asks for money first.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "Platforms change their terms, so the platform's own page is the last word.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "The whole run came out in 2014.",
+            "pages": 9,
+            "share": 0.063
+          },
+          {
+            "sentence": "It started in 2020.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "It started in 2022.",
+            "pages": 8,
+            "share": 0.056
+          },
+          {
+            "sentence": "It started in 2023.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "It started in 2025.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "There is one official place to read it: J-Novel Club.",
+            "pages": 7,
+            "share": 0.049
+          },
+          {
+            "sentence": "It has 8 chapters.",
+            "pages": 6,
+            "share": 0.042
+          }
+        ]
+      }
+    },
+    "page": {
+      "all": {
+        "pages": 2000,
+        "medianWords": 319,
+        "p10Words": 231,
+        "medianSiteWords": 265,
+        "p10SiteWords": 219,
+        "siteShare": 0.847,
+        "nearDupRate": 0.996,
+        "topSentences": [
+          {
+            "sentence": "Yes.",
+            "pages": 1702,
+            "share": 0.851
+          },
+          {
+            "sentence": "Nowhere yet.",
+            "pages": 1536,
+            "share": 0.768
+          },
+          {
+            "sentence": "There is nothing to pay for yet, because no platform has licensed it.",
+            "pages": 1536,
+            "share": 0.768
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here as soon as it appears.",
+            "pages": 1536,
+            "share": 0.768
+          },
+          {
+            "sentence": "This page updates every day, so a new licence shows up here on its own.",
+            "pages": 1536,
+            "share": 0.768
+          },
+          {
+            "sentence": "No official platform listed yet.",
+            "pages": 1532,
+            "share": 0.766
+          },
+          {
+            "sentence": "When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.",
+            "pages": 1523,
+            "share": 0.762
+          },
+          {
+            "sentence": "That count comes from AniList and is refreshed every day.",
+            "pages": 1506,
+            "share": 0.753
+          },
+          {
+            "sentence": "The story is finished, so you can read it start to end.",
+            "pages": 1334,
+            "share": 0.667
+          },
+          {
+            "sentence": "That usually changes once a series gets popular, so it is worth checking back.",
+            "pages": 1324,
+            "share": 0.662
+          },
+          {
+            "sentence": "Every face in the cast has its own page on this site, with age, height and every other title they turn up in.",
+            "pages": 495,
+            "share": 0.248
+          },
+          {
+            "sentence": "Platforms change their terms, so the platform's own page is the last word.",
+            "pages": 464,
+            "share": 0.232
+          },
+          {
+            "sentence": "Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.",
+            "pages": 461,
+            "share": 0.231
+          },
+          {
+            "sentence": "The table on this page says how much.",
+            "pages": 391,
+            "share": 0.196
+          },
+          {
+            "sentence": "Partly.",
+            "pages": 389,
+            "share": 0.195
+          },
+          {
+            "sentence": "The story is finished, so you can watch it start to end.",
+            "pages": 350,
+            "share": 0.175
+          },
+          {
+            "sentence": "New parts are still coming out.",
+            "pages": 291,
+            "share": 0.146
+          },
+          {
+            "sentence": "1 official platform carries it.",
+            "pages": 237,
+            "share": 0.119
+          },
+          {
+            "sentence": "No account needed.",
+            "pages": 235,
+            "share": 0.118
+          },
+          {
+            "sentence": "It has 1 chapters.",
+            "pages": 232,
+            "share": 0.116
+          }
+        ]
+      },
+      "titleWithLinks": {
+        "pages": 464,
+        "medianWords": 424,
+        "p10Words": 309,
+        "medianSiteWords": 344,
+        "p10SiteWords": 274,
+        "siteShare": 0.84,
+        "nearDupRate": 0.983,
+        "topSentences": [
+          {
+            "sentence": "Platforms change their terms, so the platform's own page is the last word.",
+            "pages": 464,
+            "share": 1
+          },
+          {
+            "sentence": "Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.",
+            "pages": 461,
+            "share": 0.994
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 403,
+            "share": 0.869
+          },
+          {
+            "sentence": "The table on this page says how much.",
+            "pages": 391,
+            "share": 0.843
+          },
+          {
+            "sentence": "Partly.",
+            "pages": 389,
+            "share": 0.838
+          },
+          {
+            "sentence": "That count comes from AniList and is refreshed every day.",
+            "pages": 345,
+            "share": 0.744
+          },
+          {
+            "sentence": "1 official platform carries it.",
+            "pages": 237,
+            "share": 0.511
+          },
+          {
+            "sentence": "No account needed.",
+            "pages": 235,
+            "share": 0.506
+          },
+          {
+            "sentence": "The story is finished, so you can read it start to end.",
+            "pages": 225,
+            "share": 0.485
+          },
+          {
+            "sentence": "1 of them lets you start without paying.",
+            "pages": 194,
+            "share": 0.418
+          },
+          {
+            "sentence": "Every face in the cast has its own page on this site, with age, height and every other title they turn up in.",
+            "pages": 187,
+            "share": 0.403
+          },
+          {
+            "sentence": "Everything below is the same read for more money.",
+            "pages": 171,
+            "share": 0.369
+          },
+          {
+            "sentence": "You do need an account.",
+            "pages": 156,
+            "share": 0.336
+          },
+          {
+            "sentence": "It works in: worldwide.",
+            "pages": 149,
+            "share": 0.321
+          },
+          {
+            "sentence": "The story is finished, so you can watch it start to end.",
+            "pages": 148,
+            "share": 0.319
+          },
+          {
+            "sentence": "It gives you every chapter but the newest, for nothing.",
+            "pages": 131,
+            "share": 0.282
+          },
+          {
+            "sentence": "None of them is worldwide.",
+            "pages": 124,
+            "share": 0.267
+          },
+          {
+            "sentence": "No English edition yet.",
+            "pages": 117,
+            "share": 0.252
+          },
+          {
+            "sentence": "None of them serve English yet.",
+            "pages": 117,
+            "share": 0.252
+          },
+          {
+            "sentence": "It gives you one chapter at a time, for nothing, if you wait.",
+            "pages": 100,
+            "share": 0.216
+          }
+        ]
+      },
+      "titleNoLinks": {
+        "pages": 1536,
+        "medianWords": 292,
+        "p10Words": 226,
+        "medianSiteWords": 250,
+        "p10SiteWords": 214,
+        "siteShare": 0.85,
+        "nearDupRate": 1,
+        "topSentences": [
+          {
+            "sentence": "Nowhere yet.",
+            "pages": 1536,
+            "share": 1
+          },
+          {
+            "sentence": "There is nothing to pay for yet, because no platform has licensed it.",
+            "pages": 1536,
+            "share": 1
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here as soon as it appears.",
+            "pages": 1536,
+            "share": 1
+          },
+          {
+            "sentence": "This page updates every day, so a new licence shows up here on its own.",
+            "pages": 1536,
+            "share": 1
+          },
+          {
+            "sentence": "No official platform listed yet.",
+            "pages": 1532,
+            "share": 0.997
+          },
+          {
+            "sentence": "When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.",
+            "pages": 1523,
+            "share": 0.992
+          },
+          {
+            "sentence": "That usually changes once a series gets popular, so it is worth checking back.",
+            "pages": 1324,
+            "share": 0.862
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 1299,
+            "share": 0.846
+          },
+          {
+            "sentence": "That count comes from AniList and is refreshed every day.",
+            "pages": 1161,
+            "share": 0.756
+          },
+          {
+            "sentence": "The story is finished, so you can read it start to end.",
+            "pages": 1109,
+            "share": 0.722
+          },
+          {
+            "sentence": "Every face in the cast has its own page on this site, with age, height and every other title they turn up in.",
+            "pages": 308,
+            "share": 0.201
+          },
+          {
+            "sentence": "It has 1 chapters.",
+            "pages": 217,
+            "share": 0.141
+          },
+          {
+            "sentence": "1 chapters, and it is finished.",
+            "pages": 216,
+            "share": 0.141
+          },
+          {
+            "sentence": "New parts are still coming out.",
+            "pages": 211,
+            "share": 0.137
+          },
+          {
+            "sentence": "It may be region-locked or not licensed yet.",
+            "pages": 205,
+            "share": 0.133
+          },
+          {
+            "sentence": "It holds 1 chapters.",
+            "pages": 204,
+            "share": 0.133
+          },
+          {
+            "sentence": "The story is finished, so you can watch it start to end.",
+            "pages": 202,
+            "share": 0.132
+          },
+          {
+            "sentence": "1 episodes, and it is finished.",
+            "pages": 121,
+            "share": 0.079
+          },
+          {
+            "sentence": "It has 1 episodes.",
+            "pages": 121,
+            "share": 0.079
+          },
+          {
+            "sentence": "It holds 1 episodes.",
+            "pages": 121,
+            "share": 0.079
+          }
+        ]
+      },
+      "anime": {
+        "pages": 366,
+        "medianWords": 373,
+        "p10Words": 239,
+        "medianSiteWords": 333,
+        "p10SiteWords": 222,
+        "siteShare": 0.877,
+        "nearDupRate": 0.995,
+        "topSentences": [
+          {
+            "sentence": "The story is finished, so you can watch it start to end.",
+            "pages": 350,
+            "share": 0.956
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 348,
+            "share": 0.951
+          },
+          {
+            "sentence": "That count comes from AniList and is refreshed every day.",
+            "pages": 339,
+            "share": 0.926
+          },
+          {
+            "sentence": "Every face in the cast has its own page on this site, with age, height and every other title they turn up in.",
+            "pages": 211,
+            "share": 0.577
+          },
+          {
+            "sentence": "Nowhere yet.",
+            "pages": 209,
+            "share": 0.571
+          },
+          {
+            "sentence": "There is nothing to pay for yet, because no platform has licensed it.",
+            "pages": 209,
+            "share": 0.571
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here as soon as it appears.",
+            "pages": 209,
+            "share": 0.571
+          },
+          {
+            "sentence": "This page updates every day, so a new licence shows up here on its own.",
+            "pages": 209,
+            "share": 0.571
+          },
+          {
+            "sentence": "It may be region-locked or not licensed yet.",
+            "pages": 205,
+            "share": 0.56
+          },
+          {
+            "sentence": "No official platform listed yet.",
+            "pages": 205,
+            "share": 0.56
+          },
+          {
+            "sentence": "When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.",
+            "pages": 205,
+            "share": 0.56
+          },
+          {
+            "sentence": "1 episodes, and it is finished.",
+            "pages": 173,
+            "share": 0.473
+          },
+          {
+            "sentence": "It has 1 episodes.",
+            "pages": 173,
+            "share": 0.473
+          },
+          {
+            "sentence": "It holds 1 episodes.",
+            "pages": 173,
+            "share": 0.473
+          },
+          {
+            "sentence": "Platforms change their terms, so the platform's own page is the last word.",
+            "pages": 157,
+            "share": 0.429
+          },
+          {
+            "sentence": "Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.",
+            "pages": 154,
+            "share": 0.421
+          },
+          {
+            "sentence": "The table on this page says how much.",
+            "pages": 121,
+            "share": 0.331
+          },
+          {
+            "sentence": "Partly.",
+            "pages": 119,
+            "share": 0.325
+          },
+          {
+            "sentence": "1 official platform carries it.",
+            "pages": 101,
+            "share": 0.276
+          },
+          {
+            "sentence": "One episode carries a few chapters, so the anime shows you a slice of the book, never the whole of it.",
+            "pages": 99,
+            "share": 0.27
+          }
+        ]
+      },
+      "novel": {
+        "pages": 144,
+        "medianWords": 329,
+        "p10Words": 223,
+        "medianSiteWords": 268,
+        "p10SiteWords": 214,
+        "siteShare": 0.849,
+        "nearDupRate": 1,
+        "topSentences": [
+          {
+            "sentence": "No official platform listed yet.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "Nowhere yet.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "There is nothing to pay for yet, because no platform has licensed it.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here as soon as it appears.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "This page updates every day, so a new licence shows up here on its own.",
+            "pages": 133,
+            "share": 0.924
+          },
+          {
+            "sentence": "That usually changes once a series gets popular, so it is worth checking back.",
+            "pages": 132,
+            "share": 0.917
+          },
+          {
+            "sentence": "When a licence appears, it is listed here. manhwaindex links only to official platforms and never to unlicensed copies.",
+            "pages": 132,
+            "share": 0.917
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 91,
+            "share": 0.632
+          },
+          {
+            "sentence": "The story is finished, so you can read it start to end.",
+            "pages": 87,
+            "share": 0.604
+          },
+          {
+            "sentence": "That count comes from AniList and is refreshed every day.",
+            "pages": 58,
+            "share": 0.403
+          },
+          {
+            "sentence": "New parts are still coming out.",
+            "pages": 57,
+            "share": 0.396
+          },
+          {
+            "sentence": "Every face in the cast has its own page on this site, with age, height and every other title they turn up in.",
+            "pages": 27,
+            "share": 0.188
+          },
+          {
+            "sentence": "It holds 1 volumes.",
+            "pages": 12,
+            "share": 0.083
+          },
+          {
+            "sentence": "There is an anime version, and it has its own page on this site.",
+            "pages": 12,
+            "share": 0.083
+          },
+          {
+            "sentence": "1 official platform carries it.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "English is one of the 1 language on offer: English.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "Every link on this page goes straight to the platform that holds the licence. manhwaindex hosts no chapters and no episodes.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "Every one of them asks for money first.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "Platforms change their terms, so the platform's own page is the last word.",
+            "pages": 11,
+            "share": 0.076
+          },
+          {
+            "sentence": "The whole run came out in 2014.",
+            "pages": 9,
+            "share": 0.063
+          }
+        ]
+      }
+    }
+  }
+}
