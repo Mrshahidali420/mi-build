@@ -492,11 +492,12 @@ const jsonld = {
           <About
             title={primary}
             heading={`About ${primary}`}
-            sub={bio.trim() ? 'Bio from AniList.' : null}
             quickFacts={quickFacts}
           >
             {profile.html && <p class="overview" set:html={profile.html} />}
+            {/* The source note sits with the bio, so it never labels our own profile above it. */}
             {bio.trim() && <div class="dp-bio" set:html={bioHtml(bio)} />}
+            {bio.trim() && <p class="dp-bio-source"><small>Bio from AniList.</small></p>}
           </About>
         )}
 
