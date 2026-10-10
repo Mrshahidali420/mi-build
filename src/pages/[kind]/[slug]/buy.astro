@@ -21,6 +21,8 @@ import { shopLinks } from '../../../lib/shop-links.js'
 import { titleBuyCopy } from '../../../lib/buy-copy.js'
 import { buyAnswer, BUY_POPULARITY } from '../../../lib/buy.mjs'
 import { hasBuyPage, hasFreePage } from '../../../lib/gates.mjs'
+// Thin sub-pages Google has not shown are noindexed at build time (src/lib/thin-pages.mjs).
+import { isNoindexed } from '../../../lib/thin-pages.mjs'
 import { statusWord, charactersOf, genreSlug } from '../../../lib/format.js'
 import { titleSummary } from '../../../lib/title-summary.mjs'
 
@@ -86,6 +88,7 @@ const jsonld = [
 ---
 
 <Base
+  noindex={isNoindexed(item, 'buy')}
   title={answer.pageTitle}
   description={answer.description}
   image={item.cover}

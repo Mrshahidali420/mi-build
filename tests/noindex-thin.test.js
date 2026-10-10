@@ -23,10 +23,11 @@ test('isNoindexCharacter: a page Google has shown stays indexed', () => {
   assert.equal(isNoindexCharacter(one({ description: 'Bio' })), false)
 })
 
-test('data/index-keep.json holds character paths only', () => {
+test('data/index-keep.json holds site paths, character pages among them', () => {
   const { paths } = JSON.parse(readFileSync('data/index-keep.json', 'utf8'))
   assert.ok(paths.length > 0)
-  assert.ok(paths.every((p) => /^\/character\/[^/]+$/.test(p)))
+  assert.ok(paths.every((p) => p.startsWith('/') && !p.includes('://')))
+  assert.ok(paths.some((p) => /^\/character\/[^/]+$/.test(p)))
 })
 
 test('a lead whose other titles share this name says their medium', () => {

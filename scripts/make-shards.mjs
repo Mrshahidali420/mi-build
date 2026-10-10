@@ -36,6 +36,7 @@ import { migrateAliasedLinksAll } from '../src/lib/platform-aliases.mjs'
 import { fixNovelAppearanceKindsAll } from '../src/lib/novel-appearance-kind.mjs'
 import { attachCharacterFacts, isThinCharacter, isNoindexCharacter } from '../src/lib/character-facts.mjs'
 import { loadIndexKeep } from '../src/lib/index-keep.js'
+import { noindexSubpages, noindexCharacterBuy } from '../src/lib/thin-pages.mjs'
 import { castContext, withCastFacts } from '../src/lib/cast-facts.mjs'
 import { recSetOf, byLikeRank, likeExtras } from '../src/lib/like-facts.mjs'
 import { readingChain, adaptationOf, sameMedium, ADAPT_RELATIONS } from './lib/title-graph.mjs'
@@ -656,11 +657,20 @@ async function main() {
   // Years, costars and other roles of the same voice (src/lib/character-facts.mjs).
   // The thinnest pages Google has not shown go noindex (isNoindexCharacter).
   const keep = loadIndexKeep(ROOT)
-  const people = attachCharacterFacts(pages, titles).map((p) => (isNoindexCharacter(p, keep) ? { ...p, noindex: true } : p))
+  const people = attachCharacterFacts(pages, titles).map((p) => ({
+    ...p,
+    ...(isNoindexCharacter(p, keep) ? { noindex: true } : {}),
+    ...(noindexCharacterBuy(p, keep) ? { noindexBuy: true } : {}),
+  }))
   const thin = pages.filter(isThinCharacter).length
   console.log(`  thin character pages ${thin}, kept indexed by data/index-keep.json ${thin - people.filter((p) => p.noindex).length}`)
   const cast = castContext(people)
-  const t = writeShards(join(OUT, 't'), titles.map((item) => withCastFacts(item, cast)), TITLE_SHARDS, (item) =>
+  // Thin sub-pages Google has not shown go noindex (src/lib/thin-pages.mjs).
+  const flagged = (item) => {
+    const noindex = noindexSubpages(item, keep)
+    return noindex.length ? { ...item, noindex } : item
+  }
+  const t = writeShards(join(OUT, 't'), titles.map((item) => flagged(withCastFacts(item, cast))), TITLE_SHARDS, (item) =>
     titleKey(kindOf(item), item.slug))
   since('title shards')
 
@@ -694,15 +704,17 @@ async function main() {
   // and each answer page runs the same gate and answers 404 when it fails,
   // so the sitemap and the Worker can never disagree.
   const answerUrls = { free: [], like: [], buy: [], charBuy: [], cast: [] }
+  // A noindexed sub-page stays live but is left out of the sitemap.
   for (const item of titles) {
     const path = `/${kindOf(item)}/${item.slug}`
-    if (hasFreePage(item)) answerUrls.free.push(`${path}/free`)
-    if (hasLikePage(item)) answerUrls.like.push(`${path}/like`)
-    if (hasCastPage(item)) answerUrls.cast.push(`${path}/characters`)
-    if (hasBuyPage(item)) answerUrls.buy.push(`${path}/buy`)
+    const off = new Set(noindexSubpages(item, keep))
+    if (hasFreePage(item) && !off.has('free')) answerUrls.free.push(`${path}/free`)
+    if (hasLikePage(item) && !off.has('like')) answerUrls.like.push(`${path}/like`)
+    if (hasCastPage(item) && !off.has('characters')) answerUrls.cast.push(`${path}/characters`)
+    if (hasBuyPage(item) && !off.has('buy')) answerUrls.buy.push(`${path}/buy`)
   }
-  for (const person of pages) {
-    if (hasCharacterBuyPage(person)) answerUrls.charBuy.push(`/character/${person.slug}/buy`)
+  for (const person of people) {
+    if (hasCharacterBuyPage(person) && !person.noindexBuy) answerUrls.charBuy.push(`/character/${person.slug}/buy`)
   }
 
   writeFileSync(join(ROOT, 'data', 'answer-urls.json'), JSON.stringify(answerUrls))

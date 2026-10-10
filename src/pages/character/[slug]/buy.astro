@@ -25,6 +25,8 @@ import { ageOf } from '../../../lib/age.mjs'
 let person
 try {
   person = await loadCharacter(envOf(Astro), Astro.params.slug)
+  // person.noindexBuy: set at build time (src/lib/thin-pages.mjs). The page
+  // stays live; only search engines are asked not to index it.
 } catch (e) {
   // The shard did not read: 503, not 404. The page still exists.
   return unavailable(Astro, e)
@@ -111,6 +113,7 @@ const jsonld = [
 ---
 
 <Base
+  noindex={Boolean(person.noindexBuy)}
   title={answer.pageTitle}
   description={answer.description}
   image={person.image}

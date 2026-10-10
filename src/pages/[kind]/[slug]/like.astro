@@ -15,6 +15,8 @@ import { likeAnswer } from '../../../lib/like-answer.mjs'
 import { shopLinks } from '../../../lib/shop-links.js'
 import { booksKnown } from '../../../lib/picks.js'
 import { hasLikePage } from '../../../lib/gates.mjs'
+// Thin sub-pages Google has not shown are noindexed at build time (src/lib/thin-pages.mjs).
+import { isNoindexed } from '../../../lib/thin-pages.mjs'
 import BuyBox from '../../../components/BuyBox.astro'
 
 const KINDS = new Set(SECTIONS)
@@ -77,6 +79,7 @@ const jsonld = [
 ---
 
 <Base
+  noindex={isNoindexed(item, 'like')}
   title={answer.pageTitle}
   description={answer.description}
   image={item.cover}

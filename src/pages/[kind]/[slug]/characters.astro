@@ -16,6 +16,8 @@ import { sectionOf, SECTIONS } from '../../../lib/section.mjs'
 import { verbOf, wordOf } from '../../../lib/answers.mjs'
 import { charactersOf } from '../../../lib/format.js'
 import { hasCastPage } from '../../../lib/gates.mjs'
+// Thin sub-pages Google has not shown are noindexed at build time (src/lib/thin-pages.mjs).
+import { isNoindexed } from '../../../lib/thin-pages.mjs'
 import { leadLine, castSummary } from '../../../lib/cast-page.mjs'
 
 const KINDS = new Set(SECTIONS)
@@ -91,6 +93,7 @@ const jsonld = [
 ---
 
 <Base
+  noindex={isNoindexed(item, 'characters')}
   title={pageTitle}
   description={description}
   image={item.cover}
