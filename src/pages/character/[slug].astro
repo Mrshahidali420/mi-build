@@ -21,7 +21,9 @@ import {
   platform,
 } from '../../lib/format.js'
 import { loadCharacter, loadTitle, envOf, countryOf, notFound, unavailable } from '../../lib/runtime.js'
-import { characterFaq, faqJsonld, wordOf, verbOf, uniqueBySite, linksOf, freeSplit } from '../../lib/answers.mjs'
+import { faqJsonld, wordOf, verbOf, uniqueBySite, linksOf, freeSplit } from '../../lib/answers.mjs'
+import { characterFaq } from '../../lib/character-faq.mjs'
+import { characterProfile } from '../../lib/character-profile.mjs'
 import { characterShopLinks } from '../../lib/shop-links.js'
 // The merch page answers 404 when this gate says no, so the link obeys it too.
 import { hasCharacterBuyPage, hasCastPage } from '../../lib/gates.mjs'
@@ -232,6 +234,13 @@ const { heading: buyHeading, sub: buySub } = characterBuyCopy({
 // Without the fact lines, so "Who is X?" opens on a sentence, not "Height:".
 const bioPlain = bio.trim() ? bioText(bio) : ''
 const faq = characterFaq(person, lead, leadKind, series, faqBio(bioPlain), height, voiced?.voice || '', bioFacts, voicedEn?.voiceEn || '')
+// The Profile paragraph above the bio: this character's own facts, strongest
+// first (src/lib/character-profile.mjs). Costars and other roles of the same
+// voice are links to their own pages.
+const profile = characterProfile(person, { name: primary, series, lead, links })
+// The years this character's titles span, for the line under "Where X shows up".
+const years = person.appearsIn.map((a) => a.year).filter(Boolean)
+const yearSpan = years.length && Math.max(...years) > Math.min(...years) ? `From ${Math.min(...years)} to ${Math.max(...years)}.` : ''
 
 // The old description was the same sentence on every character page with only
 // the name swapped, which says nothing a searcher cannot already see in the
@@ -343,7 +352,7 @@ const groups = groupAppearances(person.appearsIn)
 // every other name stays on the "Also known as" line.
 const native = person.native && alternates.includes(person.native) ? person.native : ''
 const akaNames = alternates.filter((name) => name !== native)
-const showAbout = Boolean(bio.trim()) || quickFacts.length > 0 || !series
+const showAbout = Boolean(bio.trim()) || quickFacts.length > 0 || Boolean(profile.html)
 const showShop = hasPicks || buys.length > 0
 // The merch page answers 404 when its gate says no, so the link obeys it too.
 const merchPage =
@@ -474,8 +483,7 @@ const jsonld = {
             <Fragment slot="answer">
               {primary} is a {lead.role === 'MAIN' ? 'main character' : 'character'} in the {word}{' '}
               <a href={`/${leadKind}/${lead.slug}`}>{lead.title}</a>
-              {authors.length > 0 && <> by {authors.join(' and ')}</>}. Every official place to {verb}{' '}
-              that story is listed below.
+              {authors.length > 0 && <> by {authors.join(' and ')}</>}.
             </Fragment>
           </WhereTo>
         )}
@@ -484,17 +492,10 @@ const jsonld = {
           <About
             title={primary}
             heading={`About ${primary}`}
-            sub={bio.trim() ? 'From AniList, the same source as the rest of this page.' : null}
+            sub={bio.trim() ? 'Bio from AniList.' : null}
             quickFacts={quickFacts}
           >
-            {!series && (
-              <p class="overview">
-                {primary} is a {lead.role === 'MAIN' ? 'main character' : 'character'} in the {word}{' '}
-                <a href={`/${leadKind}/${lead.slug}`}>{lead.title}</a>
-                {authors.length > 0 && <> by {authors.join(' and ')}</>}.{' '}
-                <span class="title-answer__stamp">Checked {checkedLong}.</span>
-              </p>
-            )}
+            {profile.html && <p class="overview" set:html={profile.html} />}
             {bio.trim() && <div class="dp-bio" set:html={bioHtml(bio)} />}
           </About>
         )}
@@ -505,7 +506,7 @@ const jsonld = {
         <section class="answer dp-more-like dp-appears" id="appears" aria-labelledby="dp-appears-head">
           <div class="answer__head">
             <h2 id="dp-appears-head">Where {primary} shows up</h2>
-            <p>Open a title to see the official apps that carry it.</p>
+            {yearSpan && <p>{yearSpan}</p>}
           </div>
           {groups.map((group) => (
             <div class="dp-sub">
@@ -577,7 +578,7 @@ const jsonld = {
         <Faq
           faq={faq}
           heading={`Common questions about ${primary}`}
-          sub="Answered from the same facts as the rest of this page."
+          sub={null}
         />
 
         <FeaturedIn character={person.id} />

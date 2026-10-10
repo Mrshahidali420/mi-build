@@ -1,0 +1,1370 @@
+{
+  "date": "2026-10-10",
+  "label": "step3-before",
+  "mode": "old",
+  "sample": 2038,
+  "report": {
+    "own": {
+      "all": {
+        "pages": 2038,
+        "medianWords": 152,
+        "p10Words": 112,
+        "medianSiteWords": 138,
+        "p10SiteWords": 106,
+        "siteShare": 0.839,
+        "nearDupRate": 0.995,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 1332,
+            "share": 0.654
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 1041,
+            "share": 0.511
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 996,
+            "share": 0.489
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 931,
+            "share": 0.457
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 753,
+            "share": 0.369
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 735,
+            "share": 0.361
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 630,
+            "share": 0.309
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 550,
+            "share": 0.27
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 480,
+            "share": 0.236
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 169,
+            "share": 0.083
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 56,
+            "share": 0.027
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 53,
+            "share": 0.026
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 46,
+            "share": 0.023
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 35,
+            "share": 0.017
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 32,
+            "share": 0.016
+          },
+          {
+            "sentence": "On Seven Seas Entertainment.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "On Crunchyroll and YouTube.",
+            "pages": 28,
+            "share": 0.014
+          },
+          {
+            "sentence": "On HIDIVE.",
+            "pages": 24,
+            "share": 0.012
+          },
+          {
+            "sentence": "On Hulu and Crunchyroll.",
+            "pages": 21,
+            "share": 0.01
+          },
+          {
+            "sentence": "On J-Novel Club.",
+            "pages": 21,
+            "share": 0.01
+          }
+        ]
+      },
+      "noBio": {
+        "pages": 908,
+        "medianWords": 129,
+        "p10Words": 105,
+        "medianSiteWords": 129,
+        "p10SiteWords": 105,
+        "siteShare": 1,
+        "nearDupRate": 0.997,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 616,
+            "share": 0.678
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 604,
+            "share": 0.665
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 432,
+            "share": 0.476
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 305,
+            "share": 0.336
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 304,
+            "share": 0.335
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 284,
+            "share": 0.313
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 171,
+            "share": 0.188
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 163,
+            "share": 0.18
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 104,
+            "share": 0.115
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 85,
+            "share": 0.094
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 32,
+            "share": 0.035
+          },
+          {
+            "sentence": "On Crunchyroll and YouTube.",
+            "pages": 19,
+            "share": 0.021
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 19,
+            "share": 0.021
+          },
+          {
+            "sentence": "It started in 1996 and is made by Gosho Aoyama.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "On Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "It started in 2022.",
+            "pages": 13,
+            "share": 0.014
+          },
+          {
+            "sentence": "On Crunchyroll and Bilibili TV.",
+            "pages": 13,
+            "share": 0.014
+          },
+          {
+            "sentence": "On Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 12,
+            "share": 0.013
+          },
+          {
+            "sentence": "On YouTube and Crunchyroll.",
+            "pages": 12,
+            "share": 0.013
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 11,
+            "share": 0.012
+          }
+        ]
+      },
+      "withBio": {
+        "pages": 1130,
+        "medianWords": 189,
+        "p10Words": 126,
+        "medianSiteWords": 151,
+        "p10SiteWords": 107,
+        "siteShare": 0.754,
+        "nearDupRate": 0.99,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 716,
+            "share": 0.634
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 692,
+            "share": 0.612
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 647,
+            "share": 0.573
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 467,
+            "share": 0.413
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 437,
+            "share": 0.387
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 430,
+            "share": 0.381
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 379,
+            "share": 0.335
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 376,
+            "share": 0.333
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 321,
+            "share": 0.284
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 84,
+            "share": 0.074
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 42,
+            "share": 0.037
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 36,
+            "share": 0.032
+          },
+          {
+            "sentence": "On Seven Seas Entertainment.",
+            "pages": 24,
+            "share": 0.021
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 24,
+            "share": 0.021
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 21,
+            "share": 0.019
+          },
+          {
+            "sentence": "On J-Novel Club.",
+            "pages": 17,
+            "share": 0.015
+          },
+          {
+            "sentence": "On Kodansha and INKR.",
+            "pages": 17,
+            "share": 0.015
+          },
+          {
+            "sentence": "On Hulu and Crunchyroll.",
+            "pages": 16,
+            "share": 0.014
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 16,
+            "share": 0.014
+          },
+          {
+            "sentence": "On HIDIVE.",
+            "pages": 14,
+            "share": 0.012
+          }
+        ]
+      },
+      "voiced": {
+        "pages": 1332,
+        "medianWords": 166,
+        "p10Words": 118,
+        "medianSiteWords": 151,
+        "p10SiteWords": 117,
+        "siteShare": 0.837,
+        "nearDupRate": 0.995,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 1332,
+            "share": 1
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 954,
+            "share": 0.716
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 681,
+            "share": 0.511
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 556,
+            "share": 0.417
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 541,
+            "share": 0.406
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 387,
+            "share": 0.291
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 377,
+            "share": 0.283
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 353,
+            "share": 0.265
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 264,
+            "share": 0.198
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 165,
+            "share": 0.124
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 47,
+            "share": 0.035
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 32,
+            "share": 0.024
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 31,
+            "share": 0.023
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 30,
+            "share": 0.023
+          },
+          {
+            "sentence": "On Crunchyroll and YouTube.",
+            "pages": 28,
+            "share": 0.021
+          },
+          {
+            "sentence": "On HIDIVE.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "On Hulu and Crunchyroll.",
+            "pages": 21,
+            "share": 0.016
+          },
+          {
+            "sentence": "On Seven Seas Entertainment.",
+            "pages": 21,
+            "share": 0.016
+          },
+          {
+            "sentence": "On Crunchyroll and Bilibili TV.",
+            "pages": 19,
+            "share": 0.014
+          },
+          {
+            "sentence": "It started in 1996 and is made by Gosho Aoyama.",
+            "pages": 16,
+            "share": 0.012
+          }
+        ]
+      },
+      "oneTitle": {
+        "pages": 1297,
+        "medianWords": 132,
+        "p10Words": 108,
+        "medianSiteWords": 124,
+        "p10SiteWords": 102,
+        "siteShare": 0.888,
+        "nearDupRate": 0.996,
+        "topSentences": [
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 750,
+            "share": 0.578
+          },
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 680,
+            "share": 0.524
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 546,
+            "share": 0.421
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 525,
+            "share": 0.405
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 512,
+            "share": 0.395
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 400,
+            "share": 0.308
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 260,
+            "share": 0.2
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 99,
+            "share": 0.076
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 98,
+            "share": 0.076
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 35,
+            "share": 0.027
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 26,
+            "share": 0.02
+          },
+          {
+            "sentence": "On Crunchyroll and YouTube.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "It started in 1996 and is made by Gosho Aoyama.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "On Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "On HIDIVE.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 15,
+            "share": 0.012
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 15,
+            "share": 0.012
+          },
+          {
+            "sentence": "On Crunchyroll and Bilibili TV.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It started in 2022.",
+            "pages": 13,
+            "share": 0.01
+          }
+        ]
+      },
+      "crossMedia": {
+        "pages": 567,
+        "medianWords": 216,
+        "p10Words": 164,
+        "medianSiteWords": 179,
+        "p10SiteWords": 151,
+        "siteShare": 0.774,
+        "nearDupRate": 0.986,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 542,
+            "share": 0.956
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 461,
+            "share": 0.813
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 459,
+            "share": 0.81
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 395,
+            "share": 0.697
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 370,
+            "share": 0.653
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 276,
+            "share": 0.487
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 172,
+            "share": 0.303
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 156,
+            "share": 0.275
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 135,
+            "share": 0.238
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 50,
+            "share": 0.088
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 33,
+            "share": 0.058
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 30,
+            "share": 0.053
+          },
+          {
+            "sentence": "On Seven Seas Entertainment.",
+            "pages": 21,
+            "share": 0.037
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 16,
+            "share": 0.028
+          },
+          {
+            "sentence": "On Kodansha and INKR.",
+            "pages": 14,
+            "share": 0.025
+          },
+          {
+            "sentence": "On MANGA Plus, VIZ, Naver Series, KakaoPage and ONO.",
+            "pages": 12,
+            "share": 0.021
+          },
+          {
+            "sentence": "On Hulu.",
+            "pages": 11,
+            "share": 0.019
+          },
+          {
+            "sentence": "On J-Novel Club.",
+            "pages": 10,
+            "share": 0.018
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 10,
+            "share": 0.018
+          },
+          {
+            "sentence": "On Piccoma.",
+            "pages": 9,
+            "share": 0.016
+          }
+        ]
+      }
+    },
+    "page": {
+      "all": {
+        "pages": 2038,
+        "medianWords": 229,
+        "p10Words": 173,
+        "medianSiteWords": 212,
+        "p10SiteWords": 169,
+        "siteShare": 0.889,
+        "nearDupRate": 0.998,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 1332,
+            "share": 0.654
+          },
+          {
+            "sentence": "From AniList, the same source as the rest of this page.",
+            "pages": 1130,
+            "share": 0.554
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 1041,
+            "share": 0.511
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 996,
+            "share": 0.489
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 931,
+            "share": 0.457
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 753,
+            "share": 0.369
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 735,
+            "share": 0.361
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 630,
+            "share": 0.309
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 550,
+            "share": 0.27
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 480,
+            "share": 0.236
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 169,
+            "share": 0.083
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 56,
+            "share": 0.027
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 53,
+            "share": 0.026
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 46,
+            "share": 0.023
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 35,
+            "share": 0.017
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 32,
+            "share": 0.016
+          },
+          {
+            "sentence": "On Seven Seas Entertainment.",
+            "pages": 30,
+            "share": 0.015
+          },
+          {
+            "sentence": "On Crunchyroll and YouTube.",
+            "pages": 28,
+            "share": 0.014
+          },
+          {
+            "sentence": "On HIDIVE.",
+            "pages": 24,
+            "share": 0.012
+          },
+          {
+            "sentence": "On Hulu and Crunchyroll.",
+            "pages": 21,
+            "share": 0.01
+          }
+        ]
+      },
+      "noBio": {
+        "pages": 908,
+        "medianWords": 196,
+        "p10Words": 162,
+        "medianSiteWords": 196,
+        "p10SiteWords": 162,
+        "siteShare": 1,
+        "nearDupRate": 0.998,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 616,
+            "share": 0.678
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 604,
+            "share": 0.665
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 432,
+            "share": 0.476
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 305,
+            "share": 0.336
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 304,
+            "share": 0.335
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 284,
+            "share": 0.313
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 171,
+            "share": 0.188
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 163,
+            "share": 0.18
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 104,
+            "share": 0.115
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 85,
+            "share": 0.094
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 32,
+            "share": 0.035
+          },
+          {
+            "sentence": "On Crunchyroll and YouTube.",
+            "pages": 19,
+            "share": 0.021
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 19,
+            "share": 0.021
+          },
+          {
+            "sentence": "It started in 1996 and is made by Gosho Aoyama.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "On Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "Where can I watch Detective Conan?",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "It started in 2022.",
+            "pages": 13,
+            "share": 0.014
+          },
+          {
+            "sentence": "On Crunchyroll and Bilibili TV.",
+            "pages": 13,
+            "share": 0.014
+          },
+          {
+            "sentence": "On Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 12,
+            "share": 0.013
+          },
+          {
+            "sentence": "On YouTube and Crunchyroll.",
+            "pages": 12,
+            "share": 0.013
+          }
+        ]
+      },
+      "withBio": {
+        "pages": 1130,
+        "medianWords": 278,
+        "p10Words": 199,
+        "medianSiteWords": 236,
+        "p10SiteWords": 178,
+        "siteShare": 0.827,
+        "nearDupRate": 0.996,
+        "topSentences": [
+          {
+            "sentence": "From AniList, the same source as the rest of this page.",
+            "pages": 1130,
+            "share": 1
+          },
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 716,
+            "share": 0.634
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 692,
+            "share": 0.612
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 647,
+            "share": 0.573
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 467,
+            "share": 0.413
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 437,
+            "share": 0.387
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 430,
+            "share": 0.381
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 379,
+            "share": 0.335
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 376,
+            "share": 0.333
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 321,
+            "share": 0.284
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 84,
+            "share": 0.074
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 42,
+            "share": 0.037
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 36,
+            "share": 0.032
+          },
+          {
+            "sentence": "On Seven Seas Entertainment.",
+            "pages": 24,
+            "share": 0.021
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 24,
+            "share": 0.021
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 21,
+            "share": 0.019
+          },
+          {
+            "sentence": "On J-Novel Club.",
+            "pages": 17,
+            "share": 0.015
+          },
+          {
+            "sentence": "On Kodansha and INKR.",
+            "pages": 17,
+            "share": 0.015
+          },
+          {
+            "sentence": "On Hulu and Crunchyroll.",
+            "pages": 16,
+            "share": 0.014
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 16,
+            "share": 0.014
+          }
+        ]
+      },
+      "voiced": {
+        "pages": 1332,
+        "medianWords": 248,
+        "p10Words": 179,
+        "medianSiteWords": 231,
+        "p10SiteWords": 178,
+        "siteShare": 0.886,
+        "nearDupRate": 0.998,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 1332,
+            "share": 1
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 954,
+            "share": 0.716
+          },
+          {
+            "sentence": "From AniList, the same source as the rest of this page.",
+            "pages": 716,
+            "share": 0.538
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 681,
+            "share": 0.511
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 556,
+            "share": 0.417
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 541,
+            "share": 0.406
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 387,
+            "share": 0.291
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 377,
+            "share": 0.283
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 353,
+            "share": 0.265
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 264,
+            "share": 0.198
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 165,
+            "share": 0.124
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 47,
+            "share": 0.035
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 32,
+            "share": 0.024
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 31,
+            "share": 0.023
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 30,
+            "share": 0.023
+          },
+          {
+            "sentence": "On Crunchyroll and YouTube.",
+            "pages": 28,
+            "share": 0.021
+          },
+          {
+            "sentence": "On HIDIVE.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "On Hulu and Crunchyroll.",
+            "pages": 21,
+            "share": 0.016
+          },
+          {
+            "sentence": "On Seven Seas Entertainment.",
+            "pages": 21,
+            "share": 0.016
+          },
+          {
+            "sentence": "On Crunchyroll and Bilibili TV.",
+            "pages": 19,
+            "share": 0.014
+          }
+        ]
+      },
+      "oneTitle": {
+        "pages": 1297,
+        "medianWords": 202,
+        "p10Words": 166,
+        "medianSiteWords": 193,
+        "p10SiteWords": 163,
+        "siteShare": 0.925,
+        "nearDupRate": 0.998,
+        "topSentences": [
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 750,
+            "share": 0.578
+          },
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 680,
+            "share": 0.524
+          },
+          {
+            "sentence": "From AniList, the same source as the rest of this page.",
+            "pages": 559,
+            "share": 0.431
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 546,
+            "share": 0.421
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 525,
+            "share": 0.405
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 512,
+            "share": 0.395
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 400,
+            "share": 0.308
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 260,
+            "share": 0.2
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 99,
+            "share": 0.076
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 98,
+            "share": 0.076
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 35,
+            "share": 0.027
+          },
+          {
+            "sentence": "On Netflix.",
+            "pages": 26,
+            "share": 0.02
+          },
+          {
+            "sentence": "On Crunchyroll and YouTube.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "It started in 1996 and is made by Gosho Aoyama.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "On Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "Where can I watch Detective Conan?",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "On HIDIVE.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 15,
+            "share": 0.012
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 15,
+            "share": 0.012
+          }
+        ]
+      },
+      "crossMedia": {
+        "pages": 567,
+        "medianWords": 309,
+        "p10Words": 245,
+        "medianSiteWords": 270,
+        "p10SiteWords": 233,
+        "siteShare": 0.838,
+        "nearDupRate": 0.996,
+        "topSentences": [
+          {
+            "sentence": "This is the cast credit AniList gives for the anime.",
+            "pages": 542,
+            "share": 0.956
+          },
+          {
+            "sentence": "They are all listed on this page, and each one links to the official places to read or watch it.",
+            "pages": 461,
+            "share": 0.813
+          },
+          {
+            "sentence": "Yes.",
+            "pages": 459,
+            "share": 0.81
+          },
+          {
+            "sentence": "From AniList, the same source as the rest of this page.",
+            "pages": 457,
+            "share": 0.806
+          },
+          {
+            "sentence": "Every official place to read that story is listed below.",
+            "pages": 395,
+            "share": 0.697
+          },
+          {
+            "sentence": "Open the title page for the official places to watch it.",
+            "pages": 370,
+            "share": 0.653
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no chapters and links only to the platform itself.",
+            "pages": 276,
+            "share": 0.487
+          },
+          {
+            "sentence": "Every official place to watch that story is listed below.",
+            "pages": 172,
+            "share": 0.303
+          },
+          {
+            "sentence": "Each one holds an official licence. manhwaindex carries no episodes and links only to the platform itself.",
+            "pages": 156,
+            "share": 0.275
+          },
+          {
+            "sentence": "This page is rebuilt every day, so a new licence shows up here on its own.",
+            "pages": 135,
+            "share": 0.238
+          },
+          {
+            "sentence": "On Crunchyroll.",
+            "pages": 50,
+            "share": 0.088
+          },
+          {
+            "sentence": "On Yen Press.",
+            "pages": 33,
+            "share": 0.058
+          },
+          {
+            "sentence": "On VIZ.",
+            "pages": 30,
+            "share": 0.053
+          },
+          {
+            "sentence": "On Seven Seas Entertainment.",
+            "pages": 21,
+            "share": 0.037
+          },
+          {
+            "sentence": "On Kodansha.",
+            "pages": 16,
+            "share": 0.028
+          },
+          {
+            "sentence": "On Kodansha and INKR.",
+            "pages": 14,
+            "share": 0.025
+          },
+          {
+            "sentence": "On MANGA Plus, VIZ, Naver Series, KakaoPage and ONO.",
+            "pages": 12,
+            "share": 0.021
+          },
+          {
+            "sentence": "On Hulu.",
+            "pages": 11,
+            "share": 0.019
+          },
+          {
+            "sentence": "On J-Novel Club.",
+            "pages": 10,
+            "share": 0.018
+          },
+          {
+            "sentence": "On YouTube.",
+            "pages": 10,
+            "share": 0.018
+          }
+        ]
+      }
+    },
+    "opening": {
+      "all": {
+        "sentence": "n is a character in the anime n by n .",
+        "share": 0.195
+      },
+      "noBio": {
+        "sentence": "n is a character in the anime n by n .",
+        "share": 0.295
+      },
+      "withBio": {
+        "sentence": "n is a character in the manga n by n .",
+        "share": 0.222
+      },
+      "voiced": {
+        "sentence": "n is a character in the anime n by n .",
+        "share": 0.273
+      },
+      "oneTitle": {
+        "sentence": "n is a character in the anime n by n .",
+        "share": 0.245
+      },
+      "crossMedia": {
+        "sentence": "n is a character in the manga n by n .",
+        "share": 0.291
+      }
+    }
+  }
+}

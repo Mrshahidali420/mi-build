@@ -1,0 +1,122 @@
+name: Measure page text
+
+# Runs the unit tests and the page-text measures (scripts/measure-shards.mjs
+# for title pages, scripts/measure-characters.mjs for character pages) on the
+# real shards, so the numbers are read from here instead of being worked out
+# on a laptop. Read-only: it restores the catalog but never saves a cache,
+# never deploys and never writes to R2.
+#
+#   gh workflow run measure.yml -f label=step3-after
+#   gh run download <run id> -n measure-json
+on:
+  workflow_dispatch:
+    inputs:
+      label:
+        description: 'Label for the JSON files (tasks/measure/<date>-<label>-*.json)'
+        required: false
+        default: 'ci'
+      old_ref:
+        description: 'Optional git ref: also measure the pages as they were at this commit (old mode)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: measure
+  cancel-in-progress: true
+
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      LABEL: ${{ github.event.inputs.label || 'ci' }}
+      OLD_REF: ${{ github.event.inputs.old_ref || '' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm install --no-audit --no-fund
+
+      - name: Unit tests
+        run: node --test "tests/*.test.js"
+
+      # The same entry deploy.yml restores, with the same path list: the list
+      # is part of the cache version, so it must never change.
+      - name: Restore the catalog
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/comics.json
+            data/anime.json
+            data/characters.json
+          key: anilist-data-${{ github.run_id }}
+          restore-keys: anilist-data-
+
+      - name: Restore the slug registry
+        uses: actions/cache/restore@v4
+        with:
+          path: data/slug-registry.json
+          key: slug-registry-${{ github.run_id }}
+          restore-keys: slug-registry-
+
+      - name: Restore the song list
+        uses: actions/cache/restore@v4
+        with:
+          path: data/themes.json
+          key: animethemes-${{ github.run_id }}
+          restore-keys: animethemes-
+
+      - name: Fill gaps from the R2 snapshot
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 735d0fbab0757142b2c29917563e0626
+        run: node --max-old-space-size=6000 scripts/catalog-snapshot.mjs pull
+
+      - name: Fall back to the seed catalog
+        run: bash scripts/unseed.sh
+
+      # The shards only, no astro build. The registry is read, never saved
+      # (REGISTRY_READONLY), and the shrink guard is off: nothing ships.
+      - name: Build the shards
+        env:
+          REGISTRY_READONLY: '1'
+          ALLOW_SHRINK: '1'
+        run: |
+          node scripts/make-redirects.mjs
+          node --max-old-space-size=6000 scripts/make-shards.mjs
+
+      - name: Measure title pages
+        run: node --max-old-space-size=6000 scripts/measure-shards.mjs --mode new --label "$LABEL-titles"
+
+      - name: Measure character pages
+        run: node --max-old-space-size=6000 scripts/measure-characters.mjs --mode new --label "$LABEL-characters"
+
+      - name: Measure the pages as they were at the old ref
+        if: env.OLD_REF != ''
+        run: |
+          git show "$OLD_REF:src/lib/answers.mjs" > src/lib/answers-old.tmp.mjs
+          MEASURE_ANSWERS="$PWD/src/lib/answers-old.tmp.mjs" node --max-old-space-size=6000 scripts/measure-characters.mjs --mode old --label "$LABEL-characters-old"
+
+      - name: Summary
+        if: always()
+        run: |
+          ls tasks/measure/*.json >/dev/null 2>&1 || exit 0
+          node scripts/measure-summary.mjs $(ls -t tasks/measure/*"$LABEL"*.json) >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: measure-json
+          path: tasks/measure/*${{ env.LABEL }}*.json
+          if-no-files-found: ignore
+          retention-days: 30

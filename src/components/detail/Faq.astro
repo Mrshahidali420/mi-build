@@ -18,7 +18,7 @@ const {
     <section class="answer dp-faq" id="faq" aria-labelledby="dp-faq-head">
       <div class="answer__head">
         <h2 id="dp-faq-head">{heading}</h2>
-        <p>{sub}</p>
+        {sub && <p>{sub}</p>}
       </div>
       <div class="qa2">
         {faq.map((row, i) => (

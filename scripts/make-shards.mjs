@@ -34,6 +34,7 @@ import { indexWhereLinks, attachWhereLinks } from '../src/lib/where-links.mjs'
 import { licensedPools, alikeFor } from '../src/lib/alike.mjs'
 import { migrateAliasedLinksAll } from '../src/lib/platform-aliases.mjs'
 import { fixNovelAppearanceKindsAll } from '../src/lib/novel-appearance-kind.mjs'
+import { attachCharacterFacts } from '../src/lib/character-facts.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = join(ROOT, 'public', 'd')
@@ -775,7 +776,8 @@ async function main() {
   const pages = characters.filter((c) => c.image && (c.appearsIn || []).length > 0)
   const namesakes = attachNamesakes(pages)
   console.log(`  namesakes listed on ${namesakes.linked} of ${pages.length} character pages, near the top on ${namesakes.high}`)
-  const c = writeShards(join(OUT, 'c'), pages, CHARACTER_SHARDS, (person) => person.slug)
+  // Years, costars and other roles of the same voice (src/lib/character-facts.mjs).
+  const c = writeShards(join(OUT, 'c'), attachCharacterFacts(pages, titles), CHARACTER_SHARDS, (person) => person.slug)
 
   // The site shell (header and footer) shows two counts and the top genres.
   // The Worker renders the shell on every page, so those few numbers are

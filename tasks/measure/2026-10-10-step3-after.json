@@ -1,0 +1,1370 @@
+{
+  "date": "2026-10-10",
+  "label": "step3-after",
+  "mode": "new",
+  "sample": 2038,
+  "report": {
+    "own": {
+      "all": {
+        "pages": 2038,
+        "medianWords": 134,
+        "p10Words": 82,
+        "medianSiteWords": 120,
+        "p10SiteWords": 76,
+        "siteShare": 0.825,
+        "nearDupRate": 0.96,
+        "topSentences": [
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 98,
+            "share": 0.048
+          },
+          {
+            "sentence": "It is in English on WEBTOON.",
+            "pages": 44,
+            "share": 0.022
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 35,
+            "share": 0.017
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 26,
+            "share": 0.013
+          },
+          {
+            "sentence": "It is in English on VIZ.",
+            "pages": 22,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on Crunchyroll and YouTube.",
+            "pages": 22,
+            "share": 0.011
+          },
+          {
+            "sentence": "It is in English on Yen Press.",
+            "pages": 19,
+            "share": 0.009
+          },
+          {
+            "sentence": "Detective Conan is on Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 18,
+            "share": 0.009
+          },
+          {
+            "sentence": "Detective Conan, an anime by Gosho Aoyama that started in 1996.",
+            "pages": 18,
+            "share": 0.009
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Netflix and Crackle.",
+            "pages": 18,
+            "share": 0.009
+          },
+          {
+            "sentence": "It is in English on Tapas.",
+            "pages": 17,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 16,
+            "share": 0.008
+          },
+          {
+            "sentence": "It is in English on Kodansha.",
+            "pages": 15,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Crunchyroll and Bilibili TV.",
+            "pages": 14,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 14,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Bilibili TV and YouTube.",
+            "pages": 12,
+            "share": 0.006
+          },
+          {
+            "sentence": "It streams on YouTube and Crunchyroll.",
+            "pages": 12,
+            "share": 0.006
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Hulu and Netflix.",
+            "pages": 10,
+            "share": 0.005
+          },
+          {
+            "sentence": "It streams on Hulu and Crunchyroll.",
+            "pages": 10,
+            "share": 0.005
+          },
+          {
+            "sentence": "Toshiyuki Morikawa also voices Yoshikage Kira, Minato Namikaze and Bondrewd.",
+            "pages": 10,
+            "share": 0.005
+          }
+        ]
+      },
+      "noBio": {
+        "pages": 908,
+        "medianWords": 107,
+        "p10Words": 73,
+        "medianSiteWords": 107,
+        "p10SiteWords": 73,
+        "siteShare": 1,
+        "nearDupRate": 0.946,
+        "topSentences": [
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 68,
+            "share": 0.075
+          },
+          {
+            "sentence": "It is in English on WEBTOON.",
+            "pages": 23,
+            "share": 0.025
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 23,
+            "share": 0.025
+          },
+          {
+            "sentence": "It streams on Crunchyroll and YouTube.",
+            "pages": 17,
+            "share": 0.019
+          },
+          {
+            "sentence": "Detective Conan is on Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "Detective Conan, an anime by Gosho Aoyama that started in 1996.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Netflix and Crackle.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 15,
+            "share": 0.017
+          },
+          {
+            "sentence": "It streams on Crunchyroll and Bilibili TV.",
+            "pages": 12,
+            "share": 0.013
+          },
+          {
+            "sentence": "It streams on Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 12,
+            "share": 0.013
+          },
+          {
+            "sentence": "It is in English on Tapas.",
+            "pages": 11,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Bilibili TV and YouTube.",
+            "pages": 10,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on YouTube and Crunchyroll.",
+            "pages": 9,
+            "share": 0.01
+          },
+          {
+            "sentence": "It streams on Tencent Video.",
+            "pages": 7,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on Bilibili TV.",
+            "pages": 6,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Crunchyroll, iQ and Bilibili TV.",
+            "pages": 6,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 6,
+            "share": 0.007
+          },
+          {
+            "sentence": "Akira Ishida also voices Gaara, Kaworu Nagisa and Kotarou Katsura.",
+            "pages": 5,
+            "share": 0.006
+          },
+          {
+            "sentence": "In the original script it is written 生徒.",
+            "pages": 5,
+            "share": 0.006
+          },
+          {
+            "sentence": "It is in English on MANGA Plus.",
+            "pages": 5,
+            "share": 0.006
+          }
+        ]
+      },
+      "withBio": {
+        "pages": 1130,
+        "medianWords": 181,
+        "p10Words": 102,
+        "medianSiteWords": 143,
+        "p10SiteWords": 79,
+        "siteShare": 0.745,
+        "nearDupRate": 0.941,
+        "topSentences": [
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 30,
+            "share": 0.027
+          },
+          {
+            "sentence": "It is in English on WEBTOON.",
+            "pages": 21,
+            "share": 0.019
+          },
+          {
+            "sentence": "It is in English on VIZ.",
+            "pages": 17,
+            "share": 0.015
+          },
+          {
+            "sentence": "It is in English on Yen Press.",
+            "pages": 14,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 12,
+            "share": 0.011
+          },
+          {
+            "sentence": "It is in English on Kodansha.",
+            "pages": 11,
+            "share": 0.01
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 11,
+            "share": 0.01
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 10,
+            "share": 0.009
+          },
+          {
+            "sentence": "It is in English on MANGA Plus and VIZ.",
+            "pages": 8,
+            "share": 0.007
+          },
+          {
+            "sentence": "One Piece is on MANGA Plus, VIZ, Naver Series, KakaoPage and ONO.",
+            "pages": 8,
+            "share": 0.007
+          },
+          {
+            "sentence": "One Piece, a manga by Eiichirou Oda that started in 1997.",
+            "pages": 8,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Hulu and Crunchyroll.",
+            "pages": 7,
+            "share": 0.006
+          },
+          {
+            "sentence": "Toshiyuki Morikawa also voices Yoshikage Kira, Minato Namikaze and Bondrewd.",
+            "pages": 7,
+            "share": 0.006
+          },
+          {
+            "sentence": "Aoi Yuuki also voices Maomao, Mami Nanami and Lucy.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "It is in English on J-Novel Club.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "It is in English on Tapas.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Hulu and Netflix.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "Junichi Suwabe also voices Sukuna, Yami Sukehiro and Shouta Aizawa.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "Takehito Koyasu also voices Dio Brando, Touji Fushiguro and Zeke.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "Ami Koshimizu also voices Ryuuko Matoi, Holo and Kallen Stadtfeld.",
+            "pages": 5,
+            "share": 0.004
+          }
+        ]
+      },
+      "voiced": {
+        "pages": 1332,
+        "medianWords": 157,
+        "p10Words": 100,
+        "medianSiteWords": 142,
+        "p10SiteWords": 100,
+        "siteShare": 0.833,
+        "nearDupRate": 0.983,
+        "topSentences": [
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 97,
+            "share": 0.073
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 28,
+            "share": 0.021
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 23,
+            "share": 0.017
+          },
+          {
+            "sentence": "It streams on Crunchyroll and YouTube.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "Detective Conan is on Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "Detective Conan, an anime by Gosho Aoyama that started in 1996.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Netflix and Crackle.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on Crunchyroll and Bilibili TV.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 13,
+            "share": 0.01
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Bilibili TV and YouTube.",
+            "pages": 12,
+            "share": 0.009
+          },
+          {
+            "sentence": "It streams on YouTube and Crunchyroll.",
+            "pages": 11,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Hulu and Netflix.",
+            "pages": 10,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on Hulu and Crunchyroll.",
+            "pages": 10,
+            "share": 0.008
+          },
+          {
+            "sentence": "Toshiyuki Morikawa also voices Yoshikage Kira, Minato Namikaze and Bondrewd.",
+            "pages": 10,
+            "share": 0.008
+          },
+          {
+            "sentence": "Akira Ishida also voices Gaara, Kaworu Nagisa and Kotarou Katsura.",
+            "pages": 8,
+            "share": 0.006
+          },
+          {
+            "sentence": "It streams on Bilibili TV.",
+            "pages": 8,
+            "share": 0.006
+          },
+          {
+            "sentence": "It streams on Tubi TV.",
+            "pages": 8,
+            "share": 0.006
+          },
+          {
+            "sentence": "Aoi Yuuki also voices Maomao, Mami Nanami and Lucy.",
+            "pages": 7,
+            "share": 0.005
+          },
+          {
+            "sentence": "Ayako Kawasumi also voices Artoria Pendragon, Ayumu Kasuga and Fuu Kasumi.",
+            "pages": 7,
+            "share": 0.005
+          }
+        ]
+      },
+      "oneTitle": {
+        "pages": 1297,
+        "medianWords": 111,
+        "p10Words": 76,
+        "medianSiteWords": 101,
+        "p10SiteWords": 70,
+        "siteShare": 0.866,
+        "nearDupRate": 0.981,
+        "topSentences": [
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 98,
+            "share": 0.076
+          },
+          {
+            "sentence": "It is in English on WEBTOON.",
+            "pages": 44,
+            "share": 0.034
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 35,
+            "share": 0.027
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 26,
+            "share": 0.02
+          },
+          {
+            "sentence": "It is in English on VIZ.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "It streams on Crunchyroll and YouTube.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "It is in English on Yen Press.",
+            "pages": 19,
+            "share": 0.015
+          },
+          {
+            "sentence": "Detective Conan is on Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "Detective Conan, an anime by Gosho Aoyama that started in 1996.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Netflix and Crackle.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "It is in English on Tapas.",
+            "pages": 17,
+            "share": 0.013
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "It is in English on Kodansha.",
+            "pages": 15,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on Crunchyroll and Bilibili TV.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Bilibili TV and YouTube.",
+            "pages": 12,
+            "share": 0.009
+          },
+          {
+            "sentence": "It streams on YouTube and Crunchyroll.",
+            "pages": 12,
+            "share": 0.009
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Hulu and Netflix.",
+            "pages": 10,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on Hulu and Crunchyroll.",
+            "pages": 10,
+            "share": 0.008
+          },
+          {
+            "sentence": "It is in English on INKR and Kodansha.",
+            "pages": 9,
+            "share": 0.007
+          }
+        ]
+      },
+      "crossMedia": {
+        "pages": 567,
+        "medianWords": 222,
+        "p10Words": 150,
+        "medianSiteWords": 181,
+        "p10SiteWords": 142,
+        "siteShare": 0.779,
+        "nearDupRate": 0.937,
+        "topSentences": [
+          {
+            "sentence": "One Piece is on MANGA Plus, VIZ, Naver Series, KakaoPage and ONO.",
+            "pages": 8,
+            "share": 0.014
+          },
+          {
+            "sentence": "One Piece, a manga by Eiichirou Oda that started in 1997.",
+            "pages": 8,
+            "share": 0.014
+          },
+          {
+            "sentence": "Aoi Yuuki also voices Maomao, Mami Nanami and Lucy.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Ayako Kawasumi also voices Artoria Pendragon, Ayumu Kasuga and Fuu Kasumi.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Kikuko Inoue also voices Narrator, Lust and Mirellia Q Melromarc.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Ryoutarou Okiayu also voices Byakuya Kuchiki, Scar and Shigure Souma.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Saori Hayami also voices Yor Forger, Shouko Nishimiya and Yukino Yukinoshita.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Takehito Koyasu also voices Dio Brando, Touji Fushiguro and Zeke.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Toshiyuki Morikawa also voices Yoshikage Kira, Minato Namikaze and Bondrewd.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Daisuke Ono also voices Joutarou Kuujou, Erwin Smith and Sebastian Michaelis.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Fire Force is on Kodansha, INKR, Coolmic and Naver Series.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Fire Force, a manga by Atsushi Ookubo that started in 2015.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Ginga Legend Weed, a manga by Yoshihiro Takahashi that started in 1999.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Hunter x Hunter is on MANGA Plus, VIZ, Naver Series, KakaoPage and ONO.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Hunter x Hunter, a manga by Yoshihiro Togashi that started in 1998.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Mob Psycho 100 is on Piccoma.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Mob Psycho 100, a manga by ONE that started in 2012.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Yasunori Matsumoto also voices Narrator, Kojirou Nanjou and Jean Havoc.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "You Taichi also voices Dororo, Kenya Kobayashi and Guideau.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Yuuko Sanpei also voices Chizuru Yoshida, Boruto Uzumaki and Harunobu Nikaidou.",
+            "pages": 4,
+            "share": 0.007
+          }
+        ]
+      }
+    },
+    "page": {
+      "all": {
+        "pages": 2038,
+        "medianWords": 170,
+        "p10Words": 109,
+        "medianSiteWords": 156,
+        "p10SiteWords": 104,
+        "siteShare": 0.86,
+        "nearDupRate": 0.965,
+        "topSentences": [
+          {
+            "sentence": "Bio from AniList.",
+            "pages": 1130,
+            "share": 0.554
+          },
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 98,
+            "share": 0.048
+          },
+          {
+            "sentence": "It is in English on WEBTOON.",
+            "pages": 44,
+            "share": 0.022
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 35,
+            "share": 0.017
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 26,
+            "share": 0.013
+          },
+          {
+            "sentence": "It is in English on VIZ.",
+            "pages": 22,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on Crunchyroll and YouTube.",
+            "pages": 22,
+            "share": 0.011
+          },
+          {
+            "sentence": "It is in English on Yen Press.",
+            "pages": 19,
+            "share": 0.009
+          },
+          {
+            "sentence": "Detective Conan is on Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 18,
+            "share": 0.009
+          },
+          {
+            "sentence": "Detective Conan, an anime by Gosho Aoyama that started in 1996.",
+            "pages": 18,
+            "share": 0.009
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Netflix and Crackle.",
+            "pages": 18,
+            "share": 0.009
+          },
+          {
+            "sentence": "Where can I watch Detective Conan?",
+            "pages": 18,
+            "share": 0.009
+          },
+          {
+            "sentence": "It is in English on Tapas.",
+            "pages": 17,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 16,
+            "share": 0.008
+          },
+          {
+            "sentence": "It is in English on Kodansha.",
+            "pages": 15,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Crunchyroll and Bilibili TV.",
+            "pages": 14,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 14,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Bilibili TV and YouTube.",
+            "pages": 12,
+            "share": 0.006
+          },
+          {
+            "sentence": "It streams on YouTube and Crunchyroll.",
+            "pages": 12,
+            "share": 0.006
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Hulu and Netflix.",
+            "pages": 10,
+            "share": 0.005
+          }
+        ]
+      },
+      "noBio": {
+        "pages": 908,
+        "medianWords": 138,
+        "p10Words": 98,
+        "medianSiteWords": 138,
+        "p10SiteWords": 98,
+        "siteShare": 1,
+        "nearDupRate": 0.958,
+        "topSentences": [
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 68,
+            "share": 0.075
+          },
+          {
+            "sentence": "It is in English on WEBTOON.",
+            "pages": 23,
+            "share": 0.025
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 23,
+            "share": 0.025
+          },
+          {
+            "sentence": "It streams on Crunchyroll and YouTube.",
+            "pages": 17,
+            "share": 0.019
+          },
+          {
+            "sentence": "Detective Conan is on Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "Detective Conan, an anime by Gosho Aoyama that started in 1996.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Netflix and Crackle.",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "Where can I watch Detective Conan?",
+            "pages": 16,
+            "share": 0.018
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 15,
+            "share": 0.017
+          },
+          {
+            "sentence": "It streams on Crunchyroll and Bilibili TV.",
+            "pages": 12,
+            "share": 0.013
+          },
+          {
+            "sentence": "It streams on Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 12,
+            "share": 0.013
+          },
+          {
+            "sentence": "It is in English on Tapas.",
+            "pages": 11,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Bilibili TV and YouTube.",
+            "pages": 10,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on YouTube and Crunchyroll.",
+            "pages": 9,
+            "share": 0.01
+          },
+          {
+            "sentence": "It streams on Tencent Video.",
+            "pages": 7,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on Bilibili TV.",
+            "pages": 6,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Crunchyroll, iQ and Bilibili TV.",
+            "pages": 6,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 6,
+            "share": 0.007
+          },
+          {
+            "sentence": "Akira Ishida also voices Gaara, Kaworu Nagisa and Kotarou Katsura.",
+            "pages": 5,
+            "share": 0.006
+          },
+          {
+            "sentence": "In the original script it is written 生徒.",
+            "pages": 5,
+            "share": 0.006
+          }
+        ]
+      },
+      "withBio": {
+        "pages": 1130,
+        "medianWords": 227,
+        "p10Words": 135,
+        "medianSiteWords": 186,
+        "p10SiteWords": 110,
+        "siteShare": 0.793,
+        "nearDupRate": 0.961,
+        "topSentences": [
+          {
+            "sentence": "Bio from AniList.",
+            "pages": 1130,
+            "share": 1
+          },
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 30,
+            "share": 0.027
+          },
+          {
+            "sentence": "It is in English on WEBTOON.",
+            "pages": 21,
+            "share": 0.019
+          },
+          {
+            "sentence": "It is in English on VIZ.",
+            "pages": 17,
+            "share": 0.015
+          },
+          {
+            "sentence": "It is in English on Yen Press.",
+            "pages": 14,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 12,
+            "share": 0.011
+          },
+          {
+            "sentence": "It is in English on Kodansha.",
+            "pages": 11,
+            "share": 0.01
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 11,
+            "share": 0.01
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 10,
+            "share": 0.009
+          },
+          {
+            "sentence": "Is there an anime of One Piece?",
+            "pages": 8,
+            "share": 0.007
+          },
+          {
+            "sentence": "It is in English on MANGA Plus and VIZ.",
+            "pages": 8,
+            "share": 0.007
+          },
+          {
+            "sentence": "One Piece is on MANGA Plus, VIZ, Naver Series, KakaoPage and ONO.",
+            "pages": 8,
+            "share": 0.007
+          },
+          {
+            "sentence": "One Piece, a manga by Eiichirou Oda that started in 1997.",
+            "pages": 8,
+            "share": 0.007
+          },
+          {
+            "sentence": "Where can I read One Piece?",
+            "pages": 8,
+            "share": 0.007
+          },
+          {
+            "sentence": "It streams on Hulu and Crunchyroll.",
+            "pages": 7,
+            "share": 0.006
+          },
+          {
+            "sentence": "Toshiyuki Morikawa also voices Yoshikage Kira, Minato Namikaze and Bondrewd.",
+            "pages": 7,
+            "share": 0.006
+          },
+          {
+            "sentence": "Aoi Yuuki also voices Maomao, Mami Nanami and Lucy.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "It is in English on J-Novel Club.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "It is in English on Tapas.",
+            "pages": 6,
+            "share": 0.005
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Hulu and Netflix.",
+            "pages": 6,
+            "share": 0.005
+          }
+        ]
+      },
+      "voiced": {
+        "pages": 1332,
+        "medianWords": 198,
+        "p10Words": 128,
+        "medianSiteWords": 182,
+        "p10SiteWords": 127,
+        "siteShare": 0.865,
+        "nearDupRate": 0.991,
+        "topSentences": [
+          {
+            "sentence": "Bio from AniList.",
+            "pages": 716,
+            "share": 0.538
+          },
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 97,
+            "share": 0.073
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 28,
+            "share": 0.021
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 23,
+            "share": 0.017
+          },
+          {
+            "sentence": "It streams on Crunchyroll and YouTube.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "Detective Conan is on Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "Detective Conan, an anime by Gosho Aoyama that started in 1996.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Netflix and Crackle.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "Where can I watch Detective Conan?",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on Crunchyroll and Bilibili TV.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 13,
+            "share": 0.01
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Bilibili TV and YouTube.",
+            "pages": 12,
+            "share": 0.009
+          },
+          {
+            "sentence": "It streams on YouTube and Crunchyroll.",
+            "pages": 11,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Hulu and Netflix.",
+            "pages": 10,
+            "share": 0.008
+          },
+          {
+            "sentence": "It streams on Hulu and Crunchyroll.",
+            "pages": 10,
+            "share": 0.008
+          },
+          {
+            "sentence": "Toshiyuki Morikawa also voices Yoshikage Kira, Minato Namikaze and Bondrewd.",
+            "pages": 10,
+            "share": 0.008
+          },
+          {
+            "sentence": "Akira Ishida also voices Gaara, Kaworu Nagisa and Kotarou Katsura.",
+            "pages": 8,
+            "share": 0.006
+          },
+          {
+            "sentence": "It streams on Bilibili TV.",
+            "pages": 8,
+            "share": 0.006
+          },
+          {
+            "sentence": "It streams on Tubi TV.",
+            "pages": 8,
+            "share": 0.006
+          }
+        ]
+      },
+      "oneTitle": {
+        "pages": 1297,
+        "medianWords": 143,
+        "p10Words": 103,
+        "medianSiteWords": 133,
+        "p10SiteWords": 97,
+        "siteShare": 0.895,
+        "nearDupRate": 0.982,
+        "topSentences": [
+          {
+            "sentence": "Bio from AniList.",
+            "pages": 559,
+            "share": 0.431
+          },
+          {
+            "sentence": "It streams on Crunchyroll.",
+            "pages": 98,
+            "share": 0.076
+          },
+          {
+            "sentence": "It is in English on WEBTOON.",
+            "pages": 44,
+            "share": 0.034
+          },
+          {
+            "sentence": "It streams on YouTube.",
+            "pages": 35,
+            "share": 0.027
+          },
+          {
+            "sentence": "It streams on Netflix.",
+            "pages": 26,
+            "share": 0.02
+          },
+          {
+            "sentence": "It is in English on VIZ.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "It streams on Crunchyroll and YouTube.",
+            "pages": 22,
+            "share": 0.017
+          },
+          {
+            "sentence": "It is in English on Yen Press.",
+            "pages": 19,
+            "share": 0.015
+          },
+          {
+            "sentence": "Detective Conan is on Crunchyroll, Netflix, Crackle, Amazon Prime Video, Tubi TV and YouTube.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "Detective Conan, an anime by Gosho Aoyama that started in 1996.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Netflix and Crackle.",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "Where can I watch Detective Conan?",
+            "pages": 18,
+            "share": 0.014
+          },
+          {
+            "sentence": "It is in English on Tapas.",
+            "pages": 17,
+            "share": 0.013
+          },
+          {
+            "sentence": "It streams on HIDIVE.",
+            "pages": 16,
+            "share": 0.012
+          },
+          {
+            "sentence": "It is in English on Kodansha.",
+            "pages": 15,
+            "share": 0.012
+          },
+          {
+            "sentence": "It streams on Crunchyroll and Bilibili TV.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on Crunchyroll, YouTube and Bilibili TV.",
+            "pages": 14,
+            "share": 0.011
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Bilibili TV and YouTube.",
+            "pages": 12,
+            "share": 0.009
+          },
+          {
+            "sentence": "It streams on YouTube and Crunchyroll.",
+            "pages": 12,
+            "share": 0.009
+          },
+          {
+            "sentence": "It streams on Crunchyroll, Hulu and Netflix.",
+            "pages": 10,
+            "share": 0.008
+          }
+        ]
+      },
+      "crossMedia": {
+        "pages": 567,
+        "medianWords": 278,
+        "p10Words": 192,
+        "medianSiteWords": 231,
+        "p10SiteWords": 182,
+        "siteShare": 0.82,
+        "nearDupRate": 0.956,
+        "topSentences": [
+          {
+            "sentence": "Bio from AniList.",
+            "pages": 457,
+            "share": 0.806
+          },
+          {
+            "sentence": "Is there an anime of One Piece?",
+            "pages": 8,
+            "share": 0.014
+          },
+          {
+            "sentence": "One Piece is on MANGA Plus, VIZ, Naver Series, KakaoPage and ONO.",
+            "pages": 8,
+            "share": 0.014
+          },
+          {
+            "sentence": "One Piece, a manga by Eiichirou Oda that started in 1997.",
+            "pages": 8,
+            "share": 0.014
+          },
+          {
+            "sentence": "Where can I read One Piece?",
+            "pages": 8,
+            "share": 0.014
+          },
+          {
+            "sentence": "Aoi Yuuki also voices Maomao, Mami Nanami and Lucy.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Ayako Kawasumi also voices Artoria Pendragon, Ayumu Kasuga and Fuu Kasumi.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Kikuko Inoue also voices Narrator, Lust and Mirellia Q Melromarc.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Ryoutarou Okiayu also voices Byakuya Kuchiki, Scar and Shigure Souma.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Saori Hayami also voices Yor Forger, Shouko Nishimiya and Yukino Yukinoshita.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Takehito Koyasu also voices Dio Brando, Touji Fushiguro and Zeke.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Toshiyuki Morikawa also voices Yoshikage Kira, Minato Namikaze and Bondrewd.",
+            "pages": 5,
+            "share": 0.009
+          },
+          {
+            "sentence": "Daisuke Ono also voices Joutarou Kuujou, Erwin Smith and Sebastian Michaelis.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Fire Force is on Kodansha, INKR, Coolmic and Naver Series.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Fire Force, a manga by Atsushi Ookubo that started in 2015.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Ginga Legend Weed, a manga by Yoshihiro Takahashi that started in 1999.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Hunter x Hunter is on MANGA Plus, VIZ, Naver Series, KakaoPage and ONO.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Hunter x Hunter, a manga by Yoshihiro Togashi that started in 1998.",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Is there an anime of Fire Force?",
+            "pages": 4,
+            "share": 0.007
+          },
+          {
+            "sentence": "Is there an anime of Ginga Legend Weed?",
+            "pages": 4,
+            "share": 0.007
+          }
+        ]
+      }
+    },
+    "opening": {
+      "all": {
+        "sentence": "n is a character in the anime n by n .",
+        "share": 0.199
+      },
+      "noBio": {
+        "sentence": "n is a character in the anime n by n .",
+        "share": 0.302
+      },
+      "withBio": {
+        "sentence": "n is a character in the manga n by n .",
+        "share": 0.223
+      },
+      "voiced": {
+        "sentence": "n is a character in the anime n by n .",
+        "share": 0.277
+      },
+      "oneTitle": {
+        "sentence": "n is a character in the anime n by n .",
+        "share": 0.251
+      },
+      "crossMedia": {
+        "sentence": "n is a character in the manga n by n .",
+        "share": 0.298
+      }
+    }
+  }
+}
