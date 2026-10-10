@@ -22,6 +22,7 @@ import { titleBuyCopy } from '../../../lib/buy-copy.js'
 import { buyAnswer, BUY_POPULARITY } from '../../../lib/buy.mjs'
 import { hasBuyPage, hasFreePage } from '../../../lib/gates.mjs'
 import { statusWord, charactersOf, genreSlug } from '../../../lib/format.js'
+import { titleSummary } from '../../../lib/title-summary.mjs'
 
 const KINDS = new Set(SECTIONS)
 
@@ -64,17 +65,10 @@ const kindLabel = word.charAt(0).toUpperCase() + word.slice(1)
 const genres = (item.genres || []).slice(0, 4)
 const cast = charactersOf(item).slice(0, 12)
 
-const facts = [
-  ['Status', statusWord(item.status)],
-  ...(isComic && item.volumes ? [['Volumes (original release)', item.volumes]] : []),
-  isComic
-    ? ['Chapters', item.chapters ?? 'Not counted']
-    : ['Episodes', item.episodes ?? 'Not counted'],
-  ...(!isComic && item.studios?.[0] ? [['Studio', item.studios[0]]] : []),
-  ...(item.startYear ? [['First released', item.startYear]] : []),
-  ['Format', word],
-  ...(item.authors?.length ? [['Author', item.authors.map((a) => a.name).join(', ')]] : []),
-]
+// The facts table was the title page's own, word for word. Two lines and a
+// link to the title page instead (Step 6 of tasks/phase3-plan.md); the shop
+// rows and the cast merch faces stay.
+const summary = titleSummary(item, kind)
 
 const jsonld = [
   {
@@ -158,21 +152,17 @@ const jsonld = [
         ))
       }
 
-      <section class="answer">
-        <div class="answer__head">
-          <h2>The facts</h2>
-        </div>
-        <dl class="facts">
-          {
-            facts.map(([label, value]) => (
-              <div>
-                <dt>{label}</dt>
-                <dd>{value}</dd>
-              </div>
-            ))
-          }
-        </dl>
-      </section>
+      {
+        summary.length > 0 && (
+          <section class="answer">
+            <div class="answer__head">
+              <h2>About {item.title}</h2>
+            </div>
+            {summary.map((line) => <p class="overview">{line}</p>)}
+            <p class="overview"><a href={home}>The synopsis, the facts and the cast are on the title page</a>.</p>
+          </section>
+        )
+      }
 
       {
         cast.length > 0 && (

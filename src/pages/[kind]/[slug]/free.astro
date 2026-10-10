@@ -12,12 +12,14 @@ import AlsoLookFor from '../../../components/AlsoLookFor.astro'
 import Platforms from '../../../components/Platforms.astro'
 import { loadTitle, envOf, countryOf, notFound, unavailable } from '../../../lib/runtime.js'
 import { sectionOf, SECTIONS } from '../../../lib/section.mjs'
-import { freeAnswer, verbOf, wordOf, faqJsonld, listWords } from '../../../lib/answers.mjs'
+import { verbOf, wordOf, faqJsonld, listWords } from '../../../lib/answers.mjs'
+import { freeAnswer } from '../../../lib/free-answer.mjs'
+import { titleSummary } from '../../../lib/title-summary.mjs'
 import { shopLinks } from '../../../lib/shop-links.js'
 import { booksKnown } from '../../../lib/picks.js'
 import { hasFreePage, hasLikePage, hasBuyPage } from '../../../lib/gates.mjs'
 import BuyBox from '../../../components/BuyBox.astro'
-import { statusWord, charactersOf, genreSlug } from '../../../lib/format.js'
+import { genreSlug } from '../../../lib/format.js'
 
 const KINDS = new Set(SECTIONS)
 
@@ -51,47 +53,19 @@ const paidRows = [...answer.paid, ...answer.unknown]
 // reading is the readiest buyer we ever get, and we were sending them away.
 const buys = shopLinks(item, countryOf(Astro), { books: booksKnown(item) })
 
-// Most readers now land here instead of the title page, so this page has to
-// answer the second question too: "fine, but what IS it?". Everything below is
-// read from the same record the title page uses, so the two can never disagree.
+// The synopsis, the facts table and the cast live on the title page. This
+// page says what the title is in two lines and links there (owner decision,
+// Step 6 of tasks/phase3-plan.md), so it no longer repeats them word for word.
 const genres = (item.genres || []).slice(0, 4)
-const cast = charactersOf(item).slice(0, 12)
-
-const rawSynopsis = (item.description || '').replace(/\n{2,}/g, '\n\n').trim()
-const creditMatch = rawSynopsis.match(/\(Source:\s*([^)]+)\)/i)
-const synopsisCredit = creditMatch ? creditMatch[1].trim() : null
-const synopsis = rawSynopsis.replace(/\(Source:[^)]*\)/gi, '').trim()
-
-const facts = [
-  ['Status', statusWord(item.status)],
-  isComic ? ['Chapters', item.chapters ?? 'Not counted'] : ['Episodes', item.episodes ?? 'Not counted'],
-  ...(isComic && item.volumes ? [['Volumes', item.volumes]] : []),
-  ...(!isComic && item.studios?.[0] ? [['Studio', item.studios[0]]] : []),
-  ...(item.startYear ? [['First released', item.startYear]] : []),
-  ...({ KR: 'South Korea', JP: 'Japan', CN: 'China', TW: 'Taiwan' }[item.country]
-    ? [['Country', { KR: 'South Korea', JP: 'Japan', CN: 'China', TW: 'Taiwan' }[item.country]]]
-    : []),
-  ['Format', word],
-  ...(item.authors?.length ? [['Author', item.authors.map((a) => a.name).join(', ')]] : []),
-]
+const summary = titleSummary(item, kind)
 
 const kindLabel = word.charAt(0).toUpperCase() + word.slice(1)
-const faq = [
-  {
-    q: `Is ${item.title} free to ${verb}?`,
-    a: answer.free.length
-      ? `Partly. ${listWords(answer.free.map((r) => r.link.site))} ${
-          answer.free.length === 1 ? 'gives' : 'give'
-        } you part of it without paying, and ${answer.free.length === 1 ? 'it holds' : 'they hold'} a licence to do it.`
-      : `No. Every official platform that carries ${item.title} asks for money before you start.`,
-  },
-  {
-    q: `Is it legal to ${verb} ${item.title} for free?`,
-    a: answer.free.length
-      ? `Yes, on the platforms listed here. They pay the rights holder and give part of the work away to bring readers in. A scan site does neither.`
-      : `Only if a platform gives it away itself, and none does for ${item.title} today. We link to licensed platforms only.`,
-  },
-]
+// One question, answered with this title's own platforms; how much each gives
+// away is the paragraph above it. The second one ("Is it legal...?") had the
+// same answer on every free page, so it went.
+const faq = answer.free.length
+  ? [{ q: `Is ${item.title} free to ${verb}?`, a: `In part, on ${listWords(answer.free.map((r) => r.link.site))}.` }]
+  : []
 
 const jsonld = [
   {
@@ -103,7 +77,7 @@ const jsonld = [
     dateModified: new Date().toISOString().slice(0, 10),
     about: { '@id': `https://manhwaindex.com${home}#item` },
   },
-  faqJsonld(faq),
+  ...(faq.length ? [faqJsonld(faq)] : []),
 ]
 ---
 
@@ -215,72 +189,36 @@ const jsonld = [
       }
 
       {
-        synopsis && (
+        summary.length > 0 && (
           <section class="answer">
             <div class="answer__head">
-              <h2>What {item.title} is about</h2>
-              {synopsisCredit && <p>Told by {synopsisCredit}.</p>}
+              <h2>About {item.title}</h2>
             </div>
-            <p class="overview">{synopsis}</p>
-          </section>
-        )
-      }
-
-      <section class="answer">
-        <div class="answer__head">
-          <h2>The facts</h2>
-        </div>
-        <dl class="facts">
-          {
-            facts.map(([label, value]) => (
-              <div>
-                <dt>{label}</dt>
-                <dd>{value}</dd>
-              </div>
-            ))
-          }
-        </dl>
-      </section>
-
-      {
-        cast.length > 0 && (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>Who is in it</h2>
-              <p>Tap a face to see every other story that character turns up in.</p>
-            </div>
-            <ul class="people">
-              {cast.map((person) => (
-                <li>
-                  <a href={`/character/${person.slug}`}>
-                    <img src={person.image} alt={`${person.name} portrait`} width="220" height="293" loading="lazy" decoding="async" />
-                    <b>{person.name}</b>
-                    <span>{person.role === 'MAIN' ? 'Main' : 'Supporting'}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {summary.map((line) => <p class="overview">{line}</p>)}
+            <p class="overview"><a href={home}>The synopsis, the facts and the cast are on the title page</a>.</p>
           </section>
         )
       }
 
       <AlsoLookFor path={Astro.url.pathname} frame="answer" />
 
-      <section class="answer">
-        <div class="answer__head">
-          <h2>Common questions</h2>
-        </div>
-        <dl class="qa">
-          {
-            faq.map((row) => (
-              <div>
-                <dt>{row.q}</dt>
-                <dd>{row.a}</dd>
-              </div>
-            ))
-          }
-        </dl>
-      </section>
+      {faq.length > 0 && (
+        <section class="answer">
+          <div class="answer__head">
+            <h2>Common questions</h2>
+          </div>
+          <dl class="qa">
+            {
+              faq.map((row) => (
+                <div>
+                  <dt>{row.q}</dt>
+                  <dd>{row.a}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </section>
+      )}
 
       {
         /* Only when the page exists. An empty "similar" page is a worse

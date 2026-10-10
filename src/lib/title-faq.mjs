@@ -25,7 +25,7 @@ const FREE_WORDS = {
   [FREE.SOME_EP]: 'gives the first episodes free',
   [FREE.TIMER]: 'unlocks one UNIT at a time on a free timer',
 }
-const PAY_WORDS = {
+export const PAY_WORDS = {
   [PAY.ADS]: 'is free with ads',
   [PAY.COINS]: 'charges coins per chapter',
   [PAY.BUY]: 'sells each chapter',
@@ -39,9 +39,12 @@ const big = (n) => Number(n).toLocaleString('en-GB')
 const plural = (n, one, many) => (n === 1 ? one : many)
 
 /** What a platform gives away, with this title's own count where it makes the answer exact. */
-function freeWords(facts, unit, count = 0) {
+export function freeWords(facts, unit, count = 0) {
   if (count > 1 && facts.free === FREE.ALL) return `has all ${big(count)} ${unit} free`
+  if (count > 1 && facts.free === FREE.MOST) return `has most of its ${big(count)} ${unit} free`
   if (count > 1 && facts.free === FREE.EARLY) return `keeps all but the newest of its ${big(count)} ${unit} free`
+  if (count > 1 && (facts.free === FREE.SOME || facts.free === FREE.SOME_EP)) return `gives the first ${unit} of ${big(count)} free`
+  if (count > 1 && facts.free === FREE.TIMER) return `unlocks its ${big(count)} ${unit} one at a time on a free timer`
   return (FREE_WORDS[facts.free] || '').replace('UNITS', unit).replace('UNIT', unit.slice(0, -1))
 }
 

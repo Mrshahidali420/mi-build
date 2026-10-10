@@ -10,7 +10,8 @@ import Base from '../../../layouts/Base.astro'
 import AlsoLookFor from '../../../components/AlsoLookFor.astro'
 import { loadTitle, envOf, countryOf, notFound, unavailable } from '../../../lib/runtime.js'
 import { sectionOf, SECTIONS } from '../../../lib/section.mjs'
-import { likeAnswer, verbOf, wordOf, listWords } from '../../../lib/answers.mjs'
+import { verbOf, wordOf, listWords } from '../../../lib/answers.mjs'
+import { likeAnswer } from '../../../lib/like-answer.mjs'
 import { shopLinks } from '../../../lib/shop-links.js'
 import { booksKnown } from '../../../lib/picks.js'
 import { hasLikePage } from '../../../lib/gates.mjs'
@@ -110,7 +111,7 @@ const jsonld = [
           <section class="answer">
             <div class="answer__head">
               <h2>The closest matches</h2>
-              <p>Most-read first. Each one names the official platforms that carry it.</p>
+              <p><a href="/how-we-check-links">How we check links</a></p>
             </div>
             <ul class="picks">
               {answer.picks.map((pick) => (
@@ -122,11 +123,7 @@ const jsonld = [
                     <h3>
                       <a href={`/${kind}/${pick.slug}`}>{pick.title}</a>
                     </h3>
-                    {pick.shared && pick.shared.length > 0 && (
-                      <p class="pick__why">
-                        Shares {listWords(pick.shared.map((g) => g.toLowerCase()))} with {item.title}.
-                      </p>
-                    )}
+                    {pick.reason && <p class="pick__why">{pick.reason}.</p>}
                     <p class="pick__where">
                       {pick.sites.length > 0 ? (
                         <>
@@ -143,17 +140,6 @@ const jsonld = [
             </ul>
           </section>
         )
-      }
-
-      {
-        answer.paragraphs.map((block) => (
-          <section class="answer">
-            <div class="answer__head">
-              <h2>{block.heading}</h2>
-            </div>
-            <p class="overview">{block.text}</p>
-          </section>
-        ))
       }
 
       <AlsoLookFor path={Astro.url.pathname} frame="answer" />

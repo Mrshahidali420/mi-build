@@ -101,11 +101,15 @@ jobs:
       - name: Measure character pages
         run: node --max-old-space-size=6000 scripts/measure-characters.mjs --mode new --label "$LABEL-characters"
 
+      - name: Measure the title sub-pages (/characters, /like, /free)
+        run: node --max-old-space-size=6000 scripts/measure-subpages.mjs --mode new --label "$LABEL-subpages"
+
       - name: Measure the pages as they were at the old ref
         if: env.OLD_REF != ''
         run: |
           git show "$OLD_REF:src/lib/answers.mjs" > src/lib/answers-old.tmp.mjs
           MEASURE_ANSWERS="$PWD/src/lib/answers-old.tmp.mjs" node --max-old-space-size=6000 scripts/measure-characters.mjs --mode old --label "$LABEL-characters-old"
+          MEASURE_ANSWERS="$PWD/src/lib/answers-old.tmp.mjs" node --max-old-space-size=6000 scripts/measure-subpages.mjs --mode old --label "$LABEL-subpages-old"
 
       - name: Summary
         if: always()

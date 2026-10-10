@@ -35,6 +35,9 @@ import { licensedPools, alikeFor } from '../src/lib/alike.mjs'
 import { migrateAliasedLinksAll } from '../src/lib/platform-aliases.mjs'
 import { fixNovelAppearanceKindsAll } from '../src/lib/novel-appearance-kind.mjs'
 import { attachCharacterFacts } from '../src/lib/character-facts.mjs'
+import { castContext, withCastFacts } from '../src/lib/cast-facts.mjs'
+import { recSetOf, byLikeRank, likeExtras } from '../src/lib/like-facts.mjs'
+import { readingChain, adaptationOf, sameMedium, ADAPT_RELATIONS } from './lib/title-graph.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const OUT = join(ROOT, 'public', 'd')
@@ -277,13 +280,15 @@ function precompute(titles, handoff = null) {
       }
     }
 
+    // AniList readers' suggestions rank first (src/lib/like-facts.mjs).
+    const recSet = recSetOf(item)
     item.similar = [...sharedBy]
       .filter(([, shared]) => shared.length >= 2)
-      .sort((a, b) => b[1].length - a[1].length || b[0].popularity - a[0].popularity)
+      .sort(byLikeRank(recSet))
       .slice(0, 6)
       // The "like" page has to say WHY each pick belongs, so the shared
-      // genres travel with the pick instead of being worked out again.
-      .map(([p, shared]) => ({ ...thin(p), shared: shared.slice(0, 3) }))
+      // genres and the facts it contrasts travel with the pick.
+      .map(([p, shared]) => ({ ...thin(p), shared: shared.slice(0, 3), ...likeExtras(item, p, recSet) }))
 
     // What real readers picked next, from AniList. This is a human vote, so it
     // beats the genre match above, and every pick that survives is a real
@@ -323,128 +328,6 @@ function precompute(titles, handoff = null) {
   // added tomorrow gets its own prose tomorrow with no extra step.
   writeOverviews(titles, pools)
   return { byId, recsInIndex }
-}
-
-/** The same medium? A comic sequel is a comic, an anime sequel is an anime. */
-const sameMedium = (a, b) => (a.kind === 'anime') === (b.kind === 'anime')
-
-/** One step along the story, in one direction, inside the same medium. */
-function step(item, byId, relation) {
-  for (const rel of item.relations || []) {
-    if (rel.relation !== relation) continue
-    const found = byId.get(rel.id)
-    if (found && found.id !== item.id && sameMedium(item, found)) return found
-  }
-  return null
-}
-
-/**
- * When an announced title is due. Only what the page needs to say "premieres
- * on 10 Jan" or "announced for Winter 2027": nothing for a title already out.
- */
-const premiere = (p) =>
-  p.status === 'NOT_YET_RELEASED'
-    ? {
-        ...(p.startDate ? { startDate: p.startDate } : {}),
-        ...(p.startPrecision ? { startPrecision: p.startPrecision } : {}),
-        ...(p.season && p.seasonYear ? { season: p.season, seasonYear: p.seasonYear } : {}),
-      }
-    : {}
-
-const part = (p, self) => ({
-  slug: p.slug,
-  title: p.title,
-  kind: kindOf(p),
-  status: p.status,
-  chapters: p.chapters || null,
-  episodes: p.episodes || null,
-  startYear: p.startYear || null,
-  ...premiere(p),
-  ...(self ? { self: true } : {}),
-})
-
-/**
- * The order to read a series in.
- *
- * We walk back through PREQUEL until the story starts, then forward through
- * SEQUEL until it ends. A `seen` set stops a loop, because AniList data does
- * sometimes point in a circle. A single book gets an empty chain.
- */
-function readingChain(item, byId) {
-  const seen = new Set([item.id])
-  const before = []
-  for (let at = step(item, byId, 'PREQUEL'); at && !seen.has(at.id); at = step(at, byId, 'PREQUEL')) {
-    seen.add(at.id)
-    before.unshift(part(at))
-  }
-  const after = []
-  for (let at = step(item, byId, 'SEQUEL'); at && !seen.has(at.id); at = step(at, byId, 'SEQUEL')) {
-    seen.add(at.id)
-    after.push(part(at))
-  }
-  if (before.length + after.length === 0) return null
-  return [...before, part(item, true), ...after]
-}
-
-const ADAPT_RELATIONS = new Set(['ADAPTATION', 'SOURCE'])
-
-/**
- * How the anime and the comic line up. For a comic this is every anime made
- * from it; for an anime it is the book it came from. Only titles that are in
- * our own index are used, because we only ever link to a page we hold.
- */
-function adaptationOf(item, byId) {
-  const isComic = item.kind !== 'anime'
-  const hits = (item.relations || [])
-    .filter((rel) => ADAPT_RELATIONS.has(rel.relation))
-    .map((rel) => byId.get(rel.id))
-    .filter((found) => found && !sameMedium(item, found))
-
-  if (isComic) {
-    const shows = hits.map((show) => ({
-      slug: show.slug,
-      title: show.title,
-      format: show.format || 'TV',
-      episodes: show.episodes || null,
-      status: show.status,
-      startYear: show.startYear || null,
-      ...premiere(show),
-      // The airing clock travels with the show, so a comic page can say when
-      // its own anime airs next without loading the anime record.
-      nextEpisode: show.nextEpisode || null,
-      // Where the anime streams, so a comic with no official link of its own
-      // can still say where its story can be watched (src/lib/prose.mjs).
-      ...adaptSites(show),
-    }))
-    shows.sort((a, b) => (a.startYear || 9999) - (b.startYear || 9999))
-    return shows.length ? { shows } : null
-  }
-
-  const src = hits[0]
-  if (!src) return null
-  return {
-    source: {
-      slug: src.slug,
-      title: src.title,
-      kind: kindOf(src),
-      chapters: src.chapters || null,
-      status: src.status,
-      ...adaptSites(src),
-    },
-  }
-}
-
-const ADAPT_SITES_MAX = 3
-
-/**
- * The first few official platforms of the other side of an adaptation: where
- * the anime streams, or, for the book, where it is read in English. Stored
- * only when there is one, so most records pay nothing for it.
- */
-function adaptSites(p) {
-  const links = p.kind === 'anime' ? p.watchLinks || [] : (p.readLinks || []).filter((l) => l.language === 'English')
-  const sites = [...new Set(links.map((l) => l.site).filter(Boolean))].slice(0, ADAPT_SITES_MAX)
-  return sites.length ? { sites } : {}
 }
 
 const noteOf = (site) => (PLATFORMS[site] || FALLBACK).note
@@ -763,7 +646,16 @@ async function main() {
   const titles = [...comics, ...anime]
   const { byId, recsInIndex } = precompute(titles, readHandoff())
   since('precompute')
-  const t = writeShards(join(OUT, 't'), titles, TITLE_SHARDS, (item) =>
+  // Only characters that earn a page are sharded. The rest are never served.
+  // Worked out before the titles are written: a cast page reads its leads'
+  // facts off the title record (src/lib/cast-facts.mjs), never a character shard.
+  const pages = characters.filter((c) => c.image && (c.appearsIn || []).length > 0)
+  const namesakes = attachNamesakes(pages)
+  console.log(`  namesakes listed on ${namesakes.linked} of ${pages.length} character pages, near the top on ${namesakes.high}`)
+  // Years, costars and other roles of the same voice (src/lib/character-facts.mjs).
+  const people = attachCharacterFacts(pages, titles)
+  const cast = castContext(people)
+  const t = writeShards(join(OUT, 't'), titles.map((item) => withCastFacts(item, cast)), TITLE_SHARDS, (item) =>
     titleKey(kindOf(item), item.slug))
   since('title shards')
 
@@ -772,12 +664,8 @@ async function main() {
   const feed = writeFeedPool(join(OUT, 'feed.v1.json'), titles, byId, recsInIndex, nowSec)
   since('list rows and feed pool')
 
-  // Only characters that earn a page are sharded. The rest are never served.
-  const pages = characters.filter((c) => c.image && (c.appearsIn || []).length > 0)
-  const namesakes = attachNamesakes(pages)
-  console.log(`  namesakes listed on ${namesakes.linked} of ${pages.length} character pages, near the top on ${namesakes.high}`)
-  // Years, costars and other roles of the same voice (src/lib/character-facts.mjs).
-  const c = writeShards(join(OUT, 'c'), attachCharacterFacts(pages, titles), CHARACTER_SHARDS, (person) => person.slug)
+  // The character shards, with the Step 3 fields worked out above.
+  const c = writeShards(join(OUT, 'c'), people, CHARACTER_SHARDS, (person) => person.slug)
 
   // The site shell (header and footer) shows two counts and the top genres.
   // The Worker renders the shell on every page, so those few numbers are

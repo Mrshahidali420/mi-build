@@ -16,6 +16,7 @@ import { sectionOf, SECTIONS } from '../../../lib/section.mjs'
 import { verbOf, wordOf } from '../../../lib/answers.mjs'
 import { charactersOf } from '../../../lib/format.js'
 import { hasCastPage } from '../../../lib/gates.mjs'
+import { leadLine, castSummary } from '../../../lib/cast-page.mjs'
 
 const KINDS = new Set(SECTIONS)
 
@@ -57,13 +58,13 @@ const description =
   `. Each one has a page with age, height and every other story they turn up in.`
 
 // The voices are only worth naming on an anime page. A comic has none.
-const voices = kind === 'anime' ? cast.filter((c) => c.voice).length : 0
-// People search "<title> voice actors", so the leads' voices get a plain
-// sentence, and every voice name carries its language.
-const voiceLine = (kind === 'anime' ? leads : [])
-  .filter((c) => c.voice)
-  .slice(0, 3)
-  .map((c) => `${c.name} is voiced by ${c.voice} in Japanese${c.voiceEn ? ` and ${c.voiceEn} in English` : ''}`)
+const anime = kind === 'anime'
+const voices = anime ? cast.filter((c) => c.voice).length : 0
+// One line per lead, from the record and the build-time cast facts
+// (src/lib/cast-page.mjs): voices, other titles, the voice's best-known other
+// role. A lead we hold nothing more about gets no line.
+const leadLines = leads.map((c) => leadLine(c, { anime })).filter(Boolean)
+const summary = castSummary(item, cast, { anime })
 
 const jsonld = [
   {
@@ -118,22 +119,15 @@ const jsonld = [
     </header>
 
     <div class="title-body">
-      <p class="title-answer">
-        {item.title} has {cast.length} named characters on record
-        {leadNames.length === 1 && <>, and {leadNames[0]} leads it</>}
-        {leadNames.length > 1 && <>, led by {leadNames.join(', ')}</>}. Tap any face
-        for that character's own page: age, height, birthday, and every other
-        story they turn up in.
-        {voiceLine.length > 0 && <> Voice actors: {voiceLine.join('; ')}.</>}
-      </p>
+      <p class="title-answer" set:html={summary} />
 
       {
         leads.length > 0 && (
           <section class="answer">
             <div class="answer__head">
               <h2>{voices > 0 ? 'The main characters and their voice actors' : 'The main characters'}</h2>
-              <p>The people the story is about.</p>
             </div>
+            {leadLines.map((line) => <p class="overview" set:html={line} />)}
             <ul class="people people--wall">
               {leads.map((person) => (
                 <li>
@@ -155,7 +149,6 @@ const jsonld = [
           <section class="answer">
             <div class="answer__head">
               <h2>The rest of the cast</h2>
-              <p>Supporting and background faces, in the order AniList lists them.</p>
             </div>
             <ul class="people people--wall">
               {rest.map((person) => (
