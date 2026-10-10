@@ -60,7 +60,7 @@ const otherLanguages = languages.filter((l) => l !== 'English')
 
 <section class="answer dp-where" id={anchor} aria-labelledby="dp-where-head">
   <div class="answer__head">
-    <h2 id="dp-where-head">{heading || (isComic ? 'Read it on' : 'Watch it on')}</h2>
+    <h2 id="dp-where-head">{heading || (count ? `${Verb} it on` : `Where to ${verb} it`)}</h2>
     {countLine && <p class="answer__count">{countLine}</p>}
   </div>
 
