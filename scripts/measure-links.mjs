@@ -60,6 +60,7 @@ export function slimTitle(item) {
   const similar = (item.similar || []).map(pathOf).filter(Boolean)
   const shown = new Set((item.similar || []).map((p) => p.slug))
   const recs = (item.recs || []).filter((p) => p.slug !== item.slug && !shown.has(p.slug)).map(pathOf).filter(Boolean)
+  const quiet = (item.lessKnown || []).map(pathOf).filter(Boolean)
   const family = (item.relations || []).map((r) => (r.hit ? pathOf(r.hit.item) : null)).filter(Boolean)
   const chain = (item.chain || []).filter((p) => !p.self && p.slug && p.kind).map((p) => `/${p.kind}/${p.slug}`)
   const faces = (item.characters || []).filter((c) => c.image)
@@ -70,7 +71,7 @@ export function slimTitle(item) {
     popularity: item.popularity || 0,
     genres: (item.genres || []).map(genreSlug),
     subs: SUBS.filter((s) => gates[s]).map((s) => ({ page: s, indexed: !off.has(s) })),
-    out: [...similar, ...recs, ...family, ...chain],
+    out: [...similar, ...recs, ...quiet, ...family, ...chain],
     similar,
     castShown: indexedFirst(faces).slice(0, CAST_SHOWN).map((c) => c.slug),
     castAll: faces.map((c) => c.slug),

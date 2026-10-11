@@ -40,7 +40,7 @@ import { noindexSubpages, noindexCharacterBuy } from '../src/lib/thin-pages.mjs'
 import { castContext, withCastFacts } from '../src/lib/cast-facts.mjs'
 import { recSetOf, byLikeRank, likeExtras } from '../src/lib/like-facts.mjs'
 import { genericRoleSlugs, withoutGenericCast } from '../src/lib/generic-roles.mjs'
-import { spreadRank, capPicks, spotOrder, SIMILAR_CAP } from '../src/lib/link-spread.mjs'
+import { spreadRank, capPicks, spotOrder, lessKnownPicks, SIMILAR_CAP } from '../src/lib/link-spread.mjs'
 import { readingChain, adaptationOf, sameMedium, ADAPT_RELATIONS } from './lib/title-graph.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -342,6 +342,24 @@ function precompute(titles, handoff = null) {
   }
 
   console.log(`  "read something like it" picks on ${alikeCount} unlicensed pages${handoff ? ', ranked by hand-off' : ''}`)
+
+  // Titles almost nothing links to get a place on the pages of titles close
+  // to them (src/lib/link-spread.mjs). Counted from the blocks just built:
+  // every page whose "you may also like" or readers' picks shows the title.
+  const linksIn = new Map(similarUses)
+  for (const item of titles) {
+    for (const pick of item.recs || []) linksIn.set(pick.id, (linksIn.get(pick.id) || 0) + 1)
+  }
+  const quiet = lessKnownPicks(titles, { kindOf, inbound: linksIn })
+  let quietRows = 0
+  for (const item of titles) {
+    const shown = new Set([...(item.similar || []), ...(item.recs || [])].map((p) => p.id))
+    const rows = (quiet.get(item.id) || []).filter(([p]) => !shown.has(p.id))
+    if (!rows.length) continue
+    item.lessKnown = rows.map(([p, shared, by]) => ({ ...thin(p), shared, ...(by ? { by } : {}) }))
+    quietRows += rows.length
+  }
+  console.log(`  less known picks: ${quietRows} places on ${quiet.size} title pages`)
 
   // The original overview. It is written here, on every build, so a title
   // added tomorrow gets its own prose tomorrow with no extra step.

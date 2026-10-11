@@ -4,11 +4,21 @@
  * comes first), then the closest titles by genre, then the "like" page when
  * it exists. Same blocks and words as before, grouped at the bottom.
  *
- * props: title, isComic, word, recs, similar, similarBase, likePage
+ * Last comes the quiet shelf: titles close to this one that few pages link
+ * to yet (src/lib/link-spread.mjs), so the long tail of the catalog can be
+ * reached from a page a reader already found.
+ *
+ * props: title, isComic, word, recs, similar, similarBase, likePage, lessKnown
  */
 import CoverGrid from '../CoverGrid.astro'
 
-const { title, isComic, word, recs = [], similar = [], similarBase, likePage } = Astro.props
+const { title, isComic, word, recs = [], similar = [], similarBase, likePage, lessKnown = [] } = Astro.props
+// What the quiet picks have in common with this title, said once for the shelf.
+const quietShared = [...new Set(lessKnown.flatMap((p) => p.shared || []))].slice(0, 3)
+const quietWhy =
+  quietShared.length > 1
+    ? `${quietShared.slice(0, -1).join(', ')} and ${quietShared[quietShared.length - 1]}`
+    : quietShared[0] || ''
 const open = similar.filter((p) => ((p.kind === 'anime' ? p.watchLinks : p.readLinks) || []).length > 0).length
 ---
 
@@ -45,6 +55,21 @@ const open = similar.filter((p) => ((p.kind === 'anime' ? p.watchLinks : p.readL
           </div>
         </a>
       )}
+    </section>
+  )
+}
+
+{
+  lessKnown.length > 0 && (
+    <section class="answer dp-more-like">
+      <div class="answer__head">
+        <h2>Less known {word} like {title}</h2>
+        <p>
+          {quietWhy ? `Smaller titles that share ${quietWhy} with this one.` : 'Smaller titles by the same author or studio.'} Fewer
+          readers have found them yet.
+        </p>
+      </div>
+      <CoverGrid items={lessKnown} badges />
     </section>
   )
 }

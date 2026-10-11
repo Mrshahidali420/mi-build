@@ -22,8 +22,10 @@
  *
  * 2. THE QUIET SLOT (lessKnownPicks). A title with fewer than LESS_KNOWN_BELOW
  *    links in is placed on the pages of LESS_KNOWN_HOSTS other titles of its
- *    own kind that share two of its genres (one, when it has only one). No
- *    host carries more than LESS_KNOWN_PER_HOST. Never a random pick.
+ *    own kind that share two of its genres (one, when it has only one). A
+ *    title with no genre on record goes on pages by the same author or
+ *    studio. No host carries more than LESS_KNOWN_PER_HOST, and a title with
+ *    nothing in common with any other is left out. Never a random pick.
  *
  * Called by scripts/make-shards.mjs.
  */
@@ -117,6 +119,12 @@ export function genreKeys(kind, genres) {
   return keys
 }
 
+/** The keys of the people and studios behind a title, for a title with no genre. */
+export function makerKeys(kind, title) {
+  const names = [...(title.authors || []).map((a) => a && a.name), ...(title.studios || [])]
+  return [...new Set(names.filter(Boolean))].sort().map((name) => `${kind}|by|${name}`)
+}
+
 /** First index in a spot-sorted list whose spot is not below `spot`. */
 function lowerBound(list, spot) {
   let low = 0
@@ -149,7 +157,8 @@ export function lessKnownPicks(
   const ordered = [...titles].filter((t) => Number.isFinite(t.id)).sort((a, b) => a.id - b.id)
   const ring = ordered.map((title) => ({ title, spot: spotOf(title.id) })).sort((a, b) => a.spot - b.spot || a.title.id - b.title.id)
   for (const seat of ring) {
-    for (const key of genreKeys(kindOf(seat.title), seat.title.genres)) {
+    const kind = kindOf(seat.title)
+    for (const key of [...genreKeys(kind, seat.title.genres), ...makerKeys(kind, seat.title)]) {
       const list = byKey.get(key)
       if (list) list.push(seat)
       else byKey.set(key, [seat])
@@ -160,7 +169,8 @@ export function lessKnownPicks(
   const load = (id) => placed.get(id)?.length || 0
   const weak = ordered.filter((t) => t.cover && t.slug && (inbound.get(t.id) || 0) < below)
   for (const title of weak) {
-    const keys = genreKeys(kindOf(title), title.genres)
+    const byGenre = genreKeys(kindOf(title), title.genres)
+    const keys = byGenre.length ? byGenre : makerKeys(kindOf(title), title)
     if (!keys.length) continue
     const mine = new Set()
     const want = Math.max(0, hosts - (inbound.get(title.id) || 0))
@@ -172,9 +182,11 @@ export function lessKnownPicks(
       for (let step = 0; step < list.length; step++) {
         const host = list[(start + step) % list.length].title
         if (host.id === title.id || mine.has(host.id) || load(host.id) >= perHost) continue
-        const shared = key.split('|').slice(1)
-        if (placed.has(host.id)) placed.get(host.id).push([title, shared])
-        else placed.set(host.id, [[title, shared]])
+        const parts = key.split('|').slice(1)
+        // A maker key carries a name, not genres: [title, [], name].
+        const row = parts[0] === 'by' ? [title, [], parts.slice(1).join('|')] : [title, parts]
+        if (placed.has(host.id)) placed.get(host.id).push(row)
+        else placed.set(host.id, [row])
         mine.add(host.id)
         break
       }

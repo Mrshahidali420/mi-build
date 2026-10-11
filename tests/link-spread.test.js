@@ -9,6 +9,7 @@ import {
   capPicks,
   spotOrder,
   genreKeys,
+  makerKeys,
   lessKnownPicks,
   SIMILAR_CAP,
   LESS_KNOWN_PER_HOST,
@@ -169,6 +170,22 @@ test('a title with one genre is matched on that genre, one with none is skipped'
   const placed = lessKnownPicks(titles, { kindOf, inbound: new Map() })
   const all = [...placed.values()].flat().map(([t]) => t.id).sort()
   assert.deepEqual(all, [1, 1, 2, 2])
+})
+
+test('a title with no genre is placed on pages by the same author or studio', () => {
+  const by = (id, authors, studios) => ({ ...title(id, 'manga', []), authors, studios })
+  const titles = [
+    by(1, [{ name: 'Rumiko Takahashi' }], []),
+    by(2, [{ name: 'Rumiko Takahashi' }], []),
+    { ...title(3, 'manga', ['Action', 'Drama']), authors: [{ name: 'Rumiko Takahashi' }] },
+    by(4, [{ name: 'Someone Else' }], []),
+  ]
+  const placed = lessKnownPicks(titles, { kindOf, inbound: new Map([[2, 9], [3, 9], [4, 9]]) })
+  const hosts = [...placed].filter(([, list]) => list.some(([t]) => t.id === 1)).map(([id]) => id)
+  assert.deepEqual(hosts.sort(), [2, 3])
+  assert.deepEqual(placed.get(2)[0].slice(1), [[], 'Rumiko Takahashi'])
+  assert.deepEqual(makerKeys('anime', { studios: ['MAPPA', 'MAPPA'], authors: [null] }), ['anime|by|MAPPA'])
+  assert.deepEqual(makerKeys('anime', {}), [])
 })
 
 test('adding a newer title does not move the picks already placed', () => {
