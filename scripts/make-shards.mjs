@@ -39,6 +39,7 @@ import { loadIndexKeep } from '../src/lib/index-keep.js'
 import { noindexSubpages, noindexCharacterBuy } from '../src/lib/thin-pages.mjs'
 import { castContext, withCastFacts } from '../src/lib/cast-facts.mjs'
 import { recSetOf, byLikeRank, likeExtras } from '../src/lib/like-facts.mjs'
+import { genericRoleSlugs, withoutGenericCast } from '../src/lib/generic-roles.mjs'
 import { readingChain, adaptationOf, sameMedium, ADAPT_RELATIONS } from './lib/title-graph.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -624,6 +625,18 @@ async function main() {
   // novel. Fixed here, after slugs are final, so an old record reads the
   // same as one ingested today.
   fixNovelAppearanceKindsAll(characters, new Set(comics.filter((c) => c.kind === 'novel').map((c) => c.slug)))
+  // AniList's shared "Narrator" record is credited on hundreds of unrelated
+  // stories. Its page stays, but no cast list links to it any more
+  // (src/lib/generic-roles.mjs). Before anything reads a cast list.
+  const genericRoles = genericRoleSlugs(characters)
+  let genericRows = 0
+  for (const item of [...comics, ...anime]) {
+    const next = withoutGenericCast(item, genericRoles)
+    if (next === item) continue
+    item.characters = next.characters
+    genericRows++
+  }
+  console.log(`  generic roles ${genericRoles.size} (${[...genericRoles].slice(0, 5).join(', ')}), taken out of ${genericRows} cast lists`)
 
   const titlesWithExtras = attachEnrich([...comics, ...anime])
   const animeWithThemes = attachThemes(anime)
