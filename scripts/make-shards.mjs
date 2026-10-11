@@ -40,6 +40,7 @@ import { noindexSubpages, noindexCharacterBuy } from '../src/lib/thin-pages.mjs'
 import { castContext, withCastFacts } from '../src/lib/cast-facts.mjs'
 import { recSetOf, byLikeRank, likeExtras } from '../src/lib/like-facts.mjs'
 import { genericRoleSlugs, withoutGenericCast } from '../src/lib/generic-roles.mjs'
+import { spreadRank, capPicks, spotOrder, SIMILAR_CAP } from '../src/lib/link-spread.mjs'
 import { readingChain, adaptationOf, sameMedium, ADAPT_RELATIONS } from './lib/title-graph.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -266,7 +267,14 @@ function precompute(titles, handoff = null) {
     }
   }
 
-  for (const item of titles) {
+  // "You may also like" used to be the same six most-read titles on every
+  // page of a genre. Each page now draws its own order and no title fills a
+  // place on more than SIMILAR_CAP pages (src/lib/link-spread.mjs). Pages are
+  // walked in a fixed order so the picks are the same on every build.
+  const similarUses = new Map()
+  const usedOf = (id) => similarUses.get(id) || 0
+  const similarOf = new Map()
+  for (const item of spotOrder(titles)) {
     const kind = kindOf(item)
     // candidate -> the genres it shares with this title. Only titles that
     // share at least one genre are ever looked at, instead of all of them.
@@ -282,13 +290,21 @@ function precompute(titles, handoff = null) {
         list.push(genre)
       }
     }
+    const recSet = recSetOf(item)
+    const rows = [...sharedBy].filter(([, shared]) => shared.length >= 2)
+    const picks = capPicks(spreadRank(rows, { itemId: item.id, recSet }), { usedOf, always: (p) => recSet.has(p.id) })
+    for (const [p] of picks) similarUses.set(p.id, usedOf(p.id) + 1)
+    // Shown the way the block says: readers' suggestions, closest, most read.
+    similarOf.set(item, [...picks].sort(byLikeRank(recSet)))
+  }
+  console.log(
+    `  "you may also like": ${similarUses.size} titles fill the places, the most used on ${[...similarUses.values()].reduce((top, n) => (n > top ? n : top), 0)} pages (cap ${SIMILAR_CAP})`
+  )
 
+  for (const item of titles) {
     // AniList readers' suggestions rank first (src/lib/like-facts.mjs).
     const recSet = recSetOf(item)
-    item.similar = [...sharedBy]
-      .filter(([, shared]) => shared.length >= 2)
-      .sort(byLikeRank(recSet))
-      .slice(0, 6)
+    item.similar = (similarOf.get(item) || [])
       // The "like" page has to say WHY each pick belongs, so the shared
       // genres and the facts it contrasts travel with the pick.
       .map(([p, shared]) => ({ ...thin(p), shared: shared.slice(0, 3), ...likeExtras(item, p, recSet) }))
