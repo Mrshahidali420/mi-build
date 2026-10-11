@@ -1,0 +1,21 @@
+---
+// Page 2 and up of one letter of the A–Z index. See ../[letter].astro.
+import BrowsePage from '../../../../components/BrowsePage.astro'
+import { loadBrowsePage } from '../../../../lib/browse-read.js'
+import { pageParam } from '../../../../lib/browse.mjs'
+import { envOf, notFound, unavailable } from '../../../../lib/runtime.js'
+
+const { group, letter } = Astro.params
+// Page 1 lives at the letter's own address, so /1 is not a page.
+const page = pageParam(Astro.params.page)
+if (!page) return notFound(Astro)
+let data
+try {
+  data = await loadBrowsePage(envOf(Astro), group, letter, page)
+} catch (e) {
+  return unavailable(Astro, e)
+}
+if (!data) return notFound(Astro)
+---
+
+<BrowsePage group={group} letter={letter} page={page} data={data} />

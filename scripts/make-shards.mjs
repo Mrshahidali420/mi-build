@@ -41,6 +41,7 @@ import { castContext, withCastFacts } from '../src/lib/cast-facts.mjs'
 import { recSetOf, byLikeRank, likeExtras } from '../src/lib/like-facts.mjs'
 import { genericRoleSlugs, withoutGenericCast } from '../src/lib/generic-roles.mjs'
 import { spreadRank, capPicks, spotOrder, lessKnownPicks, SIMILAR_CAP } from '../src/lib/link-spread.mjs'
+import { BROWSE_GROUPS, browseGroups, chunksOf, chunkName } from '../src/lib/browse.mjs'
 import { readingChain, adaptationOf, sameMedium, ADAPT_RELATIONS } from './lib/title-graph.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
@@ -582,6 +583,36 @@ const since = (label) => {
  * once from the seed copy standing in for a lost cache. Now the build stops
  * and the last good deploy stays up. ALLOW_SHRINK=1 overrides it on purpose.
  */
+/**
+ * The A–Z index files (src/lib/browse.mjs): every title, and every character
+ * page Google may index, as [name, path] rows by first letter. The Worker
+ * reads one small file per page, so the index costs about 140 files however
+ * many pages it has. A noindexed character page is never listed.
+ */
+function writeBrowse(dir, titles, people) {
+  mkdirSync(dir, { recursive: true })
+  const lists = {
+    titles: titles.filter((item) => item.slug && item.title).map((item) => ({ name: item.title, path: `/${kindOf(item)}/${item.slug}` })),
+    characters: people.filter((p) => p.slug && p.name && !p.noindex).map((p) => ({ name: p.name, path: `/character/${p.slug}` })),
+  }
+  const index = {}
+  let files = 1
+  let rows = 0
+  for (const [group, config] of Object.entries(BROWSE_GROUPS)) {
+    index[config.file] = {}
+    for (const [letter, list] of browseGroups(lists[group])) {
+      index[config.file][letter] = list.length
+      rows += list.length
+      chunksOf(list).forEach((chunk, n) => {
+        writeFileSync(join(dir, `${chunkName(config.file, letter, n)}.json`), JSON.stringify(chunk))
+        files++
+      })
+    }
+  }
+  writeFileSync(join(dir, 'index.json'), JSON.stringify(index))
+  return { files, rows }
+}
+
 const SHRINK_LIMIT = 0.02
 const LIVE_MANIFEST = 'https://manhwaindex.com/d/manifest.json'
 // The deploy job saves the manifest of the last site it shipped here, in its
@@ -731,6 +762,10 @@ async function main() {
 
   // The character shards, with the Step 3 fields worked out above.
   const c = writeShards(join(OUT, 'c'), people, CHARACTER_SHARDS, (person) => person.slug)
+
+  const az = writeBrowse(join(OUT, 'b'), titles, people)
+  console.log(`  a-z index: ${az.rows} names in ${az.files} files`)
+  since('a-z index')
 
   // The site shell (header and footer) shows two counts and the top genres.
   // The Worker renders the shell on every page, so those few numbers are

@@ -1,0 +1,118 @@
+---
+/**
+ * One page of the A–Z index (src/lib/browse.mjs): the names of one letter,
+ * a hundred to a page, with every page of the letter and every other letter
+ * one click away. Plain links on purpose: this page is a way in, not a shelf.
+ *
+ * props: group ('titles' | 'characters'), letter, page, data (loadBrowsePage)
+ */
+import Base from '../layouts/Base.astro'
+import { BROWSE_GROUPS, BROWSE_PER_PAGE, browsePath, letterLabel } from '../lib/browse.mjs'
+
+const { group, letter, page, data } = Astro.props
+const config = BROWSE_GROUPS[group]
+const { rows, count, pageCount, letters } = data
+const label = letterLabel(letter)
+const heading = `${config.label} starting with ${label}`
+const first = (page - 1) * BROWSE_PER_PAGE + 1
+const last = Math.min(page * BROWSE_PER_PAGE, count)
+const pages = Array.from({ length: pageCount }, (_, i) => i + 1)
+// "/manhwa/solo-leveling" -> "manhwa": said after a title so namesakes in
+// different sections can be told apart. Characters need no such word.
+const kindOf = (path) => (group === 'titles' ? path.split('/')[1] : '')
+const other = group === 'titles' ? 'characters' : 'titles'
+---
+
+<Base
+  title={pageCount > 1 ? `${heading} — page ${page} of ${pageCount}` : heading}
+  description={`${count.toLocaleString('en-US')} ${config.noun} in the index start with ${label}. Open one to see where to read or watch it legally.`}
+  canonical={browsePath(group, letter, page)}
+>
+  <div class="shell">
+    <section class="section">
+      <div class="section__head">
+        <h1>{heading}</h1>
+        <p>{config.blurb}</p>
+        <p class="answer__count">
+          Showing {first.toLocaleString('en-US')}–{last.toLocaleString('en-US')} of {count.toLocaleString('en-US')}
+        </p>
+      </div>
+
+      <nav aria-label={`${config.label} by letter`}>
+        <ul class="chips chips--filters">
+          {
+            letters.map((l) => (
+              <li>
+                <a href={browsePath(group, l)} aria-current={l === letter ? 'page' : undefined}>
+                  {letterLabel(l)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <ul class="az-list">
+        {
+          rows.map(([name, path]) => (
+            <li>
+              <a href={path}>{name}</a>
+              {kindOf(path) && <span>{kindOf(path)}</span>}
+            </li>
+          ))
+        }
+      </ul>
+
+      {
+        pageCount > 1 && (
+          <nav class="az-pages" aria-label={`Pages of ${label}`}>
+            <p class="answer__count">Every page of {label}</p>
+            <ul class="chips">
+              {pages.map((n) => (
+                <li>
+                  <a href={browsePath(group, letter, n)} aria-current={n === page ? 'page' : undefined}>
+                    {n}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+
+      <p class="wall__note">
+        <a href="/a-z">The whole A–Z index</a> · <a href={browsePath(other, letter)}>{BROWSE_GROUPS[other].label} starting with {label}</a>
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .az-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    columns: 3 17rem;
+    column-gap: 2.4rem;
+  }
+  .az-list li {
+    break-inside: avoid;
+    padding: 0.34rem 0;
+    border-bottom: 1px solid var(--cobalt-line);
+  }
+  .az-list a {
+    color: var(--dawn);
+    text-decoration: none;
+  }
+  .az-list a:hover {
+    text-decoration: underline;
+  }
+  .az-list span {
+    margin-left: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--dawn-dim);
+  }
+  .az-pages {
+    margin-top: 2rem;
+  }
+</style>

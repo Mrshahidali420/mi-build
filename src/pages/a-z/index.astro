@@ -1,0 +1,52 @@
+---
+// The front door of the A–Z index: one link per letter for titles and for
+// characters. Built as a file; the letter pages behind it are rendered by the
+// Worker (src/lib/browse.mjs).
+export const prerender = true
+import Base from '../../layouts/Base.astro'
+import { BROWSE_GROUPS, BROWSE_LETTERS, browsePath, letterLabel } from '../../lib/browse.mjs'
+
+const groups = Object.entries(BROWSE_GROUPS)
+---
+
+<Base
+  title="A–Z index — every title and character"
+  description="Find a manhwa, manga, manhua, novel, anime or character by its first letter, then see where to read or watch it legally."
+  canonical="/a-z"
+>
+  <div class="shell">
+    <section class="section">
+      <div class="section__head">
+        <h1>A–Z index</h1>
+        <p>Know the name? Pick its first letter. Every title and every character in the index is listed here.</p>
+      </div>
+      {
+        groups.map(([group, config]) => (
+          <div class="az-group">
+            <h2>{config.label}</h2>
+            <p>{config.blurb}</p>
+            <ul class="chips">
+              {BROWSE_LETTERS.map((letter) => (
+                <li>
+                  <a href={browsePath(group, letter)} aria-label={`${config.label} starting with ${letterLabel(letter)}`}>
+                    {letterLabel(letter)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+  </div>
+</Base>
+
+<style>
+  .az-group {
+    margin-top: 2.2rem;
+  }
+  .az-group p {
+    margin: 0.3rem 0 1rem;
+    color: var(--dawn-dim);
+  }
+</style>

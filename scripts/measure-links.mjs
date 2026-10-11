@@ -16,7 +16,8 @@
  * (60 a page, popularity order, the three-ring pager in Pager.astro, the
  * character wall at 120 a page by favourites, genre lists capped at 10 pages)
  * but the header and footer, guides, moods, platform pages and season hubs are
- * left out, and the home page is taken as the top 18 of each section. So the
+ * left out, and the home page is taken as the top 18 of each section plus the
+ * A–Z letters (src/lib/browse.mjs), which are modelled in full. So the
  * numbers are a floor for inbound links and a ceiling for depth.
  */
 import { readdirSync, readFileSync, existsSync, writeFileSync, mkdirSync } from 'node:fs'
@@ -25,6 +26,7 @@ import { fileURLToPath } from 'node:url'
 import { sectionOf } from '../src/lib/section.mjs'
 import { hasFreePage, hasLikePage, hasCastPage, hasBuyPage, hasCharacterBuyPage } from '../src/lib/gates.mjs'
 import { indexedFirst } from '../src/lib/thin-pages.mjs'
+import { BROWSE_PER_PAGE, browseGroups, browsePath } from '../src/lib/browse.mjs'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 export const SECTIONS = ['manhwa', 'manga', 'manhua', 'anime', 'novel']
@@ -68,6 +70,7 @@ export function slimTitle(item) {
     path,
     section: sectionOf(item),
     slug: item.slug,
+    name: item.title,
     popularity: item.popularity || 0,
     genres: (item.genres || []).map(genreSlug),
     subs: SUBS.filter((s) => gates[s]).map((s) => ({ page: s, indexed: !off.has(s) })),
@@ -85,6 +88,7 @@ export function slimPerson(person) {
   const lead = [...(mains.length ? mains : rows)].sort((a, b) => (b.popularity || 0) - (a.popularity || 0))[0]
   return {
     slug: person.slug,
+    name: person.name,
     favourites: person.favourites || 0,
     indexed: !person.noindex,
     buy: hasCharacterBuyPage(person) ? { indexed: !person.noindexBuy } : null,
@@ -194,6 +198,25 @@ function addHubs({ titles, people, link, exists }) {
       paged({ base: `${hub}/${section}`, segment: '', items, perPage: GENRE_PER_PAGE, maxPages: GENRE_MAX_PAGES, link, exists, linksOf: (t) => [t.path] })
     }
   }
+  // The A–Z index: home -> a letter -> every page of that letter -> the names.
+  exists.add('/a-z')
+  link(home, '/a-z')
+  const letters = (group, entries) => {
+    for (const [letter, rows] of browseGroups(entries)) {
+      const count = Math.ceil(rows.length / BROWSE_PER_PAGE)
+      link(home, browsePath(group, letter))
+      link('/a-z', browsePath(group, letter))
+      for (let page = 1; page <= count; page++) {
+        const from = browsePath(group, letter, page)
+        exists.add(from)
+        for (let other = 1; other <= count; other++) link(from, browsePath(group, letter, other))
+        for (const [, to] of rows.slice((page - 1) * BROWSE_PER_PAGE, page * BROWSE_PER_PAGE)) link(from, to)
+      }
+    }
+  }
+  letters('titles', titles.map((t) => ({ name: t.name, path: t.path })))
+  letters('characters', people.filter((p) => p.indexed).map((p) => ({ name: p.name, path: `/character/${p.slug}` })))
+
   const wall = [...people].sort((a, b) => b.favourites - a.favourites || a.slug.localeCompare(b.slug))
   paged({
     base: '/character',

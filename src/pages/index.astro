@@ -1,6 +1,7 @@
 ---
 export const prerender = true
 import Base from '../layouts/Base.astro'
+import { BROWSE_GROUPS, BROWSE_LETTERS, browsePath, letterLabel } from '../lib/browse.mjs'
 import Countdown from '../components/Countdown.astro'
 import CoverGrid from '../components/CoverGrid.astro'
 import UpcomingList from '../components/UpcomingList.astro'
@@ -540,6 +541,34 @@ const tinyCover = (url) =>
         }
         <li><a href="/genre">All genres →</a></li>
       </ul>
+    </section>
+
+    <section class="section" data-phase="day" aria-labelledby="home-az-h">
+      <div class="section__head section__head--row">
+        <div>
+          <h2 id="home-az-h">Browse A–Z</h2>
+          <p>Know the name? Every title and every character in the index, by first letter.</p>
+        </div>
+        <a class="section__more section__more--cta" href="/a-z">
+          The whole index →
+        </a>
+      </div>
+      {
+        Object.entries(BROWSE_GROUPS).map(([group, config]) => (
+          <>
+            <p class="legend__lead">{config.label}</p>
+            <ul class="chips chips--filters">
+              {BROWSE_LETTERS.map((letter) => (
+                <li>
+                  <a href={browsePath(group, letter)} aria-label={`${config.label} starting with ${letterLabel(letter)}`}>
+                    {letterLabel(letter)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        ))
+      }
     </section>
 
     {

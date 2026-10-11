@@ -1,0 +1,20 @@
+---
+// The first page of one letter of the A–Z index. Rendered by the Worker from
+// the small files the build writes (src/lib/browse.mjs), so the number of
+// pages has no ceiling and no static file is spent on them.
+import BrowsePage from '../../../components/BrowsePage.astro'
+import { loadBrowsePage } from '../../../lib/browse-read.js'
+import { envOf, notFound, unavailable } from '../../../lib/runtime.js'
+
+const { group, letter } = Astro.params
+let data
+try {
+  data = await loadBrowsePage(envOf(Astro), group, letter, 1)
+} catch (e) {
+  // The file did not read: 503, not 404. The page still exists.
+  return unavailable(Astro, e)
+}
+if (!data) return notFound(Astro)
+---
+
+<BrowsePage group={group} letter={letter} page={1} data={data} />
