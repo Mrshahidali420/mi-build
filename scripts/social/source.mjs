@@ -85,7 +85,7 @@ export function toCandidate(item) {
     score: item.score || null,
     genres: (item.genres || []).filter((g) => !isBlocked(g)),
     platforms,
-    studio: item.studios?.[0] || null,
+    studio: String(item.studios?.[0] || '').trim() || null,
     nextEpisode: next?.at && next?.number ? { number: next.number, at: next.at * 1000 } : null,
     popularity: item.popularity || 0,
     updatedAt: (item.updatedAt || 0) * 1000,
@@ -95,6 +95,16 @@ export function toCandidate(item) {
 }
 
 /** AniList users' recommendations that are themselves promotable. */
+/** Turns between two lists, so episode news and running series share the NEW slots. */
+export function alternate(a, b) {
+  const out = []
+  for (let i = 0; i < Math.max(a.length, b.length); i += 1) {
+    if (i < a.length) out.push(a[i])
+    if (i < b.length) out.push(b[i])
+  }
+  return out
+}
+
 function attachRecs(candidate, byId) {
   const own = candidate.title.toLowerCase()
   const recs = []
@@ -127,7 +137,7 @@ export function buildPools(items, now) {
   const running = withRecs
     .filter((c) => !airingIds.has(c.id) && c.status === 'RELEASING' && c.updatedAt >= now - RUNNING_DAYS * DAY_MS && c.popularity >= MIN_POPULARITY.running)
     .sort(byPop)
-  return { new: [...airing, ...running], old: interleave(withRecs.filter((c) => c.popularity >= MIN_POPULARITY.old).sort(byPop)) }
+  return { new: alternate(airing, running), old: interleave(withRecs.filter((c) => c.popularity >= MIN_POPULARITY.old).sort(byPop)) }
 }
 
 /**
