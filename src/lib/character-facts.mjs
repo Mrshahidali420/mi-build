@@ -17,6 +17,7 @@
  * returns new records instead of changing the ones it is given.
  */
 import { sectionOf } from './section.mjs'
+import { isGenericRole } from './generic-roles.mjs'
 import { titleKey } from './shard-key.js'
 import { displayName } from './names.mjs'
 import { voicesOf } from './character-page.mjs'
@@ -56,10 +57,15 @@ export function yearsOf(titles) {
   return years
 }
 
-/** title key -> indexes of the characters in it. */
+/**
+ * title key -> indexes of the characters in it. A generic role shared by many
+ * unrelated stories ("Narrator", src/lib/generic-roles.mjs) is nobody's
+ * costar, so it is left out here and in the voice index below.
+ */
 function membersOf(people) {
   const members = new Map()
   people.forEach((person, i) => {
+    if (isGenericRole(person)) return
     for (const key of new Set((person.appearsIn || []).map(keyOfRow))) {
       if (!members.has(key)) members.set(key, [])
       members.get(key).push(i)
@@ -84,6 +90,7 @@ function costarsOf(i, people, members) {
 function voiceIndex(people, field) {
   const index = new Map()
   people.forEach((person, i) => {
+    if (isGenericRole(person)) return
     for (const voice of new Set((person.appearsIn || []).map((row) => row[field]).filter(Boolean))) {
       if (!index.has(voice)) index.set(voice, [])
       index.get(voice).push(i)

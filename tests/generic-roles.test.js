@@ -2,6 +2,7 @@
 // out of cast lists; a story's own narrator stays (src/lib/generic-roles.mjs).
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
+import { attachCharacterFacts } from '../src/lib/character-facts.mjs'
 import { isGenericRole, genericRoleSlugs, withoutGenericCast, GENERIC_MIN_TITLES } from '../src/lib/generic-roles.mjs'
 
 const person = (slug, name, appearances) => ({
@@ -46,4 +47,17 @@ test('withoutGenericCast returns the same record when nothing goes', () => {
   assert.equal(withoutGenericCast(item, new Set()), item)
   const bare = { slug: 'b' }
   assert.equal(withoutGenericCast(bare, new Set(['narrator'])), bare)
+})
+
+test('a generic role is never listed as a costar or as another role of a voice', () => {
+  const rows = (n, voice) => Array.from({ length: n }, (_, i) => ({ kind: 'anime', slug: `show-${i}`, title: `Show ${i}`, voice }))
+  const people = [
+    { slug: 'narrator', name: 'Narrator', favourites: 9999, appearsIn: rows(12, 'Akio Ohtsuka') },
+    { slug: 'hero', name: 'Hero', favourites: 10, appearsIn: rows(3, 'Akio Ohtsuka') },
+    { slug: 'rival', name: 'Rival', favourites: 5, appearsIn: rows(3, 'Akio Ohtsuka') },
+  ]
+  const [narrator, hero] = attachCharacterFacts(people, [])
+  assert.deepEqual((hero.costars || []).map((c) => c.slug), ['rival'])
+  assert.deepEqual((hero.vaOther || []).map((c) => c.slug), ['rival'])
+  assert.equal(narrator.slug, 'narrator')
 })
