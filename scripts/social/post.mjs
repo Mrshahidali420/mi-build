@@ -197,11 +197,14 @@ async function main() {
     loadPools,
     store: gitStore({ git }),
     makeGraph: graphClient,
-    summary: (text) => (summaryFile ? appendFileSync(summaryFile, text) : process.stdout.write(text)),
+    // The summary goes to the job page and to the log (secrets are masked there).
+    summary: (text) => {
+      if (summaryFile) appendFileSync(summaryFile, text)
+      process.stdout.write(text)
+    },
     sleep: (ms) => new Promise((r) => setTimeout(r, ms)),
     blockedTags: [...BLOCKED_TAGS],
   })
-  if (summaryFile) console.log('Done; see the job summary.')
   process.exitCode = code
 }
 
