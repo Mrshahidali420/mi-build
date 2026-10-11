@@ -120,7 +120,7 @@ function attachRecs(candidate, byId) {
 }
 
 /**
- * NEW: anime with an episode in the next AIRING_HOURS, then series still
+ * NEW: anime with an episode in the next AIRING_HOURS, in turns with comics still
  * running that AniList updated in the last RUNNING_DAYS. OLD: the most
  * popular titles. Each list is in the order the picker should prefer.
  */
@@ -135,7 +135,7 @@ export function buildPools(items, now) {
     .sort(byPop)
   const airingIds = new Set(airing.map((c) => c.id))
   const running = withRecs
-    .filter((c) => !airingIds.has(c.id) && c.status === 'RELEASING' && c.updatedAt >= now - RUNNING_DAYS * DAY_MS && c.popularity >= MIN_POPULARITY.running)
+    .filter((c) => c.verb === 'read' && !airingIds.has(c.id) && c.status === 'RELEASING' && c.updatedAt >= now - RUNNING_DAYS * DAY_MS && c.popularity >= MIN_POPULARITY.running)
     .sort(byPop)
   return { new: alternate(airing, running), old: interleave(withRecs.filter((c) => c.popularity >= MIN_POPULARITY.old).sort(byPop)) }
 }
