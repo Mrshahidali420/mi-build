@@ -1,0 +1,82 @@
+name: Facebook Page post
+
+# Shares one title page on the Manhwa Index Facebook Page: a cover photo with a
+# short caption, then the link as the first comment (docs/facebook-posting.md).
+#
+# Never runs on push. Four slots a day for a US audience (all at or after
+# 13:30 UTC = 18:30 PKT): 14:00, 18:00, 22:00 and 02:00 UTC, each started a
+# few random minutes late so the posts do not look robotic. The script skips a
+# slot once FB_POSTS_PER_DAY is reached.
+#
+# Until the FB_PAGE_ID / FB_PAGE_TOKEN secrets exist it is a green dry run.
+# With them, it posts only when the repo variable FB_POST_ENABLED is 'true'.
+#
+# The ledger that stops double posts lives on the orphan branch social-state
+# (scripts/social/ledger.mjs). Pushes there start no workflow: deploy.yml only
+# listens to master, and pushes made with GITHUB_TOKEN start nothing anyway.
+
+on:
+  schedule:
+    - cron: '0 14,18,22 * * *'
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Only show what would be posted (true / false)'
+        type: boolean
+        default: true
+      count:
+        description: 'How many posts (or samples) this run'
+        required: false
+        default: '3'
+
+# contents: write is for the social-state ledger branch only.
+permissions:
+  contents: write
+
+concurrency:
+  group: fb-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # The deploy's catalog, read only. The path list must stay exactly the
+      # deploy's: the cache version is computed from it, and a different list
+      # silently finds nothing. Never saved from here.
+      - name: Restore the catalog
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/comics.json
+            data/anime.json
+            data/characters.json
+          key: anilist-data-${{ github.run_id }}
+          restore-keys: anilist-data-
+
+      - name: Wait a few random minutes
+        if: github.event_name == 'schedule'
+        run: sleep $(( RANDOM % 420 ))
+
+      - name: Post
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          FB_POST_ENABLED: ${{ vars.FB_POST_ENABLED }}
+          FB_POSTS_PER_DAY: ${{ vars.FB_POSTS_PER_DAY }}
+          EVENT: ${{ github.event_name }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+          COUNT: ${{ inputs.count }}
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: node --max-old-space-size=6000 scripts/social/post.mjs
