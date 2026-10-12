@@ -1014,6 +1014,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108387457500964",
    "commentId": "122108387457500964_2598432873953670"
+  },
+  {
+   "key": "2026-10-12|character:char:197692|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "character:char:197692",
+   "title": "The Horizon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:197692",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791824955550,
+   "status": "claimed"
   }
  ],
  "health": {
