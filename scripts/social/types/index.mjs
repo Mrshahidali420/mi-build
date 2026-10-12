@@ -7,6 +7,7 @@
  * (gate.mjs). The classic post (a cover and a caption) is not in this list;
  * its name in the variable is `classic`.
  */
+import birthday from './birthday.mjs'
 import character from './character.mjs'
 import fact from './fact.mjs'
 import newTitle from './new-title.mjs'
@@ -16,7 +17,7 @@ import reelNext from './reel-next.mjs'
 import reelRanking from './reel-ranking.mjs'
 import where from './where.mjs'
 
-export const TYPES = [newTitle, where, ranking, character, fact, next]
+export const TYPES = [newTitle, where, ranking, birthday, character, fact, next]
 
 export const TYPE_KEYS = TYPES.map((type) => type.key)
 

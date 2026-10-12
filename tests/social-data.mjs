@@ -1,6 +1,7 @@
 // A small made-up catalog for the template post types (social-types.test.js,
 // social-render.test.js): enough records for every type to find a post.
 import { buildData } from '../scripts/social/source.mjs'
+import { dateOf } from '../scripts/social/when.mjs'
 import { NOW, record } from './social-kit.mjs'
 
 const COVER = 'https://s4.anilist.co/file/anilistcdn/media/manga/cover/large'
@@ -49,7 +50,10 @@ export function sampleItems() {
 }
 
 /** The data the types read, built the way the poster builds it. */
-export const sampleData = (now = NOW) => buildData(sampleItems(), now)
+export const sampleData = (now = NOW) => ({ ...buildData(sampleItems(), now), birthdays: sampleBirthdays(now) })
+
+/** Today's birthdays as birthdays.mjs hands them over: one character of the first comic of the sample. */
+export const sampleBirthdays = (now = NOW) => ({ day: dateOf(now), list: [{ id: 901, name: 'Mira Vale', image: 'https://s4.anilist.co/file/anilistcdn/character/large/b901-x.png', favourites: 5000, mediaId: sampleItems()[0].id, voice: null }] })
 
 /** Loaded art in the shape a template is handed (no real picture needed to build the tree). */
 export const fakeArt = (post) => ({

@@ -16,6 +16,8 @@ export const MAX_POST_TAGS = 7
 /** Emojis: a couple in the hook, a couple in the rest, never more. */
 export const MAX_HOOK_EMOJI = 2
 export const MAX_BODY_EMOJI = 2
+/** Labelled lines ("📅 Release date: ..."): three at most, one emoji each, counted apart from the rest. */
+export const MAX_DETAILS = 3
 
 /**
  * What the image fonts hold: Latin, Latin-1, Latin Extended-A and the common
@@ -114,20 +116,33 @@ export function composeCaption(sentences, tagWords = [], options = {}) {
   return checkText(text, options) ? null : text
 }
 
+/** The labelled lines of a post as text: "📅 Release date: Monday 12 October". */
+export const detailLines = (details = []) =>
+  details
+    .filter((d) => d && d[0] && d[1] && d[2] && emojiCount(d[0]) === 1 && emojiCount(`${d[1]}${d[2]}`) === 0)
+    .slice(0, MAX_DETAILS)
+    .map(([emoji, label, value]) => `${emoji} ${label}: ${String(value).replace(/[.\s]+$/, '')}`)
+
 /**
  * A full post, or null when it fails the gate. Facebook shows about two
  * lines before "See more", so line 1 is the hook and line 2 the first fact
  * given (the platform, the air time, the score). Then a short synopsis, the
  * other facts, a question, the line that points at the first comment and the
  * hashtags. Empty parts are left out.
- * @param parts { hook, synopsis, facts: [sentences], question, cta }
+ *
+ * `details` are labelled lines, one under the other after the synopsis:
+ * [[emoji, label, value], ...] becomes "📅 Release date: Monday 12 October".
+ * A line whose value is missing is left out.
+ * @param parts { hook, synopsis, details, facts: [sentences], question, cta }
  * @param tags hashtags as they will be written ("#OnePiece")
  */
-export function composePost({ hook, synopsis, facts = [], question, cta }, tags = [], options = {}) {
+export function composePost({ hook, synopsis, details = [], facts = [], question, cta }, tags = [], options = {}) {
   if (!hook || !cta) return null
   const [lead, ...more] = facts.filter(Boolean)
+  const lines = detailLines(details)
   const rest = [synopsis, more.join(' '), question, cta].filter(Boolean)
   if (emojiCount(hook) > MAX_HOOK_EMOJI || emojiCount([lead, ...rest].join(' ')) > MAX_BODY_EMOJI) return null
-  const text = [[hook, lead].filter(Boolean).join('\n'), ...rest, tags.slice(0, MAX_POST_TAGS).join(' ')].filter(Boolean).join('\n\n')
-  return checkText(text, { max: MAX_POST, emoji: MAX_HOOK_EMOJI + MAX_BODY_EMOJI, maxTags: MAX_POST_TAGS, ...options }) ? null : text
+  const body = [synopsis, lines.join('\n'), more.join(' '), question, cta].filter(Boolean)
+  const text = [[hook, lead].filter(Boolean).join('\n'), ...body, tags.slice(0, MAX_POST_TAGS).join(' ')].filter(Boolean).join('\n\n')
+  return checkText(text, { max: MAX_POST, emoji: MAX_HOOK_EMOJI + MAX_BODY_EMOJI + lines.length, maxTags: MAX_POST_TAGS, ...options }) ? null : text
 }

@@ -4,7 +4,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { captionFor } from '../scripts/social/plan.mjs'
-import { checkText, MAX_POST, MAX_POST_TAGS } from '../scripts/social/text.mjs'
+import { checkText, detailLines, MAX_POST, MAX_POST_TAGS } from '../scripts/social/text.mjs'
 import { kitOf, contain, toneOf, W, H } from '../scripts/social/render/parts.mjs'
 import { loadArt, loadFonts, renderPost, WIDTH, HEIGHT } from '../scripts/social/render/engine.mjs'
 import { THEME as SITE_THEME } from '../scripts/social/theme.mjs'
@@ -22,8 +22,8 @@ const data = sampleData()
 const typeOf = (key) => TYPES.find((t) => t.key === key)
 const postsOf = (type) => type.find(data, { now: NOW })
 
-test('types: the six Manhwa Index types are there, each with its own name and design', () => {
-  assert.deepEqual([...TYPE_KEYS].sort(), ['character', 'fact', 'new-title', 'next', 'ranking', 'where'])
+test('types: the seven Manhwa Index types are there, each with its own name and design', () => {
+  assert.deepEqual([...TYPE_KEYS].sort(), ['birthday', 'character', 'fact', 'new-title', 'next', 'ranking', 'where'])
   assert.equal(new Set(TYPES.map((t) => t.template)).size, TYPES.length)
   for (const type of TYPES) {
     assert.ok(type.name && type.gapDays > 0 && type.captions.length >= 3, type.key)
@@ -41,7 +41,7 @@ test('types: every type finds a post in the sample data, and every wording passe
       for (let turn = 0; turn < type.captions.length; turn += 1) {
         const made = captionFor({ ...type, captions: [type.captions[turn]] }, post, 0, BLOCKED)
         assert.ok(made, `${type.key} wording ${turn + 1} failed for ${post.item}`)
-        assert.equal(checkText(made.caption, { blockedTags: BLOCKED, max: MAX_POST, emoji: 4, maxTags: MAX_POST_TAGS }), null)
+        assert.equal(checkText(made.caption, { blockedTags: BLOCKED, max: MAX_POST, emoji: 4 + detailLines(post.details).length, maxTags: MAX_POST_TAGS }), null)
         // Hook, then a question, then the line about the first comment, then the hashtags.
         const parts = made.caption.split('\n\n')
         assert.match(parts[0], /\p{Extended_Pictographic}/u, `${type.key}: the hook opens with an emoji`)

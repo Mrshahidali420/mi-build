@@ -26,7 +26,7 @@ export const WIDTH = 1080
 export const HEIGHT = 1350
 const SUBSETS = ['latin', 'latin-ext']
 /** The longest side art is prepared at: the hero art, and the small pictures in a list. */
-export const ART_SIZE = { hero: 1000, thumb: 420 }
+export const ART_SIZE = { hero: 1000, thumb: 420, banner: 1600 }
 const MARK_PX = 192
 const FETCH_TIMEOUT_MS = 15_000
 const JPEG_QUALITY = 92
@@ -122,14 +122,19 @@ export async function loadArt(url, { fetch = globalThis.fetch, sharp, size = ART
   }
 }
 
-/** The art a post names ({ hero, thumbs }) as loaded pictures in the same shape. */
+/**
+ * The art a post names ({ hero, thumbs, banner }) as loaded pictures in the
+ * same shape. The banner is an extra: wide art a template may use when it
+ * loads and is not a blank placeholder, and do without otherwise.
+ */
 export async function loadPostArt(art = {}, deps) {
-  const [hero, thumbs] = await Promise.all([
+  const [hero, thumbs, wide] = await Promise.all([
     art.hero ? loadArt(art.hero, { ...deps, size: ART_SIZE.hero }) : null,
     Promise.all((art.thumbs || []).map((url) => loadArt(url, { ...deps, size: ART_SIZE.thumb }))),
+    art.banner ? loadArt(art.banner, { ...deps, size: ART_SIZE.banner }) : null,
   ])
   if (art.hero && !hero) throw new Error('the main picture could not be loaded')
-  return { hero, thumbs }
+  return { hero, thumbs, banner: wide && !wide.blank ? wide : null }
 }
 
 let ready = null
@@ -168,7 +173,9 @@ export async function renderPost(type, post, { theme, fetch = globalThis.fetch }
   const blank = first.thumbs.flatMap((picture, i) => (picture?.blank ? [i] : []))
   const shown = (blank.length && post.without?.(blank)) || post
   const art = shown === post ? first : await loadPostArt(shown.art, { fetch, sharp })
-  const png = await renderTree(type.template({ ...shown.view, art }, kitOf(theme, marks)), theme)
+  // A type may bring pictures of its own from the repo (flags, say): assets() hands them to its template.
+  const assets = type.assets ? await type.assets({ sharp }) : {}
+  const png = await renderTree(type.template({ ...shown.view, art, assets }, kitOf(theme, marks)), theme)
   const jpeg = await sharp(png).jpeg({ quality: JPEG_QUALITY, chromaSubsampling: '4:4:4' }).toBuffer()
   return { png, jpeg }
 }

@@ -19,6 +19,8 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { loadBirthdays } from './birthdays.mjs'
+import { memoryStore } from './ledger.mjs'
 import { captionFor } from './plan.mjs'
 import { commentFor } from './site.mjs'
 import { DAY_MS } from './when.mjs'
@@ -81,8 +83,11 @@ async function main() {
   const now = Date.now()
   const dataAt = await source.dataLoader()
   const cache = new Map()
+  // Today's birthdays are asked for once, like a run does, and only for a type that wants them.
+  const wants = TYPES.find((type) => type.birthdays && (!only.length || only.includes(type.key)))
+  const birthdays = wants ? await loadBirthdays({ book: memoryStore(), now, choose: wants.birthdays(await dataAt(now)), say: (line) => process.stdout.write(`${line}\n`) }) : null
   const loadData = async (at) => {
-    if (!cache.has(at)) cache.set(at, dataAt(at))
+    if (!cache.has(at)) cache.set(at, { ...(await dataAt(at)), birthdays })
     return cache.get(at)
   }
   const dir = resolve(out)
@@ -98,8 +103,13 @@ async function main() {
     }
     for (const [i, { post }] of samples.entries()) {
       const name = `${type.key}${i ? `-${i + 1}` : ''}.png`
-      const { png } = await renderPost(type, post, { theme: THEME })
-      writeFileSync(join(dir, name), png)
+      // One picture that will not load must not stop the other samples.
+      const made = await renderPost(type, post, { theme: THEME }).catch((error) => ({ error }))
+      if (made.error) {
+        lines.push(`${type.key}: ${name} could not be drawn (${post.name || post.title || post.item}: ${made.error.message})`)
+        continue
+      }
+      writeFileSync(join(dir, name), made.png)
       notes.push(`## ${type.name} (${name})`, '', ...captionsOf(type, post, [...(source.BLOCKED_TAGS || [])]).flatMap((c, n) => [`Wording ${n + 1}:`, '', ...c.split('\n').map((l) => `> ${l}`), '']), 'First comment:', '', ...commentFor(post).split('\n').map((l) => `> ${l}`), '', ...(post.shop ? ['With FB_AFFILIATE_COMMENT set to true, a second line is added:', '', `> ${commentFor(post, { affiliate: true }).split('\n')[1]}`, ''] : ['No Amazon line for this one: the site has no product picked for it.', '']))
       lines.push(`${type.key}: ${name} (${post.title || post.item})`)
     }

@@ -231,6 +231,24 @@ site's packages first, which adds about a minute; a classic-only run does not.
 The words on the images come from the same catalog as the pages; a fact the
 record lacks is left out.
 
+## New types, 12 Oct 2026
+
+### `birthday`: character birthday (off until named)
+
+"HAPPY BIRTHDAY" in large type, the character's portrait, the day as a big
+number, the name in a solid band, then where the work is. The catalog holds
+no birthdays, so a run with `birthday` switched on asks AniList ONE question
+a day (the 50 most-favourited characters born today) and keeps the answer in
+the ledger (`birthdays`), so the chain does not ask again; with nobody for
+this site it asks again after three hours at most. A character is kept only
+when one of their works has a live page on this site (comics, manhwa and novels for Manhwa Index), with
+at least 100 favourites; five a day at most, most-favourited first, each
+character once a year (gap 330 days). Only a character whose birth month and
+day are today on the US Eastern clock is used, and only on that day: never
+the wrong day. If AniList fails, there are no birthday posts that hour and
+nothing else changes. A birthday post does not count as a post about the
+title, so it never stops (or is stopped by) an episode card the same day.
+
 ## Reels (off until you switch them on)
 
 A reel is a short vertical video (1080x1920, 8 to 20 seconds, with music and slide sounds) made

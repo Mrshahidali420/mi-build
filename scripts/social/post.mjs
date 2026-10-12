@@ -47,6 +47,7 @@ import { gitStore, memoryStore } from './ledger.mjs'
 import { effectiveCap, saveHealth, withHalt } from './limits.mjs'
 import { countedEntries, gapMinutesOf, nextWait, perDayOf, reelsPerDayOf, rollingCount, DEFAULT_PER_DAY, MAX_PER_DAY } from './pace.mjs'
 import { STEP } from './send.mjs'
+import { withBirthdays } from './birthdays.mjs'
 import { SITE, affiliateOn } from './site.mjs'
 import { timeOf } from './when.mjs'
 
@@ -147,7 +148,7 @@ function paceLines(s, health, cap, used) {
  * @param output (name, value) => void; the workflow reads `chain` to start the next run
  * @returns exit code (0 ok, 1 the owner must look)
  */
-export async function run({ env, now, clock = now === undefined ? Date.now : () => now, rng = Math.random, loadPools, store, makeGraph, summary, sleep, blockedTags = [], resolveImage = resolveCover, loadTypes = defaultTypes, render = defaultRender, preview = null, output = () => {} }) {
+export async function run({ fetch = globalThis.fetch, env, now, clock = now === undefined ? Date.now : () => now, rng = Math.random, loadPools, store, makeGraph, summary, sleep, blockedTags = [], resolveImage = resolveCover, loadTypes = defaultTypes, render = defaultRender, preview = null, output = () => {} }) {
   const s = settingsOf(env)
   const out = [`## Facebook Page poster: ${SITE.name}`, '']
   const flush = () => out.length && summary(`${out.splice(0).join('\n')}\n`)
@@ -185,7 +186,9 @@ export async function run({ env, now, clock = now === undefined ? Date.now : () 
   out.push(`Amazon line in the first comment: ${s.affiliate ? 'on' : 'off (the FB_AFFILIATE_COMMENT variable is not true)'}.`, '')
 
   const kinds = await kindsOf(s, loadTypes, out)
-  const base = { s, graph, book, kinds, rng, blockedTags, out, flush, resolveImage, render, preview, clock, sleep, loadPools }
+  // A kind that wants today's birthdays (types/birthday-card.mjs) gets them with the data; no other run asks.
+  const say = (line) => out.push(line, '')
+  const base = { s, graph, book, kinds, rng, blockedTags, out, flush, resolveImage, render, preview, clock, sleep, loadPools: withBirthdays(loadPools, kinds, { book, fetch, say }) }
   if (s.mode === 'chain') {
     if (health.halted && s.startedBy === 'watch') return end(0, `The chain was halted (${health.halted.why}). It is started by hand once that is fixed; the watch job does not restart it.`)
     if (health.halted) await saveHealth(book, (h) => withHalt(h, null, clock()), 'Chain restarted')

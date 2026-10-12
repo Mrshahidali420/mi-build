@@ -64,6 +64,13 @@ export const akaLine = (t) => {
   const names = [t.native, t.alt].filter(Boolean)
   return names.length ? `Also known as ${names.length === 2 ? `${names[0]} (${names[1]})` : names[0]}.` : null
 }
+/**
+ * The labelled lines of a post about an episode (text.mjs composePost): the
+ * date, the studio and where it streams. A line the record lacks is left out.
+ * @param date "Monday 12 October"
+ */
+export const airDetails = (t, date, label = 'Release date') => [['📅', label, date], ['🎬', 'Studio', t.studio], ['📺', 'Streaming', t.platforms?.length ? listOf(top(t.platforms)) : null]]
+
 /** Rating, genres and the other name, in that order. */
 export const keyFacts = (t) => [ratingLine(t), genresLine(t), akaLine(t)]
 
