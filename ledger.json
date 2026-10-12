@@ -775,6 +775,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108336619500964",
    "commentId": "122108336619500964_967395586422967"
+  },
+  {
+   "key": "2026-10-12|character:char:120649|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "character:char:120649",
+   "title": "Kaguya-sama: Love is War",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:120649",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791821011165,
+   "status": "claimed"
   }
  ],
  "health": {
