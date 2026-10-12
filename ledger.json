@@ -1068,6 +1068,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108397573500964",
    "commentId": "122108397573500964_2512712242539458"
+  },
+  {
+   "key": "2026-10-12|where:39726|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "where:39726",
+   "title": "Decapitation: Kubikiri Cycle",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "39726",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791825859783,
+   "status": "claimed"
   }
  ],
  "health": {
