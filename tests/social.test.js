@@ -6,58 +6,10 @@ import { buildCaption, checkCaption, hashtagsOf, FORMATS, MAX_CAPTION, MAX_HASHT
 import { pickNext, nextMix, formatOrder } from '../scripts/social/pick.mjs'
 import { claim, settle, memoryStore, gitStore, guardReason, countDay, keyOf, emptyLedger } from '../scripts/social/ledger.mjs'
 import { graphClient, GraphError, GRAPH_VERSION } from '../scripts/social/fb.mjs'
-import { run, settingsOf } from '../scripts/social/post.mjs'
-import { toCandidate, buildPools, platformsOf, BLOCKED_TAGS } from '../scripts/social/source.mjs'
+import { settingsOf, MAX_PER_DAY } from '../scripts/social/post.mjs'
+import { toCandidate, buildPools, platformsOf } from '../scripts/social/source.mjs'
 import { commentOf } from '../scripts/social/site.mjs'
-
-const NOW = Date.UTC(2026, 9, 12, 18, 0) // 14:00 ET
-const HOUR = 3_600_000
-const DAY = 24 * HOUR
-const BLOCKED = [...BLOCKED_TAGS]
-
-const record = (over = {}) => ({
-  kind: 'comic',
-  id: 1,
-  slug: 'solo-leveling-1',
-  title: 'Solo Leveling',
-  country: 'KR',
-  format: 'MANGA',
-  status: 'FINISHED',
-  startYear: 2018,
-  endYear: 2021,
-  chapters: 201,
-  score: 84,
-  popularity: 200000,
-  genres: ['Action', 'Fantasy'],
-  tags: ['Dungeon'],
-  cover: 'https://s4.anilist.co/file/anilistcdn/media/manga/cover/large/bx1.jpg',
-  readLinks: [
-    { site: 'Tapas', url: 'https://tapas.io/x', language: 'English' },
-    { site: 'KakaoPage', url: 'https://page.kakao.com/x', language: 'Korean' },
-  ],
-  watchLinks: [],
-  recIds: [],
-  updatedAt: (NOW - DAY) / 1000,
-  ...over,
-})
-
-const anime = (over = {}) =>
-  record({
-    kind: 'anime',
-    id: 2,
-    slug: 'frieren-2',
-    title: 'Frieren',
-    country: 'JP',
-    format: 'TV',
-    status: 'RELEASING',
-    chapters: null,
-    episodes: 28,
-    studios: ['Madhouse'],
-    readLinks: [],
-    watchLinks: [{ site: 'Crunchyroll', url: 'https://crunchyroll.com/x', language: null }],
-    nextEpisode: { number: 7, at: (NOW + 3 * HOUR) / 1000 },
-    ...over,
-  })
+import { NOW, HOUR, DAY, BLOCKED, record, anime, harness } from './social-kit.mjs'
 
 // --- source -------------------------------------------------------------
 
@@ -241,32 +193,6 @@ test('fb: an expired token is an auth error and the token never shows in the mes
 
 // --- the whole run ------------------------------------------------------
 
-const pools = () => ({
-  new: [toCandidate(anime())],
-  old: [{ ...toCandidate(record()), recs: [{ title: 'Tower of God' }, { title: 'Omniscient Reader' }] }],
-})
-
-function harness(env, graph) {
-  const text = []
-  const store = memoryStore()
-  return {
-    store,
-    text,
-    go: () =>
-      run({
-        env,
-        now: NOW,
-        rng: () => 0,
-        loadPools: async () => ({ pools: pools(), source: 'test' }),
-        store,
-        makeGraph: () => graph,
-        summary: (t) => text.push(t),
-        sleep: async () => {},
-        blockedTags: BLOCKED,
-      }),
-  }
-}
-
 test('run: with no secrets it is a green dry run with NEW and OLD samples', async () => {
   const h = harness({ EVENT: 'workflow_dispatch', DRY_RUN: 'true' }, null)
   assert.equal(await h.go(), 0)
@@ -338,11 +264,15 @@ test('run: a refused token fails the run with a plain line; a full day skips the
   assert.match(full.text.join(''), /daily count is reached/)
 })
 
-test('run: settings default to 4 a day, one per slot, and dry unless enabled', () => {
+test('run: settings default to 4 a day, one post per scheduled run, and dry unless enabled', () => {
   assert.deepEqual(
     (({ perDay, count, dry }) => ({ perDay, count, dry }))(settingsOf({ FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', EVENT: 'schedule' })),
     { perDay: 4, count: 1, dry: true },
   )
-  assert.equal(settingsOf({ FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', FB_POSTS_PER_DAY: '8', EVENT: 'schedule' }).count, 2)
+  const live = { FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', EVENT: 'schedule' }
+  assert.equal(settingsOf({ ...live, FB_POSTS_PER_DAY: '8' }).count, 1)
+  assert.equal(settingsOf({ ...live, FB_POSTS_PER_DAY: '24' }).perDay, 24)
+  assert.equal(settingsOf({ ...live, FB_POSTS_PER_DAY: '99' }).perDay, MAX_PER_DAY)
+  assert.equal(MAX_PER_DAY, 24)
   assert.equal(settingsOf({ FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', DRY_RUN: 'true' }).dry, true)
 })

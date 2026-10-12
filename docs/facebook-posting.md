@@ -7,8 +7,9 @@ title page at a time on the site's Facebook Page:
 - then, straight away, a first comment with the link, for example
   `Where to read it: https://manhwaindex.com/manhwa/solo-leveling-105398?utm_source=facebook&utm_medium=social&utm_campaign=page`
 
-It runs four times a day (14:00, 18:00, 22:00 and 02:00 UTC, a few random
-minutes late), for a US audience. It never runs on a push.
+It starts every hour (17 minutes past, a few random minutes late) and sends at
+most one post per run. Most runs send nothing: a run posts only when the day is
+behind its even pace (see "How it paces the day"). It never runs on a push.
 
 Nothing goes to Facebook until you finish the steps below **and** switch it on.
 Until then every run is green and only shows what it would post.
@@ -77,7 +78,7 @@ Variables (tab "Variables"):
 | Name | Value |
 |---|---|
 | `FB_POST_ENABLED` | `false` for now |
-| `FB_POSTS_PER_DAY` | `4` (raise to 6-8 after two weeks if reach is good) |
+| `FB_POSTS_PER_DAY` | `4` to start. Raise it by hand as reach allows; the most it accepts is `24` (one an hour) |
 
 ## 5. Test, then switch on
 
@@ -85,7 +86,7 @@ Variables (tab "Variables"):
 2. Open the run and read the summary. It should say the token works for your
    Page and show sample posts with their first comment.
 3. When you like what you see, set the variable `FB_POST_ENABLED` to `true`.
-   The next slot posts for real.
+   The next hourly run that is due posts for real.
 
 To stop at any time, set `FB_POST_ENABLED` back to `false`.
 
@@ -94,15 +95,37 @@ To stop at any time, set `FB_POST_ENABLED` back to `false`.
 - **"the Page token was refused"**: the token died (password change, Page role
   removed, or Meta reset it). Do step 3 again and update `FB_PAGE_TOKEN`.
 - **"Post failed"**: the post did not go out and the title is marked failed.
-  It is not retried, so nothing posts twice. The next slot picks another title.
+  It is not retried, so nothing posts twice. The next run picks another title.
 - **"the link comment failed"**: the post is up but the link is missing. Add
   the comment by hand on Facebook.
+
+## How it paces the day
+
+The day is the US Eastern day. It is cut into as many equal parts as
+`FB_POSTS_PER_DAY`, and one post is due at the start of each part.
+
+| `FB_POSTS_PER_DAY` | A post about every | Due at (US Eastern) |
+|---|---|---|
+| `4` | 6 hours | 00:00, 06:00, 12:00, 18:00 |
+| `8` | 3 hours | 00:00, 03:00, 06:00 ... 21:00 |
+| `15` | 96 minutes | 00:00, 01:36, 03:12 ... |
+| `24` | 1 hour | every hour |
+
+- Each hourly run checks how many posts went out today. Behind the line: it
+  sends one. On the line: it writes "On pace" in the summary and stops.
+- A run that GitHub starts late or drops is made up one post per later run,
+  never as a burst.
+- A manual run (Run workflow) ignores the pace and sends `count` posts, but
+  never more than the day has left.
 
 ## How it chooses
 
 - About two new items for each older one. New: an anime episode airing today,
   or a series still running. Older: popular titles ("where to read it",
   plain facts, "if you liked it").
+- The picture is the largest cover the source has. Older titles only have a
+  small cover (230 px wide), which looks soft in the feed, so a title with a
+  large cover is always taken first.
 - Never the same caption style twice in a row, never the same title within
   30 days, never an adult title, never a page without an official platform.
 - The record of what was posted lives on the `social-state` branch

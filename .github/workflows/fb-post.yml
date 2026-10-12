@@ -3,10 +3,11 @@ name: Facebook Page post
 # Shares one title page on the Manhwa Index Facebook Page: a cover photo with a
 # short caption, then the link as the first comment (docs/facebook-posting.md).
 #
-# Never runs on push. Four slots a day for a US audience (all at or after
-# 13:30 UTC = 18:30 PKT): 14:00, 18:00, 22:00 and 02:00 UTC, each started a
-# few random minutes late so the posts do not look robotic. The script skips a
-# slot once FB_POSTS_PER_DAY is reached.
+# Never runs on push. It starts every hour at 17 past, a few random minutes
+# late so the posts do not look robotic. A run sends at most one post, and
+# only while the day is behind the even pace for FB_POSTS_PER_DAY
+# (scripts/social/pace.mjs): 8 a day is one post about every 3 hours, 24 a
+# day is one an hour. Every other run is a short, green skip.
 #
 # Until the FB_PAGE_ID / FB_PAGE_TOKEN secrets exist it is a green dry run.
 # With them, it posts only when the repo variable FB_POST_ENABLED is 'true'.
@@ -17,8 +18,7 @@ name: Facebook Page post
 
 on:
   schedule:
-    - cron: '0 14,18,22 * * *'
-    - cron: '0 2 * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
     inputs:
       dry_run:

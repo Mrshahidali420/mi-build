@@ -12,8 +12,10 @@
  *      link as the first comment -> settle the claim. A failure after the
  *      claim marks it failed and ends the run; nothing is retried.
  *
- * Posts per day: FB_POSTS_PER_DAY (default 4), spread over SLOTS cron slots.
- * A slot whose day is already full posts nothing.
+ * Posts per day: FB_POSTS_PER_DAY (default 4, never above MAX_PER_DAY). The
+ * workflow runs every hour; a scheduled run sends at most one post, and only
+ * while the day is behind the even pace (pace.mjs). A manual run ignores the
+ * pace and sends `count` posts, still inside the daily cap.
  *
  * run() takes every outside thing as an argument, so the tests drive it with
  * a fake Graph client and an in-memory ledger.
@@ -23,13 +25,16 @@ import { appendFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { graphClient, GraphError } from './fb.mjs'
+import { resolveCover } from './image.mjs'
 import { claim, settle, countDay, dayOf, keyOf, gitStore, memoryStore } from './ledger.mjs'
+import { isBehind, nextDueTime } from './pace.mjs'
 import { pickNext } from './pick.mjs'
 import { SITE, commentOf, linkOf } from './site.mjs'
 
 export const DEFAULT_PER_DAY = 4
-export const MAX_PER_DAY = 12
-export const SLOTS = 4
+export const MAX_PER_DAY = 24
+/** A scheduled (hourly) run never sends more than this. */
+export const POSTS_PER_RUN = 1
 export const DRY_SAMPLES = 3
 const GAP_MS = 90_000
 
@@ -45,15 +50,15 @@ export function settingsOf(env) {
   const manual = env.EVENT === 'workflow_dispatch'
   const perDay = Math.min(int(env.FB_POSTS_PER_DAY, DEFAULT_PER_DAY), MAX_PER_DAY)
   const dry = !configured || !enabled || askedDry
-  const count = manual ? int(env.COUNT, dry ? DRY_SAMPLES : 1) : Math.ceil(perDay / SLOTS)
+  const count = manual ? int(env.COUNT, dry ? DRY_SAMPLES : 1) : POSTS_PER_RUN
   return { configured, enabled, askedDry, manual, perDay, dry, count }
 }
 
-function describe(pick, now) {
+function describe(pick, now, image) {
   const c = pick.candidate
   return [
     `### ${pick.mix.toUpperCase()} · ${pick.format} · ${c.title}`,
-    `- Image: ${c.image}`,
+    `- Image: ${image}`,
     `- Link: ${linkOf(c.path)}`,
     `- Day: ${dayOf(now)}`,
     '',
@@ -71,7 +76,7 @@ function describe(pick, now) {
 /**
  * @returns exit code (0 ok, 1 the owner must look)
  */
-export async function run({ env, now = Date.now(), rng = Math.random, loadPools, store, makeGraph, summary, sleep, blockedTags = [] }) {
+export async function run({ env, now = Date.now(), rng = Math.random, loadPools, store, makeGraph, summary, sleep, blockedTags = [], resolveImage = resolveCover }) {
   const s = settingsOf(env)
   const out = []
   const flush = () => summary(`${out.join('\n')}\n`)
@@ -102,17 +107,7 @@ export async function run({ env, now = Date.now(), rng = Math.random, loadPools,
     out.push(`Mode: **DRY RUN** (${why}). Below is what it would post.`, '')
   } else out.push('Mode: **posting for real**.', '')
 
-  let loaded
-  try {
-    loaded = await loadPools({ now })
-  } catch (error) {
-    out.push(`No data: ${error.message}. Nothing to post this run.`)
-    flush()
-    return 0
-  }
-  const { pools, source } = loaded
-  out.push(`Data: ${source}. NEW pool ${pools.new.length}, OLD pool ${pools.old.length}.`, '')
-
+  // The ledger and the pace come first: a run with nothing due never loads the data.
   let ledger
   try {
     ledger = await store.read()
@@ -129,17 +124,34 @@ export async function run({ env, now = Date.now(), rng = Math.random, loadPools,
   const want = s.dry ? s.count : Math.min(s.count, left)
   out.push(`Today (${day}, US Eastern): ${done} of ${s.perDay} posts used.`, '')
   if (want === 0) {
-    out.push('The daily count is reached. This slot is skipped.')
+    out.push('The daily count is reached. This run is skipped.')
     flush()
     return 0
   }
+  if (!s.manual && !isBehind(done, now, s.perDay)) {
+    out.push(`On pace: the next post is due at about ${nextDueTime(done, s.perDay)} ET. This run is skipped.`)
+    flush()
+    return 0
+  }
+
+  let loaded
+  try {
+    loaded = await loadPools({ now })
+  } catch (error) {
+    out.push(`No data: ${error.message}. Nothing to post this run.`)
+    flush()
+    return 0
+  }
+  const { pools, source } = loaded
+  const todayLine = pools.today ? `, episodes still to air today ${pools.today.length}` : ''
+  out.push(`Data: ${source}. NEW pool ${pools.new.length}, OLD pool ${pools.old.length}${todayLine}.`, '')
 
   const skip = new Set()
   let posted = 0
   for (let attempt = 0; posted < want && attempt < want + 10; attempt += 1) {
     const { data } = await book.read()
     const history = (data.entries || []).filter((e) => e.page === SITE.key).sort((x, y) => x.at - y.at)
-    const pick = pickNext({ pools, history, now, rng, skip, blockedTags })
+    const pick = pickNext({ pools, history, now, rng, skip, blockedTags, slotsLeft: left - posted })
     if (!pick) {
       out.push('Nothing left that fits the rules (30-day gap, format rotation, safe content).')
       break
@@ -152,7 +164,9 @@ export async function run({ env, now = Date.now(), rng = Math.random, loadPools,
       out.push(`Skipped ${c.title}: ${claimed.reason}.`, '')
       continue
     }
-    out.push(describe(pick, now))
+    // The large cover when the source has one; the record's own address otherwise.
+    const image = c.image ? (await resolveImage(c.image)).url : null
+    out.push(describe(pick, now, image))
     if (s.dry) {
       await settle(book, entry.key, { status: 'dry' })
       posted += 1
@@ -161,7 +175,7 @@ export async function run({ env, now = Date.now(), rng = Math.random, loadPools,
 
     let postId
     try {
-      const result = c.image ? await graph.publishPhoto({ url: c.image, caption: pick.caption }) : await graph.publishText({ message: pick.caption })
+      const result = image ? await graph.publishPhoto({ url: image, caption: pick.caption }) : await graph.publishText({ message: pick.caption })
       postId = result.postId
     } catch (error) {
       await settle(book, entry.key, { status: 'failed', error: error.message })
