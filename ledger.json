@@ -325,6 +325,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108215053500964",
    "commentId": "122108215053500964_2972516796435521"
+  },
+  {
+   "key": "2026-10-12|ranking:rank:manhua:ongoing|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "ranking:rank:manhua:ongoing",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhua:ongoing",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791813435124,
+   "status": "claimed"
   }
  ],
  "health": {
