@@ -41,6 +41,13 @@ export const gapMinutesOf = (value) => Math.min(MAX_GAP_MINUTES, Math.max(MIN_GA
 /** FB_POSTS_PER_DAY as a number: 24 when unset or 0, and never over the ceiling. */
 export const perDayOf = (value) => (whole(value) > 0 ? Math.min(whole(value), MAX_PER_DAY) : DEFAULT_PER_DAY)
 
+/** Reels in any 24 hours when FB_REELS_PER_DAY is unset, and the most it can be set to. Facebook's own limit is 30. */
+export const DEFAULT_REELS_PER_DAY = 3
+export const MAX_REELS_PER_DAY = 10
+
+/** FB_REELS_PER_DAY as a number: 3 when unset, 0 switches reels off, never over 10. */
+export const reelsPerDayOf = (value) => (String(value ?? '').trim() === '' || !Number.isFinite(Number.parseInt(value, 10)) ? DEFAULT_REELS_PER_DAY : Math.min(MAX_REELS_PER_DAY, Math.max(0, whole(value))))
+
 /** One Page's entries that count against the pace (everything but a dry run), oldest first. */
 export const countedEntries = (ledger, page) => (ledger?.entries || []).filter((e) => e.page === page && e.status !== 'dry').sort((x, y) => x.at - y.at)
 

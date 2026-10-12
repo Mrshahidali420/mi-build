@@ -23,6 +23,10 @@
  * most), spread evenly. Facebook's limit signals are written to the ledger
  * and can lower the cap (limits.mjs); nothing raises it but the owner.
  *
+ * Reels (types marked `reel`) are gated like every type, limited to
+ * FB_REELS_PER_DAY in the rolling day (3 unless set, 10 at most), inside the
+ * cap, and never two in a row (attempt.mjs).
+ *
  * Kinds of post: the classic post (a cover and a caption) unless the repo
  * variable FB_POST_TYPES names template types (gate.mjs). The template code
  * (types/, render/) is loaded only when that variable names one.
@@ -41,7 +45,7 @@ import { CLASSIC, enabledTypes } from './gate.mjs'
 import { resolveCover } from './image.mjs'
 import { gitStore, memoryStore } from './ledger.mjs'
 import { effectiveCap, saveHealth, withHalt } from './limits.mjs'
-import { countedEntries, gapMinutesOf, nextWait, perDayOf, rollingCount, DEFAULT_PER_DAY, MAX_PER_DAY } from './pace.mjs'
+import { countedEntries, gapMinutesOf, nextWait, perDayOf, reelsPerDayOf, rollingCount, DEFAULT_PER_DAY, MAX_PER_DAY } from './pace.mjs'
 import { STEP } from './send.mjs'
 import { SITE, affiliateOn } from './site.mjs'
 import { timeOf } from './when.mjs'
@@ -83,6 +87,7 @@ export function settingsOf(env) {
     typesValue,
     perDay: perDayOf(env.FB_POSTS_PER_DAY),
     gapMinutes: gapMinutesOf(env.FB_MIN_GAP_MINUTES),
+    reelsPerDay: reelsPerDayOf(env.FB_REELS_PER_DAY),
     chainMinutes: Math.min(int(env.FB_CHAIN_MINUTES, DEFAULT_CHAIN_MINUTES), MAX_CHAIN_MINUTES),
     // 'watch' when the backstop cron started this run; it must not restart a halted chain.
     startedBy: env.STARTED_BY || 'hand',
@@ -235,11 +240,13 @@ async function sendPosts(base, { loaded, want, left, cap }) {
   return false
 }
 
-const defaultTypes = async () => (await import('./types/index.mjs')).TYPES
+/** Every kind the site has: the picture types, and the reels (off, like all of them, until named). */
+const defaultTypes = async () => (await import('./types/index.mjs')).KINDS
 
 async function defaultRender(type, post) {
-  const [{ renderPost }, { THEME }] = await Promise.all([import('./render/engine.mjs'), import('./theme.mjs')])
-  return renderPost(type, post, { theme: THEME })
+  const { THEME } = await import('./theme.mjs')
+  if (type.reel) return (await import('./reel/engine.mjs')).renderReel(type, post, { theme: THEME })
+  return (await import('./render/engine.mjs')).renderPost(type, post, { theme: THEME })
 }
 
 /** git with this repo's credentials; throws on a non-zero exit. */

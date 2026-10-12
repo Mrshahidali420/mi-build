@@ -142,11 +142,17 @@ async function tools(theme) {
   return ready
 }
 
-/** A tree of boxes as a PNG. */
-export async function renderTree(tree, theme) {
+/** The drawing kit of a theme, and sharp, for a caller that builds its own trees (a reel). */
+export async function kitFor(theme) {
+  const { sharp, marks } = await tools(theme)
+  return { kit: kitOf(theme, marks), sharp }
+}
+
+/** A tree of boxes as a PNG: a post image by default, or the size given (a reel slide). */
+export async function renderTree(tree, theme, { width = WIDTH, height = HEIGHT } = {}) {
   const { satori, sharp, fonts } = await tools(theme)
-  const svg = await satori(tree, { width: WIDTH, height: HEIGHT, fonts })
-  return sharp(Buffer.from(svg)).resize(WIDTH, HEIGHT).png().toBuffer()
+  const svg = await satori(tree, { width, height, fonts })
+  return sharp(Buffer.from(svg)).resize(width, height).png().toBuffer()
 }
 
 /**

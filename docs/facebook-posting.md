@@ -231,6 +231,33 @@ site's packages first, which adds about a minute; a classic-only run does not.
 The words on the images come from the same catalog as the pages; a fact the
 record lacks is left out.
 
+## Reels (off until you switch them on)
+
+A reel is a short vertical video (1080x1920, 8 to 20 seconds, no music) made
+on the runner: slides drawn like the post images, held a few seconds each
+with a slow zoom, cross-faded with ffmpeg. An opening slide, one slide per
+item, and a closing slide with the site name and "Link in the first comment".
+Nothing is re-uploaded from anyone: the slides are our own.
+
+| Name in `FB_POST_TYPES` | What it is |
+|---|---|
+| `reel-ranking` | Top 5 of a genre or of the ongoing titles, counted down from five to one |
+| `reel-next` | "If you liked X, read these": three picks from AniList readers |
+
+- **Off by default.** A reel posts only when its name is written in
+  `FB_POST_TYPES`, like every template type.
+- **Few.** `FB_REELS_PER_DAY` reels in any 24 hours (3 unless set, 10 at
+  most; Facebook's own limit is 30 by API), counted inside the overall cap.
+  Never two reels in a row.
+- **Look first.** `npm run social:reels -- --out reel-samples` writes one MP4
+  per type and a contact sheet of six frames. A manual dry run with `types`
+  set to a reel name keeps the MP4 in the run's `fb-preview` artifact.
+- **How it is published** (Reels Publishing API, read 12 Oct 2026): start an
+  upload, send the file to `rupload.facebook.com`, finish with
+  `video_state=PUBLISHED` and the caption as the description. The poster
+  waits until Facebook has processed the reel, then adds the site link as the
+  first comment on it.
+
 ## What every post carries
 
 A post exists to send people to the site, so each one is built the same way:

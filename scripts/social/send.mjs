@@ -7,6 +7,9 @@
  * twice. The error is handed to `onError`, where the chain reads what it
  * says about Facebook's limits (limits.mjs).
  *
+ * A reel (a type marked `reel`) is made, sent and commented on the same way:
+ * the MP4 instead of the picture, the id of the video instead of the post.
+ *
  * A template post draws its picture BEFORE the claim. Drawing touches nothing
  * outside the runner, so a picture that cannot be made (art that will not
  * load) only skips that item for this run and leaves the ledger clean.
@@ -82,13 +85,15 @@ export async function classicStep({ s, graph, book, pools, history, now, day, rn
 export function typedEntry({ type, post, variant }, day, now) {
   const slug = slugOf(type, post)
   return {
+    // A reel is counted on its own daily limit, inside the cap (attempt.mjs).
+    ...(type.reel ? { reel: true } : {}),
     key: keyOf(day, slug, SITE.key),
     day,
     slug,
     title: post.title || null,
     page: SITE.key,
     mix: 'type',
-    format: `type:${type.key}`,
+    format: `${type.reel ? 'reel' : 'type'}:${type.key}`,
     type: type.key,
     item: post.item,
     gapDays: type.gapDays,
@@ -99,7 +104,21 @@ export function typedEntry({ type, post, variant }, day, now) {
 }
 
 /** A template post: the picture is drawn here and sent as a file. */
-export async function typedStep({ s, graph, book, plan, now, day, skip, out, render, preview, onError }) {
+/** How a drawn post is described, saved by a dry run, and sent: a picture, or a reel. */
+function mediumOf(type, made, { graph, caption, sleep }) {
+  if (!type.reel) {
+    return { line: `drawn on the runner, 1080x1350, ${Math.round(made.jpeg.length / 1024)} KB`, file: 'jpg', bytes: made.jpeg, send: () => graph.publishPhotoFile({ bytes: made.jpeg, caption, filename: `${type.key}.jpg` }) }
+  }
+  const send = async () => {
+    const reel = await graph.publishReel({ bytes: made.mp4, description: caption })
+    // The comment needs the reel to exist: wait until Facebook has published it.
+    await graph.reelReady?.(reel.videoId, { sleep })
+    return reel
+  }
+  return { line: `a reel made on the runner, 1080x1920, ${made.seconds} s, ${Math.round(made.mp4.length / 1024)} KB`, file: 'mp4', bytes: made.mp4, send }
+}
+
+export async function typedStep({ s, graph, book, plan, now, day, skip, out, render, preview, onError, sleep }) {
   const { type, post, caption } = plan
   const name = post.title || `${type.name} (${post.item})`
   let picture
@@ -118,13 +137,12 @@ export async function typedStep({ s, graph, book, plan, now, day, skip, out, ren
     return STEP.skipped
   }
   const comment = commentFor(post, { affiliate: s.affiliate })
-  const size = `${Math.round(picture.jpeg.length / 1024)} KB`
-  out.push(describe({ heading: `TEMPLATE · ${type.key} · ${name}`, image: `drawn on the runner, 1080x1350, ${size}`, path: post.path, caption, comment, now }))
+  const medium = mediumOf(type, picture, { graph, caption, sleep })
+  out.push(describe({ heading: `${type.reel ? 'REEL' : 'TEMPLATE'} · ${type.key} · ${name}`, image: medium.line, path: post.path, caption, comment, now }))
   if (s.dry) {
-    if (preview) await preview(`${entry.slug.replace(/[^a-z0-9-]+/gi, '-')}.jpg`, picture.jpeg)
+    if (preview) await preview(`${entry.slug.replace(/[^a-z0-9-]+/gi, '-')}.${medium.file}`, medium.bytes)
     await settle(book, entry.key, { status: 'dry' })
     return STEP.posted
   }
-  const send = () => graph.publishPhotoFile({ bytes: picture.jpeg, caption, filename: `${type.key}.jpg` })
-  return publish({ graph, book, entry, send, comment, out, name, onError })
+  return publish({ graph, book, entry, send: medium.send, comment, out, name, onError })
 }

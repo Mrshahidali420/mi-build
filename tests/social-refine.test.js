@@ -23,6 +23,7 @@ test('synopsis: it never ends on a teaser question, a lead-in colon, a scrap or 
   const first = 'A boy finds a sword in the old forest near the village he grew up in.'
   assert.equal(synopsisOf(`${first} Will he survive?`), first)
   assert.equal(synopsisOf(`${first} The proof:`), first)
+  assert.equal(synopsisOf(`${first} He comes back as a goblin?!`), first)
   assert.equal(synopsisOf(`${first} And then...`), first)
   assert.equal(synopsisOf(`${first} Not really.`), first) // two words say nothing
   assert.equal(synopsisOf('Will he survive the old forest near the village he grew up in, and at what cost?'), null)

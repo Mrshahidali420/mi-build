@@ -12,8 +12,16 @@ import fact from './fact.mjs'
 import newTitle from './new-title.mjs'
 import next from './next.mjs'
 import ranking from './ranking.mjs'
+import reelNext from './reel-next.mjs'
+import reelRanking from './reel-ranking.mjs'
 import where from './where.mjs'
 
 export const TYPES = [newTitle, where, ranking, character, fact, next]
 
 export const TYPE_KEYS = TYPES.map((type) => type.key)
+
+/** The reels (reel/): short vertical videos made from slides. Gated like every type, by name. */
+export const REELS = [reelRanking, reelNext]
+
+/** Every kind a run can be asked for by name. */
+export const KINDS = [...TYPES, ...REELS]

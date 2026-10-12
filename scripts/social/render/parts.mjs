@@ -171,17 +171,17 @@ export function kitOf(theme, marks = {}) {
   const cta = (value, tone) =>
     row({ alignItems: 'center', marginBottom: 20, flexShrink: 0 }, box({ width: 16, height: 16, backgroundColor: tone.pop, marginRight: 14, flexShrink: 0 }), body({ fontSize: 25, fontWeight: f.textBold, color: tone.ink, lineHeight: 1.2 }, value))
 
-  /** The closing line of every image: the mark, the site name, the address. */
-  const brand = (tone) =>
+  /** The closing line of every image: the mark, the site name, the address. `scale` makes it larger on a taller canvas (a reel). */
+  const brand = (tone, scale = 1) =>
     row(
-      { alignItems: 'center', justifyContent: 'space-between', borderTop: `2px solid ${tone.line}`, paddingTop: 22, flexShrink: 0 },
+      { alignItems: 'center', justifyContent: 'space-between', borderTop: `2px solid ${tone.line}`, paddingTop: Math.round(22 * scale), flexShrink: 0 },
       row(
         { alignItems: 'center' },
-        marks[tone.name] && { type: 'img', props: { src: marks[tone.name], width: 44, height: 44, style: { marginRight: 14 } } },
+        marks[tone.name] && { type: 'img', props: { src: marks[tone.name], width: Math.round(44 * scale), height: Math.round(44 * scale), style: { marginRight: Math.round(14 * scale) } } },
         // A site may set its name in its wordmark face (font.brand); the display face otherwise.
-        display({ fontSize: f.brandSize || 26, color: tone.ink, fontFamily: f.brand || f.display, fontWeight: f.brandWeight || f.displayBold }, theme.name),
+        display({ fontSize: Math.round((f.brandSize || 26) * scale), color: tone.ink, fontFamily: f.brand || f.display, fontWeight: f.brandWeight || f.displayBold }, theme.name),
       ),
-      body({ fontSize: 24, color: tone.soft, fontWeight: f.textMedium }, theme.domain),
+      body({ fontSize: Math.round(24 * scale), color: tone.soft, fontWeight: f.textMedium }, theme.domain),
     )
 
   /**

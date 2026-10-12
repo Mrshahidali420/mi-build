@@ -63,7 +63,7 @@ const MIN_WORDS = 4
 export const TAGLINE_MAX = 110
 
 /** A sentence a synopsis may not end on: a teaser question, a lead-in colon, a trailing-off ellipsis, or a scrap of a few words. */
-const isLoose = (sentence) => /[?:]["'”’)]?$/.test(sentence) || /(\.{2,}|…)["'”’)]?$/.test(sentence) || sentence.split(/\s+/).length < MIN_WORDS
+const isLoose = (sentence) => /[?:][!?]*["'”’)]?$/.test(sentence) || /(\.{2,}|…)["'”’)]?$/.test(sentence) || sentence.split(/\s+/).length < MIN_WORDS
 
 /**
  * The first sentences of the blurb, as many as fit in `max` characters. It

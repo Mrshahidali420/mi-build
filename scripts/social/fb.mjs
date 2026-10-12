@@ -8,6 +8,16 @@
  *   POST /{page-id}/feed    message       a text post (no image); returns { id }
  *   POST /{post-id}/comments message      the link, as the first comment
  *
+ * A reel (Reels Publishing API, read 12 Oct 2026) takes three calls:
+ *   POST /{page-id}/video_reels upload_phase=start      -> video_id, upload_url
+ *   POST rupload.facebook.com/video-upload/{v}/{video-id}  the file, with the
+ *        token in an Authorization header (the only place it leaves the body)
+ *   POST /{page-id}/video_reels upload_phase=finish, video_state=PUBLISHED,
+ *        description
+ * and GET /{video-id}?fields=status says when Facebook has finished with it.
+ * Facebook allows 30 reels published by API in 24 hours; the poster's own
+ * ceiling is far under that (attempt.mjs).
+ *
  * Checked against Meta's docs on 12 Oct 2026 (Graph API v26.0, Page Photos,
  * Pages API Posts, Object Comments). `message` on /photos is deprecated in
  * favour of `caption`.
@@ -24,6 +34,9 @@
 /** The one place the Graph API version lives. */
 export const GRAPH_VERSION = 'v26.0'
 export const GRAPH_HOST = 'https://graph.facebook.com'
+/** The only host a reel file, and with it the token in a header, is ever sent to. */
+export const UPLOAD_HOST = 'rupload.facebook.com'
+const REEL_POLL = { tries: 18, everyMs: 10_000 }
 
 export class GraphError extends Error {
   constructor(message, { status = 0, code = 0, subcode = 0, type = '' } = {}) {
@@ -117,6 +130,29 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
     return json
   }
 
+  /** The reel file to Facebook's upload host. The address Facebook hands back is used only when it is on that host. */
+  async function upload(videoId, given, bytes) {
+    const safe = (() => {
+      try {
+        return new URL(given).host === UPLOAD_HOST ? given : null
+      } catch {
+        return null
+      }
+    })()
+    const url = safe || `https://${UPLOAD_HOST}/video-upload/${version}/${videoId}`
+    let res
+    try {
+      res = await fetch(url, { method: 'POST', headers: { Authorization: `OAuth ${token}`, offset: '0', file_size: String(bytes.length), 'content-type': 'application/octet-stream' }, body: bytes })
+    } catch (error) {
+      throw new GraphError(redact(`network error on the reel upload: ${error.message}`, token))
+    }
+    const json = await res.json().catch(() => null)
+    if (!res.ok || !json || json.error || json.success === false) {
+      const e = json?.error || {}
+      throw new GraphError(redact(`the reel upload failed: ${e.message || `HTTP ${res.status}`}`, token), { status: res.status, code: Number(e.code) || 0, subcode: Number(e.error_subcode) || 0, type: e.type || '' })
+    }
+  }
+
   return {
     /** The highest usage any answer has reported so far, or null. */
     usage: () => peak,
@@ -137,6 +173,30 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
     async publishText({ message }) {
       const json = await call('POST', `/${pageId}/feed`, { message })
       return { postId: json.id }
+    },
+    /** A reel from an MP4 made on the runner. The id of the video is the id the first comment goes on. */
+    async publishReel({ bytes, description }) {
+      if (!bytes?.length) throw new GraphError('publishReel needs the video bytes')
+      const start = await call('POST', `/${pageId}/video_reels`, { upload_phase: 'start' })
+      if (!start.video_id) throw new GraphError('the reel upload could not be started: no video id came back')
+      await upload(start.video_id, start.upload_url, bytes)
+      await call('POST', `/${pageId}/video_reels`, { upload_phase: 'finish', video_id: start.video_id, video_state: 'PUBLISHED', description })
+      return { videoId: start.video_id, postId: start.video_id }
+    },
+    /**
+     * Wait until Facebook has processed and published a reel, so the first
+     * comment has something to land on. True when it is ready, false when the
+     * wait ran out; a processing error throws.
+     */
+    async reelReady(videoId, { sleep, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs } = {}) {
+      for (let i = 0; i < tries; i += 1) {
+        const { status = {} } = await call('GET', `/${videoId}`, { fields: 'status' })
+        const failed = status.processing_phase?.error || status.publishing_phase?.error || status.uploading_phase?.error
+        if (failed) throw new GraphError(redact(`Facebook could not process the reel: ${failed.message || 'no reason given'}`, token))
+        if (status.video_status === 'ready' || status.publishing_phase?.status === 'complete') return true
+        if (sleep) await sleep(everyMs)
+      }
+      return false
     },
     async comment(postId, message) {
       const json = await call('POST', `/${postId}/comments`, { message })

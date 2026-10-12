@@ -17,7 +17,8 @@
     "ingest:characters": "node --max-old-space-size=6000 scripts/ingest-characters.mjs",
     "ingest:novels": "node --max-old-space-size=6000 scripts/ingest-novels.mjs",
     "guides:media": "node --max-old-space-size=4000 scripts/guide-media.mjs",
-    "social:samples": "node --max-old-space-size=4000 scripts/social/samples.mjs"
+    "social:samples": "node --max-old-space-size=4000 scripts/social/samples.mjs",
+    "social:reels": "node --max-old-space-size=4000 scripts/social/reel/samples.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
