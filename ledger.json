@@ -1610,6 +1610,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108508639500964",
    "commentId": "122108508639500964_1399989332308190"
+  },
+  {
+   "key": "2026-10-12|next:116506|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:116506",
+   "title": "Dungeon Reset",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "116506",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791834635304,
+   "status": "claimed"
   }
  ],
  "health": {
