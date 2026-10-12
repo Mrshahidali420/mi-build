@@ -1,13 +1,30 @@
 name: Facebook Page post
+run-name: ${{ github.event_name == 'schedule' && 'Facebook watch' || inputs.dry_run && 'Facebook dry run' || inputs.count != '' && 'Facebook manual post' || 'Facebook chain' }}
 
-# Shares one title page on the Manhwa Index Facebook Page: a cover photo with a
-# short caption, then the link as the first comment (docs/facebook-posting.md).
+# Shares title pages on the Manhwa Index Facebook Page: a picture with a caption,
+# then the link as the first comment (docs/facebook-posting.md).
 #
-# Never runs on push. It starts every hour at 17 past, a few random minutes
-# late so the posts do not look robotic. A run sends at most one post, and
-# only while the day is behind the even pace for FB_POSTS_PER_DAY
-# (scripts/social/pace.mjs): 8 a day is one post about every 3 hours, 24 a
-# day is one an hour. Every other run is a short, green skip.
+# THE CHAIN. One run posts, waits and posts again for two hours
+# (scripts/social/chain.mjs), then starts its successor with
+# `gh workflow run` and ends. GitHub's hourly schedule proved unreliable on
+# 12 Oct 2026 (no scheduled run for over three hours), so posting no longer
+# depends on it.
+#
+#   Run workflow, nothing filled in    starts the chain (posts for real)
+#   count = 2                          two posts now, then it ends; no chain
+#   dry_run = true                     shows what it would post; never a chain
+#   the cron, every 30 minutes         the backstop: starts a chain only when
+#                                      none is running or waiting
+#
+# No overlap: every chain run sits in the concurrency group `fb-chain`, so a
+# second one waits for the first to end and at most one waits at a time. The
+# five-minute gap is kept from the LEDGER's own timestamps, whatever started
+# the run.
+#
+# The pace (scripts/social/pace.mjs): never closer than
+# FB_MIN_GAP_MINUTES (5 at least), never more than FB_POSTS_PER_DAY in any 24
+# hours (24 when unset, 288 at most), spread evenly. Facebook's limit signals
+# are written to the ledger and can lower the cap (limits.mjs).
 #
 # Until the FB_PAGE_ID / FB_PAGE_TOKEN secrets exist it is a green dry run.
 # With them, it posts only when the repo variable FB_POST_ENABLED is 'true'.
@@ -16,43 +33,76 @@ name: Facebook Page post
 # OFF until the repo variable FB_POST_TYPES names them, one by one. A manual
 # dry run can preview any type with the `types` input; its pictures are kept
 # as the run's "fb-preview" artifact. That input never makes a real post.
-# The packages are installed only for a run that draws (the classic post
-# needs none).
+#
+# Data: the deploy's catalog from the Actions cache, restored at the start of
+# each run. A chain run lasts two hours here, so the catalog is never much
+# older than the deploy's own six-hour refresh.
 #
 # The ledger that stops double posts lives on the orphan branch social-state
-# (scripts/social/ledger.mjs). Pushes there start no workflow: deploy.yml only
-# listens to master, and pushes made with GITHUB_TOKEN start nothing anyway.
+# (scripts/social/ledger.mjs). Pushes there start no workflow.
 
 on:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '7,37 * * * *'
   workflow_dispatch:
     inputs:
       dry_run:
         description: 'Only show what would be posted (true / false)'
         type: boolean
-        default: true
+        default: false
       count:
-        description: 'How many posts (or samples) this run'
+        description: 'How many posts (or dry-run samples). Empty = start the chain'
         required: false
-        default: '3'
+        default: ''
       types:
         description: 'Dry run only: post types to preview, e.g. where,fact (empty = the FB_POST_TYPES variable)'
         required: false
         default: ''
+      started_by:
+        description: 'Set by the workflow itself (chain / watch). Leave as it is'
+        required: false
+        default: 'hand'
 
-# contents: write is for the social-state ledger branch only.
+# contents: write is for the social-state ledger branch; actions: write starts the next run of the chain.
 permissions:
   contents: write
-
-concurrency:
-  group: fb-post
-  cancel-in-progress: false
+  actions: write
 
 jobs:
-  post:
+  # The backstop. It posts nothing: it starts a chain when none is running.
+  watch:
+    if: github.event_name == 'schedule' && vars.FB_POST_ENABLED == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 5
+    steps:
+      - name: Start a chain when none is running
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          active=$(gh run list --repo "$REPO" --workflow fb-post.yml --limit 40 --json status,displayTitle \
+            --jq '[.[] | select(.displayTitle == "Facebook chain" and .status != "completed")] | length')
+          if [ "$active" != "0" ]; then
+            echo "A chain is running or waiting ($active). Nothing to do."
+            exit 0
+          fi
+          halted=$(gh api "repos/$REPO/contents/ledger.json?ref=social-state" -H 'Accept: application/vnd.github.raw' 2>/dev/null | jq -r '.health.halted.why // empty' 2>/dev/null || true)
+          if [ -n "$halted" ]; then
+            echo "::warning::The chain was halted: $halted. Fix it, then start the workflow by hand."
+            exit 0
+          fi
+          echo "No chain is running. Starting one."
+          gh workflow run fb-post.yml --repo "$REPO" -f started_by=watch
+
+  post:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    # Under GitHub's six-hour limit for one job.
+    timeout-minutes: 355
+    # A chain run waits for the chain before it; a dry or counted run stands alone.
+    concurrency:
+      group: ${{ (inputs.dry_run || inputs.count != '') && format('fb-once-{0}', github.run_id) || 'fb-chain' }}
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
 
@@ -75,26 +125,28 @@ jobs:
 
       # The renderer's packages (satori, sharp, the fonts): only when a run draws.
       - name: Install the packages the template images need
-        if: vars.FB_POST_TYPES != '' || (github.event_name == 'workflow_dispatch' && inputs.types != '')
+        if: vars.FB_POST_TYPES != '' || inputs.types != ''
         run: npm ci --no-audit --no-fund
 
-      - name: Wait a few random minutes
-        if: github.event_name == 'schedule'
-        run: sleep $(( RANDOM % 420 ))
-
       - name: Post
+        id: post
         env:
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           FB_POST_ENABLED: ${{ vars.FB_POST_ENABLED }}
+          # The cap for any 24 hours (unset = 24, at most 288), and the least minutes between two posts (5 at least).
           FB_POSTS_PER_DAY: ${{ vars.FB_POSTS_PER_DAY }}
+          FB_MIN_GAP_MINUTES: ${{ vars.FB_MIN_GAP_MINUTES }}
+          # How long one run of the chain lasts before it hands over.
+          FB_CHAIN_MINUTES: '120'
           # The template post types that are switched on (empty = classic posts only).
           FB_POST_TYPES: ${{ vars.FB_POST_TYPES }}
           # 'true' adds the Amazon line of the title to the first comment (off by default).
           FB_AFFILIATE_COMMENT: ${{ vars.FB_AFFILIATE_COMMENT }}
           EVENT: ${{ github.event_name }}
-          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
+          DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
           COUNT: ${{ inputs.count }}
+          STARTED_BY: ${{ inputs.started_by }}
           # Read by a manual dry run only (post.mjs, settingsOf).
           TYPES: ${{ inputs.types }}
           FB_PREVIEW_DIR: ${{ runner.temp }}/fb-preview
@@ -104,9 +156,16 @@ jobs:
           GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
         run: node --max-old-space-size=6000 scripts/social/post.mjs
 
+      # Only a chain run that ended healthy writes chain=next (post.mjs).
+      - name: Start the next run of the chain
+        if: steps.post.outputs.chain == 'next'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run fb-post.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" -f started_by=chain
+
       # The pictures a dry run drew, so a new design can be looked at.
       - name: Keep the preview pictures
-        if: always() && github.event_name == 'workflow_dispatch'
+        if: always() && inputs.dry_run
         uses: actions/upload-artifact@v4
         with:
           name: fb-preview

@@ -269,18 +269,19 @@ test('run: a refused token fails the run with a plain line; a full day skips the
   const full = harness({ FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', FB_POSTS_PER_DAY: '1', EVENT: 'schedule' }, ok)
   await full.store.write({ v: 1, entries: [{ key: 'k', day: '2026-10-12', page: 'manhwaindex', title: 'X', status: 'posted', at: NOW }] }, 0)
   assert.equal(await full.go(), 0)
-  assert.match(full.text.join(''), /daily count is reached/)
+  assert.match(full.text.join(''), /the cap for 24 hours is reached/)
 })
 
-test('run: settings default to 4 a day, one post per scheduled run, and dry unless enabled', () => {
+test('run: settings default to 24 a day, a chain when it posts for real, and dry unless enabled', () => {
   assert.deepEqual(
     (({ perDay, count, dry }) => ({ perDay, count, dry }))(settingsOf({ FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', EVENT: 'schedule' })),
-    { perDay: 4, count: 1, dry: true },
+    { perDay: 24, count: 3, dry: true },
   )
   const live = { FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', EVENT: 'schedule' }
   assert.equal(settingsOf({ ...live, FB_POSTS_PER_DAY: '8' }).count, 1)
   assert.equal(settingsOf({ ...live, FB_POSTS_PER_DAY: '24' }).perDay, 24)
-  assert.equal(settingsOf({ ...live, FB_POSTS_PER_DAY: '99' }).perDay, MAX_PER_DAY)
-  assert.equal(MAX_PER_DAY, 24)
+  assert.equal(settingsOf({ ...live, FB_POSTS_PER_DAY: '999' }).perDay, MAX_PER_DAY)
+  assert.equal(MAX_PER_DAY, 288)
+  assert.equal(settingsOf(live).mode, 'chain')
   assert.equal(settingsOf({ FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', DRY_RUN: 'true' }).dry, true)
 })

@@ -65,17 +65,26 @@ export const pools = () => ({
 export function harness(env, graph) {
   const text = []
   const store = memoryStore()
+  const outputs = {}
+  // The clock moves only when the run sleeps, so a chain of hours takes no time.
+  let at = NOW
   const base = {
-    env,
-    now: NOW,
+    // A chain of one minute posts what is due and hands over, like one scheduled run of old.
+    env: { FB_CHAIN_MINUTES: '1', ...env },
+    clock: () => at,
+    output: (name, value) => {
+      outputs[name] = value
+    },
     rng: () => 0,
     loadPools: async () => ({ pools: pools(), source: 'test' }),
     store,
     makeGraph: () => graph,
     summary: (t) => text.push(t),
-    sleep: async () => {},
+    sleep: async (ms) => {
+      at += ms
+    },
     blockedTags: BLOCKED,
   }
   /** go() is the plain run; run(over) swaps some of what the run is given. */
-  return { store, text, go: () => run(base), run: (over = {}) => run({ ...base, ...over }) }
+  return { store, text, outputs, clock: () => at, go: () => run(base), run: (over = {}) => run({ ...base, ...over }) }
 }

@@ -3,8 +3,9 @@
  *
  * Both kinds end the same way: claim in the ledger (pushed) -> the photo ->
  * the link as the first comment -> settle the claim. A failure after the
- * claim marks it failed and stops the run; nothing is retried, so nothing
- * posts twice.
+ * claim marks it failed; that item is never retried, so nothing posts
+ * twice. The error is handed to `onError`, where the chain reads what it
+ * says about Facebook's limits (limits.mjs).
  *
  * A template post draws its picture BEFORE the claim. Drawing touches nothing
  * outside the runner, so a picture that cannot be made (art that will not
@@ -30,11 +31,12 @@ function describe({ heading, image, path, caption, comment, now }) {
  * The irreversible part: the photo, then the link comment, then the ledger.
  * @param send () => Promise<{ postId }> the Graph call that makes the post
  */
-async function publish({ graph, book, entry, send, comment, out, name }) {
+async function publish({ graph, book, entry, send, comment, out, name, onError = () => {} }) {
   let postId
   try {
     postId = (await send()).postId
   } catch (error) {
+    onError(error)
     await settle(book, entry.key, { status: 'failed', error: error.message })
     out.push(`**Post failed** for ${name}: ${error.message}. Marked failed in the ledger; not retried.`)
     return STEP.failed
@@ -45,6 +47,7 @@ async function publish({ graph, book, entry, send, comment, out, name }) {
     out.push(`Posted: ${postId}, link comment ${commentId}.`, '')
     return STEP.posted
   } catch (error) {
+    onError(error)
     await settle(book, entry.key, { status: 'posted', postId, commentError: error.message })
     out.push(`Posted ${postId}, but **the link comment failed**: ${error.message}. Add the link by hand on Facebook.`)
     return STEP.failed
@@ -52,7 +55,7 @@ async function publish({ graph, book, entry, send, comment, out, name }) {
 }
 
 /** The classic post: a cover by its address, and a caption. */
-export async function classicStep({ s, graph, book, pools, history, now, day, rng, skip, blockedTags, slotsLeft, out, resolveImage }) {
+export async function classicStep({ s, graph, book, pools, history, now, day, rng, skip, blockedTags, slotsLeft, out, resolveImage, onError }) {
   const pick = pickNext({ pools, history, now, rng, skip, blockedTags, slotsLeft })
   if (!pick) return STEP.none
   const c = pick.candidate
@@ -72,7 +75,7 @@ export async function classicStep({ s, graph, book, pools, history, now, day, rn
     return STEP.posted
   }
   const send = () => (image ? graph.publishPhoto({ url: image, caption: pick.caption }) : graph.publishText({ message: pick.caption }))
-  return publish({ graph, book, entry, send, comment, out, name: c.title })
+  return publish({ graph, book, entry, send, comment, out, name: c.title, onError })
 }
 
 /** The ledger entry of a template post. */
@@ -96,7 +99,7 @@ export function typedEntry({ type, post, variant }, day, now) {
 }
 
 /** A template post: the picture is drawn here and sent as a file. */
-export async function typedStep({ s, graph, book, plan, now, day, skip, out, render, preview }) {
+export async function typedStep({ s, graph, book, plan, now, day, skip, out, render, preview, onError }) {
   const { type, post, caption } = plan
   const name = post.title || `${type.name} (${post.item})`
   let picture
@@ -123,5 +126,5 @@ export async function typedStep({ s, graph, book, plan, now, day, skip, out, ren
     return STEP.posted
   }
   const send = () => graph.publishPhotoFile({ bytes: picture.jpeg, caption, filename: `${type.key}.jpg` })
-  return publish({ graph, book, entry, send, comment, out, name })
+  return publish({ graph, book, entry, send, comment, out, name, onError })
 }

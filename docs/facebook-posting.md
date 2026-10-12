@@ -7,9 +7,8 @@ title page at a time on the site's Facebook Page:
 - then, straight away, a first comment with the link, for example
   `Where to read it: https://manhwaindex.com/manhwa/solo-leveling-105398?utm_source=facebook&utm_medium=social&utm_campaign=page`
 
-It starts every hour (17 minutes past, a few random minutes late) and sends at
-most one post per run. Most runs send nothing: a run posts only when the day is
-behind its even pace (see "How it paces the day"). It never runs on a push.
+One long workflow run does the posting: it posts, waits and posts again, then
+starts the next run (see "How it paces the day"). It never runs on a push.
 
 Nothing goes to Facebook until you finish the steps below **and** switch it on.
 Until then every run is green and only shows what it would post.
@@ -82,13 +81,21 @@ Variables (tab "Variables"):
 
 ## 5. Test, then switch on
 
-1. Actions → **Facebook Page post** → Run workflow. Leave `dry_run` ticked.
+1. Actions → **Facebook Page post** → Run workflow. Tick `dry_run`.
 2. Open the run and read the summary. It should say the token works for your
    Page and show sample posts with their first comment.
 3. When you like what you see, set the variable `FB_POST_ENABLED` to `true`.
-   The next hourly run that is due posts for real.
+4. Start the chain: Run workflow again with nothing filled in. Within half
+   an hour the backstop would start it by itself.
 
-To stop at any time, set `FB_POST_ENABLED` back to `false`.
+To stop: set `FB_POST_ENABLED` back to `false` **and** cancel the running
+"Facebook chain" run in Actions. A run reads the variables when it starts, so
+without the cancel it would post until its two hours are up.
+
+The same holds for every variable (`FB_POSTS_PER_DAY`, `FB_POST_TYPES`,
+`FB_MIN_GAP_MINUTES`, `FB_AFFILIATE_COMMENT`): a change takes effect when the
+next run of the chain starts. To apply it at once, cancel the running chain
+and start the workflow by hand.
 
 ## If something goes wrong
 
@@ -101,22 +108,70 @@ To stop at any time, set `FB_POST_ENABLED` back to `false`.
 
 ## How it paces the day
 
-The day is the US Eastern day. It is cut into as many equal parts as
-`FB_POSTS_PER_DAY`, and one post is due at the start of each part.
+Owner decision, 12 Oct 2026: **as many posts as is safe, under Facebook's
+daily limit, never closer than five minutes apart.** Meta publishes no daily
+post cap for a Page (the only official limit is a call budget), and third
+parties report about 25 a day for business Pages. So the cap starts at 24 and
+is raised by hand, with evidence.
 
-| `FB_POSTS_PER_DAY` | A post about every | Due at (US Eastern) |
-|---|---|---|
-| `4` | 6 hours | 00:00, 06:00, 12:00, 18:00 |
-| `8` | 3 hours | 00:00, 03:00, 06:00 ... 21:00 |
-| `15` | 96 minutes | 00:00, 01:36, 03:12 ... |
-| `24` | 1 hour | every hour |
+Three rules, all read from the ledger's own timestamps:
 
-- Each hourly run checks how many posts went out today. Behind the line: it
-  sends one. On the line: it writes "On pace" in the summary and stops.
-- A run that GitHub starts late or drops is made up one post per later run,
-  never as a burst.
-- A manual run (Run workflow) ignores the pace and sends `count` posts, but
-  never more than the day has left.
+| Rule | Variable | Unset | Limits |
+|---|---|---|---|
+| The gap: least minutes between two posts | `FB_MIN_GAP_MINUTES` | 5 | never under 5 |
+| The cap: most posts in any 24 hours | `FB_POSTS_PER_DAY` | 24 | never over 288 |
+| The pace: posts are spread evenly over the cap | (none) | 24 a day is one an hour | never closer than the gap |
+
+- The day is a **rolling 24 hours**, counted back from now. Midnight never
+  opens the door to a burst.
+- A claim, a post and a failed post all count. A dry run never does.
+
+### The chain
+
+One workflow run posts, waits and posts again for two hours,
+then starts the next run and ends. GitHub's hourly schedule dropped runs for
+over three hours on 12 Oct 2026, so posting does not depend on it any more.
+
+- **Start it:** Actions → Facebook Page post → Run workflow, nothing filled
+  in. (`gh workflow run fb-post.yml` does the same.)
+- **The backstop:** a cron job looks every 30 minutes and starts a chain only
+  when none is running or waiting. It posts nothing itself.
+- **No overlap:** chain runs share one concurrency group, so a second one
+  waits for the first to end. The gap is kept from the ledger whatever
+  started the run.
+- **Two posts by hand:** Run workflow with `count` = 2. It keeps the gap and
+  the cap, ignores the even pace, and never starts a chain.
+- **A dry run** (`dry_run` ticked) shows what it would post and never starts
+  a chain.
+- The catalog is restored from the Actions cache at the start of each run, which is why a run lasts two hours here and not five.
+
+### What stops it, and what does not
+
+- **One failed post does not.** It is logged, marked failed in the ledger
+  (never retried), the gap passes, and the chain goes on.
+- **A refused token, or five failures in a row, do.** The run ends red and
+  leaves a note in the ledger; the backstop does not restart a halted chain.
+  Fix the cause, then start the workflow by hand.
+- **Nothing fresh to post:** it waits 20 minutes and looks again. It never
+  repeats an item to fill the time.
+
+### The limit watch
+
+Every sign of a limit is written to the ledger (`health` in `ledger.json` on
+the `social-state` branch) and printed in the run's summary:
+
+- **Throttling** (Graph codes 4, 17, 32, 341, 613, 80000 to 80014, HTTP 429,
+  or a usage header at 90% and up): the chain backs off, doubling the wait
+  each time, an hour at most.
+- **A block** (code 368, or a message about being blocked, spam or going too
+  fast): no posts for 24 hours, and the cap drops to **75% of what the Page
+  had reached** in the last 24 hours.
+- Each run's summary ends with **"Highest usage seen this run"**, read from
+  Facebook's usage headers.
+
+**Raising the cap** is done by hand, never by the code: when the summaries
+show no limit signal and low usage for a few days, set `FB_POSTS_PER_DAY` a
+step higher. Changing that number also lifts a cut left by a block.
 
 ## Template posts (off until you switch them on)
 

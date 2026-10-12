@@ -12,6 +12,10 @@
  * Pages API Posts, Object Comments). `message` on /photos is deprecated in
  * favour of `caption`.
  *
+ * Every answer's usage headers (x-app-usage, x-page-usage,
+ * x-business-use-case-usage) are read, and the highest percentage seen is
+ * kept: usage() hands it to the limit watch (limits.mjs).
+ *
  * The token travels in the POST body (or the GET query) and is never logged:
  * every error message is passed through redact() before it leaves this file.
  * `fetch` is injectable so the tests need no network.
@@ -37,11 +41,40 @@ export class GraphError extends Error {
   }
 }
 
+const USAGE_HEADERS = ['x-app-usage', 'x-page-usage', 'x-business-use-case-usage']
+const USAGE_FIELDS = ['call_count', 'total_cputime', 'total_time']
+
+/** The highest percentage inside one usage header's JSON (a flat object, or lists of them by id). */
+function highest(value) {
+  if (Array.isArray(value)) return Math.max(0, ...value.map(highest))
+  if (!value || typeof value !== 'object') return 0
+  const own = USAGE_FIELDS.map((field) => Number(value[field]) || 0)
+  const nested = Object.values(value).filter((v) => v && typeof v === 'object').map(highest)
+  return Math.max(0, ...own, ...nested)
+}
+
+/** How much of the call budget an answer reports: { pct, source }, or null when it sent no usage header. */
+export function usageOf(headers) {
+  let best = null
+  for (const name of USAGE_HEADERS) {
+    const raw = headers?.get?.(name)
+    if (!raw) continue
+    try {
+      const pct = highest(JSON.parse(raw))
+      if (!best || pct > best.pct) best = { pct, source: name }
+    } catch {
+      // A header that is not JSON says nothing.
+    }
+  }
+  return best
+}
+
 const redact = (text, token) => (token ? String(text).split(token).join('***') : String(text))
 
 export function graphClient({ pageId, token, fetch = globalThis.fetch, version = GRAPH_VERSION }) {
   if (!pageId || !token) throw new Error('graphClient needs a page id and a token')
   const base = `${GRAPH_HOST}/${version}`
+  let peak = null
 
   /** A multipart body: the fields, the token and one file (`source`). */
   function multipart(params, file) {
@@ -63,6 +96,8 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
     } catch (error) {
       throw new GraphError(redact(`network error on ${method} ${path}: ${error.message}`, token))
     }
+    const usage = usageOf(res.headers)
+    if (usage && (!peak || usage.pct > peak.pct)) peak = usage
     let json = null
     try {
       json = await res.json()
@@ -83,6 +118,8 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
   }
 
   return {
+    /** The highest usage any answer has reported so far, or null. */
+    usage: () => peak,
     async pageName() {
       const json = await call('GET', `/${pageId}`, { fields: 'name' })
       return json.name || ''

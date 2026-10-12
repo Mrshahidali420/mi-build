@@ -9,40 +9,48 @@
  *      the manual run did not ask for a dry run. Otherwise the summary shows
  *      what it WOULD post.
  *   4. Each post: claim in the ledger (pushed) -> photo with caption -> the
- *      link as the first comment -> settle the claim (send.mjs). A failure
- *      after the claim marks it failed and ends the run; nothing is retried.
+ *      link as the first comment -> settle the claim (send.mjs).
  *
- * Posts per day: FB_POSTS_PER_DAY (default 4, never above MAX_PER_DAY). The
- * workflow runs every hour; a scheduled run sends at most one post, and only
- * while the day is behind the even pace (pace.mjs). A manual run ignores the
- * pace and sends `count` posts, still inside the daily cap.
+ * Three kinds of run (settingsOf, `mode`):
+ *   chain    the normal one. It loops for hours: post, wait, post (chain.mjs),
+ *            then asks the workflow to start its successor
+ *   manual   a run started by hand with a `count`: that many posts, the gap
+ *            and the cap kept, the even pace ignored. It never starts a chain
+ *   dry      shows what it would post and touches nothing. Never a chain
+ *
+ * The pace (pace.mjs): never closer than FB_MIN_GAP_MINUTES (5 at least),
+ * never more than FB_POSTS_PER_DAY in any 24 hours (24 when unset, 288 at
+ * most), spread evenly. Facebook's limit signals are written to the ledger
+ * and can lower the cap (limits.mjs); nothing raises it but the owner.
  *
  * Kinds of post: the classic post (a cover and a caption) unless the repo
  * variable FB_POST_TYPES names template types (gate.mjs). The template code
  * (types/, render/) is loaded only when that variable names one.
  *
  * run() takes every outside thing as an argument, so the tests drive it with
- * a fake Graph client and an in-memory ledger.
+ * a fake Graph client, a fake clock and an in-memory ledger.
  */
 import { execFileSync } from 'node:child_process'
 import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { attemptOnce } from './attempt.mjs'
+import { runChain } from './chain.mjs'
 import { graphClient, GraphError } from './fb.mjs'
-import { CLASSIC, enabledTypes, onlyClassic } from './gate.mjs'
+import { CLASSIC, enabledTypes } from './gate.mjs'
 import { resolveCover } from './image.mjs'
-import { countDay, dayOf, gitStore, memoryStore } from './ledger.mjs'
-import { isBehind, nextDueTime } from './pace.mjs'
-import { planNext } from './plan.mjs'
-import { classicStep, typedStep, STEP } from './send.mjs'
+import { gitStore, memoryStore } from './ledger.mjs'
+import { effectiveCap, saveHealth, withHalt } from './limits.mjs'
+import { countedEntries, gapMinutesOf, nextWait, perDayOf, rollingCount, DEFAULT_PER_DAY, MAX_PER_DAY } from './pace.mjs'
+import { STEP } from './send.mjs'
 import { SITE, affiliateOn } from './site.mjs'
+import { timeOf } from './when.mjs'
 
-export const DEFAULT_PER_DAY = 4
-export const MAX_PER_DAY = 24
-/** A scheduled (hourly) run never sends more than this. */
-export const POSTS_PER_RUN = 1
+export { DEFAULT_PER_DAY, MAX_PER_DAY }
 export const DRY_SAMPLES = 3
-const GAP_MS = 90_000
+/** A chain run lasts this long by default: under GitHub's six-hour job limit, with room to finish a post. */
+export const DEFAULT_CHAIN_MINUTES = 330
+const MAX_CHAIN_MINUTES = 340
 /** Extra tries a run gets when an item turns out to be taken or cannot be drawn. */
 const SPARE_TRIES = 10
 
@@ -56,13 +64,30 @@ export function settingsOf(env) {
   const enabled = env.FB_POST_ENABLED === 'true'
   const askedDry = env.DRY_RUN === 'true'
   const manual = env.EVENT === 'workflow_dispatch'
-  const perDay = Math.min(int(env.FB_POSTS_PER_DAY, DEFAULT_PER_DAY), MAX_PER_DAY)
   const dry = !configured || !enabled || askedDry
-  const count = manual ? int(env.COUNT, dry ? DRY_SAMPLES : 1) : POSTS_PER_RUN
+  const asked = int(env.COUNT, 0)
+  // A run that posts for real is the chain, unless a run started by hand says how many posts it wants.
+  const mode = dry ? 'dry' : manual && asked ? 'manual' : 'chain'
+  const count = asked || (dry ? DRY_SAMPLES : 1)
   // A manual DRY run may name its own types, to look at a design before it is switched on.
   // A run that posts for real reads the repo variable alone.
   const typesValue = String((manual && askedDry && env.TYPES) || env.FB_POST_TYPES || '').trim()
-  return { configured, enabled, askedDry, manual, perDay, dry, count, typesValue, affiliate: affiliateOn(env) }
+  return {
+    configured,
+    enabled,
+    askedDry,
+    manual,
+    dry,
+    mode,
+    count,
+    typesValue,
+    perDay: perDayOf(env.FB_POSTS_PER_DAY),
+    gapMinutes: gapMinutesOf(env.FB_MIN_GAP_MINUTES),
+    chainMinutes: Math.min(int(env.FB_CHAIN_MINUTES, DEFAULT_CHAIN_MINUTES), MAX_CHAIN_MINUTES),
+    // 'watch' when the backstop cron started this run; it must not restart a halted chain.
+    startedBy: env.STARTED_BY || 'hand',
+    affiliate: affiliateOn(env),
+  }
 }
 
 /** The Graph client with a working token, or null for a dry run without one. Throws a line for the summary. */
@@ -78,10 +103,13 @@ async function openGraph(s, env, makeGraph, out) {
     return graph
   } catch (error) {
     const auth = error instanceof GraphError && error.isAuth
-    throw new Error(
-      auth
-        ? `Facebook: **the Page token was refused** (${error.message}). Make a new long-lived Page token and update the FB_PAGE_TOKEN secret (docs/facebook-posting.md, step 3).`
-        : `Facebook: the token check failed (${error.message}).`,
+    throw Object.assign(
+      new Error(
+        auth
+          ? `Facebook: **the Page token was refused** (${error.message}). Make a new long-lived Page token and update the FB_PAGE_TOKEN secret (docs/facebook-posting.md, step 3).`
+          : `Facebook: the token check failed (${error.message}).`,
+      ),
+      { auth },
     )
   }
 }
@@ -101,30 +129,42 @@ async function kindsOf(s, loadTypes, out) {
   }
 }
 
+/** The lines that say where the rolling day stands. */
+function paceLines(s, health, cap, used) {
+  const cut = cap < s.perDay ? ` The cap of ${s.perDay} is cut to ${cap} after a block signal; change FB_POSTS_PER_DAY by hand to lift it.` : ''
+  const peak = health.peak ? ` Highest usage in the last 24 hours: ${health.peak.pct}% (${health.peak.source}).` : ''
+  const signals = (health.signals || []).length ? ` Limit signals on record: ${health.signals.length}, the last one "${health.signals.at(-1).note}".` : ' No limit signal on record.'
+  return [`Last 24 hours: ${used} of ${cap} posts used. Minimum gap: ${s.gapMinutes} minutes.${cut}`, '', `Limit watch:${signals}${peak}`, '']
+}
+
 /**
+ * @param clock () => ms; a test passes its own, or a fixed `now`
+ * @param output (name, value) => void; the workflow reads `chain` to start the next run
  * @returns exit code (0 ok, 1 the owner must look)
  */
-export async function run({ env, now = Date.now(), rng = Math.random, loadPools, store, makeGraph, summary, sleep, blockedTags = [], resolveImage = resolveCover, loadTypes = defaultTypes, render = defaultRender, preview = null }) {
+export async function run({ env, now, clock = now === undefined ? Date.now : () => now, rng = Math.random, loadPools, store, makeGraph, summary, sleep, blockedTags = [], resolveImage = resolveCover, loadTypes = defaultTypes, render = defaultRender, preview = null, output = () => {} }) {
   const s = settingsOf(env)
   const out = [`## Facebook Page poster: ${SITE.name}`, '']
+  const flush = () => out.length && summary(`${out.splice(0).join('\n')}\n`)
   const end = (code, line) => {
     if (line) out.push(line)
-    summary(`${out.join('\n')}\n`)
+    flush()
     return code
   }
+  output('chain', 'stop')
 
   let graph
   try {
     graph = await openGraph(s, env, makeGraph, out)
   } catch (error) {
+    if (error.auth && s.mode === 'chain') await saveHealth(store, (h) => withHalt(h, 'the Page token was refused', clock()), 'Chain halted').catch(() => null)
     return end(1, `${error.message}\n`)
   }
   if (s.dry) {
     const why = !s.configured ? 'not configured' : !s.enabled ? 'the FB_POST_ENABLED variable is not true' : 'dry_run was asked for'
     out.push(`Mode: **DRY RUN** (${why}). Below is what it would post.`, '')
-  } else out.push('Mode: **posting for real**.', '')
+  } else out.push(`Mode: **posting for real** (${s.mode === 'chain' ? 'the chain' : `a manual run of ${s.count}`}).`, '')
 
-  // The ledger and the pace come first: a run with nothing due never loads the data.
   let ledger
   try {
     ledger = await store.read()
@@ -133,64 +173,66 @@ export async function run({ env, now = Date.now(), rng = Math.random, loadPools,
   }
   // A dry run plays its claims against a copy, so the real ledger is untouched.
   const book = s.dry ? memoryStore(ledger.data) : store
-  const day = dayOf(now)
-  const done = countDay(ledger.data, day, SITE.key)
-  const left = Math.max(0, s.perDay - done)
-  const want = s.dry ? s.count : Math.min(s.count, left)
-  out.push(`Today (${day}, US Eastern): ${done} of ${s.perDay} posts used.`, '')
+  const health = ledger.data.health || {}
+  const cap = effectiveCap(health, s.perDay)
+  const used = rollingCount(countedEntries(ledger.data, SITE.key), clock())
+  out.push(...paceLines(s, health, cap, used))
   out.push(`Amazon line in the first comment: ${s.affiliate ? 'on' : 'off (the FB_AFFILIATE_COMMENT variable is not true)'}.`, '')
-  if (want === 0) return end(0, 'The daily count is reached. This run is skipped.')
-  if (!s.manual && !isBehind(done, now, s.perDay)) return end(0, `On pace: the next post is due at about ${nextDueTime(done, s.perDay)} ET. This run is skipped.`)
 
   const kinds = await kindsOf(s, loadTypes, out)
+  const base = { s, graph, book, kinds, rng, blockedTags, out, flush, resolveImage, render, preview, clock, sleep, loadPools }
+  if (s.mode === 'chain') {
+    if (health.halted && s.startedBy === 'watch') return end(0, `The chain was halted (${health.halted.why}). It is started by hand once that is fixed; the watch job does not restart it.`)
+    if (health.halted) await saveHealth(book, (h) => withHalt(h, null, clock()), 'Chain restarted')
+    const result = await runChain(base)
+    output('chain', result.next ? 'next' : 'stop')
+    return end(result.code)
+  }
+  return end((await runOnce(base, { cap, used, health })) ? 1 : 0)
+}
+
+/**
+ * A dry run or a manual run: up to `count` posts, then it ends.
+ * @returns true when a post failed and the owner must look
+ */
+async function runOnce(base, { cap, used, health }) {
+  const { s, out, clock, loadPools } = base
+  const left = Math.max(0, cap - used)
+  const want = s.dry ? s.count : Math.min(s.count, left)
+  if (!s.dry && (health.blockedUntil || 0) > clock()) return out.push(`Facebook signalled a block: no posts until about ${timeOf(health.blockedUntil)} ET. This run is skipped.`) && false
+  if (want === 0) return out.push('The cap for the last 24 hours is reached. This run is skipped.') && false
   let loaded
   try {
-    loaded = await loadPools({ now })
+    loaded = await loadPools({ now: clock() })
   } catch (error) {
-    return end(0, `No data: ${error.message}. Nothing to post this run.`)
+    return out.push(`No data: ${error.message}. Nothing to post this run.`) && false
   }
-  const { pools, source, data } = loaded
-  const todayLine = pools.today ? `, episodes still to air today ${pools.today.length}` : ''
-  out.push(`Data: ${source}. NEW pool ${pools.new.length}, OLD pool ${pools.old.length}${todayLine}.`, '')
-
-  const failed = await sendPosts({ s, graph, book, kinds, pools, data, now, day, rng, blockedTags, out, resolveImage, render, preview, sleep, want, left })
-  return end(failed ? 1 : 0)
+  const todayLine = loaded.pools.today ? `, episodes still to air today ${loaded.pools.today.length}` : ''
+  out.push(`Data: ${loaded.source}. NEW pool ${loaded.pools.new.length}, OLD pool ${loaded.pools.old.length}${todayLine}.`, '')
+  return sendPosts(base, { loaded, want, left, cap })
 }
 
 /**
  * Send up to `want` posts, one at a time. An item that is taken or cannot be
- * drawn is skipped and another is tried, a few times at most.
- * @returns true when a post failed and the owner must look
+ * drawn is skipped and another is tried, a few times at most. A real post
+ * first waits out the minimum gap since the last one in the ledger.
  */
-async function sendPosts({ s, book, kinds, sleep, want, left, out, ...ctx }) {
+async function sendPosts(base, { loaded, want, left, cap }) {
+  const { s, book, out, clock, sleep } = base
   const skip = new Set()
   let posted = 0
   for (let attempt = 0; posted < want && attempt < want + SPARE_TRIES; attempt += 1) {
-    const history = ((await book.read()).data.entries || []).filter((e) => e.page === SITE.key).sort((x, y) => x.at - y.at)
-    const step = await oneStep({ ...ctx, s, book, kinds, out, history, skip, slotsLeft: left - posted })
-    if (step === STEP.failed) return true
-    if (step === STEP.none) {
-      out.push('Nothing left that fits the rules (the gaps between repeats, format rotation, safe content).')
-      return false
+    if (!s.dry) {
+      const wait = nextWait({ entries: countedEntries((await book.read()).data, SITE.key), now: clock(), cap, gapMinutes: s.gapMinutes, even: false })
+      if (wait.why === 'cap') return out.push('The cap for the last 24 hours is reached.') && false
+      if (wait.ms > 0) await sleep(wait.ms)
     }
-    if (step !== STEP.posted) continue
-    posted += 1
-    if (!s.dry && posted < want) await sleep(GAP_MS)
+    const step = await attemptOnce(base, { loaded, skip, slotsLeft: left - posted })
+    if (step === STEP.failed) return true
+    if (step === STEP.none) return out.push('Nothing left that fits the rules (the gaps between repeats, format rotation, safe content).') && false
+    if (step === STEP.posted) posted += 1
   }
   return false
-}
-
-/** Choose the next post and send it. */
-async function oneStep({ kinds, data, pools, resolveImage, render, preview, ...ctx }) {
-  const { history, now, rng, skip, slotsLeft, blockedTags } = ctx
-  const plan = onlyClassic(kinds) ? { classic: true } : planNext({ kinds, data, history, now, rng, skip, slotsLeft, blockedTags })
-  if (!plan) return STEP.none
-  if (!plan.classic) return typedStep({ ...ctx, plan, render, preview })
-  const step = await classicStep({ ...ctx, pools, resolveImage })
-  if (step !== STEP.none || onlyClassic(kinds)) return step
-  // The classic post has nothing left; the other kinds take the turn.
-  skip.add(CLASSIC)
-  return STEP.skipped
 }
 
 const defaultTypes = async () => (await import('./types/index.mjs')).TYPES
@@ -215,12 +257,14 @@ function previewTo(dir) {
 async function main() {
   const { loadPools, BLOCKED_TAGS } = await import('./source.mjs')
   const summaryFile = process.env.GITHUB_STEP_SUMMARY
+  const outputFile = process.env.GITHUB_OUTPUT
+  const outputs = new Map()
   const code = await run({
     env: process.env,
     loadPools,
     store: gitStore({ git }),
     makeGraph: graphClient,
-    // The summary goes to the job page and to the log (secrets are masked there).
+    // The summary goes to the job page and to the log (secrets are masked there), line by line as the chain runs.
     summary: (text) => {
       if (summaryFile) appendFileSync(summaryFile, text)
       process.stdout.write(text)
@@ -228,7 +272,10 @@ async function main() {
     sleep: (ms) => new Promise((r) => setTimeout(r, ms)),
     blockedTags: [...BLOCKED_TAGS],
     preview: previewTo(process.env.FB_PREVIEW_DIR),
+    output: (name, value) => outputs.set(name, value),
   })
+  // Written once, at the end: only a run that finished healthy hands over to a successor.
+  if (outputFile) for (const [name, value] of outputs) appendFileSync(outputFile, `${name}=${code === 0 ? value : 'stop'}\n`)
   process.exitCode = code
 }
 
