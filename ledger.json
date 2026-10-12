@@ -1086,6 +1086,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108402655500964",
    "commentId": "122108402655500964_2314686855963330"
+  },
+  {
+   "key": "2026-10-12|new-title:216538|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "new-title:216538",
+   "title": "Graykeith: Translator Daemonica",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:new-title",
+   "type": "new-title",
+   "item": "216538",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791826161036,
+   "status": "claimed"
   }
  ],
  "health": {
