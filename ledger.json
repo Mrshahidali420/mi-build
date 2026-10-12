@@ -2129,6 +2129,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108598381500964",
    "commentId": "122108598381500964_1416179393344218"
+  },
+  {
+   "key": "2026-10-12|next:110042|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:110042",
+   "title": "I Am the Sorcerer King",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "110042",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791843096444,
+   "status": "claimed"
   }
  ],
  "health": {
