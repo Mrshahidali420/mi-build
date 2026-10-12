@@ -1646,6 +1646,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108514843500964",
    "commentId": "122108514843500964_1776270540326327"
+  },
+  {
+   "key": "2026-10-12|ranking:rank:manhua:comedy|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "ranking:rank:manhua:comedy",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhua:comedy",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791835250669,
+   "status": "claimed"
   }
  ],
  "health": {
