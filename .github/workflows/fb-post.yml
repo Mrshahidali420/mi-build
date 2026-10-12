@@ -128,10 +128,14 @@ jobs:
         if: vars.FB_POST_TYPES != '' || inputs.types != ''
         run: npm ci --no-audit --no-fund
 
-      # A reel is put together with ffmpeg: on the runner image already, installed when it is not.
-      - name: Make sure ffmpeg is there for reels
+      # A reel is put together with ffmpeg. The runner image does not carry it (checked 12 Oct 2026),
+      # so it is installed, and only for a run that can make a reel.
+      - name: Install ffmpeg for reels
         if: contains(vars.FB_POST_TYPES, 'reel') || contains(inputs.types, 'reel')
-        run: ffmpeg -version | head -n 1 || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+        working-directory: .
+        run: |
+          command -v ffmpeg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
+          ffmpeg -version | head -n 1
 
       - name: Post
         id: post

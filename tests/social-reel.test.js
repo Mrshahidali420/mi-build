@@ -12,7 +12,7 @@ import { settingsOf } from '../scripts/social/post.mjs'
 import { kitOf } from '../scripts/social/render/parts.mjs'
 import { sheetTimes } from '../scripts/social/reel/samples.mjs'
 import { END_LINE, SAFE } from '../scripts/social/reel/slides.mjs'
-import { ffmpegArgs, holdsOf, lengthOf, HOLD, LENGTH, REEL } from '../scripts/social/reel/video.mjs'
+import { ffmpegArgs, ffmpegError, holdsOf, lengthOf, HOLD, LENGTH, REEL } from '../scripts/social/reel/video.mjs'
 import { SITE } from '../scripts/social/site.mjs'
 import { KINDS, REELS, TYPES, TYPE_KEYS } from '../scripts/social/types/index.mjs'
 import { NOW, harness } from './social-kit.mjs'
@@ -51,6 +51,10 @@ test('video: the ffmpeg command is H.264 at 30 fps with a closed GOP, a silent A
   assert.equal(value('-t'), String(lengthOf(holds)))
   assert.equal(args.at(-1), 'reel.mp4')
   assert.deepEqual(sheetTimes(12, 6), [1, 3, 5, 7, 9, 11])
+  // A missing ffmpeg is said plainly; otherwise the end of what it wrote (an empty buffer is not a message).
+  assert.equal(ffmpegError(Object.assign(new Error('spawn ffmpeg ENOENT'), { code: 'ENOENT' }), Buffer.alloc(0)).message, 'ffmpeg is not installed on this machine')
+  assert.equal(ffmpegError(new Error('timed out'), Buffer.alloc(0)).message, 'ffmpeg failed: timed out')
+  assert.equal(ffmpegError(new Error('x'), Buffer.from('Unknown encoder\n')).message, 'ffmpeg failed: Unknown encoder')
 })
 
 // --- the slides ----------------------------------------------------------------

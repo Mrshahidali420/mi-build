@@ -95,9 +95,16 @@ export function ffmpegArgs({ frames, holds, out, fade = HOLD.fade, size = REEL }
   ]
 }
 
+/** Why ffmpeg failed, in a line: that it is not installed, or the end of what it wrote. */
+export function ffmpegError(error, stderr) {
+  if (error.code === 'ENOENT') return new Error('ffmpeg is not installed on this machine')
+  const said = stderr?.length ? stderr.toString() : error.message
+  return new Error(`ffmpeg failed: ${String(said).trim().slice(-400)}`)
+}
+
 const runFfmpeg = (bin, args) =>
   new Promise((done, fail) => {
-    execFile(bin, args, { timeout: FFMPEG_TIMEOUT_MS, maxBuffer: 64 * 1024 * 1024, encoding: 'buffer' }, (error, stdout, stderr) => (error ? fail(new Error(`ffmpeg failed: ${String(stderr || error.message).slice(-400)}`)) : done(stdout)))
+    execFile(bin, args, { timeout: FFMPEG_TIMEOUT_MS, maxBuffer: 64 * 1024 * 1024, encoding: 'buffer' }, (error, stdout, stderr) => (error ? fail(ffmpegError(error, stderr)) : done(stdout)))
   })
 
 /**

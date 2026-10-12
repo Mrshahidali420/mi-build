@@ -235,7 +235,7 @@ record lacks is left out.
 
 A reel is a short vertical video (1080x1920, 8 to 20 seconds, no music) made
 on the runner: slides drawn like the post images, held a few seconds each
-with a slow zoom, cross-faded with ffmpeg. An opening slide, one slide per
+with a slow zoom, cross-faded with ffmpeg (installed on the runner only for a run that can make a reel). An opening slide, one slide per
 item, and a closing slide with the site name and "Link in the first comment".
 Nothing is re-uploaded from anyone: the slides are our own.
 
