@@ -90,6 +90,8 @@ jobs:
           FB_POSTS_PER_DAY: ${{ vars.FB_POSTS_PER_DAY }}
           # The template post types that are switched on (empty = classic posts only).
           FB_POST_TYPES: ${{ vars.FB_POST_TYPES }}
+          # 'true' adds the Amazon line of the title to the first comment (off by default).
+          FB_AFFILIATE_COMMENT: ${{ vars.FB_AFFILIATE_COMMENT }}
           EVENT: ${{ github.event_name }}
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
           COUNT: ${{ inputs.count }}

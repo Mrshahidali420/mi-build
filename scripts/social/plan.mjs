@@ -16,14 +16,16 @@
  *   - two posts about the same title on one day, whatever the types
  *
  * A type is { key, urgent, gapDays, titleGap, window, find(data, ctx),
- * captions: [post => sentences], tags(post) }. find() returns its posts best
+ * captions: [post => { hook, facts, cta }], questions: [post => text],
+ * tags(post) }. find() returns its posts best
  * first; each post is { item, title, path, label, art, view }.
  *
  * Pure: the data, the history, the clock and the random source are passed in.
  */
 import { CLASSIC } from './gate.mjs'
 import { normTitle, TITLE_GAP_DAYS } from './ledger.mjs'
-import { composeCaption, variantOf } from './text.mjs'
+import { hashOf } from './story.mjs'
+import { composeCaption, composePost, variantOf } from './text.mjs'
 import { dateOf, DAY_MS } from './when.mjs'
 
 const kindOf = (entry) => entry.type || CLASSIC
@@ -31,10 +33,26 @@ const kindOf = (entry) => entry.type || CLASSIC
 /** The ledger slug of a typed post: unique per type and item. */
 export const slugOf = (type, post) => `${type.key}:${post.item}`
 
+/** The question a post ends on: one of the type's, always the same one for the same item. */
+export const questionFor = (type, post) => (type.questions?.length ? variantOf(type.questions, hashOf(post.item))(post) : null)
+
+/**
+ * One wording as text. A wording is { hook, facts, cta } (a full post: the
+ * synopsis and the question are added here) or a plain list of sentences.
+ * A synopsis that fails the gate (a blocked word) is dropped, not the post.
+ */
+function wordingText(type, post, wording, blockedTags) {
+  const made = wording(post)
+  const tags = type.tags ? type.tags(post) : []
+  if (Array.isArray(made)) return composeCaption(made, tags, { blockedTags })
+  const parts = { ...made, question: questionFor(type, post) }
+  return composePost({ ...parts, synopsis: post.synopsis }, tags, { blockedTags }) || composePost(parts, tags, { blockedTags })
+}
+
 /** The caption for a post, trying each wording from this type's next turn on. */
 export function captionFor(type, post, turn, blockedTags = []) {
   for (let i = 0; i < type.captions.length; i += 1) {
-    const text = composeCaption(variantOf(type.captions, turn + i)(post), type.tags ? type.tags(post) : [], { blockedTags })
+    const text = wordingText(type, post, variantOf(type.captions, turn + i), blockedTags)
     if (text) return { caption: text, variant: (turn + i) % type.captions.length }
   }
   return null

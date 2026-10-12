@@ -10,7 +10,8 @@
  * Run it from the site's folder. It reads the same data the poster reads
  * (R2 or the Actions cache on the runner, the local data/ folder on a PC),
  * finds real posts for each type and writes <type>.png, <type>-2.png, ...
- * plus captions.md with every wording of each sample's caption.
+ * plus captions.md with every wording of each sample's caption and the first
+ * comment.
  *
  * A list type has one post at a time (next week, next month), so the second
  * sample of such a type is the same type looked at from a later day.
@@ -19,6 +20,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { captionFor } from './plan.mjs'
+import { commentFor } from './site.mjs'
 import { DAY_MS } from './when.mjs'
 
 /** Other days a type is looked at from, when today alone gives too few posts. */
@@ -58,7 +60,9 @@ export async function samplePosts(type, { per, now, loadData, offset = 0, long =
     const at = now + days * DAY_MS
     const found = type.find(await loadData(at), { now: at }).filter((p) => !seen.has(p.item) && !seen.has(p.title || p.item))
     const posts = long ? [...found].sort((x, y) => lengthOf(y) - lengthOf(x)).slice(0, per) : found
-    for (const post of spread(posts, per - out.length, long ? 0 : offset)) {
+    // A type may name the posts that show its range (one site and many sites, say).
+    const chosen = !long && type.samples ? type.samples(found).filter(Boolean) : []
+    for (const post of chosen.length ? chosen.slice(0, per - out.length) : spread(posts, per - out.length, long ? 0 : offset)) {
       if (seen.has(post.item) || (post.title && seen.has(post.title))) continue
       seen.add(post.item)
       if (post.title) seen.add(post.title)
@@ -96,7 +100,7 @@ async function main() {
       const name = `${type.key}${i ? `-${i + 1}` : ''}.png`
       const { png } = await renderPost(type, post, { theme: THEME })
       writeFileSync(join(dir, name), png)
-      notes.push(`## ${type.name} (${name})`, '', ...captionsOf(type, post, [...(source.BLOCKED_TAGS || [])]).flatMap((c, n) => [`Wording ${n + 1}:`, '', ...c.split('\n').map((l) => `> ${l}`), '']), `First comment: ${post.label}: ${post.path}`, '')
+      notes.push(`## ${type.name} (${name})`, '', ...captionsOf(type, post, [...(source.BLOCKED_TAGS || [])]).flatMap((c, n) => [`Wording ${n + 1}:`, '', ...c.split('\n').map((l) => `> ${l}`), '']), 'First comment:', '', ...commentFor(post).split('\n').map((l) => `> ${l}`), '', ...(post.shop ? ['With FB_AFFILIATE_COMMENT set to true, a second line is added:', '', `> ${commentFor(post, { affiliate: true }).split('\n')[1]}`, ''] : ['No Amazon line for this one: the site has no product picked for it.', '']))
       lines.push(`${type.key}: ${name} (${post.title || post.item})`)
     }
   }

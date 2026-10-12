@@ -10,14 +10,17 @@
  * Image: TOP 5 and what it ranks, then five rows: the place, a small cover,
  * the title and the count.
  */
+import { genreSlug } from '../../../src/lib/format.js'
+import { COMMUNITY_TAGS, tagOf, uniqueTags } from '../story.mjs'
 import { clip, compact, isDrawable, listOf } from '../text.mjs'
 import { INNER } from '../render/parts.mjs'
+import { ctaOf } from './shared.mjs'
 
 export const TOP = 5
 export const SECTIONS = ['manhwa', 'manga', 'manhua']
 export const GENRES = ['Action', 'Romance', 'Fantasy', 'Comedy', 'Drama', 'Adventure', 'Supernatural', 'Slice of Life', 'Mystery', 'Sci-Fi', 'Horror', 'Sports']
-const ROW_HEIGHT = 152
-const THUMB = { width: 92, height: 130 }
+const ROW_HEIGHT = 140
+const THUMB = { width: 84, height: 120 }
 
 /**
  * Every ranking on offer, a different section each time:
@@ -25,9 +28,9 @@ const THUMB = { width: 92, height: 130 }
  */
 export function scopesOf(titles) {
   const bySection = new Map(SECTIONS.map((section) => [section, titles.filter((t) => t.section === section && isDrawable(t.title))]))
-  const kinds = [{ key: 'ongoing', word: 'ongoing', fits: (t) => t.status === 'RELEASING' }, ...GENRES.map((genre) => ({ key: genre.toLowerCase().replace(/[^a-z]+/g, '-'), word: genre.toLowerCase(), fits: (t) => t.genres.includes(genre) }))]
+  const kinds = [{ key: 'ongoing', word: 'ongoing', genre: null, fits: (t) => t.status === 'RELEASING' }, ...GENRES.map((genre) => ({ key: genre.toLowerCase().replace(/[^a-z]+/g, '-'), word: genre.toLowerCase(), genre, fits: (t) => t.genres.includes(genre) }))]
   return kinds
-    .flatMap((kind) => SECTIONS.map((section) => ({ key: `${section}:${kind.key}`, heading: `${kind.word} ${section}`, noun: `${kind.word} ${section}`, titles: bySection.get(section).filter(kind.fits) })))
+    .flatMap((kind) => SECTIONS.map((section) => ({ key: `${section}:${kind.key}`, heading: `${kind.word} ${section}`, noun: `${kind.word} ${section}`, genre: kind.genre, section, titles: bySection.get(section).filter(kind.fits) })))
     .filter((scope) => scope.titles.length >= TOP)
 }
 
@@ -36,29 +39,34 @@ function toPost(scope) {
   return {
     item: `rank:${scope.key}`,
     title: null,
-    path: five[0].path,
-    label: `${five[0].title}: where to read it`,
-    tags: [five[0].section, 'top5'],
+    // A genre ranking links the site's own genre page (every catalog genre has one, in the sitemap);
+    // the ongoing ranking has no page of its own, so it links the title in first place.
+    path: scope.genre ? `/genre/${genreSlug(scope.genre)}` : five[0].path,
+    label: scope.genre ? `More ${scope.noun}, with where to read each` : `${five[0].title}: where to read it`,
+    tags: uniqueTags([...five.slice(0, 2).map((t) => tagOf(t.title)), tagOf(scope.section, { lower: true }), tagOf(scope.genre, { lower: true }), '#Top5', ...(COMMUNITY_TAGS[scope.section] || [])]),
     names: five.map((t) => t.title),
     noun: scope.noun,
     art: { thumbs: five.map((t) => t.image) },
-    view: { heading: scope.heading, rows: five.map((t, i) => ({ rank: i + 1, title: clip(t.title, 54), count: compact(t.popularity), score: t.score ? `${t.score}%` : null })) },
+    view: { heading: scope.heading, cta: scope.genre ? `More ${scope.noun}: link in the first comment` : 'Where to read number one: link in the first comment', rows: five.map((t, i) => ({ rank: i + 1, title: clip(t.title, 54), count: compact(t.popularity), score: t.score ? `${t.score}%` : null })) },
   }
 }
 
 const find = (data) => scopesOf(data.titles).map(toPost)
 
 const captions = [
-  (p) => [`The five most popular ${p.noun} on AniList right now: ${listOf(p.names)}.`],
-  (p) => [`Top 5 ${p.noun}, by AniList readers: ${listOf(p.names)}.`],
-  (p) => [`${p.names[0]} leads the ${p.noun} on AniList, ahead of ${listOf(p.names.slice(1, 4))}.`],
+  (p) => ({ hook: `🏆 The five most popular ${p.noun} on AniList right now.`, facts: [`${listOf(p.names)}.`], cta: ctaOf('list', 0) }),
+  (p) => ({ hook: `🔥 Top 5 ${p.noun}, ranked by AniList readers.`, facts: [`${listOf(p.names)}.`], cta: ctaOf('list', 1) }),
+  (p) => ({ hook: `👑 ${p.names[0]} leads the ${p.noun} on AniList.`, facts: [`Behind it: ${listOf(p.names.slice(1, 4))}.`], cta: ctaOf('list', 2) }),
 ]
+
+const questions = [() => 'Which of these five have you read?', (p) => `Is ${p.names[0]} your number one too?`, () => 'Which one is missing from this list?']
 
 function template(v, k) {
   const t = k.tone('dark')
   const heading = v.heading.toUpperCase()
   return k.page(
     t,
+    { cta: v.cta },
     k.row(
       { alignItems: 'flex-end', height: 190 },
       k.display({ fontSize: 236, fontWeight: k.f.displayBlack, lineHeight: 0.8, color: t.pop, marginLeft: -8 }, 'TOP 5'),
@@ -84,4 +92,4 @@ function template(v, k) {
   )
 }
 
-export default { key: 'ranking', name: 'Ranking', urgent: false, gapDays: 60, titleGap: false, window: 1, find, captions, tags: (p) => p.tags, template }
+export default { key: 'ranking', name: 'Ranking', urgent: false, gapDays: 60, titleGap: false, window: 1, find, captions, questions, tags: (p) => p.tags, template }

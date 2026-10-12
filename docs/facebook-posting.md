@@ -176,6 +176,38 @@ site's packages first, which adds about a minute; a classic-only run does not.
 The words on the images come from the same catalog as the pages; a fact the
 record lacks is left out.
 
+## What every post carries
+
+A post exists to send people to the site, so each one is built the same way:
+
+- **The image** shows quick context as labelled lines (score, genre, status,
+  alt title), has a thin line round the cover so it stands off the page, and
+  ends on one line that points at the first comment.
+- **The caption**: a hook with an emoji, a short synopsis from the record (cut
+  at a sentence end, no credits, no spoiler text), the key facts, a question
+  that names the title, the line about the first comment, then up to seven
+  hashtags built from the record (title, platform, season, sub-genre, kind,
+  genre, one or two community tags). A part the record lacks is left out.
+- **The first comment**: the site link, always first, so the preview card is
+  the site.
+
+### The Amazon line in the first comment (off)
+
+Set the repo variable `FB_AFFILIATE_COMMENT` to `true` and the first comment
+gets a second line for titles the site has a product for:
+
+```
+Where to read it: https://.../the-title?utm_source=facebook...
+Get the book on Amazon: https://www.amazon.com/dp/XXXXXXXXXX?tag=manhwaindex-20
+```
+
+- The link is the same product the title page shows (`scripts/social/shop.mjs` reads the
+  site's own picks and its own tag). A title with no pick gets no Amazon line;
+  nothing is ever a search link.
+- The tag is always `manhwaindex-20`. A test fails if any other tag could be written.
+- Nothing else is added to the post or the comment about it.
+- Any other value, or no variable, keeps the comment to the one site line.
+
 ## How it chooses
 
 - About two new items for each older one. New: an anime episode airing today,

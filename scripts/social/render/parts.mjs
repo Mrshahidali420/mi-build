@@ -15,6 +15,8 @@ export const W = 1080
 export const H = 1350
 export const PAD = 72
 export const INNER = W - PAD * 2
+/** The thin line round every picture, so dark art does not sink into a dark page. */
+export const STROKE = { large: 3, small: 2, from: 300 }
 
 const kidsOf = (kids) => {
   const list = kids.flat(Infinity).filter((kid) => kid !== null && kid !== undefined && kid !== false && kid !== '')
@@ -70,12 +72,51 @@ export function kitOf(theme, marks = {}) {
 
   const rule = (color, thickness = 2, style = {}) => box({ height: thickness, backgroundColor: color, alignSelf: 'stretch', flexShrink: 0, ...style })
 
-  /** A picture placed whole inside maxWidth x maxHeight; a flat panel when it is missing. */
+  /**
+   * A picture placed whole inside maxWidth x maxHeight, with a thin solid line
+   * round it in the paper colour (a flat line: no glow, no gradient). A flat
+   * panel when the picture is missing. The line is inside the size given.
+   */
   const art = (picture, maxWidth, maxHeight, style = {}) => {
     if (!picture) return box({ width: maxWidth, height: maxHeight, backgroundColor: theme.color.raised, flexShrink: 0, ...style })
     const size = contain(picture.ratio, maxWidth, maxHeight)
-    return { type: 'img', props: { src: picture.src, width: size.width, height: size.height, style: { flexShrink: 0, ...style } } }
+    const line = Math.min(size.width, size.height) >= STROKE.from ? STROKE.large : STROKE.small
+    const img = { type: 'img', props: { src: picture.src, width: size.width - line * 2, height: size.height - line * 2, style: { flexShrink: 0 } } }
+    return box({ width: size.width, height: size.height, padding: line, backgroundColor: theme.color.paper, flexShrink: 0, ...style }, img)
   }
+
+  /**
+   * Quick context for someone who never reads the caption: labelled lines
+   * (SCORE, GENRE, STATUS, ALT TITLE), a small spaced label and its value in
+   * plain type with a hairline above. No shapes behind anything. A line the
+   * record lacks is left out; null when there is nothing at all.
+   * @param info { rating, genres, status, alt } (shared.mjs aboutOf)
+   * @param width the room the block has; the value wraps inside it
+   */
+  const about = (info, tone, { size = 26, width = INNER, style = {} } = {}) => {
+    const rows = [
+      info?.rating && ['Score', row({ alignItems: 'baseline' }, display({ fontSize: size, fontWeight: f.displayBlack, color: tone.pop, lineHeight: 1.2 }, info.rating), body({ fontSize: size, color: tone.ink, marginLeft: 8, lineHeight: 1.2 }, 'on AniList'))],
+      info?.genres && ['Genre', info.genres],
+      info?.status && ['Status', info.status],
+      info?.alt && ['Alt title', info.alt],
+    ].filter(Boolean)
+    if (!rows.length) return null
+    const label = Math.round(size * 4.5)
+    return col(
+      { width, ...style },
+      rows.map(([name, value]) =>
+        row(
+          { borderTop: `2px solid ${tone.line}`, paddingTop: 7, paddingBottom: 7, alignItems: 'flex-start' },
+          kicker(name, { fontSize: Math.round(size * 0.62), letterSpacing: 2, color: tone.soft, width: label, flexShrink: 0, lineHeight: 1.2, marginTop: Math.round(size * 0.3) }),
+          typeof value === 'string' ? body({ ...clamp(2), fontSize: size, fontWeight: f.textBold, color: tone.ink, lineHeight: 1.2, width: width - label }, value) : value,
+        ),
+      ),
+    )
+  }
+
+  /** The line that sends the reader to the first comment, above the brand line. A small flat square, then plain type. */
+  const cta = (value, tone) =>
+    row({ alignItems: 'center', marginBottom: 20, flexShrink: 0 }, box({ width: 16, height: 16, backgroundColor: tone.pop, marginRight: 14, flexShrink: 0 }), body({ fontSize: 25, fontWeight: f.textBold, color: tone.ink, lineHeight: 1.2 }, value))
 
   /** The closing line of every image: the mark, the site name, the address. */
   const brand = (tone) =>
@@ -90,12 +131,19 @@ export function kitOf(theme, marks = {}) {
       body({ fontSize: 24, color: tone.soft, fontWeight: f.textMedium }, theme.domain),
     )
 
-  /** The whole image: one background, the standard margins, the brand line last. */
-  const page = (tone, ...kids) =>
-    box(
+  /**
+   * The whole image: one background, the standard margins, then the line
+   * about the first comment (when the first child is { cta }) and the brand
+   * line last.
+   */
+  const page = (tone, ...kids) => {
+    const options = kids[0] && typeof kids[0] === 'object' && !Array.isArray(kids[0]) && !kids[0].type ? kids[0] : null
+    const inside = options ? kids.slice(1) : kids
+    return box(
       { width: W, height: H, backgroundColor: tone.bg, color: tone.ink, fontFamily: f.text },
-      col({ width: INNER, height: H - PAD * 2, marginLeft: PAD, marginTop: PAD }, ...kids, brand(tone)),
+      col({ width: INNER, height: H - PAD * 2, marginLeft: PAD, marginTop: PAD }, ...inside, options?.cta && cta(options.cta, tone), brand(tone)),
     )
+  }
 
-  return { theme, f, tone: (name) => toneOf(theme, name), display, body, kicker, rule, art, brand, page, box, row, col, fill, contain, clamp }
+  return { theme, f, tone: (name) => toneOf(theme, name), display, body, kicker, rule, art, about, cta, brand, page, box, row, col, fill, contain, clamp }
 }

@@ -11,27 +11,31 @@
  */
 import { clip, fitSize, isDrawable, listOf } from '../text.mjs'
 import { INNER } from '../render/parts.mjs'
-import { top } from './shared.mjs'
+import { ctaOf, keyFacts, single, statusWord, top } from './shared.mjs'
 
 export const MIN_POPULARITY = 20_000
 /** At most this many characters from one title are offered. */
 const PER_TITLE = 2
-const PORTRAIT = { width: 440, height: 660 }
+const PORTRAIT = { width: 470, height: 705 }
+const CTA = 'The cast and where to read it: link in the first comment'
 const BLOCK_SHIFT = 26
-const NAME_STEPS = [[10, 168], [14, 132], [18, 104], [24, 82], [40, 64]]
+const NAME_STEPS = [[10, 150], [14, 120], [18, 96], [24, 78], [40, 62]]
 
 function toPost(title, member) {
   return {
+    ...single(title),
     item: `char:${member.id}`,
-    title: title.title,
-    path: title.path,
     label: 'Where to read it',
-    tags: [title.section, title.genres[0]],
     name: member.name,
+    facts: keyFacts(title),
     noun: title.noun,
     sites: top(title.platforms),
     art: { hero: member.image },
-    view: { name: clip(member.name, 40), from: clip(title.title, 60), noun: title.noun, sites: top(title.platforms).map((s) => clip(s, 26)) },
+    view: {
+      name: clip(member.name, 40),
+      // The labelled lines beside the portrait; one the record lacks is left out.
+      lines: [['From', clip(title.title, 60)], ['What it is', title.noun], ['Genre', top(title.genres, 2).join(' · ')], ['Status', statusWord(title)], ['Score', title.rating && `${title.rating} on AniList`], ['Read it on', top(title.platforms).map((s) => clip(s, 26)).join(', ')]].filter(([, value]) => value),
+    },
   }
 }
 
@@ -41,20 +45,24 @@ const find = (data) =>
     .flatMap((t) => t.cast.filter((m) => isDrawable(m.name)).slice(0, PER_TITLE).map((m) => toPost(t, m)))
 
 const captions = [
-  (p) => [`${p.name} is one of the leads of ${p.title}.`, `You can read the ${p.noun} on ${listOf(p.sites)}.`],
-  (p) => [`Character spotlight: ${p.name}, from ${p.title}.`, `Read it on ${listOf(p.sites)}.`],
-  (p) => [`Meet ${p.name}, a main character of ${p.title}.`, `The ${p.noun} is on ${listOf(p.sites)}.`],
+  (p) => ({ hook: `✨ Character spotlight: ${p.name}, from ${p.title}.`, facts: [`You can read the ${p.noun} on ${listOf(p.sites)}.`, ...p.facts], cta: ctaOf('read', 0) }),
+  (p) => ({ hook: `🎭 Meet ${p.name}, one of the leads of ${p.title}.`, facts: [`Read it on ${listOf(p.sites)}.`, ...p.facts], cta: ctaOf('read', 1) }),
+  (p) => ({ hook: `👀 ${p.name} is a main character of ${p.title}.`, facts: [`The ${p.noun} is on ${listOf(p.sites)}.`, ...p.facts], cta: ctaOf('read', 2) }),
 ]
 
-function line(label, value, k, t) {
-  return k.col({ borderTop: `2px solid ${t.line}`, paddingTop: 14, paddingBottom: 22 }, k.kicker(label, { color: t.soft, fontSize: 21, letterSpacing: 3 }), k.display({ ...k.clamp(3), fontSize: value.length > 22 ? 34 : 42, lineHeight: 1.08, marginTop: 6 }, value))
+const questions = [(p) => `Who is your favourite character in ${p.title}?`, (p) => `Is ${p.name} your favourite in ${p.title}?`, (p) => `Which ${p.title} character should we feature next?`]
+
+function line([label, value], k, t, roomy) {
+  return k.col({ borderTop: `2px solid ${t.line}`, paddingTop: roomy ? 14 : 10, paddingBottom: roomy ? 22 : 13 }, k.kicker(label, { color: t.soft, fontSize: roomy ? 21 : 19, letterSpacing: 3 }), k.display({ ...k.clamp(2), fontSize: (roomy ? 42 : 34) - (value.length > 22 ? 6 : 0), lineHeight: 1.08, marginTop: 4 }, value))
 }
 
 function template(v, k) {
   const t = k.tone('light')
   const portrait = v.art.hero ? k.contain(v.art.hero.ratio, PORTRAIT.width, PORTRAIT.height) : PORTRAIT
+  const roomy = v.lines.length <= 4
   return k.page(
     t,
+    { cta: CTA },
     k.row(
       {},
       k.box(
@@ -64,15 +72,13 @@ function template(v, k) {
       ),
       k.col(
         { marginLeft: 44, width: INNER - portrait.width - BLOCK_SHIFT - 44 },
-        k.kicker('Character spotlight', { color: t.ink, marginBottom: 30 }),
-        line('From', v.from, k, t),
-        line('What it is', v.noun, k, t),
-        v.sites.length > 0 && line('Read it on', v.sites.join(', '), k, t),
+        k.kicker('Character spotlight', { color: t.ink, marginBottom: 24 }),
+        v.lines.map((row) => line(row, k, t, roomy)),
       ),
     ),
-    k.display({ ...k.clamp(2), fontSize: fitSize(v.name, NAME_STEPS), fontWeight: k.f.displayBlack, lineHeight: 0.98, marginTop: 40, marginLeft: -4, textTransform: 'uppercase' }, v.name),
+    k.display({ ...k.clamp(2), fontSize: fitSize(v.name, NAME_STEPS), fontWeight: k.f.displayBlack, lineHeight: 0.98, marginTop: 34, marginLeft: -4, textTransform: 'uppercase' }, v.name),
     k.fill(),
   )
 }
 
-export default { key: 'character', name: 'Character spotlight', urgent: false, gapDays: 180, titleGap: false, window: 80, find, captions, tags: (p) => p.tags, template }
+export default { key: 'character', name: 'Character spotlight', urgent: false, gapDays: 180, titleGap: false, window: 80, find, captions, questions, tags: (p) => p.tags, template }

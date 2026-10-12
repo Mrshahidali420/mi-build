@@ -4,8 +4,12 @@
  * The rules (owner, 12 Oct 2026):
  *   - every sentence comes from a fact on the record; a fact the record lacks
  *     is left out, never guessed or padded
- *   - the title appears once, 2 to 4 short sentences, at most 2 hashtags,
- *     no emoji, no link (the link goes in the first comment), no Amazon
+ *   - the facts: the title once, 2 to 4 short sentences, no link (the link
+ *     goes in the first comment), no Amazon
+ *   - since 12 Oct 2026 (tasks/lessons.md) a post exists to send people to
+ *     the site, so the facts open with one emoji and are followed by a short
+ *     synopsis, a question, the line about the first comment and hashtags
+ *     built from the record (story.mjs)
  *   - no synonym-swap spinning: one fixed wording per fact
  *
  * A builder returns the caption text, or null when the record lacks the facts
@@ -16,6 +20,9 @@
  * section, noun, year, endYear, status, chapters, episodes, score, genres,
  * platforms, studio, nextEpisode: { number, at }, recs: [{ title }], blocked }
  */
+
+import { hashOf, tagsFor } from './story.mjs'
+import { composePost } from './text.mjs'
 
 export const MAX_CAPTION = 420
 export const MAX_HASHTAGS = 2
@@ -60,7 +67,7 @@ const BUILDERS = {
     return [`Episode ${ep.number} of ${c.title} is set to air ${when}.`, platformLine(c), c.studio ? `Animation by ${c.studio}.` : genreLine(c)]
   },
 
-  /** A series that is still coming out. */
+  /** An ongoing series. */
   running(c) {
     if (c.status !== 'RELEASING') return null
     const first =
@@ -69,8 +76,8 @@ const BUILDERS = {
           ? `${c.title} is airing now, with episode ${c.nextEpisode.number} up next.`
           : `${c.title} is airing now.`
         : c.chapters
-          ? `${c.title} is still coming out, with ${c.chapters} chapters so far.`
-          : `${c.title} is still ongoing.`
+          ? `${c.title} is ongoing, with ${c.chapters} chapters so far.`
+          : `${c.title} is ongoing.`
     const since = c.year ? `It started in ${c.year}.` : null
     return [first, platformLine(c), since, genreLine(c)]
   },
@@ -85,7 +92,7 @@ const BUILDERS = {
       if (c.verb === 'watch' && c.episodes > 1) state = `All ${c.episodes} episodes are out.`
       else if (c.verb === 'read' && c.chapters) state = `The story is complete at ${c.chapters} chapters.`
       else state = 'The story is complete.'
-    } else if (c.status === 'RELEASING') state = 'It is still coming out.'
+    } else if (c.status === 'RELEASING') state = c.verb === 'watch' ? 'It is currently airing.' : 'It is ongoing.'
     return [first, state, genreLine(c)]
   },
 
@@ -146,6 +153,24 @@ export function checkCaption(text, c, blockedTags = []) {
   return null
 }
 
+/** One emoji that opens each format. */
+const OPENER = { airing: '🚨', running: '🔥', where: '🔎', facts: '💡', like: '👀' }
+
+const QUESTIONS = {
+  watch: [(c) => `Have you watched ${c.title} yet?`, (c) => `Are you watching ${c.title}${c.platforms?.[0] ? ` on ${c.platforms[0]}` : ''}?`, (c) => `Would you recommend ${c.title} to a friend?`],
+  read: [(c) => `Have you read ${c.title} yet?`, (c) => `Are you following ${c.title}${c.platforms?.[0] ? ` on ${c.platforms[0]}` : ''}?`, (c) => `Would you recommend ${c.title} to a friend?`],
+}
+const CTA = { watch: '👇 Every official place to watch it is linked in the first comment.', read: '👇 Every legal place to read it is linked in the first comment.' }
+
+/** The facts as a full post: opener, synopsis, question, the comment line, hashtags. Null when it fails the gate. */
+function fullPost(format, c, facts, blockedTags) {
+  const verb = c.verb === 'watch' ? 'watch' : 'read'
+  const asks = QUESTIONS[verb]
+  const parts = { hook: `${OPENER[format] || '👀'} ${facts}`, question: asks[hashOf(c.slug || c.title) % asks.length](c), cta: CTA[verb] }
+  const tags = tagsFor(c)
+  return composePost({ ...parts, synopsis: c.synopsis }, tags, { blockedTags }) || composePost(parts, tags, { blockedTags })
+}
+
 /** The caption for one format, or null. */
 export function buildCaption(format, c, now, blockedTags = []) {
   const make = BUILDERS[format]
@@ -154,6 +179,8 @@ export function buildCaption(format, c, now, blockedTags = []) {
   if (!lines) return null
   const sentences = lines.filter(Boolean).slice(0, MAX_SENTENCES)
   const tags = hashtagsOf(c)
-  const text = sentences.join(' ') + (tags.length ? `\n\n${tags.join(' ')}` : '')
-  return checkCaption(text, c, blockedTags) ? null : text
+  const facts = sentences.join(' ')
+  // The facts pass the old gate first (the title once, 2 to 4 sentences); then the post is built round them.
+  if (checkCaption(facts + (tags.length ? `\n\n${tags.join(' ')}` : ''), c, blockedTags)) return null
+  return fullPost(format, c, facts, blockedTags)
 }

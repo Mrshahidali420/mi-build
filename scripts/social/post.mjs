@@ -35,7 +35,7 @@ import { countDay, dayOf, gitStore, memoryStore } from './ledger.mjs'
 import { isBehind, nextDueTime } from './pace.mjs'
 import { planNext } from './plan.mjs'
 import { classicStep, typedStep, STEP } from './send.mjs'
-import { SITE } from './site.mjs'
+import { SITE, affiliateOn } from './site.mjs'
 
 export const DEFAULT_PER_DAY = 4
 export const MAX_PER_DAY = 24
@@ -62,7 +62,7 @@ export function settingsOf(env) {
   // A manual DRY run may name its own types, to look at a design before it is switched on.
   // A run that posts for real reads the repo variable alone.
   const typesValue = String((manual && askedDry && env.TYPES) || env.FB_POST_TYPES || '').trim()
-  return { configured, enabled, askedDry, manual, perDay, dry, count, typesValue }
+  return { configured, enabled, askedDry, manual, perDay, dry, count, typesValue, affiliate: affiliateOn(env) }
 }
 
 /** The Graph client with a working token, or null for a dry run without one. Throws a line for the summary. */
@@ -138,6 +138,7 @@ export async function run({ env, now = Date.now(), rng = Math.random, loadPools,
   const left = Math.max(0, s.perDay - done)
   const want = s.dry ? s.count : Math.min(s.count, left)
   out.push(`Today (${day}, US Eastern): ${done} of ${s.perDay} posts used.`, '')
+  out.push(`Amazon line in the first comment: ${s.affiliate ? 'on' : 'off (the FB_AFFILIATE_COMMENT variable is not true)'}.`, '')
   if (want === 0) return end(0, 'The daily count is reached. This run is skipped.')
   if (!s.manual && !isBehind(done, now, s.perDay)) return end(0, `On pace: the next post is due at about ${nextDueTime(done, s.perDay)} ET. This run is skipped.`)
 

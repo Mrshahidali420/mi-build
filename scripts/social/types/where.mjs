@@ -1,94 +1,94 @@
 /**
- * "Where to read": the official platforms of one popular comic or novel.
+ * "Where to read": every official platform of one popular comic or novel.
  *
- * Data: the record's official English or worldwide reading links and how
- * much of the story is out. Titles are taken in turns by section, so manhwa
- * is not crowded out. The title then rests for the 30-day title gap.
+ * Data: the official reading links the title page lists (how many, and how
+ * many are free to start), how much of the story is out, its score, genres,
+ * status and other name. Titles are taken in turns by section, so manhwa is
+ * not crowded out. The title then rests for the 30-day title gap.
  *
- * Image: the platforms as a numbered list on the left, the cover whole on
- * the right, the title under both.
+ * Image: the cover whole on the left; on the right the counted list of
+ * platforms, how much is out, and the labelled lines (score, genre, status,
+ * alt title). The title under both, and the line that points at the first
+ * comment.
  */
-import { clip, fitSize, listOf } from '../text.mjs'
+import { clip, fitSize, listMore } from '../text.mjs'
 import { INNER } from '../render/parts.mjs'
 import { interleave } from '../source.mjs'
-import { top, usable } from './shared.mjs'
+import { aboutOf, ctaOf, keyFacts, onPlatform, placeRows, placesColumn, placesHead, single, usable } from './shared.mjs'
 
 export const MIN_POPULARITY = 5000
-const MAX_SITES = 4
-const COVER = { width: 540, height: 780 }
-const TITLE_STEPS = [[14, 96], [26, 78], [44, 62], [70, 50], [90, 42]]
+const COVER = { width: 500, height: 712 }
+const SIDE = INNER - COVER.width - 40
+const CTA = 'Every legal place to read it: link in the first comment'
 
 function stateOf(t) {
-  if (t.status === 'FINISHED') return t.chapters ? `The story is complete at ${t.chapters} chapters.` : 'The story is complete.'
-  if (t.status === 'RELEASING') return 'It is still coming out.'
+  if (t.status === 'FINISHED') return t.chapters ? `It is completed at ${t.chapters} chapters.` : 'It is completed.'
+  if (t.status === 'RELEASING') return 'It is ongoing.'
+  if (t.status === 'HIATUS') return 'It is on hiatus.'
   return null
 }
 
-const metaOf = (t) => [t.noun, t.year].filter(Boolean).join(' · ')
-
-/** How much there is to read, as a figure and a line; only what the record states. */
+/** How much there is to read, as a figure and a line; only what the record states. The year when it states no count. */
 function lengthOf(t) {
   const done = t.status === 'FINISHED'
-  if (t.chapters) return { count: String(t.chapters), countLine: done ? 'chapters, complete' : 'chapters so far' }
-  if (t.volumes) return { count: String(t.volumes), countLine: done ? 'volumes, complete' : 'volumes so far' }
-  return { count: null, countLine: done ? 'The story is complete' : t.status === 'RELEASING' ? 'Still coming out' : null }
+  if (t.chapters) return { count: String(t.chapters), countLine: done ? 'chapters, completed' : 'chapters so far' }
+  if (t.volumes) return { count: String(t.volumes), countLine: done ? 'volumes, completed' : 'volumes so far' }
+  return t.year ? { count: String(t.year), countLine: t.noun, byYear: true } : { count: null, countLine: null }
 }
 
 function toPost(title) {
+  const free = title.places.filter((p) => p.free).length
+  const { rows, more } = placeRows(title.places)
+  const { byYear, ...length } = lengthOf(title)
   return {
+    ...single(title),
     item: String(title.id),
-    title: title.title,
-    path: title.path,
     label: 'Where to read it',
-    tags: [title.section, title.genres[0]],
     state: stateOf(title),
+    names: title.places.slice(0, 3).map((p) => p.site),
+    total: title.places.length,
+    free: free > 0 ? `${free} of them ${free === 1 ? 'is' : 'are'} free to start.` : null,
+    facts: keyFacts(title),
     art: { hero: title.image },
-    view: { title: clip(title.title, 90), sites: top(title.platforms, MAX_SITES).map((s) => clip(s, 30)), meta: metaOf(title), ...lengthOf(title) },
+    view: {
+      title: clip(title.title, 80),
+      head: placesHead(title.places.length, free),
+      sites: rows,
+      more,
+      ...length,
+      about: aboutOf(title),
+      meta: [title.noun, !byYear && title.year].filter(Boolean).join(' · '),
+    },
   }
 }
 
 const find = (data) => interleave(data.titles.filter((t) => t.verb === 'read' && t.popularity >= MIN_POPULARITY && usable(t))).map(toPost)
 
-const sites = (p) => listOf(top(p.view.sites))
+const sites = (p) => listMore(p.names, p.total)
 
 const captions = [
-  (p) => [`Where to read ${p.title}? Officially on ${sites(p)}.`, p.state],
-  (p) => [`${p.title} is on ${sites(p)}, officially.`, p.state],
-  (p) => [`Looking for ${p.title}?`, `You can read it on ${sites(p)}.`, p.state],
+  (p) => ({ hook: `📖 Where can you read ${p.title} legally?`, facts: [`It is on ${sites(p)}.`, p.free, p.state, ...p.facts], cta: ctaOf('read', 0) }),
+  (p) => ({ hook: `🔎 Looking for ${p.title}? Here is every official platform.`, facts: [`Official platforms: ${sites(p)}.`, p.free, p.state, ...p.facts], cta: ctaOf('read', 1) }),
+  (p) => ({ hook: `📚 ${p.title}: where to read it, officially.`, facts: [`You can read it on ${sites(p)}.`, p.state, p.free, ...p.facts], cta: ctaOf('read', 2) }),
 ]
+
+const questions = [(p) => `Have you read ${p.title} yet?`, (p) => onPlatform(p, 'Are you following'), (p) => `Would you recommend ${p.title} to a friend?`]
 
 function template(v, k) {
   const t = k.tone('dark')
   return k.page(
     t,
-    k.row({ justifyContent: 'space-between' }, k.kicker('Where to read', { color: t.pop }), k.kicker(v.meta, { color: t.soft, fontSize: 22, letterSpacing: 3 })),
+    { cta: CTA },
+    k.row({ justifyContent: 'space-between', alignItems: 'flex-end' }, k.kicker('Where to read', { color: t.pop }), k.kicker(v.meta, { color: t.soft, fontSize: 22, letterSpacing: 3 })),
     k.rule(t.line, 2, { marginTop: 20 }),
     k.row(
-      { marginTop: 34, height: COVER.height, justifyContent: 'space-between' },
-      k.col(
-        { width: INNER - COVER.width - 40, justifyContent: 'space-between' },
-        k.col(
-          {},
-          v.sites.map((site, i) =>
-            k.col(
-              { borderBottom: `2px solid ${t.line}`, paddingTop: i ? 18 : 0, paddingBottom: 18 },
-              k.display({ fontSize: 28, color: t.pop, fontWeight: k.f.displayBlack }, String(i + 1).padStart(2, '0')),
-              k.display({ ...k.clamp(2), fontSize: site.length > 11 ? 40 : 54, fontWeight: k.f.displayBlack, textTransform: 'uppercase', lineHeight: 1.02, marginTop: 2 }, site),
-            ),
-          ),
-        ),
-        v.sites.length <= 3 &&
-          k.col(
-            {},
-            v.count && k.display({ fontSize: fitSize(v.count, [[2, 170], [3, 150], [4, 118]]), fontWeight: k.f.displayBlack, lineHeight: 0.9, marginLeft: -4 }, v.count),
-            v.countLine && k.body({ fontSize: 30, color: t.soft, marginTop: 8 }, v.countLine),
-          ),
-      ),
-      k.box({ width: COVER.width, justifyContent: 'flex-end', alignItems: 'flex-start' }, k.art(v.art.hero, COVER.width, COVER.height)),
+      { marginTop: 32, height: COVER.height, justifyContent: 'space-between' },
+      k.box({ width: COVER.width, height: COVER.height, alignItems: 'flex-start' }, k.art(v.art.hero, COVER.width, COVER.height)),
+      placesColumn(v, k, t, { width: SIDE, height: COVER.height }),
     ),
-    k.display({ ...k.clamp(3), fontSize: fitSize(v.title, TITLE_STEPS), fontWeight: k.f.displayBlack, lineHeight: 1.02, marginTop: 34, maxWidth: INNER }, v.title),
+    k.display({ ...k.clamp(2), fontSize: fitSize(v.title, [[14, 88], [24, 72], [40, 58], [80, 44]]), fontWeight: k.f.displayBlack, lineHeight: 1.02, marginTop: 30, maxWidth: INNER }, v.title),
     k.fill(),
   )
 }
 
-export default { key: 'where', name: 'Where to read', urgent: false, gapDays: 30, titleGap: true, window: 300, find, captions, tags: (p) => p.tags, template }
+export default { key: 'where', name: 'Where to read', urgent: false, gapDays: 30, titleGap: true, window: 300, find, captions, questions, tags: (p) => p.tags, samples: (posts) => [posts.find((p) => p.total === 1), posts.find((p) => p.total >= 4)], template }

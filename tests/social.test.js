@@ -37,18 +37,24 @@ test('source: NEW holds the episode airing soon, OLD the popular titles', () => 
 
 // --- captions -----------------------------------------------------------
 
-test('caption: every format names the title once, stays short, carries no link or emoji', () => {
+test('caption: every format is a full post round facts that name the title once, with no link', () => {
   const comic = { ...toCandidate(record()), recs: [{ title: 'Tower of God' }, { title: 'The Beginning After the End' }] }
   const show = toCandidate(anime())
   for (const format of Object.keys(FORMATS)) {
     for (const c of [comic, show]) {
       const text = buildCaption(format, c, NOW, BLOCKED)
       if (!text) continue
-      assert.equal(checkCaption(text, c, BLOCKED), null, `${format}: ${text}`)
-      assert.equal(text.split(c.title).length - 1, 1)
-      assert.ok(text.length <= MAX_CAPTION)
-      assert.ok((text.match(/#/g) || []).length <= MAX_HASHTAGS)
-      assert.doesNotMatch(text, /https?:|amazon|\p{Extended_Pictographic}/iu)
+      const parts = text.split('\n\n')
+      // The facts open the post behind one emoji and still pass the old gate on their own.
+      assert.match(parts[0], /^\p{Extended_Pictographic}\S* /u, `${format}: ${text}`)
+      assert.equal(checkCaption(parts[0].replace(/^\S+ /, ''), c, BLOCKED), null, `${format}: ${text}`)
+      assert.ok(parts[0].length <= MAX_CAPTION + 3 && MAX_HASHTAGS === 2)
+      // Then a question that names the title, the line about the first comment, and the hashtags.
+      assert.ok(parts.at(-3).endsWith('?') && parts.at(-3).includes(c.title), text)
+      assert.match(parts.at(-2), /^👇 .*first comment/)
+      assert.match(parts.at(-1), /^#\S+( #\S+){1,6}$/)
+      assert.doesNotMatch(text, /https?:|amazon/i)
+      assert.ok((text.match(/\p{Extended_Pictographic}/gu) || []).length <= 4)
     }
   }
 })
@@ -67,7 +73,7 @@ test('caption: a fact the record lacks is never stated', () => {
 test('caption: the same record always gets the same words (no spinning)', () => {
   const c = toCandidate(anime())
   assert.equal(buildCaption('airing', c, NOW, BLOCKED), buildCaption('airing', c, NOW, BLOCKED))
-  assert.match(buildCaption('airing', c, NOW, BLOCKED), /^Episode 7 of Frieren is set to air today at 5:00 PM ET\./)
+  assert.match(buildCaption('airing', c, NOW, BLOCKED), /^🚨 Episode 7 of Frieren is set to air today at 5:00 PM ET\./)
   assert.equal(checkCaption('{Great|Nice} read. Frieren is out.', c), 'spin syntax')
 })
 

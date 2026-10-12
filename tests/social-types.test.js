@@ -253,7 +253,8 @@ test('run: a switched-on type draws its picture, claims, sends the file, then co
   assert.equal(await h.go(), 0)
   assert.deepEqual(h.calls, { loadTypes: 1, render: 1 })
   assert.equal(order[0][1], 'jpeg-bytes')
-  assert.match(order[0][2], /^Where to read Solo Leveling\? Officially on Tapas\. The story is complete at 201 chapters\.\n\n#manhwa #action$/)
+  assert.match(order[0][2], /^📖 Where can you read Solo Leveling legally\?\n\nIt is on Tapas and KakaoPage\. .*It is completed at 201 chapters\. ⭐ 8\.4 out of 10 on AniList\. Genres: Action and Fantasy\./)
+  assert.match(order[0][2], /\?\n\n👇 .+first comment\.\n\n#SoloLeveling #Tapas #Dungeon #manhwa #action #ManhwaRecommendation #KoreanWebtoon$/)
   assert.doesNotMatch(order[0][2], /https?:/)
   assert.match(order[1][2], /^Where to read it: https:\/\/manhwaindex\.com\/manhwa\/solo-leveling-1\?.*utm_source=facebook/)
   const [entry] = h.store.snapshot().entries

@@ -9,16 +9,18 @@
  * volume's release date, so a new volume cannot be told from an old one.
  *
  * Image: the accent colour as the page, the word NEW very large, the cover
- * whole with a dark frame, the facts as plain lines beside it.
+ * whole with a dark frame, the facts as labelled lines beside it (when it
+ * started, what it is, genre, status, score, alt title, where to read it).
  */
 import { clip, fitSize, listOf } from '../text.mjs'
 import { DAY_MS, MONTHS } from '../when.mjs'
 import { INNER } from '../render/parts.mjs'
-import { byPopularity, top, usable } from './shared.mjs'
+import { byPopularity, ctaOf, keyFacts, onPlatform, single, statusWord, top, usable } from './shared.mjs'
 
 export const NEW_DAYS = 75
 export const MIN_POPULARITY = 300
-const COVER = { width: 500, height: 700 }
+const COVER = { width: 450, height: 630 }
+const CTA = 'Where to read it from chapter one: link in the first comment'
 const FRAME = 8
 
 /** The start date as a moment (the first of the month when only the month is known), or null. */
@@ -38,17 +40,20 @@ const article = (noun) => (/^[aeiou]/i.test(noun) ? 'an' : 'a')
 function toPost(title) {
   const started = `${MONTHS[title.start.month - 1]} ${title.start.year}`
   return {
+    ...single(title),
     item: String(title.id),
-    title: title.title,
-    path: title.path,
     label: 'Where to read it',
-    tags: [title.section, title.genres[0]],
+    facts: keyFacts(title),
     noun: title.noun,
     started,
     genres: top(title.genres),
     sites: top(title.platforms),
     art: { hero: title.image },
-    view: { title: clip(title.title, 80), started, noun: title.noun, genres: top(title.genres).join(', '), sites: top(title.platforms).map((s) => clip(s, 18)) },
+    view: {
+      title: clip(title.title, 80),
+      // The labelled lines, in reading order; one the record lacks is left out.
+      lines: [['Started', started], ['What it is', title.noun], ['Genre', top(title.genres).join(' · ')], ['Status', statusWord(title)], ['Score', title.rating && `${title.rating} on AniList`], ['Alt title', title.alt && clip(title.alt, 40)], ['Read it on', top(title.platforms).map((s) => clip(s, 18)).join(', ')]].filter(([, value]) => value),
+    },
   }
 }
 
@@ -58,41 +63,40 @@ const find = (data, { now }) =>
     .sort(byPopularity)
     .map(toPost)
 
-const genreLine = (p) => (p.genres.length ? `Genres: ${listOf(p.genres)}.` : null)
-
 const captions = [
-  (p) => [`New on the shelf: ${p.title}, ${article(p.noun)} ${p.noun} that started in ${p.started}.`, `You can read it on ${listOf(p.sites)}.`, genreLine(p)],
-  (p) => [`${p.title} started in ${p.started}.`, `It is ${article(p.noun)} ${p.noun}, and it is on ${listOf(p.sites)}.`],
-  (p) => [`Just started: ${p.title}.`, `Read this ${p.noun} on ${listOf(p.sites)}.`, genreLine(p)],
+  (p) => ({ hook: `🆕 New on the shelf: ${p.title}.`, facts: [`It is ${article(p.noun)} ${p.noun} that started in ${p.started}.`, `You can read it on ${listOf(p.sites)}.`, ...p.facts], cta: ctaOf('read', 0) }),
+  (p) => ({ hook: `🚨 New series alert 🚨 ${p.title} started in ${p.started}.`, facts: [`It is ${article(p.noun)} ${p.noun}, and it is on ${listOf(p.sites)}.`, ...p.facts], cta: ctaOf('read', 1) }),
+  (p) => ({ hook: `✨ Just started: ${p.title}.`, facts: [`Read this ${p.noun} on ${listOf(p.sites)}.`, ...p.facts], cta: ctaOf('read', 2) }),
 ]
 
-function fact(label, value, k, t) {
-  return k.col({ borderTop: `3px solid ${t.ink}`, paddingTop: 12, paddingBottom: 20 }, k.kicker(label, { color: t.soft, fontSize: 21, letterSpacing: 3 }), k.display({ ...k.clamp(2), fontSize: value.length > 18 ? 32 : 40, lineHeight: 1.08, marginTop: 4 }, value))
+const questions = [(p) => `Have you started ${p.title} yet?`, (p) => onPlatform(p, 'Are you reading'), (p) => `Is ${p.title} going on your reading list?`]
+
+function fact([label, value], k, t, roomy) {
+  return k.col({ borderTop: `3px solid ${t.ink}`, paddingTop: roomy ? 12 : 8, paddingBottom: roomy ? 18 : 10 }, k.kicker(label, { color: t.soft, fontSize: roomy ? 21 : 19, letterSpacing: 3 }), k.display({ ...k.clamp(2), fontSize: (roomy ? 38 : 30) - (value.length > 20 ? 6 : 0), lineHeight: 1.08, marginTop: 3 }, value))
 }
 
 function template(v, k) {
   const t = k.tone('accent')
+  const roomy = v.lines.length <= 5
   return k.page(
     t,
+    { cta: CTA },
     k.row(
-      { justifyContent: 'space-between', alignItems: 'flex-start', height: 232 },
-      k.display({ fontSize: 290, fontWeight: k.f.displayBlack, lineHeight: 0.8, marginLeft: -12, marginTop: 6 }, 'NEW'),
+      { justifyContent: 'space-between', alignItems: 'flex-start', height: 200 },
+      k.display({ fontSize: 250, fontWeight: k.f.displayBlack, lineHeight: 0.8, marginLeft: -10, marginTop: 4 }, 'NEW'),
       k.kicker('Just started', { color: t.ink }),
     ),
     k.row(
-      { marginTop: 26, height: COVER.height + FRAME * 2 },
+      { marginTop: 24, height: COVER.height + FRAME * 2 },
       k.box({ padding: FRAME, backgroundColor: t.ink, alignSelf: 'flex-start' }, k.art(v.art.hero, COVER.width, COVER.height)),
       k.col(
         { marginLeft: 40, width: INNER - COVER.width - FRAME * 2 - 40, justifyContent: 'flex-end' },
-        fact('Started', v.started, k, t),
-        fact('What it is', v.noun, k, t),
-        v.genres && fact('Genres', v.genres, k, t),
-        v.sites.length > 0 && fact('Read it on', v.sites.join(', '), k, t),
+        v.lines.map((line) => fact(line, k, t, roomy)),
       ),
     ),
-    k.display({ ...k.clamp(2), fontSize: fitSize(v.title, [[16, 88], [30, 70], [50, 56], [80, 46]]), fontWeight: k.f.displayBlack, lineHeight: 1.02, marginTop: 28, maxWidth: INNER }, v.title),
+    k.display({ ...k.clamp(2), fontSize: fitSize(v.title, [[16, 80], [30, 64], [50, 52], [80, 44]]), fontWeight: k.f.displayBlack, lineHeight: 1.02, marginTop: 26, maxWidth: INNER }, v.title),
     k.fill(),
   )
 }
 
-export default { key: 'new-title', name: 'New title', urgent: false, gapDays: 300, titleGap: false, window: 6, find, captions, tags: (p) => p.tags, template }
+export default { key: 'new-title', name: 'New title', urgent: false, gapDays: 300, titleGap: false, window: 6, find, captions, questions, tags: (p) => p.tags, template }

@@ -11,14 +11,15 @@
  */
 import { clip, fitSize, sentence } from '../text.mjs'
 import { interleave } from '../source.mjs'
-import { top, usable } from './shared.mjs'
+import { akaLine, aboutOf, ctaOf, genresLine, single, top, usable } from './shared.mjs'
 
 export const MIN_POPULARITY = 5000
 const TOP_RANK = 100
 const HIGH_SCORE = 80
 const LONG_RUN = 150
-const COVER = { width: 170, height: 240 }
-const FIGURE_STEPS = [[2, 440], [3, 380], [4, 300], [5, 240], [8, 190]]
+const COVER = { width: 300, height: 424 }
+const FIGURE_STEPS = [[2, 360], [3, 320], [4, 260], [5, 210], [8, 170]]
+const CTA = 'More about it and where to read it: link in the first comment'
 
 /** AniList ranks a comic among manga, manhwa and manhua together; novels have their own chart. */
 const chartOf = (t) => (t.section === 'novel' ? 'novels' : 'manga, manhwa and manhua')
@@ -71,16 +72,16 @@ const metaOf = (t) => [t.noun, t.year].filter(Boolean).join(' · ')
 
 function toPost(title, fact) {
   return {
+    ...single(title),
     item: `fact:${title.id}:${fact.kind}`,
-    title: title.title,
-    path: title.path,
     label: 'Where to read it',
-    tags: [title.section, title.genres[0]],
     say: fact.say,
+    // The score is the fact itself on a score card, so it is not said twice.
+    more: [fact.kind !== 'score' && title.rating && `It holds ${title.rating} out of 10 on AniList.`, genresLine(title), akaLine(title)],
     about: title.year && title.noun ? sentence(`It is ${/^[aeiou]/i.test(title.noun) ? 'an' : 'a'} ${title.noun} from ${title.year}`) : null,
     sites: top(title.platforms),
     art: { hero: title.image },
-    view: { figure: fact.figure, line: fact.line, title: clip(title.title, 60), meta: clip(metaOf(title), 44) },
+    view: { figure: fact.figure, line: fact.line, title: clip(title.title, 60), meta: clip(metaOf(title), 44), about: { ...aboutOf(title, { genres: 2, alt: false }), rating: fact.kind === 'score' ? null : title.rating } },
   }
 }
 
@@ -89,26 +90,29 @@ const find = (data) => interleave(data.titles.filter((t) => t.verb === 'read' &&
 const readLine = (p, lead) => (p.sites.length ? `${lead} ${p.sites.join(', ')}.` : null)
 
 const captions = [
-  (p) => [p.say[0], p.about, readLine(p, 'You can read it on')],
-  (p) => [p.say[1], readLine(p, 'It is on')],
-  (p) => [p.say[0], readLine(p, 'Official platforms:')],
+  (p) => ({ hook: `💡 Did you know? ${p.say[0]}`, facts: [p.about, readLine(p, 'You can read it on'), ...p.more], cta: ctaOf('read', 0) }),
+  (p) => ({ hook: `📊 ${p.say[1]}`, facts: [readLine(p, 'It is on'), ...p.more], cta: ctaOf('read', 1) }),
+  (p) => ({ hook: `💡 Fact: ${p.say[0]}`, facts: [readLine(p, 'Official platforms:'), ...p.more], cta: ctaOf('read', 2) }),
 ]
+
+const questions = [(p) => `Did you know that about ${p.title}?`, (p) => `Where does ${p.title} sit on your own list?`, (p) => `Has ${p.title} earned its place, in your view?`]
 
 function template(v, k) {
   const t = k.tone('dark')
   return k.page(
     t,
+    { cta: CTA },
     k.row({ justifyContent: 'space-between' }, k.kicker('Fact', { color: t.pop }), k.kicker(v.meta, { color: t.soft, fontSize: 22, letterSpacing: 3 })),
-    k.display({ fontSize: fitSize(v.figure, FIGURE_STEPS), fontWeight: k.f.displayBlack, lineHeight: 0.86, marginTop: 60, marginLeft: -10, color: t.pop }, v.figure),
-    k.rule(t.ink, 4, { marginTop: 40 }),
-    k.display({ ...k.clamp(4), fontSize: v.line.length > 44 ? 62 : 78, lineHeight: 1.04, marginTop: 30, maxWidth: 920 }, v.line),
+    k.display({ fontSize: fitSize(v.figure, FIGURE_STEPS), fontWeight: k.f.displayBlack, lineHeight: 0.86, marginTop: 44, marginLeft: -10, color: t.pop }, v.figure),
+    k.rule(t.ink, 4, { marginTop: 32 }),
+    k.display({ ...k.clamp(3), fontSize: v.line.length > 44 ? 54 : 68, lineHeight: 1.04, marginTop: 26, maxWidth: 920 }, v.line),
     k.fill(),
     k.row(
-      { alignItems: 'flex-end', marginBottom: 34 },
+      { alignItems: 'flex-end', marginBottom: 26 },
       k.art(v.art.hero, COVER.width, COVER.height),
-      k.col({ marginLeft: 30, width: 720 }, k.display({ ...k.clamp(3), fontSize: v.title.length > 30 ? 40 : 52, lineHeight: 1.04 }, v.title)),
+      k.col({ marginLeft: 36, width: 600 }, k.display({ ...k.clamp(3), fontSize: v.title.length > 26 ? 46 : 60, lineHeight: 1.04 }, v.title), k.about(v.about, t, { size: 28, width: 600, style: { marginTop: 18 } })),
     ),
   )
 }
 
-export default { key: 'fact', name: 'Fact card', urgent: false, gapDays: 300, titleGap: true, window: 150, find, captions, tags: (p) => p.tags, template }
+export default { key: 'fact', name: 'Fact card', urgent: false, gapDays: 300, titleGap: true, window: 150, find, captions, questions, tags: (p) => p.tags, template }

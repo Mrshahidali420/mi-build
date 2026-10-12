@@ -10,6 +10,12 @@
 
 export const MAX_TEXT = 420
 export const MAX_TAGS = 2
+/** A full post: hook, synopsis, facts, question, the line about the comment, hashtags. */
+export const MAX_POST = 1300
+export const MAX_POST_TAGS = 7
+/** Emojis: a couple in the hook, a couple in the rest, never more. */
+export const MAX_HOOK_EMOJI = 2
+export const MAX_BODY_EMOJI = 2
 
 /**
  * What the image fonts hold: Latin, Latin-1, Latin Extended-A and the common
@@ -81,14 +87,16 @@ export function hashtags(words) {
 
 const escape = (word) => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
+export const emojiCount = (text) => (String(text || '').match(/\p{Extended_Pictographic}/gu) || []).length
+
 /** Why a typed caption may not be posted, or null when it may. */
-export function checkText(text, { blockedTags = [], max = MAX_TEXT } = {}) {
+export function checkText(text, { blockedTags = [], max = MAX_TEXT, emoji = 0, maxTags = MAX_TAGS } = {}) {
   if (!text || !text.trim()) return 'empty'
   if (text.length > max) return 'too long'
   if (/https?:\/\/|www\./i.test(text)) return 'link in the caption'
   if (/amazon|affiliate|\bAI\b/i.test(text)) return 'forbidden word'
-  if (/\p{Extended_Pictographic}/u.test(text)) return 'emoji'
-  if ((text.match(/#/g) || []).length > MAX_TAGS) return 'too many hashtags'
+  if (emojiCount(text) > emoji) return emoji ? 'too many emojis' : 'emoji'
+  if ((text.match(/#/g) || []).length > maxTags) return 'too many hashtags'
   if (/\{[^}]*\|[^}]*\}/.test(text)) return 'spin syntax'
   if (/\bundefined\b|\bnull\b|\bNaN\b/.test(text)) return 'a missing fact'
   for (const tag of blockedTags) if (new RegExp(`\\b${escape(tag)}\\b`, 'i').test(text)) return `blocked word: ${tag}`
@@ -104,4 +112,19 @@ export function composeCaption(sentences, tagWords = [], options = {}) {
   const tags = hashtags(tagWords)
   const text = body + (tags.length ? `\n\n${tags.join(' ')}` : '')
   return checkText(text, options) ? null : text
+}
+
+/**
+ * A full post, or null when it fails the gate. The order is fixed: the hook,
+ * a short synopsis, the key facts, a question, the line that points at the
+ * first comment, then the hashtags. Empty parts are left out.
+ * @param parts { hook, synopsis, facts: [sentences], question, cta }
+ * @param tags hashtags as they will be written ("#OnePiece")
+ */
+export function composePost({ hook, synopsis, facts = [], question, cta }, tags = [], options = {}) {
+  if (!hook || !cta) return null
+  const rest = [synopsis, facts.filter(Boolean).join(' '), question, cta].filter(Boolean)
+  if (emojiCount(hook) > MAX_HOOK_EMOJI || emojiCount(rest.join(' ')) > MAX_BODY_EMOJI) return null
+  const text = [hook, ...rest, tags.slice(0, MAX_POST_TAGS).join(' ')].filter(Boolean).join('\n\n')
+  return checkText(text, { max: MAX_POST, emoji: MAX_HOOK_EMOJI + MAX_BODY_EMOJI, maxTags: MAX_POST_TAGS, ...options }) ? null : text
 }

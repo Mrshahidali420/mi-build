@@ -18,9 +18,12 @@
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { gunzipSync } from 'node:zlib'
+import { freeSplit } from '../../src/lib/answers.mjs'
 import { sectionOf } from '../../src/lib/section.mjs'
 import { BLOCKED_TAGS, isBlocked } from '../../src/lib/prose-words.mjs'
 import { BLOCKED_MEDIA } from '../../src/lib/blocked.js'
+import { shopFinder } from './shop.mjs'
+import { storyOf } from './story.mjs'
 
 export { BLOCKED_TAGS }
 
@@ -57,6 +60,23 @@ export function platformsOf(links = []) {
   return out
 }
 
+/**
+ * Every official site the title page lists, one per site name, the ones an
+ * English speaker can use first: [{ site, language, free }]. `free` is the
+ * site's own "free to start" fact (src/lib/answers.mjs freeSplit). The page
+ * counts these ("3 legal places · 3 free to start"), so the posts do too.
+ */
+export function placesOf(links = []) {
+  const usable = links.filter((link) => link?.site && link.url)
+  const free = new Set(freeSplit(usable).free.map((row) => row.link.site))
+  const english = (link) => !link.language || /english/i.test(link.language)
+  const bySite = new Map()
+  for (const link of [...usable.filter(english), ...usable.filter((l) => !english(l))]) {
+    if (!bySite.has(link.site)) bySite.set(link.site, { site: link.site, language: english(link) ? null : link.language, free: free.has(link.site) })
+  }
+  return [...bySite.values()]
+}
+
 export const isSafe = (item) =>
   !item.isAdult && !BLOCKED_MEDIA.has(item.id) && ![...(item.genres || []), ...(item.tags || [])].some((t) => isBlocked(typeof t === 'string' ? t : t?.name))
 
@@ -76,7 +96,7 @@ function adaptationOf(item) {
 }
 
 /** One catalog record as a candidate, or null when it may not be promoted. */
-export function toCandidate(item) {
+export function toCandidate(item, shopFor = null) {
   if (!item?.slug || !item.title || !item.cover || !isSafe(item)) return null
   const section = sectionOf(item)
   const verb = section === 'anime' ? 'watch' : 'read'
@@ -84,7 +104,12 @@ export function toCandidate(item) {
   if (!platforms.length) return null
   const next = item.nextEpisode
   return {
+    // Rating, another name, a short synopsis (story.mjs) and the site's shop pick (shop.mjs).
+    ...storyOf(item),
+    shop: shopFor ? shopFor(item) : null,
+    places: placesOf(verb === 'watch' ? item.watchLinks : item.readLinks),
     // Read by the template posts (types/): what the record states, nothing more.
+    season: item.season && item.seasonYear ? { name: item.season, year: item.seasonYear } : null,
     start: startOf(item),
     volumes: item.volumes || null,
     ranks: (item.ranks || []).filter((r) => r?.allTime && r.rank > 0).map((r) => ({ rank: r.rank, type: r.type })),
@@ -145,14 +170,14 @@ function attachRecs(candidate, byId) {
  * running that AniList updated in the last RUNNING_DAYS. OLD: the most
  * popular titles. Each list is in the order the picker should prefer.
  */
-export const buildPools = (items, now) => poolsOf(buildData(items, now), now)
+export const buildPools = (items, now, shopFor = null) => poolsOf(buildData(items, now, shopFor), now)
 
 /**
  * What the template posts read: every title that may be promoted, most
  * popular first, with its recommendations, and the same list by AniList id.
  */
-export function buildData(items, now) {
-  const all = items.map(toCandidate).filter(Boolean)
+export function buildData(items, now, shopFor = null) {
+  const all = items.map((item) => toCandidate(item, shopFor)).filter(Boolean)
   const byId = new Map(all.map((c) => [c.id, c]))
   const titles = all.map((c) => attachRecs(c, byId)).sort((x, y) => y.popularity - x.popularity)
   return { now, titles, byId: new Map(titles.map((t) => [t.id, t])) }
@@ -193,6 +218,15 @@ export function interleave(sorted, turns = OLD_TURNS, size = OLD_POOL) {
   return out.slice(0, size)
 }
 
+/** The site's shop picks; without the files there is simply no Amazon line. */
+function siteShop() {
+  try {
+    return shopFinder()
+  } catch {
+    return null
+  }
+}
+
 function readCatalog(dir, name) {
   const full = join(dir, `${name}.json`)
   if (existsSync(full)) return { items: JSON.parse(readFileSync(full, 'utf8')), from: full }
@@ -205,7 +239,7 @@ function readCatalog(dir, name) {
 export function loadPools({ dir = join(process.cwd(), 'data'), now = Date.now() } = {}) {
   const anime = readCatalog(dir, 'anime')
   const comics = readCatalog(dir, 'comics')
-  const data = buildData([...anime.items, ...comics.items], now)
+  const data = buildData([...anime.items, ...comics.items], now, siteShop())
   const seeded = [anime.from, comics.from].some((f) => f && f.endsWith('.gz'))
   const source = `catalog: ${anime.items.length} anime, ${comics.items.length} comics and novels${seeded ? ' (the small seed: the Actions cache was not restored)' : ' (Actions cache)'}`
   return { pools: poolsOf(data, now), data, source }
@@ -214,5 +248,6 @@ export function loadPools({ dir = join(process.cwd(), 'data'), now = Date.now() 
 /** The data read once, as a function of the day it is looked at from (samples.mjs). */
 export async function dataLoader({ dir = join(process.cwd(), 'data') } = {}) {
   const items = [...readCatalog(dir, 'anime').items, ...readCatalog(dir, 'comics').items]
-  return (now) => buildData(items, now)
+  const shopFor = siteShop()
+  return (now) => buildData(items, now, shopFor)
 }

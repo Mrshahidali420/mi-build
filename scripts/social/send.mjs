@@ -16,14 +16,14 @@
 import { claim, settle, dayOf, keyOf } from './ledger.mjs'
 import { pickNext } from './pick.mjs'
 import { slugOf } from './plan.mjs'
-import { SITE, commentOf, linkOf } from './site.mjs'
+import { SITE, commentFor, commentOf, linkOf } from './site.mjs'
 
 export const STEP = { posted: 'posted', skipped: 'skipped', none: 'none', failed: 'failed' }
 
 const quote = (text) => text.split('\n').map((line) => `> ${line}`)
 
 function describe({ heading, image, path, caption, comment, now }) {
-  return [`### ${heading}`, `- Image: ${image}`, `- Link: ${linkOf(path)}`, `- Day: ${dayOf(now)}`, '', 'Caption:', '', ...quote(caption), '', 'First comment:', '', `> ${comment}`, ''].join('\n')
+  return [`### ${heading}`, `- Image: ${image}`, `- Link: ${linkOf(path)}`, `- Day: ${dayOf(now)}`, '', 'Caption:', '', ...quote(caption), '', 'First comment:', '', ...quote(comment), ''].join('\n')
 }
 
 /**
@@ -65,7 +65,7 @@ export async function classicStep({ s, graph, book, pools, history, now, day, rn
   }
   // The large cover when the source has one; the record's own address otherwise.
   const image = c.image ? (await resolveImage(c.image)).url : null
-  const comment = commentOf(c)
+  const comment = commentOf(c, { affiliate: s.affiliate })
   out.push(describe({ heading: `${pick.mix.toUpperCase()} · ${pick.format} · ${c.title}`, image, path: c.path, caption: pick.caption, comment, now }))
   if (s.dry) {
     await settle(book, entry.key, { status: 'dry' })
@@ -114,7 +114,7 @@ export async function typedStep({ s, graph, book, plan, now, day, skip, out, ren
     out.push(`Skipped ${name}: ${claimed.reason}.`, '')
     return STEP.skipped
   }
-  const comment = `${post.label}: ${linkOf(post.path)}`
+  const comment = commentFor(post, { affiliate: s.affiliate })
   const size = `${Math.round(picture.jpeg.length / 1024)} KB`
   out.push(describe({ heading: `TEMPLATE · ${type.key} · ${name}`, image: `drawn on the runner, 1080x1350, ${size}`, path: post.path, caption, comment, now }))
   if (s.dry) {
