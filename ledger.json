@@ -595,6 +595,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108285433500964",
    "commentId": "122108285433500964_1933212584317575"
+  },
+  {
+   "key": "2026-10-12|next:106929|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:106929",
+   "title": "Eleceed",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "106929",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791817992286,
+   "status": "claimed"
   }
  ],
  "health": {
