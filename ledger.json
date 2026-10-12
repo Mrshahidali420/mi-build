@@ -1479,6 +1479,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108481579500964",
    "commentId": "122108481579500964_1102272752577754"
+  },
+  {
+   "key": "2026-10-12|fact:fact:132029:popular|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:132029:popular",
+   "title": "Dandadan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:132029:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791832524550,
+   "status": "claimed"
   }
  ],
  "health": {
