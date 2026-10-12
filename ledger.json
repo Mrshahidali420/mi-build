@@ -793,6 +793,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108340033500964",
    "commentId": "122108340033500964_1410693794554789"
+  },
+  {
+   "key": "2026-10-12|fact:fact:30745:wait|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:30745:wait",
+   "title": "Pluto",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30745:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791821312939,
+   "status": "claimed"
   }
  ],
  "health": {
