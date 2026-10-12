@@ -251,6 +251,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108199699500964",
    "commentId": "122108199699500964_1867965437902796"
+  },
+  {
+   "key": "2026-10-12|next:73921|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:73921",
+   "title": "Sword Art Online Progressive",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "73921",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791812226773,
+   "status": "claimed"
   }
  ],
  "health": {
