@@ -82,6 +82,14 @@ const captionsOf = (type, post, blockedTags) =>
 const EXTRA_TRIES = 8
 const HOUR_MS = 3_600_000
 
+/** Two hours' worth of one extra together: lists are joined, and so are the lists inside an object. */
+function mergeExtra(before, now) {
+  if (Array.isArray(now)) return [...(before || []), ...now]
+  const merged = { ...(before || {}) }
+  for (const [key, list] of Object.entries(now || {})) merged[key] = [...(merged[key] || []), ...(Array.isArray(list) ? list : [])]
+  return merged
+}
+
 /** The extra data of the sample types (pictures), looked up hour by hour until each type has `per` of them. */
 async function samplesOfExtras(extras, { dataAt, now, per, say }) {
   const data = await dataAt(now)
@@ -89,12 +97,7 @@ async function samplesOfExtras(extras, { dataAt, now, per, say }) {
   for (let i = 0; i < EXTRA_TRIES; i += 1) {
     const at = now + i * HOUR_MS
     const got = (await withExtras(async () => ({ data }), extras, { book: memoryStore(), say })({ now: at })).data
-    for (const type of extras) {
-      const name = type.extra.name
-      const merged = { ...(added[name] || {}) }
-      for (const [key, list] of Object.entries(got[name] || {})) merged[key] = [...(merged[key] || []), ...(Array.isArray(list) ? list : [])]
-      added[name] = merged
-    }
+    for (const name of new Set(extras.map((type) => type.extra.name))) added[name] = mergeExtra(added[name], got[name])
     if (extras.every((type) => type.find({ ...data, ...added }, { now }).length >= per)) break
   }
   return added
