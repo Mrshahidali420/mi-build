@@ -20,6 +20,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadBirthdays } from './birthdays.mjs'
+import { withExtras } from './extras.mjs'
 import { memoryStore } from './ledger.mjs'
 import { captionFor } from './plan.mjs'
 import { commentFor } from './site.mjs'
@@ -77,6 +78,28 @@ export async function samplePosts(type, { per, now, loadData, offset = 0, long =
 const captionsOf = (type, post, blockedTags) =>
   type.captions.map((_, turn) => captionFor({ ...type, captions: [type.captions[turn]] }, post, 0, blockedTags)?.caption || '(this wording does not fit this post)')
 
+/** Tries looked at for pictures: a run sees one hour's worth, the samples look at a few hours to find enough. */
+const EXTRA_TRIES = 8
+const HOUR_MS = 3_600_000
+
+/** The extra data of the sample types (pictures), looked up hour by hour until each type has `per` of them. */
+async function samplesOfExtras(extras, { dataAt, now, per, say }) {
+  const data = await dataAt(now)
+  const added = {}
+  for (let i = 0; i < EXTRA_TRIES; i += 1) {
+    const at = now + i * HOUR_MS
+    const got = (await withExtras(async () => ({ data }), extras, { book: memoryStore(), say })({ now: at })).data
+    for (const type of extras) {
+      const name = type.extra.name
+      const merged = { ...(added[name] || {}) }
+      for (const [key, list] of Object.entries(got[name] || {})) merged[key] = [...(merged[key] || []), ...(Array.isArray(list) ? list : [])]
+      added[name] = merged
+    }
+    if (extras.every((type) => type.find({ ...data, ...added }, { now }).length >= per)) break
+  }
+  return added
+}
+
 async function main() {
   const { out, per, only, long } = argsOf(process.argv.slice(2))
   const [{ TYPES }, { THEME }, { renderPost }, source] = await Promise.all([import('./types/index.mjs'), import('./theme.mjs'), import('./render/engine.mjs'), import('./source.mjs')])
@@ -86,8 +109,12 @@ async function main() {
   // Today's birthdays are asked for once, like a run does, and only for a type that wants them.
   const wants = TYPES.find((type) => type.birthdays && (!only.length || only.includes(type.key)))
   const birthdays = wants ? await loadBirthdays({ book: memoryStore(), now, choose: wants.birthdays(await dataAt(now)), say: (line) => process.stdout.write(`${line}\n`) }) : null
+  // Pictures (fan art, cosplay) are searched once, live, like a run does.
+  const extras = TYPES.filter((type) => type.extra && (!only.length || only.includes(type.key)))
+  const say = (line) => process.stdout.write(`${line}\n`)
+  const added = extras.length ? await samplesOfExtras(extras, { dataAt, now, per, say }) : {}
   const loadData = async (at) => {
-    if (!cache.has(at)) cache.set(at, { ...(await dataAt(at)), birthdays })
+    if (!cache.has(at)) cache.set(at, { ...(await dataAt(at)), birthdays, ...added })
     return cache.get(at)
   }
   const dir = resolve(out)

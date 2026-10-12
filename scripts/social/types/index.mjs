@@ -8,8 +8,10 @@
  * its name in the variable is `classic`.
  */
 import birthday from './birthday.mjs'
+import cosplay from './cosplay.mjs'
 import character from './character.mjs'
 import fact from './fact.mjs'
+import fanart from './fanart.mjs'
 import newTitle from './new-title.mjs'
 import next from './next.mjs'
 import ranking from './ranking.mjs'
@@ -17,7 +19,7 @@ import reelNext from './reel-next.mjs'
 import reelRanking from './reel-ranking.mjs'
 import where from './where.mjs'
 
-export const TYPES = [newTitle, where, ranking, birthday, character, fact, next]
+export const TYPES = [newTitle, where, ranking, birthday, character, fact, next, fanart, cosplay]
 
 export const TYPE_KEYS = TYPES.map((type) => type.key)
 

@@ -87,6 +87,8 @@ export function typedEntry({ type, post, variant }, day, now) {
   return {
     // A reel is counted on its own daily limit, inside the cap (attempt.mjs).
     ...(type.reel ? { reel: true } : {}),
+    // Fan art and cosplay: rare by rule (attempt.mjs), and their picture's id, md5 and rating kept with the post.
+    ...(type.rare ? { rare: true, ...(post.record || {}) } : {}),
     key: keyOf(day, slug, SITE.key),
     day,
     slug,

@@ -249,6 +249,36 @@ the wrong day. If AniList fails, there are no birthday posts that hour and
 nothing else changes. A birthday post does not count as a post about the
 title, so it never stops (or is stopped by) an episode card the same day.
 
+### `fanart` and `cosplay` (off until named)
+
+A picture of one character of a comic, manhwa or novel that has a page here: fan art, or a
+photo of someone in that character's costume. The picture is the hero,
+whole, with the character's name above it and who made it under it.
+
+- **Source:** Danbooru (danbooru.donmai.us), no key. Fan art: each hour four
+  lead characters of popular titles are looked up as Danbooru character
+  tags, and only pictures of that character alone, from that title's series,
+  are kept. Cosplay: one page of Danbooru's `cosplay_photo` posts each
+  hour, kept when the series is a title on this site.
+- **Safe for Facebook** (owner decision 12 Oct 2026: mild fan service yes,
+  nudity no). Only pictures Danbooru rates general or sensitive; never
+  questionable, explicit, flagged, or unrated. Out always: nudity and sex
+  tags (and undressing, see-through), and anything about minors (loli,
+  shota, child...); a school-age tag next to anything suggestive is out
+  too. A picture rated sensitive, or with an allowed suggestive tag
+  (swimsuit, cleavage), counts as ecchi-leaning: at most one in four art
+  posts. The list is in `art/safe.mjs`.
+- **Rare:** fan art and cosplay together are at most one post in eight on
+  the Page, never two in a row.
+- **Never twice:** the id and md5 of every picture posted are kept in the
+  ledger (`artSeen`) beyond its 90 days; each post's entry also records
+  the picture's rating and whether it was ecchi-leaning.
+- **Credit:** the first comment's second line is "Art by <artist>: <where
+  it was first posted>" ("Photo by" for cosplay), when Danbooru names the
+  artist. A pixiv file address becomes the artwork's page.
+- **Fails soft:** if Danbooru does not answer, there are no art posts that
+  hour.
+
 ## Reels (off until you switch them on)
 
 A reel is a short vertical video (1080x1920, 8 to 20 seconds, with music and slide sounds) made

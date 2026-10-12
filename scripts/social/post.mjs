@@ -48,6 +48,7 @@ import { effectiveCap, saveHealth, withHalt } from './limits.mjs'
 import { countedEntries, gapMinutesOf, nextWait, perDayOf, reelsPerDayOf, rollingCount, DEFAULT_PER_DAY, MAX_PER_DAY } from './pace.mjs'
 import { STEP } from './send.mjs'
 import { withBirthdays } from './birthdays.mjs'
+import { withExtras } from './extras.mjs'
 import { SITE, affiliateOn } from './site.mjs'
 import { timeOf } from './when.mjs'
 
@@ -188,7 +189,7 @@ export async function run({ fetch = globalThis.fetch, env, now, clock = now === 
   const kinds = await kindsOf(s, loadTypes, out)
   // A kind that wants today's birthdays (types/birthday-card.mjs) gets them with the data; no other run asks.
   const say = (line) => out.push(line, '')
-  const base = { s, graph, book, kinds, rng, blockedTags, out, flush, resolveImage, render, preview, clock, sleep, loadPools: withBirthdays(loadPools, kinds, { book, fetch, say }) }
+  const base = { s, graph, book, kinds, rng, blockedTags, out, flush, resolveImage, render, preview, clock, sleep, loadPools: withExtras(withBirthdays(loadPools, kinds, { book, fetch, say }), kinds, { book, fetch, say }) }
   if (s.mode === 'chain') {
     if (health.halted && s.startedBy === 'watch') return end(0, `The chain was halted (${health.halted.why}). It is started by hand once that is fixed; the watch job does not restart it.`)
     if (health.halted) await saveHealth(book, (h) => withHalt(h, null, clock()), 'Chain restarted')

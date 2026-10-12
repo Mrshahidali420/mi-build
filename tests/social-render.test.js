@@ -22,9 +22,10 @@ const data = sampleData()
 const typeOf = (key) => TYPES.find((t) => t.key === key)
 const postsOf = (type) => type.find(data, { now: NOW })
 
-test('types: the seven Manhwa Index types are there, each with its own name and design', () => {
-  assert.deepEqual([...TYPE_KEYS].sort(), ['birthday', 'character', 'fact', 'new-title', 'next', 'ranking', 'where'])
-  assert.equal(new Set(TYPES.map((t) => t.template)).size, TYPES.length)
+test('types: the nine Manhwa Index types are there, each with its own name and design', () => {
+  assert.deepEqual([...TYPE_KEYS].sort(), ['birthday', 'character', 'cosplay', 'fact', 'fanart', 'new-title', 'next', 'ranking', 'where'])
+  // Fan art and cosplay share one design (types/art-card.mjs): a picture and its credit.
+  assert.equal(new Set(TYPES.map((t) => t.template)).size, TYPES.length - 1)
   for (const type of TYPES) {
     assert.ok(type.name && type.gapDays > 0 && type.captions.length >= 3, type.key)
     assert.equal(typeof type.find, 'function')

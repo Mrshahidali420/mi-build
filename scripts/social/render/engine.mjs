@@ -28,8 +28,10 @@ const SUBSETS = ['latin', 'latin-ext']
 /** The longest side art is prepared at: the hero art, and the small pictures in a list. */
 export const ART_SIZE = { hero: 1000, thumb: 420, banner: 1600 }
 const MARK_PX = 192
-const FETCH_TIMEOUT_MS = 15_000
+const FETCH_TIMEOUT_MS = 30_000
 const JPEG_QUALITY = 92
+/** Some picture hosts (Danbooru's) refuse a request that does not say who it is. */
+const ART_AGENT = 'page-poster/1.0 (Facebook Page of an anime and manga site)'
 /** A source narrower than this (AniList portraits are 230 px) is enlarged this much at most, and sharpened a little more. */
 const SMALL_SOURCE = { below: 400, grow: 1.75, sharpen: 1.0 }
 const SHARPEN = 0.5
@@ -103,7 +105,7 @@ export async function loadArt(url, { fetch = globalThis.fetch, sharp, size = ART
   if (!url) return null
   try {
     const best = await resolveCover(url, { fetch })
-    const res = await fetch(best.url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })
+    const res = await fetch(best.url, { headers: { 'user-agent': ART_AGENT }, signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })
     if (!res.ok) return null
     const input = Buffer.from(await res.arrayBuffer())
     const meta = await sharp(input).metadata()

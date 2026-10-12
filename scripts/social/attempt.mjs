@@ -17,18 +17,22 @@ export const historyOf = (ledger) => (ledger?.entries || []).filter((e) => e.pag
 
 /** After a reel that Facebook refused, no reel is tried for this long: the other posts go on meanwhile. */
 export const REEL_REST_MS = 6 * HOUR_MS
+/** Fan art and cosplay (kinds marked `rare`) together: at most one post in this many, so never two in a row. */
+export const RARE_EVERY = 8
 
 /**
  * The kinds on offer for this try. A reel kind is left out when the last
  * post was a reel (never two back to back), when the rolling day has had
  * its reels (FB_REELS_PER_DAY, counted inside the overall cap), or when a
- * reel failed in the last REEL_REST_MS.
+ * reel failed in the last REEL_REST_MS. A rare kind (fan art, cosplay) is left
+ * out while one of the last RARE_EVERY - 1 posts was one.
  */
 export function kindsNow(kinds, history, now, reelsPerDay) {
   const used = history.filter((e) => e.reel && e.at > now - DAY_MS).length
   const resting = history.some((e) => e.reel && e.status === 'failed' && e.at > now - REEL_REST_MS)
   const open = used < reelsPerDay && !history.at(-1)?.reel && !resting
-  return open ? kinds : kinds.filter((kind) => typeof kind === 'string' || !kind.reel)
+  const rareOpen = !history.slice(-(RARE_EVERY - 1)).some((e) => e.rare)
+  return kinds.filter((kind) => typeof kind === 'string' || ((open || !kind.reel) && (rareOpen || !kind.rare)))
 }
 
 /** Choose the next post and send it. */

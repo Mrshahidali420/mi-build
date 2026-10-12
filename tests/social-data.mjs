@@ -50,7 +50,17 @@ export function sampleItems() {
 }
 
 /** The data the types read, built the way the poster builds it. */
-export const sampleData = (now = NOW) => ({ ...buildData(sampleItems(), now), birthdays: sampleBirthdays(now) })
+export function sampleData(now = NOW) {
+  const data = buildData(sampleItems(), now)
+  return { ...data, birthdays: sampleBirthdays(now), art: sampleArt(data.byId.get(sampleItems()[0].id)) }
+}
+
+/** Pictures as art/load.mjs hands them over: one fan art and one cosplay of the first title. */
+export function sampleArt(title) {
+  const picture = (n, over = {}) => ({ source: 'danbooru', id: `danbooru:${n}`, hash: `h${n}`, image: `https://cdn.donmai.us/original/${n}.jpg`, rating: 'g', ecchi: false, tags: ['1girl'], characters: ['mira_vale'], series: [], artist: 'Artist One', credit: { name: 'Artist One', url: `https://x.com/a/${n}` }, title, character: 'Mira Vale', ...over })
+  return { fanart: [picture(1)], cosplay: [picture(2, { character: null })] }
+}
+
 
 /** Today's birthdays as birthdays.mjs hands them over: one character of the first comic of the sample. */
 export const sampleBirthdays = (now = NOW) => ({ day: dateOf(now), list: [{ id: 901, name: 'Mira Vale', image: 'https://s4.anilist.co/file/anilistcdn/character/large/b901-x.png', favourites: 5000, mediaId: sampleItems()[0].id, voice: null }] })
