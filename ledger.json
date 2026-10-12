@@ -487,6 +487,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108254545500964",
    "commentId": "122108254545500964_2032177600797346"
+  },
+  {
+   "key": "2026-10-12|next:163536|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:163536",
+   "title": "The Devil Never Cries",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "163536",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791816145514,
+   "status": "claimed"
   }
  ],
  "health": {
