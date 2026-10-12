@@ -1163,6 +1163,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108415903500964",
    "commentId": "122108415903500964_1708835430576280"
+  },
+  {
+   "key": "2026-10-12|fact:fact:30877:years|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:30877:years",
+   "title": "Boys Over Flowers",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30877:years",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791827366602,
+   "status": "claimed"
   }
  ],
  "health": {
