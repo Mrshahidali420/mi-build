@@ -2355,6 +2355,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108637057500964",
    "commentId": "122108637057500964_1543350734221783"
+  },
+  {
+   "key": "2026-10-12|next:133708|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:133708",
+   "title": "The Lord of Coins",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "133708",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791846720546,
+   "status": "claimed"
   }
  ],
  "health": {
