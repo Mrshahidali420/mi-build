@@ -2373,6 +2373,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108639163500964",
    "commentId": "122108639163500964_1672845484294526"
+  },
+  {
+   "key": "2026-10-12|where:136331|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "where:136331",
+   "title": "The Return of the 8th Class Mage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "136331",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791847021971,
+   "status": "claimed"
   }
  ],
  "health": {
