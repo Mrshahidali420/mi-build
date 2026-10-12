@@ -249,6 +249,12 @@ Nothing is re-uploaded from anyone: the slides are our own.
 - **Few.** `FB_REELS_PER_DAY` reels in any 24 hours (3 unless set, 10 at
   most; Facebook's own limit is 30 by API), counted inside the overall cap.
   Never two reels in a row.
+- **A reel that fails never stops the other posts.** Whatever Facebook
+  answers (a missing permission comes back looking like a refused token), the
+  chain writes it in the ledger (`health.reel`: the code and the message)
+  and in the run summary, tries no reel for six hours, and goes on with the
+  pictures. Only a token that is really dead (code 190) or a block stops
+  things, as for any post.
 - **Sound.** Every reel has a music bed and a short sound on each change of
   slide: a soft whoosh, and a low hit as the closing slide comes in. The
   music gives way under those sounds, fades in and out, and the mix is

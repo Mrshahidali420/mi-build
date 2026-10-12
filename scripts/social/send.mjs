@@ -147,5 +147,7 @@ export async function typedStep({ s, graph, book, plan, now, day, skip, out, ren
     await settle(book, entry.key, { status: 'dry' })
     return STEP.posted
   }
-  return publish({ graph, book, entry, send: medium.send, comment, out, name, onError })
+  // The chain must know a failed call was a reel's: a reel never stops the other posts (chain.mjs).
+  const onFail = (error) => onError?.(type.reel ? Object.assign(error, { reel: true }) : error)
+  return publish({ graph, book, entry, send: medium.send, comment, out, name, onError: onFail })
 }

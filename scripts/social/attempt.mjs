@@ -7,7 +7,7 @@
  */
 import { CLASSIC, onlyClassic } from './gate.mjs'
 import { dayOf } from './ledger.mjs'
-import { DAY_MS } from './pace.mjs'
+import { DAY_MS, HOUR_MS } from './pace.mjs'
 import { planNext } from './plan.mjs'
 import { classicStep, typedStep, STEP } from './send.mjs'
 import { SITE } from './site.mjs'
@@ -15,14 +15,19 @@ import { SITE } from './site.mjs'
 /** Everything the ledger holds for this Page, oldest first (dry entries too: a dry run plays against a copy). */
 export const historyOf = (ledger) => (ledger?.entries || []).filter((e) => e.page === SITE.key).sort((x, y) => x.at - y.at)
 
+/** After a reel that Facebook refused, no reel is tried for this long: the other posts go on meanwhile. */
+export const REEL_REST_MS = 6 * HOUR_MS
+
 /**
  * The kinds on offer for this try. A reel kind is left out when the last
- * post was a reel (never two back to back) or when the rolling day has had
- * its reels (FB_REELS_PER_DAY, counted inside the overall cap).
+ * post was a reel (never two back to back), when the rolling day has had
+ * its reels (FB_REELS_PER_DAY, counted inside the overall cap), or when a
+ * reel failed in the last REEL_REST_MS.
  */
 export function kindsNow(kinds, history, now, reelsPerDay) {
   const used = history.filter((e) => e.reel && e.at > now - DAY_MS).length
-  const open = used < reelsPerDay && !history.at(-1)?.reel
+  const resting = history.some((e) => e.reel && e.status === 'failed' && e.at > now - REEL_REST_MS)
+  const open = used < reelsPerDay && !history.at(-1)?.reel && !resting
   return open ? kinds : kinds.filter((kind) => typeof kind === 'string' || !kind.reel)
 }
 

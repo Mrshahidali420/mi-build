@@ -80,6 +80,9 @@ export function withPeak(health, usage, now) {
 
 export const withHalt = (health, why, now) => ({ ...emptyHealth(), ...health, halted: why ? { why: short(why), at: now } : null })
 
+/** The health record with the last failure of a reel: what Facebook said, for the owner to read. */
+export const withReelFailure = (health, error, now) => ({ ...emptyHealth(), ...health, reel: { at: now, code: Number(error?.code) || 0, note: short(error?.message) } })
+
 const SAVE_TRIES = 6
 
 /** Change the health record in the ledger (compare-and-swap, like a claim). Returns the new record. */

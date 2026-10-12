@@ -21,11 +21,18 @@
  * With nothing fresh to post it waits and looks again; it never repeats an
  * item to fill the time.
  *
+ * A reel that fails never stops the chain and is never counted as one of
+ * those failures, whatever Facebook answered (a missing permission comes
+ * back looking like a refused token): it is written down (`health.reel`),
+ * reels rest for a few hours, and the other posts go on. Only a token that
+ * is really dead (code 190) or a block still does what it does for any post.
+ *
  * Everything from outside (the clock, sleep, the ledger, the Graph client)
  * is passed in, so the tests run a whole chain in no time.
  */
 import { attemptOnce } from './attempt.mjs'
-import { backoffMs, effectiveCap, saveHealth, signalOf, usageSignal, withHalt, withPeak, withSignal } from './limits.mjs'
+import { REEL_REST_MS } from './attempt.mjs'
+import { backoffMs, effectiveCap, saveHealth, signalOf, usageSignal, withHalt, withPeak, withReelFailure, withSignal } from './limits.mjs'
 import { countedEntries, nextWait, rollingCount, MINUTE_MS } from './pace.mjs'
 import { STEP } from './send.mjs'
 import { SITE } from './site.mjs'
@@ -82,6 +89,17 @@ async function onLimit(signal, { state, s, book, clock, say, reached, usage }) {
   return true
 }
 
+/** Graph's code for a token that is expired or no longer valid. */
+const TOKEN_DEAD = 190
+
+/** A reel that failed: write down what Facebook said and go on with the other posts. */
+async function reelFailed(failure, c) {
+  const signal = signalOf(failure)
+  if (signal?.kind === 'block') return void (await onLimit(signal, c))
+  await saveHealth(c.book, (h) => withReelFailure(h, failure, c.clock()), 'Reel failed').catch(() => null)
+  c.say(`**A reel failed** (code ${failure.code || 0}: ${failure.message}). No reel for ${Math.round(REEL_REST_MS / MINUTE_MS / 60)} hours; the other posts go on.`)
+}
+
 /** What the turn does with the answer of one try. Returns the chain's result when it must stop, null to go on. */
 async function afterTry(step, failure, c) {
   const { state, s, book, clock, say, graph, reached } = c
@@ -98,6 +116,10 @@ async function afterTry(step, failure, c) {
     Object.assign(state, { skips: 0, loadedAt: 0 })
     say(`${timeOf(clock())} ET: nothing fresh to post (every item is inside its repeat gap). Looking again in ${minutes(IDLE_MS)} minutes.`)
     await c.rest()
+    return null
+  }
+  if (failure?.reel && failure.code !== TOKEN_DEAD) {
+    await reelFailed(failure, { ...c, usage })
     return null
   }
   if (failure?.isAuth) return c.halt('the Page token was refused', `**The Page token was refused** (${failure.message}). The chain stops. Make a new long-lived Page token, update the FB_PAGE_TOKEN secret, then start the workflow by hand.`)

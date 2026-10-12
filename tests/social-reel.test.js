@@ -5,7 +5,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { kindsNow } from '../scripts/social/attempt.mjs'
-import { graphClient, GRAPH_VERSION, UPLOAD_HOST } from '../scripts/social/fb.mjs'
+import { graphClient, GraphError, GRAPH_VERSION, UPLOAD_HOST } from '../scripts/social/fb.mjs'
 import { enabledTypes } from '../scripts/social/gate.mjs'
 import { reelsPerDayOf, DAY_MS, MINUTE_MS } from '../scripts/social/pace.mjs'
 import { settingsOf } from '../scripts/social/post.mjs'
@@ -190,6 +190,7 @@ function reelRun(env, made = {}) {
       sent.push(['reel', bytes.toString(), description])
       return { videoId: `v${sent.length}`, postId: `v${sent.length}` }
     },
+    ...(made.publishReel ? { publishReel: made.publishReel } : {}),
     reelReady: async (id) => sent.push(['ready', id]),
     comment: async (id) => {
       sent.push(['comment', id])
@@ -260,4 +261,38 @@ test('run: a reel writes its music in the ledger, and the next reel is told to t
   assert.deepEqual(reels.map((e) => e.track), tracks)
   assert.deepEqual(asked, [null, 'one.m4a', 'two.m4a'])
   assert.match(r.text.join(''), /music one\.m4a/)
+})
+
+test('run: a reel Facebook refuses never stops the chain: it is written down, reels rest, the other posts go on', async () => {
+  // A missing permission comes back as an OAuthException, like a refused token does.
+  const refuse = async () => {
+    throw new GraphError('POST /1/video_reels failed: (#200) Permissions error', { status: 403, code: 200, type: 'OAuthException' })
+  }
+  const r = reelRun({ FB_POST_TYPES: 'a,reel-x', FB_CHAIN_MINUTES: '300', FB_POSTS_PER_DAY: '288' }, { publishReel: refuse })
+  assert.equal(await r.go(), 0)
+  const { entries, health } = r.store.snapshot()
+  const reels = entries.filter((e) => e.reel)
+  assert.equal(reels.length, 1) // one try, then reels rest for six hours
+  assert.equal(reels[0].status, 'failed')
+  assert.ok(entries.filter((e) => !e.reel && e.status === 'posted').length > 20)
+  assert.equal(health.halted, null)
+  assert.deepEqual([health.reel.code, health.reel.note], [200, 'POST /1/video_reels failed: (#200) Permissions error'])
+  assert.match(r.text.join(''), /A reel failed\*\* \(code 200: .*Permissions error\)\. No reel for 6 hours; the other posts go on\./)
+  assert.doesNotMatch(r.text.join(''), /token was refused|failures in a row/)
+})
+
+test('run: a token that is really dead still stops the chain, reel or not', async () => {
+  const dead = async () => {
+    throw new GraphError('Error validating access token', { status: 400, code: 190, type: 'OAuthException' })
+  }
+  const r = reelRun({ FB_POST_TYPES: 'reel-x', FB_CHAIN_MINUTES: '60', FB_POSTS_PER_DAY: '288' }, { publishReel: dead })
+  assert.equal(await r.go(), 1)
+  assert.match(r.store.snapshot().health.halted.why, /token was refused/)
+})
+
+test('limits: a reel that failed in the last six hours keeps reels off the list', () => {
+  const kinds = ['classic', { key: 'a' }, { key: 'reel-x', reel: true }]
+  const failed = [{ reel: true, status: 'failed', at: NOW - 5 * 60 * MINUTE_MS }, { at: NOW - MINUTE_MS }]
+  assert.equal(kindsNow(kinds, failed, NOW, 3).length, 2)
+  assert.equal(kindsNow(kinds, failed, NOW + 2 * 60 * MINUTE_MS, 3).length, 3)
 })
