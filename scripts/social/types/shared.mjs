@@ -49,7 +49,10 @@ export const aboutOf = (t, { genres = 3, status = true, alt = true } = {}) => ({
 })
 
 /** What every post about one title carries: its synopsis, its hashtags and its shop pick (site.mjs commentFor). */
-export const single = (t) => ({ title: t.title, path: t.path, synopsis: t.synopsis || null, shop: t.shop || null, platform: t.platforms?.[0] || null, tags: tagsFor(t) })
+export const single = (t) => ({ title: t.title, path: t.path, synopsis: t.synopsis || null, tagline: t.tagline || null, shop: t.shop || null, platform: t.platforms?.[0] || null, tags: tagsFor(t) })
+
+/** The image line of a list post whose comment links the title in first place. */
+export const START_WITH_ONE = 'Start with #1: link in the first comment'
 
 /** "Are you following X on WEBTOON?" when a platform is known; the plain question otherwise. */
 export const onPlatform = (p, lead) => `${lead} ${p.title}${p.platform ? ` on ${p.platform}` : ''}?`
@@ -69,7 +72,10 @@ const CTAS = {
   watch: ['👇 Every official place to watch it is linked in the first comment.', '👇 Where to watch it, with the links: see the first comment.', '👇 Link in the first comment: every legal stream for it.'],
   read: ['👇 Every legal place to read it is linked in the first comment.', '👇 Where to read it, free and paid: see the first comment.', '👇 Link in the first comment: every official platform for it.'],
   episode: ['👇 Episode dates and where to watch: link in the first comment.', '👇 The full episode schedule and every official stream are in the first comment.', '👇 Link in the first comment: when each episode airs and where to watch.'],
-  list: ['👇 Dates and where to find each one: link in the first comment.', '👇 More on these in the first comment.', '👇 Start with the link in the first comment.'],
+  // The comment of this post opens a page that lists them all.
+  list: ['👇 The full list, with where to find each one: link in the first comment.', '👇 More like these in the first comment.', '👇 Link in the first comment: the whole list.'],
+  // The comment of this post opens the title in first place, not a list.
+  first: ['👇 Start with #1: the link is in the first comment.', '👇 Number one on this list is linked in the first comment.', '👇 Link in the first comment: where to find #1.'],
 }
 export const ctaOf = (kind, turn) => CTAS[kind][turn % CTAS[kind].length]
 

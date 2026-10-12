@@ -12,7 +12,7 @@ import { composePost, emojiCount } from '../scripts/social/text.mjs'
 import { captionFor, questionFor } from '../scripts/social/plan.mjs'
 import { affiliateOn, commentFor, commentOf, linkOf, SITE } from '../scripts/social/site.mjs'
 import { settingsOf } from '../scripts/social/post.mjs'
-import { shopFinder, shopFinderOf, shopOf } from '../scripts/social/shop.mjs'
+import { shopFinder, shopFinderOf, shopLabel, shopOf } from '../scripts/social/shop.mjs'
 import { placesOf } from '../scripts/social/source.mjs'
 import { kitOf, STROKE } from '../scripts/social/render/parts.mjs'
 import { aboutOf, akaLine, ctaOf, keyFacts, onPlatform, placeRows, placesHead, statusWord } from '../scripts/social/types/shared.mjs'
@@ -75,7 +75,8 @@ const PARTS = { hook: '🚨 New episode alert 🚨 Frieren episode 7 airs today.
 
 test('caption: hook, synopsis, facts, question, the comment line, then the hashtags', () => {
   const text = composePost(PARTS, ['#Frieren', '#anime'])
-  assert.deepEqual(text.split('\n\n'), [PARTS.hook, PARTS.synopsis, 'It streams on Crunchyroll. ⭐ 9.1 out of 10 on AniList.', PARTS.question, PARTS.cta, '#Frieren #anime'])
+  // Above the fold: the hook, then the single most useful fact on line 2.
+  assert.deepEqual(text.split('\n\n'), [`${PARTS.hook}\nIt streams on Crunchyroll.`, PARTS.synopsis, '⭐ 9.1 out of 10 on AniList.', PARTS.question, PARTS.cta, '#Frieren #anime'])
   assert.equal(emojiCount(text), 4)
   // A part the record lacks is left out; the hook and the comment line are never optional.
   assert.equal(composePost({ ...PARTS, synopsis: null, question: null }, []).split('\n\n').length, 3)
@@ -136,7 +137,7 @@ test('comment: switched on, the site link stays first and the Amazon line says n
 
 test('shop: only a real product page of this title, and never without a tag', () => {
   assert.equal(shopOf({ a: '1569319006', n: 'Vol. 1', t: 'book' }, 'tag1').url, 'https://www.amazon.com/dp/1569319006?tag=tag1')
-  assert.equal(shopOf({ a: '1569319006', t: 'figure' }, 'tag1').label, 'Get the figure on Amazon')
+  assert.equal(shopOf({ a: '1569319006', t: 'figure' }, 'tag1', shopLabel({ t: 'figure' }, {}, null)).label, 'Get the figure on Amazon')
   assert.equal(shopOf({ a: '1569319006', t: 'book' }, ''), null)
   assert.equal(shopOf(null, 'tag1'), null)
   const find = shopFinderOf({ hand: { titles: { 20: [{ a: '1569319006', n: 'Naruto, Vol. 1', t: 'book' }] } }, products: null, formats: null, tag: 'tag1' })
@@ -194,7 +195,8 @@ test('image: quick context is labelled lines of plain type, and a missing fact l
   const about = aboutOf({ rating: '7.3', genres: ['Action', 'Fantasy', 'Drama', 'Comedy'], status: 'RELEASING', verb: 'read', alt: 'Bupaeui Saje' })
   assert.deepEqual(about, { rating: '7.3', genres: 'Action · Fantasy · Drama', status: 'Ongoing', alt: 'Bupaeui Saje' })
   const { texts } = walk(kit.about(about, kit.tone('dark'), { width: 400 }))
-  assert.deepEqual(texts, ['Score', '7.3', 'on AniList', 'Genre', 'Action · Fantasy · Drama', 'Status', 'Ongoing', 'Alt title', 'Bupaeui Saje'])
+  // In a narrow column the genres wrap between two of them, never after a separator.
+  assert.deepEqual(texts, ['Score', '7.3', 'on AniList', 'Genre', 'Action · Fantasy', 'Drama', 'Status', 'Ongoing', 'Alt title', 'Bupaeui Saje'])
   assert.deepEqual(walk(kit.about({ rating: null, genres: 'Action', status: null, alt: null }, kit.tone('dark'))).texts, ['Genre', 'Action'])
   assert.equal(kit.about({ rating: null, genres: null, status: null, alt: null }, kit.tone('dark')), null)
   assert.deepEqual(aboutOf({ rating: '7.3', genres: [], status: 'FINISHED', verb: 'read', alt: 'X' }, { status: false, alt: false }), { rating: '7.3', genres: null, status: null, alt: null })

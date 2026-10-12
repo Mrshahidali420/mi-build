@@ -58,20 +58,52 @@ export function plainBlurb(description) {
     .trim()
 }
 
+const SENTENCE_BREAK = /(?<=[.!?…]["'”’)]?)\s+(?=[A-Z0-9"'“‘(])/
+const MIN_WORDS = 4
+export const TAGLINE_MAX = 110
+
+/** A sentence a synopsis may not end on: a teaser question, a lead-in colon, a trailing-off ellipsis, or a scrap of a few words. */
+const isLoose = (sentence) => /[?:]["'”’)]?$/.test(sentence) || /(\.{2,}|…)["'”’)]?$/.test(sentence) || sentence.split(/\s+/).length < MIN_WORDS
+
 /**
- * The first sentences of the blurb, as many as fit in `max` characters. Null
- * when there is no blurb, when even its first sentence is too long, or when
- * what fits is too short to say anything.
+ * The first sentences of the blurb, as many as fit in `max` characters. It
+ * never ends on a loose sentence ("The proof?", "And then..."): those are
+ * dropped from the end. Null when there is no blurb, when even its first
+ * sentence is too long, or when what is left is too short to say anything.
  */
 export function synopsisOf(description, { max = SYNOPSIS_MAX, min = SYNOPSIS_MIN } = {}) {
-  const sentences = plainBlurb(description).split(/(?<=[.!?…]["'”’)]?)\s+(?=[A-Z0-9"'“‘(])/)
-  let text = ''
-  for (const sentence of sentences) {
-    const next = text ? `${text} ${sentence}` : sentence
-    if (next.length > max) break
-    text = next
+  const kept = []
+  for (const sentence of plainBlurb(description).split(SENTENCE_BREAK)) {
+    if ([...kept, sentence].join(' ').length > max) break
+    kept.push(sentence)
   }
-  return text.length >= min && /[.!?…]["'”’)]?$/.test(text) ? text : null
+  while (kept.length && isLoose(kept.at(-1))) kept.pop()
+  const text = kept.join(' ')
+  return text.length >= min && /[.!]["'”’)]?$/.test(text) ? text : null
+}
+
+/** A pause written as dots anywhere in a line reads as a cut-off on an image. */
+const TRAILS_OFF = /\.{2,}|…/
+
+/**
+ * One line for the image, under the title: the blurb's first sentence, when
+ * it is whole, short enough and something the image fonts can write.
+ */
+export function taglineOf(description, max = TAGLINE_MAX) {
+  const [first] = plainBlurb(description).split(SENTENCE_BREAK)
+  if (!first || first.length > max || isLoose(first) || TRAILS_OFF.test(first) || !/[.!]["'”’)]?$/.test(first)) return null
+  return isDrawable(first) && cleanText(first).length >= first.length - 2 ? cleanText(first) : null
+}
+
+/** Words that name a season or a part, not the story: they are left out of the title's hashtag. */
+const PART = /\s+(?:(?:\d+(?:st|nd|rd|th)|second|third|final)\s+(?:season|cour|part)|(?:season|part|cour)\s+\d+|(?:the\s+)?(?:final|second|third)\s+season|ii|iii|iv)\s*$/i
+
+/** The story's own name: no season or part suffix, and no subtitle when two words or more stand before the colon. */
+export function baseTitle(title) {
+  let name = String(title || '').trim()
+  for (let i = 0; i < 3 && PART.test(name); i += 1) name = name.replace(PART, '').trim()
+  const [head] = name.split(/:\s|\s[-–—]\s/)
+  return head.trim().split(/\s+/).length >= 2 ? head.trim() : name
 }
 
 /**
@@ -127,12 +159,12 @@ export function subgenreOf(item) {
  * `t` is a title from source.mjs.
  */
 export function tagsFor(t) {
-  return uniqueTags([tagOf(t.title), tagOf(t.platforms?.[0]), seasonTag(t.season), tagOf(t.subgenre), tagOf(t.section, { lower: true }), tagOf(t.genres?.[0], { lower: true }), ...(COMMUNITY_TAGS[t.section] || []), tagOf(t.studio)])
+  return uniqueTags([tagOf(baseTitle(t.title)) || tagOf(t.title), tagOf(t.platforms?.[0]), seasonTag(t.season), tagOf(t.subgenre), tagOf(t.section, { lower: true }), tagOf(t.genres?.[0], { lower: true }), ...(COMMUNITY_TAGS[t.section] || []), tagOf(t.studio)])
 }
 
 /** The story fields source.mjs puts on every title. */
 export function storyOf(item) {
-  return { rating: ratingOf(item.score), alt: altNameOf(item), native: nativeOf(item), synopsis: synopsisOf(item.description), subgenre: subgenreOf(item) }
+  return { rating: ratingOf(item.score), alt: altNameOf(item), native: nativeOf(item), synopsis: synopsisOf(item.description), tagline: taglineOf(item.description), subgenre: subgenreOf(item) }
 }
 
 /** A stable number from a string, so the same item always gets the same wording. */

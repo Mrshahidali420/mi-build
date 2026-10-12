@@ -111,12 +111,15 @@ test('types: what each one says comes from the record', () => {
 
 test('facts: only what the record states, and a fact it lacks is never offered', () => {
   const solo = data.byId.get(1)
-  assert.deepEqual(factsOf(solo).map((f) => [f.kind, f.figure]), [['rated', '#7'], ['popular', '#12'], ['score', '84%'], ['run', '201'], ['anime', 'Anime']])
+  assert.deepEqual(factsOf(solo).map((f) => [f.kind, f.figure]), [['rated', '#7'], ['popular', '#12']]) // strongest first; a good score and a short run are not strong facts
   assert.equal(factsOf(solo)[0].say[0], "Solo Leveling is number 7 on AniList's all-time rating chart for manga, manhwa and manhua.")
   // A rank for one year is not an all-time rank; a series still running has no run to state.
   assert.deepEqual(solo.ranks, [{ rank: 7, type: 'RATED' }, { rank: 12, type: 'POPULAR' }])
   assert.deepEqual(factsOf(data.byId.get(10)), [])
-  assert.deepEqual(factsOf(data.byId.get(40)).map((f) => f.kind), ['score']) // volumes are not chapters
+  assert.deepEqual(factsOf(data.byId.get(40)).map((f) => [f.kind, f.figure]), [['score', '9.1']]) // volumes are not chapters
+  // The sentence on the image names the title, and only the top 50 of a chart is offered.
+  assert.ok(factsOf(solo).every((f) => f.line.startsWith('Solo Leveling is number')))
+  assert.deepEqual(factsOf({ ...solo, ranks: [{ rank: 51, type: 'RATED' }] }), [])
 })
 
 test('parts: a picture is placed whole, and each tone keeps type readable', () => {

@@ -30,6 +30,11 @@ export const ART_SIZE = { hero: 1000, thumb: 420 }
 const MARK_PX = 192
 const FETCH_TIMEOUT_MS = 15_000
 const JPEG_QUALITY = 92
+/** A source narrower than this (AniList portraits are 230 px) is enlarged this much at most, and sharpened a little more. */
+const SMALL_SOURCE = { below: 400, grow: 1.75, sharpen: 1.0 }
+const SHARPEN = 0.5
+/** A cover is "blank" when this share of it is plain white or plain black (a logo on an empty page). */
+export const BLANK = { share: 0.82, white: 238, black: 16, probe: 48 }
 
 const requireHere = createRequire(import.meta.url)
 const requireSite = createRequire(pathToFileURL(join(process.cwd(), 'package.json')))
@@ -76,9 +81,23 @@ export async function loadMarks(theme, sharp) {
   return Object.fromEntries(made)
 }
 
+/** True when a picture is almost all plain white or plain black: a placeholder, not cover art. */
+export async function isBlankCover(input, sharp) {
+  const { data, info } = await sharp(input).flatten({ background: '#ffffff' }).resize(BLANK.probe, BLANK.probe, { fit: 'fill' }).raw().toBuffer({ resolveWithObject: true })
+  let white = 0
+  let black = 0
+  for (let i = 0; i < data.length; i += info.channels) {
+    const [r, g, b] = [data[i], data[i + 1], data[i + 2]]
+    if (r >= BLANK.white && g >= BLANK.white && b >= BLANK.white) white += 1
+    else if (r <= BLANK.black && g <= BLANK.black && b <= BLANK.black) black += 1
+  }
+  return Math.max(white, black) / (BLANK.probe * BLANK.probe) >= BLANK.share
+}
+
 /**
- * One picture, ready for a template: { src, ratio (width / height) }, or
- * null when it cannot be fetched or read.
+ * One picture, ready for a template: { src, ratio (width / height), blank },
+ * or null when it cannot be fetched or read. A small source (a 230 px
+ * portrait) is enlarged with lanczos by a set factor only, and sharpened.
  */
 export async function loadArt(url, { fetch = globalThis.fetch, sharp, size = ART_SIZE.hero } = {}) {
   if (!url) return null
@@ -87,14 +106,17 @@ export async function loadArt(url, { fetch = globalThis.fetch, sharp, size = ART
     const res = await fetch(best.url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) })
     if (!res.ok) return null
     const input = Buffer.from(await res.arrayBuffer())
+    const meta = await sharp(input).metadata()
+    const small = meta.width > 0 && meta.width < SMALL_SOURCE.below
+    const side = small ? Math.min(size, Math.round(Math.max(meta.width, meta.height) * SMALL_SOURCE.grow)) : size
     const { data, info } = await sharp(input)
       .rotate()
       .flatten({ background: '#ffffff' })
-      .resize({ width: size, height: size, fit: 'inside', kernel: 'lanczos3' })
-      .sharpen({ sigma: 0.5 })
+      .resize({ width: side, height: side, fit: 'inside', kernel: 'lanczos3' })
+      .sharpen({ sigma: small ? SMALL_SOURCE.sharpen : SHARPEN })
       .jpeg({ quality: 90, chromaSubsampling: '4:4:4' })
       .toBuffer({ resolveWithObject: true })
-    return { src: dataUrl(data, 'image/jpeg'), ratio: info.width / info.height }
+    return { src: dataUrl(data, 'image/jpeg'), ratio: info.width / info.height, blank: await isBlankCover(input, sharp) }
   } catch {
     return null
   }
@@ -133,8 +155,14 @@ export async function renderTree(tree, theme) {
  */
 export async function renderPost(type, post, { theme, fetch = globalThis.fetch } = {}) {
   const { sharp, marks } = await tools(theme)
-  const art = await loadPostArt(post.art, { fetch, sharp })
-  const png = await renderTree(type.template({ ...post.view, art }, kitOf(theme, marks)), theme)
+  const first = await loadPostArt(post.art, { fetch, sharp })
+  // A list post can leave out a tile whose cover is a blank placeholder, when it has another title to show.
+  // A placeholder as the main picture is never posted: the item is skipped for this run.
+  if (first.hero?.blank) throw new Error('its cover is a blank placeholder')
+  const blank = first.thumbs.flatMap((picture, i) => (picture?.blank ? [i] : []))
+  const shown = (blank.length && post.without?.(blank)) || post
+  const art = shown === post ? first : await loadPostArt(shown.art, { fetch, sharp })
+  const png = await renderTree(type.template({ ...shown.view, art }, kitOf(theme, marks)), theme)
   const jpeg = await sharp(png).jpeg({ quality: JPEG_QUALITY, chromaSubsampling: '4:4:4' }).toBuffer()
   return { png, jpeg }
 }

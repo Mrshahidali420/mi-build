@@ -115,16 +115,19 @@ export function composeCaption(sentences, tagWords = [], options = {}) {
 }
 
 /**
- * A full post, or null when it fails the gate. The order is fixed: the hook,
- * a short synopsis, the key facts, a question, the line that points at the
- * first comment, then the hashtags. Empty parts are left out.
+ * A full post, or null when it fails the gate. Facebook shows about two
+ * lines before "See more", so line 1 is the hook and line 2 the first fact
+ * given (the platform, the air time, the score). Then a short synopsis, the
+ * other facts, a question, the line that points at the first comment and the
+ * hashtags. Empty parts are left out.
  * @param parts { hook, synopsis, facts: [sentences], question, cta }
  * @param tags hashtags as they will be written ("#OnePiece")
  */
 export function composePost({ hook, synopsis, facts = [], question, cta }, tags = [], options = {}) {
   if (!hook || !cta) return null
-  const rest = [synopsis, facts.filter(Boolean).join(' '), question, cta].filter(Boolean)
-  if (emojiCount(hook) > MAX_HOOK_EMOJI || emojiCount(rest.join(' ')) > MAX_BODY_EMOJI) return null
-  const text = [hook, ...rest, tags.slice(0, MAX_POST_TAGS).join(' ')].filter(Boolean).join('\n\n')
+  const [lead, ...more] = facts.filter(Boolean)
+  const rest = [synopsis, more.join(' '), question, cta].filter(Boolean)
+  if (emojiCount(hook) > MAX_HOOK_EMOJI || emojiCount([lead, ...rest].join(' ')) > MAX_BODY_EMOJI) return null
+  const text = [[hook, lead].filter(Boolean).join('\n'), ...rest, tags.slice(0, MAX_POST_TAGS).join(' ')].filter(Boolean).join('\n\n')
   return checkText(text, { max: MAX_POST, emoji: MAX_HOOK_EMOJI + MAX_BODY_EMOJI, maxTags: MAX_POST_TAGS, ...options }) ? null : text
 }

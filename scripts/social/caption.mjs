@@ -163,10 +163,11 @@ const QUESTIONS = {
 const CTA = { watch: '👇 Every official place to watch it is linked in the first comment.', read: '👇 Every legal place to read it is linked in the first comment.' }
 
 /** The facts as a full post: opener, synopsis, question, the comment line, hashtags. Null when it fails the gate. */
-function fullPost(format, c, facts, blockedTags) {
+function fullPost(format, c, sentences, blockedTags) {
   const verb = c.verb === 'watch' ? 'watch' : 'read'
   const asks = QUESTIONS[verb]
-  const parts = { hook: `${OPENER[format] || '👀'} ${facts}`, question: asks[hashOf(c.slug || c.title) % asks.length](c), cta: CTA[verb] }
+  // Line 1 is the opening fact behind one emoji, line 2 the next fact; the rest follow the synopsis.
+  const parts = { hook: `${OPENER[format] || '👀'} ${sentences[0]}`, facts: sentences.slice(1), question: asks[hashOf(c.slug || c.title) % asks.length](c), cta: CTA[verb] }
   const tags = tagsFor(c)
   return composePost({ ...parts, synopsis: c.synopsis }, tags, { blockedTags }) || composePost(parts, tags, { blockedTags })
 }
@@ -182,5 +183,5 @@ export function buildCaption(format, c, now, blockedTags = []) {
   const facts = sentences.join(' ')
   // The facts pass the old gate first (the title once, 2 to 4 sentences); then the post is built round them.
   if (checkCaption(facts + (tags.length ? `\n\n${tags.join(' ')}` : ''), c, blockedTags)) return null
-  return fullPost(format, c, facts, blockedTags)
+  return fullPost(format, c, sentences, blockedTags)
 }

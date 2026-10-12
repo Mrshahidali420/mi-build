@@ -17,30 +17,52 @@
  */
 import { existsSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { picksForTitleIn, US_HOST } from '../../src/lib/picks-core.js'
+import { picksForTitleIn, pickType, US_HOST } from '../../src/lib/picks-core.js'
 import { storeFor } from '../../src/lib/shop-links.js'
 
-const LABELS = { book: 'Get the book on Amazon', disc: 'Get the Blu-ray or DVD on Amazon', figure: 'Get the figure on Amazon' }
-const OTHER_LABEL = 'Get it on Amazon'
+const readJson = (file) => (existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null)
 
 /** The product page of one pick, exactly as src/lib/picks.js pickUrl() builds it. */
 const pickUrlFor = (asin, tag) => `https://${US_HOST}/dp/${asin}?tag=${tag}`
 
-const readJson = (file) => (existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null)
+/** Sources a show can honestly be said to be "based on" (an original anime's manga came after it). */
+const PRINT_SOURCES = new Set(['MANGA', 'LIGHT_NOVEL', 'NOVEL', 'WEB_NOVEL', 'ONE_SHOT', 'DOUJINSHI', 'COMIC'])
+const THINGS = { figure: 'figure', plush: 'plush', poster: 'poster', apparel: 'apparel', merch: 'merch' }
+
+/**
+ * What the Amazon line says, fitted to the product and to the post: a manga
+ * volume under an anime post is "the manga it is based on", never "the book"
+ * for a figure, never "based on" for an original anime.
+ * @param word what a book pick is ("Manga", "Light novel", ...) or null when it cannot be told
+ */
+export function shopLabel(pick, item, word) {
+  const name = String(pick?.n || '')
+  if (pick.t === 'book') {
+    const what = word ? word.toLowerCase() : null
+    if (item?.kind === 'anime' && PRINT_SOURCES.has(item.source)) return `Read the ${what || 'book'} it is based on`
+    return `Get the ${what || 'English edition'} on Amazon`
+  }
+  if (pick.t === 'disc') return /blu-?ray/i.test(name) ? 'Get the Blu-ray on Amazon' : /\bdvd\b/i.test(name) ? 'Get the DVD on Amazon' : 'Get the Blu-ray or DVD on Amazon'
+  return `Get the ${THINGS[pick.t] || 'merch'} on Amazon`
+}
 
 /** One pick as the comment needs it, or null without a pick or a tag. */
-export function shopOf(pick, tag) {
+export function shopOf(pick, tag, label = 'Get it on Amazon') {
   if (!pick?.a || !tag) return null
-  return { name: pick.n || null, type: pick.t || null, label: LABELS[pick.t] || OTHER_LABEL, url: pickUrlFor(pick.a, tag) }
+  return { name: pick.n || null, type: pick.t || null, label, url: pickUrlFor(pick.a, tag) }
 }
 
 /**
  * item -> its shop pick or null, from the picks handed in. The first pick is
- * the one the title page leads its shelf with.
+ * the one the title page leads its shelf with. What a book is comes from the site's own pickType().
  */
 export function shopFinderOf({ hand, products, formats, tag }) {
   if (!hand && !products) return () => null
-  return (item) => shopOf(picksForTitleIn(hand, item, products, formats)?.picks?.[0], tag)
+  return (item) => {
+    const picked = picksForTitleIn(hand, item, products, formats)
+    const pick = picked?.picks?.[0]
+    return pick ? shopOf(pick, tag, shopLabel(pick, item, pickType(pick, picked.owner, formats, item))) : null
+  }
 }
 
 /** The finder bound to the site's own data folder and tag. */

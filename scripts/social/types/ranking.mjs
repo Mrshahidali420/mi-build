@@ -14,7 +14,7 @@ import { genreSlug } from '../../../src/lib/format.js'
 import { COMMUNITY_TAGS, tagOf, uniqueTags } from '../story.mjs'
 import { clip, compact, isDrawable, listOf } from '../text.mjs'
 import { INNER } from '../render/parts.mjs'
-import { ctaOf } from './shared.mjs'
+import { ctaOf, START_WITH_ONE } from './shared.mjs'
 
 export const TOP = 5
 export const SECTIONS = ['manhwa', 'manga', 'manhua']
@@ -46,17 +46,19 @@ function toPost(scope) {
     tags: uniqueTags([...five.slice(0, 2).map((t) => tagOf(t.title)), tagOf(scope.section, { lower: true }), tagOf(scope.genre, { lower: true }), '#Top5', ...(COMMUNITY_TAGS[scope.section] || [])]),
     names: five.map((t) => t.title),
     noun: scope.noun,
+    // Which closing line fits: the comment opens a list page, or only the title in first place.
+    leads: scope.genre ? 'list' : 'first',
     art: { thumbs: five.map((t) => t.image) },
-    view: { heading: scope.heading, cta: scope.genre ? `More ${scope.noun}: link in the first comment` : 'Where to read number one: link in the first comment', rows: five.map((t, i) => ({ rank: i + 1, title: clip(t.title, 54), count: compact(t.popularity), score: t.score ? `${t.score}%` : null })) },
+    view: { heading: scope.heading, cta: scope.genre ? `More ${scope.noun}: link in the first comment` : START_WITH_ONE, rows: five.map((t, i) => ({ rank: i + 1, title: clip(t.title, 54), count: compact(t.popularity), score: t.score ? `${t.score}%` : null })) },
   }
 }
 
 const find = (data) => scopesOf(data.titles).map(toPost)
 
 const captions = [
-  (p) => ({ hook: `🏆 The five most popular ${p.noun} on AniList right now.`, facts: [`${listOf(p.names)}.`], cta: ctaOf('list', 0) }),
-  (p) => ({ hook: `🔥 Top 5 ${p.noun}, ranked by AniList readers.`, facts: [`${listOf(p.names)}.`], cta: ctaOf('list', 1) }),
-  (p) => ({ hook: `👑 ${p.names[0]} leads the ${p.noun} on AniList.`, facts: [`Behind it: ${listOf(p.names.slice(1, 4))}.`], cta: ctaOf('list', 2) }),
+  (p) => ({ hook: `🏆 The five most popular ${p.noun} on AniList right now.`, facts: [`${listOf(p.names)}.`], cta: ctaOf(p.leads, 0) }),
+  (p) => ({ hook: `🔥 Top 5 ${p.noun}, ranked by AniList readers.`, facts: [`${listOf(p.names)}.`], cta: ctaOf(p.leads, 1) }),
+  (p) => ({ hook: `👑 ${p.names[0]} leads the ${p.noun} on AniList.`, facts: [`Behind it: ${listOf(p.names.slice(1, 4))}.`], cta: ctaOf(p.leads, 2) }),
 ]
 
 const questions = [() => 'Which of these five have you read?', (p) => `Is ${p.names[0]} your number one too?`, () => 'Which one is missing from this list?']

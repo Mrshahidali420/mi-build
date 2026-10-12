@@ -9,6 +9,9 @@
  *      otherwise whenever the last post was not that same type.
  *   2. Then a rotation: of the switched-on kinds (the classic post is one of
  *      them), the one used least recently takes the turn.
+ *   3. Never a third post of one kind in a row, and never the same kind
+ *      twice running in the rotation, while another kind has something to
+ *      post. Only when nothing else fits does a kind repeat.
  *
  * What may not repeat:
  *   - the same item of the same type inside that type's own gap (gapDays)
@@ -29,6 +32,8 @@ import { composeCaption, composePost, variantOf } from './text.mjs'
 import { dateOf, DAY_MS } from './when.mjs'
 
 const kindOf = (entry) => entry.type || CLASSIC
+/** At most this many posts of one kind in a row while another kind has something to post. */
+export const MAX_STREAK = 2
 
 /** The ledger slug of a typed post: unique per type and item. */
 export const slugOf = (type, post) => `${type.key}:${post.item}`
@@ -107,6 +112,8 @@ export function planNext({ kinds, data, history = [], now, rng = Math.random, sk
     return found.get(type.key)
   }
   const last = history.length ? kindOf(history.at(-1)) : null
+  const streak = history.length - 1 - history.findLastIndex((e) => kindOf(e) !== last)
+  const held = []
 
   for (const type of kinds.filter((k) => typeof k !== 'string' && k.urgent)) {
     const posts = postsOf(type)
@@ -114,10 +121,17 @@ export function planNext({ kinds, data, history = [], now, rng = Math.random, sk
     const short = Number.isFinite(slotsLeft) && slotsLeft > 0 && posts.length >= slotsLeft
     if (!short && last === type.key) continue
     const made = build(type, posts, 0, turnOf(type), blockedTags)
-    if (made) return made
+    if (!made) continue
+    // Two of this kind already went out in a row: another kind goes first if one can.
+    if (last === type.key && streak >= MAX_STREAK) held.push(made)
+    else return made
   }
 
-  for (const kind of rotation(kinds, history)) {
+  // The kind that posted last waits until the others have had their chance.
+  const turns = rotation(kinds, history)
+  const keyOfKind = (kind) => (typeof kind === 'string' ? kind : kind.key)
+  for (const kind of [...turns.filter((k) => keyOfKind(k) !== last), ...turns.filter((k) => keyOfKind(k) === last)]) {
+    if (held.length && keyOfKind(kind) === last) break
     if (kind === CLASSIC) {
       // post.mjs puts 'classic' in `skip` once the classic picker has nothing left.
       if (skip.has(CLASSIC)) continue
@@ -129,5 +143,5 @@ export function planNext({ kinds, data, history = [], now, rng = Math.random, sk
     const made = build(kind, posts, start, turnOf(kind), blockedTags)
     if (made) return made
   }
-  return null
+  return held[0] || null
 }

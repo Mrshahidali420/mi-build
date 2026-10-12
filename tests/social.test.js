@@ -47,8 +47,10 @@ test('caption: every format is a full post round facts that name the title once,
       const parts = text.split('\n\n')
       // The facts open the post behind one emoji and still pass the old gate on their own.
       assert.match(parts[0], /^\p{Extended_Pictographic}\S* /u, `${format}: ${text}`)
-      assert.equal(checkCaption(parts[0].replace(/^\S+ /, ''), c, BLOCKED), null, `${format}: ${text}`)
-      assert.ok(parts[0].length <= MAX_CAPTION + 3 && MAX_HASHTAGS === 2)
+      // Line 1 is the opening fact, line 2 the next one; the other facts follow the synopsis.
+      const facts = parts.slice(0, -3).filter((part) => part !== c.synopsis).join(' ').replace('\n', ' ').replace(/^\S+ /, '')
+      assert.equal(checkCaption(facts, c, BLOCKED), null, `${format}: ${text}`)
+      assert.ok(parts[0].split('\n').length <= 2 && facts.length <= MAX_CAPTION && MAX_HASHTAGS === 2)
       // Then a question that names the title, the line about the first comment, and the hashtags.
       assert.ok(parts.at(-3).endsWith('?') && parts.at(-3).includes(c.title), text)
       assert.match(parts.at(-2), /^👇 .*first comment/)

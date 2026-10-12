@@ -17,7 +17,7 @@ import { interleave } from '../source.mjs'
 import { aboutOf, ctaOf, keyFacts, onPlatform, placeRows, placesColumn, placesHead, single, usable } from './shared.mjs'
 
 export const MIN_POPULARITY = 5000
-const COVER = { width: 500, height: 712 }
+const COVER = { width: 520, height: 740 }
 const SIDE = INNER - COVER.width - 40
 const CTA = 'Every legal place to read it: link in the first comment'
 
@@ -58,6 +58,8 @@ function toPost(title) {
       ...length,
       about: aboutOf(title),
       meta: [title.noun, !byYear && title.year].filter(Boolean).join(' · '),
+      // One line under the title: the story in a sentence, or else what the page counts.
+      tagline: title.tagline || [stateOf(title), free > 0 && `${free} of its ${title.places.length} official ${title.places.length === 1 ? 'platform is' : 'platforms are'} free to start.`].filter(Boolean).join(' ') || null,
     },
   }
 }
@@ -87,6 +89,7 @@ function template(v, k) {
       placesColumn(v, k, t, { width: SIDE, height: COVER.height }),
     ),
     k.display({ ...k.clamp(2), fontSize: fitSize(v.title, [[14, 88], [24, 72], [40, 58], [80, 44]]), fontWeight: k.f.displayBlack, lineHeight: 1.02, marginTop: 30, maxWidth: INNER }, v.title),
+    k.tagline(v.tagline, t, { marginTop: 10 }),
     k.fill(),
   )
 }

@@ -115,6 +115,8 @@ export function toCandidate(item, shopFor = null) {
     ranks: (item.ranks || []).filter((r) => r?.allTime && r.rank > 0).map((r) => ({ rank: r.rank, type: r.type })),
     cast: castOf(item),
     adaptation: adaptationOf(item),
+    animeSlugs: (item.animeInIndex || []).map((a) => a.slug).filter(Boolean),
+    format: item.format || null,
     id: item.id,
     slug: item.slug,
     title: item.title,
@@ -151,6 +153,9 @@ export function alternate(a, b) {
   return out
 }
 
+/** Recommendations kept per title: three are shown, the rest stand in for one whose cover is blank. */
+const MAX_RECS = 6
+
 function attachRecs(candidate, byId) {
   const own = candidate.title.toLowerCase()
   const recs = []
@@ -159,8 +164,8 @@ function attachRecs(candidate, byId) {
     if (!rec) continue
     const t = rec.title.toLowerCase()
     if (t.includes(own) || own.includes(t)) continue
-    recs.push({ title: rec.title, image: rec.image, section: rec.section })
-    if (recs.length === 3) break
+    recs.push({ title: rec.title, image: rec.image, section: rec.section, rating: rec.rating })
+    if (recs.length === MAX_RECS) break
   }
   return { ...candidate, recs }
 }
@@ -172,6 +177,22 @@ function attachRecs(candidate, byId) {
  */
 export const buildPools = (items, now, shopFor = null) => poolsOf(buildData(items, now, shopFor), now)
 
+const fold = (name) => String(name || '').toLowerCase().replace(/[^a-z0-9]+/g, '')
+
+/**
+ * candidate -> the year the anime of the same name began, or null. Only an
+ * anime in the index whose title is the comic's own title counts, and the
+ * earliest of them, so a sequel or a remake never stands in for the first.
+ */
+export function animeYears(items) {
+  const bySlug = new Map(items.filter((item) => item?.kind === 'anime' && item.slug && item.startYear).map((item) => [item.slug, item]))
+  return (c) => {
+    if (c.verb !== 'read') return null
+    const years = c.animeSlugs.map((slug) => bySlug.get(slug)).filter((anime) => anime && fold(anime.title) === fold(c.title)).map((anime) => anime.startYear)
+    return years.length ? Math.min(...years) : null
+  }
+}
+
 /**
  * What the template posts read: every title that may be promoted, most
  * popular first, with its recommendations, and the same list by AniList id.
@@ -179,7 +200,8 @@ export const buildPools = (items, now, shopFor = null) => poolsOf(buildData(item
 export function buildData(items, now, shopFor = null) {
   const all = items.map((item) => toCandidate(item, shopFor)).filter(Boolean)
   const byId = new Map(all.map((c) => [c.id, c]))
-  const titles = all.map((c) => attachRecs(c, byId)).sort((x, y) => y.popularity - x.popularity)
+  const animeYear = animeYears(items)
+  const titles = all.map((c) => ({ ...attachRecs(c, byId), animeYear: animeYear(c) })).sort((x, y) => y.popularity - x.popularity)
   return { now, titles, byId: new Map(titles.map((t) => [t.id, t])) }
 }
 

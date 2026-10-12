@@ -35,6 +35,56 @@ export const fill = () => box({ flexGrow: 1 })
 /** A style that cuts text off (with an ellipsis) after this many lines, whatever its length. */
 export const clamp = (lines) => ({ display: 'block', lineClamp: lines })
 
+/** How wide a character of the reading face is, as a share of its size (an estimate, a little on the wide side). */
+const CHAR_WIDTH = 0.56
+export const SEPARATOR = ' · '
+
+/**
+ * "A · B · C" as lines that never end on a separator: the units are packed
+ * into at most `lines` lines of `maxChars`, and a unit that does not fit is
+ * left out rather than cut.
+ */
+export function wrapUnits(text, maxChars, lines = 2) {
+  const out = []
+  for (const unit of String(text || '').split(SEPARATOR).filter(Boolean)) {
+    const last = out.at(-1)
+    if (last !== undefined && `${last}${SEPARATOR}${unit}`.length <= maxChars) out[out.length - 1] = `${last}${SEPARATOR}${unit}`
+    else if (out.length < lines) out.push(unit)
+    else break
+  }
+  return out
+}
+
+/** How wide a character of the display face is, as a share of its size. */
+const DISPLAY_WIDTH = 0.62
+
+/** How many lines a text takes at this size in this width (an estimate), at most `max`. */
+export function linesOf(text, size, width, { max = 2, face = DISPLAY_WIDTH } = {}) {
+  if (!text) return 0
+  return Math.min(max, Math.max(1, Math.ceil(String(text).length / Math.floor(width / (size * face)))))
+}
+
+/** The room the lines under the last content take: the first-comment line and the brand line. */
+export const FOOT = 118
+
+/** A last word this short is not left alone on a line; it is tied to a word before it that is no longer than PARTNER_MAX. */
+const ORPHAN_MAX = 8
+const PARTNER_MAX = 8
+const ORPHAN_WORDS = 4
+const NBSP = String.fromCharCode(160)
+
+/**
+ * The same text with its last two words tied by a non-breaking space when
+ * both are short and the text has four words or more, so a wrapped title
+ * never ends on a lone short word
+ * ("Horizons: The / Series" becomes "Horizons: / The Series").
+ */
+export function noOrphan(text) {
+  const words = String(text).split(" ")
+  if (words.length < ORPHAN_WORDS || words.at(-1).length > ORPHAN_MAX || words.at(-2).length > PARTNER_MAX) return String(text)
+  return [...words.slice(0, -2), words.slice(-2).join(NBSP)].join(" ")
+}
+
 /** The size of a picture of shape `ratio` (width / height) placed whole inside a box. */
 export function contain(ratio, maxWidth, maxHeight) {
   const width = Math.min(maxWidth, maxHeight * ratio)
@@ -64,7 +114,7 @@ export function kitOf(theme, marks = {}) {
   const f = theme.font
 
   /** Text in the display face (names, numbers, headlines). */
-  const display = (style, value) => box({ fontFamily: f.display, fontWeight: f.displayBold, lineHeight: 1.08, ...style }, String(value))
+  const display = (style, value) => box({ fontFamily: f.display, fontWeight: f.displayBold, lineHeight: 1.08, ...style }, noOrphan(String(value)))
   /** Text in the reading face. */
   const body = (style, value) => box({ fontFamily: f.text, fontWeight: f.textRegular, lineHeight: 1.3, ...style }, String(value))
   /** A small spaced label that names the kind of post. Plain type, no shape behind it. */
@@ -96,7 +146,7 @@ export function kitOf(theme, marks = {}) {
   const about = (info, tone, { size = 26, width = INNER, style = {} } = {}) => {
     const rows = [
       info?.rating && ['Score', row({ alignItems: 'baseline' }, display({ fontSize: size, fontWeight: f.displayBlack, color: tone.pop, lineHeight: 1.2 }, info.rating), body({ fontSize: size, color: tone.ink, marginLeft: 8, lineHeight: 1.2 }, 'on AniList'))],
-      info?.genres && ['Genre', info.genres],
+      info?.genres && ['Genre', col({}, wrapUnits(info.genres, Math.floor((width - Math.round(size * 4.5)) / (size * CHAR_WIDTH))).map((line) => body({ fontSize: size, fontWeight: f.textBold, color: tone.ink, lineHeight: 1.2 }, line)))],
       info?.status && ['Status', info.status],
       info?.alt && ['Alt title', info.alt],
     ].filter(Boolean)
@@ -113,6 +163,9 @@ export function kitOf(theme, marks = {}) {
       ),
     )
   }
+
+  /** One sentence about the story, under a title: the reading face, soft, two lines at most. */
+  const tagline = (value, tone, style = {}) => (value ? body({ ...clamp(2), fontSize: 27, color: tone.soft, lineHeight: 1.3, ...style }, noOrphan(value)) : null)
 
   /** The line that sends the reader to the first comment, above the brand line. A small flat square, then plain type. */
   const cta = (value, tone) =>
@@ -145,5 +198,5 @@ export function kitOf(theme, marks = {}) {
     )
   }
 
-  return { theme, f, tone: (name) => toneOf(theme, name), display, body, kicker, rule, art, about, cta, brand, page, box, row, col, fill, contain, clamp }
+  return { theme, f, tone: (name) => toneOf(theme, name), display, body, kicker, rule, art, about, tagline, cta, brand, page, box, row, col, fill, contain, clamp }
 }
