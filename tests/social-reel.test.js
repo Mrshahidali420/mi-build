@@ -177,7 +177,7 @@ const wording = [(p) => ({ hook: `🔥 ${p.item} is here.`, facts: ['One fact.']
 const kind = (key, count, over = {}) => ({ key, name: key, urgent: false, gapDays: 300, titleGap: false, window: 1, captions: wording, find: () => Array.from({ length: count }, (_, i) => ({ item: `${key}-${i}`, title: null, path: '/x', label: 'More', art: {}, view: {} })), ...over })
 const LIVE = { FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', EVENT: 'workflow_dispatch' }
 
-function reelRun(env) {
+function reelRun(env, made = {}) {
   const sent = []
   const graph = {
     pageName: async () => 'Page',
@@ -202,7 +202,7 @@ function reelRun(env) {
     h.run({
       loadPools: async () => ({ pools: { new: [], old: [] }, data: {}, source: 'test' }),
       loadTypes: async () => [kind('a', 60), kind('reel-x', 20, { reel: true })],
-      render: async (type) => (type.reel ? { mp4: Buffer.from('mp4'), seconds: 12, pngs: [] } : { png: Buffer.from('p'), jpeg: Buffer.from('j') }),
+      render: async (type, post, opts) => (type.reel ? { mp4: Buffer.from('mp4'), seconds: 12, pngs: [], ...made.reel?.(opts) } : { png: Buffer.from('p'), jpeg: Buffer.from('j') }),
       preview: (name, bytes) => saved.push([name, bytes.toString()]),
     })
   return { ...h, go, sent, saved }
@@ -245,4 +245,19 @@ test('run: a dry run keeps the MP4 as a preview and sends nothing', async () => 
   assert.deepEqual(r.saved, [['reel-x-reel-x-0.mp4', 'mp4']])
   assert.equal(r.sent.length, 0)
   assert.equal((r.store.snapshot().entries || []).length, 0)
+})
+
+test('run: a reel writes its music in the ledger, and the next reel is told to take another track', async () => {
+  const asked = []
+  const tracks = ['one.m4a', 'two.m4a', 'three.m4a']
+  const reel = (opts) => {
+    asked.push(opts?.avoidTrack ?? null)
+    return { track: tracks[asked.length - 1] }
+  }
+  const r = reelRun({ FB_POST_TYPES: 'a,reel-x', FB_CHAIN_MINUTES: '120', FB_POSTS_PER_DAY: '288' }, { reel })
+  assert.equal(await r.go(), 0)
+  const reels = r.store.snapshot().entries.filter((e) => e.reel).sort((x, y) => x.at - y.at)
+  assert.deepEqual(reels.map((e) => e.track), tracks)
+  assert.deepEqual(asked, [null, 'one.m4a', 'two.m4a'])
+  assert.match(r.text.join(''), /music one\.m4a/)
 })

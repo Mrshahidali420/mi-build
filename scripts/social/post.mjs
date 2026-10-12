@@ -243,9 +243,9 @@ async function sendPosts(base, { loaded, want, left, cap }) {
 /** Every kind the site has: the picture types, and the reels (off, like all of them, until named). */
 const defaultTypes = async () => (await import('./types/index.mjs')).KINDS
 
-async function defaultRender(type, post) {
+async function defaultRender(type, post, { avoidTrack = null } = {}) {
   const { THEME } = await import('./theme.mjs')
-  if (type.reel) return (await import('./reel/engine.mjs')).renderReel(type, post, { theme: THEME })
+  if (type.reel) return (await import('./reel/engine.mjs')).renderReel(type, post, { theme: THEME, avoidTrack })
   return (await import('./render/engine.mjs')).renderPost(type, post, { theme: THEME })
 }
 

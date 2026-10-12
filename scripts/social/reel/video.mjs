@@ -5,7 +5,8 @@
  * 30 Jul 2026): .mp4, 9 x 16, 1080 x 1920, 24 to 60 fps at a fixed rate,
  * 3 to 90 seconds, H.264 with 4:2:0 chroma and a closed GOP of 2 to 5
  * seconds, AAC-LC stereo at 48 kHz. So: 30 fps, a key frame every 2 seconds,
- * yuv420p, and a silent AAC track (no music, by the owner's rule).
+ * yuv420p, and an AAC track: music and slide sounds (sound.mjs), or silence
+ * when no track is given.
  *
  * Each slide is held for a few seconds with a slow zoom, and the slides
  * cross-fade into each other. The reel is kept between 8 and 20 seconds: with
@@ -17,6 +18,7 @@ import { execFile } from 'node:child_process'
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import { soundGraph } from './sound.mjs'
 
 export const REEL = { width: 1080, height: 1920, fps: 30 }
 /** Seconds the opening slide, each item and the closing slide are held, and the length of a cross-fade. */
@@ -53,8 +55,9 @@ export function holdsOf(items) {
  * The ffmpeg command for these slides.
  * @param frames paths of the slide pictures, in order
  * @param holds seconds each one is held (holdsOf)
+ * @param track path of the music bed; without one the reel is silent
  */
-export function ffmpegArgs({ frames, holds, out, fade = HOLD.fade, size = REEL }) {
+export function ffmpegArgs({ frames, holds, out, track = null, fade = HOLD.fade, size = REEL }) {
   const { width, height, fps } = size
   const total = lengthOf(holds, fade)
   const inputs = frames.flatMap((file) => ['-i', file])
@@ -69,28 +72,26 @@ export function ffmpegArgs({ frames, holds, out, fade = HOLD.fade, size = REEL }
     fades.push(`[${i === 1 ? 'v0' : `x${i - 1}`}][v${i}]xfade=transition=fade:duration=${fade}:offset=${at}[x${i}]`)
   }
   const last = holds.length > 1 ? `x${holds.length - 1}` : 'v0'
+  // The music is looped, so a track shorter than the reel still covers it.
+  const audioIn = track ? ['-stream_loop', '-1', '-i', track] : ['-f', 'lavfi', '-t', String(total), '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000']
+  const sound = track ? soundGraph({ input: frames.length, holds, fade, total }) : { filters: [], out: null }
   return [
     '-y',
     '-hide_banner',
     '-loglevel',
     'error',
     ...inputs,
-    '-f',
-    'lavfi',
-    '-t',
-    String(total),
-    '-i',
-    'anullsrc=channel_layout=stereo:sample_rate=48000',
+    ...audioIn,
     '-filter_complex',
-    [...moves, ...fades].join(';'),
+    [...moves, ...fades, ...sound.filters].join(';'),
     '-map',
     `[${last}]`,
     '-map',
-    `${frames.length}:a`,
+    sound.out ? `[${sound.out}]` : `${frames.length}:a`,
     ...['-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', String(fps)],
     // A closed GOP of two seconds, at a fixed frame rate.
     ...['-g', String(GOP_SECONDS * fps), '-keyint_min', String(GOP_SECONDS * fps), '-sc_threshold', '0', '-flags', '+cgop'],
-    ...['-c:a', 'aac', '-b:a', '128k', '-ar', '48000', '-ac', '2'],
+    ...['-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-ac', '2'],
     ...['-t', String(total), '-movflags', '+faststart', out],
   ]
 }
@@ -110,9 +111,10 @@ const runFfmpeg = (bin, args) =>
 /**
  * The slides as one MP4.
  * @param pngs the slide pictures, in order
+ * @param track path of the music bed (sound.mjs); none makes a silent reel
  * @returns {Promise<{ mp4: Buffer, seconds: number }>}
  */
-export async function assemble(pngs, { ffmpeg = process.env.FFMPEG_PATH || 'ffmpeg', run = runFfmpeg } = {}) {
+export async function assemble(pngs, { ffmpeg = process.env.FFMPEG_PATH || 'ffmpeg', run = runFfmpeg, track = null, size = REEL } = {}) {
   const dir = mkdtempSync(join(tmpdir(), 'reel-'))
   try {
     const frames = pngs.map((png, i) => {
@@ -122,7 +124,7 @@ export async function assemble(pngs, { ffmpeg = process.env.FFMPEG_PATH || 'ffmp
     })
     const holds = holdsOf(Math.max(1, pngs.length - 2))
     const out = join(dir, 'reel.mp4')
-    await run(ffmpeg, ffmpegArgs({ frames, holds, out }))
+    await run(ffmpeg, ffmpegArgs({ frames, holds, out, track, size }))
     return { mp4: readFileSync(out), seconds: lengthOf(holds) }
   } finally {
     rmSync(dir, { recursive: true, force: true })

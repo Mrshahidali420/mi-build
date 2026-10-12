@@ -233,7 +233,7 @@ record lacks is left out.
 
 ## Reels (off until you switch them on)
 
-A reel is a short vertical video (1080x1920, 8 to 20 seconds, no music) made
+A reel is a short vertical video (1080x1920, 8 to 20 seconds, with music and slide sounds) made
 on the runner: slides drawn like the post images, held a few seconds each
 with a slow zoom, cross-faded with ffmpeg (installed on the runner only for a run that can make a reel). An opening slide, one slide per
 item, and a closing slide with the site name and "Link in the first comment".
@@ -249,6 +249,16 @@ Nothing is re-uploaded from anyone: the slides are our own.
 - **Few.** `FB_REELS_PER_DAY` reels in any 24 hours (3 unless set, 10 at
   most; Facebook's own limit is 30 by API), counted inside the overall cap.
   Never two reels in a row.
+- **Sound.** Every reel has a music bed and a short sound on each change of
+  slide: a soft whoosh, and a low hit as the closing slide comes in. The
+  music gives way under those sounds, fades in and out, and the mix is
+  brought to about -16 LUFS (AAC, 160 kb/s). The music is one of six short
+  tracks in `scripts/social/audio/`, all CC0 (public domain); `SOURCES.md` there
+  lists each track, its page and its licence. The whoosh and the hit are
+  made by ffmpeg itself. A reel always gets the same track, and never the
+  track of the reel before it (the ledger keeps each reel's `track`). Add a
+  track only if its own page says CC0 or public domain: no commercial music,
+  nothing that asks for credit, no soundtrack.
 - **Look first.** `npm run social:reels -- --out reel-samples` writes one MP4
   per type and a contact sheet of six frames. A manual dry run with `types`
   set to a reel name keeps the MP4 in the run's `fb-preview` artifact.

@@ -41,19 +41,21 @@ async function main() {
   mkdirSync(dir, { recursive: true })
   const notes = [`# ${THEME.name}: sample reels`, '']
   const lines = []
+  let lastTrack = null
   for (const type of REELS) {
     const [sample] = await samplePosts(type, { per: 1, now, loadData: async (at) => dataAt(at) })
     if (!sample) {
       lines.push(`${type.key}: no data for this reel right now`)
       continue
     }
-    const { mp4, seconds, pngs } = await renderReel(type, sample.post, { theme: THEME })
+    const { mp4, seconds, pngs, track } = await renderReel(type, sample.post, { theme: THEME, avoidTrack: lastTrack })
+    lastTrack = track
     const file = join(dir, `${type.key}.mp4`)
     writeFileSync(file, mp4)
     writeFileSync(join(dir, `${type.key}.png`), await contactSheet(file, seconds, sharp))
     const caption = captionFor(type, sample.post, 0, [...(source.BLOCKED_TAGS || [])])?.caption || '(no wording fits this post)'
-    notes.push(`## ${type.name} (${type.key}.mp4, ${seconds} s, ${pngs.length} slides)`, '', 'Description:', '', ...caption.split('\n').map((l) => `> ${l}`), '', 'First comment:', '', ...commentFor(sample.post).split('\n').map((l) => `> ${l}`), '')
-    lines.push(`${type.key}: ${seconds} s, ${pngs.length} slides, ${Math.round(mp4.length / 1024)} KB`)
+    notes.push(`## ${type.name} (${type.key}.mp4, ${seconds} s, ${pngs.length} slides, music ${track})`, '', 'Description:', '', ...caption.split('\n').map((l) => `> ${l}`), '', 'First comment:', '', ...commentFor(sample.post).split('\n').map((l) => `> ${l}`), '')
+    lines.push(`${type.key}: ${seconds} s, ${pngs.length} slides, ${Math.round(mp4.length / 1024)} KB, music ${track}`)
   }
   writeFileSync(join(dir, 'captions.md'), `${notes.join('\n')}\n`)
   process.stdout.write(`${lines.join('\n')}\nSaved to ${dir}\n`)

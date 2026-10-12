@@ -13,6 +13,9 @@
  * list image.
  */
 import { kitFor, loadArt, renderTree, ART_SIZE } from '../render/engine.mjs'
+import { join } from 'node:path'
+import { slugOf } from '../plan.mjs'
+import { AUDIO_DIR, trackFor } from './sound.mjs'
 import { REEL, assemble } from './video.mjs'
 
 async function loadReelArt(art = {}, deps) {
@@ -21,9 +24,10 @@ async function loadReelArt(art = {}, deps) {
 }
 
 /**
- * @returns {Promise<{ mp4: Buffer, seconds: number, pngs: Buffer[] }>}
+ * @param avoidTrack the music of the reel before this one, so two in a row never sound the same
+ * @returns {Promise<{ mp4: Buffer, seconds: number, pngs: Buffer[], track: string }>}
  */
-export async function renderReel(type, post, { theme, fetch = globalThis.fetch, ffmpeg } = {}) {
+export async function renderReel(type, post, { theme, fetch = globalThis.fetch, ffmpeg, avoidTrack = null } = {}) {
   const { kit, sharp } = await kitFor(theme)
   const first = await loadReelArt(post.art, { fetch, sharp })
   const bad = first.thumbs.flatMap((picture, i) => (!picture || picture.blank ? [i] : []))
@@ -32,6 +36,7 @@ export async function renderReel(type, post, { theme, fetch = globalThis.fetch, 
   const trees = type.slides({ ...shown.view, art }, kit)
   const pngs = []
   for (const tree of trees) pngs.push(await renderTree(tree, theme, REEL))
-  const { mp4, seconds } = await assemble(pngs, ffmpeg ? { ffmpeg } : {})
-  return { mp4, seconds, pngs }
+  const track = trackFor(slugOf(type, post), avoidTrack)
+  const { mp4, seconds } = await assemble(pngs, { ...(ffmpeg ? { ffmpeg } : {}), track: join(AUDIO_DIR, track) })
+  return { mp4, seconds, pngs, track }
 }

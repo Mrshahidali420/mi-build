@@ -115,21 +115,24 @@ function mediumOf(type, made, { graph, caption, sleep }) {
     await graph.reelReady?.(reel.videoId, { sleep })
     return reel
   }
-  return { line: `a reel made on the runner, 1080x1920, ${made.seconds} s, ${Math.round(made.mp4.length / 1024)} KB`, file: 'mp4', bytes: made.mp4, send }
+  return { line: `a reel made on the runner, 1080x1920, ${made.seconds} s, music ${made.track || 'none'}, ${Math.round(made.mp4.length / 1024)} KB`, file: 'mp4', bytes: made.mp4, send }
 }
 
-export async function typedStep({ s, graph, book, plan, now, day, skip, out, render, preview, onError, sleep }) {
+/** The music of the last reel in the ledger: the next reel takes another track. */
+const lastTrack = (history = []) => history.findLast((e) => e.reel && e.track)?.track || null
+
+export async function typedStep({ s, graph, book, plan, now, day, skip, out, render, preview, onError, sleep, history }) {
   const { type, post, caption } = plan
   const name = post.title || `${type.name} (${post.item})`
   let picture
   try {
-    picture = await render(type, post)
+    picture = await render(type, post, { avoidTrack: lastTrack(history) })
   } catch (error) {
     skip.add(slugOf(type, post))
     out.push(`Skipped ${name}: its picture could not be made (${error.message}).`, '')
     return STEP.skipped
   }
-  const entry = typedEntry(plan, day, now)
+  const entry = { ...typedEntry(plan, day, now), ...(picture.track ? { track: picture.track } : {}) }
   const claimed = await claim(book, entry, now)
   if (!claimed.ok) {
     skip.add(entry.slug)
