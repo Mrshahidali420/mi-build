@@ -2260,6 +2260,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108618073500964",
    "commentId": "122108618073500964_1405663831552419"
+  },
+  {
+   "key": "2026-10-12|where:141076|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "where:141076",
+   "title": "Murim RPG Simulation",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "141076",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791845204311,
+   "status": "claimed"
   }
  ],
  "health": {
