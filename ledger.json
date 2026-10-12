@@ -1384,6 +1384,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108460855500964",
    "commentId": "122108460855500964_2668877080195176"
+  },
+  {
+   "key": "2026-10-12|next:177706|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:177706",
+   "title": "The Knight Only Lives Today",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "177706",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791830991707,
+   "status": "claimed"
   }
  ],
  "health": {
