@@ -379,6 +379,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108227815500964",
    "commentId": "122108227815500964_1168634192279503"
+  },
+  {
+   "key": "2026-10-12|next:167649|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:167649",
+   "title": "The Academy's Genius Swordsman",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "167649",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791814338639,
+   "status": "claimed"
   }
  ],
  "health": {
