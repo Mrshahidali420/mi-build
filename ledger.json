@@ -1348,6 +1348,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108447409500964",
    "commentId": "122108447409500964_4621888884716695"
+  },
+  {
+   "key": "2026-10-12|character:char:168774|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "character:char:168774",
+   "title": "Call of the Night",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:168774",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791830388957,
+   "status": "claimed"
   }
  ],
  "health": {
