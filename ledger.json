@@ -469,6 +469,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108248587500964",
    "commentId": "122108248587500964_3945548272248807"
+  },
+  {
+   "key": "2026-10-12|fact:fact:31342:rated|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:31342:rated",
+   "title": "Baccano!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:31342:rated",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791815844475,
+   "status": "claimed"
   }
  ],
  "health": {
