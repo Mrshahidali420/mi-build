@@ -811,6 +811,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108345979500964",
    "commentId": "122108345979500964_1668500951365118"
+  },
+  {
+   "key": "2026-10-12|next:117195|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:117195",
+   "title": "[Oshi no Ko]",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "117195",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791821614612,
+   "status": "claimed"
   }
  ],
  "health": {
