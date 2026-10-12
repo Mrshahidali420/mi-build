@@ -919,6 +919,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108370843500964",
    "commentId": "122108370843500964_2503837853434112"
+  },
+  {
+   "key": "2026-10-12|next:133070|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:133070",
+   "title": "The Game That I Came From",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "133070",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791823424170,
+   "status": "claimed"
   }
  ],
  "health": {
