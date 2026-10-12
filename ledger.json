@@ -2093,6 +2093,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108591259500964",
    "commentId": "122108591259500964_1097939672648959"
+  },
+  {
+   "key": "2026-10-12|character:char:64573|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "character:char:64573",
+   "title": "Kingdom",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:64573",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791842494096,
+   "status": "claimed"
   }
  ],
  "health": {
