@@ -2445,6 +2445,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108648019500964",
    "commentId": "122108648019500964_28569275269431936"
+  },
+  {
+   "key": "2026-10-12|next:153883|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:153883",
+   "title": "The SSS-Ranker Returns",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "153883",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791848227106,
+   "status": "claimed"
   }
  ],
  "health": {
