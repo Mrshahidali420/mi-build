@@ -269,6 +269,24 @@
    "status": "posted",
    "postId": "1318170941390322_122108204991500964",
    "commentId": "122108204991500964_2041982106499472"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-12|reel-ranking:rank:manga:ongoing|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "reel-ranking:rank:manga:ongoing",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manga:ongoing",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1791812527970,
+   "track": "battle-theme-a.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
