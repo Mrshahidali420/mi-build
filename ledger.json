@@ -996,6 +996,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108384691500964",
    "commentId": "122108384691500964_1646051040389431"
+  },
+  {
+   "key": "2026-10-12|ranking:rank:manhua:romance|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "ranking:rank:manhua:romance",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhua:romance",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791824654408,
+   "status": "claimed"
   }
  ],
  "health": {
