@@ -1777,6 +1777,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108538759500964",
    "commentId": "122108538759500964_2191221265148248"
+  },
+  {
+   "key": "2026-10-12|character:char:130712|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "character:char:130712",
+   "title": "Fire Force",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:130712",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791837361370,
+   "status": "claimed"
   }
  ],
  "health": {
