@@ -1443,6 +1443,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108474091500964",
    "commentId": "122108474091500964_2188368658383985"
+  },
+  {
+   "key": "2026-10-12|ranking:rank:manhwa:comedy|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "ranking:rank:manhwa:comedy",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhwa:comedy",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791831921421,
+   "status": "claimed"
   }
  ],
  "health": {
