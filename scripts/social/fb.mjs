@@ -3,6 +3,8 @@
  *
  *   GET  /{page-id}?fields=name          token health check
  *   POST /{page-id}/photos  url, caption  a photo post; returns { id, post_id }
+ *   POST /{page-id}/photos  source, caption  the same, with the image sent as a
+ *                                         multipart file (a template image)
  *   POST /{page-id}/feed    message       a text post (no image); returns { id }
  *   POST /{post-id}/comments message      the link, as the first comment
  *
@@ -41,13 +43,20 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
   if (!pageId || !token) throw new Error('graphClient needs a page id and a token')
   const base = `${GRAPH_HOST}/${version}`
 
-  async function call(method, path, params = {}) {
+  /** A multipart body: the fields, the token and one file (`source`). */
+  function multipart(params, file) {
+    const form = new FormData()
+    for (const [name, value] of Object.entries({ ...params, access_token: token })) form.append(name, String(value))
+    form.append('source', new Blob([file.bytes], { type: file.contentType }), file.filename)
+    return form
+  }
+
+  async function call(method, path, params = {}, file = null) {
     const body = new URLSearchParams({ ...params, access_token: token })
     const url = method === 'GET' ? `${base}${path}?${body}` : `${base}${path}`
-    const init =
-      method === 'GET'
-        ? { method }
-        : { method, headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: body.toString() }
+    // fetch sets the multipart content type (with its boundary) by itself.
+    const post = file ? { method, body: multipart(params, file) } : { method, headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: body.toString() }
+    const init = method === 'GET' ? { method } : post
     let res
     try {
       res = await fetch(url, init)
@@ -80,6 +89,12 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
     },
     async publishPhoto({ url, caption }) {
       const json = await call('POST', `/${pageId}/photos`, { url, caption, published: 'true' })
+      return { photoId: json.id, postId: json.post_id || json.id }
+    },
+    /** A photo post from a file made on the runner (a template image). */
+    async publishPhotoFile({ bytes, caption, filename = 'post.jpg', contentType = 'image/jpeg' }) {
+      if (!bytes?.length) throw new GraphError('publishPhotoFile needs the image bytes')
+      const json = await call('POST', `/${pageId}/photos`, { caption, published: 'true' }, { bytes, filename, contentType })
       return { photoId: json.id, postId: json.post_id || json.id }
     },
     async publishText({ message }) {

@@ -40,10 +40,24 @@ export function dayOf(ms, timeZone = 'America/New_York') {
   return parts
 }
 
-/** Why this entry may not be claimed, or null when it may. */
+/**
+ * Why this entry may not be claimed, or null when it may.
+ *
+ * A classic entry (no `type`) is held to the 30-day title gap. A typed entry
+ * (types/*.mjs) names its own `item` and `gapDays`: the same item of the same
+ * type may not come back inside that gap, and the title gap applies to it
+ * only when the type asks for it (`titleGap`). An episode post is the reason:
+ * a weekly show must be able to post every week.
+ */
 export function guardReason(ledger, entry, now) {
   const entries = ledger?.entries || []
   if (entries.some((e) => e.key === entry.key)) return 'already claimed today'
+  if (entry.type) {
+    const gap = Number.isFinite(entry.gapDays) ? entry.gapDays : TITLE_GAP_DAYS
+    const again = entries.find((e) => e.page === entry.page && e.type === entry.type && e.item === entry.item && e.at >= now - gap * DAY_MS)
+    if (again) return `same ${entry.type} item ${again.status} on ${again.day}`
+    if (!entry.titleGap || !entry.title) return null
+  }
   const title = normTitle(entry.title)
   const since = now - TITLE_GAP_DAYS * DAY_MS
   const recent = entries.find((e) => e.page === entry.page && normTitle(e.title) === title && e.at >= since)

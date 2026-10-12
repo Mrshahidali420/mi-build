@@ -12,6 +12,13 @@ name: Facebook Page post
 # Until the FB_PAGE_ID / FB_PAGE_TOKEN secrets exist it is a green dry run.
 # With them, it posts only when the repo variable FB_POST_ENABLED is 'true'.
 #
+# Template posts (an image drawn on the runner, one design per post type) are
+# OFF until the repo variable FB_POST_TYPES names them, one by one. A manual
+# dry run can preview any type with the `types` input; its pictures are kept
+# as the run's "fb-preview" artifact. That input never makes a real post.
+# The packages are installed only for a run that draws (the classic post
+# needs none).
+#
 # The ledger that stops double posts lives on the orphan branch social-state
 # (scripts/social/ledger.mjs). Pushes there start no workflow: deploy.yml only
 # listens to master, and pushes made with GITHUB_TOKEN start nothing anyway.
@@ -29,6 +36,10 @@ on:
         description: 'How many posts (or samples) this run'
         required: false
         default: '3'
+      types:
+        description: 'Dry run only: post types to preview, e.g. where,fact (empty = the FB_POST_TYPES variable)'
+        required: false
+        default: ''
 
 # contents: write is for the social-state ledger branch only.
 permissions:
@@ -62,6 +73,11 @@ jobs:
           key: anilist-data-${{ github.run_id }}
           restore-keys: anilist-data-
 
+      # The renderer's packages (satori, sharp, the fonts): only when a run draws.
+      - name: Install the packages the template images need
+        if: vars.FB_POST_TYPES != '' || (github.event_name == 'workflow_dispatch' && inputs.types != '')
+        run: npm ci --no-audit --no-fund
+
       - name: Wait a few random minutes
         if: github.event_name == 'schedule'
         run: sleep $(( RANDOM % 420 ))
@@ -72,11 +88,26 @@ jobs:
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           FB_POST_ENABLED: ${{ vars.FB_POST_ENABLED }}
           FB_POSTS_PER_DAY: ${{ vars.FB_POSTS_PER_DAY }}
+          # The template post types that are switched on (empty = classic posts only).
+          FB_POST_TYPES: ${{ vars.FB_POST_TYPES }}
           EVENT: ${{ github.event_name }}
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'true' || 'false' }}
           COUNT: ${{ inputs.count }}
+          # Read by a manual dry run only (post.mjs, settingsOf).
+          TYPES: ${{ inputs.types }}
+          FB_PREVIEW_DIR: ${{ runner.temp }}/fb-preview
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
           GIT_COMMITTER_NAME: github-actions[bot]
           GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
         run: node --max-old-space-size=6000 scripts/social/post.mjs
+
+      # The pictures a dry run drew, so a new design can be looked at.
+      - name: Keep the preview pictures
+        if: always() && github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: fb-preview
+          path: ${{ runner.temp }}/fb-preview
+          if-no-files-found: ignore
+          retention-days: 7

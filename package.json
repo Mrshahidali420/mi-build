@@ -16,13 +16,15 @@
     "ingest:daily": "node --max-old-space-size=6000 scripts/ingest-daily.mjs",
     "ingest:characters": "node --max-old-space-size=6000 scripts/ingest-characters.mjs",
     "ingest:novels": "node --max-old-space-size=6000 scripts/ingest-novels.mjs",
-    "guides:media": "node --max-old-space-size=4000 scripts/guide-media.mjs"
+    "guides:media": "node --max-old-space-size=4000 scripts/guide-media.mjs",
+    "social:samples": "node --max-old-space-size=4000 scripts/social/samples.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
     "@fontsource/saira": "^5.3.0",
     "@fontsource/saira-stencil-one": "^5.3.0",
     "astro": "^5.6.1",
+    "satori": "^0.47.1",
     "sharp": "^0.33.5"
   },
   "devDependencies": {

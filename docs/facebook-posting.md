@@ -118,6 +118,64 @@ The day is the US Eastern day. It is cut into as many equal parts as
 - A manual run (Run workflow) ignores the pace and sends `count` posts, but
   never more than the day has left.
 
+## Template posts (off until you switch them on)
+
+Besides the classic post (a cover and a caption) there are template posts: an
+image drawn for the post, 1080 x 1350, with the cover placed whole inside it,
+so Facebook never crops the art. Each kind of post has its own design.
+
+| Name | What it posts |
+|---|---|
+| `where` | The official reading sites of one comic or novel, and how much of it is out |
+| `new-title` | A comic or novel that started in the last 75 days and already has an official site |
+| `ranking` | Top 5 of a section: the ongoing titles, or one genre, by AniList readers |
+| `character` | One lead character of a popular title |
+| `fact` | One fact from the record, set very large |
+| `next` | What to read next: three titles AniList readers recommend after one you liked |
+
+There is no "new volume" post. The catalog holds how many volumes a title has,
+never the day a volume came out, so a new volume cannot be told from an old one.
+
+**Nothing above posts until its name is in the repo variable `FB_POST_TYPES`**
+(Settings → Secrets and variables → Actions → Variables). The variable is a
+comma list, and the list is exactly what runs:
+
+| `FB_POST_TYPES` | What the Page gets |
+|---|---|
+| not set, or empty | classic posts only (as before) |
+| `classic,where` | classic posts, plus where-to-read posts, in turns |
+| `classic,where,fact,ranking` | those four kinds, in turns |
+| `where,new-title,ranking,character,fact,next` | template posts only |
+
+Leave `classic` in the list for as long as you want the plain cover posts too.
+A name that is misspelt is ignored and named in the run summary; a list with
+no usable name falls back to classic posts.
+
+How the kinds share the day:
+
+- They rotate: the kind that posted longest ago goes next.
+- Nothing repeats too soon. A new title is posted once. A ranking comes back
+  and a `next` post after 2 months, a character after 6 months, `where` and
+  `fact` after the usual 30 days per title. Two posts about the same title never go
+  out on one day.
+
+Look before you switch a type on:
+
+- On the PC, from the repo folder:
+  `npm run social:samples -- --out "C:\some\folder"`
+  writes two sample images per type and `captions.md` with every wording of
+  each caption. Add `--long` to see the longest titles.
+- On GitHub: Actions → **Facebook Page post** → Run workflow, keep `dry_run`
+  ticked and write the names in `types` (for example `fact,where`). The run
+  summary shows the captions, and the images are in the run's `fb-preview`
+  artifact. The `types` box works for dry runs only; it can never post.
+
+The images use the site's own fonts and colours and are made on the runner
+(`scripts/social/render/`), with no browser. A run that draws installs the
+site's packages first, which adds about a minute; a classic-only run does not.
+The words on the images come from the same catalog as the pages; a fact the
+record lacks is left out.
+
 ## How it chooses
 
 - About two new items for each older one. New: an anime episode airing today,

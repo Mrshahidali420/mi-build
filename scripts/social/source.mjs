@@ -60,6 +60,21 @@ export function platformsOf(links = []) {
 export const isSafe = (item) =>
   !item.isAdult && !BLOCKED_MEDIA.has(item.id) && ![...(item.genres || []), ...(item.tags || [])].some((t) => isBlocked(typeof t === 'string' ? t : t?.name))
 
+const startOf = (item) =>
+  Array.isArray(item.startDate) && item.startDate[0] ? { year: item.startDate[0], month: item.startDate[1] || null, day: item.startDate[2] || null, precision: item.startPrecision || null } : null
+
+/** The main cast with a real picture (the template posts draw them). */
+const castOf = (item) =>
+  (item.characters || [])
+    .filter((c) => c?.role === 'MAIN' && c.name && c.image && !/\/default\./.test(c.image))
+    .map((c) => ({ id: c.id, name: c.name, image: c.image }))
+
+/** The anime made from a comic, when the index holds its page. */
+function adaptationOf(item) {
+  const anime = (item.animeInIndex || [])[0]
+  return anime?.title ? { title: anime.title, episodes: anime.episodes || null } : null
+}
+
 /** One catalog record as a candidate, or null when it may not be promoted. */
 export function toCandidate(item) {
   if (!item?.slug || !item.title || !item.cover || !isSafe(item)) return null
@@ -69,6 +84,12 @@ export function toCandidate(item) {
   if (!platforms.length) return null
   const next = item.nextEpisode
   return {
+    // Read by the template posts (types/): what the record states, nothing more.
+    start: startOf(item),
+    volumes: item.volumes || null,
+    ranks: (item.ranks || []).filter((r) => r?.allTime && r.rank > 0).map((r) => ({ rank: r.rank, type: r.type })),
+    cast: castOf(item),
+    adaptation: adaptationOf(item),
     id: item.id,
     slug: item.slug,
     title: item.title,
@@ -113,7 +134,7 @@ function attachRecs(candidate, byId) {
     if (!rec) continue
     const t = rec.title.toLowerCase()
     if (t.includes(own) || own.includes(t)) continue
-    recs.push({ title: rec.title })
+    recs.push({ title: rec.title, image: rec.image, section: rec.section })
     if (recs.length === 3) break
   }
   return { ...candidate, recs }
@@ -124,10 +145,21 @@ function attachRecs(candidate, byId) {
  * running that AniList updated in the last RUNNING_DAYS. OLD: the most
  * popular titles. Each list is in the order the picker should prefer.
  */
-export function buildPools(items, now) {
+export const buildPools = (items, now) => poolsOf(buildData(items, now), now)
+
+/**
+ * What the template posts read: every title that may be promoted, most
+ * popular first, with its recommendations, and the same list by AniList id.
+ */
+export function buildData(items, now) {
   const all = items.map(toCandidate).filter(Boolean)
   const byId = new Map(all.map((c) => [c.id, c]))
-  const withRecs = all.map((c) => attachRecs(c, byId))
+  const titles = all.map((c) => attachRecs(c, byId)).sort((x, y) => y.popularity - x.popularity)
+  return { now, titles, byId: new Map(titles.map((t) => [t.id, t])) }
+}
+
+function poolsOf(data, now) {
+  const withRecs = data.titles
   const byPop = (x, y) => y.popularity - x.popularity
 
   const airing = withRecs
@@ -173,8 +205,14 @@ function readCatalog(dir, name) {
 export function loadPools({ dir = join(process.cwd(), 'data'), now = Date.now() } = {}) {
   const anime = readCatalog(dir, 'anime')
   const comics = readCatalog(dir, 'comics')
-  const pools = buildPools([...anime.items, ...comics.items], now)
+  const data = buildData([...anime.items, ...comics.items], now)
   const seeded = [anime.from, comics.from].some((f) => f && f.endsWith('.gz'))
   const source = `catalog: ${anime.items.length} anime, ${comics.items.length} comics and novels${seeded ? ' (the small seed: the Actions cache was not restored)' : ' (Actions cache)'}`
-  return { pools, source }
+  return { pools: poolsOf(data, now), data, source }
+}
+
+/** The data read once, as a function of the day it is looked at from (samples.mjs). */
+export async function dataLoader({ dir = join(process.cwd(), 'data') } = {}) {
+  const items = [...readCatalog(dir, 'anime').items, ...readCatalog(dir, 'comics').items]
+  return (now) => buildData(items, now)
 }

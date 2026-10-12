@@ -65,20 +65,17 @@ export const pools = () => ({
 export function harness(env, graph) {
   const text = []
   const store = memoryStore()
-  return {
+  const base = {
+    env,
+    now: NOW,
+    rng: () => 0,
+    loadPools: async () => ({ pools: pools(), source: 'test' }),
     store,
-    text,
-    go: () =>
-      run({
-        env,
-        now: NOW,
-        rng: () => 0,
-        loadPools: async () => ({ pools: pools(), source: 'test' }),
-        store,
-        makeGraph: () => graph,
-        summary: (t) => text.push(t),
-        sleep: async () => {},
-        blockedTags: BLOCKED,
-      }),
+    makeGraph: () => graph,
+    summary: (t) => text.push(t),
+    sleep: async () => {},
+    blockedTags: BLOCKED,
   }
+  /** go() is the plain run; run(over) swaps some of what the run is given. */
+  return { store, text, go: () => run(base), run: (over = {}) => run({ ...base, ...over }) }
 }
