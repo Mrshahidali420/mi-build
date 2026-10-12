@@ -85,6 +85,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108107455500964",
    "commentId": "122108107455500964_1621334259528840"
+  },
+  {
+   "key": "2026-10-12|fact:fact:110462:run|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:110462:run",
+   "title": "Tomb Raider King",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:110462:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791809095561,
+   "status": "claimed"
   }
  ],
  "health": {
