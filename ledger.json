@@ -233,6 +233,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108196411500964",
    "commentId": "122108196411500964_1579688260044679"
+  },
+  {
+   "key": "2026-10-12|fact:fact:85134:popular|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:85134:popular",
+   "title": "The Empty Box and Zeroth Maria",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:85134:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791811925662,
+   "status": "claimed"
   }
  ],
  "health": {
