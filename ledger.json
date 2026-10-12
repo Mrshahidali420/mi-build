@@ -577,6 +577,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108279565500964",
    "commentId": "122108279565500964_2026186754743559"
+  },
+  {
+   "key": "2026-10-12|fact:fact:91170:rated|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:91170:rated",
+   "title": "Rascal Does Not Dream of Bunny Girl Senpai",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:91170:rated",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791817690823,
+   "status": "claimed"
   }
  ],
  "health": {
