@@ -307,6 +307,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108211117500964",
    "commentId": "122108211117500964_964258449515480"
+  },
+  {
+   "key": "2026-10-12|new-title:217014|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "new-title:217014",
+   "title": "The Warrior's Ballad",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:new-title",
+   "type": "new-title",
+   "item": "217014",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791813130350,
+   "status": "claimed"
   }
  ],
  "health": {
