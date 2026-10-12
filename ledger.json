@@ -179,6 +179,22 @@
    "status": "posted",
    "postId": "1615603466956841",
    "commentId": "1615603466956841_2557261678020814"
+  },
+  {
+   "key": "2026-10-12|new-title:215528|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "new-title:215528",
+   "title": "Mayori Academy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:new-title",
+   "type": "new-title",
+   "item": "215528",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1791811022001,
+   "status": "claimed"
   }
  ],
  "health": {
