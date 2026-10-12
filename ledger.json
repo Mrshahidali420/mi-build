@@ -955,6 +955,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108378475500964",
    "commentId": "122108378475500964_1455836019820707"
+  },
+  {
+   "key": "2026-10-12|new-title:217478|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "new-title:217478",
+   "title": "Slap Shot Girls",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:new-title",
+   "type": "new-title",
+   "item": "217478",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791824027535,
+   "status": "claimed"
   }
  ],
  "health": {
