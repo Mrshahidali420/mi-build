@@ -1759,6 +1759,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108535543500964",
    "commentId": "122108535543500964_986821694451083"
+  },
+  {
+   "key": "2026-10-12|ranking:rank:manhwa:drama|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "ranking:rank:manhwa:drama",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhwa:drama",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791837059857,
+   "status": "claimed"
   }
  ],
  "health": {
