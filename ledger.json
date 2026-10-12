@@ -1926,6 +1926,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108564625500964",
    "commentId": "122108564625500964_1422007389350764"
+  },
+  {
+   "key": "2026-10-12|next:130613|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:130613",
+   "title": "The Legendary Mechanic",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "130613",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791839777710,
+   "status": "claimed"
   }
  ],
  "health": {
