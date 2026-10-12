@@ -1294,6 +1294,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108437173500964",
    "commentId": "122108437173500964_1906732167368070"
+  },
+  {
+   "key": "2026-10-12|next:135325|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:135325",
+   "title": "The Lazy Lord Masters the Sword",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "135325",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791829485295,
+   "status": "claimed"
   }
  ],
  "health": {
