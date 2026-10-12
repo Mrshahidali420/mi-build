@@ -159,6 +159,24 @@
    "status": "posted",
    "postId": "1318170941390322_122108182971500964",
    "commentId": "122108182971500964_2015852045780615"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-12|reel-next:117460|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "reel-next:117460",
+   "title": "Overgeared",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "117460",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791810720807,
+   "track": "fast-fight.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
