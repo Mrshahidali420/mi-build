@@ -1813,6 +1813,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108544669500964",
    "commentId": "122108544669500964_1667203938322481"
+  },
+  {
+   "key": "2026-10-12|next:116353|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:116353",
+   "title": "The Devil Butler",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "116353",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791837964453,
+   "status": "claimed"
   }
  ],
  "health": {
