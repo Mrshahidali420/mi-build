@@ -1253,6 +1253,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108431431500964",
    "commentId": "122108431431500964_1628574972135902"
+  },
+  {
+   "key": "2026-10-12|fact:fact:98741:popular|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:98741:popular",
+   "title": "Wandering Witch: The Journey of Elaina",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:98741:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791828882226,
+   "status": "claimed"
   }
  ],
  "health": {
