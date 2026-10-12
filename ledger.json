@@ -1682,6 +1682,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108521329500964",
    "commentId": "122108521329500964_1846214526805221"
+  },
+  {
+   "key": "2026-10-12|fact:fact:107966:run|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:107966:run",
+   "title": "My Wife is the Demon Queen",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:107966:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791835853756,
+   "status": "claimed"
   }
  ],
  "health": {
