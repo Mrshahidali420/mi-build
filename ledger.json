@@ -1592,6 +1592,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108505315500964",
    "commentId": "122108505315500964_1422428082577804"
+  },
+  {
+   "key": "2026-10-12|fact:fact:66719:popular|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:66719:popular",
+   "title": "The Devil is a Part-Timer!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:66719:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791834333725,
+   "status": "claimed"
   }
  ],
  "health": {
