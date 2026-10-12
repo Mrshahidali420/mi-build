@@ -289,6 +289,22 @@
    "status": "posted",
    "postId": "2033164114069148",
    "commentId": "2033164114069148_1444987101104887"
+  },
+  {
+   "key": "2026-10-12|where:180891|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "where:180891",
+   "title": "Absolute Regression",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "180891",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791812829144,
+   "status": "claimed"
   }
  ],
  "health": {
