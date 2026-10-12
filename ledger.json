@@ -739,6 +739,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108326803500964",
    "commentId": "122108326803500964_851031721404848"
+  },
+  {
+   "key": "2026-10-12|new-title:214751|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "new-title:214751",
+   "title": "Finding the Invisible Star",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:new-title",
+   "type": "new-title",
+   "item": "214751",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791820405475,
+   "status": "claimed"
   }
  ],
  "health": {
