@@ -901,6 +901,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108367891500964",
    "commentId": "122108367891500964_1111909195064862"
+  },
+  {
+   "key": "2026-10-12|fact:fact:46816:popular|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:46816:popular",
+   "title": "Durarara!!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:46816:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791823122603,
+   "status": "claimed"
   }
  ],
  "health": {
