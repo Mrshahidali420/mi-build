@@ -1366,6 +1366,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108453049500964",
    "commentId": "122108453049500964_3169050056624528"
+  },
+  {
+   "key": "2026-10-12|fact:fact:85976:popular|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:85976:popular",
+   "title": "Overlord",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:85976:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791830690190,
+   "status": "claimed"
   }
  ],
  "health": {
