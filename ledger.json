@@ -703,6 +703,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108317743500964",
    "commentId": "122108317743500964_1670176101203627"
+  },
+  {
+   "key": "2026-10-12|next:85141|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:85141",
+   "title": "The God of High School",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85141",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791819801969,
+   "status": "claimed"
   }
  ],
  "health": {
