@@ -847,6 +847,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108356797500964",
    "commentId": "122108356797500964_1934422901275830"
+  },
+  {
+   "key": "2026-10-12|new-title:214750|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "new-title:214750",
+   "title": "Monkey Hunting",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:new-title",
+   "type": "new-title",
+   "item": "214750",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1791822217819,
+   "status": "claimed"
   }
  ],
  "health": {
