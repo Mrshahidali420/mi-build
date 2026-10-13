@@ -4293,6 +4293,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109304239500964",
    "commentId": "122109304239500964_1074292435446509"
+  },
+  {
+   "key": "2026-10-13|next:85162|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:85162",
+   "title": "Is It Wrong to Try to Pick Up Girls in a Dungeon?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85162",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791902751248,
+   "status": "claimed"
   }
  ],
  "health": {
