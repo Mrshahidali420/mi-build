@@ -3041,6 +3041,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108747259500964",
    "commentId": "122108747259500964_1427525856241108"
+  },
+  {
+   "key": "2026-10-12|character:char:131519|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "character:char:131519",
+   "title": "The Way of the Househusband",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:131519",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791857894882,
+   "status": "claimed"
   }
  ],
  "health": {
