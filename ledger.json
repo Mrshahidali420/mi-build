@@ -3917,6 +3917,24 @@
    "status": "posted",
    "postId": "1318170941390322_122109232113500964",
    "commentId": "122109232113500964_973087052535569"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-13|reel-next:74485|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "reel-next:74485",
+   "title": "The Seven Deadly Sins",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "74485",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791896701529,
+   "track": "happy-adventure.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
