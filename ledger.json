@@ -2784,6 +2784,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108696169500964",
    "commentId": "122108696169500964_1416226526695284"
+  },
+  {
+   "key": "2026-10-12|next:70171|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:70171",
+   "title": "My Youth Romantic Comedy Is Wrong, As I Expected",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "70171",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791853667511,
+   "status": "claimed"
   }
  ],
  "health": {
