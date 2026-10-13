@@ -4257,6 +4257,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109298725500964",
    "commentId": "122109298725500964_28575874822061975"
+  },
+  {
+   "key": "2026-10-13|character:char:88892|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "character:char:88892",
+   "title": "My Hero Academia",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:88892",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1791902136477,
+   "status": "claimed"
   }
  ],
  "health": {
