@@ -3023,6 +3023,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108741649500964",
    "commentId": "122108741649500964_2559673111168660"
+  },
+  {
+   "key": "2026-10-12|ranking:rank:manhwa:mystery|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "ranking:rank:manhwa:mystery",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhwa:mystery",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791857593471,
+   "status": "claimed"
   }
  ],
  "health": {
