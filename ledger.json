@@ -5272,6 +5272,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109530889500964",
    "commentId": "122109530889500964_4687284741555472"
+  },
+  {
+   "key": "2026-10-13|next:133038|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:133038",
+   "title": "The Villainess Flips the Script!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "133038",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791918769947,
+   "status": "claimed"
   }
  ],
  "health": {
