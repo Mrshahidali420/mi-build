@@ -3768,6 +3768,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109202893500964",
    "commentId": "122109202893500964_1157737616787179"
+  },
+  {
+   "key": "2026-10-13|character:char:66171|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "character:char:66171",
+   "title": "Horimiya",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:66171",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791894277768,
+   "status": "claimed"
   }
  ],
  "health": {
