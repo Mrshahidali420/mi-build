@@ -3524,6 +3524,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109144735500964",
    "commentId": "122109144735500964_1130391169939971"
+  },
+  {
+   "key": "2026-10-13|fact:fact:87216:popular|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:87216:popular",
+   "title": "Demon Slayer: Kimetsu no Yaiba",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:87216:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791890351359,
+   "status": "claimed"
   }
  ],
  "health": {
