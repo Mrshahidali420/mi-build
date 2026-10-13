@@ -2576,6 +2576,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108666247500964",
    "commentId": "122108666247500964_1087495227624167"
+  },
+  {
+   "key": "2026-10-12|where:124056|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "where:124056",
+   "title": "My Secretly Hot Husband",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "124056",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791850343377,
+   "status": "claimed"
   }
  ],
  "health": {
