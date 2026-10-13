@@ -2856,6 +2856,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108708391500964",
    "commentId": "122108708391500964_4398678453609491"
+  },
+  {
+   "key": "2026-10-12|fact:fact:101242:run|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:101242:run",
+   "title": "The Return of the Superhero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:101242:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791854872286,
+   "status": "claimed"
   }
  ],
  "health": {
