@@ -4871,6 +4871,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109426861500964",
    "commentId": "122109426861500964_2530848164092118"
+  },
+  {
+   "key": "2026-10-13|fact:fact:94970:popular|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:94970:popular",
+   "title": "Classroom of the Elite",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:94970:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791912115191,
+   "status": "claimed"
   }
  ],
  "health": {
