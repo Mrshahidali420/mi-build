@@ -4835,6 +4835,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109418719500964",
    "commentId": "122109418719500964_1130304099520319"
+  },
+  {
+   "key": "2026-10-13|where:94846|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:94846",
+   "title": "The Saga of Tanya the Evil",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "94846",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791911511819,
+   "status": "claimed"
   }
  ],
  "health": {
