@@ -4406,6 +4406,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109324801500964",
    "commentId": "122109324801500964_1798140034759392"
+  },
+  {
+   "key": "2026-10-13|where:150744|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:150744",
+   "title": "The Esper's Game",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "150744",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791904560471,
+   "status": "claimed"
   }
  ],
  "health": {
