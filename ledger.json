@@ -4180,6 +4180,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109283221500964",
    "commentId": "122109283221500964_1640408158098526"
+  },
+  {
+   "key": "2026-10-13|next:170688|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:170688",
+   "title": "Killer Peter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "170688",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791900931064,
+   "status": "claimed"
   }
  ],
  "health": {
