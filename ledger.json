@@ -4889,6 +4889,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109430179500964",
    "commentId": "122109430179500964_958832437283611"
+  },
+  {
+   "key": "2026-10-13|next:146017|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:146017",
+   "title": "The Hero Returns",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "146017",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791912416951,
+   "status": "claimed"
   }
  ],
  "health": {
