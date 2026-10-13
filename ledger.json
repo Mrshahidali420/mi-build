@@ -5033,6 +5033,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109463047500964",
    "commentId": "122109463047500964_956103527093324"
+  },
+  {
+   "key": "2026-10-13|next:137168|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:137168",
+   "title": "Becoming the Monarch",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "137168",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791914841032,
+   "status": "claimed"
   }
  ],
  "health": {
