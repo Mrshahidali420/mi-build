@@ -5015,6 +5015,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109458319500964",
    "commentId": "122109458319500964_1534648231760876"
+  },
+  {
+   "key": "2026-10-13|fact:fact:101516:wait|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:101516:wait",
+   "title": "The Eternal Fool's Words of Wisdom: A Pawsitively Fantastic Adventure",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:101516:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791914539287,
+   "status": "claimed"
   }
  ],
  "health": {
