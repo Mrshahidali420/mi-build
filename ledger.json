@@ -3416,6 +3416,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109123483500964",
    "commentId": "122109123483500964_1041518342231909"
+  },
+  {
+   "key": "2026-10-13|fact:fact:30657:rated|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:30657:rated",
+   "title": "Real",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30657:rated",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791888542265,
+   "status": "claimed"
   }
  ],
  "health": {
