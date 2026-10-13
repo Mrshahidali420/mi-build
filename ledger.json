@@ -4070,6 +4070,24 @@
    "status": "posted",
    "postId": "1318170941390322_122109258993500964",
    "commentId": "122109258993500964_1458514869538275"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-13|reel-next:122060|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "reel-next:122060",
+   "title": "See You in My 19th Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "122060",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791899120626,
+   "track": "winning-the-race.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
