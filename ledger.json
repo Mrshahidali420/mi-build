@@ -3876,6 +3876,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109223665500964",
    "commentId": "122109223665500964_2602639280183060"
+  },
+  {
+   "key": "2026-10-13|fact:fact:30051:rated|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:30051:rated",
+   "title": "Slam Dunk",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30051:rated",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791896097711,
+   "status": "claimed"
   }
  ],
  "health": {
