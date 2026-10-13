@@ -5290,6 +5290,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109534777500964",
    "commentId": "122109534777500964_1734722340966653"
+  },
+  {
+   "key": "2026-10-13|where:153432|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:153432",
+   "title": "The Reaper",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "153432",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791919071434,
+   "status": "claimed"
   }
  ],
  "health": {
