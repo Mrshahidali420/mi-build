@@ -109,8 +109,12 @@ export function toneOf(theme, name) {
   return { name: 'dark', bg: c.night, ink: c.paper, soft: withAlpha(c.paper, 0.62), line: withAlpha(c.paper, 0.2), pop: c.accent, block: c.accent }
 }
 
-/** Everything a template draws with, bound to one site's theme. */
-export function kitOf(theme, marks = {}) {
+/**
+ * Everything a template draws with, bound to one site's theme.
+ * @param words (text) => text; rewrites the line about the first comment
+ *   (Instagram has no clickable comment link: ig.mjs says "link in bio")
+ */
+export function kitOf(theme, marks = {}, { words = (text) => text } = {}) {
   const f = theme.font
 
   /** Text in the display face (names, numbers, headlines). */
@@ -169,7 +173,7 @@ export function kitOf(theme, marks = {}) {
 
   /** The line that sends the reader to the first comment, above the brand line. A small flat square, then plain type. */
   const cta = (value, tone) =>
-    row({ alignItems: 'center', marginBottom: 20, flexShrink: 0 }, box({ width: 16, height: 16, backgroundColor: tone.pop, marginRight: 14, flexShrink: 0 }), body({ fontSize: 25, fontWeight: f.textBold, color: tone.ink, lineHeight: 1.2 }, value))
+    row({ alignItems: 'center', marginBottom: 20, flexShrink: 0 }, box({ width: 16, height: 16, backgroundColor: tone.pop, marginRight: 14, flexShrink: 0 }), body({ fontSize: 25, fontWeight: f.textBold, color: tone.ink, lineHeight: 1.2 }, words(value)))
 
   /**
    * The closing line of every image: the mark, the site name, the address.

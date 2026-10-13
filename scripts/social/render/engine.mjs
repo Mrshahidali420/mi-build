@@ -167,7 +167,7 @@ export async function renderTree(tree, theme, { width = WIDTH, height = HEIGHT }
  * The picture for one post of one type.
  * @returns {Promise<{ png: Buffer, jpeg: Buffer }>}
  */
-export async function renderPost(type, post, { theme, fetch = globalThis.fetch } = {}) {
+export async function renderPost(type, post, { theme, fetch = globalThis.fetch, words } = {}) {
   const { sharp, marks } = await tools(theme)
   const first = await loadPostArt(post.art, { fetch, sharp })
   // A list post can leave out a tile whose cover is a blank placeholder, when it has another title to show.
@@ -180,7 +180,7 @@ export async function renderPost(type, post, { theme, fetch = globalThis.fetch }
   const assets = type.assets ? await type.assets({ sharp }) : {}
   const view = { ...shown.view, art, assets }
   // Most images are 1080x1350; a type may size its own from the art (size(), a raw picture).
-  const png = await renderTree(type.template(view, kitOf(theme, marks)), theme, type.size?.(view))
+  const png = await renderTree(type.template(view, kitOf(theme, marks, { words })), theme, type.size?.(view))
   const jpeg = await sharp(png).jpeg({ quality: JPEG_QUALITY, chromaSubsampling: '4:4:4' }).toBuffer()
   return { png, jpeg }
 }

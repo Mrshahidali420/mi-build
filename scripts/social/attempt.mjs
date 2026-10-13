@@ -57,8 +57,8 @@ async function oneStep({ kinds: all, data, pools, resolveImage, render, preview,
  * @param onError called with the error of a failed Graph call
  * @returns one of STEP
  */
-export async function attemptOnce({ s, graph, book, kinds, rng, blockedTags, out, resolveImage, render, preview, clock, sleep }, { loaded, skip, slotsLeft, onError }) {
+export async function attemptOnce({ s, graph, ig = null, book, kinds, rng, blockedTags, out, resolveImage, render, preview, clock, sleep }, { loaded, skip, slotsLeft, onError }) {
   const now = clock()
   const history = historyOf((await book.read()).data)
-  return oneStep({ s, graph, book, kinds, pools: loaded.pools, data: loaded.data, now, day: dayOf(now), rng, blockedTags, out, resolveImage, render, preview, history, skip, slotsLeft, onError, sleep })
+  return oneStep({ s, graph, ig, book, kinds, pools: loaded.pools, data: loaded.data, now, day: dayOf(now), rng, blockedTags, out, resolveImage, render, preview, history, skip, slotsLeft, onError, sleep })
 }

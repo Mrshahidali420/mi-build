@@ -21,8 +21,11 @@ import { claim, settle, dayOf, keyOf } from './ledger.mjs'
 import { pickNext } from './pick.mjs'
 import { slugOf } from './plan.mjs'
 import { SITE, commentFor, commentOf, linkOf } from './site.mjs'
+import { crossPost, igDryLine, igWords } from './ig.mjs'
 
 export const STEP = { posted: 'posted', skipped: 'skipped', none: 'none', failed: 'failed' }
+/** Inside publish() only: the Facebook post itself failed, so nothing goes anywhere else. */
+const POST_FAILED = 'post-failed'
 
 const quote = (text) => text.split('\n').map((line) => `> ${line}`)
 
@@ -34,7 +37,14 @@ function describe({ heading, image, path, caption, comment, now }) {
  * The irreversible part: the photo, then the link comment, then the ledger.
  * @param send () => Promise<{ postId }> the Graph call that makes the post
  */
-export async function publish({ graph, book, entry, send, comment, plain = null, out, name, onError = () => {} }) {
+export async function publish({ graph, book, entry, send, comment, plain = null, out, name, onError = () => {}, after = null }) {
+  const step = await post({ graph, book, entry, send, comment, plain, out, name, onError })
+  // The Facebook post exists (with or without its comment): the other places get it now (ig.mjs).
+  if (after && step !== POST_FAILED) await after()
+  return step === POST_FAILED ? STEP.failed : step
+}
+
+async function post({ graph, book, entry, send, comment, plain, out, name, onError }) {
   let postId
   try {
     postId = (await send()).postId
@@ -42,7 +52,7 @@ export async function publish({ graph, book, entry, send, comment, plain = null,
     onError(error)
     await settle(book, entry.key, { status: 'failed', error: error.message })
     out.push(`**Post failed** for ${name}: ${error.message}. Marked failed in the ledger; not retried.`)
-    return STEP.failed
+    return POST_FAILED
   }
   try {
     const { commentId } = await graph.comment(postId, comment)
@@ -69,7 +79,7 @@ export async function publish({ graph, book, entry, send, comment, plain = null,
 }
 
 /** The classic post: a cover by its address, and a caption. */
-export async function classicStep({ s, graph, book, pools, history, now, day, rng, skip, blockedTags, slotsLeft, out, resolveImage, onError }) {
+export async function classicStep({ s, graph, ig = null, book, pools, history, now, day, rng, skip, blockedTags, slotsLeft, out, resolveImage, onError, sleep }) {
   const pick = pickNext({ pools, history, now, rng, skip, blockedTags, slotsLeft })
   if (!pick) return STEP.none
   const c = pick.candidate
@@ -84,12 +94,17 @@ export async function classicStep({ s, graph, book, pools, history, now, day, rn
   const image = c.image ? (await resolveImage(c.image)).url : null
   const comment = commentOf(c, { affiliate: s.affiliate })
   out.push(describe({ heading: `${pick.mix.toUpperCase()} · ${pick.format} · ${c.title}`, image, path: c.path, caption: pick.caption, comment, now }))
+  const igEntry = image ? entry : { ...entry, type: 'text' }
   if (s.dry) {
+    const line = igDryLine({ ig, history, now, entry: igEntry })
+    if (line) out.push(line, '')
     await settle(book, entry.key, { status: 'dry' })
     return STEP.posted
   }
   const send = () => (image ? graph.publishPhoto({ url: image, caption: pick.caption }) : graph.publishText({ message: pick.caption }))
-  return publish({ graph, book, entry, send, comment, out, name: c.title, onError })
+  // Instagram takes pictures only: a text post stays on Facebook.
+  const after = ig && image ? () => crossPost({ ig, graph, book, entry, history, now, out, caption: pick.caption, image: { url: image }, sleep }) : null
+  return publish({ graph, book, entry, send, comment, out, name: c.title, onError, after })
 }
 
 /** The ledger entry of a template post. */
@@ -134,7 +149,7 @@ function mediumOf(type, made, { graph, caption, sleep }) {
 /** The music of the last reel in the ledger: the next reel takes another track. */
 const lastTrack = (history = []) => history.findLast((e) => e.reel && e.track)?.track || null
 
-export async function typedStep({ s, graph, book, plan, now, day, skip, out, render, preview, onError, sleep, history }) {
+export async function typedStep({ s, graph, ig = null, book, plan, now, day, skip, out, render, preview, onError, sleep, history }) {
   const { type, post, caption } = plan
   const name = post.title || `${type.name} (${post.item})`
   let picture
@@ -155,13 +170,22 @@ export async function typedStep({ s, graph, book, plan, now, day, skip, out, ren
   const comment = commentFor(post, { affiliate: s.affiliate })
   const medium = mediumOf(type, picture, { graph, caption, sleep })
   out.push(describe({ heading: `${type.reel ? 'REEL' : 'TEMPLATE'} · ${type.key} · ${name}`, image: medium.line, path: post.path, caption, comment, now }))
+  // The Instagram picture: a raw one (fan art, cosplay) carries no words and is used as it is;
+  // any other is drawn again with "link in bio" for the line about the first comment.
+  const igPicture = async () => (type.size ? picture.jpeg : (await render(type, post, { words: igWords })).jpeg)
   if (s.dry) {
-    if (preview) await preview(`${entry.slug.replace(/[^a-z0-9-]+/gi, '-')}.${medium.file}`, medium.bytes)
+    const name = entry.slug.replace(/[^a-z0-9-]+/gi, '-')
+    if (preview) await preview(`${name}.${medium.file}`, medium.bytes)
+    const line = igDryLine({ ig, history, now, entry })
+    if (line) out.push(line, '')
+    const igBytes = line && preview && !type.reel && !type.size ? await igPicture().catch(() => null) : null
+    if (igBytes) await preview(`${name}.instagram.jpg`, igBytes)
     await settle(book, entry.key, { status: 'dry' })
     return STEP.posted
   }
   // The chain must know a failed call was a reel's: a reel never stops the other posts (chain.mjs).
   const onFail = (error) => onError?.(type.reel ? Object.assign(error, { reel: true }) : error)
   const plain = commentFor({ ...post, credit: null }, { affiliate: false })
-  return publish({ graph, book, entry, send: medium.send, comment, plain, out, name, onError: onFail })
+  const after = ig ? () => crossPost({ ig, graph, book, entry, history, now, out, caption, image: { make: igPicture }, sleep }) : null
+  return publish({ graph, book, entry, send: medium.send, comment, plain, out, name, onError: onFail, after })
 }
