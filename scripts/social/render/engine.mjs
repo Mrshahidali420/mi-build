@@ -131,7 +131,8 @@ export async function loadArt(url, { fetch = globalThis.fetch, sharp, size = ART
  */
 export async function loadPostArt(art = {}, deps) {
   const [hero, thumbs, wide] = await Promise.all([
-    art.hero ? loadArt(art.hero, { ...deps, size: ART_SIZE.hero }) : null,
+    // A type that shows the picture raw asks for it larger (art.heroSize, its longest side).
+    art.hero ? loadArt(art.hero, { ...deps, size: art.heroSize || ART_SIZE.hero }) : null,
     Promise.all((art.thumbs || []).map((url) => loadArt(url, { ...deps, size: ART_SIZE.thumb }))),
     art.banner ? loadArt(art.banner, { ...deps, size: ART_SIZE.banner }) : null,
   ])
@@ -177,7 +178,9 @@ export async function renderPost(type, post, { theme, fetch = globalThis.fetch }
   const art = shown === post ? first : await loadPostArt(shown.art, { fetch, sharp })
   // A type may bring pictures of its own from the repo (flags, say): assets() hands them to its template.
   const assets = type.assets ? await type.assets({ sharp }) : {}
-  const png = await renderTree(type.template({ ...shown.view, art, assets }, kitOf(theme, marks)), theme)
+  const view = { ...shown.view, art, assets }
+  // Most images are 1080x1350; a type may size its own from the art (size(), a raw picture).
+  const png = await renderTree(type.template(view, kitOf(theme, marks)), theme, type.size?.(view))
   const jpeg = await sharp(png).jpeg({ quality: JPEG_QUALITY, chromaSubsampling: '4:4:4' }).toBuffer()
   return { png, jpeg }
 }

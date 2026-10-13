@@ -252,8 +252,13 @@ title, so it never stops (or is stopped by) an episode card the same day.
 ### `fanart` and `cosplay` (off until named)
 
 A picture of one character of a comic, manhwa or novel that has a page here: fan art, or a
-photo of someone in that character's costume. The picture is the hero,
-whole, with the character's name above it and who made it under it.
+photo of someone in that character's costume. The picture is posted
+raw (owner decision 13 Oct 2026): edge to edge at its own shape, with no
+frame and no type on it, and one thin strip under it with only the site
+mark, the site name and the address. The image is 1080 wide and as tall as
+the picture needs (a very tall one is capped at 1920 and centred, so it
+stays whole). The character, who made it and the link are in the caption
+and the first comment.
 
 - **Source:** Danbooru (danbooru.donmai.us), no key. Fan art: each hour four
   lead characters of popular titles are looked up as Danbooru character

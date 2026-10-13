@@ -59,11 +59,15 @@ test('types: every type finds a post in the sample data, and every wording passe
 test('types: every image tree is whole (the right size, no missing text, sized pictures)', () => {
   for (const type of TYPES) {
     for (const post of postsOf(type)) {
-      const tree = type.template({ ...post.view, art: fakeArt(post) }, kit)
-      assert.deepEqual([tree.props.style.width, tree.props.style.height], [W, H], type.key)
+      const view = { ...post.view, art: fakeArt(post) }
+      const tree = type.template(view, kit)
+      // A raw picture (fan art, cosplay) sizes its own image; every other one is 1080x1350.
+      const size = type.size ? type.size(view) : { width: W, height: H }
+      assert.deepEqual([tree.props.style.width, tree.props.style.height], [size.width, size.height], type.key)
       const { texts, images } = walk(tree)
       assert.ok(texts.includes('Fixture Index') && texts.includes('example.com'), `${type.key}: the site name and address close every image`)
-      assert.ok(texts.some((text) => /link in the first comment$/.test(text)), `${type.key}: every image points at the first comment`)
+      // A raw picture carries only the site name and address; the caption points at the first comment.
+      if (!type.size) assert.ok(texts.some((text) => /link in the first comment$/.test(text)), `${type.key}: every image points at the first comment`)
       for (const text of texts) assert.doesNotMatch(text, /undefined|null|NaN|\[object/, `${type.key}: ${text}`)
       for (const image of images) assert.ok(image.width > 0 && image.height > 0 && image.src, `${type.key}: a picture without a size`)
       // A missing small picture leaves a flat panel, never a hole in the tree.
