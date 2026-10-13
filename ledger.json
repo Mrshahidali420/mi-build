@@ -4704,6 +4704,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109393897500964",
    "commentId": "122109393897500964_1591187428617346"
+  },
+  {
+   "key": "2026-10-13|fact:fact:101072:run|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:101072:run",
+   "title": "Wonder Cat Kyuu-chan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:101072:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791909394397,
+   "status": "claimed"
   }
  ],
  "health": {
