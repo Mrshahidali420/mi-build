@@ -4311,6 +4311,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109307647500964",
    "commentId": "122109307647500964_2324056195085151"
+  },
+  {
+   "key": "2026-10-13|where:147027|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:147027",
+   "title": "Returning With Absolutely Nothing",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "147027",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791903052678,
+   "status": "claimed"
   }
  ],
  "health": {
