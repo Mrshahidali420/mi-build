@@ -2594,6 +2594,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108668317500964",
    "commentId": "122108668317500964_1651949943125935"
+  },
+  {
+   "key": "2026-10-12|ranking:rank:manhua:supernatural|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "ranking:rank:manhua:supernatural",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhua:supernatural",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791850644670,
+   "status": "claimed"
   }
  ],
  "health": {
