@@ -3231,6 +3231,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108802909500964",
    "commentId": "122108802909500964_2205465070405209"
+  },
+  {
+   "key": "2026-10-12|where:103854|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "where:103854",
+   "title": "Light and Shadow",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103854",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791860920792,
+   "status": "claimed"
   }
  ],
  "health": {
