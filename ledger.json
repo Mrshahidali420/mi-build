@@ -3822,6 +3822,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109212979500964",
    "commentId": "122109212979500964_1987300081879372"
+  },
+  {
+   "key": "2026-10-13|where:134191|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:134191",
+   "title": "After School Lessons for Unripe Apples",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "134191",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791895193572,
+   "status": "claimed"
   }
  ],
  "health": {
