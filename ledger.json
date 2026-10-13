@@ -4853,6 +4853,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109422763500964",
    "commentId": "122109422763500964_1176282001394060"
+  },
+  {
+   "key": "2026-10-13|character:char:40|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "character:char:40",
+   "title": "One Piece",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:40",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791911813728,
+   "status": "claimed"
   }
  ],
  "health": {
