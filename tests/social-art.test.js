@@ -7,13 +7,14 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { kindsNow, RARE_EVERY } from '../scripts/social/attempt.mjs'
-import { characterTag, originalOf, tagName, tagVariants, toItem } from '../scripts/social/art/danbooru.mjs'
+import { characterTag, creditUrl, originalOf, tagName, tagVariants, toItem } from '../scripts/social/art/danbooru.mjs'
 import { charactersFor, ecchiAllowed, loadArt, sameSeries, seenOf, titleFor, ECCHI_EVERY } from '../scripts/social/art/load.mjs'
 import { ecchiOf, isSafe, unsafeReason } from '../scripts/social/art/safe.mjs'
+import { GraphError } from '../scripts/social/fb.mjs'
 import { memoryStore } from '../scripts/social/ledger.mjs'
 import { captionFor } from '../scripts/social/plan.mjs'
 import { kitOf } from '../scripts/social/render/parts.mjs'
-import { typedEntry } from '../scripts/social/send.mjs'
+import { publish, STEP, typedEntry } from '../scripts/social/send.mjs'
 import { commentFor } from '../scripts/social/site.mjs'
 import { artType, RAW } from '../scripts/social/types/art-card.mjs'
 import { NOW, BLOCKED } from './social-kit.mjs'
@@ -62,7 +63,16 @@ test('danbooru: a recorded post becomes the common shape, with the credit and th
   assert.equal(art.rating, 'g')
   assert.ok(art.series.includes('sousou_no_frieren'))
   assert.ok(art.image.startsWith('https://cdn.donmai.us/'))
-  assert.ok(art.credit.name && art.credit.url.startsWith('http'))
+  // Its source is a lofter page, which is not a known artist site: the credit is the name alone.
+  assert.ok(art.credit.name)
+  assert.equal(art.credit.url, null)
+  assert.equal(toItem(REC.fanart[1]).credit.url, REC.fanart[1].source) // an x.com post is linked
+  // Only artist sites are linked; an image board Facebook refuses (yande.re) never is.
+  assert.equal(creditUrl('https://files.yande.re/image/56e0/yande.re%20537641.png'), null)
+  assert.equal(creditUrl('https://danbooru.donmai.us/posts/1'), null)
+  assert.equal(creditUrl('https://notpixiv.net.example.com/a'), null)
+  assert.equal(creditUrl('https://www.pixiv.net/artworks/141163346'), 'https://www.pixiv.net/artworks/141163346')
+  assert.equal(creditUrl(null), null)
   // A big original is taken as Danbooru's sample, which the slow host serves quickly.
   const big = REC.fanart.find((p) => p.file_size > 2_500_000)
   if (big) assert.equal(toItem(big).image, big.large_file_url)
@@ -166,4 +176,28 @@ test('type: words, the ledger record, the credit line, and the picture as the he
   assert.equal(commentFor(bare).split('\n').length, 1)
   // A title of the other verb (a comic on an anime Page) is never used.
   assert.equal(type.find({ art: { fanart: [{ ...picture, title: { ...FRIEREN, verb: 'read' } }] } }, { now: NOW }).length, 0)
+})
+
+test('send: a credit link Facebook refuses is dropped and the site link still goes in; the chain is not stopped', async () => {
+  const refused = new GraphError('POST /p1/comments failed: yande.re\n\nYour content couldn\'t be shared, because this link goes against our Community Standards', { status: 400, code: 1, type: 'OAuthException' })
+  // Graph labels this OAuthException, but it is not a token problem.
+  assert.equal(refused.isAuth, false)
+  assert.equal(new GraphError('expired', { code: 190, type: 'OAuthException' }).isAuth, true)
+  assert.equal(new GraphError('no permission', { status: 403, code: 200, type: 'OAuthException' }).isAuth, true)
+  const book = memoryStore({ entries: [{ key: 'k1', status: 'claimed' }] })
+  const said = []
+  const errors = []
+  const comment = 'Where to read it: https://site/x\nArt by Unacchi: https://files.yande.re/a.png'
+  const plain = 'Where to read it: https://site/x'
+  const graph = { comment: async (id, message) => (message === comment ? Promise.reject(refused) : { commentId: 'c2' }) }
+  const step = await publish({ graph, book, entry: { key: 'k1' }, send: async () => ({ postId: 'p1' }), comment, plain, out: said, name: 'Juliet', onError: (e) => errors.push(e) })
+  assert.equal(step, STEP.posted)
+  assert.equal(errors.length, 0)
+  const [entry] = (await book.read()).data.entries
+  assert.deepEqual([entry.status, entry.postId, entry.commentId], ['posted', 'p1', 'c2'])
+  assert.match(said.join(''), /without the credit link/)
+  // When the site link alone is refused too, the post stands and the failure is reported as before.
+  const none = { comment: async () => Promise.reject(refused) }
+  const book2 = memoryStore({ entries: [{ key: 'k1', status: 'claimed' }] })
+  assert.equal(await publish({ graph: none, book: book2, entry: { key: 'k1' }, send: async () => ({ postId: 'p1' }), comment, plain, out: [], name: 'Juliet' }), STEP.failed)
 })

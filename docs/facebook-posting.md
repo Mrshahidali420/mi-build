@@ -280,7 +280,13 @@ and the first comment.
   the picture's rating and whether it was ecchi-leaning.
 - **Credit:** the first comment's second line is "Art by <artist>: <where
   it was first posted>" ("Photo by" for cosplay), when Danbooru names the
-  artist. A pixiv file address becomes the artwork's page.
+  artist. A pixiv file address becomes the artwork's page. Only artist
+  sites are linked (pixiv, fanbox, X, ArtStation, DeviantArt, Instagram,
+  Bluesky, Reddit, Tumblr, Skeb, YouTube); any other source (an image
+  board such as yande.re, which Facebook refuses as against its Community
+  Standards) gives "Art by <artist>" with no link. If Facebook still
+  refuses the comment, it is sent again with the site link alone; the post
+  counts as posted and the chain goes on.
 - **Fails soft:** if Danbooru does not answer, there are no art posts that
   hour.
 

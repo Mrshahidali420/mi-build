@@ -28,7 +28,7 @@ export const affiliateOn = (env) => env.FB_AFFILIATE_COMMENT === 'true'
 export function commentFor(post, { affiliate = false } = {}) {
   const lines = [`${post.label}: ${linkOf(post.path)}`]
   // A picture someone made (fan art, a cosplay photo): who made it and where it was first posted.
-  if (post.credit?.label && post.credit.url) lines.push(`${post.credit.label}: ${post.credit.url}`)
+  if (post.credit?.label) lines.push(post.credit.url ? `${post.credit.label}: ${post.credit.url}` : post.credit.label)
   if (affiliate && post.shop?.url) lines.push(`${post.shop.label}: ${post.shop.url}`)
   return lines.join('\n')
 }
