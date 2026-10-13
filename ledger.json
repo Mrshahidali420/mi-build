@@ -5182,6 +5182,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109495159500964",
    "commentId": "122109495159500964_1074692198532571"
+  },
+  {
+   "key": "2026-10-13|fact:fact:64053:rated|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:64053:rated",
+   "title": "Umineko When They Cry Episode 8: Twilight of the Golden Witch",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:64053:rated",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791917262037,
+   "status": "claimed"
   }
  ],
  "health": {
