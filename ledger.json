@@ -4555,6 +4555,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109358455500964",
    "commentId": "122109358455500964_1699016598311351"
+  },
+  {
+   "key": "2026-10-13|next:147586|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:147586",
+   "title": "The Perks of Being an S-Class Heroine",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "147586",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791906981171,
+   "status": "claimed"
   }
  ],
  "health": {
