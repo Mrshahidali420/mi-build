@@ -4627,6 +4627,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109375621500964",
    "commentId": "122109375621500964_2322049965295944"
+  },
+  {
+   "key": "2026-10-13|next:173020|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:173020",
+   "title": "I Killed the Main Player",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "173020",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791908188298,
+   "status": "claimed"
   }
  ],
  "health": {
