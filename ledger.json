@@ -3975,6 +3975,22 @@
    "status": "posted",
    "postId": "28501289536233067",
    "commentId": "28501289536233067_3503638499844366"
+  },
+  {
+   "key": "2026-10-13|where:145966|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:145966",
+   "title": "Is This Hero for Real?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "145966",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791897606815,
+   "status": "claimed"
   }
  ],
  "health": {
