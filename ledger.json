@@ -4943,6 +4943,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109443757500964",
    "commentId": "122109443757500964_1038208335964615"
+  },
+  {
+   "key": "2026-10-13|fact:fact:30676:run|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:30676:run",
+   "title": "InuYasha",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30676:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791913332796,
+   "status": "claimed"
   }
  ],
  "health": {
