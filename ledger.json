@@ -5254,6 +5254,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109527139500964",
    "commentId": "122109527139500964_28639029252422527"
+  },
+  {
+   "key": "2026-10-13|fact:fact:86406:popular|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:86406:popular",
+   "title": "So I'm a Spider, So What?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:86406:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791918468574,
+   "status": "claimed"
   }
  ],
  "health": {
