@@ -3380,6 +3380,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108848779500964",
    "commentError": "POST /1318170941390322_122108848779500964/comments failed: yande.re\n\nYour content couldn't be shared, because this link goes against our Community Standards"
+  },
+  {
+   "key": "2026-10-13|birthday:bday:155648|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "birthday:bday:155648",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:birthday",
+   "type": "birthday",
+   "item": "bday:155648",
+   "gapDays": 330,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791887939206,
+   "status": "claimed"
   }
  ],
  "health": {
