@@ -3394,9 +3394,42 @@
   "halted": null
  },
  "birthdays": {
-  "day": "2026-10-12",
-  "at": 1791856980154,
-  "list": []
+  "day": "2026-10-13",
+  "at": 1791887929229,
+  "list": [
+   {
+    "id": 155648,
+    "name": "Soi Purson",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b155648-LxHHE9Mjx6si.jpg",
+    "favourites": 173,
+    "mediaId": 99324,
+    "voice": null
+   },
+   {
+    "id": 35286,
+    "name": "Izou",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b35286-8mzkLDbXLEz0.jpg",
+    "favourites": 171,
+    "mediaId": 30013,
+    "voice": null
+   },
+   {
+    "id": 149179,
+    "name": "Setsuna Tokage",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b149179-Z9TRzi7xZbas.png",
+    "favourites": 154,
+    "mediaId": 85486,
+    "voice": null
+   },
+   {
+    "id": 468,
+    "name": "Karin Maaka",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b468-1tkdnPn0IPfy.jpg",
+    "favourites": 147,
+    "mediaId": 30387,
+    "voice": null
+   }
+  ]
  },
  "artSeen": [
   "danbooru:12099104",
