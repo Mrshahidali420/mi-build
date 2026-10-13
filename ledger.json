@@ -4573,6 +4573,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109363201500964",
    "commentId": "122109363201500964_1133182859581961"
+  },
+  {
+   "key": "2026-10-13|where:135369|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:135369",
+   "title": "The Druid of Seoul Station",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "135369",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791907283678,
+   "status": "claimed"
   }
  ],
  "health": {
