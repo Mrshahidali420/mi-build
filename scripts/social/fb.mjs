@@ -48,9 +48,14 @@ export class GraphError extends Error {
     this.type = type
   }
 
-  /** A dead, expired or under-permissioned token: the owner has to act. */
+  /**
+   * A dead, expired or under-permissioned token: the owner has to act.
+   * Graph labels many other refusals OAuthException too (a link it will not
+   * carry, a rate limit), so the type alone never counts: only the token
+   * codes (190), the permission codes (10, 200-299) and a 401 do.
+   */
   get isAuth() {
-    return this.code === 190 || this.type === 'OAuthException' || this.status === 401
+    return this.code === 190 || this.code === 10 || (this.code >= 200 && this.code <= 299) || this.status === 401
   }
 }
 

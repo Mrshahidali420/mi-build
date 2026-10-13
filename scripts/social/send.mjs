@@ -34,7 +34,7 @@ function describe({ heading, image, path, caption, comment, now }) {
  * The irreversible part: the photo, then the link comment, then the ledger.
  * @param send () => Promise<{ postId }> the Graph call that makes the post
  */
-async function publish({ graph, book, entry, send, comment, out, name, onError = () => {} }) {
+export async function publish({ graph, book, entry, send, comment, plain = null, out, name, onError = () => {} }) {
   let postId
   try {
     postId = (await send()).postId
@@ -50,6 +50,17 @@ async function publish({ graph, book, entry, send, comment, out, name, onError =
     out.push(`Posted: ${postId}, link comment ${commentId}.`, '')
     return STEP.posted
   } catch (error) {
+    // Facebook refuses some links in a comment (an image host it bans): the site link alone still goes in.
+    if (plain && plain !== comment) {
+      try {
+        const { commentId } = await graph.comment(postId, plain)
+        await settle(book, entry.key, { status: 'posted', postId, commentId, commentError: error.message })
+        out.push(`Posted: ${postId}, link comment ${commentId} (without the credit link: ${error.message}).`, '')
+        return STEP.posted
+      } catch {
+        // Fall through: the post stands without its link comment.
+      }
+    }
     onError(error)
     await settle(book, entry.key, { status: 'posted', postId, commentError: error.message })
     out.push(`Posted ${postId}, but **the link comment failed**: ${error.message}. Add the link by hand on Facebook.`)
@@ -151,5 +162,6 @@ export async function typedStep({ s, graph, book, plan, now, day, skip, out, ren
   }
   // The chain must know a failed call was a reel's: a reel never stops the other posts (chain.mjs).
   const onFail = (error) => onError?.(type.reel ? Object.assign(error, { reel: true }) : error)
-  return publish({ graph, book, entry, send: medium.send, comment, out, name, onError: onFail })
+  const plain = commentFor({ ...post, credit: null }, { affiliate: false })
+  return publish({ graph, book, entry, send: medium.send, comment, plain, out, name, onError: onFail })
 }

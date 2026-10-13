@@ -45,6 +45,17 @@ export function originalOf(post) {
   return source
 }
 
+/**
+ * Sites an artist posts on, whose links Facebook carries. Any other address
+ * (an image board such as yande.re, which Facebook refuses as against its
+ * Community Standards, or Danbooru itself) is never linked: the credit is
+ * the artist's name alone.
+ */
+const ARTIST_HOSTS = /^https?:\/\/([a-z0-9-]+\.)*(pixiv\.net|fanbox\.cc|x\.com|twitter\.com|artstation\.com|deviantart\.com|instagram\.com|bsky\.app|reddit\.com|tumblr\.com|skeb\.jp|youtube\.com)(\/|$)/i
+
+/** The original address when Facebook will carry it, else null. */
+export const creditUrl = (url) => (url && ARTIST_HOSTS.test(url) ? url : null)
+
 /** One Danbooru post in the common shape, or null when it is not a usable still picture. */
 export function toItem(post) {
   if (!post?.id || !post.md5) return null
@@ -71,7 +82,7 @@ export function toItem(post) {
     series: words(post.tag_string_copyright),
     artist: artist ? tagName(artist) : null,
     page,
-    credit: artist ? { name: tagName(artist), url: original || page } : null,
+    credit: artist ? { name: tagName(artist), url: creditUrl(original) } : null,
     score: post.score || 0,
   }
 }
