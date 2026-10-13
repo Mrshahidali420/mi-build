@@ -5123,6 +5123,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109481431500964",
    "commentId": "122109481431500964_1385920803449500"
+  },
+  {
+   "key": "2026-10-13|where:123995|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:123995",
+   "title": "The Lady and the Beast",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "123995",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791916351867,
+   "status": "claimed"
   }
  ],
  "health": {
