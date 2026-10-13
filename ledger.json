@@ -4817,6 +4817,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109413667500964",
    "commentId": "122109413667500964_4531602790440800"
+  },
+  {
+   "key": "2026-10-13|next:127102|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:127102",
+   "title": "The Worn and Torn Newbie",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "127102",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791911210554,
+   "status": "claimed"
   }
  ],
  "health": {
