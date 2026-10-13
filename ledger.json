@@ -3560,6 +3560,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109154251500964",
    "commentId": "122109154251500964_1819157629119499"
+  },
+  {
+   "key": "2026-10-13|where:132165|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:132165",
+   "title": "Kill the Villainess",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "132165",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791890954400,
+   "status": "claimed"
   }
  ],
  "health": {
