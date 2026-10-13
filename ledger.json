@@ -5051,6 +5051,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109466191500964",
    "commentId": "122109466191500964_1640870668050830"
+  },
+  {
+   "key": "2026-10-13|where:119143|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:119143",
+   "title": "Gourmet Gaming",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "119143",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791915142626,
+   "status": "claimed"
   }
  ],
  "health": {
