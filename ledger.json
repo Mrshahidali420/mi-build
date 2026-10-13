@@ -4090,6 +4090,22 @@
    "status": "posted",
    "postId": "2959635431067625",
    "commentId": "2959635431067625_29189670124056328"
+  },
+  {
+   "key": "2026-10-13|next:137280|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:137280",
+   "title": "I’m the Max-Level Newbie",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "137280",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791899422059,
+   "status": "claimed"
   }
  ],
  "health": {
