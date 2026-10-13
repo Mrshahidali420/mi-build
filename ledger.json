@@ -3398,6 +3398,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109120603500964",
    "commentId": "122109120603500964_1828786991574286"
+  },
+  {
+   "key": "2026-10-13|character:char:718|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "character:char:718",
+   "title": "Monster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:718",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791888240732,
+   "status": "claimed"
   }
  ],
  "health": {
