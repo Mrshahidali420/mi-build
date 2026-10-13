@@ -3172,6 +3172,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108784741500964",
    "commentId": "122108784741500964_28664394083223985"
+  },
+  {
+   "key": "2026-10-12|fact:fact:30698:years|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "fact:fact:30698:years",
+   "title": "Neon Genesis Evangelion",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30698:years",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791860003547,
+   "status": "claimed"
   }
  ],
  "health": {
