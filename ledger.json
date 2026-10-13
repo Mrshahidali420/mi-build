@@ -4108,6 +4108,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109267267500964",
    "commentId": "122109267267500964_2253787741858826"
+  },
+  {
+   "key": "2026-10-13|where:103156|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:103156",
+   "title": "The Skeleton Soldier Failed to Defend the Dungeon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103156",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791899723432,
+   "status": "claimed"
   }
  ],
  "health": {
