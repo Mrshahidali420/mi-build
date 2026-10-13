@@ -4144,6 +4144,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109273735500964",
    "commentId": "122109273735500964_1447707870828210"
+  },
+  {
+   "key": "2026-10-13|character:char:71|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "character:char:71",
+   "title": "Death Note",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:71",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791900327746,
+   "status": "claimed"
   }
  ],
  "health": {
