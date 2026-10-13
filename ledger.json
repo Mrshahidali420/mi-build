@@ -2892,6 +2892,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108712669500964",
    "commentId": "122108712669500964_39659496946999341"
+  },
+  {
+   "key": "2026-10-12|where:132144|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "where:132144",
+   "title": "Return of the Blossoming Blade",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "132144",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791855474615,
+   "status": "claimed"
   }
  ],
  "health": {
