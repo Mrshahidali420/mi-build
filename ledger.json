@@ -5200,6 +5200,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109498327500964",
    "commentId": "122109498327500964_1679827850403881"
+  },
+  {
+   "key": "2026-10-13|next:105393|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:105393",
+   "title": "A Returner's Magic Should Be Special",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "105393",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791917563313,
+   "status": "claimed"
   }
  ],
  "health": {
