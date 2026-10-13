@@ -4442,6 +4442,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109333675500964",
    "commentId": "122109333675500964_4004607543168321"
+  },
+  {
+   "key": "2026-10-13|fact:fact:108428:popular|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:108428:popular",
+   "title": "The Eminence in Shadow",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:108428:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791905163532,
+   "status": "claimed"
   }
  ],
  "health": {
