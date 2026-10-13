@@ -4011,6 +4011,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109248037500964",
    "commentId": "122109248037500964_1803311411095707"
+  },
+  {
+   "key": "2026-10-13|character:char:17|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "character:char:17",
+   "title": "Naruto",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:17",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1791898209184,
+   "status": "claimed"
   }
  ],
  "health": {
