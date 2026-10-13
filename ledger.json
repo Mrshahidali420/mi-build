@@ -4686,6 +4686,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109389253500964",
    "commentId": "122109389253500964_3383268848527015"
+  },
+  {
+   "key": "2026-10-13|character:char:192792|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "character:char:192792",
+   "title": "Eleceed",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:192792",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1791909092893,
+   "status": "claimed"
   }
  ],
  "health": {
