@@ -333,6 +333,73 @@ Nothing is re-uploaded from anyone: the slides are our own.
   waits until Facebook has processed the reel, then adds the site link as the
   first comment on it.
 
+## Instagram (off until you switch it on)
+
+After a Facebook post goes through, the same post goes to the site's
+Instagram account (@manhwaindexofficial), from the same run
+(`scripts/social/ig.mjs`). Facebook stays the main Page: an Instagram
+failure is written on the post's ledger entry (`ig.error`) and said in the
+summary, and Facebook goes on as if nothing happened.
+
+What changes on Instagram:
+
+- **"Link in bio".** Links in an Instagram caption cannot be clicked, so the
+  caption line about the first comment becomes "🔗 Link in bio:
+  manhwaindex.com", and a template picture is drawn again with "link in
+  bio" in place of "link in the first comment". There is no first comment.
+  Fan art and cosplay say "Art by <artist>." in the caption.
+- **The shape.** Instagram takes pictures from 4:5 to 1.91:1. The template
+  pictures are 4:5 already. A taller picture (a cover, a tall fan art) is
+  placed whole, uncropped, on the site's night colour.
+- **How the picture gets there.** Instagram fetches a picture by its
+  address and takes no upload, so each picture is first kept on the Facebook
+  Page as an **unpublished** photo (it never shows in the feed) and
+  Instagram is given that photo's address.
+- **Its own pace.** At most `IG_POSTS_PER_DAY` posts in any 24 hours (8
+  unless set, 50 at most), spread evenly: a Facebook post goes to Instagram
+  only when the last Instagram post is far enough back. Reels stay on
+  Facebook for now. A text-only classic post (no cover) stays on Facebook.
+
+### Switch it on
+
+1. **Make the account professional.** In the Instagram app: Settings →
+   *Account type and tools* → *Switch to professional account* → **Business**
+   (Creator works too). Add the site logo as the profile picture and
+   `manhwaindex.com` as the website (the "link in bio").
+2. **Link it to the Facebook Page.** On Facebook, open the Page → Settings →
+   *Linked accounts* → Instagram → **Connect**, and log in to
+   @manhwaindexofficial.
+3. **Give the app the Instagram permissions.** In the Meta app from step 2,
+   add `instagram_basic` and `instagram_content_publish` (Standard access is
+   enough for an account you own).
+4. **Make a new Page token** exactly as in step 3, ticking the four Page
+   permissions **and** the two Instagram ones. Put it in the
+   `FB_PAGE_TOKEN` secret (it replaces the old one and still posts to
+   Facebook). If you would rather keep the Facebook token as it is, put the
+   new one in an `IG_TOKEN` secret instead.
+5. **Find the Instagram account id.** In the Graph API Explorer, with the
+   Page token, run `<page-id>?fields=instagram_business_account`. Copy the
+   `id` inside `instagram_business_account` (a long number starting
+   with 178...).
+6. **Put it in GitHub** (Settings → Secrets and variables → Actions):
+   - secret `IG_USER_ID`: that id
+   - variable `IG_POSTS_PER_DAY` (optional): e.g. `8`
+   - variable `IG_POST_TYPES` (optional): only these kinds go to Instagram,
+     e.g. `classic,where,fanart,cosplay`; every kind Facebook posts when
+     unset
+7. **Look first.** Actions → *Facebook Page post* → Run workflow with
+   `dry_run` ticked, after setting the variable `IG_POST_ENABLED` to `true`.
+   The summary says, for each post, whether Instagram would get it, and the
+   `fb-preview` artifact holds the Instagram pictures (`*.instagram.jpg`)
+   beside the Facebook ones. The run also checks the token and names the
+   Instagram account it reached.
+8. With `IG_POST_ENABLED` set to `true`, the next run of the chain posts to
+   Instagram too. Set it to anything else to stop; Facebook is untouched.
+
+If the summary says "the account check failed", the token lacks the
+Instagram permissions or `IG_USER_ID` is wrong: Instagram sits that run out
+and Facebook posts as usual.
+
 ## What every post carries
 
 A post exists to send people to the site, so each one is built the same way:
