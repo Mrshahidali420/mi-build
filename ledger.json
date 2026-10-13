@@ -3303,6 +3303,22 @@
    "status": "posted",
    "postId": "1318170941390322_122108825655500964",
    "commentId": "122108825655500964_2169970660605659"
+  },
+  {
+   "key": "2026-10-12|next:166154|manhwaindex",
+   "day": "2026-10-12",
+   "slug": "next:166154",
+   "title": "The Player Hides His Past",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "166154",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1791862125223,
+   "status": "claimed"
   }
  ],
  "health": {
