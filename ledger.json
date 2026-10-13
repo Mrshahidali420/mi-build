@@ -4740,6 +4740,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109399819500964",
    "commentId": "122109399819500964_1748726732910077"
+  },
+  {
+   "key": "2026-10-13|where:113524|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:113524",
+   "title": "I Was Tricked into this Fake Marriage!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "113524",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791910004248,
+   "status": "claimed"
   }
  ],
  "health": {
