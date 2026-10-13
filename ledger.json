@@ -4961,6 +4961,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109447225500964",
    "commentId": "122109447225500964_1934215790886510"
+  },
+  {
+   "key": "2026-10-13|next:163824|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:163824",
+   "title": "Revenge of the Baskerville Bloodhound",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "163824",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791913634771,
+   "status": "claimed"
   }
  ],
  "health": {
