@@ -5218,6 +5218,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109505557500964",
    "commentId": "122109505557500964_1052431951184025"
+  },
+  {
+   "key": "2026-10-13|where:117536|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "where:117536",
+   "title": "Kill the Hero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "117536",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791917865969,
+   "status": "claimed"
   }
  ],
  "health": {
