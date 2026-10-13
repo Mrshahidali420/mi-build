@@ -4776,6 +4776,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109404961500964",
    "commentId": "122109404961500964_28935415072737215"
+  },
+  {
+   "key": "2026-10-13|fact:fact:39115:popular|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "fact:fact:39115:popular",
+   "title": "Spice & Wolf",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:39115:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1791910606980,
+   "status": "claimed"
   }
  ],
  "health": {
