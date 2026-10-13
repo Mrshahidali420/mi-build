@@ -4722,6 +4722,22 @@
    "status": "posted",
    "postId": "1318170941390322_122109396711500964",
    "commentId": "122109396711500964_2637622696686559"
+  },
+  {
+   "key": "2026-10-13|next:164857|manhwaindex",
+   "day": "2026-10-13",
+   "slug": "next:164857",
+   "title": "Surviving the Game as a Barbarian",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "164857",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1791909703001,
+   "status": "claimed"
   }
  ],
  "health": {
