@@ -171,10 +171,14 @@ export function kitOf(theme, marks = {}) {
   const cta = (value, tone) =>
     row({ alignItems: 'center', marginBottom: 20, flexShrink: 0 }, box({ width: 16, height: 16, backgroundColor: tone.pop, marginRight: 14, flexShrink: 0 }), body({ fontSize: 25, fontWeight: f.textBold, color: tone.ink, lineHeight: 1.2 }, value))
 
-  /** The closing line of every image: the mark, the site name, the address. `scale` makes it larger on a taller canvas (a reel). */
-  const brand = (tone, scale = 1) =>
+  /**
+   * The closing line of every image: the mark, the site name, the address.
+   * `scale` makes it larger on a taller canvas (a reel); `style` replaces the
+   * hairline and the space above it (a strip under a raw picture).
+   */
+  const brand = (tone, scale = 1, style = {}) =>
     row(
-      { alignItems: 'center', justifyContent: 'space-between', borderTop: `2px solid ${tone.line}`, paddingTop: Math.round(22 * scale), flexShrink: 0 },
+      { alignItems: 'center', justifyContent: 'space-between', borderTop: `2px solid ${tone.line}`, paddingTop: Math.round(22 * scale), flexShrink: 0, ...style },
       row(
         { alignItems: 'center' },
         marks[tone.name] && { type: 'img', props: { src: marks[tone.name], width: Math.round(44 * scale), height: Math.round(44 * scale), style: { marginRight: Math.round(14 * scale) } } },

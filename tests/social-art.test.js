@@ -15,7 +15,7 @@ import { captionFor } from '../scripts/social/plan.mjs'
 import { kitOf } from '../scripts/social/render/parts.mjs'
 import { typedEntry } from '../scripts/social/send.mjs'
 import { commentFor } from '../scripts/social/site.mjs'
-import { artType } from '../scripts/social/types/art-card.mjs'
+import { artType, RAW } from '../scripts/social/types/art-card.mjs'
 import { NOW, BLOCKED } from './social-kit.mjs'
 import { walk } from './social-data.mjs'
 
@@ -147,10 +147,20 @@ test('type: words, the ledger record, the credit line, and the picture as the he
   assert.match(comment[1], /^Art by .+: https?:\/\//)
   const entry = typedEntry({ type, post, variant: 0 }, '2026-10-12', NOW)
   assert.deepEqual([entry.rare, entry.rating, entry.ecchi, entry.hash], [true, 'g', false, picture.hash])
-  const tree = type.template({ ...post.view, art: { hero: { src: 'data:image/jpeg;base64,AA==', ratio: 0.7 }, thumbs: [] } }, kitOf({ name: 'X', domain: 'x.com', color: { night: '#000000', raised: '#111111', accent: '#ff0000', paper: '#ffffff' }, font: {} }, {}))
+  // The image is the picture raw, full width at its own shape, with only the site name and address under it.
+  const kit = kitOf({ name: 'X', domain: 'x.com', color: { night: '#000000', raised: '#111111', accent: '#ff0000', paper: '#ffffff' }, font: {} }, {})
+  const view = { ...post.view, art: { hero: { src: 'data:image/jpeg;base64,AA==', ratio: 0.7 }, thumbs: [] } }
+  const tree = type.template(view, kit)
   const { texts, images } = walk(tree)
-  assert.ok(texts.includes('Fan art') && texts.includes('Frieren'))
+  assert.deepEqual(texts, ['X', 'x.com'])
   assert.equal(images.length, 1)
+  assert.deepEqual([images[0].width, images[0].height], [1080, 1543])
+  assert.deepEqual(type.size(view), { width: 1080, height: 1543 + RAW.strip })
+  assert.deepEqual([tree.props.style.width, tree.props.style.height], [1080, 1543 + RAW.strip])
+  // A very tall picture is kept whole: no taller than RAW.maxArt, centred and narrower.
+  const tall = { ...view, art: { hero: { src: 'data:image/jpeg;base64,AA==', ratio: 0.25 }, thumbs: [] } }
+  assert.deepEqual(type.size(tall), { width: 1080, height: RAW.maxArt + RAW.strip })
+  assert.deepEqual([walk(type.template(tall, kit)).images[0].width, walk(type.template(tall, kit)).images[0].height], [480, RAW.maxArt])
   // Without an artist the credit line is left out, and the picture is still used.
   const [bare] = type.find({ art: { fanart: [{ ...picture, artist: null, credit: null }] } }, { now: NOW })
   assert.equal(commentFor(bare).split('\n').length, 1)

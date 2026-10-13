@@ -7,10 +7,11 @@
  * posted twice (ledger `artSeen`). The artist and the original address go
  * in the first comment, after the site link, when the source names them.
  *
- * Image: the picture is the hero, whole, with the thin solid line round it.
- * Above it a small label and the character's name; under it who made it,
- * then the line about the first comment and the brand. No shapes behind the
- * type, no glow.
+ * Image: the picture raw, edge to edge at its own shape (no frame, no type
+ * on it), then one thin strip under it with the site mark, the site name
+ * and the address. Who drew it, the character and the link are in the
+ * caption and the first comment. A very tall picture is kept whole, centred
+ * on the page colour, so the image is never taller than RAW.maxArt + strip.
  *
  * artType() makes the type for one site and one kind: `verb` says which
  * titles count ('watch' for an anime site, 'read' for a comics site).
@@ -19,8 +20,8 @@ import { loadArt } from '../art/load.mjs'
 import { SITE } from '../site.mjs'
 import { tagName } from '../art/danbooru.mjs'
 import { baseTitle, tagOf, uniqueTags } from '../story.mjs'
-import { clip, fitSize, isDrawable } from '../text.mjs'
-import { FOOT, H, INNER, PAD } from '../render/parts.mjs'
+import { isDrawable } from '../text.mjs'
+import { PAD, W } from '../render/parts.mjs'
 import { byPopularity, ctaOf } from './shared.mjs'
 
 /** A picture is never posted again: ten years is "never" for the ledger's rules. */
@@ -32,10 +33,11 @@ const KIND = {
   cosplay: { label: 'Cosplay', by: 'Photo by', tag: '#cosplay', emoji: '📸' },
 }
 const LABEL = { watch: 'Where to watch it', read: 'Where to read it' }
-const CTA = { watch: 'Where to watch it: link in the first comment', read: 'Where to read it: link in the first comment' }
-const NAME_STEPS = [[12, 64], [20, 52], [30, 42], [60, 34]]
-/** Heights of the fixed pieces round the picture, in pixels. */
-const ROOM = H - PAD * 2 - FOOT - 32 - 16 - 70 - 24 - 24 - 40
+/**
+ * The raw picture: as wide as the image, at most `maxArt` tall, loaded with
+ * its longest side at `load`; the strip under it is `strip` tall.
+ */
+export const RAW = { maxArt: 1920, load: 1920, strip: 104 }
 
 function toPost(item, kind, verb) {
   const t = item.title
@@ -59,8 +61,8 @@ function toPost(item, kind, verb) {
     artist: item.artist,
     credit: item.credit ? { label: `${words.by} ${item.credit.name}`, url: item.credit.url } : null,
     tags: uniqueTags([tagOf(name), tagOf(baseTitle(t.title)) || tagOf(t.title), words.tag, kind === 'fanart' ? '#animeart' : '#cosplayer', tagOf(t.section, { lower: true })]),
-    art: { hero: item.image },
-    view: { kind, label: words.label, name: clip(name, 48), series: clip(t.title, 70), by: item.artist ? `${words.by} ${clip(item.artist, 40)}` : null, verb },
+    art: { hero: item.image, heroSize: RAW.load },
+    view: { kind, verb },
   }
 }
 
@@ -105,18 +107,26 @@ const QUESTIONS = {
   cosplay: [(p) => `How close is this to the real ${p.name}?`, (p) => `Which ${p.series} character would you cosplay?`, (p) => `Is ${p.name} one of your favourites?`],
 }
 
+/** The picture's size on the image: full width, or narrower when it would be taller than RAW.maxArt. */
+function artBox(picture) {
+  const ratio = picture?.ratio || 4 / 5
+  const height = Math.min(Math.round(W / ratio), RAW.maxArt)
+  return { width: Math.min(W, Math.round(height * ratio)), height }
+}
+
+/** The image's own size: the picture and the strip under it. */
+const size = (v) => ({ width: W, height: artBox(v.art.hero).height + RAW.strip })
+
 function template(v, k) {
   const t = k.tone('dark')
-  const nameSize = fitSize(v.name, NAME_STEPS)
-  const height = ROOM - nameSize
-  return k.page(
-    t,
-    { cta: CTA[v.verb] },
-    k.row({ justifyContent: 'space-between', alignItems: 'flex-end' }, k.kicker(v.label, { color: t.pop }), k.kicker(v.series, { ...k.clamp(1), color: t.soft, fontSize: 21, letterSpacing: 2, maxWidth: INNER - 260, textAlign: 'right' })),
-    k.display({ ...k.clamp(1), fontSize: nameSize, fontWeight: k.f.displayBlack, lineHeight: 1.08, marginTop: 16 }, v.name),
-    k.row({ marginTop: 24, height, justifyContent: 'center', alignItems: 'center' }, k.art(v.art.hero, INNER, height)),
-    k.body({ fontSize: 22, color: t.soft, marginTop: 16, height: 30 }, v.by || ''),
-    k.fill(),
+  const box = artBox(v.art.hero)
+  const picture = v.art.hero
+    ? { type: 'img', props: { src: v.art.hero.src, width: box.width, height: box.height, style: { flexShrink: 0 } } }
+    : k.box({ width: box.width, height: box.height, backgroundColor: k.theme.color.raised, flexShrink: 0 })
+  return k.col(
+    { width: W, height: box.height + RAW.strip, backgroundColor: t.bg, color: t.ink, fontFamily: k.f.text },
+    k.row({ width: W, height: box.height, justifyContent: 'center', flexShrink: 0 }, picture),
+    k.col({ height: RAW.strip, justifyContent: 'center', paddingLeft: PAD, paddingRight: PAD, flexShrink: 0 }, k.brand(t, 1, { borderTop: 'none', paddingTop: 0 })),
   )
 }
 
@@ -134,5 +144,6 @@ export const artType = ({ kind, verb }) => ({
   questions: QUESTIONS[kind],
   tags: (p) => p.tags,
   template,
+  size,
   extra: extra(verb),
 })
