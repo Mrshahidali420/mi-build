@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { isThinCharacter, isNoindexCharacter } from '../src/lib/character-facts.mjs'
+import { isThinCharacter, isNoindexCharacter, HIDE_THIN_PAGES } from '../src/lib/character-facts.mjs'
 import { withCastFacts, castContext } from '../src/lib/cast-facts.mjs'
 import { leadLine, plainOf } from '../src/lib/cast-page.mjs'
 
@@ -17,8 +17,10 @@ test('isThinCharacter: no bio, no voice, exactly one title', () => {
   assert.equal(isThinCharacter({}), false, 'no appearance is not a page at all')
 })
 
-test('isNoindexCharacter: a page Google has shown stays indexed', () => {
-  assert.equal(isNoindexCharacter(one()), true)
+test('isNoindexCharacter: switched off, even a thin page stays indexed', () => {
+  assert.equal(HIDE_THIN_PAGES, false)
+  assert.equal(isThinCharacter(one()), true, 'the thin rule still finds it')
+  assert.equal(isNoindexCharacter(one()), false)
   assert.equal(isNoindexCharacter(one(), new Set(['/character/kim'])), false)
   assert.equal(isNoindexCharacter(one({ description: 'Bio' })), false)
 })

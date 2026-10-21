@@ -31,22 +31,18 @@ const title = () => ({
   characters: Array.from({ length: 6 }, () => face()),
 })
 
-test('noindexSubpages: thin pages that exist, never an allowlisted one', () => {
-  const flags = noindexSubpages(title())
-  assert.ok(flags.includes('free'))
-  assert.ok(flags.includes('characters'))
-  assert.ok(!flags.includes('like'), 'two picks with a platform is not thin')
-  const kept = noindexSubpages(title(), new Set(['/manhwa/root/free', '/manhwa/root/characters', '/manhwa/root/buy']))
-  assert.deepEqual(kept, [])
+test('noindexSubpages: switched off, a thin sub-page is never flagged', () => {
+  assert.ok(thinFree(title()) && thinCast(title()), 'the thin rules still find them')
+  assert.deepEqual(noindexSubpages(title()), [])
+  assert.deepEqual(noindexSubpages(title(), new Set(['/manhwa/root/free'])), [])
   assert.deepEqual(noindexSubpages({ kind: 'comic', slug: 'x', characters: [] }), [], 'no page, no flag')
 })
 
-test('character buy: noindexed unless Google shows it; only when the page exists', () => {
+test('character buy: switched off, never noindexed', () => {
   const famous = { slug: 'kim', favourites: 99999, image: 'x', appearsIn: [{ kind: 'comic', slug: 's', title: 'S', popularity: 999999 }] }
   assert.equal(noindexCharacterBuy({ slug: 'nobody', appearsIn: [] }), false)
-  const flagged = noindexCharacterBuy(famous)
+  assert.equal(noindexCharacterBuy(famous), false)
   assert.equal(noindexCharacterBuy(famous, new Set(['/character/kim/buy'])), false)
-  assert.equal(typeof flagged, 'boolean')
 })
 
 test('the robots meta is emitted only for a flagged page', () => {

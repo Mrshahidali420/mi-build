@@ -8,7 +8,11 @@
  * Worked out at build time by scripts/make-shards.mjs, which stores the result
  * on the record (item.noindex: ['buy', 'like', ...], person.noindexBuy), so
  * the Worker only reads a flag. Pure.
+ *
+ * Switched off on 21 Oct 2026 by HIDE_THIN_PAGES (src/lib/character-facts.mjs):
+ * nothing is flagged, so every sub-page is indexed and in the sitemap again.
  */
+import { HIDE_THIN_PAGES } from './character-facts.mjs'
 import { sectionOf } from './section.mjs'
 import { freeSplit, linksOf, uniqueBySite } from './answers.mjs'
 import { hasFreePage, hasLikePage, hasCastPage, hasBuyPage, hasCharacterBuyPage } from './gates.mjs'
@@ -53,13 +57,14 @@ const RULES = [
  * @returns {string[]} e.g. ['buy', 'like']
  */
 export function noindexSubpages(item, keep = new Set()) {
+  if (!HIDE_THIN_PAGES) return []
   const path = `/${sectionOf(item)}/${item.slug}`
   return RULES.filter(([page, exists, thin]) => exists(item) && thin(item) && !keep.has(`${path}/${page}`)).map(([page]) => page)
 }
 
 /** A character's /buy page: all of them, unless Google shows it. */
 export const noindexCharacterBuy = (person, keep = new Set()) =>
-  hasCharacterBuyPage(person) && !keep.has(`/character/${person.slug}/buy`)
+  HIDE_THIN_PAGES && hasCharacterBuyPage(person) && !keep.has(`/character/${person.slug}/buy`)
 
 /** What the page reads: is this sub-page flagged? */
 export const isNoindexed = (item, page) => Array.isArray(item?.noindex) && item.noindex.includes(page)

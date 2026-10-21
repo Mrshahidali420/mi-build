@@ -34,13 +34,24 @@ export function isThinCharacter(rec) {
 }
 
 /**
+ * Off since 21 Oct 2026 (owner decision): thin pages are made fuller, never
+ * hidden. The 10 Oct noindex took about 190,000 pages out of Google, and the
+ * same move on WhereAnime cut its impressions by 99%. While this is false,
+ * no character page, character /buy page or title sub-page is noindexed and
+ * every one of them is back in the sitemap. The thin rules stay, so the pages
+ * that most need more facts can still be found.
+ */
+export const HIDE_THIN_PAGES = false
+
+/**
  * Thin, and not on the keep list: the page answers with
  * <meta name="robots" content="noindex, follow"> and leaves the sitemap. A
  * thin page Google already shows (data/index-keep.json: any impression in the
- * last 90 days) stays indexed. Nothing else on the site is ever noindexed.
+ * last 90 days) stays indexed. Never true while HIDE_THIN_PAGES is false.
  * @param keep Set of "/character/<slug>" paths
  */
-export const isNoindexCharacter = (rec, keep = new Set()) => isThinCharacter(rec) && !keep.has(`/character/${rec.slug}`)
+export const isNoindexCharacter = (rec, keep = new Set()) =>
+  HIDE_THIN_PAGES && isThinCharacter(rec) && !keep.has(`/character/${rec.slug}`)
 
 export const COSTARS_MAX = 4
 export const COSTARS_MIN_SHARED = 2
