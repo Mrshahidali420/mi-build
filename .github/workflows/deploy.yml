@@ -181,6 +181,8 @@ jobs:
       - name: Fill in thin character pages
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
+        # A normal slice takes about 3 minutes. Never let it hold a deploy.
+        timeout-minutes: 15
         run: node scripts/enrich-characters.mjs
 
       # Save BEFORE the build. The fresh records cost API calls, so a broken

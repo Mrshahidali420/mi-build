@@ -58,13 +58,25 @@ if (!todo.length) process.exit(0)
 const byId = new Map(people.map((p) => [idOf(p), p]))
 let filled = 0
 
+// Each failed batch costs about 3 minutes of retries. When AniList refuses the
+// runner outright (HTTP 403 on 21 Oct 2026), every batch fails, and 60 of them
+// held the deploy queue for 3 hours. Two failures in a row means stop.
+const MAX_FAILS_IN_A_ROW = 2
+let failsInARow = 0
+
 for (let i = 0; i < todo.length; i += PER_CALL) {
   const ids = todo.slice(i, i + PER_CALL).map(idOf)
   let data
   try {
     data = await gql(QUERY, { ids })
+    failsInARow = 0
   } catch (error) {
     // A bad slice must not throw away the slices that already worked.
+    failsInARow++
+    if (failsInARow >= MAX_FAILS_IN_A_ROW) {
+      console.warn(`  batch at ${i} failed (${error.message}). ${failsInARow} in a row, stopping this run.`)
+      break
+    }
     console.warn(`  batch at ${i} failed (${error.message}). Skipping it.`)
     await sleep(REQUEST_DELAY_MS)
     continue
