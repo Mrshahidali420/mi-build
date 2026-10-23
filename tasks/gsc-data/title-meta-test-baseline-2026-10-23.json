@@ -1,0 +1,55 @@
+{
+ "updated": "2026-10-23",
+ "window": "2026-09-25..2026-10-22",
+ "pages": [
+  {
+   "page": "/manga/cool-na-eikoku-bishoujo-wa-orenchi-ni-homestay-shitai-rashii",
+   "clicks": 132,
+   "impressions": 3929,
+   "ctr": 0.0336,
+   "position": 7.67
+  },
+  {
+   "page": "/manga/ore-wa-benkyou-ga-shitai-dake-nanoni",
+   "clicks": 91,
+   "impressions": 3200,
+   "ctr": 0.0284,
+   "position": 7.13
+  },
+  {
+   "page": "/manga/black-swan",
+   "clicks": 26,
+   "impressions": 656,
+   "ctr": 0.0396,
+   "position": 6
+  },
+  {
+   "page": "/manga/faceless-dropout",
+   "clicks": 14,
+   "impressions": 494,
+   "ctr": 0.0283,
+   "position": 7.73
+  },
+  {
+   "page": "/manga/lens-no-mukou",
+   "clicks": 5,
+   "impressions": 473,
+   "ctr": 0.0106,
+   "position": 5.71
+  },
+  {
+   "page": "/manga/mame-to-mugi",
+   "clicks": 4,
+   "impressions": 233,
+   "ctr": 0.0172,
+   "position": 6.64
+  },
+  {
+   "page": "/manga/tokoro-de-machi-chuuka-wa-date-ni-irimasu-ka",
+   "clicks": 4,
+   "impressions": 241,
+   "ctr": 0.0166,
+   "position": 7.46
+  }
+ ]
+}

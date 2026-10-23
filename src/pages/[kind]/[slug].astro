@@ -40,6 +40,7 @@ import { titleAnswer, aboutParagraphs, ledeOf } from '../../lib/title-answer.mjs
 import { startedByClock } from '../../lib/started.mjs'
 import { whereAnimeUrl } from '../../lib/where-links.mjs'
 import { needsAlike } from '../../lib/alike.mjs'
+import { META_TEST, noLinkTitle, noLinkDescription } from '../../lib/title-meta.mjs'
 import { checkedISO, checkedLong } from '../../lib/checked.js'
 import { sectionOf, SECTIONS } from '../../lib/section.mjs'
 import { seasonLabel, seasonPath, seasonWhen } from '../../lib/season-core.mjs'
@@ -89,10 +90,16 @@ const siteCount = new Set((links || []).map((l) => l.site)).size
 
 const related = isComic ? item.animeInIndex : item.comicInIndex
 
+// A no-English-platform comic on the META_TEST list gets the test title and
+// description (src/lib/title-meta.mjs). Everyone else keeps the old ones.
+const metaTest = isComic && !(links || []).length && META_TEST.has(`${kind}/${slug}`)
+
 // The page title is written the way people actually type the search.
-const pageTitle = isComic
-  ? `Read ${item.title} Online — Official ${word} Sites & Apps`
-  : `Watch ${item.title} Online — Official Streaming Sites`
+const pageTitle = metaTest
+  ? noLinkTitle(item, word)
+  : isComic
+    ? `Read ${item.title} Online — Official ${word} Sites & Apps`
+    : `Watch ${item.title} Online — Official Streaming Sites`
 
 // Airing helper: turn the next-episode timestamp into a readable date.
 // This page is rendered by the Worker on request, so "now" is the reader's
@@ -134,7 +141,8 @@ const description = links.length
     `${statusWord(item.status)}${item.chapters ? `, ${item.chapters} chapters` : ''}${
       item.episodes ? `, ${item.episodes} episodes` : ''
     }.`
-  : `${item.title} has no official English ${isComic ? 'reading' : 'streaming'} platform listed yet. Here is what we know about it.`
+  : (metaTest && noLinkDescription(overview.lede)) ||
+    `${item.title} has no official English ${isComic ? 'reading' : 'streaming'} platform listed yet. Here is what we know about it.`
 
 // AniList keeps its own charts. "#2 most popular of all time" is a real fact
 // about a story and nothing else on this page says it. Only an all-time place
