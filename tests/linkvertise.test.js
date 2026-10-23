@@ -36,6 +36,17 @@ test('platform links are rewritten; Amazon, AniList and our own pages are not', 
   assert.ok(!rewritten(cfg, 'https://manhwaindex.com/manga/x'))
 })
 
+test('a short platform host never catches our own links (the x.com bug)', () => {
+  const cfg = cfgOf(initScript(['x.com', 'ex.com', 'index.com', 'webtoons.com']))
+  for (const own of ['https://manhwaindex.com/manga/x', 'https://manhwaindex.com', 'https://www.manhwaindex.com/character/kim']) {
+    assert.ok(!rewritten(cfg, own), own)
+  }
+  assert.ok(rewritten(cfg, 'https://x.com/someone'))
+  assert.ok(rewritten(cfg, 'https://www.webtoons.com/en/x'))
+  assert.ok(!rewritten(cfg, 'https://notwebtoons.com/en/x'), 'another site that ends in the same letters')
+  assert.ok(!rewritten(cfg, 'https://evil.com/?go=https://webtoons.com/'), 'the host is the host, not a word in the query')
+})
+
 test('no hosts means Linkvertise is never called (an empty whitelist would take every link)', () => {
   assert.doesNotMatch(initScript([]), /linkvertise\(/)
 })
