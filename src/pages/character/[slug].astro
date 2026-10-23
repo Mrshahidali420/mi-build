@@ -24,6 +24,7 @@ import { loadCharacter, loadTitle, envOf, countryOf, notFound, unavailable } fro
 import { faqJsonld, wordOf, verbOf, uniqueBySite, linksOf, freeSplit } from '../../lib/answers.mjs'
 import { characterFaq } from '../../lib/character-faq.mjs'
 import { characterProfile } from '../../lib/character-profile.mjs'
+import { characterStory } from '../../lib/character-story.mjs'
 import { characterShopLinks } from '../../lib/shop-links.js'
 // The merch page answers 404 when this gate says no, so the link obeys it too.
 import { hasCharacterBuyPage, hasCastPage } from '../../lib/gates.mjs'
@@ -242,6 +243,13 @@ const faq = characterFaq(person, lead, leadKind, series, faqBio(bioPlain), heigh
 // first (src/lib/character-profile.mjs). Costars and other roles of the same
 // voice are links to their own pages.
 const profile = characterProfile(person, { name: primary, series, lead, links })
+// The lead title in a few sentences under the profile: what it became, where
+// it sits in its series, how it stands (src/lib/character-story.mjs). Most
+// character pages have no bio, and this is what a reader still wants to know.
+const story = characterStory(series, leadKind, {
+  yearSaid: Boolean(series?.startYear && profile.text.includes(String(series.startYear))),
+  hasLinks: links.length > 0,
+})
 // The years this character's titles span, for the line under "Where X shows up".
 const years = person.appearsIn.map((a) => a.year).filter(Boolean)
 const yearSpan = years.length && Math.max(...years) > Math.min(...years) ? `From ${Math.min(...years)} to ${Math.max(...years)}.` : ''
@@ -356,7 +364,7 @@ const groups = groupAppearances(person.appearsIn)
 // every other name stays on the "Also known as" line.
 const native = person.native && alternates.includes(person.native) ? person.native : ''
 const akaNames = alternates.filter((name) => name !== native)
-const showAbout = Boolean(bio.trim()) || quickFacts.length > 0 || Boolean(profile.html)
+const showAbout = Boolean(bio.trim()) || quickFacts.length > 0 || Boolean(profile.html) || Boolean(story)
 const showShop = hasPicks || buys.length > 0
 // The merch page answers 404 when its gate says no, so the link obeys it too.
 const merchPage =
@@ -500,6 +508,7 @@ const jsonld = {
             quickFacts={quickFacts}
           >
             {profile.html && <p class="overview" set:html={profile.html} />}
+            {story && <p class="overview">{story}</p>}
             {/* The source note sits with the bio, so it never labels our own profile above it. */}
             {bio.trim() && <div class="dp-bio" set:html={bioHtml(bio)} />}
             {bio.trim() && <p class="dp-bio-source"><small>Bio from AniList.</small></p>}

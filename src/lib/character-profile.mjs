@@ -22,7 +22,7 @@ export const PROFILE_MAX = 5
 const WORDS = { manhwa: 'manhwa', manhua: 'manhua', manga: 'manga', novel: 'novel', anime: 'anime' }
 const PLURAL = { novel: 'novels' }
 const ROLE = { MAIN: 'main character', SUPPORTING: 'supporting character', BACKGROUND: 'background character' }
-const ORDER = ['roles', 'first', 'change', 'voices', 'vaJp', 'vaEn', 'costars', 'lead', 'favourites']
+const ORDER = ['roles', 'first', 'change', 'voices', 'vaJp', 'vaEn', 'costars', 'cast', 'lead', 'favourites']
 
 const big = (n) => Number(n).toLocaleString('en-GB')
 const esc = (text) =>
@@ -125,6 +125,27 @@ function costarsFact(person) {
   return fact('costars', 52, `@ shares the most titles with ${charLink(top)}, ${top.n} of them${more}.`)
 }
 
+/** "3rd", "11th", "22nd". */
+export function ordinal(n) {
+  const tens = n % 100
+  const end = tens >= 11 && tens <= 13 ? 'th' : { 1: 'st', 2: 'nd', 3: 'rd' }[n % 10] || 'th'
+  return `${n}${end}`
+}
+
+/**
+ * Where this character stands in the lead title's cast by AniList favourites
+ * (castN and favRank, worked out at build time in character-facts.mjs). Only
+ * casts of three or more: "2nd of 2" says nothing.
+ */
+function castFact(rows, lead) {
+  const row = (lead && rows.find((r) => r.slug === lead.slug && sectionOf(r) === sectionOf(lead))) || rows[0]
+  if (!row || !(row.castN >= 3) || !row.favRank) return null
+  const place = row.favRank === 1 ? 'the most' : `the ${ordinal(row.favRank)} most`
+  // One title: the roles sentence has just named it.
+  const from = rows.length === 1 ? 'that story' : titled(row)
+  return fact('cast', 48, `Of the ${row.castN} characters in ${from} with a page here, @ is ${place} favourited on AniList.`)
+}
+
 /** How the lead story stands and where it is in English, from the title the page loaded. */
 function storyOf(series, lead, links) {
   if (!series || !lead) return { state: '', where: '' }
@@ -179,6 +200,7 @@ export function profileFacts(person, { series = null, lead = null, links = [] } 
     vaFact(person, false),
     vaFact(person, true),
     costarsFact(person),
+    castFact(rows, lead),
     leadFact(rows, lead, story),
     favouritesFact(person),
   ].filter(Boolean)

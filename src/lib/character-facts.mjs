@@ -85,6 +85,29 @@ function membersOf(people) {
   return members
 }
 
+/**
+ * title key -> (character index -> 1-based place by AniList favourites) and
+ * the cast size. Only the characters with a page here are counted, so "3rd of
+ * 14" means 14 pages a reader can open.
+ */
+function castPlacesOf(people, members) {
+  const places = new Map()
+  for (const [key, list] of members) {
+    const ranked = [...list].sort((a, b) => byFame(people[a], people[b]))
+    places.set(key, { n: ranked.length, rank: new Map(ranked.map((i, at) => [i, at + 1])) })
+  }
+  return places
+}
+
+/** castN and favRank on a row, when the cast has at least two and AniList counts favourites. */
+function withCastPlace(row, i, person, places) {
+  const place = places.get(keyOfRow(row))
+  // A generic role ("Narrator") is in no cast list, so it has no place.
+  const rank = place?.rank.get(i)
+  if (!rank || place.n < 2 || !(person.favourites > 0)) return row
+  return { ...row, castN: place.n, favRank: rank }
+}
+
 function costarsOf(i, people, members) {
   const counts = new Map()
   for (const key of new Set((people[i].appearsIn || []).map(keyOfRow))) {
@@ -131,13 +154,15 @@ export function attachCharacterFacts(people, titles) {
   const members = membersOf(people)
   const jp = voiceIndex(people, 'voice')
   const en = voiceIndex(people, 'voiceEn')
+  const places = castPlacesOf(people, members)
   return people.map((person, i) => {
     // Worked out fresh every time: a record that already carries the fields
     // (a shard read back by the measure) must not keep a stale list.
     const { costars: _oldCostars, vaOther: _oldVaOther, ...rest } = person
-    const appearsIn = (person.appearsIn || []).map((row) => {
+    const appearsIn = (person.appearsIn || []).map((old) => {
+      const { castN: _n, favRank: _r, ...row } = old
       const year = years.get(keyOfRow(row))
-      return year && row.year !== year ? { ...row, year } : row
+      return withCastPlace(year && row.year !== year ? { ...row, year } : row, i, person, places)
     })
     const costars = costarsOf(i, people, members)
     const voices = voicesOf(person.appearsIn || [])
