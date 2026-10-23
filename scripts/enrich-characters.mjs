@@ -9,13 +9,15 @@
  * This job asks AniList for the rest: the native spelling, the other spellings
  * people search by, the bio, the age, the gender and the favourite count. It
  * takes a slice per run so a daily deploy is never held up, and it keeps its
- * place in data/characters.json itself: a record with a description is done.
+ * place in data/characters.json itself: a record with a description is done,
+ * and a record asked about is stamped checkedOn (scripts/enrich-queue.mjs).
  *
  *   node scripts/enrich-characters.mjs [howMany]
  */
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import { gql, sleep, cutBio, DATA_DIR, REQUEST_DELAY_MS, writeJsonAtomic } from './anilist-core.mjs'
+import { idOf, isThinRecord, pickThinQueue } from './enrich-queue.mjs'
 
 // AniList takes 50 ids in one call and allows 30 calls a minute.
 const PER_CALL = 50
@@ -42,21 +44,21 @@ const QUERY = `query ($ids: [Int]) {
 const file = join(DATA_DIR, 'characters.json')
 const people = JSON.parse(readFileSync(file, 'utf8'))
 
-// Every slug ends in the AniList id, so a record saved before we started
-// keeping the id separately can still be looked up.
-const idOf = (p) => p.id ?? (Number(String(p.slug || '').match(/-(\d+)$/)?.[1]) || null)
-
 // A record with a bio has already been through here, or arrived complete with
-// its title. Anything else is thin and worth one call.
-const thin = people.filter((p) => idOf(p) != null && !p.description)
+// its title. Anything else is thin and worth one call, once a month at most
+// (see scripts/enrich-queue.mjs: the queue walks every thin record).
+const thin = people.filter(isThinRecord)
 const limit = Number(process.argv[2]) || DEFAULT_LIMIT
-const todo = thin.slice(0, limit)
+const today = new Date().toISOString().slice(0, 10)
+const todo = pickThinQueue(people, today, limit)
+const neverAsked = thin.filter((p) => !p.checkedOn).length
 
-console.log(`${people.length} characters, ${thin.length} thin. Filling ${todo.length} this run.`)
+console.log(`${people.length} characters, ${thin.length} thin, ${neverAsked} never asked. Asking about ${todo.length} this run.`)
 if (!todo.length) process.exit(0)
 
 const byId = new Map(people.map((p) => [idOf(p), p]))
 let filled = 0
+let gainedFacts = 0
 
 // Each failed batch costs about 3 minutes of retries. When AniList refuses the
 // runner outright (HTTP 403 on 21 Oct 2026), every batch fails, and 60 of them
@@ -82,9 +84,16 @@ for (let i = 0; i < todo.length; i += PER_CALL) {
     continue
   }
 
+  // Stamp every record asked about, answered or not, so the next run moves on.
+  for (const id of ids) {
+    const person = byId.get(id)
+    if (person) person.checkedOn = today
+  }
+
   for (const node of data?.Page?.characters || []) {
     const person = byId.get(node.id)
     if (!person) continue
+    const hadFacts = Boolean(person.gender || person.age || person.birthday || person.aliases?.length)
     person.id = node.id
     person.native = node.name?.native || null
     person.aliases = (node.name?.alternative || []).filter(Boolean).slice(0, 3)
@@ -99,6 +108,7 @@ for (let i = 0; i < todo.length; i += PER_CALL) {
     person.image = node.image?.large || person.image
     person.description = cutBio((node.description || '').replace(/<[^>]+>/g, '').trim())
     if (person.description) filled++
+    if (!hadFacts && (person.gender || person.age || person.birthday || person.aliases.length)) gainedFacts++
   }
 
   const done = Math.min(i + PER_CALL, todo.length)
@@ -108,4 +118,4 @@ for (let i = 0; i < todo.length; i += PER_CALL) {
 
 // Atomic: a run killed here must leave the old whole file, not half a catalog.
 writeJsonAtomic(file, people)
-console.log(`Done. ${filled} characters gained a bio. ${thin.length - filled} still thin.`)
+console.log(`Done. ${filled} characters gained a bio, ${gainedFacts} gained other facts. ${thin.length - filled} still thin.`)
