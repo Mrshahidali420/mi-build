@@ -153,6 +153,14 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- Linkvertise on the official read and watch platform links only, never
+         Amazon (owner decision, 23 Oct 2026). Both are deferred: they run in
+         order after parsing and before DOMContentLoaded, which is when
+         Linkvertise rewrites the links. The set-up and host list are built by
+         scripts/make-linkvertise.mjs. -->
+    <script is:inline src="https://publisher.linkvertise.com/cdn/linkvertise.js" defer></script>
+    <script is:inline src="/lv-init.js" defer></script>
+
     <!-- Self-hosted fonts (see the @fontsource imports above). Preload only
          the two faces the first screen paints: body copy and the header
          wordmark. Every other weight loads from the same-origin CSS above
@@ -590,7 +598,10 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
         if (!link) return
 
         var url
-        try { url = new URL(link.href, location.href) } catch (e) { return }
+        // A platform link Linkvertise rewrote keeps its real address in
+        // data-dest (public/lv-init.js), so the click still records where the
+        // reader was going, not the link-to.net hop.
+        try { url = new URL(link.getAttribute('data-dest') || link.href, location.href) } catch (e) { return }
         // One of ours: the queue travels to the next page instead of being
         // sent, so a three page visit still costs one request.
         if (url.hostname === location.hostname) {
