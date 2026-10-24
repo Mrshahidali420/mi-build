@@ -1,56 +1,79 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { platformHosts, initScript } from '../scripts/make-linkvertise.mjs'
+import { lvSetup, lvInit } from '../src/lib/linkvertise.js'
 
-// Linkvertise's own matcher (str_is in linkvertise.js): no "*" means "anywhere".
+// Linkvertise's own matcher and rule (str_is and convert in linkvertise.js):
+// a pattern with no "*" matches anywhere; the address loses one trailing "/";
+// the blacklist is checked first, then the whitelist must match.
 const matches = (pattern, url) => {
   const p = pattern.includes('*') ? pattern : `*${pattern}*`
   return new RegExp('^' + p.replace(/\*/g, '.*') + '$').test(url)
 }
-// Linkvertise's rule: blacklist first, then the whitelist must match.
-const rewritten = (cfg, url) => !cfg.blacklist.some((p) => matches(p, url)) && cfg.whitelist.some((p) => matches(p, url))
-const cfgOf = (script) => {
-  const m = script.match(/linkvertise\(\d+, (\{.*\})\)/)
-  const obj = m[1].replace(/(whitelist|blacklist):/g, '"$1":')
-  return JSON.parse(obj)
+const rewritten = (cfg, href) => {
+  const url = href.endsWith('/') ? href.slice(0, -1) : href
+  return !cfg.blacklist.some((p) => matches(p, url)) && cfg.whitelist.some((p) => matches(p, url))
 }
 
-const titles = [
-  { readLinks: [{ url: 'https://www.webtoons.com/en/x' }, { url: 'https://www.amazon.com/dp/B0' }, { url: 'https://tapas.io/series/y' }] },
-  { watchLinks: [{ url: 'https://www.crunchyroll.com/series/z' }, { url: 'https://www.amazon.co.jp/x' }] },
+/** Runs lvSetup on a fake page: links are { href, go }. Returns the config, or null. */
+function setUp(links, host = 'manhwaindex.com') {
+  const anchors = links.map((l) => ({
+    href: new URL(l.href).href,
+    go: l.go,
+    attrs: {},
+    setAttribute(k, v) { this.attrs[k] = v },
+  }))
+  let cfg = null
+  globalThis.location = { hostname: host }
+  globalThis.document = { querySelectorAll: () => anchors.filter((a) => a.go === 'read' || a.go === 'watch') }
+  globalThis.linkvertise = (id, opts) => { cfg = { id, ...opts } }
+  lvSetup(10316435)
+  return { cfg, anchors }
+}
+
+const page = [
+  { href: 'https://www.webtoons.com/en/romance/x/list?title_no=1', go: 'read' },
+  { href: 'http://www.hulu.com/cowboy-bebop', go: 'watch' },
+  { href: 'https://www.crunchyroll.com/series/z/', go: 'watch' },
+  { href: 'https://www.amazon.com/gp/video/detail/B00R2KO8ZE/', go: 'watch' },
+  { href: 'https://www.webtoons.com/en/other/y/list?title_no=2' }, // not a platform button
+  { href: 'https://www.amazon.com/dp/B0?tag=x' },
+  { href: 'https://manhwaindex.com/manga/x' },
+  { href: 'https://anilist.co/manga/1' },
 ]
 
-test('platform hosts: every read and watch host, Amazon never', () => {
-  assert.deepEqual(platformHosts(titles), ['crunchyroll.com', 'tapas.io', 'webtoons.com'])
-})
-
-test('platform links are rewritten; Amazon, AniList and our own pages are not', () => {
-  const cfg = cfgOf(initScript(platformHosts(titles)))
+test('only the read and watch links on the page are rewritten, http ones too', () => {
+  const { cfg } = setUp(page)
+  assert.equal(cfg.id, 10316435)
   assert.ok(rewritten(cfg, 'https://www.webtoons.com/en/romance/x/list?title_no=1'))
-  assert.ok(rewritten(cfg, 'https://tapas.io'))
-  assert.ok(rewritten(cfg, 'https://www.crunchyroll.com/series/z'))
-  assert.ok(!rewritten(cfg, 'https://www.amazon.com/s?k=tapas.io+webtoons.com'), 'Amazon even when a platform name is in the search')
-  assert.ok(!rewritten(cfg, 'https://www.amazon.co.uk/dp/B0?tag=x'))
-  assert.ok(!rewritten(cfg, 'https://amzn.to/abc'))
-  assert.ok(!rewritten(cfg, 'https://anilist.co/manga/1'))
+  assert.ok(rewritten(cfg, 'http://www.hulu.com/cowboy-bebop'))
+  assert.ok(rewritten(cfg, 'https://www.crunchyroll.com/series/z/'))
+})
+
+test('Amazon, our own pages and other links on the same platform stay as they are', () => {
+  const { cfg } = setUp(page)
+  assert.ok(!rewritten(cfg, 'https://www.amazon.com/gp/video/detail/B00R2KO8ZE/'), 'Prime Video is Amazon')
+  assert.ok(!rewritten(cfg, 'https://www.amazon.com/dp/B0?tag=x'))
   assert.ok(!rewritten(cfg, 'https://manhwaindex.com/manga/x'))
+  assert.ok(!rewritten(cfg, 'https://anilist.co/manga/1'))
+  assert.ok(!rewritten(cfg, 'https://www.webtoons.com/en/other/y/list?title_no=2'))
+  assert.ok(!rewritten(cfg, 'https://www.webtoons.com/en/romance/x/list?title_no=10'), 'dots and ? are literal')
 })
 
-test('a short platform host never catches our own links (the x.com bug)', () => {
-  const cfg = cfgOf(initScript(['x.com', 'ex.com', 'index.com', 'webtoons.com']))
-  for (const own of ['https://manhwaindex.com/manga/x', 'https://manhwaindex.com', 'https://www.manhwaindex.com/character/kim']) {
-    assert.ok(!rewritten(cfg, own), own)
-  }
-  assert.ok(rewritten(cfg, 'https://x.com/someone'))
-  assert.ok(rewritten(cfg, 'https://www.webtoons.com/en/x'))
-  assert.ok(!rewritten(cfg, 'https://notwebtoons.com/en/x'), 'another site that ends in the same letters')
-  assert.ok(!rewritten(cfg, 'https://evil.com/?go=https://webtoons.com/'), 'the host is the host, not a word in the query')
+test('the real address is saved for the click counter', () => {
+  const { anchors } = setUp(page)
+  assert.equal(anchors[1].attrs['data-dest'], 'http://www.hulu.com/cowboy-bebop')
+  assert.equal(anchors[3].attrs['data-dest'], undefined)
 })
 
-test('no hosts means Linkvertise is never called (an empty whitelist would take every link)', () => {
-  assert.doesNotMatch(initScript([]), /linkvertise\(/)
+test('a page with no platform link never calls Linkvertise (an empty whitelist takes every link)', () => {
+  assert.equal(setUp([{ href: 'https://www.amazon.com/dp/B0', go: 'watch' }]).cfg, null)
 })
 
-test('the real address is saved before the rewrite', () => {
-  assert.match(initScript(['tapas.io']), /data-dest/)
+test('a platform link on our own domain is never sent', () => {
+  const { cfg } = setUp([{ href: 'https://whereanime.com/anime/x', go: 'watch' }, { href: 'https://tapas.io/s', go: 'read' }], 'whereanime.com')
+  assert.ok(!rewritten(cfg, 'https://whereanime.com/anime/x'))
+})
+
+test('the inline script calls the set-up with the account id', () => {
+  assert.match(lvInit(), /^\(function lvSetup\(id\)[\s\S]*\)\(10316435\)$/)
 })

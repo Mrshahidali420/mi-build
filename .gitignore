@@ -62,5 +62,3 @@ data/where-links.json
 # (handoff-*); a missing file only ranks the picks by popularity.
 data/handoff.json
 
-# Generated each build by scripts/make-linkvertise.mjs
-public/lv-init.js

@@ -159,7 +159,7 @@ export function cleanRow(row, country, now) {
   } else if (kind === 'buy') {
     detail = BUY_SOURCES.has(row.detail) ? row.detail : ''
   } else if (kind === 'read' || kind === 'watch') {
-    // 'lv': the link went through Linkvertise (see make-linkvertise.mjs).
+    // 'lv': the link went through Linkvertise (see src/lib/linkvertise.js).
     detail = row.detail === 'lv' ? 'lv' : ''
   }
 
