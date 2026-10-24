@@ -78,7 +78,8 @@ if (signedIn) {
     ask(
       db,
       `SELECT CAST(ts / 3600000 AS INTEGER) % 24 AS hour,
-              SUM(kind = 'view') AS views, SUM(${CLICK}) AS clicks
+              SUM(kind = 'view') AS views, SUM(${CLICK}) AS clicks,
+              SUM(kind IN ('read', 'watch') AND detail = 'lv') AS lv
        FROM events WHERE day = ? AND kind IN ('view', 'buy', 'read', 'watch', 'other')
        GROUP BY hour`,
       today
@@ -157,6 +158,8 @@ const hourColumns = Array.from({ length: 24 }, (_, hour) => {
 })
 const viewsToday = hours.reduce((n, row) => n + (row.views || 0), 0)
 const clicksToday = hours.reduce((n, row) => n + (row.clicks || 0), 0)
+// Read and watch clicks that went through Linkvertise (detail 'lv').
+const lvToday = hours.reduce((n, row) => n + (Number(row.lv) || 0), 0)
 
 const pageRows = looking.map((row) => ({
   ts: row.ts,
@@ -216,6 +219,7 @@ const brokenRows = missing.map((row) => ({
     <Kpi label="People today" value={todayRow.people || 0} />
     <Kpi label="Page views today" value={viewsToday} />
     <Kpi label="Clicks out today" value={clicksToday} />
+    <Kpi label="Linkvertise clicks today" value={lvToday} />
   </section>
 
   <div class="panel wide">
