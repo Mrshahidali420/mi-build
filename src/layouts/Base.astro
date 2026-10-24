@@ -676,7 +676,12 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
           dwell: miVisible(),
           // Where an Amazon link sat: pick, buybox, shop or themes. It says
           // which of the four places earns, which the kind alone cannot.
-          detail: kind ? link.getAttribute('data-aff-src') || '' : '',
+          // A read or watch link says 'lv' when Linkvertise rewrote it, so the
+          // Money tab can count what went through Linkvertise and what an ad
+          // blocker let go straight to the platform.
+          detail: kind
+            ? link.getAttribute('data-aff-src') || ''
+            : go && link.href.indexOf('link-to.net') !== -1 ? 'lv' : '',
         })
       })
     </script>

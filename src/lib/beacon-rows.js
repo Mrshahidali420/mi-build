@@ -158,6 +158,9 @@ export function cleanRow(row, country, now) {
     ;({ item, detail, pos, label } = fields)
   } else if (kind === 'buy') {
     detail = BUY_SOURCES.has(row.detail) ? row.detail : ''
+  } else if (kind === 'read' || kind === 'watch') {
+    // 'lv': the link went through Linkvertise (see make-linkvertise.mjs).
+    detail = row.detail === 'lv' ? 'lv' : ''
   }
 
   // The tab says how long ago each row happened, so a batch sent at the end

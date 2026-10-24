@@ -32,6 +32,13 @@ test('numbers are clamped', () => {
   assert.equal(row.ts, NOW - 86400000)
 })
 
+test('a read or watch click keeps only the Linkvertise mark', () => {
+  assert.equal(clean({ kind: 'read', detail: 'lv' }).detail, 'lv')
+  assert.equal(clean({ kind: 'watch', detail: 'lv' }).detail, 'lv')
+  assert.equal(clean({ kind: 'read', detail: 'anything' }).detail, '')
+  assert.equal(clean({ kind: 'view', detail: 'lv' }).detail, '')
+})
+
 test('an act row with an unknown name is dropped', () => {
   assert.equal(cleanRow({ kind: 'act', name: 'list_export', item: '5' }, 'US', NOW), null)
 })

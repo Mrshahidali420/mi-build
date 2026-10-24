@@ -48,6 +48,7 @@ let week = { now: [], before: [] }
 let closedDays = []
 let types = []
 let pages = []
+let lvRaw = []
 
 if (signedIn) {
   ;[rows, totals, buys, week, closedDays, types, pages] = await Promise.all([
@@ -64,7 +65,7 @@ if (signedIn) {
   // for the short ranges.
   if (range.mode !== 'all') {
     const where = rawWhere(range)
-    ;[fromPages, stores] = await Promise.all([
+    ;[fromPages, stores, lvRaw] = await Promise.all([
       // `label` is the word on the button that was clicked, not the page, so
       // it is not asked for here. `page_type` says which section it was.
       ask(
@@ -82,6 +83,15 @@ if (signedIn) {
         `SELECT country, COUNT(*) AS clicks FROM events
          WHERE ${where.sql} AND kind = 'buy'
          GROUP BY country ORDER BY clicks DESC LIMIT 10`,
+        ...where.args
+      ),
+      // detail = 'lv': the platform link went through Linkvertise. A click
+      // without it went straight there (an ad blocker stopped Linkvertise).
+      ask(
+        db,
+        `SELECT platform, SUM(detail = 'lv') AS lv, COUNT(*) AS clicks FROM events
+         WHERE ${where.sql} AND kind IN ('read','watch')
+         GROUP BY platform ORDER BY lv DESC, clicks DESC LIMIT 20`,
         ...where.args
       ),
     ])
@@ -187,6 +197,19 @@ const moneyPageRows = moneyTop.map((row) => ({
   bar: moneyTopMax ? (row.per1k / moneyTopMax) * 100 : 0,
 }))
 
+// --- Linkvertise: platform clicks that went through it (counted from 24 Oct 2026).
+const lvClicks = lvRaw.reduce((n, row) => n + (Number(row.lv) || 0), 0)
+const lvAll = lvRaw.reduce((n, row) => n + (Number(row.clicks) || 0), 0)
+const lvRows = lvRaw
+  .filter((row) => Number(row.lv) > 0)
+  .map((row) => ({
+    name: row.platform || 'unknown',
+    icon: row.platform || 'unknown',
+    sub: `${num(row.lv)} of ${num(row.clicks)} clicks went through Linkvertise`,
+    value: Number(row.lv) || 0,
+    unit: 'clicks',
+  }))
+
 const KIND_WORD = { read: 'read', watch: 'watch', buy: 'Amazon' }
 const titleRows = fromPages.map((row) => ({
   name: humanize(row.path, ''),
@@ -215,7 +238,25 @@ const titleRows = fromPages.map((row) => ({
     <Kpi label="Watch clicks" value={watches} spark={trend.map((d) => d.watches)} tone="violet" />
     <Kpi label="Amazon clicks" value={buyClicks} spark={trend.map((d) => d.buys)} tone="amber" />
     <Kpi label="Clicks per 100 views" value={`${handOff(reads + watches + buyClicks, totals.views)}`} unit={`of ${num(totals.views)} views`} />
+    {range.mode !== 'all' && (
+      <Kpi label="Linkvertise clicks" value={lvClicks} unit={`of ${num(lvAll)} platform clicks`} />
+    )}
   </section>
+
+  {range.mode !== 'all' && (
+    <div class="panel">
+      <h2>Clicks through Linkvertise</h2>
+      <p class="say">
+        Read and watch clicks that went through Linkvertise, by platform. The rest went straight to the
+        platform, mostly because an ad blocker stopped Linkvertise. Counted from 24 Oct 2026.
+      </p>
+      <BarList rows={lvRows} tone="good"empty="No Linkvertise clicks yet." />
+      <Hint level="act">
+        Money and views are in the
+        <a href="https://publisher.linkvertise.com/" rel="noopener" target="_blank">Linkvertise dashboard</a>.
+      </Hint>
+    </div>
+  )}
 
   {clickColumns.length > 1 && (
     <div class="panel wide">
