@@ -12,6 +12,7 @@ import BarList from '../../components/admin/BarList.astro'
 import Columns from '../../components/admin/Columns.astro'
 import Kpi from '../../components/admin/Kpi.astro'
 import { envOf } from '../../lib/runtime.js'
+import { LINKVERTISE_ID } from '../../lib/linkvertise.js'
 import { gate, ask, rangeOf, countryName, handOff, humanize, num, sectionName, shopName } from '../../lib/admin.js'
 import { clicksFor, pagesFor, rawWhere, totalsFor, typesFor } from '../../lib/admin-data.js'
 import { moneyPer, perThousand, MONEY_MIN_VIEWS } from '../../lib/admin-insights.js'
@@ -87,13 +88,15 @@ if (signedIn) {
       ),
       // detail = 'lv': the platform link went through Linkvertise. A click
       // without it went straight there (an ad blocker stopped Linkvertise).
-      ask(
-        db,
-        `SELECT platform, SUM(detail = 'lv') AS lv, COUNT(*) AS clicks FROM events
-         WHERE ${where.sql} AND kind IN ('read','watch')
-         GROUP BY platform ORDER BY lv DESC, clicks DESC LIMIT 20`,
-        ...where.args
-      ),
+      LINKVERTISE_ID
+        ? ask(
+            db,
+            `SELECT platform, SUM(detail = 'lv') AS lv, COUNT(*) AS clicks FROM events
+             WHERE ${where.sql} AND kind IN ('read','watch')
+             GROUP BY platform ORDER BY lv DESC, clicks DESC LIMIT 20`,
+            ...where.args
+          )
+        : [],
     ])
   }
 }
@@ -198,7 +201,8 @@ const moneyPageRows = moneyTop.map((row) => ({
 }))
 
 // --- Linkvertise: platform clicks that went through it (counted from 24 Oct 2026).
-const lvClicks = lvRaw.reduce((n, row) => n + (Number(row.lv) || 0), 0)
+const showLv = Boolean(LINKVERTISE_ID) && range.mode !== 'all'
+const lvClicks =lvRaw.reduce((n, row) => n + (Number(row.lv) || 0), 0)
 const lvAll = lvRaw.reduce((n, row) => n + (Number(row.clicks) || 0), 0)
 const lvRows = lvRaw
   .filter((row) => Number(row.lv) > 0)
@@ -238,12 +242,10 @@ const titleRows = fromPages.map((row) => ({
     <Kpi label="Watch clicks" value={watches} spark={trend.map((d) => d.watches)} tone="violet" />
     <Kpi label="Amazon clicks" value={buyClicks} spark={trend.map((d) => d.buys)} tone="amber" />
     <Kpi label="Clicks per 100 views" value={`${handOff(reads + watches + buyClicks, totals.views)}`} unit={`of ${num(totals.views)} views`} />
-    {range.mode !== 'all' && (
-      <Kpi label="Linkvertise clicks" value={lvClicks} unit={`of ${num(lvAll)} platform clicks`} />
-    )}
+    {showLv && <Kpi label="Linkvertise clicks" value={lvClicks} unit={`of ${num(lvAll)} platform clicks`} />}
   </section>
 
-  {range.mode !== 'all' && (
+  {showLv && (
     <div class="panel">
       <h2>Clicks through Linkvertise</h2>
       <p class="say">

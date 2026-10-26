@@ -75,5 +75,5 @@ test('a platform link on our own domain is never sent', () => {
 })
 
 test('the inline script calls the set-up with the account id', () => {
-  assert.match(lvInit(), /^\(function lvSetup\(id\)[\s\S]*\)\(10316435\)$/)
+  assert.match(lvInit(10316435), /^\(function lvSetup\(id\)[\s\S]*\)\(10316435\)$/)
 })

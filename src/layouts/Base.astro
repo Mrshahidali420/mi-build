@@ -23,7 +23,7 @@ import sairaStencilLatin400Url from '@fontsource/saira-stencil-one/files/saira-s
 // The shell shows only three numbers and eight genre names, so it reads a
 // tiny file instead of the catalog. That keeps the Worker bundle small.
 import stats from '../../data/site-stats.json'
-import { lvInit } from '../lib/linkvertise.js'
+import { lvInit, LINKVERTISE_ID } from '../lib/linkvertise.js'
 
 const {
   title,
@@ -159,8 +159,12 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
          order after parsing and before DOMContentLoaded, which is when
          Linkvertise rewrites the links (an inline module is deferred too).
          The set-up is src/lib/linkvertise.js. -->
-    <script is:inline src="https://publisher.linkvertise.com/cdn/linkvertise.js" defer></script>
-    <script is:inline type="module" set:html={lvInit()}></script>
+    {LINKVERTISE_ID && (
+      <>
+        <script is:inline src="https://publisher.linkvertise.com/cdn/linkvertise.js" defer></script>
+        <script is:inline type="module" set:html={lvInit()}></script>
+      </>
+    )}
 
     <!-- Self-hosted fonts (see the @fontsource imports above). Preload only
          the two faces the first screen paints: body copy and the header

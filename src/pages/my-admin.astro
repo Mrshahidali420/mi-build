@@ -14,6 +14,7 @@ import PageFeed from '../components/admin/PageFeed.astro'
 import WeekStrip from '../components/admin/WeekStrip.astro'
 import { changesFor } from '../lib/admin-extra.js'
 import { envOf } from '../lib/runtime.js'
+import { LINKVERTISE_ID } from '../lib/linkvertise.js'
 import {
   gate,
   ask,
@@ -219,7 +220,7 @@ const brokenRows = missing.map((row) => ({
     <Kpi label="People today" value={todayRow.people || 0} />
     <Kpi label="Page views today" value={viewsToday} />
     <Kpi label="Clicks out today" value={clicksToday} />
-    <Kpi label="Linkvertise clicks today" value={lvToday} />
+    {LINKVERTISE_ID && <Kpi label="Linkvertise clicks today" value={lvToday} />}
   </section>
 
   <div class="panel wide">

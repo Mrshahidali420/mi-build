@@ -3,6 +3,7 @@ export const prerender = true
 import Base from '../layouts/Base.astro'
 // The same sentence the buy links carry, so the two can never say different things.
 import { AMAZON_DISCLOSURE } from '../lib/shop-links.js'
+import { LINKVERTISE_ID } from '../lib/linkvertise.js'
 
 const updated = 'October 13, 2026'
 
@@ -163,14 +164,16 @@ const jsonld = {
           This site may display ads from <strong>Google AdSense</strong> and other
           third-party vendors.
         </p>
-        <p>
-          Links to official reading and streaming platforms go through
-          <strong>Linkvertise</strong>, which helps pay for running this site. When you
-          open one of those links, Linkvertise shows its own page before sending you on
-          to the platform, and it may set cookies and collect data under the
-          <a href="https://linkvertise.com/privacy-policy" rel="noopener nofollow">Linkvertise privacy policy</a>.
-          Links to Amazon do not go through Linkvertise.
-        </p>
+        {LINKVERTISE_ID && (
+          <p>
+            Links to official reading and streaming platforms go through
+            <strong>Linkvertise</strong>, which helps pay for running this site. When you
+            open one of those links, Linkvertise shows its own page before sending you on
+            to the platform, and it may set cookies and collect data under the
+            <a href="https://linkvertise.com/privacy-policy" rel="noopener nofollow">Linkvertise privacy policy</a>.
+            Links to Amazon do not go through Linkvertise.
+          </p>
+        )}
         <ul>
           <li>
             Third-party vendors, including Google, use cookies to serve ads based on a

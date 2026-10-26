@@ -12,7 +12,10 @@
  * own pages ("x.com" in "manhwaindex.com") and missed every "http://" link.
  */
 
-export const LINKVERTISE_ID = 10316435
+// null = off. Turned off 26 Oct 2026 by the owner: after two days, 28
+// Linkvertise views, 6 got through to the platform and it paid $0.01.
+// Put the account id (10316435) back here to turn it on again.
+export const LINKVERTISE_ID = null
 
 /**
  * Runs in the browser, as an inline module: after the page is parsed, after
