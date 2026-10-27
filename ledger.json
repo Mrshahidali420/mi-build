@@ -6115,6 +6115,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117892717500964",
    "commentId": "122117892717500964_1130161029387809"
+  },
+  {
+   "key": "2026-10-27|where:184347|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:184347",
+   "title": "Bad Born Blood",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "184347",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793144803911,
+   "status": "claimed"
   }
  ],
  "health": {
