@@ -5763,6 +5763,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117870025500964",
    "commentId": "122117870025500964_2885299481840442"
+  },
+  {
+   "key": "2026-10-27|next:115122|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:115122",
+   "title": "Death Note: a-Kira",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "115122",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793139067589,
+   "status": "claimed"
   }
  ],
  "health": {
