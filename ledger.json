@@ -5518,6 +5518,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117853867500964",
    "commentId": "122117853867500964_1610870390537973"
+  },
+  {
+   "key": "2026-10-27|where:30145|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:30145",
+   "title": "BECK",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30145",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793135145372,
+   "status": "claimed"
   }
  ],
  "health": {
