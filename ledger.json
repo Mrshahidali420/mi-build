@@ -5781,6 +5781,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117871129500964",
    "commentId": "122117871129500964_1413431010958905"
+  },
+  {
+   "key": "2026-10-27|where:112326|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:112326",
+   "title": "Promise of an Orchid",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "112326",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793139377642,
+   "status": "claimed"
   }
  ],
  "health": {
