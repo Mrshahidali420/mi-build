@@ -5337,10 +5337,7 @@
   },
   "cut": null,
   "blockedUntil": 0,
-  "halted": {
-   "why": "the Page token was refused",
-   "at": 1791919083289
-  }
+  "halted": null
  },
  "birthdays": {
   "day": "2026-10-27",
