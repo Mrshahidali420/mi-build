@@ -5495,6 +5495,27 @@
    "status": "posted",
    "postId": "1318170941390322_122117852835500964",
    "commentId": "122117852835500964_1766224427793021"
+  },
+  {
+   "rare": true,
+   "hash": "20de35d3fe9d237299b4227e04869109",
+   "rating": "g",
+   "ecchi": false,
+   "source": "danbooru",
+   "key": "2026-10-27|fanart:danbooru:10942328|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fanart:danbooru:10942328",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fanart",
+   "type": "fanart",
+   "item": "danbooru:10942328",
+   "gapDays": 3650,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793134844286,
+   "status": "claimed"
   }
  ],
  "health": {
