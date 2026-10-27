@@ -5477,6 +5477,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117836521500964",
    "commentId": "122117836521500964_1530784245749608"
+  },
+  {
+   "key": "2026-10-27|next:201009|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:201009",
+   "title": "The Patron of Villains",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "201009",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793134543125,
+   "status": "claimed"
   }
  ],
  "health": {
