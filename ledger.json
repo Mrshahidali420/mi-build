@@ -6079,6 +6079,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117889483500964",
    "commentId": "122117889483500964_1080507958133035"
+  },
+  {
+   "key": "2026-10-27|fact:fact:85316:wait|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:85316:wait",
+   "title": "Dead Dead Demon's Dededede Destruction",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:85316:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793144202086,
+   "status": "claimed"
   }
  ],
  "health": {
