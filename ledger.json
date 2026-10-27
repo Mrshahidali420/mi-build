@@ -5387,6 +5387,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117828577500964",
    "commentId": "122117828577500964_1144159257958167"
+  },
+  {
+   "key": "2026-10-27|fact:fact:105429:run|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:105429:run",
+   "title": "Random Chat",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:105429:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793133037526,
+   "status": "claimed"
   }
  ],
  "health": {
