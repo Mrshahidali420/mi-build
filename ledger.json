@@ -5423,6 +5423,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117831619500964",
    "commentId": "122117831619500964_1163663056095460"
+  },
+  {
+   "key": "2026-10-27|where:124474|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:124474",
+   "title": "When the Villainess is in Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "124474",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793133639665,
+   "status": "claimed"
   }
  ],
  "health": {
