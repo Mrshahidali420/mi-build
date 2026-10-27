@@ -5858,6 +5858,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117874903500964",
    "commentId": "122117874903500964_1479125027413964"
+  },
+  {
+   "key": "2026-10-27|next:128963|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:128963",
+   "title": "Surviving Romance",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "128963",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793140583108,
+   "status": "claimed"
   }
  ],
  "health": {
