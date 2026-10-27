@@ -342,7 +342,9 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
 
       // Only the page they arrived on carries the tag we put on our own links,
       // so one shared link is counted once and not on every page after it.
-      function miCampaign() {
+      // A visit from Facebook gets the campaign "facebook" even with no tag of
+      // ours on the link. Read once, before the fbclid is taken off the address.
+      var miTag = (function () {
         if (miVisit.step !== 1) return ''
         try {
           var q = new URLSearchParams(location.search)
@@ -352,11 +354,53 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
             var v = (q.get(keys[i]) || '').slice(0, 40)
             if (v) parts.push(v)
           }
-          return parts.join('/')
+          var tag = parts.join('/')
+          if (!miFacebook(location.search, document.referrer)) return tag
+          if (!tag) return 'facebook'
+          return /^facebook(\/|$)/i.test(tag) ? tag : 'facebook/' + tag
+        } catch (e) {
+          return ''
+        }
+      })()
+
+      function miCampaign() {
+        return miTag
+      }
+
+      // Facebook adds ?fbclid=... to every link it sends, and its app often
+      // sends no referrer at all. A fbclid, a Facebook referrer (l., lm., m.,
+      // www., fb.com) or our old utm_source=facebook all mean Facebook.
+      function miFacebook(search, referrer) {
+        try {
+          var q = new URLSearchParams(search || '')
+          if (q.has('fbclid')) return true
+          if ((q.get('utm_source') || '').toLowerCase() === 'facebook') return true
+          var host = referrer ? new URL(referrer).hostname.toLowerCase() : ''
+          return host === 'facebook.com' || host === 'fb.com' || host.slice(-13) === '.facebook.com'
+        } catch (e) {
+          return false
+        }
+      }
+
+      // The same address without fbclid, or '' when there is none to take off.
+      // Every other part of the address, the hash too, is kept.
+      function miNoFbclid(href) {
+        try {
+          var u = new URL(href)
+          if (!u.searchParams.has('fbclid')) return ''
+          u.searchParams.delete('fbclid')
+          return u.pathname + u.search + u.hash
         } catch (e) {
           return ''
         }
       }
+
+      // The campaign is read above, so the fbclid has done its job. Take it off
+      // the address bar so a copied or shared link stays clean.
+      try {
+        var miClean = miNoFbclid(location.href)
+        if (miClean) history.replaceState(history.state, '', miClean)
+      } catch (e) {}
 
       // The name of the page in plain words, so a report does not have to show
       // a web address. Everything after " | " is the site name.
@@ -799,6 +843,7 @@ const graph = nodes.length > 0 ? { '@context': 'https://schema.org', '@graph': n
             no episodes — every link goes to the rights holder.
           </p>
           <p class="colophon__count">Refreshed every day.</p>
+          <p class="colophon__count"><a href="https://www.facebook.com/Manhwaindex" rel="noopener">Follow us on Facebook</a></p>
         </div>
         <div>
           <h3>Browse</h3>

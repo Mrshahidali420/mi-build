@@ -29,6 +29,7 @@ import {
   num,
   sectionName,
   sourceName,
+  FACEBOOK_EVENT_SQL,
 } from '../lib/admin.js'
 import { CLICK } from '../lib/action-sql.js'
 
@@ -69,10 +70,13 @@ if (signedIn) {
     // the (day, kind) index: the page views for "people", and the views and
     // clicks hour by hour for the chart. Together they read about what the
     // one old "whole of today" question read, which matters on the one page
-    // that reloads itself.
+    // that reloads itself. The Facebook visits ride on the same rows: a visit
+    // whose first page came from Facebook, by fbclid, referrer or utm tag.
     askOne(
       db,
-      `SELECT COUNT(DISTINCT CASE WHEN visitor <> '' THEN visitor END) AS people
+      `SELECT COUNT(DISTINCT CASE WHEN visitor <> '' THEN visitor END) AS people,
+              COUNT(DISTINCT CASE WHEN step = 1 AND session <> '' AND ${FACEBOOK_EVENT_SQL}
+                    THEN session END) AS facebook
        FROM events WHERE day = ? AND kind = 'view'`,
       today
     ),
@@ -220,6 +224,7 @@ const brokenRows = missing.map((row) => ({
     <Kpi label="People today" value={todayRow.people || 0} />
     <Kpi label="Page views today" value={viewsToday} />
     <Kpi label="Clicks out today" value={clicksToday} />
+    <Kpi label="Visitors from Facebook today" value={todayRow.facebook || 0} />
     {LINKVERTISE_ID && <Kpi label="Linkvertise clicks today" value={lvToday} />}
   </section>
 

@@ -13,7 +13,7 @@
  * Every function here returns plain rows with the same field names, whichever
  * store answered, so a page never has to know where a number came from.
  */
-import { ask, askOne } from './admin.js'
+import { ask, askOne, groupSenders } from './admin.js'
 import { CLICK } from './action-sql.js'
 
 const SUMS = [
@@ -299,14 +299,17 @@ export async function countriesFor(db, range, limit = 15) {
 
 // -------------------------------------------------------------------- sources
 
+// Every Facebook name (l.facebook.com, fbclid, utm_source=facebook) is added
+// up into one sender by groupSenders(), so Facebook is one row, not five.
 export async function sourcesFor(db, range, limit = 20) {
   if (range.mode === 'all') {
-    return await ask(
+    const rows = await ask(
       db,
       `SELECT source, SUM(views) AS views, SUM(entries) AS entries
        FROM daily_sources GROUP BY source ORDER BY views DESC LIMIT ?`,
       limit
     )
+    return groupSenders(rows)
   }
 
   const where = rawWhere(range)
@@ -319,7 +322,7 @@ export async function sourcesFor(db, range, limit = 20) {
     ...where.args,
     limit
   )
-  if (range.mode === 'raw') return raw
+  if (range.mode === 'raw') return groupSenders(raw)
 
   const closed = await ask(
     db,
@@ -336,7 +339,7 @@ export async function sourcesFor(db, range, limit = 20) {
      GROUP BY source`,
     range.toDay
   )
-  return biggest(merge((r) => r.source, closed, today), 'views', limit)
+  return groupSenders(merge((r) => r.source, closed, today)).slice(0, limit)
 }
 
 // ---------------------------------------------------------------------- moves

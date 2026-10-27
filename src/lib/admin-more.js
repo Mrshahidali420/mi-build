@@ -8,7 +8,7 @@
  * The raw questions are the same SQL the night job runs (src/lib/action-sql.js),
  * so today and last week are always counted the same way.
  */
-import { ask, askOne, dayKey } from './admin.js'
+import { ask, askOne, dayKey, groupSenders, FACEBOOK_SOURCE_SQL } from './admin.js'
 import { actionRowsSql, quickExitsSql } from './action-sql.js'
 import { rawWhere } from './admin-data.js'
 import { fillDays } from './admin-chart.js'
@@ -162,7 +162,23 @@ export async function weekSources(db, w = weeks()) {
     ask(db, WEEK_SOURCES, w.now.from, w.now.to),
     ask(db, WEEK_SOURCES, w.before.from, w.before.to),
   ])
-  return { now: a, before: b }
+  return { now: groupSenders(a, 'entries'), before: groupSenders(b, 'entries') }
+}
+
+/**
+ * Visits that started from Facebook, one row per closed day for both weeks:
+ * [{ day, visits }]. Every Facebook name counts (see isFacebook in admin.js).
+ * The owner reads this to decide how often the Facebook Page should post.
+ */
+export async function weekFacebook(db, w = weeks()) {
+  const rows = await ask(
+    db,
+    `SELECT day, SUM(entries) AS visits FROM daily_sources
+     WHERE day >= ? AND day <= ? AND ${FACEBOOK_SOURCE_SQL} GROUP BY day`,
+    w.before.from,
+    w.now.to
+  )
+  return fillDays(rows, w.before.from, w.now.to, ['visits'])
 }
 
 const WEEK_PLATFORMS = `SELECT platform, SUM(clicks) AS clicks FROM daily_clicks

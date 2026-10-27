@@ -22,11 +22,12 @@ import {
   quickExitsFor,
   weekPlatforms,
   weekSources,
+  weekFacebook,
   weekTotals,
   weeks,
   SERIES_FIELDS,
 } from '../../lib/admin-more.js'
-import { deltaOf, fillDays, flagOf } from '../../lib/admin-chart.js'
+import { deltaOf, fillDays, flagOf, shortDay } from '../../lib/admin-chart.js'
 import homeLog from '../../../data/home-decisions.json'
 import {
   entryPageHint,
@@ -59,9 +60,10 @@ let quick = new Map()
 let misses = []
 let health = { log: [], today: 0 }
 let series = []
+let facebook = []
 
 if (signedIn) {
-  ;[totals, sources, platforms, countries, pages, quick, misses, health, series] = await Promise.all([
+  ;[totals, sources, platforms, countries, pages, quick, misses, health, series, facebook] = await Promise.all([
     weekTotals(db, w),
     weekSources(db, w),
     weekPlatforms(db, w),
@@ -72,6 +74,8 @@ if (signedIn) {
     counterHealth(db),
     // 14 small rows: the two weeks, day by day, for the trend lines.
     dailySeries(db, w.before.from, w.now.to),
+    // 14 more: visits that started from Facebook, day by day.
+    weekFacebook(db, w),
   ])
 }
 const days = fillDays(series, w.before.from, w.now.to, SERIES_FIELDS)
@@ -80,6 +84,15 @@ const sumOf = (list, field) => list.reduce((n, row) => n + (row[field] || 0), 0)
 const savesNow = sumOf(thisWeek, 'saves')
 const savesBefore = sumOf(days.slice(0, 7), 'saves')
 const line = (field) => days.map((row) => row[field] || 0)
+
+// Visits from Facebook, this week against last, and each day of this week,
+// so the owner can see what the Page's posting pace brings in.
+const fbNow = sumOf(facebook.slice(-7), 'visits')
+const fbBefore = sumOf(facebook.slice(0, 7), 'visits')
+const facebookRows = facebook
+  .slice(-7)
+  .reverse()
+  .map((row) => ({ name: shortDay(row.day), value: row.visits, unit: 'visits' }))
 
 const a = totals.now
 const b = totals.before
@@ -182,6 +195,7 @@ const platformRows = [...platforms.now]
       <Kpi label="Visits" value={a.visits || 0} now={a.visits} before={b.visits} spark={line('visits')} hero />
       <Kpi label="Page views" value={a.views || 0} now={a.views} before={b.views} spark={line('views')} />
       <Kpi label="Clicks out" value={a.clicks || 0} now={a.clicks} before={b.clicks} spark={line('clicks')} tone="amber" />
+      <Kpi label="Visits from Facebook" value={fbNow} now={fbNow} before={fbBefore} spark={facebook.map((row) => row.visits)} />
       <Kpi label="Titles saved to lists" value={savesNow} now={savesNow} before={savesBefore} spark={line('saves')} tone="violet" />
       <Kpi label="Left at once" value={a.quick_exits || 0} now={a.quick_exits} before={b.quick_exits} spark={line('quick_exits')} tone="bad" lowerIsBetter />
     </section>
@@ -207,6 +221,15 @@ const platformRows = [...platforms.now]
     <p class="say">The five senders that started the most visits, against last week.</p>
     <BarList rows={sourceRows} empty="No visits recorded this week yet." />
     <Hint hint={newSourceHint(top5, sources.before, sourceName)} />
+  </div>
+
+  <div class="panel">
+    <h2>Visitors from Facebook, last 7 days</h2>
+    <p class="say">
+      Visits that started from a Facebook post or comment, day by day, newest
+      first. {num(fbNow)} this week against {num(fbBefore)} the week before.
+    </p>
+    <BarList rows={facebookRows} empty="No closed days yet." />
   </div>
 
   <div class="panel">

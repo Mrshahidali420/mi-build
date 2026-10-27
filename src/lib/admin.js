@@ -271,8 +271,6 @@ const SOURCES = {
   'www.google.com': 'Google search',
   'bing.com': 'Bing search',
   'duckduckgo.com': 'DuckDuckGo',
-  'l.facebook.com': 'Facebook',
-  'facebook.com': 'Facebook',
   't.co': 'Twitter / X',
   'out.reddit.com': 'Reddit',
   'reddit.com': 'Reddit',
@@ -281,8 +279,51 @@ const SOURCES = {
   'yandex.com': 'Yandex search',
 }
 
+/**
+ * Facebook arrives under many names: its own hosts (l., lm., m., www.), fb.com,
+ * or the campaign the counter writes, which is "facebook" for a fbclid or a
+ * Facebook referrer and "facebook/..." for an old utm_source=facebook link.
+ */
+export function isFacebook(source) {
+  const s = String(source || '').toLowerCase()
+  if (s.startsWith('utm:')) {
+    const tag = s.slice(4)
+    return tag === 'facebook' || tag.startsWith('facebook/')
+  }
+  return s === 'facebook.com' || s === 'fb.com' || s.endsWith('.facebook.com')
+}
+
+// The same test in SQL. The first is for raw `events` rows, the second for
+// the `source` column of daily_sources. LIKE ignores case for plain letters.
+export const FACEBOOK_EVENT_SQL = `(campaign = 'facebook' OR campaign LIKE 'facebook/%'
+  OR referrer IN ('facebook.com', 'fb.com') OR referrer LIKE '%.facebook.com')`
+export const FACEBOOK_SOURCE_SQL = `(source = 'utm:facebook' OR source LIKE 'utm:facebook/%'
+  OR source IN ('facebook.com', 'fb.com') OR source LIKE '%.facebook.com')`
+
+/** One key per sender, so every Facebook name is counted as one. */
+export function sourceKey(source) {
+  return isFacebook(source) ? 'utm:facebook' : source
+}
+
+/** Sender rows added up by sourceKey(), biggest `field` first. */
+export function groupSenders(rows, field = 'views') {
+  const out = new Map()
+  for (const row of rows) {
+    const key = sourceKey(row.source)
+    const found = out.get(key)
+    if (!found) {
+      out.set(key, { ...row, source: key })
+      continue
+    }
+    found.views = (found.views || 0) + (row.views || 0)
+    found.entries = (found.entries || 0) + (row.entries || 0)
+  }
+  return [...out.values()].sort((a, b) => (b[field] || 0) - (a[field] || 0))
+}
+
 export function sourceName(source) {
   if (!source) return 'Typed the address'
+  if (isFacebook(source)) return 'Facebook'
   if (source.startsWith('utm:')) return `Your own link: ${source.slice(4)}`
   if (SOURCES[source]) return SOURCES[source]
   if (source.startsWith('www.google.')) return 'Google search'
