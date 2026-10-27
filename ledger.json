@@ -5840,6 +5840,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117873997500964",
    "commentId": "122117873997500964_1742188976868096"
+  },
+  {
+   "key": "2026-10-27|fact:fact:40552:wait|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:40552:wait",
+   "title": "Lucifer and the Biscuit Hammer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:40552:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793140282255,
+   "status": "claimed"
   }
  ],
  "health": {
