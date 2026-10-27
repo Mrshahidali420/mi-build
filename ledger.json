@@ -6097,6 +6097,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117890485500964",
    "commentId": "122117890485500964_1429434968715667"
+  },
+  {
+   "key": "2026-10-27|next:125377|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:125377",
+   "title": "The Max Level Returner",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "125377",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793144503042,
+   "status": "claimed"
   }
  ],
  "health": {
