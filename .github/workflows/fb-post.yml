@@ -136,12 +136,26 @@ jobs:
 
       # A reel is put together with ffmpeg. The runner image does not carry it (checked 12 Oct 2026),
       # so it is installed, and only for a run that can make a reel.
+      - name: Cache ffmpeg
+        if: contains(vars.FB_POST_TYPES, 'reel') || contains(inputs.types, 'reel')
+        uses: actions/cache@v4
+        with:
+          path: ~/ffmpeg-bin
+          key: ffmpeg-static-n8.1
+
       - name: Install ffmpeg for reels
         if: contains(vars.FB_POST_TYPES, 'reel') || contains(inputs.types, 'reel')
         working-directory: .
+        timeout-minutes: 5
         run: |
-          command -v ffmpeg >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg)
-          ffmpeg -version | head -n 1
+          # A static build, kept in the Actions cache. apt-get hung for 13+ minutes on
+          # 28 Oct 2026, and the cache makes later runs skip the download entirely.
+          if [ ! -x "$HOME/ffmpeg-bin/ffmpeg" ]; then
+            mkdir -p "$HOME/ffmpeg-bin"
+            curl -fsSL --retry 3 --max-time 180 "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n8.1-latest-linux64-gpl-8.1.tar.xz"               | tar -xJ --strip-components=2 -C "$HOME/ffmpeg-bin" --wildcards '*/bin/ffmpeg' '*/bin/ffprobe'
+          fi
+          echo "$HOME/ffmpeg-bin" >> "$GITHUB_PATH"
+          "$HOME/ffmpeg-bin/ffmpeg" -version | head -n 1
 
       - name: Post
         id: post
