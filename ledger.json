@@ -6043,6 +6043,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117887353500964",
    "commentId": "122117887353500964_1154387823925187"
+  },
+  {
+   "key": "2026-10-27|where:97884|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:97884",
+   "title": "Astral Sutra",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "97884",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793143600358,
+   "status": "claimed"
   }
  ],
  "health": {
