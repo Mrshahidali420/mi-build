@@ -5405,6 +5405,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117830287500964",
    "commentId": "122117830287500964_1128980676384863"
+  },
+  {
+   "key": "2026-10-27|next:140475|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:140475",
+   "title": "The Fragrant Flower Blooms With Dignity",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "140475",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793133338584,
+   "status": "claimed"
   }
  ],
  "health": {
