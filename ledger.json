@@ -5971,6 +5971,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117882499500964",
    "commentId": "122117882499500964_1046323028433447"
+  },
+  {
+   "key": "2026-10-27|where:120806|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:120806",
+   "title": "A Villainess for the Tyrant",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "120806",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793142388545,
+   "status": "claimed"
   }
  ],
  "health": {
