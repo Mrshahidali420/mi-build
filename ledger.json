@@ -5745,6 +5745,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117869095500964",
    "commentId": "122117869095500964_1430353772630439"
+  },
+  {
+   "key": "2026-10-27|fact:fact:85703:wait|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:85703:wait",
+   "title": "Watari-kun's ****** Is about to Collapse",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:85703:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793138766757,
+   "status": "claimed"
   }
  ],
  "health": {
