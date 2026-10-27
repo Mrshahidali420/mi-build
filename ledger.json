@@ -5614,6 +5614,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117859405500964",
    "commentId": "122117859405500964_984917730720989"
+  },
+  {
+   "key": "2026-10-27|where:43702|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:43702",
+   "title": "My Little Monster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "43702",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793136658928,
+   "status": "claimed"
   }
  ],
  "health": {
