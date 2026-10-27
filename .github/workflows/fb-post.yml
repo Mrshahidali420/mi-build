@@ -166,8 +166,12 @@ jobs:
           # The cap for any 24 hours (unset = 24, at most 288), and the least minutes between two posts (5 at least).
           FB_POSTS_PER_DAY: ${{ vars.FB_POSTS_PER_DAY }}
           FB_MIN_GAP_MINUTES: ${{ vars.FB_MIN_GAP_MINUTES }}
-          # Reels in any 24 hours, inside the cap (unset = 3, at most 10). A reel type posts only when FB_POST_TYPES names it.
+          # Reels in any 24 hours on their own budget, not in FB_POSTS_PER_DAY, never within 5 minutes of another post (unset = 3, at most 10). A reel type posts only when FB_POST_TYPES names it.
           FB_REELS_PER_DAY: ${{ vars.FB_REELS_PER_DAY }}
+          # Shares of the sister Page's posts in any 24 hours, inside the cap (unset = off, at most 4), read from the FB_SHARE_FROM repo's public ledger.
+          FB_SHARES_PER_DAY: ${{ vars.FB_SHARES_PER_DAY }}
+          FB_SHARE_FROM: ${{ vars.FB_SHARE_FROM }}
+          FB_SHARE_FROM_NAME: ${{ vars.FB_SHARE_FROM_NAME }}
           # How long one run of the chain lasts before it hands over.
           FB_CHAIN_MINUTES: '120'
           # The template post types that are switched on (empty = classic posts only).

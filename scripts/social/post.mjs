@@ -24,8 +24,13 @@
  * and can lower the cap (limits.mjs); nothing raises it but the owner.
  *
  * Reels (types marked `reel`) are gated like every type, limited to
- * FB_REELS_PER_DAY in the rolling day (3 unless set, 10 at most), inside the
- * cap, and never two in a row (attempt.mjs).
+ * FB_REELS_PER_DAY in the rolling day (3 unless set, 10 at most). In the chain
+ * they have their own lane (28 Oct 2026): out of the posts' cap, spread
+ * evenly, never within five minutes of another post (chain.mjs, pace.mjs).
+ *
+ * Shares of the sister Page's posts (share.mjs) are off unless FB_SHARES_PER_DAY
+ * (4 at most) and FB_SHARE_FROM are set; they too count inside the cap and
+ * never run two in a row.
  *
  * Kinds of post: the classic post (a cover and a caption) unless the repo
  * variable FB_POST_TYPES names template types (gate.mjs). The template code
@@ -46,8 +51,9 @@ import { CLASSIC, enabledTypes } from './gate.mjs'
 import { resolveCover } from './image.mjs'
 import { gitStore, memoryStore } from './ledger.mjs'
 import { effectiveCap, saveHealth, withHalt } from './limits.mjs'
-import { countedEntries, gapMinutesOf, nextWait, perDayOf, reelsPerDayOf, rollingCount, DEFAULT_PER_DAY, MAX_PER_DAY } from './pace.mjs'
+import { countedEntries, gapMinutesOf, nextWait, perDayOf, postLane, reelLane, reelsPerDayOf, rollingCount, DEFAULT_PER_DAY, MAX_PER_DAY } from './pace.mjs'
 import { STEP } from './send.mjs'
+import { shareSettingsOf } from './share.mjs'
 import { withBirthdays } from './birthdays.mjs'
 import { withExtras } from './extras.mjs'
 import { SITE, affiliateOn } from './site.mjs'
@@ -91,6 +97,7 @@ export function settingsOf(env) {
     perDay: perDayOf(env.FB_POSTS_PER_DAY),
     gapMinutes: gapMinutesOf(env.FB_MIN_GAP_MINUTES),
     reelsPerDay: reelsPerDayOf(env.FB_REELS_PER_DAY),
+    share: shareSettingsOf(env),
     chainMinutes: Math.min(int(env.FB_CHAIN_MINUTES, DEFAULT_CHAIN_MINUTES), MAX_CHAIN_MINUTES),
     // 'watch' when the backstop cron started this run; it must not restart a halted chain.
     startedBy: env.STARTED_BY || 'hand',
@@ -161,6 +168,12 @@ async function kindsOf(s, loadTypes, out) {
   }
 }
 
+/** What the run says about shares of the sister Page's posts. */
+function shareLine(share) {
+  if (share.on) return `Shares: up to ${share.perDay} in any 24 hours (inside the cap) of the posts of ${share.from}${share.name ? ` (${share.name})` : ''}.`
+  return `Shares: off${share.perDay && !share.from ? ' (FB_SHARE_FROM is not set to a repo)' : ''}.`
+}
+
 /** The lines that say where the rolling day stands. */
 function paceLines(s, health, cap, used) {
   const cut = cap < s.perDay ? ` The cap of ${s.perDay} is cut to ${cap} after a block signal; change FB_POSTS_PER_DAY by hand to lift it.` : ''
@@ -207,15 +220,18 @@ export async function run({ fetch = globalThis.fetch, env, now, clock = now === 
   const book = s.dry ? memoryStore(ledger.data) : store
   const health = ledger.data.health || {}
   const cap = effectiveCap(health, s.perDay)
-  const used = rollingCount(countedEntries(ledger.data, SITE.key), clock())
+  const counted = countedEntries(ledger.data, SITE.key)
+  const used = rollingCount(postLane(counted), clock())
   out.push(...paceLines(s, health, cap, used))
+  out.push(`Reels: ${rollingCount(reelLane(counted), clock())} of ${s.reelsPerDay} in the last 24 hours, on their own budget (not in the posts' cap), never within 5 minutes of another post.`, '')
+  out.push(shareLine(s.share), '')
   out.push(`Amazon line in the first comment: ${s.affiliate ? 'on' : 'off (the FB_AFFILIATE_COMMENT variable is not true)'}.`, '')
 
   const ig = await openInstagram(s, env, makeInstagram, out)
   const kinds = await kindsOf(s, loadTypes, out)
   // A kind that wants today's birthdays (types/birthday-card.mjs) gets them with the data; no other run asks.
   const say = (line) => out.push(line, '')
-  const base = { s, graph, ig, book, kinds, rng, blockedTags, out, flush, resolveImage, render, preview, clock, sleep, loadPools: withExtras(withBirthdays(loadPools, kinds, { book, fetch, say }), kinds, { book, fetch, say }) }
+  const base = { fetch, s, graph, ig, book, kinds, rng, blockedTags, out, flush, resolveImage, render, preview, clock, sleep, loadPools: withExtras(withBirthdays(loadPools, kinds, { book, fetch, say }), kinds, { book, fetch, say }) }
   if (s.mode === 'chain') {
     if (health.halted && s.startedBy === 'watch') return end(0, `The chain was halted (${health.halted.why}). It is started by hand once that is fixed; the watch job does not restart it.`)
     if (health.halted) await saveHealth(book, (h) => withHalt(h, null, clock()), 'Chain restarted')
@@ -258,7 +274,8 @@ async function sendPosts(base, { loaded, want, left, cap }) {
   let posted = 0
   for (let attempt = 0; posted < want && attempt < want + SPARE_TRIES; attempt += 1) {
     if (!s.dry) {
-      const wait = nextWait({ entries: countedEntries((await book.read()).data, SITE.key), now: clock(), cap, gapMinutes: s.gapMinutes, even: false })
+      const counted = countedEntries((await book.read()).data, SITE.key)
+      const wait = nextWait({ entries: postLane(counted), others: reelLane(counted), now: clock(), cap, gapMinutes: s.gapMinutes, even: false })
       if (wait.why === 'cap') return out.push('The cap for the last 24 hours is reached.') && false
       if (wait.ms > 0) await sleep(wait.ms)
     }

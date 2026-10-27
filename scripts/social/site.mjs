@@ -10,10 +10,11 @@ export const SITE = {
   origin: 'https://manhwaindex.com',
 }
 
-/** Read by Base.astro's beacon (utm_* -> campaign) and by GA4 as-is. */
-export const UTM = 'utm_source=facebook&utm_medium=social&utm_campaign=page'
-
-export const linkOf = (path) => `${SITE.origin}${path}?${UTM}`
+/**
+ * A post's link: the plain address, no query (owner decision, 28 Oct 2026).
+ * The site counts Facebook visits from the referrer and Facebook's own fbclid.
+ */
+export const linkOf = (path) => `${SITE.origin}${path}`
 
 /** The repo variable that adds the Amazon line to the first comment. Off unless it is exactly 'true'. */
 export const affiliateOn = (env) => env.FB_AFFILIATE_COMMENT === 'true'

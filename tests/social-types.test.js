@@ -256,7 +256,7 @@ test('run: a switched-on type draws its picture, claims, sends the file, then co
   assert.match(order[0][2], /^📖 Where can you read Solo Leveling legally\?\nIt is on Tapas and KakaoPage\.\n\n.*It is completed at 201 chapters\. ⭐ 8\.4 out of 10 on AniList\. Genres: Action and Fantasy\./)
   assert.match(order[0][2], /\?\n\n👇 .+first comment\.\n\n#SoloLeveling #Tapas #Dungeon #manhwa #action #ManhwaRecommendation #KoreanWebtoon$/)
   assert.doesNotMatch(order[0][2], /https?:/)
-  assert.match(order[1][2], /^Where to read it: https:\/\/manhwaindex\.com\/manhwa\/solo-leveling-1\?.*utm_source=facebook/)
+  assert.match(order[1][2], /^Where to read it: https:\/\/manhwaindex\.com\/manhwa\/solo-leveling-1$/m)
   const [entry] = h.store.snapshot().entries
   assert.deepEqual([entry.status, entry.type, entry.postId, entry.commentId], ['posted', 'where', 'p7', 'c7'])
   assert.match(h.text.join(''), /Post types switched on: where/)

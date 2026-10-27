@@ -159,7 +159,7 @@ test('shop: every link the poster can make carries manhwaindex-20, never wherean
     assert.equal(url.searchParams.get('tag'), OWN_TAG, shop.url)
     assert.deepEqual([...url.searchParams.keys()], ['tag'], shop.url)
     const comment = commentFor({ label: 'Where to read it', path: '/manhwa/x', shop }, { affiliate: true })
-    assert.ok(comment.startsWith(`Where to read it: ${SITE.origin}/manhwa/x?`) && comment.endsWith(shop.url))
+    assert.ok(comment.startsWith(`Where to read it: ${SITE.origin}/manhwa/x\n`) && comment.endsWith(shop.url))
     assert.doesNotMatch(comment, SISTER, comment)
     assert.doesNotMatch(comment, /associate/i)
     links += 1

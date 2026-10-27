@@ -111,7 +111,7 @@ export async function classicStep({ s, graph, ig = null, book, pools, history, n
 export function typedEntry({ type, post, variant }, day, now) {
   const slug = slugOf(type, post)
   return {
-    // A reel is counted on its own daily limit, inside the cap (attempt.mjs).
+    // A reel is counted on its own daily budget, out of the posts' cap (attempt.mjs, chain.mjs).
     ...(type.reel ? { reel: true } : {}),
     // Fan art and cosplay: rare by rule (attempt.mjs), and their picture's id, md5 and rating kept with the post.
     ...(type.rare ? { rare: true, ...(post.record || {}) } : {}),

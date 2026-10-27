@@ -209,7 +209,7 @@ test('run: with no secrets it is a green dry run with NEW and OLD samples', asyn
   assert.match(out, /DRY RUN/)
   assert.match(out, /### NEW · airing · Frieren/)
   assert.match(out, /### OLD · /)
-  assert.match(out, /Where to watch it: https:\/\/manhwaindex\.com\/anime\/frieren-2\?utm_source=facebook&utm_medium=social&utm_campaign=page/)
+  assert.match(out, /Where to watch it: https:\/\/manhwaindex\.com\/anime\/frieren-2$/m)
   assert.equal(h.store.snapshot().entries.length, 0) // the real ledger is untouched
 })
 

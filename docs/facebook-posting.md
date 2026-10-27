@@ -5,7 +5,7 @@ title page at a time on the site's Facebook Page:
 
 - a post with the cover picture and a short caption made from real facts
 - then, straight away, a first comment with the link, for example
-  `Where to read it: https://manhwaindex.com/manhwa/solo-leveling-105398?utm_source=facebook&utm_medium=social&utm_campaign=page`
+  `Where to read it: https://manhwaindex.com/manhwa/solo-leveling-105398`
 
 One long workflow run does the posting: it posts, waits and posts again, then
 starts the next run (see "How it paces the day"). It never runs on a push.
@@ -125,6 +125,17 @@ Three rules, all read from the ledger's own timestamps:
 - The day is a **rolling 24 hours**, counted back from now. Midnight never
   opens the door to a burst.
 - A claim, a post and a failed post all count. A dry run never does.
+- **Links are plain addresses** (28 Oct 2026): no `utm_` query. The site
+  counts Facebook visits from the referrer and Facebook's own `fbclid`.
+
+**Reels have a budget of their own** (owner decision, 28 Oct 2026: "a simple
+post every 25 minutes, and reels separately"). `FB_POSTS_PER_DAY` counts the
+posts and shares only; a reel never takes a post's slot. `FB_REELS_PER_DAY`
+reels go out in any 24 hours, spread evenly over the day (5 a day is one
+about every 4.8 hours), between the posts, and **never within 5 minutes of
+any other post** on the Page. The ledger marks each reel (`reel: true`), so
+both budgets are counted from it. The owner's settings: `FB_MIN_GAP_MINUTES`
+25 and `FB_POSTS_PER_DAY` 57, which is one post about every 25 minutes.
 
 ### The chain
 
@@ -172,6 +183,40 @@ the `social-state` branch) and printed in the run's summary:
 **Raising the cap** is done by hand, never by the code: when the summaries
 show no limit signal and low usage for a few days, set `FB_POSTS_PER_DAY` a
 step higher. Changing that number also lifts a cut left by a block.
+
+## Shares (off until you switch them on)
+
+Owner decision, 27 Oct 2026: the two sister Pages share each other's posts,
+2 or 3 a day. Each repo reads the OTHER repo's public ledger (`ledger.json`
+on its `social-state` branch, from raw.githubusercontent.com), because one
+Page cannot read the other through the Graph API.
+
+| Variable | What it does |
+|---|---|
+| `FB_SHARES_PER_DAY` | shares in any 24 hours. Unset or 0 = off, 4 at most |
+| `FB_SHARE_FROM` | the other repo, `owner/name`. Unset = off |
+| `FB_SHARE_FROM_NAME` | the other Page's name for the message (optional) |
+
+- **Inside the cap.** A share counts in `FB_POSTS_PER_DAY` and the gap like
+  any post. Never two shares in a row, and spread out: with 3 a day, no
+  closer than 6 hours apart.
+- **What is shared:** a post of the other Page that really went out (it has
+  a Facebook post id), between 2 and 72 hours old, that this Page has never
+  shared. The newest first, another kind than the last share when one is
+  there.
+- **How:** `POST /{page-id}/feed` with the post's public address as `link`
+  and one plain line as `message`, taking turns: "New on our sister Page:",
+  "Worth a look from our sister Page:", "Seen this yet? From our sister
+  Page:", "In case you missed it, from our sister Page:" (with ", Name"
+  before the colon when `FB_SHARE_FROM_NAME` is set). No first comment, no
+  Amazon line, no hashtags.
+- **Never in the way.** The other ledger not answering in 15 seconds, broken,
+  or holding nothing to share only means no share this time: one line in the
+  summary, and the normal post takes the turn. A share Facebook refuses is
+  marked `failed` in the ledger (never tried again), written to
+  `health.share`, and shares rest for 6 hours; the chain goes on.
+- **Dry run.** A dry run shows the share it would make (a `SHARE` block in
+  the summary) and sends nothing.
 
 ## Template posts (off until you switch them on)
 
@@ -306,8 +351,9 @@ Nothing is re-uploaded from anyone: the slides are our own.
 - **Off by default.** A reel posts only when its name is written in
   `FB_POST_TYPES`, like every template type.
 - **Few.** `FB_REELS_PER_DAY` reels in any 24 hours (3 unless set, 10 at
-  most; Facebook's own limit is 30 by API), counted inside the overall cap.
-  Never two reels in a row.
+  most; Facebook's own limit is 30 by API), on their own budget since
+  28 Oct 2026: not counted in `FB_POSTS_PER_DAY`, spread evenly over the day,
+  never within 5 minutes of another post (see "How it paces the day").
 - **A reel that fails never stops the other posts.** Whatever Facebook
   answers (a missing permission comes back looking like a refused token), the
   chain writes it in the ledger (`health.reel`: the code and the message)
@@ -421,7 +467,7 @@ Set the repo variable `FB_AFFILIATE_COMMENT` to `true` and the first comment
 gets a second line for titles the site has a product for:
 
 ```
-Where to read it: https://.../the-title?utm_source=facebook...
+Where to read it: https://.../the-title
 Get the book on Amazon: https://www.amazon.com/dp/XXXXXXXXXX?tag=manhwaindex-20
 ```
 

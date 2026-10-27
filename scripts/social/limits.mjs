@@ -81,6 +81,8 @@ export function withPeak(health, usage, now) {
 export const withHalt = (health, why, now) => ({ ...emptyHealth(), ...health, halted: why ? { why: short(why), at: now } : null })
 
 /** The health record with the last failure of a reel: what Facebook said, for the owner to read. */
+/** The same for a share (share.mjs). */
+export const withShareFailure = (health, error, now) => ({ ...emptyHealth(), ...health, share: { at: now, code: Number(error?.code) || 0, note: short(error?.message) } })
 export const withReelFailure = (health, error, now) => ({ ...emptyHealth(), ...health, reel: { at: now, code: Number(error?.code) || 0, note: short(error?.message) } })
 
 const SAVE_TRIES = 6

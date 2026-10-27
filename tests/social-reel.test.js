@@ -202,7 +202,7 @@ function reelRun(env, made = {}) {
   const go = () =>
     h.run({
       loadPools: async () => ({ pools: { new: [], old: [] }, data: {}, source: 'test' }),
-      loadTypes: async () => [kind('a', 60), kind('reel-x', 20, { reel: true })],
+      loadTypes: async () => [kind('a', made.posts || 60), kind('reel-x', 20, { reel: true })],
       render: async (type, post, opts) => (type.reel ? { mp4: Buffer.from('mp4'), seconds: 12, pngs: [], ...made.reel?.(opts) } : { png: Buffer.from('p'), jpeg: Buffer.from('j') }),
       preview: (name, bytes) => saved.push([name, bytes.toString()]),
     })
@@ -228,16 +228,36 @@ test('run: with the type not named, no reel is ever made', async () => {
   assert.ok(r.sent.length > 5 && r.sent.every((s) => s === 'picture' || s[0] === 'comment'))
 })
 
-test('run: reels stay inside their daily limit and never run back to back', async () => {
-  const r = reelRun({ FB_POST_TYPES: 'a,reel-x', FB_CHAIN_MINUTES: '120', FB_POSTS_PER_DAY: '288' })
+test('run: reels have their own budget: out of the posts cap, spread over the day, never within 5 minutes of another post', async () => {
+  // The owner's pace of 28 Oct 2026: a post every 25 minutes (57 a day), and 5 reels a day besides.
+  const r = reelRun({ FB_POST_TYPES: 'a,reel-x', FB_CHAIN_MINUTES: '340', FB_POSTS_PER_DAY: '57', FB_MIN_GAP_MINUTES: '25', FB_REELS_PER_DAY: '5' }, { posts: 5000 })
+  for (let i = 0; i < 9; i += 1) assert.equal(await r.go(), 0) // about 51 hours
+  const all = r.store.snapshot().entries.sort((x, y) => x.at - y.at)
+  const posts = all.filter((e) => !e.reel)
+  const reels = all.filter((e) => e.reel)
+  const dayOf = (list, e) => list.filter((x) => x.at > e.at - DAY_MS && x.at <= e.at).length
+  for (const e of all) {
+    assert.ok(dayOf(posts, e) <= 57)
+    assert.ok(dayOf(reels, e) <= 5)
+  }
+  // A full day of posts, and the reels on top of it, not in place of any.
+  assert.ok(posts.some((e) => dayOf(posts, e) === 57))
+  assert.ok(all.some((e) => dayOf(all, e) === 62))
+  assert.ok(reels.length >= 10, `${reels.length} reels`)
+  for (let i = 1; i < all.length; i += 1) assert.ok(all[i].at - all[i - 1].at >= 5 * MINUTE_MS)
+  for (let i = 1; i < posts.length; i += 1) assert.ok(posts[i].at - posts[i - 1].at >= 25 * MINUTE_MS)
+  for (let i = 1; i < reels.length; i += 1) assert.ok(reels[i].at - reels[i - 1].at >= DAY_MS / 5)
+  // Even: one post about every 25 minutes.
+  const span = (posts.at(-1).at - posts[0].at) / (posts.length - 1) / MINUTE_MS
+  assert.ok(span >= 25 && span < 26.5, `${span} min between posts`)
+})
+
+test('run: with no reel type switched on, the posts keep their pace and no reel is looked for', async () => {
+  const r = reelRun({ FB_POST_TYPES: 'a', FB_CHAIN_MINUTES: '300', FB_POSTS_PER_DAY: '57', FB_MIN_GAP_MINUTES: '25' }, { posts: 5000 })
   assert.equal(await r.go(), 0)
-  const order = r.store.snapshot().entries.sort((x, y) => x.at - y.at).map((e) => (e.reel ? 'R' : 'p'))
-  assert.equal(order.length, 24)
-  assert.equal(order.filter((kind) => kind === 'R').length, 3) // FB_REELS_PER_DAY unset
-  assert.doesNotMatch(order.join(''), /RR/)
-  const five = reelRun({ FB_POST_TYPES: 'a,reel-x', FB_CHAIN_MINUTES: '120', FB_POSTS_PER_DAY: '288', FB_REELS_PER_DAY: '5' })
-  await five.go()
-  assert.equal(five.store.snapshot().entries.filter((e) => e.reel).length, 5)
+  const all = r.store.snapshot().entries
+  assert.equal(all.filter((e) => e.reel).length, 0)
+  assert.equal(all.length, 12) // 300 minutes at one every 25.3
 })
 
 test('run: a dry run keeps the MP4 as a preview and sends nothing', async () => {
@@ -255,8 +275,8 @@ test('run: a reel writes its music in the ledger, and the next reel is told to t
     asked.push(opts?.avoidTrack ?? null)
     return { track: tracks[asked.length - 1] }
   }
-  const r = reelRun({ FB_POST_TYPES: 'a,reel-x', FB_CHAIN_MINUTES: '120', FB_POSTS_PER_DAY: '288' }, { reel })
-  assert.equal(await r.go(), 0)
+  const r = reelRun({ FB_POST_TYPES: 'a,reel-x', FB_CHAIN_MINUTES: '340', FB_POSTS_PER_DAY: '288' }, { reel, posts: 5000 })
+  for (let i = 0; i < 3; i += 1) assert.equal(await r.go(), 0) // 17 hours: three reels, eight hours apart
   const reels = r.store.snapshot().entries.filter((e) => e.reel).sort((x, y) => x.at - y.at)
   assert.deepEqual(reels.map((e) => e.track), tracks)
   assert.deepEqual(asked, [null, 'one.m4a', 'two.m4a'])

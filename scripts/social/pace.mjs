@@ -14,6 +14,11 @@
  *
  * A claim, a post and a failure all count; a dry run never does.
  *
+ * Reels have a lane of their own (owner decision, 28 Oct 2026): they are not
+ * counted in FB_POSTS_PER_DAY and take no post's slot. FB_REELS_PER_DAY reels
+ * in any 24 hours, spread evenly over the day the same way, and no post of
+ * either lane closer than MIN_GAP_MINUTES to a post of the other (`others`).
+ *
  * Pure: the clock is passed in.
  */
 
@@ -51,6 +56,10 @@ export const reelsPerDayOf = (value) => (String(value ?? '').trim() === '' || !N
 /** One Page's entries that count against the pace (everything but a dry run), oldest first. */
 export const countedEntries = (ledger, page) => (ledger?.entries || []).filter((e) => e.page === page && e.status !== 'dry').sort((x, y) => x.at - y.at)
 
+/** The two lanes of one Page's entries: the posts (shares too) and the reels. */
+export const postLane = (entries) => entries.filter((e) => !e.reel)
+export const reelLane = (entries) => entries.filter((e) => e.reel)
+
 /** The entries of the last 24 hours. */
 export const inWindow = (entries, now) => entries.filter((e) => e.at > now - DAY_MS)
 
@@ -74,15 +83,17 @@ function roomAt(entries, now, cap) {
  * @param blockedUntil no posts before this moment (a block signal from Facebook)
  * @param holdUntil no posts before this moment (a back-off after throttling)
  * @param even false for a manual run, which keeps the gap and the cap but not the even pace
+ * @param others the other lane's entries: none may be closer than MIN_GAP_MINUTES
  * @returns {{ ms: number, why: 'due'|'gap'|'pace'|'cap'|'block'|'backoff', at: number }}
  */
-export function nextWait({ entries, now, cap, gapMinutes = MIN_GAP_MINUTES, blockedUntil = 0, holdUntil = 0, even = true }) {
+export function nextWait({ entries, now, cap, gapMinutes = MIN_GAP_MINUTES, blockedUntil = 0, holdUntil = 0, even = true, others = [] }) {
   const gap = gapMinutes * MINUTE_MS
   const spacing = even ? spacingMs(cap, gapMinutes) : gap
   const last = lastAt(entries)
   const reasons = [
     { at: last ? last + spacing : 0, why: spacing > gap ? 'pace' : 'gap' },
     { at: roomAt(entries, now, cap), why: 'cap' },
+    { at: others.length ? lastAt(others) + MIN_GAP_MINUTES * MINUTE_MS : 0, why: 'gap' },
     { at: holdUntil, why: 'backoff' },
     { at: blockedUntil, why: 'block' },
   ]

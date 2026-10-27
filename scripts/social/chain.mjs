@@ -9,7 +9,10 @@
  *
  * Each turn of the loop:
  *   1. read the ledger; wait until the gap, the even pace and the rolling
- *      cap all allow a post (pace.mjs), and no block or back-off is in force
+ *      cap all allow a post (pace.mjs), and no block or back-off is in force.
+ *      Reels have their own lane: their own daily number and even pace, out
+ *      of the posts' cap, and never within five minutes of another post.
+ *      Whichever lane is due first takes the turn
  *   2. refresh the data when it is an hour old
  *   3. try one post (attempt.mjs)
  *   4. read what the answer says about Facebook's limits (limits.mjs)
@@ -24,16 +27,18 @@
  * A reel that fails never stops the chain and is never counted as one of
  * those failures, whatever Facebook answered (a missing permission comes
  * back looking like a refused token): it is written down (`health.reel`),
- * reels rest for a few hours, and the other posts go on. Only a token that
+ * reels rest for a few hours, and the other posts go on. A failed share of
+ * the sister Page's post (share.mjs) is treated the same way. Only a token that
  * is really dead (code 190) or a block still does what it does for any post.
  *
  * Everything from outside (the clock, sleep, the ledger, the Graph client)
  * is passed in, so the tests run a whole chain in no time.
  */
-import { attemptOnce } from './attempt.mjs'
+import { attemptOnce, POST_LANE, REEL_LANE } from './attempt.mjs'
+import { SHARE_REST_MS } from './share.mjs'
 import { REEL_REST_MS } from './attempt.mjs'
-import { backoffMs, effectiveCap, saveHealth, signalOf, usageSignal, withHalt, withPeak, withReelFailure, withSignal } from './limits.mjs'
-import { countedEntries, nextWait, rollingCount, MINUTE_MS } from './pace.mjs'
+import { backoffMs, effectiveCap, saveHealth, signalOf, usageSignal, withHalt, withPeak, withReelFailure, withShareFailure, withSignal } from './limits.mjs'
+import { countedEntries, nextWait, postLane, reelLane, rollingCount, MIN_GAP_MINUTES, MINUTE_MS } from './pace.mjs'
 import { STEP } from './send.mjs'
 import { SITE } from './site.mjs'
 import { timeOf } from './when.mjs'
@@ -53,9 +58,9 @@ const minutes = (ms) => Math.max(1, Math.round(ms / MINUTE_MS))
 export const usageLine = (usage) => (usage ? `Highest usage seen this run: **${usage.pct}%** (${usage.source}).` : 'Highest usage seen this run: Facebook sent no usage header (far from the call budget).')
 
 /** Wait for the next post, or to the end of this run when the wait is longer than that. */
-async function waitOut(wait, now, deadline, { say, sleep }) {
+async function waitOut(wait, now, deadline, { say, sleep, what = 'post' }) {
   const over = wait.at >= deadline
-  say(`${timeOf(now)} ET: waiting ${minutes(Math.min(wait.at, deadline) - now)} min (${WHY[wait.why]}). ${over ? 'The next run of the chain takes over from there.' : `Next post at about ${timeOf(wait.at)} ET.`}`)
+  say(`${timeOf(now)} ET: waiting ${minutes(Math.min(wait.at, deadline) - now)} min (${WHY[wait.why]}). ${over ? 'The next run of the chain takes over from there.' : `Next ${what} at about ${timeOf(wait.at)} ET.`}`)
   await sleep(Math.min(wait.at, deadline) - now)
 }
 
@@ -100,6 +105,14 @@ async function reelFailed(failure, c) {
   c.say(`**A reel failed** (code ${failure.code || 0}: ${failure.message}). No reel for ${Math.round(REEL_REST_MS / MINUTE_MS / 60)} hours; the other posts go on.`)
 }
 
+/** A share that failed: the same as a reel, with its own note and rest (share.mjs). */
+async function shareFailed(failure, c) {
+  const signal = signalOf(failure)
+  if (signal?.kind === 'block') return void (await onLimit(signal, c))
+  await saveHealth(c.book, (h) => withShareFailure(h, failure, c.clock()), 'Share failed').catch(() => null)
+  c.say(`**A share failed** (code ${failure.code || 0}: ${failure.message}). No share for ${Math.round(SHARE_REST_MS / MINUTE_MS / 60)} hours; the other posts go on.`)
+}
+
 /** What the turn does with the answer of one try. Returns the chain's result when it must stop, null to go on. */
 async function afterTry(step, failure, c) {
   const { state, s, book, clock, say, graph, reached } = c
@@ -112,6 +125,12 @@ async function afterTry(step, failure, c) {
     return null
   }
   if (step === STEP.skipped && (state.skips += 1) <= MAX_SKIPS) return null
+  if (step === STEP.none && c.lane === REEL_LANE) {
+    // No reel can be made now: the reel lane sits out until the data is read again; the posts are not held up.
+    c.skip.add(REEL_LANE)
+    say(`${timeOf(clock())} ET: no reel to make right now. Reels wait for the next data refresh.`)
+    return null
+  }
   if (step !== STEP.failed) {
     Object.assign(state, { skips: 0, loadedAt: 0 })
     say(`${timeOf(clock())} ET: nothing fresh to post (every item is inside its repeat gap). Looking again in ${minutes(IDLE_MS)} minutes.`)
@@ -122,10 +141,20 @@ async function afterTry(step, failure, c) {
     await reelFailed(failure, { ...c, usage })
     return null
   }
+  if (failure?.share && failure.code !== TOKEN_DEAD) {
+    await shareFailed(failure, { ...c, usage })
+    return null
+  }
   if (failure?.isAuth) return c.halt('the Page token was refused', `**The Page token was refused** (${failure.message}). The chain stops. Make a new long-lived Page token, update the FB_PAGE_TOKEN secret, then start the workflow by hand.`)
   if (await onLimit(signalOf(failure), { ...c, usage })) return null
   return c.stumble('That post failed')
 }
+
+/** True when a reel may be looked for: a reel type is switched on, the daily number is not 0, and the lane has not sat out. */
+const reelsOn = (base, skip) => base.s.reelsPerDay > 0 && !skip.has(REEL_LANE) && (base.kinds || []).some((kind) => typeof kind !== 'string' && kind.reel)
+
+/** After a reel that failed, the reel lane rests (attempt.mjs REEL_REST_MS). */
+const reelRestUntil = (reels) => reels.filter((e) => e.status === 'failed').reduce((until, e) => Math.max(until, e.at + REEL_REST_MS), 0)
 
 /** One turn of the loop: wait if a rule says so, else try one post. */
 async function turn(base, c) {
@@ -134,12 +163,18 @@ async function turn(base, c) {
   const now = clock()
   if (now >= deadline) return c.finish(0, true, `${timeOf(now)} ET: this run is done (${state.posted} posted). Handing over to the next run of the chain.`)
   const ledger = (await book.read()).data
-  const entries = countedEntries(ledger, SITE.key)
+  const counted = countedEntries(ledger, SITE.key)
+  const entries = postLane(counted)
+  const reels = reelLane(counted)
   const health = ledger.health || {}
   const cap = effectiveCap(health, s.perDay)
-  const wait = nextWait({ entries, now, cap, gapMinutes: s.gapMinutes, blockedUntil: health.blockedUntil || 0, holdUntil: state.holdUntil })
+  const stops = { blockedUntil: health.blockedUntil || 0, holdUntil: state.holdUntil }
+  const postWait = nextWait({ entries, others: reels, now, cap, gapMinutes: s.gapMinutes, ...stops })
+  const reelWait = reelsOn(base, skip) ? nextWait({ entries: reels, others: entries, now, cap: s.reelsPerDay, gapMinutes: MIN_GAP_MINUTES, ...stops, holdUntil: Math.max(state.holdUntil, reelRestUntil(reels)) }) : null
+  const lane = reelWait && reelWait.at <= postWait.at ? REEL_LANE : POST_LANE
+  const wait = lane === REEL_LANE ? reelWait : postWait
   if (wait.ms > 0) {
-    await waitOut(wait, now, deadline, { say, sleep })
+    await waitOut(wait, now, deadline, { say, sleep, what: lane === REEL_LANE ? 'reel' : 'post' })
     return null
   }
   if (!(await freshData(state, now, { loadPools, say, skip }))) {
@@ -148,9 +183,9 @@ async function turn(base, c) {
   }
   let failure = null
   const reached = rollingCount(entries, now)
-  const step = await attemptOnce(base, { loaded: state.loaded, skip, slotsLeft: cap - reached, onError: (error) => (failure = error) })
+  const step = await attemptOnce(base, { loaded: state.loaded, skip, slotsLeft: cap - reached, lane, onError: (error) => (failure = error) })
   flush()
-  return afterTry(step, failure, { ...c, s, book, clock, graph: base.graph, reached })
+  return afterTry(step, failure, { ...c, s, book, clock, graph: base.graph, reached, lane })
 }
 
 /**

@@ -6,6 +6,7 @@
  *   POST /{page-id}/photos  source, caption  the same, with the image sent as a
  *                                         multipart file (a template image)
  *   POST /{page-id}/feed    message       a text post (no image); returns { id }
+ *   POST /{page-id}/feed    link, message  a share of the sister Page's post
  *   POST /{post-id}/comments message      the link, as the first comment
  *
  * A reel (Reels Publishing API, read 12 Oct 2026) takes three calls:
@@ -201,6 +202,11 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
       const best = [...(json.images || [])].sort((x, y) => (y.width || 0) - (x.width || 0))[0]
       if (!best?.source) throw new GraphError(`no address came back for the photo ${photoId}`)
       return best.source
+    },
+    /** A link post: a share of the sister Page's post (share.mjs). */
+    async publishLink({ link, message }) {
+      const json = await call('POST', `/${pageId}/feed`, { link, message })
+      return { postId: json.id }
     },
     async publishText({ message }) {
       const json = await call('POST', `/${pageId}/feed`, { message })
