@@ -9198,6 +9198,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118295095500964",
    "commentId": "122118295095500964_4529090627237244"
+  },
+  {
+   "key": "2026-10-28|character:char:124142|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:124142",
+   "title": "Dr. STONE",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:124142",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793194710026,
+   "status": "claimed"
   }
  ],
  "health": {
