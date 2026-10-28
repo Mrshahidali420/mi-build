@@ -10413,6 +10413,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118392739500964",
    "commentId": "122118392739500964_2415925209233876"
+  },
+  {
+   "key": "2026-10-28|character:char:138850|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:138850",
+   "title": "Skip and Loafer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:138850",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793214688883,
+   "status": "claimed"
   }
  ],
  "health": {
