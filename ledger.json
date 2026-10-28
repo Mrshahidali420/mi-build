@@ -10503,6 +10503,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118401259500964",
    "commentId": "122118401259500964_1183786474399719"
+  },
+  {
+   "key": "2026-10-28|where:156601|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:156601",
+   "title": "I Thought My Time Was Up!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "156601",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793216207815,
+   "status": "claimed"
   }
  ],
  "health": {
