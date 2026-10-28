@@ -11354,6 +11354,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118472797500964",
    "commentId": "122118472797500964_880398325162260"
+  },
+  {
+   "key": "2026-10-28|next:106098|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:106098",
+   "title": "Miss Not-So Sidekick",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "106098",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793230174009,
+   "status": "claimed"
   }
  ],
  "health": {
