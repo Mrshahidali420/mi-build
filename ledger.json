@@ -8643,6 +8643,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118238581500964",
    "commentId": "122118238581500964_2023606541634608"
+  },
+  {
+   "key": "2026-10-28|character:char:279938|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:279938",
+   "title": "I’m the Max-Level Newbie",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:279938",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793185647364,
+   "status": "claimed"
   }
  ],
  "health": {
