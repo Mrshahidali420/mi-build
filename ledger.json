@@ -10115,6 +10115,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118368277500964",
    "commentId": "122118368277500964_980839701148646"
+  },
+  {
+   "key": "2026-10-28|next:202986|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:202986",
+   "title": "Too Many Heroes for the Demon Lord",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "202986",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793209836646,
+   "status": "claimed"
   }
  ],
  "health": {
