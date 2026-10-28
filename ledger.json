@@ -9450,6 +9450,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118313173500964",
    "commentId": "122118313173500964_1683571036703763"
+  },
+  {
+   "key": "2026-10-28|where:86848|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:86848",
+   "title": "Lookism",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86848",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793198931981,
+   "status": "claimed"
   }
  ],
  "health": {
