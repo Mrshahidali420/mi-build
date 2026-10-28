@@ -6713,6 +6713,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117951325500964",
    "commentId": "122117951325500964_1831178821643464"
+  },
+  {
+   "key": "2026-10-27|next:119276|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:119276",
+   "title": "The Advanced Player of the Tutorial Tower",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "119276",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793154555515,
+   "status": "claimed"
   }
  ],
  "health": {
