@@ -9108,6 +9108,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118286845500964",
    "commentId": "122118286845500964_1794417608524922"
+  },
+  {
+   "key": "2026-10-28|next:198372|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:198372",
+   "title": "Jujutsu Kaisen Modulo",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "198372",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793193197122,
+   "status": "claimed"
   }
  ],
  "health": {
