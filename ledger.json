@@ -7741,6 +7741,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118134457500964",
    "commentId": "122118134457500964_1149870597506538"
+  },
+  {
+   "key": "2026-10-28|character:char:172075|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:172075",
+   "title": "Mashle: Magic and Muscles",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:172075",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793171158518,
+   "status": "claimed"
   }
  ],
  "health": {
