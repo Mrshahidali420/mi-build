@@ -8584,6 +8584,22 @@
    "status": "posted",
    "postId": "2254976968380302",
    "commentId": "2254976968380302_1676357594018639"
+  },
+  {
+   "key": "2026-10-28|next:150170|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:150170",
+   "title": "Ending Maker",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "150170",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793184743625,
+   "status": "claimed"
   }
  ],
  "health": {
