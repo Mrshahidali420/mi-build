@@ -11228,6 +11228,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118456939500964",
    "commentId": "122118456939500964_1446312134112349"
+  },
+  {
+   "key": "2026-10-28|character:char:283160|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:283160",
+   "title": "My Blasted Reincarnated Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:283160",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793228061818,
+   "status": "claimed"
   }
  ],
  "health": {
