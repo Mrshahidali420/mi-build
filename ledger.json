@@ -9655,6 +9655,22 @@
    "status": "posted",
    "postId": "1070867149286262",
    "commentId": "1070867149286262_1410993881142843"
+  },
+  {
+   "key": "2026-10-28|where:125116|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:125116",
+   "title": "Wistoria: Wand and Sword",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "125116",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793202254832,
+   "status": "claimed"
   }
  ],
  "health": {
