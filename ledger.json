@@ -10467,6 +10467,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118396393500964",
    "commentId": "122118396393500964_2010718349612403"
+  },
+  {
+   "key": "2026-10-28|character:char:126818|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:126818",
+   "title": "Delicious in Dungeon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:126818",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793215603417,
+   "status": "claimed"
   }
  ],
  "health": {
