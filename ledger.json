@@ -6336,6 +6336,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117909103500964",
    "commentId": "122117909103500964_29738452145758108"
+  },
+  {
+   "key": "2026-10-27|next:145525|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:145525",
+   "title": "Dreaming Freedom",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "145525",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793148425005,
+   "status": "claimed"
   }
  ],
  "health": {
