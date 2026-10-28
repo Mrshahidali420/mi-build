@@ -6695,6 +6695,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117947977500964",
    "commentId": "122117947977500964_1472427104742463"
+  },
+  {
+   "key": "2026-10-27|fact:fact:98148:wait|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:98148:wait",
+   "title": "Black Torch",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:98148:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793154254103,
+   "status": "claimed"
   }
  ],
  "health": {
