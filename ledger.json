@@ -7628,6 +7628,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118124995500964",
    "commentId": "122118124995500964_1427376523787819"
+  },
+  {
+   "key": "2026-10-28|where:138222|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:138222",
+   "title": "Level Up with the Gods",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "138222",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793169350883,
+   "status": "claimed"
   }
  ],
  "health": {
