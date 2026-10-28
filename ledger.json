@@ -9180,6 +9180,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118293847500964",
    "commentId": "122118293847500964_972168762106283"
+  },
+  {
+   "key": "2026-10-28|where:161715|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:161715",
+   "title": "The Baengri Clan's Unwanted Granddaughter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "161715",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793194408863,
+   "status": "claimed"
   }
  ],
  "health": {
