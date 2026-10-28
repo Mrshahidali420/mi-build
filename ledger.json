@@ -9234,6 +9234,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118297531500964",
    "commentId": "122118297531500964_2632042940601199"
+  },
+  {
+   "key": "2026-10-28|where:121565|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:121565",
+   "title": "Seasons of Blossom",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "121565",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793195312356,
+   "status": "claimed"
   }
  ],
  "health": {
