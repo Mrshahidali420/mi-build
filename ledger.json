@@ -8828,6 +8828,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118264183500964",
    "commentId": "122118264183500964_2972678549779612"
+  },
+  {
+   "key": "2026-10-28|character:char:121440|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:121440",
+   "title": "Boruto: Naruto Next Generations",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:121440",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793188667756,
+   "status": "claimed"
   }
  ],
  "health": {
