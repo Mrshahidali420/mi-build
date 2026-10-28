@@ -8188,6 +8188,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118193515500964",
    "commentId": "122118193515500964_4266272840171231"
+  },
+  {
+   "key": "2026-10-28|fact:fact:85495:wait|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "fact:fact:85495:wait",
+   "title": "Re:Monster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:85495:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793178402910,
+   "status": "claimed"
   }
  ],
  "health": {
