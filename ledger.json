@@ -7682,6 +7682,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118130005500964",
    "commentId": "122118130005500964_4780819908807611"
+  },
+  {
+   "key": "2026-10-28|next:170400|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:170400",
+   "title": "The Stellar Swordmaster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "170400",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793170254635,
+   "status": "claimed"
   }
  ],
  "health": {
