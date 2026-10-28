@@ -10953,6 +10953,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118435285500964",
    "commentId": "122118435285500964_1664318748376946"
+  },
+  {
+   "key": "2026-10-28|next:166635|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:166635",
+   "title": "All-Master Necromancer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "166635",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793223535381,
+   "status": "claimed"
   }
  ],
  "health": {
