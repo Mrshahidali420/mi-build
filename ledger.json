@@ -8546,6 +8546,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118226617500964",
    "commentId": "122118226617500964_1318950883612029"
+  },
+  {
+   "key": "2026-10-28|fact:fact:30375:run|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "fact:fact:30375:run",
+   "title": "Initial D",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30375:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793184141200,
+   "status": "claimed"
   }
  ],
  "health": {
