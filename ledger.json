@@ -6600,6 +6600,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117930379500964",
    "commentId": "122117930379500964_2281729866011139"
+  },
+  {
+   "key": "2026-10-27|fact:fact:30923:wait|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:30923:wait",
+   "title": "From Far Away",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30923:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793152656061,
+   "status": "claimed"
   }
  ],
  "health": {
