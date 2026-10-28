@@ -6300,6 +6300,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117906295500964",
    "commentId": "122117906295500964_922028390992784"
+  },
+  {
+   "key": "2026-10-27|character:char:180892|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "character:char:180892",
+   "title": "Omniscient Reader",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:180892",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793147822069,
+   "status": "claimed"
   }
  ],
  "health": {
