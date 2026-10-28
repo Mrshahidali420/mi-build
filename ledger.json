@@ -7813,6 +7813,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118139815500964",
    "commentId": "122118139815500964_1572908081306209"
+  },
+  {
+   "key": "2026-10-28|character:char:311|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:311",
+   "title": "Slam Dunk",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:311",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793172371826,
+   "status": "claimed"
   }
  ],
  "health": {
