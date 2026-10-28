@@ -54,10 +54,11 @@ let hours = []
 let looking = []
 let clicks = []
 let missing = []
+let fbPages = []
 let changes = []
 
 if (signedIn) {
-  const [a, b, h, c, d, e] = await Promise.all([
+  const [a, b, h, c, d, e, f] = await Promise.all([
     askOne(
       db,
       `SELECT COUNT(DISTINCT CASE WHEN visitor <> '' THEN visitor END) AS people,
@@ -115,6 +116,16 @@ if (signedIn) {
        GROUP BY path ORDER BY hits DESC, last DESC LIMIT 25`,
       dayKey(6, now)
     ),
+    // Which pages the Facebook visitors of today landed on. Each post links
+    // one page, so the page names the post. Same (day, kind) rows as above.
+    ask(
+      db,
+      `SELECT path, MAX(label) AS label, COUNT(DISTINCT session) AS visits, MAX(ts) AS last
+       FROM events WHERE day = ? AND kind = 'view' AND step = 1 AND session <> ''
+         AND ${FACEBOOK_EVENT_SQL}
+       GROUP BY path ORDER BY visits DESC, last DESC LIMIT 20`,
+      today
+    ),
   ])
   live = a
   todayRow = b
@@ -122,6 +133,7 @@ if (signedIn) {
   looking = c
   clicks = d
   missing = e
+  fbPages = f
   // Yesterday's three biggest moves. Asked once a day and then kept in the
   // Worker's cache, because this tab reloads itself every minute.
   try {
@@ -177,6 +189,14 @@ const pageRows = looking.map((row) => ({
   device: row.device,
 }))
 
+const facebookRows = fbPages.map((row) => ({
+  name: humanize(row.path, row.label),
+  href: row.path,
+  sub: `${row.path} · last ${adminClock(row.last).replace(' PKT', '')}`,
+  value: row.visits || 0,
+  unit: 'visits',
+}))
+
 const brokenRows = missing.map((row) => ({
   name: row.path,
   href: row.path,
@@ -227,6 +247,15 @@ const brokenRows = missing.map((row) => ({
     <Kpi label="Visitors from Facebook today" value={todayRow.facebook || 0} />
     {LINKVERTISE_ID && <Kpi label="Linkvertise clicks today" value={lvToday} />}
   </section>
+
+  <div class="panel wide">
+    <h2>Which Facebook posts brought people today?</h2>
+    <p class="say">
+      The page each Facebook visitor landed on first. Every post links one
+      page, so the page tells you the post.
+    </p>
+    <BarList rows={facebookRows} empty="Nobody came from Facebook yet today." />
+  </div>
 
   <div class="panel wide">
     <h2>How is today going, hour by hour?</h2>
