@@ -10228,6 +10228,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118378423500964",
    "commentId": "122118378423500964_1643282620771000"
+  },
+  {
+   "key": "2026-10-28|character:char:48967|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:48967",
+   "title": "Noblesse",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:48967",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793211651532,
+   "status": "claimed"
   }
  ],
  "health": {
