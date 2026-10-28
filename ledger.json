@@ -10726,6 +10726,22 @@
    "status": "posted",
    "postId": "1831744514676609",
    "commentId": "1831744514676609_1135173372609048"
+  },
+  {
+   "key": "2026-10-28|character:char:89|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:89",
+   "title": "Neon Genesis Evangelion",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:89",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793219845004,
+   "status": "claimed"
   }
  ],
  "health": {
