@@ -11408,6 +11408,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118478047500964",
    "commentId": "122118478047500964_2133641013896224"
+  },
+  {
+   "key": "2026-10-28|next:116633|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:116633",
+   "title": "To Love Your Enemy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "116633",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793231076672,
+   "status": "claimed"
   }
  ],
  "health": {
