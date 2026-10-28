@@ -8733,6 +8733,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118249177500964",
    "commentId": "122118249177500964_1113420058246607"
+  },
+  {
+   "key": "2026-10-28|where:206766|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:206766",
+   "title": "There's No Such Thing as a Bad Lady",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "206766",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793187161288,
+   "status": "claimed"
   }
  ],
  "health": {
