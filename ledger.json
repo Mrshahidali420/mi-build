@@ -10210,6 +10210,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118376815500964",
    "commentId": "122118376815500964_1464199078939502"
+  },
+  {
+   "key": "2026-10-28|where:147278|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:147278",
+   "title": "The Villainess's Stationery Shop",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "147278",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793211349157,
+   "status": "claimed"
   }
  ],
  "health": {
