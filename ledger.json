@@ -8846,6 +8846,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118265899500964",
    "commentId": "122118265899500964_1648456110235794"
+  },
+  {
+   "key": "2026-10-28|next:110095|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:110095",
+   "title": "A Business Proposal",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "110095",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793188969048,
+   "status": "claimed"
   }
  ],
  "health": {
