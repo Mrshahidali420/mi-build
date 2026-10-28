@@ -7053,6 +7053,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118014559500964",
    "commentId": "122118014559500964_1754122859010279"
+  },
+  {
+   "key": "2026-10-27|fact:fact:98610:rated|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:98610:rated",
+   "title": "86―EIGHTY-SIX",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:98610:rated",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793159990521,
+   "status": "claimed"
   }
  ],
  "health": {
