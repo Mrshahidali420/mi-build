@@ -9558,6 +9558,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118322881500964",
    "commentId": "122118322881500964_1629820961880591"
+  },
+  {
+   "key": "2026-10-28|where:127993|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:127993",
+   "title": "The Superhuman Era",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "127993",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793200739104,
+   "status": "claimed"
   }
  ],
  "health": {
