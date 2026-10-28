@@ -7166,6 +7166,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118037731500964",
    "commentId": "122118037731500964_1807321446970807"
+  },
+  {
+   "key": "2026-10-28|fact:fact:33083:popular|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "fact:fact:33083:popular",
+   "title": "The Melancholy of Haruhi Suzumiya",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:33083:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793161806153,
+   "status": "claimed"
   }
  ],
  "health": {
