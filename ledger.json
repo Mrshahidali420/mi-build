@@ -8900,6 +8900,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118270699500964",
    "commentId": "122118270699500964_1469601568414604"
+  },
+  {
+   "key": "2026-10-28|next:147587|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:147587",
+   "title": "Marriage of Convenience",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "147587",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793189872873,
+   "status": "claimed"
   }
  ],
  "health": {
