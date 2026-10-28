@@ -8397,6 +8397,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118214245500964",
    "commentId": "122118214245500964_1864358914912944"
+  },
+  {
+   "key": "2026-10-28|next:144079|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:144079",
+   "title": "Demon Devourer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "144079",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793181723321,
+   "status": "claimed"
   }
  ],
  "health": {
