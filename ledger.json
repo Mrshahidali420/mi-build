@@ -7980,6 +7980,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118168597500964",
    "commentId": "122118168597500964_1133131272991901"
+  },
+  {
+   "key": "2026-10-28|character:char:5|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:5",
+   "title": "Bleach",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:5",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793175082636,
+   "status": "claimed"
   }
  ],
  "health": {
