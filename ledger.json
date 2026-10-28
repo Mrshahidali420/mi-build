@@ -9486,6 +9486,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118316137500964",
    "commentId": "122118316137500964_1322997457571980"
+  },
+  {
+   "key": "2026-10-28|next:149756|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:149756",
+   "title": "Our Secret Alliance",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "149756",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793199534222,
+   "status": "claimed"
   }
  ],
  "health": {
