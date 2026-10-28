@@ -9894,6 +9894,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118350349500964",
    "commentId": "122118350349500964_1162047926150216"
+  },
+  {
+   "key": "2026-10-28|where:129918|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:129918",
+   "title": "Mystic Musketeer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "129918",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793206197206,
+   "status": "claimed"
   }
  ],
  "health": {
