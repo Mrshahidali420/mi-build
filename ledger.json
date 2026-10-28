@@ -8379,6 +8379,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118212607500964",
    "commentId": "122118212607500964_1688908766083262"
+  },
+  {
+   "key": "2026-10-28|fact:fact:86355:popular|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "fact:fact:86355:popular",
+   "title": "That Time I Got Reincarnated as a Slime",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:86355:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793181422115,
+   "status": "claimed"
   }
  ],
  "health": {
