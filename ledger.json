@@ -7795,6 +7795,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118138741500964",
    "commentId": "122118138741500964_4552319725024579"
+  },
+  {
+   "key": "2026-10-28|where:111149|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:111149",
+   "title": "Mission: Yozakura Family",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "111149",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793172070605,
+   "status": "claimed"
   }
  ],
  "health": {
