@@ -6451,6 +6451,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117918751500964",
    "commentId": "122117918751500964_2123961198487257"
+  },
+  {
+   "key": "2026-10-27|next:121276|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:121276",
+   "title": "The First Night With the Duke",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "121276",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793150243943,
+   "status": "claimed"
   }
  ],
  "health": {
