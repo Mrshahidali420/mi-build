@@ -6395,6 +6395,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117912781500964",
    "commentId": "122117912781500964_1646578573867215"
+  },
+  {
+   "key": "2026-10-27|character:char:222594|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "character:char:222594",
+   "title": "Dandadan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:222594",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793149329540,
+   "status": "claimed"
   }
  ],
  "health": {
