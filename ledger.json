@@ -6922,6 +6922,22 @@
    "at": 1793157578926,
    "status": "posted",
    "postId": "1318170941390322_122117990451500964"
+  },
+  {
+   "key": "2026-10-27|where:120502|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:120502",
+   "title": "In the Clear Moonlit Dusk",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "120502",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793157880327,
+   "status": "claimed"
   }
  ],
  "health": {
