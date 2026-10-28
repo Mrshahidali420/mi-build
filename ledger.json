@@ -8564,6 +8564,24 @@
    "status": "posted",
    "postId": "1318170941390322_122118227835500964",
    "commentId": "122118227835500964_2042246319754531"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-28|reel-next:110059|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "reel-next:110059",
+   "title": "My Life as an Internet Novel",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "110059",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793184442389,
+   "track": "battle-theme-a.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
