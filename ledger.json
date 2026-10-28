@@ -8510,6 +8510,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118223299500964",
    "commentId": "122118223299500964_2067941863858008"
+  },
+  {
+   "key": "2026-10-28|where:194523|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:194523",
+   "title": "Reincarnation of the Fist King",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "194523",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793183538822,
+   "status": "claimed"
   }
  ],
  "health": {
