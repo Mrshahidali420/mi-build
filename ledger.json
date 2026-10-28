@@ -8129,6 +8129,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118188457500964",
    "commentId": "122118188457500964_1109941058347056"
+  },
+  {
+   "key": "2026-10-28|where:129796|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:129796",
+   "title": "Villain Duke's Precious One",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "129796",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793177499337,
+   "status": "claimed"
   }
  ],
  "health": {
