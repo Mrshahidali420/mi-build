@@ -10557,6 +10557,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118405933500964",
    "commentId": "122118405933500964_2564894870691733"
+  },
+  {
+   "key": "2026-10-28|where:183376|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:183376",
+   "title": "Chronicles of a Doomed Prodigy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "183376",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793217112086,
+   "status": "claimed"
   }
  ],
  "health": {
