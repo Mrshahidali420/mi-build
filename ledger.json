@@ -7202,6 +7202,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118044685500964",
    "commentId": "122118044685500964_1771458487298231"
+  },
+  {
+   "key": "2026-10-28|where:159397|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:159397",
+   "title": "Becoming a Magic School Mage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "159397",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793162408485,
+   "status": "claimed"
   }
  ],
  "health": {
