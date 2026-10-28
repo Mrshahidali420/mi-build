@@ -8715,6 +8715,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118245985500964",
    "commentId": "122118245985500964_1146436368138908"
+  },
+  {
+   "key": "2026-10-28|next:126297|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:126297",
+   "title": "Teenage Mercenary",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "126297",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793186860109,
+   "status": "claimed"
   }
  ],
  "health": {
