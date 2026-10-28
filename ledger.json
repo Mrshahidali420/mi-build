@@ -8224,6 +8224,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118196887500964",
    "commentId": "122118196887500964_28950876227910351"
+  },
+  {
+   "key": "2026-10-28|where:175262|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:175262",
+   "title": "The Reborn Young Lord is an Assassin",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "175262",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793179005323,
+   "status": "claimed"
   }
  ],
  "health": {
