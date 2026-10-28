@@ -6282,6 +6282,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117903967500964",
    "commentId": "122117903967500964_1182765380943811"
+  },
+  {
+   "key": "2026-10-27|where:153869|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:153869",
+   "title": "The Perfect Hybrid",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "153869",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793147520633,
+   "status": "claimed"
   }
  ],
  "health": {
