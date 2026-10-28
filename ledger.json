@@ -9840,6 +9840,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118345855500964",
    "commentId": "122118345855500964_1130257499583199"
+  },
+  {
+   "key": "2026-10-28|where:116675|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:116675",
+   "title": "I Log In Alone",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "116675",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793205288099,
+   "status": "claimed"
   }
  ],
  "health": {
