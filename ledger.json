@@ -7890,6 +7890,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118148323500964",
    "commentId": "122118148323500964_1847682476682084"
+  },
+  {
+   "key": "2026-10-28|where:65573|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:65573",
+   "title": "orange",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "65573",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793173576326,
+   "status": "claimed"
   }
  ],
  "health": {
