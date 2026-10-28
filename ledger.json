@@ -10341,6 +10341,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118386523500964",
    "commentId": "122118386523500964_2170017477224999"
+  },
+  {
+   "key": "2026-10-28|where:180163|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:180163",
+   "title": "The Dang Clan’s Swordmaster Heir Just Wants a Normal Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "180163",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793213480998,
+   "status": "claimed"
   }
  ],
  "health": {
