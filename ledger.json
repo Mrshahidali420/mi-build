@@ -9306,6 +9306,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118303903500964",
    "commentId": "122118303903500964_1712705957191592"
+  },
+  {
+   "key": "2026-10-28|character:char:28|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:28",
+   "title": "Hunter x Hunter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:28",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793196517207,
+   "status": "claimed"
   }
  ],
  "health": {
