@@ -6803,6 +6803,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117968677500964",
    "commentId": "122117968677500964_1092873663376660"
+  },
+  {
+   "key": "2026-10-27|where:138726|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:138726",
+   "title": "Rebirth Of The Ultimate Master",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "138726",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793156062534,
+   "status": "claimed"
   }
  ],
  "health": {
