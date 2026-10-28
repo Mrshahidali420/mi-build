@@ -11192,6 +11192,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118453969500964",
    "commentId": "122118453969500964_1664641618601491"
+  },
+  {
+   "key": "2026-10-28|next:31061|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:31061",
+   "title": "Detective Conan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "31061",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793227459953,
+   "status": "claimed"
   }
  ],
  "health": {
