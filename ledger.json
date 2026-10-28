@@ -9342,6 +9342,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118306513500964",
    "commentId": "122118306513500964_3337841523080440"
+  },
+  {
+   "key": "2026-10-28|where:85533|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:85533",
+   "title": "Teasing Master Takagi-san",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "85533",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793197119678,
+   "status": "claimed"
   }
  ],
  "health": {
