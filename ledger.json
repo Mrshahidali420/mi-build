@@ -6564,6 +6564,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117925609500964",
    "commentId": "122117925609500964_1545478714292064"
+  },
+  {
+   "key": "2026-10-27|where:148091|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:148091",
+   "title": "Barbarian Quest",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "148091",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793152053056,
+   "status": "claimed"
   }
  ],
  "health": {
