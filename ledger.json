@@ -7700,6 +7700,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118131589500964",
    "commentId": "122118131589500964_29208968738714727"
+  },
+  {
+   "key": "2026-10-28|where:113488|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:113488",
+   "title": "Weak Hero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "113488",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793170556048,
+   "status": "claimed"
   }
  ],
  "health": {
