@@ -8343,6 +8343,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118209205500964",
    "commentId": "122118209205500964_2048834635797404"
+  },
+  {
+   "key": "2026-10-28|where:144027|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:144027",
+   "title": "The Siren: Becoming the Villain's Family",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "144027",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793180819653,
+   "status": "claimed"
   }
  ],
  "health": {
