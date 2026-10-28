@@ -8093,6 +8093,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118183525500964",
    "commentId": "122118183525500964_1058882873837301"
+  },
+  {
+   "key": "2026-10-28|fact:fact:44893:popular|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "fact:fact:44893:popular",
+   "title": "Bakemonogatari: Monster Tale",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:44893:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793176896955,
+   "status": "claimed"
   }
  ],
  "health": {
