@@ -11318,6 +11318,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118466209500964",
    "commentId": "122118466209500964_1665485235198024"
+  },
+  {
+   "key": "2026-10-28|where:137836|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:137836",
+   "title": "Becoming the Dark Hero's Daughter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "137836",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793229566035,
+   "status": "claimed"
   }
  ],
  "health": {
