@@ -9984,6 +9984,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118358611500964",
    "commentId": "122118358611500964_1599439604614985"
+  },
+  {
+   "key": "2026-10-28|next:151025|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:151025",
+   "title": "Mythic Item Obtained",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "151025",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793207707056,
+   "status": "claimed"
   }
  ],
  "health": {
