@@ -8864,6 +8864,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118267387500964",
    "commentId": "122118267387500964_1564684895347358"
+  },
+  {
+   "key": "2026-10-28|where:116264|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:116264",
+   "title": "Crimson Karma",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "116264",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793189270310,
+   "status": "claimed"
   }
  ],
  "health": {
