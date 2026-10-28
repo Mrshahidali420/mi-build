@@ -7369,6 +7369,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118091209500964",
    "commentId": "122118091209500964_1405858304864313"
+  },
+  {
+   "key": "2026-10-28|where:128882|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:128882",
+   "title": "Jungle Juice",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "128882",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793165125918,
+   "status": "claimed"
   }
  ],
  "health": {
