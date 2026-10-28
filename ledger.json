@@ -10002,6 +10002,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118360135500964",
    "commentId": "122118360135500964_1522958696336109"
+  },
+  {
+   "key": "2026-10-28|where:141479|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:141479",
+   "title": "The Legendary Spearman Returns",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "141479",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793208008871,
+   "status": "claimed"
   }
  ],
  "health": {
