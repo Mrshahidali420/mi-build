@@ -7998,6 +7998,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118170769500964",
    "commentId": "122118170769500964_1676517127522600"
+  },
+  {
+   "key": "2026-10-28|fact:fact:31303:rated|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "fact:fact:31303:rated",
+   "title": "Ashita no Joe: Fighting for Tomorrow",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:31303:rated",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793175383976,
+   "status": "claimed"
   }
  ],
  "health": {
