@@ -6862,6 +6862,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117979759500964",
    "commentId": "122117979759500964_1134723889055115"
+  },
+  {
+   "key": "2026-10-27|fact:fact:44483:years|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:44483:years",
+   "title": "Space Brothers",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:44483:years",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793156966863,
+   "status": "claimed"
   }
  ],
  "health": {
