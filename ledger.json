@@ -6654,6 +6654,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117939079500964",
    "commentId": "122117939079500964_2102545040390062"
+  },
+  {
+   "key": "2026-10-27|character:char:89182|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "character:char:89182",
+   "title": "Tomo-chan is a Girl!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:89182",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793153560851,
+   "status": "claimed"
   }
  ],
  "health": {
