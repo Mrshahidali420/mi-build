@@ -10133,6 +10133,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118369633500964",
    "commentId": "122118369633500964_1148893264747862"
+  },
+  {
+   "key": "2026-10-28|where:97770|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:97770",
+   "title": "Reborn as a Scholar",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "97770",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793210140505,
+   "status": "claimed"
   }
  ],
  "health": {
