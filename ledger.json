@@ -6169,6 +6169,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117896089500964",
    "commentId": "122117896089500964_1644377783733550"
+  },
+  {
+   "key": "2026-10-27|next:146715|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:146715",
+   "title": "The Slumbering Ranker",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "146715",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793145706633,
+   "status": "claimed"
   }
  ],
  "health": {
