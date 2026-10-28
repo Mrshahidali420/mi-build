@@ -6785,6 +6785,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117965605500964",
    "commentId": "122117965605500964_2544959085915230"
+  },
+  {
+   "key": "2026-10-27|next:54692|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:54692",
+   "title": "Noragami: Stray God",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "54692",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793155761107,
+   "status": "claimed"
   }
  ],
  "health": {
