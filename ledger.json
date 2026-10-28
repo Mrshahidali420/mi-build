@@ -7274,6 +7274,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118061317500964",
    "commentId": "122118061317500964_1442734730584137"
+  },
+  {
+   "key": "2026-10-28|where:85453|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:85453",
+   "title": "Battle Through the Heavens",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "85453",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793163613409,
+   "status": "claimed"
   }
  ],
  "health": {
