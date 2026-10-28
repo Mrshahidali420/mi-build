@@ -10744,6 +10744,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118422925500964",
    "commentId": "122118422925500964_29493439303575745"
+  },
+  {
+   "key": "2026-10-28|next:104283|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:104283",
+   "title": "The Makeup Remover",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "104283",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793220147545,
+   "status": "claimed"
   }
  ],
  "health": {
