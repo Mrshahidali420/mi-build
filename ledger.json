@@ -6413,6 +6413,24 @@
    "status": "posted",
    "postId": "1318170941390322_122117915313500964",
    "commentId": "122117915313500964_1434735915296436"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-27|reel-next:128589|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "reel-next:128589",
+   "title": "The Taming of the Tyrant",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "128589",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793149631092,
+   "track": "winning-the-race.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
