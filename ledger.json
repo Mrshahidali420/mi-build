@@ -9468,6 +9468,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118314811500964",
    "commentId": "122118314811500964_1670933901306056"
+  },
+  {
+   "key": "2026-10-28|character:char:129928|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:129928",
+   "title": "Solo Leveling",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:129928",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793199232990,
+   "status": "claimed"
   }
  ],
  "health": {
