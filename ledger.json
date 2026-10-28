@@ -8284,6 +8284,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118203583500964",
    "commentId": "122118203583500964_1454067936829280"
+  },
+  {
+   "key": "2026-10-28|fact:fact:30160:run|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "fact:fact:30160:run",
+   "title": "School Rumble",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30160:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793179916138,
+   "status": "claimed"
   }
  ],
  "health": {
