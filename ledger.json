@@ -11084,6 +11084,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118445755500964",
    "commentId": "122118445755500964_1524542846360658"
+  },
+  {
+   "key": "2026-10-28|next:104596|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:104596",
+   "title": "Devil Number 4",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "104596",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793225644740,
+   "status": "claimed"
   }
  ],
  "health": {
