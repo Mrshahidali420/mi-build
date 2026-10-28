@@ -10395,6 +10395,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118391005500964",
    "commentId": "122118391005500964_1139225205130747"
+  },
+  {
+   "key": "2026-10-28|where:140466|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:140466",
+   "title": "The SSS-Rank Hunter's Lucky Draw",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "140466",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793214386766,
+   "status": "claimed"
   }
  ],
  "health": {
