@@ -8415,6 +8415,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118216051500964",
    "commentId": "122118216051500964_2354270515386959"
+  },
+  {
+   "key": "2026-10-28|where:172619|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:172619",
+   "title": "The Extra’s Academy Survival Guide",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "172619",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793182024571,
+   "status": "claimed"
   }
  ],
  "health": {
