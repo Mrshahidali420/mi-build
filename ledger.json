@@ -6999,6 +6999,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118004185500964",
    "commentId": "122118004185500964_1853681825662081"
+  },
+  {
+   "key": "2026-10-27|next:85446|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "next:85446",
+   "title": "Soul Land",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85446",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793159086114,
+   "status": "claimed"
   }
  ],
  "health": {
