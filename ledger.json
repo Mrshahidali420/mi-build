@@ -9216,6 +9216,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118296181500964",
    "commentId": "122118296181500964_1114038347992278"
+  },
+  {
+   "key": "2026-10-28|next:30102|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:30102",
+   "title": "Fruits Basket",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30102",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793195011217,
+   "status": "claimed"
   }
  ],
  "health": {
