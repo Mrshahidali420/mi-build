@@ -7849,6 +7849,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118145293500964",
    "commentId": "122118145293500964_1514041147198858"
+  },
+  {
+   "key": "2026-10-28|next:183855|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:183855",
+   "title": "The Bastard of Swordborne",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "183855",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793172974152,
+   "status": "claimed"
   }
  ],
  "health": {
