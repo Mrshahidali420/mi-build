@@ -6767,6 +6767,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117960829500964",
    "commentId": "122117960829500964_1809803433580797"
+  },
+  {
+   "key": "2026-10-27|fact:fact:30724:wait|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:30724:wait",
+   "title": "Sand Land",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30724:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793155459682,
+   "status": "claimed"
   }
  ],
  "health": {
