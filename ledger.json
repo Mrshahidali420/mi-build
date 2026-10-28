@@ -6433,6 +6433,22 @@
    "status": "posted",
    "postId": "2598174834014052",
    "commentId": "2598174834014052_1499117955456384"
+  },
+  {
+   "key": "2026-10-27|fact:fact:44154:run|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:44154:run",
+   "title": "Arakawa Under the Bridge",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:44154:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793149932858,
+   "status": "claimed"
   }
  ],
  "health": {
