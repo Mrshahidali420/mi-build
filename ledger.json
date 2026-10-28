@@ -8995,6 +8995,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118277701500964",
    "commentId": "122118277701500964_4648852418717260"
+  },
+  {
+   "key": "2026-10-28|where:137595|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:137595",
+   "title": "66,666 Years: Advent of the Dark Mage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "137595",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793191389983,
+   "status": "claimed"
   }
  ],
  "health": {
