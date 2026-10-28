@@ -9673,6 +9673,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118331827500964",
    "commentId": "122118331827500964_1497675775529217"
+  },
+  {
+   "key": "2026-10-28|character:char:181138|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:181138",
+   "title": "Overgeared",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:181138",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793202555995,
+   "status": "claimed"
   }
  ],
  "health": {
