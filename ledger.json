@@ -10079,6 +10079,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118365511500964",
    "commentId": "122118365511500964_1154789187125194"
+  },
+  {
+   "key": "2026-10-28|where:167171|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:167171",
+   "title": "Being Raised by Villains",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "167171",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793209231789,
+   "status": "claimed"
   }
  ],
  "health": {
