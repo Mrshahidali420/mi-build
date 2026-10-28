@@ -9270,6 +9270,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118300645500964",
    "commentId": "122118300645500964_1904570913844247"
+  },
+  {
+   "key": "2026-10-28|next:134556|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:134556",
+   "title": "Little Rabbit and the Big Bad Leopard",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "134556",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793195914789,
+   "status": "claimed"
   }
  ],
  "health": {
