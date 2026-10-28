@@ -6731,6 +6731,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117954415500964",
    "commentId": "122117954415500964_1014719814978873"
+  },
+  {
+   "key": "2026-10-27|where:30735|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "where:30735",
+   "title": "Black Lagoon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30735",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793154856876,
+   "status": "claimed"
   }
  ],
  "health": {
