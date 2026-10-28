@@ -10917,6 +10917,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118432807500964",
    "commentId": "122118432807500964_1787487532522471"
+  },
+  {
+   "key": "2026-10-28|where:151194|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:151194",
+   "title": "Just Listen to the Song",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "151194",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793222933267,
+   "status": "claimed"
   }
  ],
  "health": {
