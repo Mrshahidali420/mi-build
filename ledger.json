@@ -6958,6 +6958,22 @@
    "status": "posted",
    "postId": "1318170941390322_122117997171500964",
    "commentId": "122117997171500964_1808586843750338"
+  },
+  {
+   "key": "2026-10-27|fact:fact:34423:wait|manhwaindex",
+   "day": "2026-10-27",
+   "slug": "fact:fact:34423:wait",
+   "title": "Ōoku: The Inner Chambers",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:34423:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793158483214,
+   "status": "claimed"
   }
  ],
  "health": {
