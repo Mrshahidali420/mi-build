@@ -8266,6 +8266,22 @@
    "at": 1793179313806,
    "status": "posted",
    "postId": "1318170941390322_122118201819500964"
+  },
+  {
+   "key": "2026-10-28|character:char:140547|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:140547",
+   "title": "Second Life Ranker",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:140547",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793179614918,
+   "status": "claimed"
   }
  ],
  "health": {
