@@ -9396,6 +9396,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118309633500964",
    "commentId": "122118309633500964_2007239243275559"
+  },
+  {
+   "key": "2026-10-28|where:145134|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:145134",
+   "title": "The Divine Surgeon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "145134",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793198029116,
+   "status": "claimed"
   }
  ],
  "health": {
