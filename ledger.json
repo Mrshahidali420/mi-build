@@ -8361,6 +8361,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118210855500964",
    "commentId": "122118210855500964_1555680873272027"
+  },
+  {
+   "key": "2026-10-28|character:char:18913|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:18913",
+   "title": "Pluto",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:18913",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793181120883,
+   "status": "claimed"
   }
  ],
  "health": {
