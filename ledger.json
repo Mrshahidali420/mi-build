@@ -9432,6 +9432,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118311841500964",
    "commentId": "122118311841500964_1076075608727242"
+  },
+  {
+   "key": "2026-10-28|next:107763|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:107763",
+   "title": "This Villainess Wants a Divorce!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "107763",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793198630962,
+   "status": "claimed"
   }
  ],
  "health": {
