@@ -11264,6 +11264,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118460329500964",
    "commentId": "122118460329500964_1883423579690249"
+  },
+  {
+   "key": "2026-10-28|where:179655|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:179655",
+   "title": "The Genius Murim Fitness Trainer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "179655",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793228663466,
+   "status": "claimed"
   }
  ],
  "health": {
