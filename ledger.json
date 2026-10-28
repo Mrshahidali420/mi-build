@@ -9031,6 +9031,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118281055500964",
    "commentId": "122118281055500964_2360646808037165"
+  },
+  {
+   "key": "2026-10-28|next:111103|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:111103",
+   "title": "50 Tea Recipes from the Duchess",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "111103",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793191992354,
+   "status": "claimed"
   }
  ],
  "health": {
