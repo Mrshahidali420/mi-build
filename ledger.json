@@ -9378,6 +9378,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118308595500964",
    "commentId": "122118308595500964_1134056292428870"
+  },
+  {
+   "key": "2026-10-28|next:156477|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:156477",
+   "title": "I Stole the First Ranker’s Soul",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "156477",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793197728198,
+   "status": "claimed"
   }
  ],
  "health": {
