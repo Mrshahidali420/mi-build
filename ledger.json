@@ -9912,6 +9912,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118351909500964",
    "commentId": "122118351909500964_1138635109064254"
+  },
+  {
+   "key": "2026-10-28|character:char:141151|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:141151",
+   "title": "A Returner's Magic Should Be Special",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:141151",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793206498936,
+   "status": "claimed"
   }
  ],
  "health": {
