@@ -11300,6 +11300,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118463467500964",
    "commentId": "122118463467500964_1062887906768632"
+  },
+  {
+   "key": "2026-10-28|next:59211|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:59211",
+   "title": "Monthly Girls' Nozaki-kun",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "59211",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793229265184,
+   "status": "claimed"
   }
  ],
  "health": {
