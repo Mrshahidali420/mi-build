@@ -9049,6 +9049,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118282543500964",
    "commentId": "122118282543500964_1415637600272669"
+  },
+  {
+   "key": "2026-10-28|where:134327|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:134327",
+   "title": "My 990 Thousand Past Lives Help Me",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "134327",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793192293665,
+   "status": "claimed"
   }
  ],
  "health": {
