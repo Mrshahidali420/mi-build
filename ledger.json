@@ -7646,6 +7646,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118126729500964",
    "commentId": "122118126729500964_1640904921018149"
+  },
+  {
+   "key": "2026-10-28|character:char:6194|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:6194",
+   "title": "Vagabond",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:6194",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793169652287,
+   "status": "claimed"
   }
  ],
  "health": {
