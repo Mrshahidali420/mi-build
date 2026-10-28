@@ -9540,6 +9540,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118321093500964",
    "commentId": "122118321093500964_4677021939198231"
+  },
+  {
+   "key": "2026-10-28|next:97842|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:97842",
+   "title": "My Hero Academia: Vigilantes",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "97842",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793200437953,
+   "status": "claimed"
   }
  ],
  "health": {
