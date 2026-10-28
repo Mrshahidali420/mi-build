@@ -7139,9 +7139,18 @@
   "halted": null
  },
  "birthdays": {
-  "day": "2026-10-27",
-  "at": 1793150233637,
-  "list": []
+  "day": "2026-10-28",
+  "at": 1793161195461,
+  "list": [
+   {
+    "id": 55171,
+    "name": "Mutta Nanba",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b55171-d8qSVw9zpN7r.jpg",
+    "favourites": 705,
+    "mediaId": 44483,
+    "voice": null
+   }
+  ]
  },
  "artSeen": [
   "danbooru:12099104",
