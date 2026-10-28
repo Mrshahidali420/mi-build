@@ -10762,6 +10762,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118424977500964",
    "commentId": "122118424977500964_1108307178455499"
+  },
+  {
+   "key": "2026-10-28|where:125233|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:125233",
+   "title": "Yeonwoo's Innocence",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "125233",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793220475281,
+   "status": "claimed"
   }
  ],
  "health": {
