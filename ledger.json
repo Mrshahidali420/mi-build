@@ -9288,6 +9288,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118302373500964",
    "commentId": "122118302373500964_28662819743409357"
+  },
+  {
+   "key": "2026-10-28|where:111258|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:111258",
+   "title": "Bocchi the Rock!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "111258",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793196215944,
+   "status": "claimed"
   }
  ],
  "health": {
