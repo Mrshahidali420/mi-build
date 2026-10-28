@@ -9144,6 +9144,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118290397500964",
    "commentId": "122118290397500964_1079314078275029"
+  },
+  {
+   "key": "2026-10-28|character:char:3568|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:3568",
+   "title": "Yotsuba&!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:3568",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793193806543,
+   "status": "claimed"
   }
  ],
  "health": {
