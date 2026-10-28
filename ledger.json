@@ -9324,6 +9324,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118305319500964",
    "commentId": "122118305319500964_1143691418145410"
+  },
+  {
+   "key": "2026-10-28|next:113076|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:113076",
+   "title": "Sometimes Even Reality Is a Lie!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "113076",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793196818438,
+   "status": "claimed"
   }
  ],
  "health": {
