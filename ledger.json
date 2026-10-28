@@ -10706,6 +10706,24 @@
    "status": "posted",
    "postId": "1318170941390322_122118417561500964",
    "commentId": "122118417561500964_1802942977677756"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-28|reel-next:174104|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "reel-next:174104",
+   "title": "The Archmage’s Restaurant",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "174104",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793219537108,
+   "track": "anime-intro.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
