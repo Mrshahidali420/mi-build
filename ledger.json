@@ -10798,6 +10798,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118426825500964",
    "commentId": "122118426825500964_1184624331099007"
+  },
+  {
+   "key": "2026-10-28|next:76716|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:76716",
+   "title": "Masamune-kun’s Revenge",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "76716",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793221079060,
+   "status": "claimed"
   }
  ],
  "health": {
