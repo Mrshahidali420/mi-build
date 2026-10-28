@@ -9858,6 +9858,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118347481500964",
    "commentId": "122118347481500964_1389753733008246"
+  },
+  {
+   "key": "2026-10-28|character:char:179810|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:179810",
+   "title": "A Sign of Affection",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:179810",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793205590548,
+   "status": "claimed"
   }
  ],
  "health": {
