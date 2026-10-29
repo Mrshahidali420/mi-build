@@ -15018,7 +15018,12 @@
   },
   "cut": null,
   "blockedUntil": 0,
-  "halted": null
+  "halted": null,
+  "reel": {
+   "at": 1793289658676,
+   "code": 100,
+   "note": "GET /1150814987382360 failed: Unsupported get request. Object with ID '1150814987382360' does not exist, cannot be loaded due to missing permissions, or does no"
+  }
  },
  "birthdays": {
   "day": "2026-10-29",
