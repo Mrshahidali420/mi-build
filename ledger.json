@@ -12929,6 +12929,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118600609500964",
    "commentId": "122118600609500964_1429639449146676"
+  },
+  {
+   "key": "2026-10-29|next:131376|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:131376",
+   "title": "From a Knight to a Lady",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "131376",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793255831621,
+   "status": "claimed"
   }
  ],
  "health": {
