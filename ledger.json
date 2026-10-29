@@ -14700,6 +14700,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118843867500964",
    "commentId": "122118843867500964_1663586598451258"
+  },
+  {
+   "key": "2026-10-29|next:170956|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:170956",
+   "title": "Steel-Eating Player",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "170956",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793284796220,
+   "status": "claimed"
   }
  ],
  "health": {
