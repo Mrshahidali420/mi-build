@@ -12665,6 +12665,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118578475500964",
    "commentId": "122118578475500964_1794595778483340"
+  },
+  {
+   "key": "2026-10-29|where:58533|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:58533",
+   "title": "No Matter How I Look at It, It's You Guys' Fault I'm Not Popular!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "58533",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793251597382,
+   "status": "claimed"
   }
  ],
  "health": {
