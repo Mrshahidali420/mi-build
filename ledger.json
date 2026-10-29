@@ -12742,6 +12742,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118585345500964",
    "commentId": "122118585345500964_1116470977776268"
+  },
+  {
+   "key": "2026-10-29|where:178399|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:178399",
+   "title": "Reincarnation of the Hero Party's Grand Mage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "178399",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793252810614,
+   "status": "claimed"
   }
  ],
  "health": {
