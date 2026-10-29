@@ -14394,6 +14394,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118818517500964",
    "commentId": "122118818517500964_2573377216473351"
+  },
+  {
+   "key": "2026-10-29|where:176845|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:176845",
+   "title": "The Executioner",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "176845",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793279657746,
+   "status": "claimed"
   }
  ],
  "health": {
