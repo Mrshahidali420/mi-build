@@ -13562,6 +13562,22 @@
    "at": 1793265782864,
    "status": "posted",
    "postId": "1318170941390322_122118657537500964"
+  },
+  {
+   "key": "2026-10-29|next:137601|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:137601",
+   "title": "The Villainess Needs Her Tyrant",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "137601",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793266083711,
+   "status": "claimed"
   }
  ],
  "health": {
