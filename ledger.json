@@ -13634,6 +13634,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118667845500964",
    "commentId": "122118667845500964_1665504961647974"
+  },
+  {
+   "key": "2026-10-29|where:166159|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:166159",
+   "title": "The Maxed-out Player",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "166159",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793267293865,
+   "status": "claimed"
   }
  ],
  "health": {
