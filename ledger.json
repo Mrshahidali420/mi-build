@@ -12140,6 +12140,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118543207500964",
    "commentId": "122118543207500964_2185310549083996"
+  },
+  {
+   "key": "2026-10-28|where:155246|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:155246",
+   "title": "My Daughter Is a Dragon!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "155246",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793243136021,
+   "status": "claimed"
   }
  ],
  "health": {
