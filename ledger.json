@@ -12014,6 +12014,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118530829500964",
    "commentId": "122118530829500964_1059928067101612"
+  },
+  {
+   "key": "2026-10-28|next:135318|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:135318",
+   "title": "The Warrior Returns",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "135318",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793241025788,
+   "status": "claimed"
   }
  ],
  "health": {
