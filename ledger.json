@@ -14024,6 +14024,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118750693500964",
    "commentId": "122118750693500964_4949487598611085"
+  },
+  {
+   "key": "2026-10-29|where:172165|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:172165",
+   "title": "The Genius Assassin Who Takes It All",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "172165",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793273627735,
+   "status": "claimed"
   }
  ],
  "health": {
