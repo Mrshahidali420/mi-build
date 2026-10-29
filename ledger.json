@@ -12498,6 +12498,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118566829500964",
    "commentId": "122118566829500964_1078746194989329"
+  },
+  {
+   "key": "2026-10-29|where:72579|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:72579",
+   "title": "Kubera",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "72579",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793248884352,
+   "status": "claimed"
   }
  ],
  "health": {
