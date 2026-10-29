@@ -13742,6 +13742,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118689481500964",
    "commentId": "122118689481500964_2056338021783279"
+  },
+  {
+   "key": "2026-10-29|where:180166|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:180166",
+   "title": "Genius Archer's Livestreaming",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "180166",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793269099107,
+   "status": "claimed"
   }
  ],
  "health": {
