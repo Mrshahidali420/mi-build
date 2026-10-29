@@ -13312,6 +13312,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118631275500964",
    "commentId": "122118631275500964_1813322739918036"
+  },
+  {
+   "key": "2026-10-29|character:char:270390|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:270390",
+   "title": "The World After the Fall",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:270390",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793262165685,
+   "status": "claimed"
   }
  ],
  "health": {
