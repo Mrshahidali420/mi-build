@@ -16708,6 +16708,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119010739500964",
    "commentId": "122119010739500964_1846173749837610"
+  },
+  {
+   "key": "2026-10-29|next:144764|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:144764",
+   "title": "Your Ultimate Love Rival",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "144764",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793318013168,
+   "status": "claimed"
   }
  ],
  "health": {
