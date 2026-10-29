@@ -15709,6 +15709,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118935379500964",
    "commentId": "122118935379500964_1434324408272219"
+  },
+  {
+   "key": "2026-10-29|next:122362|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:122362",
+   "title": "Apocalypse Bringer Mynoghra",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "122362",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793301712573,
+   "status": "claimed"
   }
  ],
  "health": {
