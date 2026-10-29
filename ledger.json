@@ -15655,6 +15655,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118930159500964",
    "commentId": "122118930159500964_1005648499246930"
+  },
+  {
+   "key": "2026-10-29|next:187172|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:187172",
+   "title": "The Genius Prismatic Mage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "187172",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793300808320,
+   "status": "claimed"
   }
  ],
  "health": {
