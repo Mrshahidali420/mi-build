@@ -14718,6 +14718,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118845187500964",
    "commentId": "122118845187500964_2237363663789430"
+  },
+  {
+   "key": "2026-10-29|where:124621|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:124621",
+   "title": "How to Grill Our Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "124621",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793285097695,
+   "status": "claimed"
   }
  ],
  "health": {
