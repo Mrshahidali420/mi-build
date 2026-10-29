@@ -16056,6 +16056,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118968073500964",
    "commentId": "122118968073500964_1728792598186390"
+  },
+  {
+   "key": "2026-10-29|next:87350|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:87350",
+   "title": "Wake up, Sleeping Beauty",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "87350",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793307451936,
+   "status": "claimed"
   }
  ],
  "health": {
