@@ -12647,6 +12647,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118577119500964",
    "commentId": "122118577119500964_1818572106023758"
+  },
+  {
+   "key": "2026-10-29|next:33082|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:33082",
+   "title": "Nichijou",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "33082",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793251295885,
+   "status": "claimed"
   }
  ],
  "health": {
