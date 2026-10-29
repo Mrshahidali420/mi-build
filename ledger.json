@@ -15619,6 +15619,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118926679500964",
    "commentId": "122118926679500964_1292067529719798"
+  },
+  {
+   "key": "2026-10-29|where:135574|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:135574",
+   "title": "The Red Knight Seeks No Reward",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "135574",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793300205038,
+   "status": "claimed"
   }
  ],
  "health": {
