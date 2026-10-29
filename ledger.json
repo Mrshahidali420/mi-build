@@ -16356,6 +16356,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118987501500964",
    "commentId": "122118987501500964_2303155663813941"
+  },
+  {
+   "key": "2026-10-29|where:31031|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:31031",
+   "title": "We Were There",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "31031",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793312277483,
+   "status": "claimed"
   }
  ],
  "health": {
