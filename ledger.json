@@ -16618,6 +16618,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119004337500964",
    "commentId": "122119004337500964_1955895539127534"
+  },
+  {
+   "key": "2026-10-29|where:184653|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:184653",
+   "title": "Reborn as the Overpowered Genius Lord",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "184653",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793316499804,
+   "status": "claimed"
   }
  ],
  "health": {
