@@ -11683,6 +11683,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118507693500964",
    "commentId": "122118507693500964_4464202873723005"
+  },
+  {
+   "key": "2026-10-28|character:char:123285|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "character:char:123285",
+   "title": "Black Clover",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:123285",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793235595524,
+   "status": "claimed"
   }
  ],
  "health": {
