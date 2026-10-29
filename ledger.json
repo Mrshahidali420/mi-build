@@ -15475,6 +15475,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118915375500964",
    "commentId": "122118915375500964_2154453168777354"
+  },
+  {
+   "key": "2026-10-29|character:char:84787|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:84787",
+   "title": "All You Need Is Kill",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:84787",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793297787650,
+   "status": "claimed"
   }
  ],
  "health": {
