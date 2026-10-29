@@ -16523,6 +16523,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118998499500964",
    "commentId": "122118998499500964_1143509831387852"
+  },
+  {
+   "key": "2026-10-29|next:86219|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:86219",
+   "title": "Love Me, Love Me Not",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86219",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793314994487,
+   "status": "claimed"
   }
  ],
  "health": {
