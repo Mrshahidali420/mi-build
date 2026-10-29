@@ -13425,6 +13425,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118646005500964",
    "commentId": "122118646005500964_990695620743170"
+  },
+  {
+   "key": "2026-10-29|where:179455|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:179455",
+   "title": "Peaceful Camping Life in Another World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "179455",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793263977933,
+   "status": "claimed"
   }
  ],
  "health": {
