@@ -15223,6 +15223,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118897153500964",
    "commentId": "122118897153500964_1630750592063205"
+  },
+  {
+   "key": "2026-10-29|next:208208|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:208208",
+   "title": "The Shepherd Wizard",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "208208",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793293555834,
+   "status": "claimed"
   }
  ],
  "health": {
