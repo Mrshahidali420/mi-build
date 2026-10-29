@@ -15511,6 +15511,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118917409500964",
    "commentId": "122118917409500964_1160798566620764"
+  },
+  {
+   "key": "2026-10-29|where:194024|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:194024",
+   "title": "The Sword God from the Lost World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "194024",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793298390100,
+   "status": "claimed"
   }
  ],
  "health": {
