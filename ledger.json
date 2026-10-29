@@ -12218,6 +12218,22 @@
    "at": 1793244040397,
    "status": "posted",
    "postId": "1318170941390322_122118549225500964"
+  },
+  {
+   "key": "2026-10-28|where:147636|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:147636",
+   "title": "My Daughter Is The Final Boss",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "147636",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793244341928,
+   "status": "claimed"
   }
  ],
  "health": {
