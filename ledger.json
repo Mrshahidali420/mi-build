@@ -15277,6 +15277,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118900471500964",
    "commentId": "122118900471500964_2338514506908164"
+  },
+  {
+   "key": "2026-10-29|next:177012|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:177012",
+   "title": "My Very Own Tower Strategy Guide",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "177012",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793294459866,
+   "status": "claimed"
   }
  ],
  "health": {
