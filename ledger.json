@@ -15385,6 +15385,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118908517500964",
    "commentId": "122118908517500964_1129534672958889"
+  },
+  {
+   "key": "2026-10-29|next:117581|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:117581",
+   "title": "Flirting with The Villain's Dad",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "117581",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793296276656,
+   "status": "claimed"
   }
  ],
  "health": {
