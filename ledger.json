@@ -14322,6 +14322,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118810399500964",
    "commentId": "122118810399500964_1137150399171596"
+  },
+  {
+   "key": "2026-10-29|next:180422|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:180422",
+   "title": "Akira Failing in Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "180422",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793278452458,
+   "status": "claimed"
   }
  ],
  "health": {
