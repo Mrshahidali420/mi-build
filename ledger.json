@@ -11870,6 +11870,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118519729500964",
    "commentId": "122118519729500964_28998200226497685"
+  },
+  {
+   "key": "2026-10-28|where:128896|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:128896",
+   "title": "WITCH WATCH",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "128896",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793238611486,
+   "status": "claimed"
   }
  ],
  "health": {
