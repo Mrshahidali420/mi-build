@@ -11798,6 +11798,22 @@
    "status": "posted",
    "postId": "2154156395227953",
    "commentId": "2154156395227953_1139364938605405"
+  },
+  {
+   "key": "2026-10-28|next:132457|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:132457",
+   "title": "The Celestial Returned from Hell",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "132457",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793237408016,
+   "status": "claimed"
   }
  ],
  "health": {
