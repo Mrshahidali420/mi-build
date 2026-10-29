@@ -13276,6 +13276,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118628611500964",
    "commentId": "122118628611500964_1474944664532958"
+  },
+  {
+   "key": "2026-10-29|next:138454|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:138454",
+   "title": "Villainesses Have More Fun",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "138454",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793261562905,
+   "status": "claimed"
   }
  ],
  "health": {
