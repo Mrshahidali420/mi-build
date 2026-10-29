@@ -12349,6 +12349,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118557583500964",
    "commentId": "122118557583500964_1679406767221448"
+  },
+  {
+   "key": "2026-10-29|where:143352|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:143352",
+   "title": "My Master is a Backseat Gamer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "143352",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793246460587,
+   "status": "claimed"
   }
  ],
  "health": {
