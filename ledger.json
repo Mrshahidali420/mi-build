@@ -16690,6 +16690,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119009653500964",
    "commentId": "122119009653500964_1115509941456904"
+  },
+  {
+   "key": "2026-10-29|character:char:191241|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:191241",
+   "title": "Blue Box",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:191241",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793317712048,
+   "status": "claimed"
   }
  ],
  "health": {
