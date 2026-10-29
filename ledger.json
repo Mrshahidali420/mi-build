@@ -16600,6 +16600,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119002975500964",
    "commentId": "122119002975500964_28869127789422922"
+  },
+  {
+   "key": "2026-10-29|next:120768|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:120768",
+   "title": "Let's Do It Already!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "120768",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793316198696,
+   "status": "claimed"
   }
  ],
  "health": {
