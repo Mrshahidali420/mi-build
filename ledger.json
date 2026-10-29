@@ -15565,6 +15565,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118921813500964",
    "commentId": "122118921813500964_1325194536310935"
+  },
+  {
+   "key": "2026-10-29|where:159385|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:159385",
+   "title": "I Was the Final Boss",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "159385",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793299301298,
+   "status": "claimed"
   }
  ],
  "health": {
