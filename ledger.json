@@ -14664,6 +14664,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118840849500964",
    "commentId": "122118840849500964_2381477732661435"
+  },
+  {
+   "key": "2026-10-29|where:137714|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:137714",
+   "title": "Are You a Landmine, Chihara-san?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "137714",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793284186472,
+   "status": "claimed"
   }
  ],
  "health": {
