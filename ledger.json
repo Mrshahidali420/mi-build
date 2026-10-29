@@ -14574,6 +14574,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118833331500964",
    "commentId": "122118833331500964_990793386727124"
+  },
+  {
+   "key": "2026-10-29|character:char:176754|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:176754",
+   "title": "Frieren: Beyond Journey’s End",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:176754",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793282679742,
+   "status": "claimed"
   }
  ],
  "health": {
