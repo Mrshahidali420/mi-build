@@ -16410,6 +16410,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118991131500964",
    "commentId": "122118991131500964_2233848910494826"
+  },
+  {
+   "key": "2026-10-29|where:181829|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:181829",
+   "title": "Ultimate Tutorial Warrior",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "181829",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793313181185,
+   "status": "claimed"
   }
  ],
  "health": {
