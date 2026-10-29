@@ -12295,6 +12295,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118554037500964",
    "commentId": "122118554037500964_985337054621455"
+  },
+  {
+   "key": "2026-10-28|where:54098|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:54098",
+   "title": "Another",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "54098",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793245556096,
+   "status": "claimed"
   }
  ],
  "health": {
