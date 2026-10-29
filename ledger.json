@@ -12032,6 +12032,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118532059500964",
    "commentId": "122118532059500964_1134498469227029"
+  },
+  {
+   "key": "2026-10-28|where:144767|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:144767",
+   "title": "Estio",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "144767",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793241327292,
+   "status": "claimed"
   }
  ],
  "health": {
