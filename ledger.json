@@ -13580,6 +13580,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118659349500964",
    "commentId": "122118659349500964_2275562899669775"
+  },
+  {
+   "key": "2026-10-29|where:153514|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:153514",
+   "title": "The Crimson Lady",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "153514",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793266391353,
+   "status": "claimed"
   }
  ],
  "health": {
