@@ -15043,6 +15043,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118882093500964",
    "commentId": "122118882093500964_2566382347120783"
+  },
+  {
+   "key": "2026-10-29|next:128521|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:128521",
+   "title": "Get Schooled",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "128521",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793290535343,
+   "status": "claimed"
   }
  ],
  "health": {
