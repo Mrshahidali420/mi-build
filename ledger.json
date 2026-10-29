@@ -13222,6 +13222,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118624123500964",
    "commentId": "122118624123500964_1348104917267761"
+  },
+  {
+   "key": "2026-10-29|next:125658|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:125658",
+   "title": "The Viridescent Tiara",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "125658",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793260658898,
+   "status": "claimed"
   }
  ],
  "health": {
