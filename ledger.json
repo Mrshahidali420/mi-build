@@ -13855,6 +13855,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118714321500964",
    "commentId": "122118714321500964_1845977313082895"
+  },
+  {
+   "key": "2026-10-29|next:151118|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:151118",
+   "title": "The Lazy Swordmaster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "151118",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793270911542,
+   "status": "claimed"
   }
  ],
  "health": {
