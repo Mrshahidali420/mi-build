@@ -12875,6 +12875,22 @@
    "status": "posted",
    "postId": "921382580909881",
    "commentId": "921382580909881_1442532673892457"
+  },
+  {
+   "key": "2026-10-29|next:30106|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:30106",
+   "title": "Cardcaptor Sakura",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30106",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793254921176,
+   "status": "claimed"
   }
  ],
  "health": {
