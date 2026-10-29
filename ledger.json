@@ -11906,6 +11906,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118522159500964",
    "commentId": "122118522159500964_1537375808420417"
+  },
+  {
+   "key": "2026-10-28|next:30610|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:30610",
+   "title": "Skip Beat!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30610",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793239213155,
+   "status": "claimed"
   }
  ],
  "health": {
