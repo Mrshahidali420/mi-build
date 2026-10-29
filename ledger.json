@@ -12476,15 +12476,31 @@
   "halted": null
  },
  "birthdays": {
-  "day": "2026-10-28",
-  "at": 1793161195461,
+  "day": "2026-10-29",
+  "at": 1793248269165,
   "list": [
    {
-    "id": 55171,
-    "name": "Mutta Nanba",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b55171-d8qSVw9zpN7r.jpg",
-    "favourites": 705,
-    "mediaId": 44483,
+    "id": 120462,
+    "name": "Shinra Kusakabe",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n120462-oSWdz2MhkbDE.png",
+    "favourites": 5815,
+    "mediaId": 86310,
+    "voice": null
+   },
+   {
+    "id": 2828,
+    "name": "Setsuna Meiou",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2828-1mJZhqN5Tzoo.png",
+    "favourites": 393,
+    "mediaId": 30092,
+    "voice": null
+   },
+   {
+    "id": 149186,
+    "name": "Kuugo Sakamata",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b149186-fvBDbvij65aI.png",
+    "favourites": 117,
+    "mediaId": 85486,
     "voice": null
    }
   ]
