@@ -15169,6 +15169,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118891951500964",
    "commentId": "122118891951500964_4054060274724553"
+  },
+  {
+   "key": "2026-10-29|next:155877|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:155877",
+   "title": "Wild West Murim",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "155877",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793292651128,
+   "status": "claimed"
   }
  ],
  "health": {
