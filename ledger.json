@@ -11778,6 +11778,24 @@
    "status": "posted",
    "postId": "1318170941390322_122118513495500964",
    "commentId": "122118513495500964_887301021067207"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-28|reel-ranking:rank:manhwa:romance|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "reel-ranking:rank:manhwa:romance",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhwa:romance",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793237099840,
+   "track": "happy-adventure.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
