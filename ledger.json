@@ -12068,6 +12068,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118534003500964",
    "commentId": "122118534003500964_1099781876177308"
+  },
+  {
+   "key": "2026-10-28|next:130897|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:130897",
+   "title": "The Lady Needs a Break",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "130897",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793241930261,
+   "status": "claimed"
   }
  ],
  "health": {
