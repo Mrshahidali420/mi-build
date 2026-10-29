@@ -15313,6 +15313,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118903861500964",
    "commentId": "122118903861500964_1650065559860741"
+  },
+  {
+   "key": "2026-10-29|character:char:226257|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:226257",
+   "title": "Latna Saga: Survival of a Sword King",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:226257",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793295062569,
+   "status": "claimed"
   }
  ],
  "health": {
