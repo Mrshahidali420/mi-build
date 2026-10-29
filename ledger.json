@@ -13873,6 +13873,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118717585500964",
    "commentId": "122118717585500964_29070967722538237"
+  },
+  {
+   "key": "2026-10-29|where:99609|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:99609",
+   "title": "I Want to Eat Your Pancreas",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "99609",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793271213397,
+   "status": "claimed"
   }
  ],
  "health": {
