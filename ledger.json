@@ -15439,6 +15439,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118912639500964",
    "commentId": "122118912639500964_1475215247845813"
+  },
+  {
+   "key": "2026-10-29|next:175776|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:175776",
+   "title": "The S-Class Lady",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "175776",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793297183884,
+   "status": "claimed"
   }
  ],
  "health": {
