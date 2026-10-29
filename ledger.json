@@ -15403,6 +15403,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118909969500964",
    "commentId": "122118909969500964_1108295191951630"
+  },
+  {
+   "key": "2026-10-29|where:76258|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:76258",
+   "title": "Flying Witch",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "76258",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793296578967,
+   "status": "claimed"
   }
  ],
  "health": {
