@@ -16229,6 +16229,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118978855500964",
    "commentId": "122118978855500964_2310283839376249"
+  },
+  {
+   "key": "2026-10-29|where:30736|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:30736",
+   "title": "Blade of the Phantom Master",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30736",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793310169588,
+   "status": "claimed"
   }
  ],
  "health": {
