@@ -14538,6 +14538,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118830691500964",
    "commentId": "122118830691500964_1991707381505953"
+  },
+  {
+   "key": "2026-10-29|next:207089|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:207089",
+   "title": "Became the Lout First Prince",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "207089",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793282076954,
+   "status": "claimed"
   }
  ],
  "health": {
