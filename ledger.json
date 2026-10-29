@@ -12086,6 +12086,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118537129500964",
    "commentId": "122118537129500964_1633156641641629"
+  },
+  {
+   "key": "2026-10-28|where:126636|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:126636",
+   "title": "The Lone Spellcaster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "126636",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793242231709,
+   "status": "claimed"
   }
  ],
  "health": {
