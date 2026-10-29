@@ -16175,6 +16175,22 @@
    "at": 1793308957724,
    "status": "posted",
    "postId": "1318170941390322_122118975459500964"
+  },
+  {
+   "key": "2026-10-29|where:115302|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:115302",
+   "title": "Harley Takes the House",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "115302",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793309258784,
+   "status": "claimed"
   }
  ],
  "health": {
