@@ -14916,6 +14916,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118863193500964",
    "commentId": "122118863193500964_2123420511595587"
+  },
+  {
+   "key": "2026-10-29|next:97865|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:97865",
+   "title": "Super Secret",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "97865",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793288422559,
+   "status": "claimed"
   }
  ],
  "health": {
