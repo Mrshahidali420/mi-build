@@ -13114,6 +13114,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118615435500964",
    "commentId": "122118615435500964_1632801965008230"
+  },
+  {
+   "key": "2026-10-29|next:195914|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:195914",
+   "title": "Chronicles of the Lazy Sovereign",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "195914",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793258844270,
+   "status": "claimed"
   }
  ],
  "health": {
