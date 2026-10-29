@@ -16541,6 +16541,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119000065500964",
    "commentId": "122119000065500964_1628436412075017"
+  },
+  {
+   "key": "2026-10-29|where:107518|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:107518",
+   "title": "Heavenly Demon Reborn!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "107518",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793315295475,
+   "status": "claimed"
   }
  ],
  "health": {
