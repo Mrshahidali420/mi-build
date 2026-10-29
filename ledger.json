@@ -14466,6 +14466,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118824361500964",
    "commentId": "122118824361500964_2417485478781773"
+  },
+  {
+   "key": "2026-10-29|character:char:4003|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:4003",
+   "title": "JoJo's Bizarre Adventure Part 3: Stardust Crusaders",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:4003",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793280871747,
+   "status": "claimed"
   }
  ],
  "health": {
