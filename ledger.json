@@ -14502,6 +14502,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118827931500964",
    "commentId": "122118827931500964_1098441616400781"
+  },
+  {
+   "key": "2026-10-29|where:196874|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:196874",
+   "title": "Barbarian's Adventure in a Fantasy World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "196874",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793281474259,
+   "status": "claimed"
   }
  ],
  "health": {
