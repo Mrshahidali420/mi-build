@@ -16074,6 +16074,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118969591500964",
    "commentId": "122118969591500964_1914348282876189"
+  },
+  {
+   "key": "2026-10-29|where:179963|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:179963",
+   "title": "Ian the Illegitimate Son Was an Emperor",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "179963",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793307753126,
+   "status": "claimed"
   }
  ],
  "health": {
