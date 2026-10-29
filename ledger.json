@@ -15547,6 +15547,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118920613500964",
    "commentId": "122118920613500964_1859156118408329"
+  },
+  {
+   "key": "2026-10-29|next:130511|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:130511",
+   "title": "The Player Who Can't Level Up",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "130511",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793298999918,
+   "status": "claimed"
   }
  ],
  "health": {
