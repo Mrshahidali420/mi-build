@@ -12480,6 +12480,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118565839500964",
    "commentId": "122118565839500964_1823089212225374"
+  },
+  {
+   "key": "2026-10-29|next:130540|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:130540",
+   "title": "The Villainess is Retiring",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "130540",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793248582902,
+   "status": "claimed"
   }
  ],
  "health": {
