@@ -14042,6 +14042,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118753903500964",
    "commentId": "122118753903500964_1109229261911237"
+  },
+  {
+   "key": "2026-10-29|character:char:35510|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:35510",
+   "title": "The Climber",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:35510",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793273928626,
+   "status": "claimed"
   }
  ],
  "health": {
