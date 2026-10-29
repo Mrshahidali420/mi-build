@@ -12796,6 +12796,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118590343500964",
    "commentId": "122118590343500964_2626912297732561"
+  },
+  {
+   "key": "2026-10-29|where:141955|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:141955",
+   "title": "Ultra-Alternate Character",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "141955",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793253715145,
+   "status": "claimed"
   }
  ],
  "health": {
