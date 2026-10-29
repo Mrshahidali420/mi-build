@@ -15457,6 +15457,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118914001500964",
    "commentId": "122118914001500964_2624712737951437"
+  },
+  {
+   "key": "2026-10-29|where:125485|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:125485",
+   "title": "Your Majesty, Please Spare Me This Time",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "125485",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793297486483,
+   "status": "claimed"
   }
  ],
  "health": {
