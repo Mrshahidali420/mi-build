@@ -12947,6 +12947,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118601989500964",
    "commentId": "122118601989500964_1116680650731958"
+  },
+  {
+   "key": "2026-10-29|where:152654|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:152654",
+   "title": "The Dungeon Cleaning Life of a Once Genius Hunter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "152654",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793256132850,
+   "status": "claimed"
   }
  ],
  "health": {
