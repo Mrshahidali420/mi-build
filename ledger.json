@@ -11816,6 +11816,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118516129500964",
    "commentId": "122118516129500964_1793513108526334"
+  },
+  {
+   "key": "2026-10-28|where:169904|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:169904",
+   "title": "Tsumiki Ogami's Not-So-Ordinary Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "169904",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793237708960,
+   "status": "claimed"
   }
  ],
  "health": {
