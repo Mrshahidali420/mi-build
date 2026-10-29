@@ -15943,6 +15943,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118960651500964",
    "commentId": "122118960651500964_1810880756773859"
+  },
+  {
+   "key": "2026-10-29|where:134671|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:134671",
+   "title": "I'm the Tyrant's Secretary",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "134671",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793305636927,
+   "status": "claimed"
   }
  ],
  "health": {
