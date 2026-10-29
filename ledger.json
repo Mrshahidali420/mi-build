@@ -16338,6 +16338,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118986469500964",
    "commentId": "122118986469500964_1079565161795793"
+  },
+  {
+   "key": "2026-10-29|next:140159|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:140159",
+   "title": "The World's Strongest Are Obsessed With Me",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "140159",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793311976375,
+   "status": "claimed"
   }
  ],
  "health": {
