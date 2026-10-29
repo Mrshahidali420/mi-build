@@ -13837,6 +13837,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118708453500964",
    "commentId": "122118708453500964_1689954862695484"
+  },
+  {
+   "key": "2026-10-29|character:char:306654|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:306654",
+   "title": "Solo Leveling: Ragnarok",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:306654",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793270610740,
+   "status": "claimed"
   }
  ],
  "health": {
