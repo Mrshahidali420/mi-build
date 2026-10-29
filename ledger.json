@@ -14646,6 +14646,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118839463500964",
    "commentId": "122118839463500964_1522382909690097"
+  },
+  {
+   "key": "2026-10-29|next:33749|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:33749",
+   "title": "Umineko When They Cry Episode 1: Legend of the Golden Witch",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "33749",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793283885126,
+   "status": "claimed"
   }
  ],
  "health": {
