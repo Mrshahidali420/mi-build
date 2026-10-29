@@ -13616,6 +13616,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118664173500964",
    "commentId": "122118664173500964_1524627349473597"
+  },
+  {
+   "key": "2026-10-29|next:106434|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:106434",
+   "title": "Hitomi-chan is Shy With Strangers",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "106434",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793266993083,
+   "status": "claimed"
   }
  ],
  "health": {
