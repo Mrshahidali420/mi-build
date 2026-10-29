@@ -15871,6 +15871,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118954087500964",
    "commentId": "122118954087500964_1446725847595926"
+  },
+  {
+   "key": "2026-10-29|next:117320|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:117320",
+   "title": "The Beloved Little Princess",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "117320",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793304431608,
+   "status": "claimed"
   }
  ],
  "health": {
