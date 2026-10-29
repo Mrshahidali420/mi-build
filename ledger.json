@@ -15727,6 +15727,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118938499500964",
    "commentId": "122118938499500964_2044216206289109"
+  },
+  {
+   "key": "2026-10-29|where:194672|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:194672",
+   "title": "Regression of the Third Prince",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "194672",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793302013830,
+   "status": "claimed"
   }
  ],
  "health": {
