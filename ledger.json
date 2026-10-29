@@ -14209,6 +14209,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118796707500964",
    "commentId": "122118796707500964_971962269301365"
+  },
+  {
+   "key": "2026-10-29|where:139500|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:139500",
+   "title": "The Challenger",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "139500",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793276636846,
+   "status": "claimed"
   }
  ],
  "health": {
