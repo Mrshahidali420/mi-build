@@ -11701,6 +11701,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118508989500964",
    "commentId": "122118508989500964_1067139309619939"
+  },
+  {
+   "key": "2026-10-28|next:136220|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:136220",
+   "title": "Doom Breaker",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "136220",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793235896345,
+   "status": "claimed"
   }
  ],
  "health": {
