@@ -16265,6 +16265,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118981177500964",
    "commentId": "122118981177500964_1093652736805119"
+  },
+  {
+   "key": "2026-10-29|next:110472|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:110472",
+   "title": "Study Group",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "110472",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793310771890,
+   "status": "claimed"
   }
  ],
  "health": {
