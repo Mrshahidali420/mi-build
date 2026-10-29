@@ -14006,6 +14006,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118746871500964",
    "commentId": "122118746871500964_1657101569402335"
+  },
+  {
+   "key": "2026-10-29|next:141316|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:141316",
+   "title": "The Reborn Ranker Chronicles",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "141316",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793273319488,
+   "status": "claimed"
   }
  ],
  "health": {
