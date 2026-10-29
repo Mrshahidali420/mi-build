@@ -15745,6 +15745,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118940449500964",
    "commentId": "122118940449500964_1124912640136748"
+  },
+  {
+   "key": "2026-10-29|character:char:425|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:425",
+   "title": "Mushishi",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:425",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793302315072,
+   "status": "claimed"
   }
  ],
  "health": {
