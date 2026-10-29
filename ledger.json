@@ -12408,6 +12408,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118561051500964",
    "commentId": "122118561051500964_1777041863551575"
+  },
+  {
+   "key": "2026-10-29|next:120222|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:120222",
+   "title": "The Twins' New Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "120222",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793247365254,
+   "status": "claimed"
   }
  ],
  "health": {
