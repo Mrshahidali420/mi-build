@@ -12516,6 +12516,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118567639500964",
    "commentId": "122118567639500964_3160543070949914"
+  },
+  {
+   "key": "2026-10-29|character:char:89426|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:89426",
+   "title": "ReLIFE",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:89426",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793249185798,
+   "status": "claimed"
   }
  ],
  "health": {
