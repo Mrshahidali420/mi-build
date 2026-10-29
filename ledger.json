@@ -11978,6 +11978,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118528093500964",
    "commentId": "122118528093500964_1709802717236196"
+  },
+  {
+   "key": "2026-10-28|where:101131|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:101131",
+   "title": "Magus of the Library",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101131",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793240416431,
+   "status": "claimed"
   }
  ],
  "health": {
