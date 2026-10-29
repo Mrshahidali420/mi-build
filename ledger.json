@@ -12855,6 +12855,24 @@
    "status": "posted",
    "postId": "1318170941390322_122118594639500964",
    "commentId": "122118594639500964_1779162850880028"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-29|reel-next:123739|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "reel-next:123739",
+   "title": "Under the Oak Tree",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "123739",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793254619652,
+   "track": "fast-fight.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
