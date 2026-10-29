@@ -13970,6 +13970,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118738723500964",
    "commentId": "122118738723500964_1706452600909237"
+  },
+  {
+   "key": "2026-10-29|where:103995|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:103995",
+   "title": "True Beauty",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103995",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793272717572,
+   "status": "claimed"
   }
  ],
  "health": {
