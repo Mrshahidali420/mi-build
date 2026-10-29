@@ -15889,6 +15889,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118955731500964",
    "commentId": "122118955731500964_29535139709424219"
+  },
+  {
+   "key": "2026-10-29|where:149483|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:149483",
+   "title": "Operation: True Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "149483",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793304733121,
+   "status": "claimed"
   }
  ],
  "health": {
