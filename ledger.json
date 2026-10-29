@@ -12593,6 +12593,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118572445500964",
    "commentId": "122118572445500964_1846409453462418"
+  },
+  {
+   "key": "2026-10-29|where:110744|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:110744",
+   "title": "Rebirth Of The Urban Immortal Cultivator",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "110744",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793250391568,
+   "status": "claimed"
   }
  ],
  "health": {
