@@ -15295,6 +15295,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118902457500964",
    "commentId": "122118902457500964_2159294897994870"
+  },
+  {
+   "key": "2026-10-29|where:98608|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:98608",
+   "title": "Campfire Cooking in Another World with My Absurd Skill",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "98608",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793294761127,
+   "status": "claimed"
   }
  ],
  "health": {
