@@ -14880,6 +14880,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118857361500964",
    "commentId": "122118857361500964_1113622334735851"
+  },
+  {
+   "key": "2026-10-29|where:145538|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:145538",
+   "title": "The Crow's Prince",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "145538",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793287812717,
+   "status": "claimed"
   }
  ],
  "health": {
