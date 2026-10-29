@@ -13670,6 +13670,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118673665500964",
    "commentId": "122118673665500964_3974958942669878"
+  },
+  {
+   "key": "2026-10-29|next:109219|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:109219",
+   "title": "As You Wish, Prince",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "109219",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793267895559,
+   "status": "claimed"
   }
  ],
  "health": {
