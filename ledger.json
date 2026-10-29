@@ -14808,6 +14808,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118851559500964",
    "commentId": "122118851559500964_2197371391206409"
+  },
+  {
+   "key": "2026-10-29|next:100560|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:100560",
+   "title": "My Next Life as a Villainess: All Routes Lead to Doom!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "100560",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793286605287,
+   "status": "claimed"
   }
  ],
  "health": {
