@@ -16392,6 +16392,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118989955500964",
    "commentId": "122118989955500964_1464721909191334"
+  },
+  {
+   "key": "2026-10-29|next:106233|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:106233",
+   "title": "Now I'm a Demon Lord! Happily Ever After with Monster Girls in My Dungeon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "106233",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793312880119,
+   "status": "claimed"
   }
  ],
  "health": {
