@@ -14952,6 +14952,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118874431500964",
    "commentId": "122118874431500964_1161092013014989"
+  },
+  {
+   "key": "2026-10-29|character:char:266483|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:266483",
+   "title": "Maybe Meant to Be",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:266483",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793289025888,
+   "status": "claimed"
   }
  ],
  "health": {
