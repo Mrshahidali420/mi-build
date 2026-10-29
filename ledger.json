@@ -15781,6 +15781,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118944577500964",
    "commentId": "122118944577500964_1480876503907939"
+  },
+  {
+   "key": "2026-10-29|where:119713|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:119713",
+   "title": "The Strongest Florist",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "119713",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793302923909,
+   "status": "claimed"
   }
  ],
  "health": {
