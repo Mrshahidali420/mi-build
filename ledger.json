@@ -13407,6 +13407,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118637059500964",
    "commentId": "122118637059500964_3039879729708110"
+  },
+  {
+   "key": "2026-10-29|next:137375|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:137375",
+   "title": "Book Eater",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "137375",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793263676121,
+   "status": "claimed"
   }
  ],
  "health": {
