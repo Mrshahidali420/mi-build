@@ -14484,6 +14484,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118825357500964",
    "commentId": "122118825357500964_1617790782843790"
+  },
+  {
+   "key": "2026-10-29|next:107128|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:107128",
+   "title": "The Abandoned Empress",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "107128",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793281173058,
+   "status": "claimed"
   }
  ],
  "health": {
