@@ -16672,6 +16672,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119007949500964",
    "commentId": "122119007949500964_1745086670959088"
+  },
+  {
+   "key": "2026-10-29|where:133963|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:133963",
+   "title": "Legend of Sayu",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "133963",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793317410969,
+   "status": "claimed"
   }
  ],
  "health": {
