@@ -13652,6 +13652,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118670095500964",
    "commentId": "122118670095500964_1446114924139251"
+  },
+  {
+   "key": "2026-10-29|character:char:673|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:673",
+   "title": "Gin Tama",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:673",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793267594735,
+   "status": "claimed"
   }
  ],
  "health": {
