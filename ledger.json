@@ -16211,6 +16211,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118977871500964",
    "commentId": "122118977871500964_1649240486667221"
+  },
+  {
+   "key": "2026-10-29|next:146517|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:146517",
+   "title": "The Duke's Bored Daughter is My Master",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "146517",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793309868442,
+   "status": "claimed"
   }
  ],
  "health": {
