@@ -14556,6 +14556,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118831807500964",
    "commentId": "122118831807500964_2179328073011616"
+  },
+  {
+   "key": "2026-10-29|where:109435|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:109435",
+   "title": "The Villain's Savior",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "109435",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793282378323,
+   "status": "claimed"
   }
  ],
  "health": {
