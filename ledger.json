@@ -13538,6 +13538,29 @@
    "status": "posted",
    "postId": "1318170941390322_122118656097500964",
    "commentId": "122118656097500964_29351550191119204"
+  },
+  {
+   "share": true,
+   "key": "2026-10-29|share:1329988470202923_122114563383503689|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "share:1329988470202923_122114563383503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122114563383503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122114563383503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Durarara!!",
+   "sourceFormat": "type:character",
+   "link": "https://www.facebook.com/1329988470202923/posts/122114563383503689",
+   "message": "Worth a look from our sister Page, WhereAnime:",
+   "at": 1793265782864,
+   "status": "claimed"
   }
  ],
  "health": {
