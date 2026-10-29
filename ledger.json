@@ -15187,6 +15187,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118893319500964",
    "commentId": "122118893319500964_1409118474539208"
+  },
+  {
+   "key": "2026-10-29|where:54457|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:54457",
+   "title": "Puella Magi Madoka Magica",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "54457",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793292952501,
+   "status": "claimed"
   }
  ],
  "health": {
