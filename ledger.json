@@ -15763,6 +15763,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118942801500964",
    "commentId": "122118942801500964_1817018219353020"
+  },
+  {
+   "key": "2026-10-29|next:164996|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:164996",
+   "title": "F-Rank Fortune Hunter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "164996",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793302622385,
+   "status": "claimed"
   }
  ],
  "health": {
