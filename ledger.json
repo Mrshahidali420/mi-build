@@ -11611,6 +11611,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118499077500964",
    "commentId": "122118499077500964_4762542887358504"
+  },
+  {
+   "key": "2026-10-28|where:104533|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:104533",
+   "title": "Romance 101",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "104533",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793234391902,
+   "status": "claimed"
   }
  ],
  "health": {
