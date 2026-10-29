@@ -13688,6 +13688,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118677625500964",
    "commentId": "122118677625500964_1794597285092873"
+  },
+  {
+   "key": "2026-10-29|where:137513|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:137513",
+   "title": "Backstabbed in a Backwater Dungeon: My Party Tried to Kill Me, But Thanks to an Infinite Gacha I Got LVL 9999 Friends and Am Out For Revenge",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "137513",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793268196489,
+   "status": "claimed"
   }
  ],
  "health": {
