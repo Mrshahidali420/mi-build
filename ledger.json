@@ -14934,6 +14934,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118868989500964",
    "commentId": "122118868989500964_29497814096469086"
+  },
+  {
+   "key": "2026-10-29|where:167109|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:167109",
+   "title": "Playing Revenge Against God",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "167109",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793288724103,
+   "status": "claimed"
   }
  ],
  "health": {
