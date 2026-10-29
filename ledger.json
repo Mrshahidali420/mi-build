@@ -13461,6 +13461,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118650037500964",
    "commentId": "122118650037500964_1108730398681709"
+  },
+  {
+   "key": "2026-10-29|next:186019|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:186019",
+   "title": "Ultimate Shut-in",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "186019",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793264579453,
+   "status": "claimed"
   }
  ],
  "health": {
