@@ -13371,6 +13371,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118634791500964",
    "commentId": "122118634791500964_1466935368690386"
+  },
+  {
+   "key": "2026-10-29|where:161749|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:161749",
+   "title": "Last on Earth",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "161749",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793263074472,
+   "status": "claimed"
   }
  ],
  "health": {
