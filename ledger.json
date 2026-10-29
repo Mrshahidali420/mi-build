@@ -12814,6 +12814,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118592113500964",
    "commentId": "122118592113500964_1441515961289255"
+  },
+  {
+   "key": "2026-10-29|character:char:2765|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:2765",
+   "title": "Yokohama Kaidashi Kikou",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:2765",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793254016646,
+   "status": "claimed"
   }
  ],
  "health": {
