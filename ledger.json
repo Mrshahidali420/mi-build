@@ -16654,6 +16654,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119006851500964",
    "commentId": "122119006851500964_1441194487360804"
+  },
+  {
+   "key": "2026-10-29|next:132926|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:132926",
+   "title": "How I Met My Soulmate",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "132926",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793317109861,
+   "status": "claimed"
   }
  ],
  "health": {
