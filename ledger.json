@@ -13909,6 +13909,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118725019500964",
    "commentId": "122118725019500964_2131858720761921"
+  },
+  {
+   "key": "2026-10-29|next:150750|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:150750",
+   "title": "Charming the Duke of the North",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "150750",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793271815020,
+   "status": "claimed"
   }
  ],
  "health": {
