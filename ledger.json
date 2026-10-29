@@ -13132,6 +13132,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118616965500964",
    "commentId": "122118616965500964_1800047871313188"
+  },
+  {
+   "key": "2026-10-29|where:86510|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:86510",
+   "title": "4 Cut Hero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86510",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793259152450,
+   "status": "claimed"
   }
  ],
  "health": {
