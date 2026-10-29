@@ -16110,6 +16110,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118972033500964",
    "commentId": "122118972033500964_1621971272757159"
+  },
+  {
+   "key": "2026-10-29|next:101670|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:101670",
+   "title": "Empress of Another World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "101670",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793308355427,
+   "status": "claimed"
   }
  ],
  "health": {
