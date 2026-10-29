@@ -16193,6 +16193,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118976797500964",
    "commentId": "122118976797500964_3038167559855238"
+  },
+  {
+   "key": "2026-10-29|character:char:88601|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:88601",
+   "title": "Cheeky Brat",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:88601",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793309560106,
+   "status": "claimed"
   }
  ],
  "health": {
