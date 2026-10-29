@@ -13294,6 +13294,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118629679500964",
    "commentId": "122118629679500964_1147106781585830"
+  },
+  {
+   "key": "2026-10-29|where:161500|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:161500",
+   "title": "I'm a Part-Timer for the Gods",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "161500",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793261864296,
+   "status": "claimed"
   }
  ],
  "health": {
