@@ -11852,6 +11852,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118518421500964",
    "commentId": "122118518421500964_955557223940289"
+  },
+  {
+   "key": "2026-10-28|next:126268|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:126268",
+   "title": "Days with My Stepsister",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "126268",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793238310657,
+   "status": "claimed"
   }
  ],
  "health": {
