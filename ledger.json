@@ -15349,6 +15349,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118905937500964",
    "commentId": "122118905937500964_1128525142958069"
+  },
+  {
+   "key": "2026-10-29|where:182000|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:182000",
+   "title": "The Otherworldly Genius Method Actor",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "182000",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793295674115,
+   "status": "claimed"
   }
  ],
  "health": {
