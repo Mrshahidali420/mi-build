@@ -16469,6 +16469,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118995661500964",
    "commentId": "122118995661500964_1765627061387833"
+  },
+  {
+   "key": "2026-10-29|next:153848|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:153848",
+   "title": "Revenge on the Real One",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "153848",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793314091304,
+   "status": "claimed"
   }
  ],
  "health": {
