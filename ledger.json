@@ -16487,6 +16487,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118996465500964",
    "commentId": "122118996465500964_1932881354348453"
+  },
+  {
+   "key": "2026-10-29|where:30649|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:30649",
+   "title": "GUNSLINGER GIRL",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30649",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793314392312,
+   "status": "claimed"
   }
  ],
  "health": {
