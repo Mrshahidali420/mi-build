@@ -15583,6 +15583,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118922713500964",
    "commentId": "122118922713500964_1847426573240353"
+  },
+  {
+   "key": "2026-10-29|character:char:297627|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:297627",
+   "title": "The Novel's Extra",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:297627",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793299602539,
+   "status": "claimed"
   }
  ],
  "health": {
