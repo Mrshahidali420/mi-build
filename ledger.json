@@ -12122,6 +12122,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118541935500964",
    "commentId": "122118541935500964_28891500213840191"
+  },
+  {
+   "key": "2026-10-28|next:139381|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "next:139381",
+   "title": "My Life as a Player",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "139381",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793242834587,
+   "status": "claimed"
   }
  ],
  "health": {
