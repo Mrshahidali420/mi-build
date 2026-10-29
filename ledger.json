@@ -15133,6 +15133,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118889335500964",
    "commentId": "122118889335500964_976765288815598"
+  },
+  {
+   "key": "2026-10-29|where:107603|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:107603",
+   "title": "The World's Finest Assassin Gets Reincarnated in Another World as an Aristocrat",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "107603",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793292048975,
+   "status": "claimed"
   }
  ],
  "health": {
