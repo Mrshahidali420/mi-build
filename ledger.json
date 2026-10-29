@@ -12778,6 +12778,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118588705500964",
    "commentId": "122118588705500964_1648494610280879"
+  },
+  {
+   "key": "2026-10-29|next:144122|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:144122",
+   "title": "The Rewards of Marriage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "144122",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793253413647,
+   "status": "claimed"
   }
  ],
  "health": {
