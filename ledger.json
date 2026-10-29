@@ -14155,6 +14155,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118787071500964",
    "commentId": "122118787071500964_1116117300790204"
+  },
+  {
+   "key": "2026-10-29|where:142372|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:142372",
+   "title": "I Raised a Black Dragon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "142372",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793275734068,
+   "status": "claimed"
   }
  ],
  "health": {
