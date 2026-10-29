@@ -15061,6 +15061,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118883593500964",
    "commentId": "122118883593500964_1677153637376694"
+  },
+  {
+   "key": "2026-10-29|where:164263|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:164263",
+   "title": "Fall in Love, You False Angels",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "164263",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793290837010,
+   "status": "claimed"
   }
  ],
  "health": {
