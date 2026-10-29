@@ -14304,6 +14304,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118809175500964",
    "commentId": "122118809175500964_1646565500529253"
+  },
+  {
+   "key": "2026-10-29|character:char:174190|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:174190",
+   "title": "The Dangers in My Heart",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:174190",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793278151210,
+   "status": "claimed"
   }
  ],
  "health": {
