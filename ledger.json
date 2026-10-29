@@ -11480,6 +11480,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118482085500964",
    "commentId": "122118482085500964_1077161398489050"
+  },
+  {
+   "key": "2026-10-28|where:132288|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:132288",
+   "title": "Hirayasumi",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "132288",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793232280318,
+   "status": "claimed"
   }
  ],
  "health": {
