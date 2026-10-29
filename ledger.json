@@ -14862,6 +14862,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118856215500964",
    "commentId": "122118856215500964_1437289317847951"
+  },
+  {
+   "key": "2026-10-29|next:132359|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:132359",
+   "title": "Not-Sew-Wicked Stepmom",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "132359",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793287511059,
+   "status": "claimed"
   }
  ],
  "health": {
