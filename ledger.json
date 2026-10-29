@@ -12575,6 +12575,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118571185500964",
    "commentId": "122118571185500964_1480063450644704"
+  },
+  {
+   "key": "2026-10-29|next:115387|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:115387",
+   "title": "Villainess in Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "115387",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793250090124,
+   "status": "claimed"
   }
  ],
  "health": {
