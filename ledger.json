@@ -16020,6 +16020,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118965337500964",
    "commentId": "122118965337500964_1521503396499632"
+  },
+  {
+   "key": "2026-10-29|where:156413|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:156413",
+   "title": "The Tyrant Wants to Be Good",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "156413",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793306849690,
+   "status": "claimed"
   }
  ],
  "health": {
