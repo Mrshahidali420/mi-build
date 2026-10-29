@@ -15817,6 +15817,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118948357500964",
    "commentId": "122118948357500964_1775415146906491"
+  },
+  {
+   "key": "2026-10-29|next:98171|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:98171",
+   "title": "How a Realist Hero Rebuilt the Kingdom",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98171",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793303526920,
+   "status": "claimed"
   }
  ],
  "health": {
