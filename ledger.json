@@ -16374,6 +16374,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118988563500964",
    "commentId": "122118988563500964_1434617708877267"
+  },
+  {
+   "key": "2026-10-29|character:char:193867|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:193867",
+   "title": "Viral Hit",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:193867",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793312578625,
+   "status": "claimed"
   }
  ],
  "health": {
