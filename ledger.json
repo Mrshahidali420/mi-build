@@ -16320,6 +16320,22 @@
    "track": "happy-adventure.m4a",
    "status": "failed",
    "error": "GET /1663736001789838 failed: Unsupported get request. Object with ID '1663736001789838' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-10-29|character:char:185124|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:185124",
+   "title": "FFF-Class Trashero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:185124",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793311675057,
+   "status": "claimed"
   }
  ],
  "health": {
