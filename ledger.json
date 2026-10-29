@@ -11742,6 +11742,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118511629500964",
    "commentId": "122118511629500964_985558580642080"
+  },
+  {
+   "key": "2026-10-28|where:86720|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "where:86720",
+   "title": "Helck",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86720",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793236498057,
+   "status": "claimed"
   }
  ],
  "health": {
