@@ -13330,6 +13330,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118632415500964",
    "commentId": "122118632415500964_1631359938458934"
+  },
+  {
+   "key": "2026-10-29|next:142568|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:142568",
+   "title": "Takopi's Original Sin",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "142568",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793262467039,
+   "status": "claimed"
   }
  ],
  "health": {
