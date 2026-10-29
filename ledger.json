@@ -12194,6 +12194,29 @@
    "status": "posted",
    "postId": "1318170941390322_122118547629500964",
    "commentId": "122118547629500964_1820147989334586"
+  },
+  {
+   "share": true,
+   "key": "2026-10-28|share:1329988470202923_122114456301503689|manhwaindex",
+   "day": "2026-10-28",
+   "slug": "share:1329988470202923_122114456301503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122114456301503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122114456301503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Tsukigakirei",
+   "sourceFormat": "type:where",
+   "link": "https://www.facebook.com/1329988470202923/posts/122114456301503689",
+   "message": "New on our sister Page, WhereAnime:",
+   "at": 1793244040397,
+   "status": "claimed"
   }
  ],
  "health": {
