@@ -14970,6 +14970,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118876171500964",
    "commentId": "122118876171500964_1461800395877242"
+  },
+  {
+   "key": "2026-10-29|next:125653|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:125653",
+   "title": "Farmer Of Spirits",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "125653",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793289327414,
+   "status": "claimed"
   }
  ],
  "health": {
