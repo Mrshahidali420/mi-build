@@ -14610,6 +14610,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118836661500964",
    "commentId": "122118836661500964_2075828586405971"
+  },
+  {
+   "key": "2026-10-29|where:162919|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:162919",
+   "title": "Baby Tyrant",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "162919",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793283282435,
+   "status": "claimed"
   }
  ],
  "health": {
