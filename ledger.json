@@ -15673,6 +15673,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118931803500964",
    "commentId": "122118931803500964_1659348799148275"
+  },
+  {
+   "key": "2026-10-29|where:174515|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:174515",
+   "title": "Nebula's Civilization",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "174515",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793301109825,
+   "status": "claimed"
   }
  ],
  "health": {
