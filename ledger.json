@@ -15493,6 +15493,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118916251500964",
    "commentId": "122118916251500964_1599803392163230"
+  },
+  {
+   "key": "2026-10-29|next:163447|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:163447",
+   "title": "The Dragon Slayer Academy's Hotshot",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "163447",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793298088841,
+   "status": "claimed"
   }
  ],
  "health": {
