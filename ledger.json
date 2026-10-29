@@ -14286,6 +14286,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118805725500964",
    "commentId": "122118805725500964_1811138586693392"
+  },
+  {
+   "key": "2026-10-29|where:156558|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:156558",
+   "title": "House Mayton's Youngest",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "156558",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793277849972,
+   "status": "claimed"
   }
  ],
  "health": {
