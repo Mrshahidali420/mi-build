@@ -14988,6 +14988,24 @@
    "status": "posted",
    "postId": "1318170941390322_122118877533500964",
    "commentId": "122118877533500964_1731950947868963"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-29|reel-next:170151|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "reel-next:170151",
+   "title": "Fortune-Telling Lady",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "170151",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793289630463,
+   "track": "anime-intro.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
