@@ -15421,6 +15421,22 @@
    "status": "posted",
    "postId": "1318170941390322_122118911517500964",
    "commentId": "122118911517500964_1466531568956375"
+  },
+  {
+   "key": "2026-10-29|character:char:305628|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:305628",
+   "title": "Mythic Item Obtained",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:305628",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793296881511,
+   "status": "claimed"
   }
  ],
  "health": {
