@@ -18449,6 +18449,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119203645500964",
    "commentId": "122119203645500964_1155830233701476"
+  },
+  {
+   "key": "2026-10-30|next:127008|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:127008",
+   "title": "7th Time Loop: The Villainess Enjoys a Carefree Life Married to Her Worst Enemy!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "127008",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793346105928,
+   "status": "claimed"
   }
  ],
  "health": {
