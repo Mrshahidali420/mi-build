@@ -18544,6 +18544,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119222581500964",
    "commentId": "122119222581500964_1659278095978361"
+  },
+  {
+   "key": "2026-10-30|where:41366|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:41366",
+   "title": "Teppu",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "41366",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793347613372,
+   "status": "claimed"
   }
  ],
  "health": {
