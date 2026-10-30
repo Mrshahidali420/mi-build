@@ -18318,6 +18318,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119176039500964",
    "commentId": "122119176039500964_967843639259212"
+  },
+  {
+   "key": "2026-10-30|next:30081|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:30081",
+   "title": "Aria",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30081",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793343986574,
+   "status": "claimed"
   }
  ],
  "health": {
