@@ -21996,6 +21996,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119525629500964",
    "commentId": "122119525629500964_1632501594949564"
+  },
+  {
+   "key": "2026-10-30|next:109235|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:109235",
+   "title": "I Guess I Became the Mother of the Great Demon King's 10 Children in Another World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "109235",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793402936147,
+   "status": "claimed"
   }
  ],
  "health": {
