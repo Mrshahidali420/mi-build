@@ -16916,6 +16916,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119029399500964",
    "commentId": "122119029399500964_1130976579507907"
+  },
+  {
+   "key": "2026-10-29|next:127778|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:127778",
+   "title": "Don't Blush, Sekime-san!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "127778",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793321359683,
+   "status": "claimed"
   }
  ],
  "health": {
