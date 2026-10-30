@@ -17065,6 +17065,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119037985500964",
    "commentId": "122119037985500964_950839901116897"
+  },
+  {
+   "key": "2026-10-29|where:127848|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:127848",
+   "title": "Masters of Lightning Knives",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "127848",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793323768416,
+   "status": "claimed"
   }
  ],
  "health": {
