@@ -20347,6 +20347,24 @@
    "status": "posted",
    "postId": "1318170941390322_122119402971500964",
    "commentId": "122119402971500964_1591360388849403"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-30|reel-next:112678|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "reel-next:112678",
+   "title": "Lady Evony",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "112678",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793376637813,
+   "track": "battle-theme-a.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
