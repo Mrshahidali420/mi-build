@@ -21482,6 +21482,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119489839500964",
    "commentId": "122119489839500964_1896346274684270"
+  },
+  {
+   "key": "2026-10-30|next:169135|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:169135",
+   "title": "Reborn as the Enemy Prince",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "169135",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793394792906,
+   "status": "claimed"
   }
  ],
  "health": {
