@@ -17047,6 +17047,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119037193500964",
    "commentId": "122119037193500964_949985214535842"
+  },
+  {
+   "key": "2026-10-29|next:159436|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:159436",
+   "title": "Mother's Contract Marriage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "159436",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793323467363,
+   "status": "claimed"
   }
  ],
  "health": {
