@@ -19016,6 +19016,22 @@
    "track": "anime-intro.m4a",
    "status": "failed",
    "error": "GET /2896625390709776 failed: Unsupported get request. Object with ID '2896625390709776' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-10-30|next:100309|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:100309",
+   "title": "Cooking with Wild Game",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "100309",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793355159363,
+   "status": "claimed"
   }
  ],
  "health": {
