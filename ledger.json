@@ -21789,6 +21789,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119513629500964",
    "commentId": "122119513629500964_1784698246085663"
+  },
+  {
+   "key": "2026-10-30|character:char:89276|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:89276",
+   "title": "Erased",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:89276",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793399619910,
+   "status": "claimed"
   }
  ],
  "health": {
