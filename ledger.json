@@ -20234,6 +20234,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119390599500964",
    "commentId": "122119390599500964_1051824804542822"
+  },
+  {
+   "key": "2026-10-30|next:58825|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:58825",
+   "title": "Wolf Girl and Black Prince",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "58825",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793374821245,
+   "status": "claimed"
   }
  ],
  "health": {
