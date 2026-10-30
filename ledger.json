@@ -20520,6 +20520,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119415571500964",
    "commentId": "122119415571500964_4803623819865034"
+  },
+  {
+   "key": "2026-10-30|next:116411|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:116411",
+   "title": "A Galaxy Next Door",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "116411",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793379351769,
+   "status": "claimed"
   }
  ],
  "health": {
