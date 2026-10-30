@@ -20862,6 +20862,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119438017500964",
    "commentId": "122119438017500964_1832639311187270"
+  },
+  {
+   "key": "2026-10-30|where:101845|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:101845",
+   "title": "A Side Character's Love Story",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101845",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793384810099,
+   "status": "claimed"
   }
  ],
  "health": {
