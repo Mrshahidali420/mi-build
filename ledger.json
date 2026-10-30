@@ -17572,6 +17572,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119080891500964",
    "commentId": "122119080891500964_1139207235244405"
+  },
+  {
+   "key": "2026-10-29|next:30050|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:30050",
+   "title": "Shaman King",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30050",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793331918833,
+   "status": "claimed"
   }
  ],
  "health": {
