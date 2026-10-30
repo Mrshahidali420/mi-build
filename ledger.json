@@ -18187,6 +18187,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119149597500964",
    "commentId": "122119149597500964_1138308572476283"
+  },
+  {
+   "key": "2026-10-30|next:150193|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:150193",
+   "title": "The Exiled Heavy Knight Knows How to Game the System",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "150193",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793341868185,
+   "status": "claimed"
   }
  ],
  "health": {
