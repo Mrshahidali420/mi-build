@@ -20844,6 +20844,22 @@
     "id": "18158021974566910",
     "at": 1793384207537
    }
+  },
+  {
+   "key": "2026-10-30|next:113060|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:113060",
+   "title": "The Golden-Haired Summoner",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "113060",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793384509037,
+   "status": "claimed"
   }
  ],
  "health": {
