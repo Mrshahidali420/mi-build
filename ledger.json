@@ -19648,6 +19648,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119341609500964",
    "commentId": "122119341609500964_2247953802437441"
+  },
+  {
+   "key": "2026-10-30|next:100704|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:100704",
+   "title": "Life Lessons with Uramichi Oniisan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "100704",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793365424487,
+   "status": "claimed"
   }
  ],
  "health": {
