@@ -19070,6 +19070,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119287297500964",
    "commentId": "122119287297500964_1807606870650959"
+  },
+  {
+   "key": "2026-10-30|next:118437|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:118437",
+   "title": "I Became the Villain's Mother",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "118437",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793356062663,
+   "status": "claimed"
   }
  ],
  "health": {
