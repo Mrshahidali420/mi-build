@@ -17417,6 +17417,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119069395500964",
    "commentId": "122119069395500964_28907670332215589"
+  },
+  {
+   "key": "2026-10-29|next:101069|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:101069",
+   "title": "I’ve Been Killing Slimes for 300 Years and Maxed Out My Level",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "101069",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793329503459,
+   "status": "claimed"
   }
  ],
  "health": {
