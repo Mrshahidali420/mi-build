@@ -17119,6 +17119,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119040607500964",
    "commentId": "122119040607500964_1961515858550270"
+  },
+  {
+   "key": "2026-10-29|where:101746|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:101746",
+   "title": "Black Summoner",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101746",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793324679462,
+   "status": "claimed"
   }
  ],
  "health": {
