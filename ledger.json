@@ -17758,6 +17758,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119093191500964",
    "commentId": "122119093191500964_1088966544014044"
+  },
+  {
+   "key": "2026-10-30|birthday:bday:89517|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "birthday:bday:89517",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:birthday",
+   "type": "birthday",
+   "item": "bday:89517",
+   "gapDays": 330,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793334937696,
+   "status": "claimed"
   }
  ],
  "health": {
