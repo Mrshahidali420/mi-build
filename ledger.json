@@ -18711,6 +18711,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119254345500964",
    "commentId": "122119254345500964_1942394383810946"
+  },
+  {
+   "key": "2026-10-30|next:116333|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:116333",
+   "title": "I Have a Crush at Work",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "116333",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793350332449,
+   "status": "claimed"
   }
  ],
  "health": {
