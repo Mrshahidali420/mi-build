@@ -19237,6 +19237,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119303677500964",
    "commentId": "122119303677500964_1111889221762973"
+  },
+  {
+   "key": "2026-10-30|character:char:4963|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:4963",
+   "title": "Future Diary",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:4963",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793358780860,
+   "status": "claimed"
   }
  ],
  "health": {
