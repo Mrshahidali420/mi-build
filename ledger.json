@@ -17668,6 +17668,22 @@
    "track": "battle-theme-a.m4a",
    "status": "failed",
    "error": "GET /29414434581481846 failed: Unsupported get request. Object with ID '29414434581481846' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-10-30|next:100293|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:100293",
+   "title": "The Duke of Death and His Maid",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "100293",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793333424012,
+   "status": "claimed"
   }
  ],
  "health": {
