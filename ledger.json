@@ -17666,7 +17666,8 @@
    "variant": 2,
    "at": 1793333123000,
    "track": "battle-theme-a.m4a",
-   "status": "claimed"
+   "status": "failed",
+   "error": "GET /29414434581481846 failed: Unsupported get request. Object with ID '29414434581481846' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
   }
  ],
  "health": {
