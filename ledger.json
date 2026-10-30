@@ -18485,6 +18485,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119211751500964",
    "commentId": "122119211751500964_1639264454412235"
+  },
+  {
+   "key": "2026-10-30|character:char:147510|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:147510",
+   "title": "The Reason Why Raeliana Ended Up at the Duke's Mansion",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:147510",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793346708845,
+   "status": "claimed"
   }
  ],
  "health": {
