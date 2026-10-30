@@ -20574,6 +20574,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119420071500964",
    "commentId": "122119420071500964_1514691010420270"
+  },
+  {
+   "key": "2026-10-30|next:85736|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:85736",
+   "title": "Re:ZERO -Starting Life in Another World- Chapter 1: A Day in the Capital",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85736",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793380282458,
+   "status": "claimed"
   }
  ],
  "health": {
