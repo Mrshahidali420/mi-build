@@ -20763,6 +20763,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119432725500964",
    "commentId": "122119432725500964_3202806233240393"
+  },
+  {
+   "key": "2026-10-30|next:117853|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:117853",
+   "title": "The Tunnel to Summer, the Exit of Goodbyes",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "117853",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793383304355,
+   "status": "claimed"
   }
  ],
  "health": {
