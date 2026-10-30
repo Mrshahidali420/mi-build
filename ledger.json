@@ -21731,6 +21731,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119509009500964",
    "commentId": "122119509009500964_1739348937128509"
+  },
+  {
+   "key": "2026-10-30|character:char:305569|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:305569",
+   "title": "Surviving the Game as a Barbarian",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:305569",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793398716039,
+   "status": "claimed"
   }
  ],
  "health": {
