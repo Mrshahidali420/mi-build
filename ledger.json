@@ -21349,6 +21349,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119480299500964",
    "commentId": "122119480299500964_1345284944242744"
+  },
+  {
+   "key": "2026-10-30|where:185452|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:185452",
+   "title": "The Sichuan Tang Clan’s Entomologist",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "185452",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793392678862,
+   "status": "claimed"
   }
  ],
  "health": {
