@@ -17777,31 +17777,39 @@
   }
  },
  "birthdays": {
-  "day": "2026-10-29",
-  "at": 1793248269165,
+  "day": "2026-10-30",
+  "at": 1793334928236,
   "list": [
    {
-    "id": 120462,
-    "name": "Shinra Kusakabe",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n120462-oSWdz2MhkbDE.png",
-    "favourites": 5815,
-    "mediaId": 86310,
+    "id": 89517,
+    "name": "Lev Haiba",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89517-qVTrohFmBcSM.png",
+    "favourites": 851,
+    "mediaId": 65243,
     "voice": null
    },
    {
-    "id": 2828,
-    "name": "Setsuna Meiou",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2828-1mJZhqN5Tzoo.png",
-    "favourites": 393,
-    "mediaId": 30092,
+    "id": 379,
+    "name": "Alicia Florence",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b379-R8Dj8uP0fB7B.png",
+    "favourites": 506,
+    "mediaId": 30081,
     "voice": null
    },
    {
-    "id": 149186,
-    "name": "Kuugo Sakamata",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b149186-fvBDbvij65aI.png",
-    "favourites": 117,
-    "mediaId": 85486,
+    "id": 36977,
+    "name": "Tatsuya Himuro",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b36977-PRn1ecWFt2gk.png",
+    "favourites": 158,
+    "mediaId": 41652,
+    "voice": null
+   },
+   {
+    "id": 169406,
+    "name": "Zantetsu Tsurugi",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b169406-wTagOOkC7fi5.jpg",
+    "favourites": 142,
+    "mediaId": 106130,
     "voice": null
    }
   ]
