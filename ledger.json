@@ -21164,6 +21164,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119464723500964",
    "commentId": "122119464723500964_2211751336047585"
+  },
+  {
+   "key": "2026-10-30|next:102861|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:102861",
+   "title": "I'm Quitting Heroing",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "102861",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793389658336,
+   "status": "claimed"
   }
  ],
  "health": {
