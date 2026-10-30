@@ -21464,6 +21464,22 @@
    "status": "posted",
    "postId": "2324901755009178",
    "commentId": "2324901755009178_1638317411090431"
+  },
+  {
+   "key": "2026-10-30|character:char:123962|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:123962",
+   "title": "That Time I Got Reincarnated as a Slime",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:123962",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793394490648,
+   "status": "claimed"
   }
  ],
  "health": {
