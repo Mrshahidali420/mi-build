@@ -21641,6 +21641,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119502307500964",
    "commentId": "122119502307500964_1676699637569031"
+  },
+  {
+   "key": "2026-10-30|next:31709|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:31709",
+   "title": "Tegami Bachi",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "31709",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793397203021,
+   "status": "claimed"
   }
  ],
  "health": {
