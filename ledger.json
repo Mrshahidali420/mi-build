@@ -17155,6 +17155,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119043205500964",
    "commentId": "122119043205500964_1636902451503065"
+  },
+  {
+   "key": "2026-10-29|next:174386|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:174386",
+   "title": "Why I Quit Being the Demon King",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "174386",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793325281559,
+   "status": "claimed"
   }
  ],
  "health": {
