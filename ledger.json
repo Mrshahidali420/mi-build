@@ -22086,6 +22086,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119531743500964",
    "commentId": "122119531743500964_29002806649329144"
+  },
+  {
+   "key": "2026-10-30|character:char:298761|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:298761",
+   "title": "Firefly Wedding",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:298761",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793404440067,
+   "status": "claimed"
   }
  ],
  "health": {
