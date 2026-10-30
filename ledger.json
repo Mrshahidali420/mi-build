@@ -18413,6 +18413,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119196217500964",
    "commentId": "122119196217500964_2541690702990911"
+  },
+  {
+   "key": "2026-10-30|where:127819|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:127819",
+   "title": "Death Note Short Stories",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "127819",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793345493946,
+   "status": "claimed"
   }
  ],
  "health": {
