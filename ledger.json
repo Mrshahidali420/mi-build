@@ -20157,6 +20157,22 @@
     "id": "17940763650374927",
     "at": 1793373313143
    }
+  },
+  {
+   "key": "2026-10-30|next:30024|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:30024",
+   "title": "D.Gray-man",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30024",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793373614407,
+   "status": "claimed"
   }
  ],
  "health": {
