@@ -20614,6 +20614,22 @@
     "id": "18021055124941920",
     "at": 1793380583318
    }
+  },
+  {
+   "key": "2026-10-30|character:char:64769|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:64769",
+   "title": "Haikyu!!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:64769",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793380884258,
+   "status": "claimed"
   }
  ],
  "health": {
