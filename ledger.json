@@ -17232,6 +17232,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119051995500964",
    "commentId": "122119051995500964_993981116374022"
+  },
+  {
+   "key": "2026-10-29|next:69291|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:69291",
+   "title": "Rainbow Days",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "69291",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793326485859,
+   "status": "claimed"
   }
  ],
  "health": {
