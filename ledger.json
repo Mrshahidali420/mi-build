@@ -21695,6 +21695,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119506099500964",
    "commentId": "122119506099500964_1427591869439299"
+  },
+  {
+   "key": "2026-10-30|next:109398|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:109398",
+   "title": "Your Letter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "109398",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793398113504,
+   "status": "claimed"
   }
  ],
  "health": {
