@@ -21385,6 +21385,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119483521500964",
    "commentId": "122119483521500964_29198764296407337"
+  },
+  {
+   "key": "2026-10-30|next:30443|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:30443",
+   "title": "Mars",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30443",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793393281022,
+   "status": "claimed"
   }
  ],
  "health": {
