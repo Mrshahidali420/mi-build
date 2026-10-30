@@ -21218,6 +21218,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119469373500964",
    "commentId": "122119469373500964_1503228205020183"
+  },
+  {
+   "key": "2026-10-30|next:170780|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:170780",
+   "title": "The Age of Arrogance",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "170780",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793390569760,
+   "status": "claimed"
   }
  ],
  "health": {
