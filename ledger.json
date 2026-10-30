@@ -20389,6 +20389,22 @@
     "id": "18136162807736221",
     "at": 1793376939136
    }
+  },
+  {
+   "key": "2026-10-30|next:153007|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:153007",
+   "title": "The Bugle Call: Song of War",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "153007",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793377240493,
+   "status": "claimed"
   }
  ],
  "health": {
