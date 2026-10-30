@@ -19702,6 +19702,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119348785500964",
    "commentId": "122119348785500964_1772080537233457"
+  },
+  {
+   "key": "2026-10-30|next:120977|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:120977",
+   "title": "You're My Cutie!!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "120977",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793366327902,
+   "status": "claimed"
   }
  ],
  "health": {
