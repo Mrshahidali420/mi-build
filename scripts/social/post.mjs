@@ -291,8 +291,13 @@ async function sendPosts(base, { loaded, want, left, cap }) {
 /** Every kind the site has: the picture types, and the reels (off, like all of them, until named). */
 const defaultTypes = async () => (await import('./types/index.mjs')).KINDS
 
-async function defaultRender(type, post, { avoidTrack = null, words } = {}) {
+async function defaultRender(type, post, { avoidTrack = null, words, swipe = false } = {}) {
   const { THEME } = await import('./theme.mjs')
+  // The Instagram swipe post of a list post: the slides of the reel type made from it, or null when it has none.
+  if (swipe) {
+    const reel = (await import('./types/index.mjs')).REELS.find((r) => r.carouselOf === type.key && r.carousel)
+    return reel ? { jpegs: await (await import('./reel/engine.mjs')).renderCarousel(reel, reel.fromPost(post), { theme: THEME }) } : null
+  }
   if (type.reel) return (await import('./reel/engine.mjs')).renderReel(type, post, { theme: THEME, avoidTrack })
   return (await import('./render/engine.mjs')).renderPost(type, post, { theme: THEME, words })
 }

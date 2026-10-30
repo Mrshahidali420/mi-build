@@ -93,7 +93,7 @@ test('ig client: a container, a wait until Instagram has the picture, then the p
 const LIVE = { FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', EVENT: 'schedule', FB_POST_TYPES: 'where' }
 const IG_ON = { IG_POST_ENABLED: 'true', IG_USER_ID: '178' }
 
-async function igRun(env, { publish, account } = {}) {
+async function igRun(env, { publish, account, swipe = null } = {}) {
   const order = []
   const graph = {
     pageName: async () => 'Page',
@@ -105,6 +105,7 @@ async function igRun(env, { publish, account } = {}) {
   const sent = []
   const instagram = {
     account: account || (async () => ({ id: '178', username: 'manhwaindexofficial' })),
+    publishCarousel: async (args) => (order.push('ig-carousel'), sent.push(args), { mediaId: 's1' }),
     publish: publish || (async (args) => (order.push('ig'), sent.push(args), { mediaId: 'm1' })),
   }
   const words = []
@@ -113,7 +114,8 @@ async function igRun(env, { publish, account } = {}) {
   const code = await h.run({
     loadPools: async () => ({ pools: pools(), data: sampleData(), source: 'test' }),
     loadTypes: async () => TYPES,
-    render: async (type, post, { words: w } = {}) => {
+    render: async (type, post, { words: w, swipe: asked } = {}) => {
+      if (asked) return swipe ? { jpegs: swipe(picture) } : null
       words.push(w ? w('Where to read it: link in the first comment') : null)
       return { png: picture, jpeg: picture }
     },
@@ -171,7 +173,7 @@ test('run: check mode finds the account and says what it would post; nothing goe
   assert.equal(r.code, 0)
   assert.ok(!r.order.includes('ig') && !r.order.some((o) => o[0] === 'host'))
   assert.match(r.text.join(''), /@manhwaindexofficial\*\* \(account 178\).*Check only: nothing is posted to Instagram\./)
-  assert.match(r.text.join(''), /Instagram: check only .*would post this picture now\. Nothing was sent\./)
+  assert.match(r.text.join(''), /Instagram: check only .*would post this post now\. Nothing was sent\./)
   assert.equal(r.store.snapshot().entries[0].ig, undefined)
 })
 
@@ -219,4 +221,30 @@ test('ig reels: Instagram takes 3 seconds to 15 minutes', () => {
   assert.match(reelLengthProblem(2), /at least 3 s/)
   assert.match(reelLengthProblem(16 * 60), /15 min at most/)
   assert.equal(reelLengthProblem(undefined), null)
+})
+
+test('run: a list post goes to Instagram as a swipe post, each slide hosted on the Page first', async () => {
+  const r = await igRun(IG_ON, { swipe: (jpeg) => [jpeg, jpeg, jpeg] })
+  assert.equal(r.code, 0)
+  assert.deepEqual(r.order.slice(0, 6), ['fb', 'comment', ['host', 'jpeg'], ['host', 'jpeg'], ['host', 'jpeg'], 'ig-carousel'])
+  assert.equal(r.sent[0].imageUrls.length, 3)
+  assert.ok(r.sent[0].caption.includes(BIO_LINE))
+  const [entry] = r.store.snapshot().entries
+  assert.deepEqual([entry.ig.id, entry.ig.slides], ['s1', 3])
+  assert.match(r.text.join(''), /Instagram: posted swipe post \(3 slides\) s1\./)
+})
+
+test('run: a post whose type has no swipe post goes as one picture', async () => {
+  const r = await igRun(IG_ON)
+  assert.ok(r.order.includes('ig') && !r.order.includes('ig-carousel'))
+})
+
+test('ig client: a swipe post is one container per slide, then the carousel, then the post', async () => {
+  const { fetch, seen } = fakeFetch([{ json: { id: 'k1' } }, { json: { id: 'k2' } }, { json: { status_code: 'FINISHED' } }, { json: { status_code: 'FINISHED' } }, { json: { id: 'car' } }, { json: { status_code: 'FINISHED' } }, { json: { id: 'm7' } }])
+  const done = await igClient({ userId: '178', token: 'T', fetch }).publishCarousel({ imageUrls: ['https://a/1.jpg', 'https://a/2.jpg'], caption: 'Swipe' })
+  assert.deepEqual(done, { mediaId: 'm7' })
+  assert.match(seen[0].init.body, /image_url=https%3A%2F%2Fa%2F1\.jpg&is_carousel_item=true/)
+  assert.match(seen[4].init.body, /media_type=CAROUSEL&children=k1%2Ck2&caption=Swipe/)
+  assert.match(seen[6].init.body, /creation_id=car/)
+  await assert.rejects(igClient({ userId: '178', token: 'T', fetch }).publishCarousel({ imageUrls: ['x'], caption: 'c' }), /2 to 10 pictures/)
 })

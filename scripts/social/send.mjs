@@ -186,8 +186,10 @@ export async function typedStep({ s, graph, ig = null, book, plan, now, day, ski
   // The chain must know a failed call was a reel's: a reel never stops the other posts (chain.mjs).
   const onFail = (error) => onError?.(type.reel ? Object.assign(error, { reel: true }) : error)
   const plain = commentFor({ ...post, credit: null }, { affiliate: false })
-  // A reel goes to Instagram as the same MP4; a picture post as its Instagram picture.
-  const igMedium = type.reel ? { video: { bytes: picture.mp4, seconds: picture.seconds } } : { image: { make: igPicture } }
+  // A reel goes to Instagram as the same MP4; a list post as a swipe post (its slides, hook first)
+  // when its type has one; any other picture post as its Instagram picture.
+  const igSlides = async () => (await render(type, post, { swipe: true }))?.jpegs || null
+  const igMedium = type.reel ? { video: { bytes: picture.mp4, seconds: picture.seconds } } : { image: { make: igPicture }, slides: { make: igSlides } }
   const after = ig ? () => crossPost({ ig, graph, book, entry, history, now, out, caption, ...igMedium, sleep }) : null
   return publish({ graph, book, entry, send: medium.send, comment, plain, out, name, onError: onFail, after })
 }

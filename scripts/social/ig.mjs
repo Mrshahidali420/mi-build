@@ -55,6 +55,8 @@ const EARLY = 0.8
 const POLL = { tries: 12, everyMs: 5_000 }
 /** Instagram needs a while to make a video ready: every 10 seconds, for up to 10 minutes. */
 const REEL_POLL = { tries: 60, everyMs: 10_000 }
+/** The pictures a swipe post (carousel) takes. */
+export const CAROUSEL_ITEMS = { min: 2, max: 10 }
 /** The reel lengths Instagram takes, in seconds. */
 export const REEL_SECONDS = { min: 3, max: 15 * 60 }
 
@@ -147,6 +149,24 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
       const { id } = await call('POST', `/${igId}/media`, { image_url: imageUrl, caption })
       if (!id) throw new GraphError('Instagram gave no container id')
       await waitReady(id, { what: 'picture', sleep, tries, everyMs })
+      return publishContainer(id)
+    },
+    /**
+     * A swipe post: one container per picture (is_carousel_item), a wait
+     * until Instagram has them, the carousel container, then the post.
+     */
+    async publishCarousel({ imageUrls, caption, sleep, tries = POLL.tries, everyMs = POLL.everyMs }) {
+      if (imageUrls.length < CAROUSEL_ITEMS.min || imageUrls.length > CAROUSEL_ITEMS.max) throw new GraphError(`a swipe post takes ${CAROUSEL_ITEMS.min} to ${CAROUSEL_ITEMS.max} pictures, not ${imageUrls.length}`)
+      const children = []
+      for (const url of imageUrls) {
+        const { id } = await call('POST', `/${igId}/media`, { image_url: url, is_carousel_item: 'true' })
+        if (!id) throw new GraphError('Instagram gave no container id for a slide')
+        children.push(id)
+      }
+      for (const id of children) await waitReady(id, { what: 'picture', sleep, tries, everyMs })
+      const { id } = await call('POST', `/${igId}/media`, { media_type: 'CAROUSEL', children: children.join(','), caption })
+      if (!id) throw new GraphError('Instagram gave no container id for the swipe post')
+      await waitReady(id, { what: 'swipe post', sleep, tries, everyMs })
       return publishContainer(id)
     },
     /** A reel by resumable upload: the container, the bytes, a wait until Instagram has the video, then the post. */
@@ -245,8 +265,9 @@ export function reelLengthProblem(seconds) {
  * @param ig { settings, client, off } from post.mjs; `off` set means not for the rest of this run
  * @param image { make } (() => the bytes of a picture drawn for Instagram) or { url } (a cover)
  * @param video { bytes, seconds }: a reel, sent in place of a picture
+ * @param slides { make } (() => the JPEGs of a swipe post, hook first, or null): sent in place of the picture when it gives some
  */
-export async function crossPost({ ig, graph, book, entry, history, now, out, caption, image, video = null, sleep, fetch = globalThis.fetch, loadSharp = defaultSharp }) {
+export async function crossPost({ ig, graph, book, entry, history, now, out, caption, image, video = null, slides = null, sleep, fetch = globalThis.fetch, loadSharp = defaultSharp }) {
   if (!ig || ig.off) return null
   const why = igWhyNot({ settings: ig.settings, history, now, entry }) || (video ? reelLengthProblem(video.seconds) : null)
   if (why) {
@@ -254,10 +275,17 @@ export async function crossPost({ ig, graph, book, entry, history, now, out, cap
     return null
   }
   if (ig.settings.checkOnly) {
-    out.push(`Instagram: check only (IG_POST_ENABLED is 'check'): would post this ${video ? 'reel' : 'picture'} now. Nothing was sent.`, '')
+    out.push(`Instagram: check only (IG_POST_ENABLED is 'check'): would post this ${video ? 'reel' : 'post'} now. Nothing was sent.`, '')
     return null
   }
+  // The slides are drawn first: a swipe post that cannot be drawn goes as one picture, as before.
+  const jpegs = slides ? await slides.make().catch((error) => (out.push(`Instagram: the swipe post could not be drawn (${error.message}); one picture instead.`, ''), null)) : null
   try {
+    const sendSlides = async () => {
+      const imageUrls = []
+      for (const bytes of jpegs) imageUrls.push(await graph.photoUrl((await graph.hostPhoto({ bytes })).photoId))
+      return ig.client.publishCarousel({ imageUrls, caption: igCaption(caption), sleep })
+    }
     const sendPicture = async () => {
       const sharp = await loadSharp()
       const fitted = await fitImage(await bytesOf(image, fetch), { sharp, background: await backgroundOf() })
@@ -265,9 +293,10 @@ export async function crossPost({ ig, graph, book, entry, history, now, out, cap
       const imageUrl = await graph.photoUrl(photoId)
       return ig.client.publish({ imageUrl, caption: igCaption(caption), sleep })
     }
-    const { mediaId } = video ? await ig.client.publishReel({ bytes: video.bytes, caption: igCaption(caption), sleep }) : await sendPicture()
-    await settle(book, entry.key, { ig: { id: mediaId, at: now } })
-    out.push(`Instagram: posted ${video ? 'reel ' : ''}${mediaId}.`, '')
+    const swipe = jpegs?.length >= CAROUSEL_ITEMS.min
+    const { mediaId } = video ? await ig.client.publishReel({ bytes: video.bytes, caption: igCaption(caption), sleep }) : swipe ? await sendSlides() : await sendPicture()
+    await settle(book, entry.key, { ig: { id: mediaId, at: now, ...(swipe ? { slides: jpegs.length } : {}) } })
+    out.push(`Instagram: posted ${video ? 'reel ' : swipe ? `swipe post (${jpegs.length} slides) ` : ''}${mediaId}.`, '')
     return mediaId
   } catch (error) {
     await settle(book, entry.key, { ig: { error: error.message, at: now } }).catch(() => null)

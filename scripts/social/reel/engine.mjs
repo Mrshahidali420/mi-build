@@ -16,11 +16,37 @@ import { kitFor, loadArt, renderTree, ART_SIZE } from '../render/engine.mjs'
 import { join } from 'node:path'
 import { slugOf } from '../plan.mjs'
 import { AUDIO_DIR, trackFor } from './sound.mjs'
+import { CAROUSEL_FRAME } from './slides.mjs'
 import { REEL, assemble } from './video.mjs'
 
 async function loadReelArt(art = {}, deps) {
   const [hero, thumbs] = await Promise.all([art.hero ? loadArt(art.hero, { ...deps, size: ART_SIZE.hero }) : null, Promise.all((art.thumbs || []).map((url) => loadArt(url, { ...deps, size: ART_SIZE.hero })))])
   return { hero, thumbs }
+}
+
+/** The view the slides are drawn from, with its pictures; an item with a blank cover is left out when the post allows. */
+async function viewOf(post, deps) {
+  const first = await loadReelArt(post.art, deps)
+  const bad = first.thumbs.flatMap((picture, i) => (!picture || picture.blank ? [i] : []))
+  const shown = (bad.length && post.without?.(bad)) || post
+  const art = shown === post ? first : await loadReelArt(shown.art, deps)
+  return { ...shown.view, art }
+}
+
+const JPEG = { quality: 92, chromaSubsampling: '4:4:4' }
+
+/**
+ * An Instagram swipe post (a carousel) for one post: the type's carousel()
+ * slides at 1080x1350, as JPEGs, hook first.
+ * @param post a post of the reel type (type.fromPost of the picture post)
+ * @returns {Promise<Buffer[]>}
+ */
+export async function renderCarousel(type, post, { theme, fetch = globalThis.fetch } = {}) {
+  const { kit, sharp } = await kitFor(theme)
+  const trees = type.carousel(await viewOf(post, { fetch, sharp }), kit)
+  const jpegs = []
+  for (const tree of trees) jpegs.push(await sharp(await renderTree(tree, theme, CAROUSEL_FRAME)).jpeg(JPEG).toBuffer())
+  return jpegs
 }
 
 /**
@@ -29,11 +55,7 @@ async function loadReelArt(art = {}, deps) {
  */
 export async function renderReel(type, post, { theme, fetch = globalThis.fetch, ffmpeg, avoidTrack = null } = {}) {
   const { kit, sharp } = await kitFor(theme)
-  const first = await loadReelArt(post.art, { fetch, sharp })
-  const bad = first.thumbs.flatMap((picture, i) => (!picture || picture.blank ? [i] : []))
-  const shown = (bad.length && post.without?.(bad)) || post
-  const art = shown === post ? first : await loadReelArt(shown.art, { fetch, sharp })
-  const trees = type.slides({ ...shown.view, art }, kit)
+  const trees = type.slides(await viewOf(post, { fetch, sharp }), kit)
   const pngs = []
   for (const tree of trees) pngs.push(await renderTree(tree, theme, REEL))
   const track = trackFor(slugOf(type, post), avoidTrack)
