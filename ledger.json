@@ -18395,6 +18395,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119192737500964",
    "commentId": "122119192737500964_3362025900811042"
+  },
+  {
+   "key": "2026-10-30|next:30020|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:30020",
+   "title": "Hikaru no Go",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30020",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793345192443,
+   "status": "claimed"
   }
  ],
  "health": {
