@@ -20063,6 +20063,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119378401500964",
    "commentId": "122119378401500964_1784459719263040"
+  },
+  {
+   "key": "2026-10-30|where:159398|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:159398",
+   "title": "The Poisonous Healer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "159398",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793372098228,
+   "status": "claimed"
   }
  ],
  "health": {
