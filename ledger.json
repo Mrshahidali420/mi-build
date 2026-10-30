@@ -18580,6 +18580,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119229805500964",
    "commentId": "122119229805500964_1721772762956385"
+  },
+  {
+   "key": "2026-10-30|next:118644|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:118644",
+   "title": "Time Paradox Ghostwriter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "118644",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793348216501,
+   "status": "claimed"
   }
  ],
  "health": {
