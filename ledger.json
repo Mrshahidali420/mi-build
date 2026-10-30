@@ -18282,6 +18282,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119169115500964",
    "commentId": "122119169115500964_1463732825627448"
+  },
+  {
+   "key": "2026-10-30|where:141705|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:141705",
+   "title": "Reality Quest",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "141705",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793343383841,
+   "status": "claimed"
   }
  ],
  "health": {
