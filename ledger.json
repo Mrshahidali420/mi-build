@@ -21938,6 +21938,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119522527500964",
    "commentId": "122119522527500964_1516120243756543"
+  },
+  {
+   "key": "2026-10-30|next:86511|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:86511",
+   "title": "Death March to the Parallel World Rhapsody",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86511",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793402033824,
+   "status": "claimed"
   }
  ],
  "health": {
