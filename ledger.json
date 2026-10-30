@@ -19968,6 +19968,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119371069500964",
    "commentId": "122119371069500964_1009469995501669"
+  },
+  {
+   "key": "2026-10-30|next:127037|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:127037",
+   "title": "I Woke Up as the Ugly Duckling",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "127037",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793370592350,
+   "status": "claimed"
   }
  ],
  "health": {
