@@ -17250,6 +17250,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119053369500964",
    "commentId": "122119053369500964_4600432510228145"
+  },
+  {
+   "key": "2026-10-29|where:142253|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:142253",
+   "title": "Karina's Last Days",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "142253",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793326786961,
+   "status": "claimed"
   }
  ],
  "health": {
