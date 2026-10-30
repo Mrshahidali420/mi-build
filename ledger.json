@@ -18902,6 +18902,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119271985500964",
    "commentId": "122119271985500964_2011942629499041"
+  },
+  {
+   "key": "2026-10-30|character:char:124685|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:124685",
+   "title": "Tales of Demons and Gods",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:124685",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793353352423,
+   "status": "claimed"
   }
  ],
  "health": {
