@@ -19553,6 +19553,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119334097500964",
    "commentId": "122119334097500964_1356882029739204"
+  },
+  {
+   "key": "2026-10-30|character:char:12055|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:12055",
+   "title": "JoJo's Bizarre Adventure Part 4: Diamond is Unbreakable",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:12055",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793363918111,
+   "status": "claimed"
   }
  ],
  "health": {
