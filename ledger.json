@@ -20898,6 +20898,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119440825500964",
    "commentId": "122119440825500964_2111109609532583"
+  },
+  {
+   "key": "2026-10-30|next:128666|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:128666",
+   "title": "The Elusive Samurai",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "128666",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793385412306,
+   "status": "claimed"
   }
  ],
  "health": {
