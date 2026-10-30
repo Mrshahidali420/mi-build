@@ -18765,6 +18765,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119262283500964",
    "commentId": "122119262283500964_2306051970193457"
+  },
+  {
+   "key": "2026-10-30|next:143719|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:143719",
+   "title": "Dealing with Mikadono Sisters Is a Breeze",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "143719",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793351235710,
+   "status": "claimed"
   }
  ],
  "health": {
