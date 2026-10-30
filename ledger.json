@@ -19910,6 +19910,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119366605500964",
    "commentId": "122119366605500964_1845156286482837"
+  },
+  {
+   "key": "2026-10-30|next:133795|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:133795",
+   "title": "Trapped",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "133795",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793369689649,
+   "status": "claimed"
   }
  ],
  "health": {
