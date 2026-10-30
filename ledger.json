@@ -21546,6 +21546,22 @@
    "at": 1793395395465,
    "status": "posted",
    "postId": "1318170941390322_122119495071500964"
+  },
+  {
+   "key": "2026-10-30|character:char:230204|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:230204",
+   "title": "WIND BREAKER",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:230204",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793395696729,
+   "status": "claimed"
   }
  ],
  "health": {
