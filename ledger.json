@@ -17101,6 +17101,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119039701500964",
    "commentId": "122119039701500964_1018131424654804"
+  },
+  {
+   "key": "2026-10-29|next:87211|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:87211",
+   "title": "Accomplishments of the Duke's Daughter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "87211",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793324378357,
+   "status": "claimed"
   }
  ],
  "health": {
