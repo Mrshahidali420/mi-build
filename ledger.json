@@ -16839,6 +16839,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119018767500964",
    "commentId": "122119018767500964_1118034164190446"
+  },
+  {
+   "key": "2026-10-29|next:136734|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:136734",
+   "title": "The Book of Lagier",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "136734",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793320120628,
+   "status": "claimed"
   }
  ],
  "health": {
