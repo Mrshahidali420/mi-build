@@ -21807,6 +21807,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119515225500964",
    "commentId": "122119515225500964_1683981773294973"
+  },
+  {
+   "key": "2026-10-30|next:86481|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:86481",
+   "title": "Tsuredure Children",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86481",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793399921205,
+   "status": "claimed"
   }
  ],
  "health": {
