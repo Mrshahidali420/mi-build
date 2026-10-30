@@ -21313,6 +21313,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119478199500964",
    "commentId": "122119478199500964_1113205281351109"
+  },
+  {
+   "key": "2026-10-30|character:char:161230|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:161230",
+   "title": "Insomniacs After School",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:161230",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793392075570,
+   "status": "claimed"
   }
  ],
  "health": {
