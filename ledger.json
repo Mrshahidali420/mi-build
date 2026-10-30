@@ -19332,6 +19332,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119315179500964",
    "commentId": "122119315179500964_1148255034426179"
+  },
+  {
+   "key": "2026-10-30|next:101700|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:101700",
+   "title": "A Condition Called Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "101700",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793360295540,
+   "status": "claimed"
   }
  ],
  "health": {
