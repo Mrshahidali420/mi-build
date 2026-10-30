@@ -16785,6 +16785,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119016097500964",
    "commentId": "122119016097500964_1423736676088409"
+  },
+  {
+   "key": "2026-10-29|next:142254|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:142254",
+   "title": "Another Typical Fantasy Romance",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "142254",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793319217496,
+   "status": "claimed"
   }
  ],
  "health": {
