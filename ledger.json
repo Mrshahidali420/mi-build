@@ -19950,6 +19950,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119369197500964",
    "commentId": "122119369197500964_875557178935746"
+  },
+  {
+   "key": "2026-10-30|character:char:132848|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:132848",
+   "title": "Arifureta: From Commonplace to World’s Strongest",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:132848",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793370291414,
+   "status": "claimed"
   }
  ],
  "health": {
