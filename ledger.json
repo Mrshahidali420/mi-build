@@ -18920,6 +18920,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119273347500964",
    "commentId": "122119273347500964_1365020618859644"
+  },
+  {
+   "key": "2026-10-30|next:144629|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:144629",
+   "title": "Hoarding in Hell",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "144629",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793353653540,
+   "status": "claimed"
   }
  ],
  "health": {
