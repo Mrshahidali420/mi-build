@@ -21146,6 +21146,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119461087500964",
    "commentId": "122119461087500964_1405242025137670"
+  },
+  {
+   "key": "2026-10-30|character:char:89835|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:89835",
+   "title": "The Case Study of Vanitas",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:89835",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793389357222,
+   "status": "claimed"
   }
  ],
  "health": {
