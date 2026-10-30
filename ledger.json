@@ -18634,6 +18634,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119240545500964",
    "commentId": "122119240545500964_1687317886069224"
+  },
+  {
+   "key": "2026-10-30|next:140896|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:140896",
+   "title": "Seoul Station's Necromancer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "140896",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793349121002,
+   "status": "claimed"
   }
  ],
  "health": {
