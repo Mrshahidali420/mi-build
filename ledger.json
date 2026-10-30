@@ -17196,6 +17196,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119047147500964",
    "commentId": "122119047147500964_2018005045578614"
+  },
+  {
+   "key": "2026-10-29|where:124271|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:124271",
+   "title": "Princess in the Rough",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "124271",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793325883669,
+   "status": "claimed"
   }
  ],
  "health": {
