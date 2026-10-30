@@ -21753,6 +21753,22 @@
     "id": "18161244763504102",
     "at": 1793398716039
    }
+  },
+  {
+   "key": "2026-10-30|next:123463|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:123463",
+   "title": "The Most Notorious \"Talker\" Runs the World's Greatest Clan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "123463",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793399017332,
+   "status": "claimed"
   }
  ],
  "health": {
