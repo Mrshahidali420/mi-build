@@ -17268,6 +17268,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119055973500964",
    "commentId": "122119055973500964_1057018110720955"
+  },
+  {
+   "key": "2026-10-29|character:char:168283|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:168283",
+   "title": "The Villainess Turns the Hourglass",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:168283",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793327088064,
+   "status": "claimed"
   }
  ],
  "health": {
