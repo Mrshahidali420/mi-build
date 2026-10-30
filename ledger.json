@@ -22050,6 +22050,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119529427500964",
    "commentId": "122119529427500964_2178702789714396"
+  },
+  {
+   "key": "2026-10-30|next:160454|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:160454",
+   "title": "To Be an Actor",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "160454",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793403838516,
+   "status": "claimed"
   }
  ],
  "health": {
