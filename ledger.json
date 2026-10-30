@@ -19147,6 +19147,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119293291500964",
    "commentId": "122119293291500964_2493744994447047"
+  },
+  {
+   "key": "2026-10-30|next:119474|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:119474",
+   "title": "8th Circle Mage Reborn",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "119474",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793357274609,
+   "status": "claimed"
   }
  ],
  "health": {
