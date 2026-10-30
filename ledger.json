@@ -18693,6 +18693,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119251117500964",
    "commentId": "122119251117500964_1054234087625114"
+  },
+  {
+   "key": "2026-10-30|character:char:123213|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:123213",
+   "title": "Classroom of the Elite",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:123213",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793350031524,
+   "status": "claimed"
   }
  ],
  "health": {
