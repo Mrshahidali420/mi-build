@@ -17889,6 +17889,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119105059500964",
    "commentId": "122119105059500964_1835545750957039"
+  },
+  {
+   "key": "2026-10-30|next:150319|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:150319",
+   "title": "Return of the War God",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "150319",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793337044688,
+   "status": "claimed"
   }
  ],
  "health": {
