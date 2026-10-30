@@ -17984,6 +17984,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119115733500964",
    "commentId": "122119115733500964_1680449113424743"
+  },
+  {
+   "key": "2026-10-30|next:51614|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:51614",
+   "title": "Blood Lad",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "51614",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793338557237,
+   "status": "claimed"
   }
  ],
  "health": {
