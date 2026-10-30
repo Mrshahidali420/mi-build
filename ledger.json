@@ -19165,6 +19165,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119294485500964",
    "commentId": "122119294485500964_4293852194238879"
+  },
+  {
+   "key": "2026-10-30|where:69625|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:69625",
+   "title": "Kagerou Daze",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "69625",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793357575804,
+   "status": "claimed"
   }
  ],
  "health": {
