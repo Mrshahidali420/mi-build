@@ -18503,6 +18503,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119215657500964",
    "commentId": "122119215657500964_1121867874151132"
+  },
+  {
+   "key": "2026-10-30|next:111140|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:111140",
+   "title": "Mom, I'm Sorry",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "111140",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793347010312,
+   "status": "claimed"
   }
  ],
  "health": {
