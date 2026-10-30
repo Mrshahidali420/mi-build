@@ -17590,6 +17590,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119082277500964",
    "commentId": "122119082277500964_1156932920232417"
+  },
+  {
+   "key": "2026-10-29|where:138766|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:138766",
+   "title": "Extraordinary Evolution",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "138766",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793332219892,
+   "status": "claimed"
   }
  ],
  "health": {
