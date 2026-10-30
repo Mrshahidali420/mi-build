@@ -16934,6 +16934,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119030581500964",
    "commentId": "122119030581500964_1939054443918973"
+  },
+  {
+   "key": "2026-10-29|where:132113|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:132113",
+   "title": "Precious Daughter of the Greatest Martial Arts Villain",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "132113",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793321660882,
+   "status": "claimed"
   }
  ],
  "health": {
