@@ -19386,6 +19386,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119320135500964",
    "commentId": "122119320135500964_895435846891989"
+  },
+  {
+   "key": "2026-10-30|next:96791|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:96791",
+   "title": "She and Her Cat",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "96791",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793361199094,
+   "status": "claimed"
   }
  ],
  "health": {
