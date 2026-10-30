@@ -17536,6 +17536,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119078515500964",
    "commentId": "122119078515500964_1662930892144376"
+  },
+  {
+   "key": "2026-10-29|where:80331|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:80331",
+   "title": "This Art Club Has a Problem!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "80331",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793331316879,
+   "status": "claimed"
   }
  ],
  "health": {
