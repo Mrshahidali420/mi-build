@@ -19463,6 +19463,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119326135500964",
    "commentId": "122119326135500964_1458206414033648"
+  },
+  {
+   "key": "2026-10-30|next:197272|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:197272",
+   "title": "Mia is Back",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "197272",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793362404464,
+   "status": "claimed"
   }
  ],
  "health": {
