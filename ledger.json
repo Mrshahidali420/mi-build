@@ -20099,6 +20099,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119381071500964",
    "commentId": "122119381071500964_28858784757108527"
+  },
+  {
+   "key": "2026-10-30|next:43001|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:43001",
+   "title": "K-On!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "43001",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793372710713,
+   "status": "claimed"
   }
  ],
  "health": {
