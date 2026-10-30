@@ -21331,6 +21331,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119479243500964",
    "commentId": "122119479243500964_1479561854026240"
+  },
+  {
+   "key": "2026-10-30|next:80133|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:80133",
+   "title": "Himouto! Umaru-chan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "80133",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793392376731,
+   "status": "claimed"
   }
  ],
  "health": {
