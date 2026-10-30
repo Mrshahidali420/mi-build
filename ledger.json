@@ -16988,6 +16988,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119033209500964",
    "commentId": "122119033209500964_1112365875057121"
+  },
+  {
+   "key": "2026-10-29|where:123625|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:123625",
+   "title": "Mr. Paper Bag is in Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "123625",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793322564177,
+   "status": "claimed"
   }
  ],
  "health": {
