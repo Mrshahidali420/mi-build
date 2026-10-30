@@ -19517,6 +19517,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119331049500964",
    "commentId": "122119331049500964_2219284765305183"
+  },
+  {
+   "key": "2026-10-30|next:143059|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:143059",
+   "title": "Leveling Beyond the Max",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "143059",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793363308270,
+   "status": "claimed"
   }
  ],
  "health": {
