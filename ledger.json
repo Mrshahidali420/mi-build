@@ -21029,6 +21029,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119452801500964",
    "commentId": "122119452801500964_1727341778987924"
+  },
+  {
+   "key": "2026-10-30|next:145306|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:145306",
+   "title": "How to Hide the Emperor’s Child",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "145306",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793387550257,
+   "status": "claimed"
   }
  ],
  "health": {
