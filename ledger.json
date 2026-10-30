@@ -19779,6 +19779,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119355787500964",
    "commentId": "122119355787500964_1668605824798103"
+  },
+  {
+   "key": "2026-10-30|next:98544|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:98544",
+   "title": "Moriarty the Patriot",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98544",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793367540950,
+   "status": "claimed"
   }
  ],
  "health": {
