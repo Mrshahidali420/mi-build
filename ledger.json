@@ -17518,6 +17518,22 @@
    "at": 1793330707423,
    "status": "posted",
    "postId": "1318170941390322_122119077801500964"
+  },
+  {
+   "key": "2026-10-29|next:148677|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "next:148677",
+   "title": "The Breaker: Eternal Force",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "148677",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793331008537,
+   "status": "claimed"
   }
  ],
  "health": {
