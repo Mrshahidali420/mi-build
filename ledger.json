@@ -16749,6 +16749,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119012713500964",
    "commentId": "122119012713500964_1604774357317058"
+  },
+  {
+   "key": "2026-10-29|where:41896|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:41896",
+   "title": "Dawn of the Arcana",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "41896",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793318615338,
+   "status": "claimed"
   }
  ],
  "health": {
