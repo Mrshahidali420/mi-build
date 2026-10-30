@@ -17649,6 +17649,24 @@
    "status": "posted",
    "postId": "1318170941390322_122119085049500964",
    "commentId": "122119085049500964_3423836084475409"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-30|reel-next:86703|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "reel-next:86703",
+   "title": "Oh! Holy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "86703",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793333123000,
+   "track": "battle-theme-a.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
