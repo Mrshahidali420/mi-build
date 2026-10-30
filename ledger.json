@@ -21367,6 +21367,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119482495500964",
    "commentId": "122119482495500964_1092822836921555"
+  },
+  {
+   "key": "2026-10-30|character:char:271367|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:271367",
+   "title": "Shangri-La Frontier",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:271367",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793392979909,
+   "status": "claimed"
   }
  ],
  "health": {
