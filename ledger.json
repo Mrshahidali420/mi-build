@@ -21978,6 +21978,22 @@
     "id": "18076251647744329",
     "at": 1793402334520
    }
+  },
+  {
+   "key": "2026-10-30|character:char:128651|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:128651",
+   "title": "Toilet-Bound Hanako-kun",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:128651",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793402635365,
+   "status": "claimed"
   }
  ],
  "health": {
