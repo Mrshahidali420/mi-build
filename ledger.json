@@ -16857,6 +16857,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119020105500964",
    "commentId": "122119020105500964_29514143248276768"
+  },
+  {
+   "key": "2026-10-29|where:146203|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:146203",
+   "title": "BLUE LOCK -EPISODE NAGI-",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "146203",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793320456433,
+   "status": "claimed"
   }
  ],
  "health": {
