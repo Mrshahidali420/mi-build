@@ -20975,6 +20975,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119447611500964",
    "commentId": "122119447611500964_1540936667790836"
+  },
+  {
+   "key": "2026-10-30|next:133021|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:133021",
+   "title": "Tricked into Becoming the Heroine's Stepmother",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "133021",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793386646454,
+   "status": "claimed"
   }
  ],
  "health": {
