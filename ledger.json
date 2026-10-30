@@ -21920,6 +21920,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119521729500964",
    "commentId": "122119521729500964_1456376306695606"
+  },
+  {
+   "key": "2026-10-30|character:char:393464|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:393464",
+   "title": "Log-in Murim",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:393464",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793401733020,
+   "status": "claimed"
   }
  ],
  "health": {
