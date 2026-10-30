@@ -20957,6 +20957,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119446081500964",
    "commentId": "122119446081500964_940407452275073"
+  },
+  {
+   "key": "2026-10-30|character:char:137446|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:137446",
+   "title": "Kengan Ashura",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:137446",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793386316461,
+   "status": "claimed"
   }
  ],
  "health": {
