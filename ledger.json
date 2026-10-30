@@ -21677,6 +21677,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119504551500964",
    "commentId": "122119504551500964_1611896433452476"
+  },
+  {
+   "key": "2026-10-30|character:char:67239|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:67239",
+   "title": "Like a Butterfly",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:67239",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793397812278,
+   "status": "claimed"
   }
  ],
  "health": {
