@@ -20367,6 +20367,22 @@
    "status": "posted",
    "postId": "2716247282142306",
    "commentId": "2716247282142306_1813801866534413"
+  },
+  {
+   "key": "2026-10-30|character:char:266369|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:266369",
+   "title": "Takopi's Original Sin",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:266369",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793376939136,
+   "status": "claimed"
   }
  ],
  "health": {
