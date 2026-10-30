@@ -17345,6 +17345,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119061445500964",
    "commentId": "122119061445500964_1813027609614917"
+  },
+  {
+   "key": "2026-10-29|character:char:13835|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "character:char:13835",
+   "title": "Pandora Hearts",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:13835",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793328299414,
+   "status": "claimed"
   }
  ],
  "health": {
