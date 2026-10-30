@@ -21069,6 +21069,22 @@
     "id": "18078626867482309",
     "at": 1793387851432
    }
+  },
+  {
+   "key": "2026-10-30|character:char:233970|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:233970",
+   "title": "In the Clear Moonlit Dusk",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:233970",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793388152543,
+   "status": "claimed"
   }
  ],
  "health": {
