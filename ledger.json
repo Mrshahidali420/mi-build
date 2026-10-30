@@ -19815,6 +19815,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119359597500964",
    "commentId": "122119359597500964_1113658974849350"
+  },
+  {
+   "key": "2026-10-30|character:char:257016|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:257016",
+   "title": "Ayashimon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:257016",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793368143352,
+   "status": "claimed"
   }
  ],
  "health": {
