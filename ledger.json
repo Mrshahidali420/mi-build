@@ -18866,6 +18866,22 @@
    "at": 1793352440464,
    "status": "posted",
    "postId": "1318170941390322_122119269345500964"
+  },
+  {
+   "key": "2026-10-30|next:102961|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:102961",
+   "title": "Kaiju Girl Caramelise",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "102961",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793352741594,
+   "status": "claimed"
   }
  ],
  "health": {
