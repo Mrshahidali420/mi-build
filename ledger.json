@@ -21272,6 +21272,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119474683500964",
    "commentId": "122119474683500964_2991368604533979"
+  },
+  {
+   "key": "2026-10-30|next:113328|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:113328",
+   "title": "The Girl Downstairs",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "113328",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793391473214,
+   "status": "claimed"
   }
  ],
  "health": {
