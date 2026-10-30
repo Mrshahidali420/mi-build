@@ -21110,6 +21110,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119458705500964",
    "commentId": "122119458705500964_1448408377217677"
+  },
+  {
+   "key": "2026-10-30|next:98695|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:98695",
+   "title": "Adonis",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98695",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793388754903,
+   "status": "claimed"
   }
  ],
  "health": {
