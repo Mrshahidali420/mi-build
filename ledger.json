@@ -19034,6 +19034,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119283439500964",
    "commentId": "122119283439500964_2656516278116684"
+  },
+  {
+   "key": "2026-10-30|where:106660|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:106660",
+   "title": "No Matter What You Say, Furi-san is Scary!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "106660",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793355460365,
+   "status": "claimed"
   }
  ],
  "health": {
