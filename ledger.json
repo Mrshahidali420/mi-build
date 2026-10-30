@@ -18133,6 +18133,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119138119500964",
    "commentId": "122119138119500964_1456743240845342"
+  },
+  {
+   "key": "2026-10-30|next:139958|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:139958",
+   "title": "Baroness Goes on Strike",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "139958",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793340965192,
+   "status": "claimed"
   }
  ],
  "health": {
