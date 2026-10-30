@@ -17435,6 +17435,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119073217500964",
    "commentId": "122119073217500964_1804361560499165"
+  },
+  {
+   "key": "2026-10-29|where:129117|manhwaindex",
+   "day": "2026-10-29",
+   "slug": "where:129117",
+   "title": "The Seven Deadly Sins: Four Knights of the Apocalypse",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "129117",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793329804449,
+   "status": "claimed"
   }
  ],
  "health": {
