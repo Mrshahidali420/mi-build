@@ -5,7 +5,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import sharp from 'sharp'
 import { GRAPH_VERSION } from '../scripts/social/fb.mjs'
-import { BIO_LINE, IG_DEFAULT_PER_DAY, IG_MAX_PER_DAY, fitImage, frameOf, igCaption, igClient, igSettingsOf, igWhyNot, igWords } from '../scripts/social/ig.mjs'
+import { BIO_LINE, IG_DEFAULT_PER_DAY, IG_MAX_PER_DAY, fitImage, frameOf, igCaption, igClient, igSettingsOf, igWhyNot, igWords, reelLengthProblem } from '../scripts/social/ig.mjs'
 import { TYPES } from '../scripts/social/types/index.mjs'
 import { NOW, HOUR, harness, pools } from './social-kit.mjs'
 import { sampleData } from './social-data.mjs'
@@ -30,11 +30,13 @@ test('ig words: the line about the first comment becomes "link in bio", in the c
   assert.equal(igWords('Nothing to change'), 'Nothing to change')
 })
 
-test('ig pace: its own cap, spread evenly, only the kinds named, never a reel', () => {
+test('ig pace: its own cap, spread evenly, only the kinds named; reels go too', () => {
   const settings = igSettingsOf({ IG_POSTS_PER_DAY: '8' })
   const entry = { type: 'where' }
   assert.equal(igWhyNot({ settings, history: [], now: NOW, entry }), null)
-  assert.match(igWhyNot({ settings, history: [], now: NOW, entry: { reel: true, type: 'reel-x' } }), /reels/)
+  assert.equal(igWhyNot({ settings, history: [], now: NOW, entry: { reel: true, type: 'reel-x' } }), null)
+  assert.match(igWhyNot({ settings: igSettingsOf({ IG_POST_TYPES: 'reel' }), history: [], now: NOW, entry }), /where is not on IG_POST_TYPES/)
+  assert.equal(igWhyNot({ settings: igSettingsOf({ IG_POST_TYPES: 'reel' }), history: [], now: NOW, entry: { reel: true, type: 'reel-x' } }), null)
   assert.match(igWhyNot({ settings: igSettingsOf({ IG_POST_TYPES: 'fanart' }), history: [], now: NOW, entry }), /where is not on IG_POST_TYPES/)
   assert.equal(igWhyNot({ settings: igSettingsOf({ IG_POST_TYPES: 'classic' }), history: [], now: NOW, entry: {} }), null)
   // Eight a day is one every three hours; a little early is fine, an hour later is not.
@@ -91,7 +93,7 @@ test('ig client: a container, a wait until Instagram has the picture, then the p
 const LIVE = { FB_PAGE_ID: '1', FB_PAGE_TOKEN: 't', FB_POST_ENABLED: 'true', EVENT: 'schedule', FB_POST_TYPES: 'where' }
 const IG_ON = { IG_POST_ENABLED: 'true', IG_USER_ID: '178' }
 
-async function igRun(env, { publish } = {}) {
+async function igRun(env, { publish, account } = {}) {
   const order = []
   const graph = {
     pageName: async () => 'Page',
@@ -102,7 +104,7 @@ async function igRun(env, { publish } = {}) {
   }
   const sent = []
   const instagram = {
-    username: async () => 'manhwaindexofficial',
+    account: account || (async () => ({ id: '178', username: 'manhwaindexofficial' })),
     publish: publish || (async (args) => (order.push('ig'), sent.push(args), { mediaId: 'm1' })),
   }
   const words = []
@@ -137,7 +139,7 @@ test('run: switched on, the Facebook post goes first, then the same post on Inst
   assert.deepEqual(r.words, [null, 'Where to read it: link in bio'])
   const [entry] = r.store.snapshot().entries
   assert.deepEqual([entry.status, entry.ig.id, typeof entry.ig.at], ['posted', 'm1', 'number'])
-  assert.match(r.text.join(''), /Instagram: token works for \*\*@manhwaindexofficial\*\*\. Up to 8 posts in any 24 hours\./)
+  assert.match(r.text.join(''), /Instagram: token works for \*\*@manhwaindexofficial\*\* \(account 178\)\. Up to 8 posts in any 24 hours\./)
   assert.match(r.text.join(''), /Instagram: posted m1\./)
 })
 
@@ -150,10 +152,71 @@ test('run: an Instagram failure is written down and said; the Facebook post stan
   assert.equal(r.store.snapshot().health?.halted || null, null)
 })
 
-test('run: switched on without the IG_USER_ID secret, it says so and posts to Facebook only', async () => {
-  const r = await igRun({ IG_POST_ENABLED: 'true' })
+test('run: switched on but no Instagram account is linked to the Page, it says so and posts to Facebook only', async () => {
+  const r = await igRun({ IG_POST_ENABLED: 'true' }, { account: async () => Promise.reject(new Error('no Instagram account is linked to the Facebook Page')) })
   assert.equal(r.code, 0)
   assert.ok(!r.order.includes('ig'))
-  assert.match(r.text.join(''), /Instagram: \*\*not configured\*\*/)
+  assert.match(r.text.join(''), /Instagram: the account check failed \(no Instagram account is linked/)
   assert.equal(r.store.snapshot().entries[0].status, 'posted')
+})
+
+test('ig settings: with no IG_USER_ID the Page id is enough; check mode is on but posts nothing', () => {
+  const s = igSettingsOf({ IG_POST_ENABLED: 'check', FB_PAGE_ID: '131', FB_PAGE_TOKEN: 'page' })
+  assert.deepEqual([s.enabled, s.checkOnly, s.configured, s.pageId], [true, true, true, '131'])
+  assert.equal(igSettingsOf({ IG_POST_ENABLED: 'true', FB_PAGE_TOKEN: 'page' }).configured, false)
+})
+
+test('run: check mode finds the account and says what it would post; nothing goes to Instagram', async () => {
+  const r = await igRun({ IG_POST_ENABLED: 'check' })
+  assert.equal(r.code, 0)
+  assert.ok(!r.order.includes('ig') && !r.order.some((o) => o[0] === 'host'))
+  assert.match(r.text.join(''), /@manhwaindexofficial\*\* \(account 178\).*Check only: nothing is posted to Instagram\./)
+  assert.match(r.text.join(''), /Instagram: check only .*would post this picture now\. Nothing was sent\./)
+  assert.equal(r.store.snapshot().entries[0].ig, undefined)
+})
+
+test('ig client: the account is read from the Page, and a linked account is required', async () => {
+  const ok = fakeFetch([{ json: { instagram_business_account: { id: '1784', username: 'manhwaindexofficial' } } }])
+  assert.deepEqual(await igClient({ pageId: '131', token: 'T', fetch: ok.fetch }).account(), { id: '1784', username: 'manhwaindexofficial' })
+  assert.match(ok.seen[0].url, /\/131\?fields=instagram_business_account%7Bid%2Cusername%7D&access_token=T$/)
+  const none = fakeFetch([{ json: { id: '131' } }])
+  await assert.rejects(igClient({ pageId: '131', token: 'T', fetch: none.fetch }).account(), /no Instagram account is linked/)
+  const other = fakeFetch([{ json: { instagram_business_account: { id: '9' } } }])
+  await assert.rejects(igClient({ userId: '1784', pageId: '131', token: 'T', fetch: other.fetch }).account(), /IG_USER_ID \(1784\) is not the account linked/)
+})
+
+test('ig client: a reel by resumable upload; the token goes only to the upload host', async () => {
+  const { fetch, seen } = fakeFetch([
+    { json: { instagram_business_account: { id: '1784', username: 'x' } } },
+    { json: { id: 'c9', uri: 'https://rupload.facebook.com/ig-api-upload/v26.0/c9' } },
+    { json: { success: true } },
+    { json: { status_code: 'IN_PROGRESS' } },
+    { json: { status_code: 'FINISHED' } },
+    { json: { id: 'r9' } },
+  ])
+  const client = igClient({ pageId: '131', token: 'TOKEN', fetch })
+  await client.account()
+  const waits = []
+  const bytes = Buffer.from('mp4bytes')
+  assert.deepEqual(await client.publishReel({ bytes, caption: 'Hi', sleep: async (ms) => waits.push(ms) }), { mediaId: 'r9' })
+  assert.equal(seen[1].url, `https://graph.facebook.com/${GRAPH_VERSION}/1784/media`)
+  assert.match(seen[1].init.body, /media_type=REELS&upload_type=resumable&caption=Hi&share_to_feed=true/)
+  assert.equal(seen[2].url, 'https://rupload.facebook.com/ig-api-upload/v26.0/c9')
+  assert.deepEqual([seen[2].init.headers.Authorization, seen[2].init.headers.offset, seen[2].init.headers.file_size], ['OAuth TOKEN', '0', String(bytes.length)])
+  assert.equal(seen[2].init.body, bytes)
+  assert.match(seen[5].init.body, /creation_id=c9/)
+  assert.deepEqual(waits, [10000])
+  // An upload address on any other host is never sent the token.
+  const odd = fakeFetch([{ json: { id: 'c1', uri: 'https://evil.example/up' } }, { json: { success: true } }, { json: { status_code: 'FINISHED' } }, { json: { id: 'r1' } }])
+  await igClient({ userId: '1784', token: 'T', fetch: odd.fetch }).publishReel({ bytes, caption: 'c' })
+  assert.equal(odd.seen[1].url, `https://rupload.facebook.com/ig-api-upload/${GRAPH_VERSION}/c1`)
+  const bad = fakeFetch([{ json: { id: 'c2', uri: 'https://rupload.facebook.com/x' } }, { json: { success: true } }, { json: { status_code: 'ERROR', status: 'video too short' } }])
+  await assert.rejects(igClient({ userId: '1784', token: 'T', fetch: bad.fetch }).publishReel({ bytes, caption: 'c' }), /could not take the video: video too short/)
+})
+
+test('ig reels: Instagram takes 3 seconds to 15 minutes', () => {
+  assert.equal(reelLengthProblem(12), null)
+  assert.match(reelLengthProblem(2), /at least 3 s/)
+  assert.match(reelLengthProblem(16 * 60), /15 min at most/)
+  assert.equal(reelLengthProblem(undefined), null)
 })

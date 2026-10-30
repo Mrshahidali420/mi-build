@@ -138,14 +138,15 @@ async function openInstagram(s, env, makeInstagram, out) {
   const settings = igSettingsOf(env)
   if (!settings.enabled) return null
   if (!settings.configured) {
-    out.push('Instagram: **not configured** (the IG_USER_ID secret is not set). Facebook only.', '')
+    out.push('Instagram: **not configured** (needs the FB_PAGE_ID or IG_USER_ID secret, and a token). Facebook only.', '')
     return null
   }
   try {
-    const client = makeInstagram({ userId: settings.userId, token: settings.token })
-    const name = await client.username()
+    const client = makeInstagram({ userId: settings.userId, pageId: settings.pageId, token: settings.token })
+    const { id, username } = await client.account()
     const only = settings.types ? `, only ${[...settings.types].join(', ')}` : ''
-    out.push(`Instagram: token works for **@${name || '(no name)'}**. Up to ${settings.perDay} posts in any 24 hours${only}.`, '')
+    const check = settings.checkOnly ? ' Check only: nothing is posted to Instagram.' : ''
+    out.push(`Instagram: token works for **@${username || '(no name)'}** (account ${id}). Up to ${settings.perDay} posts in any 24 hours${only}.${check}`, '')
     return { settings, client, off: null }
   } catch (error) {
     out.push(`Instagram: the account check failed (${error.message}). Facebook only this run.`, '')

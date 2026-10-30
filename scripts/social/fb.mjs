@@ -88,7 +88,7 @@ export function usageOf(headers) {
   return best
 }
 
-const redact = (text, token) => (token ? String(text).split(token).join('***') : String(text))
+export const redact = (text, token) => (token ? String(text).split(token).join('***') : String(text))
 
 /**
  * One Graph caller bound to a token: call(method, path, params, file) and the

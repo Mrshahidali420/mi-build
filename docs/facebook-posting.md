@@ -401,10 +401,14 @@ What changes on Instagram:
   address and takes no upload, so each picture is first kept on the Facebook
   Page as an **unpublished** photo (it never shows in the feed) and
   Instagram is given that photo's address.
+- **Reels.** A reel goes as the same MP4 (1080x1920, 9:16), by the
+  resumable upload: no public address is needed. Instagram takes reels of 3
+  seconds to 15 minutes; a reel outside that stays on Facebook. Reels are
+  shared to the Instagram feed too. `IG_POST_TYPES=reel` sends only reels.
 - **Its own pace.** At most `IG_POSTS_PER_DAY` posts in any 24 hours (8
-  unless set, 50 at most), spread evenly: a Facebook post goes to Instagram
-  only when the last Instagram post is far enough back. Reels stay on
-  Facebook for now. A text-only classic post (no cover) stays on Facebook.
+  unless set, 25 at most), spread evenly: a Facebook post goes to Instagram
+  only when the last Instagram post is far enough back. A text-only classic
+  post (no cover) stays on Facebook.
 
 ### Switch it on
 
@@ -423,18 +427,19 @@ What changes on Instagram:
    `FB_PAGE_TOKEN` secret (it replaces the old one and still posts to
    Facebook). If you would rather keep the Facebook token as it is, put the
    new one in an `IG_TOKEN` secret instead.
-5. **Find the Instagram account id.** In the Graph API Explorer, with the
-   Page token, run `<page-id>?fields=instagram_business_account`. Copy the
-   `id` inside `instagram_business_account` (a long number starting
-   with 178...).
+5. **The Instagram account id is found by itself.** Each run asks the Page
+   (`<page-id>?fields=instagram_business_account{id,username}`) and names
+   the account it found. The secret `IG_USER_ID` is optional; when set, it
+   must match the account linked to the Page.
 6. **Put it in GitHub** (Settings → Secrets and variables → Actions):
-   - secret `IG_USER_ID`: that id
    - variable `IG_POSTS_PER_DAY` (optional): e.g. `8`
    - variable `IG_POST_TYPES` (optional): only these kinds go to Instagram,
      e.g. `classic,where,fanart,cosplay`; every kind Facebook posts when
      unset
-7. **Look first.** Actions → *Facebook Page post* → Run workflow with
-   `dry_run` ticked, after setting the variable `IG_POST_ENABLED` to `true`.
+7. **Look first.** Set the variable `IG_POST_ENABLED` to `check`: every run
+   finds the account and says what it would post to Instagram, and posts
+   nothing there. Or run Actions → *Facebook Page post* with `dry_run`
+   ticked.
    The summary says, for each post, whether Instagram would get it, and the
    `fb-preview` artifact holds the Instagram pictures (`*.instagram.jpg`)
    beside the Facebook ones. The run also checks the token and names the

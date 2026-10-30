@@ -41,7 +41,7 @@ run-name: ${{ github.event_name == 'schedule' && 'Facebook watch' || inputs.dry_
 # Instagram rides along (scripts/social/ig.mjs): after a Facebook post goes
 # through, the same post goes to the site's Instagram account, with "link in
 # bio" for the line about the first comment. OFF until the repo variable
-# IG_POST_ENABLED is 'true' and the IG_USER_ID secret is set; its own cap
+# IG_POST_ENABLED is 'true' ('check' = find the account, post nothing); its own cap
 # (IG_POSTS_PER_DAY, 8 unless set). An Instagram failure never stops Facebook.
 #
 # The ledger that stops double posts lives on the orphan branch social-state
@@ -131,7 +131,7 @@ jobs:
 
       # The renderer's packages (satori, sharp, the fonts): only when a run draws.
       - name: Install the packages the template images need
-        if: vars.FB_POST_TYPES != '' || inputs.types != '' || vars.IG_POST_ENABLED == 'true'
+        if: vars.FB_POST_TYPES != '' || inputs.types != '' || (vars.IG_POST_ENABLED == 'true' || vars.IG_POST_ENABLED == 'check')
         run: npm ci --no-audit --no-fund
 
       # A reel is put together with ffmpeg. The runner image does not carry it (checked 12 Oct 2026),
@@ -178,12 +178,13 @@ jobs:
           FB_POST_TYPES: ${{ vars.FB_POST_TYPES }}
           # 'true' adds the Amazon line of the title to the first comment (off by default).
           FB_AFFILIATE_COMMENT: ${{ vars.FB_AFFILIATE_COMMENT }}
-          # Instagram (scripts/social/ig.mjs): the same posts, after Facebook. OFF unless IG_POST_ENABLED is 'true'.
+          # Instagram (scripts/social/ig.mjs): the same posts, after Facebook. OFF unless IG_POST_ENABLED is 'true' ('check' posts nothing).
           IG_POST_ENABLED: ${{ vars.IG_POST_ENABLED }}
+          # Optional: read from the Page (FB_PAGE_ID) when unset.
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           # Optional: the FB_PAGE_TOKEN is used when unset.
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
-          # Posts in any 24 hours (unset = 8, at most 50), and the kinds that go (unset = every kind Facebook posts).
+          # Posts in any 24 hours (unset = 8, at most 25), and the kinds that go (unset = every kind Facebook posts).
           IG_POSTS_PER_DAY: ${{ vars.IG_POSTS_PER_DAY }}
           IG_POST_TYPES: ${{ vars.IG_POST_TYPES }}
           EVENT: ${{ github.event_name }}
