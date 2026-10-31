@@ -23225,6 +23225,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119612149500964",
    "commentId": "122119612149500964_2177970246193005"
+  },
+  {
+   "key": "2026-10-31|next:31271|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:31271",
+   "title": "S.A: Special A",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "31271",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793422533289,
+   "status": "claimed"
   }
  ],
  "health": {
