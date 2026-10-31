@@ -22982,6 +22982,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119590087500964",
    "commentId": "122119590087500964_1143737348131142"
+  },
+  {
+   "key": "2026-10-30|next:165485|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:165485",
+   "title": "Naruto: The Whorl Within the Spiral",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "165485",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793418612856,
+   "status": "claimed"
   }
  ],
  "health": {
