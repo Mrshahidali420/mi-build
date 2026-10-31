@@ -24030,6 +24030,22 @@
     "id": "17906931354669079",
     "at": 1793434910975
    }
+  },
+  {
+   "key": "2026-10-31|next:86623|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:86623",
+   "title": "Hakumei & Mikochi: Tiny Little Life in the Woods",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86623",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793435212357,
+   "status": "claimed"
   }
  ],
  "health": {
