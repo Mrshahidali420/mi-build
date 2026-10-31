@@ -23171,6 +23171,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119608057500964",
    "commentId": "122119608057500964_1346788657408524"
+  },
+  {
+   "key": "2026-10-31|where:87468|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:87468",
+   "title": "Kuzumi-kun, Can't You Read the Room?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "87468",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793421630737,
+   "status": "claimed"
   }
  ],
  "health": {
