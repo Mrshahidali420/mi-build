@@ -22823,6 +22823,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119579383500964",
    "commentId": "122119579383500964_1882240776269917"
+  },
+  {
+   "key": "2026-10-30|next:136012|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:136012",
+   "title": "Here Comes the Silver Spoon!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "136012",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793416206379,
+   "status": "claimed"
   }
  ],
  "health": {
