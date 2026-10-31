@@ -24255,6 +24255,22 @@
     "id": "18111150014608142",
     "at": 1793438534842
    }
+  },
+  {
+   "key": "2026-10-31|character:char:154657|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:154657",
+   "title": "Sometimes Even Reality Is a Lie!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:154657",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793438836226,
+   "status": "claimed"
   }
  ],
  "health": {
