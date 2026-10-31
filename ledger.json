@@ -23207,6 +23207,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119610559500964",
    "commentId": "122119610559500964_1108510255118858"
+  },
+  {
+   "key": "2026-10-31|character:char:207817|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:207817",
+   "title": "Chillin’ in Another World with Level 2 Super Cheat Powers",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:207817",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793422232412,
+   "status": "claimed"
   }
  ],
  "health": {
