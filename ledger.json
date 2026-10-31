@@ -25904,6 +25904,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119834227500964",
    "commentId": "122119834227500964_947320838188412"
+  },
+  {
+   "key": "2026-10-31|where:30556|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:30556",
+   "title": "Trinity Blood",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30556",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793465392855,
+   "status": "claimed"
   }
  ],
  "health": {
