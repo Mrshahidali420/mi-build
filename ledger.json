@@ -23153,6 +23153,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119607079500964",
    "commentId": "122119607079500964_1675530307277155"
+  },
+  {
+   "key": "2026-10-31|next:140482|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:140482",
+   "title": "Magilumiere Magical Girls Inc.",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "140482",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793421329892,
+   "status": "claimed"
   }
  ],
  "health": {
