@@ -25382,6 +25382,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119797405500964",
    "commentId": "122119797405500964_1408354774799342"
+  },
+  {
+   "key": "2026-10-31|character:char:151352|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:151352",
+   "title": "The Ice Guy and the Cool Girl",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:151352",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793456952293,
+   "status": "claimed"
   }
  ],
  "health": {
