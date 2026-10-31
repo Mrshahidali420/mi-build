@@ -27283,6 +27283,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119929321500964",
    "commentId": "122119929321500964_1668150871704247"
+  },
+  {
+   "key": "2026-10-31|character:char:361056|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:361056",
+   "title": "The Regressed Mercenary Has a Plan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:361056",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793487419913,
+   "status": "claimed"
   }
  ],
  "health": {
