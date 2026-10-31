@@ -25738,6 +25738,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119820691500964",
    "commentId": "122119820691500964_3024034547989101"
+  },
+  {
+   "key": "2026-10-31|where:128403|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:128403",
+   "title": "The Villainess's Maker",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "128403",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793462684989,
+   "status": "claimed"
   }
  ],
  "health": {
