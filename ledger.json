@@ -22163,6 +22163,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119535313500964",
    "commentId": "122119535313500964_1482045273769384"
+  },
+  {
+   "key": "2026-10-30|character:char:88566|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:88566",
+   "title": "Dead Dead Demon's Dededede Destruction",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:88566",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793405650440,
+   "status": "claimed"
   }
  ],
  "health": {
