@@ -25418,6 +25418,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119800099500964",
    "commentId": "122119800099500964_1163979529496306"
+  },
+  {
+   "key": "2026-10-31|where:105790|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:105790",
+   "title": "Destroy All Humans. They Can't Be Regenerated. A Magic: The Gathering Manga",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "105790",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793457555263,
+   "status": "claimed"
   }
  ],
  "health": {
