@@ -24523,6 +24523,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119707735500964",
    "commentId": "122119707735500964_1454060596908749"
+  },
+  {
+   "key": "2026-10-31|where:106770|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:106770",
+   "title": "The Frontier Lord Begins with Zero Subjects: Tales of Blue Dias and the Onikin Alna",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "106770",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793443062378,
+   "status": "claimed"
   }
  ],
  "health": {
