@@ -24559,6 +24559,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119710507500964",
    "commentId": "122119710507500964_1790027338955640"
+  },
+  {
+   "key": "2026-10-31|next:31216|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:31216",
+   "title": "Neighborhood Story",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "31216",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793443664964,
+   "status": "claimed"
   }
  ],
  "health": {
