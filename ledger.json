@@ -24672,6 +24672,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119719837500964",
    "commentId": "122119719837500964_2038781196639472"
+  },
+  {
+   "key": "2026-10-31|character:char:54195|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:54195",
+   "title": "Last Game",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:54195",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793445479238,
+   "status": "claimed"
   }
  ],
  "health": {
