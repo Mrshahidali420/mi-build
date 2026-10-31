@@ -23456,6 +23456,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119628589500964",
    "commentId": "122119628589500964_1066614276405992"
+  },
+  {
+   "key": "2026-10-31|character:char:213759|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:213759",
+   "title": "Shotgun Boy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:213759",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793426151232,
+   "status": "claimed"
   }
  ],
  "health": {
