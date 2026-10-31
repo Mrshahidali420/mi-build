@@ -25472,6 +25472,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119803573500964",
    "commentId": "122119803573500964_1788913272325905"
+  },
+  {
+   "key": "2026-10-31|where:30219|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:30219",
+   "title": "ALIVE: The Final Evolution",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30219",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793458459630,
+   "status": "claimed"
   }
  ],
  "health": {
