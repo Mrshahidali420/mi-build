@@ -23135,6 +23135,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119602621500964",
    "commentId": "122119602621500964_2267184633858967"
+  },
+  {
+   "key": "2026-10-31|character:char:129903|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:129903",
+   "title": "The Girl I Like Forgot Her Glasses",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:129903",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793421029033,
+   "status": "claimed"
   }
  ],
  "health": {
