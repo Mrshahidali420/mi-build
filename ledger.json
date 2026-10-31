@@ -23054,6 +23054,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119596165500964",
    "commentId": "122119596165500964_1676789063978548"
+  },
+  {
+   "key": "2026-10-31|next:113531|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:113531",
+   "title": "Romantic Killer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "113531",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793419825663,
+   "status": "claimed"
   }
  ],
  "health": {
