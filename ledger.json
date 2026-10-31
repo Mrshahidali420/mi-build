@@ -26379,6 +26379,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119869165500964",
    "commentId": "122119869165500964_1430506758617191"
+  },
+  {
+   "key": "2026-10-31|where:117802|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:117802",
+   "title": "One Piece: Ace’s Story—The Manga",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "117802",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793472926658,
+   "status": "claimed"
   }
  ],
  "health": {
