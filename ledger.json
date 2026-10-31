@@ -23875,6 +23875,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119659525500964",
    "commentId": "122119659525500964_1698505041981397"
+  },
+  {
+   "key": "2026-10-31|next:56704|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:56704",
+   "title": "Descending Stories: Showa Genroku Rakugo Shinju",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "56704",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793432791468,
+   "status": "claimed"
   }
  ],
  "health": {
