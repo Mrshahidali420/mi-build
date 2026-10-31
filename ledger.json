@@ -27025,6 +27025,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119913535500964",
    "commentId": "122119913535500964_2594990377633067"
+  },
+  {
+   "key": "2026-10-31|where:114913|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:114913",
+   "title": "A Delinquent's Life Hacks",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "114913",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793483195501,
+   "status": "claimed"
   }
  ],
  "health": {
