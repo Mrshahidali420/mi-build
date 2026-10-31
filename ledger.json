@@ -22317,6 +22317,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119545735500964",
    "commentId": "122119545735500964_1593381468681691"
+  },
+  {
+   "key": "2026-10-30|next:118991|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:118991",
+   "title": "Demon Slayer: Kimetsu no Yaiba - Kyojuro Rengoku’s Story",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "118991",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793408057298,
+   "status": "claimed"
   }
  ],
  "health": {
