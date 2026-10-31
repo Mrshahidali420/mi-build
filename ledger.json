@@ -26456,6 +26456,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119875843500964",
    "commentId": "122119875843500964_28961931076799138"
+  },
+  {
+   "key": "2026-10-31|where:30229|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:30229",
+   "title": "Dragon Head",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30229",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793474138217,
+   "status": "claimed"
   }
  ],
  "health": {
