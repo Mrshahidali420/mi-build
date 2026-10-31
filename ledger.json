@@ -25134,6 +25134,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119775895500964",
    "commentId": "122119775895500964_1759139258718838"
+  },
+  {
+   "key": "2026-10-31|next:164838|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:164838",
+   "title": "The Voodooist's Wrathful Return",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "164838",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793453024177,
+   "status": "claimed"
   }
  ],
  "health": {
