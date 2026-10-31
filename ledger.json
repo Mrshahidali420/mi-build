@@ -25021,6 +25021,22 @@
    "status": "posted",
    "postId": "3257656201291970",
    "commentId": "3257656201291970_1167524875937958"
+  },
+  {
+   "key": "2026-10-31|where:99886|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:99886",
+   "title": "Hinowa ga CRUSH!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "99886",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793451208438,
+   "status": "claimed"
   }
  ],
  "health": {
