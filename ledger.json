@@ -25188,6 +25188,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119780695500964",
    "commentId": "122119780695500964_1384351930438280"
+  },
+  {
+   "key": "2026-10-31|next:108196|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:108196",
+   "title": "My Home Hero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "108196",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793453928609,
+   "status": "claimed"
   }
  ],
  "health": {
