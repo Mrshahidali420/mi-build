@@ -22299,6 +22299,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119544679500964",
    "commentId": "122119544679500964_1109424478655118"
+  },
+  {
+   "key": "2026-10-30|character:char:66593|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:66593",
+   "title": "orange",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:66593",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793407756421,
+   "status": "claimed"
   }
  ],
  "health": {
