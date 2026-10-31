@@ -25436,6 +25436,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119801473500964",
    "commentId": "122119801473500964_2946487195693077"
+  },
+  {
+   "key": "2026-10-31|character:char:301170|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:301170",
+   "title": "Dungeon Odyssey",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:301170",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793457856638,
+   "status": "claimed"
   }
  ],
  "health": {
