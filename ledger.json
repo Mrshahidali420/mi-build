@@ -26496,6 +26496,22 @@
     "id": "18081921599378525",
     "at": 1793474439343
    }
+  },
+  {
+   "key": "2026-10-31|next:173343|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:173343",
+   "title": "Girl meets Rock!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "173343",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793474740447,
+   "status": "claimed"
   }
  ],
  "health": {
