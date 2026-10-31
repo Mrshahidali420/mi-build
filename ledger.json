@@ -24708,6 +24708,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119723329500964",
    "commentId": "122119723329500964_1126879953127865"
+  },
+  {
+   "key": "2026-10-31|where:97675|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:97675",
+   "title": "Drifting Dragons",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "97675",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793446081161,
+   "status": "claimed"
   }
  ],
  "health": {
