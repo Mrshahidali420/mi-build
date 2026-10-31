@@ -26816,6 +26816,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119901499500964",
    "commentId": "122119901499500964_29550467594537332"
+  },
+  {
+   "key": "2026-10-31|next:169392|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:169392",
+   "title": "How to survive as a maid in a horror game",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "169392",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793479867254,
+   "status": "claimed"
   }
  ],
  "health": {
