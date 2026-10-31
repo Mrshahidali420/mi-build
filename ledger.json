@@ -24428,6 +24428,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119701861500964",
    "commentId": "122119701861500964_1421467713041985"
+  },
+  {
+   "key": "2026-10-31|next:59887|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:59887",
+   "title": "Servamp",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "59887",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793441556326,
+   "status": "claimed"
   }
  ],
  "health": {
