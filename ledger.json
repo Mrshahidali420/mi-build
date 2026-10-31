@@ -23949,6 +23949,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119666059500964",
    "commentId": "122119666059500964_1128816372977798"
+  },
+  {
+   "key": "2026-10-31|next:119518|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:119518",
+   "title": "A Cave King’s Road to Paradise: Climbing to the Top with My Almighty Mining Skills!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "119518",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793434006413,
+   "status": "claimed"
   }
  ],
  "health": {
