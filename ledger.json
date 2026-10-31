@@ -22353,6 +22353,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119547685500964",
    "commentId": "122119547685500964_4392896937601845"
+  },
+  {
+   "key": "2026-10-30|character:char:141061|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:141061",
+   "title": "86―EIGHTY-SIX",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:141061",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793408666880,
+   "status": "claimed"
   }
  ],
  "health": {
