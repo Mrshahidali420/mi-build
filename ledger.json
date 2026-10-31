@@ -27378,6 +27378,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119933419500964",
    "commentId": "122119933419500964_1798820518005230"
+  },
+  {
+   "key": "2026-10-31|next:30743|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:30743",
+   "title": "21st Century Boys",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30743",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793488931586,
+   "status": "claimed"
   }
  ],
  "health": {
