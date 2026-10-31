@@ -23343,6 +23343,22 @@
     "at": 1793424045598,
     "slides": 5
    }
+  },
+  {
+   "key": "2026-10-31|where:86837|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:86837",
+   "title": "Angels of Death",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86837",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793424346368,
+   "status": "claimed"
   }
  ],
  "health": {
