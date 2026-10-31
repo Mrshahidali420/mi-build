@@ -24577,6 +24577,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119712127500964",
    "commentId": "122119712127500964_2143163669667463"
+  },
+  {
+   "key": "2026-10-31|where:182139|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:182139",
+   "title": "My Avatars’ Path to Greatness",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "182139",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793443966371,
+   "status": "claimed"
   }
  ],
  "health": {
