@@ -22559,7 +22559,8 @@
    "variant": 1,
    "at": 1793411676733,
    "track": "happy-adventure.m4a",
-   "status": "claimed"
+   "status": "failed",
+   "error": "GET /4524204894524187 failed: Unsupported get request. Object with ID '4524204894524187' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
   }
  ],
  "health": {
