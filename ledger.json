@@ -26762,6 +26762,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119898757500964",
    "commentId": "122119898757500964_1473653581342745"
+  },
+  {
+   "key": "2026-10-31|next:96842|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:96842",
+   "title": "The Legend of Zelda: Twilight Princess",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "96842",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793478963632,
+   "status": "claimed"
   }
  ],
  "health": {
