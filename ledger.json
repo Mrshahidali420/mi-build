@@ -23893,6 +23893,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119660821500964",
    "commentId": "122119660821500964_1060345880355719"
+  },
+  {
+   "key": "2026-10-31|where:156667|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:156667",
+   "title": "Cipher Academy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "156667",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793433092798,
+   "status": "claimed"
   }
  ],
  "health": {
