@@ -25283,6 +25283,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119789629500964",
    "commentId": "122119789629500964_1060484053578925"
+  },
+  {
+   "key": "2026-10-31|where:163497|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:163497",
+   "title": "Nue's Exorcist",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "163497",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793455444920,
+   "status": "claimed"
   }
  ],
  "health": {
