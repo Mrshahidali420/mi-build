@@ -25684,6 +25684,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119817337500964",
    "commentId": "122119817337500964_1472735334762092"
+  },
+  {
+   "key": "2026-10-31|where:108701|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:108701",
+   "title": "The Strongest Wizard Becomes a Countryside Guard After Taking an Arrow to the Knee",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "108701",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793461775703,
+   "status": "claimed"
   }
  ],
  "health": {
