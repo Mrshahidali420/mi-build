@@ -23681,6 +23681,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119645101500964",
    "commentId": "122119645101500964_1683588599827922"
+  },
+  {
+   "key": "2026-10-31|where:30392|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:30392",
+   "title": "You're My Pet",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30392",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793429768729,
+   "status": "claimed"
   }
  ],
  "health": {
