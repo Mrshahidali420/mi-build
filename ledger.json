@@ -24690,6 +24690,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119721787500964",
    "commentId": "122119721787500964_1108251811807761"
+  },
+  {
+   "key": "2026-10-31|next:128435|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:128435",
+   "title": "Happily Ever Afterwards",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "128435",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793445780168,
+   "status": "claimed"
   }
  ],
  "health": {
