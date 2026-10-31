@@ -24636,6 +24636,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119717281500964",
    "commentId": "122119717281500964_1887579616024417"
+  },
+  {
+   "key": "2026-10-31|next:39607|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:39607",
+   "title": "Dreamin' Sun",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "39607",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793444877379,
+   "status": "claimed"
   }
  ],
  "health": {
