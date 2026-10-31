@@ -27191,6 +27191,24 @@
    "status": "posted",
    "postId": "1318170941390322_122119923645500964",
    "commentId": "122119923645500964_1858099432279722"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-31|reel-next:153983|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "reel-next:153983",
+   "title": "I'm the Queen in This Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "153983",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793485913617,
+   "track": "winning-the-race.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
