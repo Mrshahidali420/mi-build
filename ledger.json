@@ -24102,6 +24102,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119676193500964",
    "commentId": "122119676193500964_1010297068778528"
+  },
+  {
+   "key": "2026-10-31|where:85235|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:85235",
+   "title": "School-Live!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "85235",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793436418179,
+   "status": "claimed"
   }
  ],
  "health": {
