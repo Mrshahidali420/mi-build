@@ -23438,6 +23438,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119627551500964",
    "commentId": "122119627551500964_4604084066532737"
+  },
+  {
+   "key": "2026-10-31|where:33116|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:33116",
+   "title": "Black Bird",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "33116",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793425850399,
+   "status": "claimed"
   }
  ],
  "health": {
