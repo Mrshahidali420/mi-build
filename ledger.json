@@ -25720,6 +25720,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119819347500964",
    "commentId": "122119819347500964_1563985015498888"
+  },
+  {
+   "key": "2026-10-31|next:127224|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:127224",
+   "title": "The Impregnable Demon King's Castle and the Expelled Black Mage of the Hero's Party",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "127224",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793462377340,
+   "status": "claimed"
   }
  ],
  "health": {
