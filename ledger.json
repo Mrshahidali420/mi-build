@@ -22923,6 +22923,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119586709500964",
    "commentId": "122119586709500964_1444645734488209"
+  },
+  {
+   "key": "2026-10-30|where:30442|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:30442",
+   "title": "Tekkonkinkreet: Black & White",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30442",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793417710369,
+   "status": "claimed"
   }
  ],
  "health": {
