@@ -22561,6 +22561,22 @@
    "track": "happy-adventure.m4a",
    "status": "failed",
    "error": "GET /4524204894524187 failed: Unsupported get request. Object with ID '4524204894524187' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-10-30|character:char:67067|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:67067",
+   "title": "My Youth Romantic Comedy Is Wrong, As I Expected",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:67067",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793411985313,
+   "status": "claimed"
   }
  ],
  "health": {
