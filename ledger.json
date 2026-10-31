@@ -24839,6 +24839,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119753317500964",
    "commentId": "122119753317500964_29514565294822937"
+  },
+  {
+   "key": "2026-10-31|where:113168|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:113168",
+   "title": "My Alcoholic Escape from Reality",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "113168",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793448196204,
+   "status": "claimed"
   }
  ],
  "health": {
