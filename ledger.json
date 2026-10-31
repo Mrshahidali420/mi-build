@@ -26075,6 +26075,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119845927500964",
    "commentId": "122119845927500964_1698458005137562"
+  },
+  {
+   "key": "2026-10-31|next:30648|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:30648",
+   "title": "Dogs: Bullets & Carnage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30648",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793468105801,
+   "status": "claimed"
   }
  ],
  "health": {
