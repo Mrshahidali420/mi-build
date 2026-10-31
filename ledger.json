@@ -25814,6 +25814,22 @@
     "id": "18126961277483142",
     "at": 1793463587583
    }
+  },
+  {
+   "key": "2026-10-31|character:char:211629|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:211629",
+   "title": "Jungle Juice",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:211629",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793463888445,
+   "status": "claimed"
   }
  ],
  "health": {
