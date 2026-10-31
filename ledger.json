@@ -24618,9 +24618,9 @@
  "health": {
   "signals": [],
   "peak": {
-   "pct": 6,
-   "source": "x-business-use-case-usage",
-   "at": 1793432504433
+   "pct": 8,
+   "source": "x-app-usage",
+   "at": 1793444286450
   },
   "cut": null,
   "blockedUntil": 0,
