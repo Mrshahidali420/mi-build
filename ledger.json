@@ -26208,6 +26208,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119854585500964",
    "commentId": "122119854585500964_2088891905079332"
+  },
+  {
+   "key": "2026-10-31|character:char:285404|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:285404",
+   "title": "The Art of Reincarnation",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:285404",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793470219099,
+   "status": "claimed"
   }
  ],
  "health": {
