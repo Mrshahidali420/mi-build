@@ -24446,6 +24446,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119703181500964",
    "commentId": "122119703181500964_2487084941779655"
+  },
+  {
+   "key": "2026-10-31|where:103635|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:103635",
+   "title": "What's Wrong with Secretary Kim?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103635",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793441857502,
+   "status": "claimed"
   }
  ],
  "health": {
