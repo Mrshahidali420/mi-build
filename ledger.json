@@ -27173,6 +27173,22 @@
     "id": "18120200477093809",
     "at": 1793485311140
    }
+  },
+  {
+   "key": "2026-10-31|next:107112|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:107112",
+   "title": "Saint Cecilia and Pastor Lawrence",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "107112",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793485612366,
+   "status": "claimed"
   }
  ],
  "health": {
