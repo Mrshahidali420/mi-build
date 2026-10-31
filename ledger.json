@@ -27061,6 +27061,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119915695500964",
    "commentId": "122119915695500964_1134943422468853"
+  },
+  {
+   "key": "2026-10-31|next:30119|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:30119",
+   "title": "Magic Knight Rayearth",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30119",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793483797907,
+   "status": "claimed"
   }
  ],
  "health": {
