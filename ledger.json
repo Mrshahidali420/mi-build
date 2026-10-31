@@ -23758,6 +23758,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119650087500964",
    "commentId": "122119650087500964_28974411282178807"
+  },
+  {
+   "key": "2026-10-31|where:100331|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:100331",
+   "title": "The Golden Sheep",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "100331",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793430983090,
+   "status": "claimed"
   }
  ],
  "health": {
