@@ -24410,6 +24410,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119700163500964",
    "commentId": "122119700163500964_1601213401266454"
+  },
+  {
+   "key": "2026-10-31|character:char:729|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:729",
+   "title": "Yu Yu Hakusho",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:729",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793441255051,
+   "status": "claimed"
   }
  ],
  "health": {
