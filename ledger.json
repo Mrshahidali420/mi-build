@@ -24179,6 +24179,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119680945500964",
    "commentId": "122119680945500964_1938054820941554"
+  },
+  {
+   "key": "2026-10-31|where:33586|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:33586",
+   "title": "River's Edge",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "33586",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793437631330,
+   "status": "claimed"
   }
  ],
  "health": {
