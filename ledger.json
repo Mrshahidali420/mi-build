@@ -25607,6 +25607,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119811427500964",
    "commentId": "122119811427500964_28712790065082127"
+  },
+  {
+   "key": "2026-10-31|where:46794|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:46794",
+   "title": "LDK",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "46794",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793460572510,
+   "status": "claimed"
   }
  ],
  "health": {
