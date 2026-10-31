@@ -22746,6 +22746,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119574817500964",
    "commentId": "122119574817500964_1143362441392684"
+  },
+  {
+   "key": "2026-10-30|next:163820|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:163820",
+   "title": "Han Daesung, Back From Hell",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "163820",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793414995746,
+   "status": "claimed"
   }
  ],
  "health": {
