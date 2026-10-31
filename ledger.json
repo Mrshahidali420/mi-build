@@ -22240,6 +22240,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119541139500964",
    "commentId": "122119541139500964_1638048694432920"
+  },
+  {
+   "key": "2026-10-30|next:87384|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:87384",
+   "title": "Sacrificial Princess and the King of Beasts",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "87384",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793406853769,
+   "status": "claimed"
   }
  ],
  "health": {
