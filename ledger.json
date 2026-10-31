@@ -27247,6 +27247,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119927425500964",
    "commentId": "122119927425500964_1315690787290968"
+  },
+  {
+   "key": "2026-10-31|next:111764|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:111764",
+   "title": "The Daughter of the Demon Lord Is Too Kind!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "111764",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793486817437,
+   "status": "claimed"
   }
  ],
  "health": {
