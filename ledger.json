@@ -27301,6 +27301,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119929975500964",
    "commentId": "122119929975500964_2359580524817932"
+  },
+  {
+   "key": "2026-10-31|next:87151|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:87151",
+   "title": "Colette Decides to Die",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "87151",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793487721201,
+   "status": "claimed"
   }
  ],
  "health": {
