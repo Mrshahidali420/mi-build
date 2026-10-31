@@ -27265,6 +27265,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119928223500964",
    "commentId": "122119928223500964_2134918293783073"
+  },
+  {
+   "key": "2026-10-31|where:118725|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:118725",
+   "title": "I Kept Pressing the 100-Million-Year Button and Came Out on Top",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "118725",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793487118675,
+   "status": "claimed"
   }
  ],
  "health": {
