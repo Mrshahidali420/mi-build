@@ -27115,6 +27115,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119919523500964",
    "commentId": "122119919523500964_1382433060374365"
+  },
+  {
+   "key": "2026-10-31|next:56144|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:56144",
+   "title": "The Daily Lives of High School Boys",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "56144",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793484708411,
+   "status": "claimed"
   }
  ],
  "health": {
