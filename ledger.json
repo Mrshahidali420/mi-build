@@ -26325,6 +26325,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119862913500964",
    "commentId": "122119862913500964_1624489012742908"
+  },
+  {
+   "key": "2026-10-31|where:124966|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:124966",
+   "title": "Lady Chef Royale",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "124966",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793472024197,
+   "status": "claimed"
   }
  ],
  "health": {
