@@ -22633,6 +22633,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119566393500964",
    "commentId": "122119566393500964_1688884419316899"
+  },
+  {
+   "key": "2026-10-30|next:112222|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:112222",
+   "title": "My Lovey-Dovey Wife is a Stone Cold Killer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "112222",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793413189499,
+   "status": "claimed"
   }
  ],
  "health": {
