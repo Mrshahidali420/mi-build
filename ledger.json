@@ -25265,6 +25265,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119788291500964",
    "commentId": "122119788291500964_1465994376597332"
+  },
+  {
+   "key": "2026-10-31|next:38947|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:38947",
+   "title": "Saint Young Men",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "38947",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793455134357,
+   "status": "claimed"
   }
  ],
  "health": {
