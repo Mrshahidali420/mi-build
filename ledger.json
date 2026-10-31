@@ -22145,6 +22145,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119534635500964",
    "commentId": "122119534635500964_4037900406504986"
+  },
+  {
+   "key": "2026-10-30|where:101449|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "where:101449",
+   "title": "Kuma Kuma Kuma Bear",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101449",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793405349565,
+   "status": "claimed"
   }
  ],
  "health": {
