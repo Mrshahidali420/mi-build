@@ -23985,6 +23985,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119668351500964",
    "commentId": "122119668351500964_1837981274218144"
+  },
+  {
+   "key": "2026-10-31|character:char:344206|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:344206",
+   "title": "Blink Master of the Magic Academy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:344206",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793434609416,
+   "status": "claimed"
   }
  ],
  "health": {
