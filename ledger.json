@@ -27079,6 +27079,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119917123500964",
    "commentId": "122119917123500964_1770552034005695"
+  },
+  {
+   "key": "2026-10-31|where:30348|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:30348",
+   "title": "Genshiken",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30348",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793484099058,
+   "status": "claimed"
   }
  ],
  "health": {
