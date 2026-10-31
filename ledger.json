@@ -23528,6 +23528,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119633809500964",
    "commentId": "122119633809500964_1157513780052226"
+  },
+  {
+   "key": "2026-10-31|next:153975|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:153975",
+   "title": "Forget My Husband, I'll Go Make Money",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "153975",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793427361544,
+   "status": "claimed"
   }
  ],
  "health": {
