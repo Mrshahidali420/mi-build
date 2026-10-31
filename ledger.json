@@ -24215,6 +24215,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119684209500964",
    "commentId": "122119684209500964_1125757526977235"
+  },
+  {
+   "key": "2026-10-31|next:118721|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:118721",
+   "title": "I'll Become a Villainess Who Goes Down in History: It Seems Turning into a High-Born Baddie Makes the Prince All the More Lovestruck",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "118721",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793438233684,
+   "status": "claimed"
   }
  ],
  "health": {
