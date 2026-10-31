@@ -22579,6 +22579,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119562775500964",
    "commentId": "122119562775500964_1836947793982661"
+  },
+  {
+   "key": "2026-10-30|next:132128|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:132128",
+   "title": "Updater",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "132128",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793412286343,
+   "status": "claimed"
   }
  ],
  "health": {
