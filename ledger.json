@@ -26039,6 +26039,22 @@
     "error": "POST /17841474338210568/media_publish failed: Media ID is not available",
     "at": 1793467203411
    }
+  },
+  {
+   "key": "2026-10-31|where:35664|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:35664",
+   "title": "Nura: Rise of the Yokai Clan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "35664",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793467504203,
+   "status": "claimed"
   }
  ],
  "health": {
