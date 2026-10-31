@@ -27007,6 +27007,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119912347500964",
    "commentId": "122119912347500964_1819933953121748"
+  },
+  {
+   "key": "2026-10-31|next:44582|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:44582",
+   "title": "Gamaran",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "44582",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793482894295,
+   "status": "claimed"
   }
  ],
  "health": {
