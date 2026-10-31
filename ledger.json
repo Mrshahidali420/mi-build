@@ -23573,6 +23573,22 @@
     "id": "18141537304546487",
     "at": 1793427662373
    }
+  },
+  {
+   "key": "2026-10-31|where:137942|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:137942",
+   "title": "Easygoing Territory Defense by the Optimistic Lord: Production Magic Turns a Nameless Village into the Strongest Fortified City",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "137942",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793427963295,
+   "status": "claimed"
   }
  ],
  "health": {
