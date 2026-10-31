@@ -22542,6 +22542,24 @@
    "status": "posted",
    "postId": "1318170941390322_122119561047500964",
    "commentId": "122119561047500964_1675119574135096"
+  },
+  {
+   "reel": true,
+   "key": "2026-10-30|reel-next:116495|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "reel-next:116495",
+   "title": "From Leveling Up the Hero to Leveling Up a Nation",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "116495",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793411676733,
+   "track": "happy-adventure.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
