@@ -23798,6 +23798,22 @@
     "id": "18107755640255683",
     "at": 1793431284488
    }
+  },
+  {
+   "key": "2026-10-31|next:98030|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:98030",
+   "title": "Dragon Ball: That Time I Got Reincarnated as Yamcha!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98030",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793431585816,
+   "status": "claimed"
   }
  ],
  "health": {
