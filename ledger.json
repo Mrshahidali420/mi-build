@@ -26645,6 +26645,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119890555500964",
    "commentId": "122119890555500964_1668562055007328"
+  },
+  {
+   "key": "2026-10-31|where:157560|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:157560",
+   "title": "The Demon King Levels Up",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "157560",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793477156596,
+   "status": "claimed"
   }
  ],
  "health": {
