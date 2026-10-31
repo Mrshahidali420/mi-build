@@ -24505,6 +24505,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119706505500964",
    "commentId": "122119706505500964_1131716109814459"
+  },
+  {
+   "key": "2026-10-31|next:104667|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:104667",
+   "title": "I Swear I Won’t Bother You Again!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "104667",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793442761134,
+   "status": "claimed"
   }
  ],
  "health": {
