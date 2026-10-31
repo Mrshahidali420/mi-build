@@ -26699,6 +26699,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119894527500964",
    "commentId": "122119894527500964_2311566219689601"
+  },
+  {
+   "key": "2026-10-31|where:108817|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:108817",
+   "title": "Demon Slayer: Kimetsu no Yaiba - Giyu Tomioka’s Story",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "108817",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793478059941,
+   "status": "claimed"
   }
  ],
  "health": {
