@@ -23492,6 +23492,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119630791500964",
    "commentId": "122119630791500964_1123427076903273"
+  },
+  {
+   "key": "2026-10-31|where:139358|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:139358",
+   "title": "PPPPPP",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "139358",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793426759932,
+   "status": "claimed"
   }
  ],
  "health": {
