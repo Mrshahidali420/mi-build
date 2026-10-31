@@ -24744,6 +24744,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119735461500964",
    "commentId": "122119735461500964_2456748954848691"
+  },
+  {
+   "key": "2026-10-31|next:143031|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:143031",
+   "title": "I Want to End This Love Game",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "143031",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793446683577,
+   "status": "claimed"
   }
  ],
  "health": {
