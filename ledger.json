@@ -24048,6 +24048,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119671789500964",
    "commentId": "122119671789500964_1104108402333919"
+  },
+  {
+   "key": "2026-10-31|where:121753|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:121753",
+   "title": "As a Reincarnated Aristocrat, I’ll Use My Appraisal Skill to Rise in the World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "121753",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793435513785,
+   "status": "claimed"
   }
  ],
  "health": {
