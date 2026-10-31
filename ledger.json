@@ -26888,6 +26888,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119905903500964",
    "commentId": "122119905903500964_1122726573822371"
+  },
+  {
+   "key": "2026-10-31|where:101159|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:101159",
+   "title": "The Lady and Her Butler",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101159",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793481085458,
+   "status": "claimed"
   }
  ],
  "health": {
