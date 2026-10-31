@@ -25337,6 +25337,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119794117500964",
    "commentId": "122119794117500964_1595649011812526"
+  },
+  {
+   "key": "2026-10-31|where:72279|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:72279",
+   "title": "Dimension W",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "72279",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793456349243,
+   "status": "claimed"
   }
  ],
  "health": {
