@@ -26744,6 +26744,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119897419500964",
    "commentId": "122119897419500964_4731800520476924"
+  },
+  {
+   "key": "2026-10-31|character:char:944|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:944",
+   "title": "Eyeshield 21",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:944",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793478662337,
+   "status": "claimed"
   }
  ],
  "health": {
