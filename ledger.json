@@ -26514,6 +26514,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119880289500964",
    "commentId": "122119880289500964_28724772083884540"
+  },
+  {
+   "key": "2026-10-31|where:169882|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:169882",
+   "title": "Iseop’s Romance",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "169882",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793475041480,
+   "status": "claimed"
   }
  ],
  "health": {
