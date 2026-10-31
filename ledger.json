@@ -25981,6 +25981,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119839789500964",
    "commentId": "122119839789500964_1674308494299578"
+  },
+  {
+   "key": "2026-10-31|where:132284|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:132284",
+   "title": "Candy Flurry",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "132284",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793466601738,
+   "status": "claimed"
   }
  ],
  "health": {
