@@ -25832,6 +25832,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119828977500964",
    "commentId": "122119828977500964_1137812865647540"
+  },
+  {
+   "key": "2026-10-31|next:129632|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:129632",
+   "title": "The Tutorial Is Too Tough!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "129632",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793464189304,
+   "status": "claimed"
   }
  ],
  "health": {
