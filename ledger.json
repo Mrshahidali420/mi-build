@@ -27342,6 +27342,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119931649500964",
    "commentId": "122119931649500964_1764339931490389"
+  },
+  {
+   "key": "2026-10-31|where:127783|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:127783",
+   "title": "The Grand Mudang Saga",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "127783",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793488329661,
+   "status": "claimed"
   }
  ],
  "health": {
