@@ -27401,6 +27401,22 @@
     "at": 1793488931586,
     "slides": 5
    }
+  },
+  {
+   "key": "2026-10-31|where:116401|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:116401",
+   "title": "365 Days to the Wedding",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "116401",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793489232644,
+   "status": "claimed"
   }
  ],
  "health": {
