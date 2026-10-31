@@ -27211,6 +27211,22 @@
    "status": "posted",
    "postId": "1451774607145919",
    "commentId": "1451774607145919_1209785412066493"
+  },
+  {
+   "key": "2026-10-31|where:47552|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:47552",
+   "title": "Non Non Biyori",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "47552",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793486215018,
+   "status": "claimed"
   }
  ],
  "health": {
