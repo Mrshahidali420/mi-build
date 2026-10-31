@@ -27437,6 +27437,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119937133500964",
    "commentId": "122119937133500964_1533190621953786"
+  },
+  {
+   "key": "2026-10-31|next:41767|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:41767",
+   "title": "Say \"I Love You\".",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "41767",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793489834850,
+   "status": "claimed"
   }
  ],
  "health": {
