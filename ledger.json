@@ -22692,6 +22692,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119571055500964",
    "commentId": "122119571055500964_1429585448810054"
+  },
+  {
+   "key": "2026-10-30|next:93433|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:93433",
+   "title": "Perfect World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "93433",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793414092593,
+   "status": "claimed"
   }
  ],
  "health": {
