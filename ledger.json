@@ -26532,6 +26532,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119881891500964",
    "commentId": "122119881891500964_1677814763963194"
+  },
+  {
+   "key": "2026-10-31|character:char:251540|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:251540",
+   "title": "Return to Player",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:251540",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793475342590,
+   "status": "claimed"
   }
  ],
  "health": {
