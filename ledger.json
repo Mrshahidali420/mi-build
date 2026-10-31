@@ -23037,39 +23037,47 @@
   }
  },
  "birthdays": {
-  "day": "2026-10-30",
-  "at": 1793334928236,
+  "day": "2026-10-31",
+  "at": 1793419214112,
   "list": [
    {
-    "id": 89517,
-    "name": "Lev Haiba",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89517-qVTrohFmBcSM.png",
-    "favourites": 851,
-    "mediaId": 65243,
+    "id": 71,
+    "name": "L Lawliet",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71-1W4panC53vfs.png",
+    "favourites": 26958,
+    "mediaId": 30021,
     "voice": null
    },
    {
-    "id": 379,
-    "name": "Alicia Florence",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b379-R8Dj8uP0fB7B.png",
-    "favourites": 506,
-    "mediaId": 30081,
+    "id": 136071,
+    "name": "Tengen Uzui",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136071-99Kexnnn2PiV.png",
+    "favourites": 7962,
+    "mediaId": 87216,
     "voice": null
    },
    {
-    "id": 36977,
-    "name": "Tatsuya Himuro",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b36977-PRn1ecWFt2gk.png",
-    "favourites": 158,
-    "mediaId": 41652,
+    "id": 175659,
+    "name": "Anko Uguisu",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b175659-1W8HJJzAZ1dI.png",
+    "favourites": 2409,
+    "mediaId": 111233,
     "voice": null
    },
    {
-    "id": 169406,
-    "name": "Zantetsu Tsurugi",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b169406-wTagOOkC7fi5.jpg",
-    "favourites": 142,
-    "mediaId": 106130,
+    "id": 88114,
+    "name": "Yuu Kashima",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/88114.jpg",
+    "favourites": 974,
+    "mediaId": 59211,
+    "voice": null
+   },
+   {
+    "id": 88990,
+    "name": "Ferid Bathory",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b88990-GQCTvKZPTg3h.png",
+    "favourites": 684,
+    "mediaId": 73661,
     "voice": null
    }
   ]
