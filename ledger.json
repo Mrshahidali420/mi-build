@@ -22506,6 +22506,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119556481500964",
    "commentId": "122119556481500964_1565610398617375"
+  },
+  {
+   "key": "2026-10-30|next:164512|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:164512",
+   "title": "My Girlfriend Gives Me Goosebumps!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "164512",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793411074770,
+   "status": "claimed"
   }
  ],
  "health": {
