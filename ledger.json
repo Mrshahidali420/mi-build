@@ -23931,6 +23931,22 @@
    "status": "posted",
    "postId": "1651703706509220",
    "commentId": "1651703706509220_2306192473499821"
+  },
+  {
+   "key": "2026-10-31|character:char:170576|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:170576",
+   "title": "Even If You Slit My Mouth",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:170576",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793433704907,
+   "status": "claimed"
   }
  ],
  "health": {
