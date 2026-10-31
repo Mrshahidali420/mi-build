@@ -25549,6 +25549,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119807977500964",
    "commentId": "122119807977500964_1539919241207668"
+  },
+  {
+   "key": "2026-10-31|where:103294|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:103294",
+   "title": "Banished from the Hero's Party, I Decided to Live a Quiet Life in the Countryside",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103294",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793459670093,
+   "status": "claimed"
   }
  ],
  "health": {
