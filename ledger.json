@@ -26780,6 +26780,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119899681500964",
    "commentId": "122119899681500964_2660269107741150"
+  },
+  {
+   "key": "2026-10-31|where:142936|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:142936",
+   "title": "The Legendary Return",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "142936",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793479264902,
+   "status": "claimed"
   }
  ],
  "health": {
