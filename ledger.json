@@ -24120,6 +24120,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119677465500964",
    "commentId": "122119677465500964_2209396962956937"
+  },
+  {
+   "key": "2026-10-31|character:char:140|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:140",
+   "title": "D.Gray-man",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:140",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793436719715,
+   "status": "claimed"
   }
  ],
  "health": {
