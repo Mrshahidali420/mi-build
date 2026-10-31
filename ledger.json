@@ -25774,6 +25774,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119824213500964",
    "commentId": "122119824213500964_986084471210762"
+  },
+  {
+   "key": "2026-10-31|next:98347|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:98347",
+   "title": "The Ideal Sponger Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98347",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793463286749,
+   "status": "claimed"
   }
  ],
  "health": {
