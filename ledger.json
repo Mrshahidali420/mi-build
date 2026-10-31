@@ -23320,6 +23320,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119618041500964",
    "commentId": "122119618041500964_1996034825115953"
+  },
+  {
+   "key": "2026-10-31|next:34571|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:34571",
+   "title": "Snow White with the Red Hair",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "34571",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793424045598,
+   "status": "claimed"
   }
  ],
  "health": {
