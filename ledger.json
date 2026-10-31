@@ -23834,6 +23834,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119656519500964",
    "commentId": "122119656519500964_2310514186348533"
+  },
+  {
+   "key": "2026-10-31|character:char:18343|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:18343",
+   "title": "Kamisama Kiss",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:18343",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793432188634,
+   "status": "claimed"
   }
  ],
  "health": {
