@@ -23379,6 +23379,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119623477500964",
    "commentId": "122119623477500964_1807993143816645"
+  },
+  {
+   "key": "2026-10-31|character:char:236|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:236",
+   "title": "xxxHOLiC",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:236",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793424947975,
+   "status": "claimed"
   }
  ],
  "health": {
