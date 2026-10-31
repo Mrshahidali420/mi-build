@@ -25886,6 +25886,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119832811500964",
    "commentId": "122119832811500964_1673837631125402"
+  },
+  {
+   "key": "2026-10-31|next:80587|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:80587",
+   "title": "Anonymous Noise",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "80587",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793465091984,
+   "status": "claimed"
   }
  ],
  "health": {
