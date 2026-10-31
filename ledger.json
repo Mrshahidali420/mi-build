@@ -26591,6 +26591,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119885755500964",
    "commentId": "122119885755500964_1138558352195868"
+  },
+  {
+   "key": "2026-10-31|where:86044|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:86044",
+   "title": "Sweetness and Lightning",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86044",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793476246038,
+   "status": "claimed"
   }
  ],
  "health": {
