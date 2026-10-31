@@ -27514,6 +27514,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119941711500964",
    "commentId": "122119941711500964_1390681426178996"
+  },
+  {
+   "key": "2026-10-31|next:198931|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:198931",
+   "title": "The Legend of Enxue",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "198931",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793491039230,
+   "status": "claimed"
   }
  ],
  "health": {
