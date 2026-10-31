@@ -26438,6 +26438,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119874697500964",
    "commentId": "122119874697500964_1416814663849006"
+  },
+  {
+   "key": "2026-10-31|next:99640|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:99640",
+   "title": "You Got Me, Sempai!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "99640",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793473837109,
+   "status": "claimed"
   }
  ],
  "health": {
