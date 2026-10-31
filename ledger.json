@@ -23740,6 +23740,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119648659500964",
    "commentId": "122119648659500964_1859698892141151"
+  },
+  {
+   "key": "2026-10-31|next:104699|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:104699",
+   "title": "My Androgynous Boyfriend",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "104699",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793430681686,
+   "status": "claimed"
   }
  ],
  "health": {
