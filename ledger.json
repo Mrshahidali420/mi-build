@@ -26550,6 +26550,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119883175500964",
    "commentId": "122119883175500964_882617551544425"
+  },
+  {
+   "key": "2026-10-31|next:45205|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:45205",
+   "title": "Blast of Tempest",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "45205",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793475643688,
+   "status": "claimed"
   }
  ],
  "health": {
