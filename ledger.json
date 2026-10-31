@@ -24392,6 +24392,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119699197500964",
    "commentId": "122119699197500964_2373689806708711"
+  },
+  {
+   "key": "2026-10-31|where:30770|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:30770",
+   "title": "Battle Angel Alita: Last Order",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30770",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793440953784,
+   "status": "claimed"
   }
  ],
  "health": {
