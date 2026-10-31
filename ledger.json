@@ -24983,6 +24983,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119765497500964",
    "commentId": "122119765497500964_1850996036316879"
+  },
+  {
+   "key": "2026-10-31|next:168984|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:168984",
+   "title": "Phantom Busters",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "168984",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793450606015,
+   "status": "claimed"
   }
  ],
  "health": {
