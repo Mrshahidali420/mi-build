@@ -23967,6 +23967,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119667547500964",
    "commentId": "122119667547500964_2175562200051283"
+  },
+  {
+   "key": "2026-10-31|where:108258|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:108258",
+   "title": "I'm the Villainess, So I'm Taming the Final Boss",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "108258",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793434307909,
+   "status": "claimed"
   }
  ],
  "health": {
