@@ -24487,6 +24487,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119705491500964",
    "commentId": "122119705491500964_1104001968902159"
+  },
+  {
+   "key": "2026-10-31|character:char:205878|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:205878",
+   "title": "In the Clear Moonlit Dusk",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:205878",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793442459873,
+   "status": "claimed"
   }
  ],
  "health": {
