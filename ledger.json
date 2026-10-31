@@ -22434,6 +22434,22 @@
     "id": "18377303200213822",
     "at": 1793409569714
    }
+  },
+  {
+   "key": "2026-10-30|character:char:344205|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:344205",
+   "title": "Blink Master of the Magic Academy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:344205",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793409870739,
+   "status": "claimed"
   }
  ],
  "health": {
