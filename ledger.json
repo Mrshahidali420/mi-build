@@ -27455,6 +27455,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119938267500964",
    "commentId": "122119938267500964_866565343184949"
+  },
+  {
+   "key": "2026-10-31|where:31045|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:31045",
+   "title": "Knights of the Zodiac",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "31045",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793490135843,
+   "status": "claimed"
   }
  ],
  "health": {
