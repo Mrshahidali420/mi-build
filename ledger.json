@@ -24374,6 +24374,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119697757500964",
    "commentId": "122119697757500964_40835209269411389"
+  },
+  {
+   "key": "2026-10-31|next:66933|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:66933",
+   "title": "My Love Story!!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "66933",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793440644144,
+   "status": "claimed"
   }
  ],
  "health": {
