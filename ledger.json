@@ -22452,6 +22452,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119553271500964",
    "commentId": "122119553271500964_3052964551703748"
+  },
+  {
+   "key": "2026-10-30|next:98204|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "next:98204",
+   "title": "Haru’s Curse",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98204",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793410171741,
+   "status": "claimed"
   }
  ],
  "health": {
