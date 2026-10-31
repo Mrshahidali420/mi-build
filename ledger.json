@@ -25531,6 +25531,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119807209500964",
    "commentId": "122119807209500964_1088880677112726"
+  },
+  {
+   "key": "2026-10-31|next:98686|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:98686",
+   "title": "Aharen-san is Indecipherable",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98686",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793459369381,
+   "status": "claimed"
   }
  ],
  "health": {
