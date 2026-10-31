@@ -26136,6 +26136,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119849149500964",
    "commentId": "122119849149500964_1525293309361218"
+  },
+  {
+   "key": "2026-10-31|where:130222|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:130222",
+   "title": "Mookhyang: The Origin",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "130222",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793469008115,
+   "status": "claimed"
   }
  ],
  "health": {
