@@ -23072,6 +23072,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119597311500964",
    "commentId": "122119597311500964_1317494440502235"
+  },
+  {
+   "key": "2026-10-31|where:85814|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:85814",
+   "title": "Re:ZERO -Starting Life in Another World- Chapter 2: A Week at the Mansion",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "85814",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793420126531,
+   "status": "claimed"
   }
  ],
  "health": {
