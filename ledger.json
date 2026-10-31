@@ -25098,6 +25098,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119773687500964",
    "commentId": "122119773687500964_1427796385578354"
+  },
+  {
+   "key": "2026-10-31|where:98014|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:98014",
+   "title": "Reincarnated as a Sword",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "98014",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793452421372,
+   "status": "claimed"
   }
  ],
  "health": {
