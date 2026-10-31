@@ -24947,6 +24947,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119762791500964",
    "commentId": "122119762791500964_1065746696519634"
+  },
+  {
+   "key": "2026-10-31|where:126148|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:126148",
+   "title": "I Think I'll Cheat to Become a Spellsword in Another World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "126148",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793450003491,
+   "status": "claimed"
   }
  ],
  "health": {
