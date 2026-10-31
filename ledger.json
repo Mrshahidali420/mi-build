@@ -23266,6 +23266,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119614411500964",
    "commentId": "122119614411500964_28584019614613344"
+  },
+  {
+   "key": "2026-10-31|where:139031|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:139031",
+   "title": "I Left my A-Rank Party to Help My Former Students Reach the Dungeon Depths!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "139031",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793423143270,
+   "status": "claimed"
   }
  ],
  "health": {
