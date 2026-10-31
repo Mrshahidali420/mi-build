@@ -24084,6 +24084,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119674141500964",
    "commentId": "122119674141500964_1389418206311228"
+  },
+  {
+   "key": "2026-10-31|next:30014|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:30014",
+   "title": "Rave Master",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30014",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793436116702,
+   "status": "claimed"
   }
  ],
  "health": {
