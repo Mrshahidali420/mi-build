@@ -25589,6 +25589,22 @@
     "id": "18342807664287255",
     "at": 1793459970828
    }
+  },
+  {
+   "key": "2026-10-31|next:114531|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:114531",
+   "title": "Play it Cool, Guys",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "114531",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793460271673,
+   "status": "claimed"
   }
  ],
  "health": {
