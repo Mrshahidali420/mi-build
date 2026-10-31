@@ -26244,6 +26244,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119856457500964",
    "commentId": "122119856457500964_2433557017415777"
+  },
+  {
+   "key": "2026-10-31|where:125025|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:125025",
+   "title": "Josee, the Tiger and the Fish",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "125025",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793470820807,
+   "status": "claimed"
   }
  ],
  "health": {
