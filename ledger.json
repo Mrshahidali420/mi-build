@@ -24785,6 +24785,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119746297500964",
    "commentId": "122119746297500964_2827107061002524"
+  },
+  {
+   "key": "2026-10-31|where:43897|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:43897",
+   "title": "Giant Killing",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "43897",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793447285430,
+   "status": "claimed"
   }
  ],
  "health": {
