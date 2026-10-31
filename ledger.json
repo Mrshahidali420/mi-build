@@ -25229,6 +25229,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119785009500964",
    "commentId": "122119785009500964_1769226864155994"
+  },
+  {
+   "key": "2026-10-31|where:118267|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:118267",
+   "title": "God of Blackfield",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "118267",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793454531389,
+   "status": "claimed"
   }
  ],
  "health": {
