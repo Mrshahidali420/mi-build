@@ -25170,6 +25170,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119778499500964",
    "commentId": "122119778499500964_28992751253691833"
+  },
+  {
+   "key": "2026-10-31|character:char:207|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:207",
+   "title": "Fruits Basket",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:207",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793453627176,
+   "status": "claimed"
   }
  ],
  "health": {
