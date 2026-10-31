@@ -24893,6 +24893,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119758525500964",
    "commentId": "122119758525500964_1900242794484262"
+  },
+  {
+   "key": "2026-10-31|where:86788|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:86788",
+   "title": "Somali and the Forest Spirit",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86788",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793449100141,
+   "status": "claimed"
   }
  ],
  "health": {
