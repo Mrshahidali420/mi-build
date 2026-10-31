@@ -24929,6 +24929,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119761387500964",
    "commentId": "122119761387500964_2263558597551168"
+  },
+  {
+   "key": "2026-10-31|next:114972|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:114972",
+   "title": "Boys Run The Riot",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "114972",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793449702510,
+   "status": "claimed"
   }
  ],
  "health": {
