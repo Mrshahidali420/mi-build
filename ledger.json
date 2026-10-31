@@ -22728,6 +22728,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119573581500964",
    "commentId": "122119573581500964_984886867391320"
+  },
+  {
+   "key": "2026-10-30|character:char:131618|manhwaindex",
+   "day": "2026-10-30",
+   "slug": "character:char:131618",
+   "title": "My Senpai is Annoying",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:131618",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793414694716,
+   "status": "claimed"
   }
  ],
  "health": {
