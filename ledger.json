@@ -24803,6 +24803,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119748907500964",
    "commentId": "122119748907500964_1105573705788544"
+  },
+  {
+   "key": "2026-10-31|character:char:180786|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:180786",
+   "title": "Weak Hero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:180786",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793447586578,
+   "status": "claimed"
   }
  ],
  "health": {
