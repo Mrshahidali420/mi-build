@@ -25567,6 +25567,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119809165500964",
    "commentId": "122119809165500964_1683036593540426"
+  },
+  {
+   "key": "2026-10-31|character:char:127319|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:127319",
+   "title": "Shadows House",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:127319",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793459970828,
+   "status": "claimed"
   }
  ],
  "health": {
