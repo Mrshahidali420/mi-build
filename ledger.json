@@ -25319,6 +25319,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119792521500964",
    "commentId": "122119792521500964_2148727679368815"
+  },
+  {
+   "key": "2026-10-31|next:158221|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:158221",
+   "title": "Doctor Player",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "158221",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793456047829,
+   "status": "claimed"
   }
  ],
  "health": {
