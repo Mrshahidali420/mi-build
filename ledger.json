@@ -26663,6 +26663,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119892121500964",
    "commentId": "122119892121500964_2225754964821710"
+  },
+  {
+   "key": "2026-10-31|character:char:161604|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:161604",
+   "title": "Berserk of Gluttony",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:161604",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793477457735,
+   "status": "claimed"
   }
  ],
  "health": {
