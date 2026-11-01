@@ -28658,6 +28658,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120025429500964",
    "commentId": "122120025429500964_1134022632761256"
+  },
+  {
+   "key": "2026-11-01|next:85612|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:85612",
+   "title": "Hinomaru Sumo",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85612",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793509142696,
+   "status": "claimed"
   }
  ],
  "health": {
