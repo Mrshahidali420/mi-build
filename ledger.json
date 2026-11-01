@@ -30070,9 +30070,9 @@
  "health": {
   "signals": [],
   "peak": {
-   "pct": 9,
-   "source": "x-app-usage",
-   "at": 1793444591965
+   "pct": 6,
+   "source": "x-business-use-case-usage",
+   "at": 1793531186823
   },
   "cut": null,
   "blockedUntil": 0,
