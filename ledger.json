@@ -29168,6 +29168,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120068899500964",
    "commentId": "122120068899500964_1140080871867228"
+  },
+  {
+   "key": "2026-11-01|where:73967|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:73967",
+   "title": "One Week Friends",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "73967",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793517283557,
+   "status": "claimed"
   }
  ],
  "health": {
