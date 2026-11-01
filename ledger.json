@@ -28415,6 +28415,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120008017500964",
    "commentId": "122120008017500964_1513788400560888"
+  },
+  {
+   "key": "2026-10-31|next:53627|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:53627",
+   "title": "Yowamushi Pedal",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "53627",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793505222083,
+   "status": "claimed"
   }
  ],
  "health": {
