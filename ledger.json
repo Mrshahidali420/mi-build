@@ -29993,6 +29993,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120130405500964",
    "commentId": "122120130405500964_1134253152917593"
+  },
+  {
+   "key": "2026-11-01|where:122872|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:122872",
+   "title": "The Rebirth of a Tyrannical Empress",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "122872",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793530265950,
+   "status": "claimed"
   }
  ],
  "health": {
