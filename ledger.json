@@ -28314,6 +28314,29 @@
     "id": "17965387314207753",
     "at": 1793503417068
    }
+  },
+  {
+   "share": true,
+   "key": "2026-10-31|share:1329988470202923_122115803115503689|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "share:1329988470202923_122115803115503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122115803115503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122115803115503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Bleach",
+   "sourceFormat": "type:scenes",
+   "link": "https://www.facebook.com/1329988470202923/posts/122115803115503689",
+   "message": "Worth a look from our sister Page, WhereAnime:",
+   "at": 1793503717950,
+   "status": "claimed"
   }
  ],
  "health": {
