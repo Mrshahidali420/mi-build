@@ -28776,6 +28776,22 @@
     "at": 1793510652219,
     "slides": 5
    }
+  },
+  {
+   "key": "2026-11-01|where:31258|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:31258",
+   "title": "Higurashi WHEN THEY CRY: Cotton Drifting Arc",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "31258",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793510952950,
+   "status": "claimed"
   }
  ],
  "health": {
