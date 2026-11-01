@@ -30970,6 +30970,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120215635500964",
    "commentId": "122120215635500964_1413757810921595"
+  },
+  {
+   "key": "2026-11-01|character:char:297788|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:297788",
+   "title": "Marriage Toxin",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:297788",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793545948704,
+   "status": "claimed"
   }
  ],
  "health": {
