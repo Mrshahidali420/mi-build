@@ -28925,6 +28925,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120044221500964",
    "commentId": "122120044221500964_29209747271994370"
+  },
+  {
+   "key": "2026-11-01|where:87510|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:87510",
+   "title": "Sleepy Princess in the Demon Castle",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "87510",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793513365439,
+   "status": "claimed"
   }
  ],
  "health": {
