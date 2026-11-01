@@ -28604,6 +28604,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120021337500964",
    "commentId": "122120021337500964_1484689403510353"
+  },
+  {
+   "key": "2026-11-01|where:85319|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:85319",
+   "title": "Fairy Tail Zerø",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "85319",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793508239726,
+   "status": "claimed"
   }
  ],
  "health": {
