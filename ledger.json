@@ -28961,6 +28961,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120047365500964",
    "commentId": "122120047365500964_1762513748382914"
+  },
+  {
+   "key": "2026-11-01|next:117675|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:117675",
+   "title": "The Coppersmith's Bride",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "117675",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793513966923,
+   "status": "claimed"
   }
  ],
  "health": {
