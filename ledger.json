@@ -28177,6 +28177,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119988805500964",
    "commentId": "122119988805500964_1754387829198912"
+  },
+  {
+   "key": "2026-10-31|where:87375|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:87375",
+   "title": "If It's for My Daughter, I'd Even Defeat a Demon Lord",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "87375",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793501604410,
+   "status": "claimed"
   }
  ],
  "health": {
