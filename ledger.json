@@ -29109,6 +29109,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120063889500964",
    "commentId": "122120063889500964_2191610454721337"
+  },
+  {
+   "key": "2026-11-01|character:char:234864|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:234864",
+   "title": "Descended from Divinity",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:234864",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793516373290,
+   "status": "claimed"
   }
  ],
  "health": {
