@@ -28141,6 +28141,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119986531500964",
    "commentId": "122119986531500964_1147326717796247"
+  },
+  {
+   "key": "2026-10-31|character:char:82209|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "character:char:82209",
+   "title": "the gods lie.",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:82209",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793501001996,
+   "status": "claimed"
   }
  ],
  "health": {
