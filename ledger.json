@@ -28753,6 +28753,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120031807500964",
    "commentId": "122120031807500964_2103985117145775"
+  },
+  {
+   "key": "2026-11-01|next:85632|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:85632",
+   "title": "That Wolf-Boy Is Mine!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85632",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793510652219,
+   "status": "claimed"
   }
  ],
  "health": {
