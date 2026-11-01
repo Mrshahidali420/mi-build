@@ -30644,6 +30644,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120194893500964",
    "commentId": "122120194893500964_1822685865437644"
+  },
+  {
+   "key": "2026-11-01|next:164708|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:164708",
+   "title": "Blooming Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "164708",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793540829194,
+   "status": "claimed"
   }
  ],
  "health": {
