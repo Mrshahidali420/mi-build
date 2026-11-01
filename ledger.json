@@ -28586,6 +28586,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120019717500964",
    "commentId": "122120019717500964_2637304763392272"
+  },
+  {
+   "key": "2026-11-01|next:31658|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:31658",
+   "title": "Dororo",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "31658",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793507938879,
+   "status": "claimed"
   }
  ],
  "health": {
