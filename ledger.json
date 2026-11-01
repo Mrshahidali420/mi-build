@@ -30029,6 +30029,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120135415500964",
    "commentId": "122120135415500964_1732296685229155"
+  },
+  {
+   "key": "2026-11-01|next:30591|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:30591",
+   "title": "High School Debut",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30591",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793530868873,
+   "status": "claimed"
   }
  ],
  "health": {
