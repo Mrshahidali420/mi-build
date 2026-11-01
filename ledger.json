@@ -28433,6 +28433,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120009097500964",
    "commentId": "122120009097500964_1174620131764003"
+  },
+  {
+   "key": "2026-10-31|where:147664|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:147664",
+   "title": "Too Many Losing Heroines!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "147664",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793505523000,
+   "status": "claimed"
   }
  ],
  "health": {
