@@ -27757,6 +27757,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119953435500964",
    "commentId": "122119953435500964_2294062348018369"
+  },
+  {
+   "key": "2026-10-31|next:99602|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:99602",
+   "title": "The Magic in this Other World is Too Far Behind!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "99602",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793494961045,
+   "status": "claimed"
   }
  ],
  "health": {
