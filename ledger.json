@@ -27667,6 +27667,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119948911500964",
    "commentId": "122119948911500964_1547724687379013"
+  },
+  {
+   "key": "2026-10-31|where:105094|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:105094",
+   "title": "Happy Kanako's Killer Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "105094",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793493455545,
+   "status": "claimed"
   }
  ],
  "health": {
