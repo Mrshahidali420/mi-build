@@ -28523,6 +28523,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120014611500964",
    "commentId": "122120014611500964_1593654478742908"
+  },
+  {
+   "key": "2026-11-01|character:char:311528|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:311528",
+   "title": "The Martial God Who Regressed Back to Level 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:311528",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793507036186,
+   "status": "claimed"
   }
  ],
  "health": {
