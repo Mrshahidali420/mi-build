@@ -29785,6 +29785,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120113917500964",
    "commentId": "122120113917500964_1143431158652886"
+  },
+  {
+   "key": "2026-11-01|next:104778|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:104778",
+   "title": "My Clueless First Friend",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "104778",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793526940982,
+   "status": "claimed"
   }
  ],
  "health": {
