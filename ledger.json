@@ -29358,6 +29358,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120082951500964",
    "commentId": "122120082951500964_993697746492751"
+  },
+  {
+   "key": "2026-11-01|where:156481|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:156481",
+   "title": "Otaku Vampire’s Love Bite",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "156481",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793520295703,
+   "status": "claimed"
   }
  ],
  "health": {
