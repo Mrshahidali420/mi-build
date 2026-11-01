@@ -27703,6 +27703,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119950495500964",
    "commentId": "122119950495500964_1163121739376225"
+  },
+  {
+   "key": "2026-10-31|next:171719|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:171719",
+   "title": "I Am Not a Regressor",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "171719",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793494057764,
+   "status": "claimed"
   }
  ],
  "health": {
