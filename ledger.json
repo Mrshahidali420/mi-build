@@ -30797,6 +30797,29 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793542934625
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-01|share:1329988470202923_122116000599503689|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "share:1329988470202923_122116000599503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122116000599503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122116000599503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Kakushigoto",
+   "sourceFormat": "type:where",
+   "link": "https://www.facebook.com/1329988470202923/posts/122116000599503689",
+   "message": "In case you missed it, from our sister Page, WhereAnime:",
+   "at": 1793543235378,
+   "status": "claimed"
   }
  ],
  "health": {
