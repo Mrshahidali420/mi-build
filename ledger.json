@@ -30495,6 +30495,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120186313500964",
    "commentId": "122120186313500964_3224580687738533"
+  },
+  {
+   "key": "2026-11-01|character:char:130325|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:130325",
+   "title": "Spirit Circle",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:130325",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793538414472,
+   "status": "claimed"
   }
  ],
  "health": {
