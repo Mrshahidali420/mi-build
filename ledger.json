@@ -31231,6 +31231,24 @@
    "status": "posted",
    "postId": "1318170941390322_122120239581500964",
    "commentId": "122120239581500964_28931983103131208"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-01|reel-today:today:2026-11-01|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "reel-today:today:2026-11-01",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-today",
+   "type": "reel-today",
+   "item": "today:2026-11-01",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793553292433,
+   "track": "chill-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
