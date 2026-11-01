@@ -29227,6 +29227,22 @@
     "at": 1793517885858,
     "slides": 5
    }
+  },
+  {
+   "key": "2026-11-01|where:96626|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:96626",
+   "title": "Kakegurui Twin",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "96626",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793518187114,
+   "status": "claimed"
   }
  ],
  "health": {
