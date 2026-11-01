@@ -29073,6 +29073,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120061201500964",
    "commentId": "122120061201500964_1657331745742639"
+  },
+  {
+   "key": "2026-11-01|next:168499|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:168499",
+   "title": "Life of a Quack Healer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "168499",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793515771787,
+   "status": "claimed"
   }
  ],
  "health": {
