@@ -27586,6 +27586,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119945347500964",
    "commentId": "122119945347500964_1120092040988190"
+  },
+  {
+   "key": "2026-10-31|where:52986|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:52986",
+   "title": "Ran and the Gray World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "52986",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793492251341,
+   "status": "claimed"
   }
  ],
  "health": {
