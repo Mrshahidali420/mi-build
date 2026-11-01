@@ -31255,6 +31255,24 @@
     "id": "18019327958957920",
     "at": 1793553292433
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-01|reel-next:163495|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "reel-next:163495",
+   "title": "Kill Blue",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "163495",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793562268042,
+   "track": "meadow-thoughts.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
