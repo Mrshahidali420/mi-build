@@ -28042,6 +28042,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119980639500964",
    "commentId": "122119980639500964_2135439607343457"
+  },
+  {
+   "key": "2026-10-31|where:107275|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:107275",
+   "title": "Mr. Villain's Day Off",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "107275",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793499495835,
+   "status": "claimed"
   }
  ],
  "health": {
