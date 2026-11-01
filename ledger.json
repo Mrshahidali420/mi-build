@@ -30047,6 +30047,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120136549500964",
    "commentId": "122120136549500964_1829210814898391"
+  },
+  {
+   "key": "2026-11-01|where:118985|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:118985",
+   "title": "The Weakest Tamer Began a Journey to Pick Up Trash",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "118985",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793531170360,
+   "status": "claimed"
   }
  ],
  "health": {
