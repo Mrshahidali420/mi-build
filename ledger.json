@@ -30346,6 +30346,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120173437500964",
    "commentId": "122120173437500964_1506981204594366"
+  },
+  {
+   "key": "2026-11-01|where:176790|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:176790",
+   "title": "Reincarnated Murim Lord",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "176790",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793535999001,
+   "status": "claimed"
   }
  ],
  "health": {
