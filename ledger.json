@@ -30775,6 +30775,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120203599500964",
    "commentId": "122120203599500964_1493221535985599"
+  },
+  {
+   "key": "2026-11-01|next:185129|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:185129",
+   "title": "Drama Queen",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "185129",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793542934625,
+   "status": "claimed"
   }
  ],
  "health": {
