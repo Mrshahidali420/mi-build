@@ -30839,6 +30839,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120206731500964",
    "commentId": "122120206731500964_1805981251127172"
+  },
+  {
+   "key": "2026-11-01|character:char:126087|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:126087",
+   "title": "My Hero Academia: Vigilantes",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:126087",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793543836924,
+   "status": "claimed"
   }
  ],
  "health": {
