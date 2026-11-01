@@ -28338,6 +28338,22 @@
    "at": 1793503717950,
    "status": "posted",
    "postId": "1318170941390322_122119999875500964"
+  },
+  {
+   "key": "2026-10-31|next:203593|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:203593",
+   "title": "Streaming My Second Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "203593",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793504018748,
+   "status": "claimed"
   }
  ],
  "health": {
