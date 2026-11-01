@@ -29001,6 +29001,22 @@
     "id": "18120041479770374",
     "at": 1793514267699
    }
+  },
+  {
+   "key": "2026-11-01|character:char:18323|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:18323",
+   "title": "Snow White with the Red Hair",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:18323",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793514568477,
+   "status": "claimed"
   }
  ],
  "health": {
