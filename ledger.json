@@ -29875,6 +29875,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120121897500964",
    "commentId": "122120121897500964_1106800988932792"
+  },
+  {
+   "key": "2026-11-01|character:char:272852|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:272852",
+   "title": "My S-Class Hunters",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:272852",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793528457044,
+   "status": "claimed"
   }
  ],
  "health": {
