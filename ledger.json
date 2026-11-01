@@ -30898,6 +30898,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120210811500964",
    "commentId": "122120210811500964_2287577615371851"
+  },
+  {
+   "key": "2026-11-01|where:49087|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:49087",
+   "title": "Haganai: I Don't Have Many Friends",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "49087",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793544745437,
+   "status": "claimed"
   }
  ],
  "health": {
