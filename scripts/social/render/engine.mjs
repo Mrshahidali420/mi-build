@@ -125,19 +125,23 @@ export async function loadArt(url, { fetch = globalThis.fetch, sharp, size = ART
 }
 
 /**
- * The art a post names ({ hero, thumbs, banner }) as loaded pictures in the
- * same shape. The banner is an extra: wide art a template may use when it
- * loads and is not a blank placeholder, and do without otherwise.
+ * The art a post names ({ hero, thumbs, banner, frames }) as loaded pictures
+ * in the same shape. The banner is an extra: wide art a template may use
+ * when it loads and is not a blank placeholder, and do without otherwise.
+ * Frames are wide pictures shown from edge to edge, loaded large.
  */
 export async function loadPostArt(art = {}, deps) {
-  const [hero, thumbs, wide] = await Promise.all([
+  const [hero, thumbs, wide, frames] = await Promise.all([
     // A type that shows the picture raw asks for it larger (art.heroSize, its longest side).
     art.hero ? loadArt(art.hero, { ...deps, size: art.heroSize || ART_SIZE.hero }) : null,
     Promise.all((art.thumbs || []).map((url) => loadArt(url, { ...deps, size: ART_SIZE.thumb }))),
     art.banner ? loadArt(art.banner, { ...deps, size: ART_SIZE.banner }) : null,
+    Promise.all((art.frames || []).map((url) => loadArt(url, { ...deps, size: ART_SIZE.banner }))),
   ])
   if (art.hero && !hero) throw new Error('the main picture could not be loaded')
-  return { hero, thumbs, banner: wide && !wide.blank ? wide : null }
+  // Frames from edge to edge (episode stills) are the picture itself: every one must load.
+  if (frames.some((frame) => !frame)) throw new Error('a frame could not be loaded')
+  return { hero, thumbs, banner: wide && !wide.blank ? wide : null, frames }
 }
 
 let ready = null

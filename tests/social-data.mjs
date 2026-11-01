@@ -82,6 +82,21 @@ export function sampleAiringData(now = NOW, schedule = sampleSchedule(now)) {
   return buildData([...sampleItems(), ...airingItems()], now, null, schedule)
 }
 
+/** The day's IMDb snapshot as ratings/load.mjs hands it over: a new high score, one up and one down since our post, a low one. */
+export const sampleRatings = (now = NOW) => ({
+  at: now,
+  rows: [
+    { id: 'tt0200007', titleId: 200, ep: 7, aired: now - 2 * HOUR, score: 9.1, votes: 2400, base: null },
+    { id: 'tt0200006', titleId: 200, ep: 6, aired: now - 6 * 24 * HOUR, score: 9.4, votes: 3100, base: 9.1 },
+    { id: 'tt0201012', titleId: 201, ep: 12, aired: now - 2 * 24 * HOUR, score: 8.7, votes: 1500, base: null },
+    { id: 'tt0203004', titleId: 203, ep: 4, aired: now - 3 * 24 * HOUR, score: 8.2, votes: 1200, base: 8.6 },
+    { id: 'tt0202003', titleId: 202, ep: 3, aired: now - 4 * 24 * HOUR, score: 7.9, votes: 400, base: null },
+  ],
+})
+
+/** The airing data with the day's IMDb snapshot, as the rating types read it. */
+export const sampleRatingData = (now = NOW) => ({ ...sampleAiringData(now), ratings: sampleRatings(now) })
+
 /** Pictures as art/load.mjs hands them over: one fan art and one cosplay of the first title. */
 export function sampleArt(title) {
   const picture = (n, over = {}) => ({ source: 'danbooru', id: `danbooru:${n}`, hash: `h${n}`, image: `https://cdn.donmai.us/original/${n}.jpg`, rating: 'g', ecchi: false, tags: ['1girl'], characters: ['mira_vale'], series: [], artist: 'Artist One', credit: { name: 'Artist One', url: `https://x.com/a/${n}` }, title, character: 'Mira Vale', ...over })

@@ -243,6 +243,21 @@ rotation; the link in the first comment is the comic the anime is made from
 when the index has its page ("Read the manhwa it is based on"), else the
 anime page. Popularity 2000 or more and an official stream.
 
+**Episode ratings on IMDb** (2 Nov 2026, off until named in `FB_POST_TYPES`;
+the same as WhereAnime's): `rating` (an episode with 1,000+ votes and 8.5+,
+once per episode), `rating-move` (a posted episode whose score moved 0.2+
+since our post, once per direction) and `rating-week` (the top four episodes
+of the last seven days, once a week). Only the anime made from a comic, the
+shows the airing news follows; the first comment leads to the comic when the
+index has its page, else to the anime. The scores come from IMDb's free
+daily files (datasets.imdbws.com), read at most once in 20 hours by the post
+run itself (scripts/social/ratings/load.mjs); the shows are matched to IMDb
+through TMDB (`TMDB_API_KEY`, passed to the post step; scripts/social/stills/
+holds the TMDB lookup, no stills are loaded). The run keeps a dated snapshot
+of each followed episode's score and votes in the ledger (`ratings`, branch
+`social-state`) next to the matches (`imdbIds`, `tmdbIds`); that snapshot is
+how a change is seen. The card shows the cover (no episode stills).
+
 | Name | What it is |
 |---|---|
 | `out-now` | "EPISODE N OUT NOW", in the four hours after the air time; its own post even when the title had another post that day |

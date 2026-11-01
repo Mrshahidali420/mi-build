@@ -17,13 +17,16 @@ import newTitle from './new-title.mjs'
 import next from './next.mjs'
 import outNow from './out-now.mjs'
 import ranking from './ranking.mjs'
+import rating from './rating.mjs'
+import ratingMove from './rating-move.mjs'
+import ratingWeek from './rating-week.mjs'
 import reelNext from './reel-next.mjs'
 import reelRanking from './reel-ranking.mjs'
 import reelToday from './reel-today.mjs'
 import today from './today.mjs'
 import where from './where.mjs'
 
-export const TYPES = [outNow, finale, today, newTitle, where, ranking, birthday, character, fact, next, fanart, cosplay]
+export const TYPES = [outNow, finale, today, rating, ratingMove, ratingWeek, newTitle, where, ranking, birthday, character, fact, next, fanart, cosplay]
 
 export const TYPE_KEYS = TYPES.map((type) => type.key)
 

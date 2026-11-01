@@ -192,6 +192,8 @@ jobs:
           FB_AFFILIATE_COMMENT: ${{ vars.FB_AFFILIATE_COMMENT }}
           # The most posts one kind may have in any 24 hours, e.g. "where:30,character:30" (unset = no caps).
           FB_TYPE_CAPS: ${{ vars.FB_TYPE_CAPS }}
+          # The IMDb rating posts match the anime to IMDb through TMDB (scripts/social/ratings/).
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           # Instagram (scripts/social/ig.mjs): the same posts, after Facebook. OFF unless IG_POST_ENABLED is 'true' ('check' posts nothing).
           IG_POST_ENABLED: ${{ vars.IG_POST_ENABLED }}
           # Optional: read from the Page (FB_PAGE_ID) when unset.

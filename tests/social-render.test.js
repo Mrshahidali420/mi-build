@@ -22,8 +22,8 @@ const data = sampleData()
 const typeOf = (key) => TYPES.find((t) => t.key === key)
 const postsOf = (type) => type.find(data, { now: NOW })
 
-test('types: the twelve Manhwa Index types are there, each with its own name and design', () => {
-  assert.deepEqual([...TYPE_KEYS].sort(), ['birthday', 'character', 'cosplay', 'fact', 'fanart', 'finale', 'new-title', 'next', 'out-now', 'ranking', 'today', 'where'])
+test('types: the fifteen Manhwa Index types are there, each with its own name and design', () => {
+  assert.deepEqual([...TYPE_KEYS].sort(), ['birthday', 'character', 'cosplay', 'fact', 'fanart', 'finale', 'new-title', 'next', 'out-now', 'ranking', 'rating', 'rating-move', 'rating-week', 'today', 'where'])
   // Fan art and cosplay share one design (types/art-card.mjs): a picture and its credit.
   assert.equal(new Set(TYPES.map((t) => t.template)).size, TYPES.length - 1)
   for (const type of TYPES) {
@@ -32,8 +32,8 @@ test('types: the twelve Manhwa Index types are there, each with its own name and
   }
 })
 
-// The airing news (out now, final episode, episodes out today) reads the schedule: social-airing.test.js.
-const AIRING = new Set(['out-now', 'finale', 'today'])
+// The airing news (out now, final episode, episodes out today) and the IMDb rating posts read the schedule: social-airing.test.js, social-ratings.test.js.
+const AIRING = new Set(['out-now', 'finale', 'today', 'rating', 'rating-move', 'rating-week'])
 
 test('types: every type finds a post in the sample data, and every wording passes the gate', () => {
   for (const type of TYPES.filter((t) => !AIRING.has(t.key))) {
