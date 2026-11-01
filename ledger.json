@@ -29893,6 +29893,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120123241500964",
    "commentId": "122120123241500964_1463515649195129"
+  },
+  {
+   "key": "2026-11-01|next:49896|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:49896",
+   "title": "Witchcraft Works",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "49896",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793528758440,
+   "status": "claimed"
   }
  ],
  "health": {
