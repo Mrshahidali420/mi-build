@@ -28676,6 +28676,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120026665500964",
    "commentId": "122120026665500964_2546128379217562"
+  },
+  {
+   "key": "2026-11-01|where:99465|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:99465",
+   "title": "In Another World With My Smartphone",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "99465",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793509443554,
+   "status": "claimed"
   }
  ],
  "health": {
