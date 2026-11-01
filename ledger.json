@@ -27532,6 +27532,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119942491500964",
    "commentId": "122119942491500964_994622863688612"
+  },
+  {
+   "key": "2026-10-31|where:103737|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:103737",
+   "title": "My Unique Skill Makes Me OP even at Level 1",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103737",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793491340263,
+   "status": "claimed"
   }
  ],
  "health": {
