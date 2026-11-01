@@ -29662,6 +29662,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120105517500964",
    "commentId": "122120105517500964_1152446310796848"
+  },
+  {
+   "key": "2026-11-01|character:char:167217|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:167217",
+   "title": "A Stepmother’s Märchen",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:167217",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793525132426,
+   "status": "claimed"
   }
  ],
  "health": {
