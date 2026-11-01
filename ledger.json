@@ -29477,6 +29477,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120090193500964",
    "commentId": "122120090193500964_1763822988439727"
+  },
+  {
+   "key": "2026-11-01|character:char:73959|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:73959",
+   "title": "Girls of the Wild's",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:73959",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793522109958,
+   "status": "claimed"
   }
  ],
  "health": {
