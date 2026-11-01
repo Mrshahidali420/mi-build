@@ -29495,6 +29495,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120091387500964",
    "commentId": "122120091387500964_1577355634145881"
+  },
+  {
+   "key": "2026-11-01|next:115263|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:115263",
+   "title": "A Royal Princess with Black Hair",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "115263",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793522411179,
+   "status": "claimed"
   }
  ],
  "health": {
