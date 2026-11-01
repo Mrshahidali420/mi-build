@@ -30821,6 +30821,22 @@
    "at": 1793543235378,
    "status": "posted",
    "postId": "1318170941390322_122120206041500964"
+  },
+  {
+   "key": "2026-11-01|where:116551|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:116551",
+   "title": "Reborn as a Space Mercenary: I Woke Up Piloting the Strongest Starship!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "116551",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793543536137,
+   "status": "claimed"
   }
  ],
  "health": {
