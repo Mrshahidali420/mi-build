@@ -30590,6 +30590,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120191887500964",
    "commentId": "122120191887500964_1615190219744340"
+  },
+  {
+   "key": "2026-11-01|next:85303|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:85303",
+   "title": "QQ Sweeper",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85303",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793539920196,
+   "status": "claimed"
   }
  ],
  "health": {
