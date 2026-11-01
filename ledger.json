@@ -30423,6 +30423,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120180451500964",
    "commentId": "122120180451500964_1465018068870579"
+  },
+  {
+   "key": "2026-11-01|where:118601|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:118601",
+   "title": "It's Mine",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "118601",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793537209821,
+   "status": "claimed"
   }
  ],
  "health": {
