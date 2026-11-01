@@ -30880,6 +30880,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120209593500964",
    "commentId": "122120209593500964_1914258362878657"
+  },
+  {
+   "key": "2026-11-01|next:116976|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:116976",
+   "title": "15 Minutes Before We Really Date",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "116976",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793544444710,
+   "status": "claimed"
   }
  ],
  "health": {
