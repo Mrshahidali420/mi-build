@@ -28505,6 +28505,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120013129500964",
    "commentId": "122120013129500964_2040789476580029"
+  },
+  {
+   "key": "2026-11-01|where:126445|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:126445",
+   "title": "Demon Slayer: Kimetsu no Yaiba - Stories of Water and Flame",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "126445",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793506735379,
+   "status": "claimed"
   }
  ],
  "health": {
