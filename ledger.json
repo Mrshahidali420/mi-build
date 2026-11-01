@@ -27857,6 +27857,22 @@
     "at": 1793496173590,
     "slides": 5
    }
+  },
+  {
+   "key": "2026-10-31|where:107321|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:107321",
+   "title": "Wandance",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "107321",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793496474658,
+   "status": "claimed"
   }
  ],
  "health": {
