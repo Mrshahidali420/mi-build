@@ -29414,6 +29414,22 @@
    "status": "posted",
    "postId": "1505501901629371",
    "commentId": "1505501901629371_1136746469302694"
+  },
+  {
+   "key": "2026-11-01|next:118606|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:118606",
+   "title": "Headhunted to Another World: From Salaryman to Big Four!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "118606",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793521206211,
+   "status": "claimed"
   }
  ],
  "health": {
