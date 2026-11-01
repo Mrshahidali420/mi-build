@@ -29567,6 +29567,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120096751500964",
    "commentId": "122120096751500964_1100162489293983"
+  },
+  {
+   "key": "2026-11-01|where:30084|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:30084",
+   "title": "Fushigi Yûgi",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30084",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793523616102,
+   "status": "claimed"
   }
  ],
  "health": {
