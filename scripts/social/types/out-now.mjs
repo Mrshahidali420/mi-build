@@ -68,8 +68,8 @@ export function airingPost(title, row, { mark }) {
 /** The one fact under the hook: where it streams (never Amazon by name: the caption gate bans the word), else when it airs. */
 function factOf(title, at) {
   const streams = top(title.platforms.filter((name) => !/amazon/i.test(name)), 2)
-  // The time is the TV broadcast in Japan: a stream adds the episode later, and the day differs by country.
-  return streams.length ? `It aired in Japan at ${timeOf(at)} ET. ${streams.join(' and ')} usually ${streams.length > 1 ? 'add' : 'adds'} it within hours (it can differ by country).` : `It airs ${weekdayOf(at)} ${dayMonthOf(at)} at ${timeOf(at)} ET in Japan.`
+  // The time is the first broadcast: a stream adds the episode later, and the time differs by country.
+  return streams.length ? `It airs today at ${timeOf(at)} ET. ${streams.join(' and ')} usually ${streams.length > 1 ? 'add' : 'adds'} it within hours (it can differ by country).` : `It airs ${weekdayOf(at)} ${dayMonthOf(at)} at ${timeOf(at)} ET.`
 }
 
 /** The schedule rows of popular anime with a stream, most popular first, one per episode. */
@@ -89,7 +89,7 @@ function find(data, { now }) {
 const loud = (p) => p.title.toUpperCase()
 
 const captions = [
-  (p) => ({ hook: `🔥 ${loud(p)} EPISODE ${p.episode} AIRED IN JAPAN TODAY!`, facts: [p.fact], cta: ctaFor(p, 0) }),
+  (p) => ({ hook: `🔥 ${loud(p)} EPISODE ${p.episode} AIRS TODAY!`, facts: [p.fact], cta: ctaFor(p, 0) }),
   (p) => ({ hook: `🚨 EPISODE ${p.episode} OF ${loud(p)} HAS AIRED!`, facts: [p.fact], cta: ctaFor(p, 1) }),
   (p) => ({ hook: `📺 ${loud(p)} IS BACK WITH EPISODE ${p.episode}!`, facts: [p.fact], cta: ctaFor(p, 2) }),
 ]
