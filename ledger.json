@@ -30721,6 +30721,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120199699500964",
    "commentId": "122120199699500964_1809193403744855"
+  },
+  {
+   "key": "2026-11-01|next:85419|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:85419",
+   "title": "Ojojojo",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85419",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793542032262,
+   "status": "claimed"
   }
  ],
  "health": {
