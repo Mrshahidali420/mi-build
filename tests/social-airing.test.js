@@ -98,7 +98,7 @@ test('cards: the cover, the headline and the tag; a finale says so; the image po
   const [post] = outNow.find(sampleAiringData(), { now: NOW })
   const tree = outNow.template({ ...post.view, art: { hero: fake } }, kit)
   const { texts } = walk(tree)
-  assert.ok(['EPISODE 7', 'OUT NOW', 'Read the manhwa: link in the first comment', 'Fixture Index', 'example.com'].every((text) => texts.includes(text)), texts.join('|'))
+  assert.ok(['EPISODE 7', 'AIRED TODAY', 'Read the manhwa: link in the first comment', 'Fixture Index', 'example.com'].every((text) => texts.includes(text)), texts.join('|'))
   // The title in the tag (its spaces may be non-breaking).
   assert.ok(texts.some((text) => /^SOLO\sLEVELING\sSEASON\s2$/.test(text)), texts.join('|'))
   assert.deepEqual([tree.props.style.width, tree.props.style.height], [1080, 1350])
