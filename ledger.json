@@ -27798,6 +27798,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119955703500964",
    "commentId": "122119955703500964_1629932961943266"
+  },
+  {
+   "key": "2026-10-31|where:104730|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:104730",
+   "title": "Handyman Saitou in Another World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "104730",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793495571413,
+   "status": "claimed"
   }
  ],
  "health": {
