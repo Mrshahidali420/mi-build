@@ -12,19 +12,23 @@ import cosplay from './cosplay.mjs'
 import character from './character.mjs'
 import fact from './fact.mjs'
 import fanart from './fanart.mjs'
+import finale from './finale.mjs'
 import newTitle from './new-title.mjs'
 import next from './next.mjs'
+import outNow from './out-now.mjs'
 import ranking from './ranking.mjs'
 import reelNext from './reel-next.mjs'
 import reelRanking from './reel-ranking.mjs'
+import reelToday from './reel-today.mjs'
+import today from './today.mjs'
 import where from './where.mjs'
 
-export const TYPES = [newTitle, where, ranking, birthday, character, fact, next, fanart, cosplay]
+export const TYPES = [outNow, finale, today, newTitle, where, ranking, birthday, character, fact, next, fanart, cosplay]
 
 export const TYPE_KEYS = TYPES.map((type) => type.key)
 
 /** The reels (reel/): short vertical videos made from slides. Gated like every type, by name. */
-export const REELS = [reelRanking, reelNext]
+export const REELS = [reelRanking, reelNext, reelToday]
 
 /** Every kind a run can be asked for by name. */
 export const KINDS = [...TYPES, ...REELS]

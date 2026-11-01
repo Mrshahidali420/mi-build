@@ -55,6 +55,33 @@ export function sampleData(now = NOW) {
   return { ...data, birthdays: sampleBirthdays(now), art: sampleArt(data.byId.get(sampleItems()[0].id)) }
 }
 
+const HOUR = 3_600_000
+const WATCH = [{ site: 'Crunchyroll', url: 'https://crunchyroll.com/x', language: 'English' }]
+
+/** Two anime on the air: one made from a manhwa the index has (Solo Leveling), one with no comic page. */
+export function airingItems() {
+  return [
+    record({ kind: 'anime', id: 200, slug: 'solo-leveling-anime', title: 'Solo Leveling Season 2', format: 'TV', status: 'RELEASING', episodes: 13, popularity: 300000, readLinks: [], watchLinks: WATCH, comicInIndex: [{ slug: 'solo-leveling-1', title: 'Solo Leveling', kind: 'comic', country: 'KR' }], cover: `${COVER}/bx200-a.jpg` }),
+    record({ kind: 'anime', id: 201, slug: 'quiet-harbor', title: 'Quiet Harbor', format: 'TV', status: 'RELEASING', episodes: 12, popularity: 5000, readLinks: [], watchLinks: WATCH, cover: `${COVER}/bx201-a.jpg` }),
+    record({ kind: 'anime', id: 203, slug: 'late-bloom', title: 'Late Bloom', format: 'TV', status: 'RELEASING', episodes: 24, popularity: 4000, readLinks: [], watchLinks: WATCH, cover: `${COVER}/bx203-a.jpg` }),
+    record({ kind: 'anime', id: 202, slug: 'tiny-show', title: 'Tiny Show', format: 'TV', status: 'RELEASING', episodes: 12, popularity: 900, readLinks: [], watchLinks: WATCH, cover: `${COVER}/bx202-a.jpg` }),
+  ]
+}
+
+/** The episode air dates around NOW (data/airing.json rows). */
+export const sampleSchedule = (now = NOW) => [
+  { mediaId: 200, episode: 7, at: (now - 1 * HOUR) / 1000 }, // out an hour ago
+  { mediaId: 201, episode: 12, at: (now - 2 * HOUR) / 1000 }, // the last episode, two hours ago
+  { mediaId: 202, episode: 3, at: (now - 1 * HOUR) / 1000 }, // too few followers
+  { mediaId: 203, episode: 5, at: (now + 1 * HOUR) / 1000 }, // later today
+  { mediaId: 200, episode: 6, at: (now - 7 * 24 * HOUR) / 1000 }, // last week
+]
+
+/** The data with the anime on the air and the schedule, built the way the poster builds it. */
+export function sampleAiringData(now = NOW, schedule = sampleSchedule(now)) {
+  return buildData([...sampleItems(), ...airingItems()], now, null, schedule)
+}
+
 /** Pictures as art/load.mjs hands them over: one fan art and one cosplay of the first title. */
 export function sampleArt(title) {
   const picture = (n, over = {}) => ({ source: 'danbooru', id: `danbooru:${n}`, hash: `h${n}`, image: `https://cdn.donmai.us/original/${n}.jpg`, rating: 'g', ecchi: false, tags: ['1girl'], characters: ['mira_vale'], series: [], artist: 'Artist One', credit: { name: 'Artist One', url: `https://x.com/a/${n}` }, title, character: 'Mira Vale', ...over })

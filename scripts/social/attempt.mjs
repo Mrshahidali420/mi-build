@@ -32,8 +32,30 @@ export const REEL_LANE = 'reel'
  * out while one of the last RARE_EVERY - 1 posts was one.
  * In the chain, `lane` keeps to one lane: REEL_LANE offers only the reels
  * (their own pace keeps them apart), POST_LANE everything but the reels.
+ * A kind named in `typeCaps` (FB_TYPE_CAPS) is left out once it has that many
+ * posts in the rolling 24 hours, so the endless kinds (where, character) leave
+ * room for the news.
  */
-export function kindsNow(kinds, history, now, reelsPerDay, lane = null) {
+export function kindsNow(kinds, history, now, reelsPerDay, lane = null, typeCaps = null) {
+  return underCap(laneKinds(kinds, history, now, reelsPerDay, lane), history, now, typeCaps)
+}
+
+/** The kind's name in the ledger and in FB_TYPE_CAPS: a type's key, or 'classic'. */
+const keyOf = (kind) => (typeof kind === 'string' ? kind : kind.key)
+
+/** The kinds that are still under their cap of posts in the last 24 hours (FB_TYPE_CAPS). */
+export function underCap(kinds, history, now, typeCaps) {
+  if (!typeCaps?.size) return kinds
+  const posted = new Map()
+  for (const e of history) {
+    if (e.status !== 'posted' || !(e.at > now - DAY_MS)) continue
+    const key = e.type || CLASSIC
+    posted.set(key, (posted.get(key) || 0) + 1)
+  }
+  return kinds.filter((kind) => !typeCaps.has(keyOf(kind)) || (posted.get(keyOf(kind)) || 0) < typeCaps.get(keyOf(kind)))
+}
+
+function laneKinds(kinds, history, now, reelsPerDay, lane) {
   const used = history.filter((e) => e.reel && e.at > now - DAY_MS).length
   const resting = history.some((e) => e.reel && e.status === 'failed' && e.at > now - REEL_REST_MS)
   // The chain's reel lane keeps reels apart by its own even pace (pace.mjs), not by what went last.
@@ -55,7 +77,7 @@ async function oneStep({ kinds: all, data, pools, resolveImage, render, preview,
     if (step !== STEP.none) return step
     skip.add(SHARE)
   }
-  const kinds = kindsNow(all, history, now, ctx.s.reelsPerDay, lane)
+  const kinds = kindsNow(all, history, now, ctx.s.reelsPerDay, lane, ctx.s.typeCaps)
   if (!kinds.length) return STEP.none
   const plan = onlyClassic(kinds) ? { classic: true } : planNext({ kinds, data, history, now, rng, skip, slotsLeft, blockedTags })
   if (!plan) return STEP.none

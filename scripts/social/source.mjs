@@ -95,6 +95,14 @@ function adaptationOf(item) {
   return anime?.title ? { title: anime.title, episodes: anime.episodes || null } : null
 }
 
+/** The comic an anime is made from, when the index holds its page: its path and what it is (manga, manhwa, manhua). */
+function sourceComicOf(item) {
+  const comic = (item.comicInIndex || []).find((c) => c?.slug)
+  if (!comic) return null
+  const section = sectionOf({ kind: comic.kind === 'novel' ? 'novel' : 'comic', country: comic.country })
+  return { title: comic.title || null, path: `/${section}/${comic.slug}`, noun: section }
+}
+
 /** One catalog record as a candidate, or null when it may not be promoted. */
 export function toCandidate(item, shopFor = null) {
   if (!item?.slug || !item.title || !item.cover || !isSafe(item)) return null
@@ -115,6 +123,8 @@ export function toCandidate(item, shopFor = null) {
     ranks: (item.ranks || []).filter((r) => r?.allTime && r.rank > 0).map((r) => ({ rank: r.rank, type: r.type })),
     cast: castOf(item),
     adaptation: adaptationOf(item),
+    // An anime: the comic it is made from, when the index has its page (the airing posts link to it).
+    sourceComic: section === 'anime' ? sourceComicOf(item) : null,
     animeSlugs: (item.animeInIndex || []).map((a) => a.slug).filter(Boolean),
     format: item.format || null,
     id: item.id,
@@ -197,12 +207,23 @@ export function animeYears(items) {
  * What the template posts read: every title that may be promoted, most
  * popular first, with its recommendations, and the same list by AniList id.
  */
-export function buildData(items, now, shopFor = null) {
+export function buildData(items, now, shopFor = null, schedule = []) {
   const all = items.map((item) => toCandidate(item, shopFor)).filter(Boolean)
   const byId = new Map(all.map((c) => [c.id, c]))
   const animeYear = animeYears(items)
   const titles = all.map((c) => ({ ...attachRecs(c, byId), animeYear: animeYear(c) })).sort((x, y) => y.popularity - x.popularity)
-  return { now, titles, byId: new Map(titles.map((t) => [t.id, t])) }
+  return { now, titles, byId: new Map(titles.map((t) => [t.id, t])), schedule }
+}
+
+/** The episode air dates (data/airing.json, scripts/pull-airing.mjs), or none when the file is missing or unreadable. */
+export function readSchedule(dir) {
+  const file = join(dir, 'airing.json')
+  if (!existsSync(file)) return []
+  try {
+    return JSON.parse(readFileSync(file, 'utf8')).schedule || []
+  } catch {
+    return []
+  }
 }
 
 function poolsOf(data, now) {
@@ -261,9 +282,10 @@ function readCatalog(dir, name) {
 export function loadPools({ dir = join(process.cwd(), 'data'), now = Date.now() } = {}) {
   const anime = readCatalog(dir, 'anime')
   const comics = readCatalog(dir, 'comics')
-  const data = buildData([...anime.items, ...comics.items], now, siteShop())
+  const schedule = readSchedule(dir)
+  const data = buildData([...anime.items, ...comics.items], now, siteShop(), schedule)
   const seeded = [anime.from, comics.from].some((f) => f && f.endsWith('.gz'))
-  const source = `catalog: ${anime.items.length} anime, ${comics.items.length} comics and novels${seeded ? ' (the small seed: the Actions cache was not restored)' : ' (Actions cache)'}`
+  const source = `catalog: ${anime.items.length} anime, ${comics.items.length} comics and novels${seeded ? ' (the small seed: the Actions cache was not restored)' : ' (Actions cache)'}; ${schedule.length} episode air dates`
   return { pools: poolsOf(data, now), data, source }
 }
 
@@ -271,5 +293,6 @@ export function loadPools({ dir = join(process.cwd(), 'data'), now = Date.now() 
 export async function dataLoader({ dir = join(process.cwd(), 'data') } = {}) {
   const items = [...readCatalog(dir, 'anime').items, ...readCatalog(dir, 'comics').items]
   const shopFor = siteShop()
-  return (now) => buildData(items, now, shopFor)
+  const schedule = readSchedule(dir)
+  return (now) => buildData(items, now, shopFor, schedule)
 }

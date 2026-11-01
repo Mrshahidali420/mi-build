@@ -97,7 +97,7 @@ test('gate: a reel is off until its own name is written, and is not one of the p
   const names = KINDS.map((kind) => kind.key)
   assert.deepEqual(names, [...TYPE_KEYS, ...REELS.map((reel) => reel.key)])
   assert.ok(!TYPES.some((type) => type.reel) && REELS.every((reel) => !reel.template))
-  assert.deepEqual(REELS.map((reel) => reel.key).sort(), ['reel-next', 'reel-ranking'])
+  assert.deepEqual(REELS.map((reel) => reel.key).sort(), ['reel-next', 'reel-ranking', 'reel-today'])
   assert.deepEqual(enabledTypes('where', names).types, ['where'])
   assert.deepEqual(enabledTypes(`where, ${REELS[0].key}`, names).types, ['where', REELS[0].key])
   assert.deepEqual(enabledTypes('reel', names), { types: ['classic'], unknown: ['reel'] })

@@ -236,6 +236,25 @@ so Facebook never crops the art. Each kind of post has its own design.
 There is no "new volume" post. The catalog holds how many volumes a title has,
 never the day a volume came out, so a new volume cannot be told from an old one.
 
+**Airing news** (1 Nov 2026, the same queue as WhereAnime's): the anime made
+from comics, from the episode air dates (`data/airing.json`, read by the
+"Read episode air dates" step). All three are urgent and go before the
+rotation; the link in the first comment is the comic the anime is made from
+when the index has its page ("Read the manhwa it is based on"), else the
+anime page. Popularity 2000 or more and an official stream.
+
+| Name | What it is |
+|---|---|
+| `out-now` | "EPISODE N OUT NOW", in the four hours after the air time; its own post even when the title had another post that day |
+| `finale` | "FINAL EPISODE TODAY", the show's last episode on its day |
+| `today` | "EPISODES OUT TODAY", one list a day (3 to 6 shows); names no single title, so each show keeps its own post. The `reel-today` reel carries its Instagram swipe post |
+
+**Caps per kind** (1 Nov 2026): `FB_TYPE_CAPS`, e.g. `where:30,character:30`,
+is the most posts one kind may have in any 24 hours. A kind at its cap waits;
+the others, and the airing news, take its turns. Unset means no caps. Why:
+on 28 Oct - 1 Nov, about 1,300 Manhwa Index posts brought 10 Facebook visits,
+while on WhereAnime 34 episode posts brought 28.
+
 **Nothing above posts until its name is in the repo variable `FB_POST_TYPES`**
 (Settings → Secrets and variables → Actions → Variables). The variable is a
 comma list, and the list is exactly what runs:

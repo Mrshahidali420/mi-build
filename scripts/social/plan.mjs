@@ -16,7 +16,8 @@
  * What may not repeat:
  *   - the same item of the same type inside that type's own gap (gapDays)
  *   - a type with `titleGap`: the same title inside the 30-day title gap
- *   - two posts about the same title on one day, whatever the types
+ *   - two posts about the same title on one day, whatever the types, except
+ *     a type marked `sameDay` (airing news: out now, final episode)
  *
  * A type is { key, urgent, gapDays, titleGap, window, find(data, ctx),
  * captions: [post => { hook, facts, cta }], questions: [post => text],
@@ -75,7 +76,8 @@ function rulesOf({ history, now, skip }) {
     if (history.some((e) => e.type === type.key && e.item === post.item && e.at >= since)) return false
     if (!post.title) return true
     const title = normTitle(post.title)
-    if (titlesToday.has(title)) return false
+    // Airing news (`sameDay`: out now, final episode) is its own post even when the title had one today.
+    if (titlesToday.has(title) && !type.sameDay) return false
     return !(type.titleGap && recentTitles.has(title))
   }
 }

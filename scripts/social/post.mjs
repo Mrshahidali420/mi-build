@@ -72,6 +72,21 @@ const int = (v, fallback) => {
   return Number.isFinite(n) && n > 0 ? n : fallback
 }
 
+/**
+ * FB_TYPE_CAPS, "where:30,character:30": the most posts a kind may have in
+ * any 24 hours (attempt.mjs). A part that is not a name and a whole number
+ * above zero is left out.
+ */
+export function typeCapsOf(value) {
+  const caps = new Map()
+  for (const part of String(value || '').split(',')) {
+    const [name, count] = part.split(':').map((x) => x.trim())
+    const n = Number(count)
+    if (name && Number.isInteger(n) && n > 0) caps.set(name, n)
+  }
+  return caps
+}
+
 export function settingsOf(env) {
   const configured = Boolean(env.FB_PAGE_ID && env.FB_PAGE_TOKEN)
   const enabled = env.FB_POST_ENABLED === 'true'
@@ -97,6 +112,7 @@ export function settingsOf(env) {
     perDay: perDayOf(env.FB_POSTS_PER_DAY),
     gapMinutes: gapMinutesOf(env.FB_MIN_GAP_MINUTES),
     reelsPerDay: reelsPerDayOf(env.FB_REELS_PER_DAY),
+    typeCaps: typeCapsOf(env.FB_TYPE_CAPS),
     share: shareSettingsOf(env),
     chainMinutes: Math.min(int(env.FB_CHAIN_MINUTES, DEFAULT_CHAIN_MINUTES), MAX_CHAIN_MINUTES),
     // 'watch' when the backstop cron started this run; it must not restart a halted chain.
@@ -225,6 +241,7 @@ export async function run({ fetch = globalThis.fetch, env, now, clock = now === 
   const used = rollingCount(postLane(counted), clock())
   out.push(...paceLines(s, health, cap, used))
   out.push(`Reels: ${rollingCount(reelLane(counted), clock())} of ${s.reelsPerDay} in the last 24 hours, on their own budget (not in the posts' cap), never within 5 minutes of another post.`, '')
+  if (s.typeCaps.size) out.push(`Caps per kind (FB_TYPE_CAPS), posts in any 24 hours: ${[...s.typeCaps].map(([k, n]) => `${k} ${n}`).join(', ')}.`, '')
   out.push(shareLine(s.share), '')
   out.push(`Amazon line in the first comment: ${s.affiliate ? 'on' : 'off (the FB_AFFILIATE_COMMENT variable is not true)'}.`, '')
 

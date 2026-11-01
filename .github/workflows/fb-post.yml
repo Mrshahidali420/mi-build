@@ -134,6 +134,18 @@ jobs:
         if: vars.FB_POST_TYPES != '' || inputs.types != '' || (vars.IG_POST_ENABLED == 'true' || vars.IG_POST_ENABLED == 'check')
         run: npm ci --no-audit --no-fund
 
+      # Episode air dates for the airing posts (out now, final episode, episodes
+      # out today), from the sister ingest's bucket (sister-data/latest/airing.json),
+      # the same read the deploy does. Read only; without it the airing posts
+      # simply find nothing.
+      - name: Read episode air dates
+        if: vars.FB_POST_TYPES != '' || inputs.types != ''
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: 735d0fbab0757142b2c29917563e0626
+        run: node scripts/pull-airing.mjs
+
       # A reel is put together with ffmpeg. The runner image does not carry it (checked 12 Oct 2026),
       # so it is installed, and only for a run that can make a reel.
       - name: Cache ffmpeg
@@ -178,6 +190,8 @@ jobs:
           FB_POST_TYPES: ${{ vars.FB_POST_TYPES }}
           # 'true' adds the Amazon line of the title to the first comment (off by default).
           FB_AFFILIATE_COMMENT: ${{ vars.FB_AFFILIATE_COMMENT }}
+          # The most posts one kind may have in any 24 hours, e.g. "where:30,character:30" (unset = no caps).
+          FB_TYPE_CAPS: ${{ vars.FB_TYPE_CAPS }}
           # Instagram (scripts/social/ig.mjs): the same posts, after Facebook. OFF unless IG_POST_ENABLED is 'true' ('check' posts nothing).
           IG_POST_ENABLED: ${{ vars.IG_POST_ENABLED }}
           # Optional: read from the Page (FB_PAGE_ID) when unset.
