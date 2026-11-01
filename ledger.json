@@ -27988,6 +27988,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119974225500964",
    "commentId": "122119974225500964_1658761502306591"
+  },
+  {
+   "key": "2026-10-31|where:98351|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:98351",
+   "title": "Laid-Back Camp",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "98351",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793498583088,
+   "status": "claimed"
   }
  ],
  "health": {
