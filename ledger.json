@@ -29626,6 +29626,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120102115500964",
    "commentId": "122120102115500964_3023608161325336"
+  },
+  {
+   "key": "2026-11-01|next:103144|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:103144",
+   "title": "Blissful Land",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "103144",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793524529572,
+   "status": "claimed"
   }
  ],
  "health": {
