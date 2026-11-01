@@ -28105,6 +28105,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119984659500964",
    "commentId": "122119984659500964_2124901784778597"
+  },
+  {
+   "key": "2026-10-31|next:106654|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:106654",
+   "title": "Samurai 8: The Tale of Hachimaru",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "106654",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793500399529,
+   "status": "claimed"
   }
  ],
  "health": {
