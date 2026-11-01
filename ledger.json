@@ -28024,6 +28024,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119979001500964",
    "commentId": "122119979001500964_1892718532090814"
+  },
+  {
+   "key": "2026-10-31|next:125579|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:125579",
+   "title": "Let This Grieving Soul Retire",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "125579",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793499194593,
+   "status": "claimed"
   }
  ],
  "health": {
