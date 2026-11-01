@@ -27893,6 +27893,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119961061500964",
    "commentId": "122119961061500964_1858306098949221"
+  },
+  {
+   "key": "2026-10-31|next:124832|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:124832",
+   "title": "The Abandoned Reincarnation Sage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "124832",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793497077035,
+   "status": "claimed"
   }
  ],
  "health": {
