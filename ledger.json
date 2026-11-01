@@ -29394,6 +29394,24 @@
    "status": "posted",
    "postId": "1318170941390322_122120085813500964",
    "commentId": "122120085813500964_1168358292802295"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-01|reel-next:47904|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "reel-next:47904",
+   "title": "Princess Jellyfish",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "47904",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793520904886,
+   "track": "the-rush.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
