@@ -29549,6 +29549,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120095677500964",
    "commentId": "122120095677500964_1429408869260686"
+  },
+  {
+   "key": "2026-11-01|next:178509|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:178509",
+   "title": "Ultimate Exorcist Kiyoshi",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "178509",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793523314837,
+   "status": "claimed"
   }
  ],
  "health": {
