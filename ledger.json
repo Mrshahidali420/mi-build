@@ -29939,6 +29939,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120126097500964",
    "commentId": "122120126097500964_1096562286753484"
+  },
+  {
+   "key": "2026-11-01|where:86171|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:86171",
+   "title": "Naruto: The Seventh Hokage and the Scarlet Spring",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86171",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793529361390,
+   "status": "claimed"
   }
  ],
  "health": {
