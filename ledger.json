@@ -29803,6 +29803,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120115195500964",
    "commentId": "122120115195500964_2392522168157442"
+  },
+  {
+   "key": "2026-11-01|where:124283|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:124283",
+   "title": "Demon Slayer: Kimetsu no Yaiba - Special One-Shot",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "124283",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793527242378,
+   "status": "claimed"
   }
  ],
  "health": {
