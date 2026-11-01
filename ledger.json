@@ -30662,6 +30662,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120196195500964",
    "commentId": "122120196195500964_1856243599066294"
+  },
+  {
+   "key": "2026-11-01|where:31456|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:31456",
+   "title": "Until Death Do Us Part",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "31456",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793541129964,
+   "status": "claimed"
   }
  ],
  "health": {
