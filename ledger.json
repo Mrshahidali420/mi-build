@@ -31033,6 +31033,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793546550431
    }
+  },
+  {
+   "key": "2026-11-01|where:103029|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:103029",
+   "title": "Thus Spoke Rohan Kishibe",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103029",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793546851292,
+   "status": "claimed"
   }
  ],
  "health": {
