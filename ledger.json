@@ -29839,6 +29839,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120119365500964",
    "commentId": "122120119365500964_1189807590145541"
+  },
+  {
+   "key": "2026-11-01|next:30670|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:30670",
+   "title": "Bokurano: Ours",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30670",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793527853950,
+   "status": "claimed"
   }
  ],
  "health": {
