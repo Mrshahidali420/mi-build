@@ -29975,6 +29975,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120128851500964",
    "commentId": "122120128851500964_2386549795448776"
+  },
+  {
+   "key": "2026-11-01|next:31267|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:31267",
+   "title": "Last Quarter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "31267",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793529964443,
+   "status": "claimed"
   }
  ],
  "health": {
