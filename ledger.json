@@ -30608,6 +30608,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120192757500964",
    "commentId": "122120192757500964_1932034624630560"
+  },
+  {
+   "key": "2026-11-01|where:146712|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:146712",
+   "title": "Jack Be Invincible",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "146712",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793540221371,
+   "status": "claimed"
   }
  ],
  "health": {
