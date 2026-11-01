@@ -30328,6 +30328,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120171781500964",
    "commentId": "122120171781500964_3390627187811899"
+  },
+  {
+   "key": "2026-11-01|next:99218|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:99218",
+   "title": "Save Me",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "99218",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793535697878,
+   "status": "claimed"
   }
  ],
  "health": {
