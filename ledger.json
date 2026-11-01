@@ -28356,6 +28356,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120002527500964",
    "commentId": "122120002527500964_1044457098684092"
+  },
+  {
+   "key": "2026-10-31|where:168468|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:168468",
+   "title": "Boruto: Two Blue Vortex",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "168468",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793504319578,
+   "status": "claimed"
   }
  ],
  "health": {
