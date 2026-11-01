@@ -31105,6 +31105,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120226657500964",
    "commentId": "122120226657500964_2002840423725406"
+  },
+  {
+   "key": "2026-11-01|today:today:2026-11-01|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "today:today:2026-11-01",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:today",
+   "type": "today",
+   "item": "today:2026-11-01",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793548075878,
+   "status": "claimed"
   }
  ],
  "health": {
