@@ -29127,6 +29127,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120065401500964",
    "commentId": "122120065401500964_2527298984418824"
+  },
+  {
+   "key": "2026-11-01|next:101715|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:101715",
+   "title": "Saving 80,000 Gold in Another World for my Retirement",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "101715",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793516674156,
+   "status": "claimed"
   }
  ],
  "health": {
