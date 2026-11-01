@@ -28254,6 +28254,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119992681500964",
    "commentId": "122119992681500964_1146753304472134"
+  },
+  {
+   "key": "2026-10-31|where:101437|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "where:101437",
+   "title": "Battle in 5 Seconds",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101437",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793502815488,
+   "status": "claimed"
   }
  ],
  "health": {
