@@ -30161,6 +30161,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120157003500964",
    "commentId": "122120157003500964_1809802136812530"
+  },
+  {
+   "key": "2026-11-01|where:111758|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:111758",
+   "title": "Yamaguchi-kun Isn't So Bad",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "111758",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793532982063,
+   "status": "claimed"
   }
  ],
  "health": {
