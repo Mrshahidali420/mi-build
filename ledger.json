@@ -27834,6 +27834,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119957479500964",
    "commentId": "122119957479500964_1165783962775836"
+  },
+  {
+   "key": "2026-10-31|next:137620|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:137620",
+   "title": "Bleach: Special One-Shot",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "137620",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793496173590,
+   "status": "claimed"
   }
  ],
  "health": {
