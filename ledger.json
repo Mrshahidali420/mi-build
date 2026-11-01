@@ -29726,6 +29726,22 @@
    "at": 1793525735329,
    "status": "posted",
    "postId": "1318170941390322_122120109453500964"
+  },
+  {
+   "key": "2026-11-01|where:107114|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:107114",
+   "title": "COLORLESS",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "107114",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793526036789,
+   "status": "claimed"
   }
  ],
  "health": {
