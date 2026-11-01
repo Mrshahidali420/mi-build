@@ -30274,6 +30274,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120167743500964",
    "commentId": "122120167743500964_1381635680712158"
+  },
+  {
+   "key": "2026-11-01|next:100693|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:100693",
+   "title": "The Unwanted Undead Adventurer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "100693",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793534794607,
+   "status": "claimed"
   }
  ],
  "health": {
