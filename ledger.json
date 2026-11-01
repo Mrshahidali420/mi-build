@@ -30739,6 +30739,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120200959500964",
    "commentId": "122120200959500964_2189936281598831"
+  },
+  {
+   "key": "2026-11-01|where:164961|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:164961",
+   "title": "Bug Ego",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "164961",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793542333121,
+   "status": "claimed"
   }
  ],
  "health": {
