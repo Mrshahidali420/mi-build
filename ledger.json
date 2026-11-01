@@ -30988,6 +30988,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120217321500964",
    "commentId": "122120217321500964_1730515288668290"
+  },
+  {
+   "key": "2026-11-01|next:101265|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:101265",
+   "title": "Ran the Peerless Beauty",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "101265",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793546249559,
+   "status": "claimed"
   }
  ],
  "health": {
