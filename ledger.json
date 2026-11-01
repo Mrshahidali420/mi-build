@@ -27649,6 +27649,22 @@
    "status": "posted",
    "postId": "1318170941390322_122119948221500964",
    "commentId": "122119948221500964_1140844675366544"
+  },
+  {
+   "key": "2026-10-31|next:180881|manhwaindex",
+   "day": "2026-10-31",
+   "slug": "next:180881",
+   "title": "Shinobi Undercover",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "180881",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793493154535,
+   "status": "claimed"
   }
  ],
  "health": {
