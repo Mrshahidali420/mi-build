@@ -31279,6 +31279,29 @@
     "id": "18117786566165222",
     "at": 1793562268042
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-01|share:1329988470202923_122116066323503689|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "share:1329988470202923_122116066323503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122116066323503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122116066323503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "From Far Away",
+   "sourceFormat": "type:out-now",
+   "link": "https://www.facebook.com/1329988470202923/posts/122116066323503689",
+   "message": "New on our sister Page, WhereAnime:",
+   "at": 1793569456733,
+   "status": "claimed"
   }
  ],
  "health": {
