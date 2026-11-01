@@ -29513,6 +29513,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120092683500964",
    "commentId": "122120092683500964_1803471777632303"
+  },
+  {
+   "key": "2026-11-01|where:106820|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:106820",
+   "title": "Drugstore in Another World: The Slow Life of a Cheat Pharmacist",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "106820",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793522712331,
+   "status": "claimed"
   }
  ],
  "health": {
