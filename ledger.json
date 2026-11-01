@@ -30197,6 +30197,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120160105500964",
    "commentId": "122120160105500964_1783352969564067"
+  },
+  {
+   "key": "2026-11-01|next:124895|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:124895",
+   "title": "Ron Kamonohashi: Deranged Detective",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "124895",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793533590351,
+   "status": "claimed"
   }
  ],
  "health": {
