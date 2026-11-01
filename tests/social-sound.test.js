@@ -14,8 +14,8 @@ const MAX_AUDIO_BYTES = 5 * 1024 * 1024
 const FFMPEG = process.env.FFMPEG_PATH || 'ffmpeg'
 const hasFfmpeg = spawnSync(FFMPEG, ['-version']).status === 0
 
-test('tracks: four to six files, each in the folder and each listed as CC0 with its page', () => {
-  assert.ok(TRACKS.length >= 4 && TRACKS.length <= 6)
+test('tracks: four to eight files, each in the folder and each listed as CC0 with its page', () => {
+  assert.ok(TRACKS.length >= 4 && TRACKS.length <= 8)
   const sources = readFileSync(join(AUDIO_DIR, 'SOURCES.md'), 'utf8')
   let bytes = 0
   for (const file of TRACKS) {

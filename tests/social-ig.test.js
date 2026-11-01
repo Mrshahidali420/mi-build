@@ -5,7 +5,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import sharp from 'sharp'
 import { GRAPH_VERSION } from '../scripts/social/fb.mjs'
-import { BIO_LINE, IG_DEFAULT_PER_DAY, IG_MAX_PER_DAY, fitImage, frameOf, igCaption, igClient, igSettingsOf, igWhyNot, igWords, reelLengthProblem } from '../scripts/social/ig.mjs'
+import { BIO_LINE, REEL_GAP_MS, IG_DEFAULT_PER_DAY, IG_MAX_PER_DAY, fitImage, frameOf, igCaption, igClient, igSettingsOf, igWhyNot, igWords, reelLengthProblem } from '../scripts/social/ig.mjs'
 import { TYPES } from '../scripts/social/types/index.mjs'
 import { NOW, HOUR, harness, pools } from './social-kit.mjs'
 import { sampleData } from './social-data.mjs'
@@ -247,4 +247,24 @@ test('ig client: a swipe post is one container per slide, then the carousel, the
   assert.match(seen[4].init.body, /media_type=CAROUSEL&children=k1%2Ck2&caption=Swipe/)
   assert.match(seen[6].init.body, /creation_id=car/)
   await assert.rejects(igClient({ userId: '178', token: 'T', fetch }).publishCarousel({ imageUrls: ['x'], caption: 'c' }), /2 to 10 pictures/)
+})
+
+test('ig pace: a reel skips the even spread, needs only a short gap, and stays inside the cap', () => {
+  const settings = igSettingsOf({ IG_POSTS_PER_DAY: '8' })
+  const reel = { reel: true, type: 'reel-x' }
+  assert.equal(igWhyNot({ settings, history: [{ ig: { id: 'm', at: NOW - HOUR } }], now: NOW, entry: reel }), null)
+  assert.match(igWhyNot({ settings, history: [{ ig: { id: 'm', at: NOW - REEL_GAP_MS / 2 } }], now: NOW, entry: reel }), /minutes ago/)
+  const full = Array.from({ length: 8 }, (_, i) => ({ ig: { id: `m${i}`, at: NOW - (i + 1) * HOUR } }))
+  assert.match(igWhyNot({ settings, history: full, now: NOW, entry: reel }), /8 Instagram posts in the last 24 hours/)
+})
+
+test('ig client: "Media ID is not available" is tried again, other errors are not', async () => {
+  const notYet = { status: 400, json: { error: { message: 'Media ID is not available', code: 9007 } } }
+  const ok = fakeFetch([{ json: { id: 'c1' } }, { json: { status_code: 'FINISHED' } }, notYet, { json: { id: 'media-9' } }])
+  const waits = []
+  const client = igClient({ userId: '17', token: 'T', fetch: ok.fetch })
+  assert.deepEqual(await client.publish({ imageUrl: 'https://x/p.jpg', caption: 'c', sleep: async (ms) => waits.push(ms) }), { mediaId: 'media-9' })
+  assert.ok(waits.length >= 1)
+  const bad = fakeFetch([{ json: { id: 'c1' } }, { json: { status_code: 'FINISHED' } }, { status: 400, json: { error: { message: 'Invalid parameter', code: 100 } } }])
+  await assert.rejects(igClient({ userId: '17', token: 'T', fetch: bad.fetch }).publish({ imageUrl: 'https://x/p.jpg', caption: 'c', sleep: async () => {} }), /Invalid parameter/)
 })

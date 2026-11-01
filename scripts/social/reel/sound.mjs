@@ -20,8 +20,8 @@ import { fileURLToPath } from 'node:url'
 
 export const AUDIO_DIR = fileURLToPath(new URL('../audio/', import.meta.url))
 
-/** The music beds, each 30 seconds or a little less. See ../audio/SOURCES.md. */
-export const TRACKS = ['fast-fight.m4a', 'the-rush.m4a', 'anime-intro.m4a', 'battle-theme-a.m4a', 'winning-the-race.m4a', 'happy-adventure.m4a']
+/** The music beds, each 30 seconds or a little less: calm or anime-style only (the owner's rule, 1 Nov 2026). See ../audio/SOURCES.md. */
+export const TRACKS = ['anime-intro.m4a', 'determination-anime.m4a', 'jrpg-piano.m4a', 'hot-springs-town.m4a', 'chill-lofi.m4a', 'gods-notebook-lofi.m4a', 'meadow-thoughts.m4a']
 
 export const SOUND = {
   rate: 48000,

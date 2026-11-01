@@ -407,8 +407,14 @@ What changes on Instagram:
   shared to the Instagram feed too. `IG_POST_TYPES=reel` sends only reels.
 - **Its own pace.** At most `IG_POSTS_PER_DAY` posts in any 24 hours (8
   unless set, 25 at most), spread evenly: a Facebook post goes to Instagram
-  only when the last Instagram post is far enough back. A text-only classic
-  post (no cover) stays on Facebook.
+  only when the last Instagram post is far enough back. A reel skips the
+  even spread: it goes when the last Instagram post is 10 minutes back, still
+  inside the cap (owner's wish, 1 Nov 2026: more reels on Instagram). If
+  Instagram answers "Media ID is not available", the post is tried again
+  twice, 15 seconds apart. A text-only classic post (no cover) stays on
+  Facebook.
+- **Reel music.** Calm or anime-style tracks only (owner's rule, 1 Nov 2026);
+  see `scripts/social/audio/SOURCES.md`.
 
 ### Switch it on
 

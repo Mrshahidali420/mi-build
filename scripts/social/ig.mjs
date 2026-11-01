@@ -53,6 +53,10 @@ const MAX_WIDTH = 1440
 /** A post may go a little before its even slot, so the day's cap is reached. */
 const EARLY = 0.8
 const POLL = { tries: 12, everyMs: 5_000 }
+/** A reel skips the even spread (the owner wants reels on Instagram): it only needs this gap since the last Instagram post. */
+export const REEL_GAP_MS = 10 * 60_000
+/** "Media ID is not available": Instagram said ready a little too soon. Try the post again after a short wait. */
+const PUBLISH_RETRY = { tries: 3, everyMs: 15_000, when: /media id is not available|not ready/i }
 /** Instagram needs a while to make a video ready: every 10 seconds, for up to 10 minutes. */
 const REEL_POLL = { tries: 60, everyMs: 10_000 }
 /** The pictures a swipe post (carousel) takes. */
@@ -101,8 +105,17 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
     throw new GraphError(`Instagram was still preparing the ${what} when the wait ran out`)
   }
 
-  async function publishContainer(id) {
-    const posted = await call('POST', `/${igId}/media_publish`, { creation_id: id })
+  async function publishContainer(id, sleep = null) {
+    let posted
+    for (let i = 1; ; i++) {
+      try {
+        posted = await call('POST', `/${igId}/media_publish`, { creation_id: id })
+        break
+      } catch (error) {
+        if (i >= PUBLISH_RETRY.tries || !PUBLISH_RETRY.when.test(String(error?.message))) throw error
+        if (sleep) await sleep(PUBLISH_RETRY.everyMs)
+      }
+    }
     if (!posted.id) throw new GraphError('Instagram gave no media id')
     return { mediaId: posted.id }
   }
@@ -149,7 +162,7 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
       const { id } = await call('POST', `/${igId}/media`, { image_url: imageUrl, caption })
       if (!id) throw new GraphError('Instagram gave no container id')
       await waitReady(id, { what: 'picture', sleep, tries, everyMs })
-      return publishContainer(id)
+      return publishContainer(id, sleep)
     },
     /**
      * A swipe post: one container per picture (is_carousel_item), a wait
@@ -167,7 +180,7 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
       const { id } = await call('POST', `/${igId}/media`, { media_type: 'CAROUSEL', children: children.join(','), caption })
       if (!id) throw new GraphError('Instagram gave no container id for the swipe post')
       await waitReady(id, { what: 'swipe post', sleep, tries, everyMs })
-      return publishContainer(id)
+      return publishContainer(id, sleep)
     },
     /** A reel by resumable upload: the container, the bytes, a wait until Instagram has the video, then the post. */
     async publishReel({ bytes, caption, sleep, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
@@ -176,7 +189,7 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
       if (!made.id) throw new GraphError('Instagram gave no container id')
       await upload(made.id, made.uri, bytes)
       await waitReady(made.id, { what: 'video', sleep, tries, everyMs })
-      return publishContainer(made.id)
+      return publishContainer(made.id, sleep)
     },
   }
 }
@@ -210,7 +223,7 @@ export function igWhyNot({ settings, history, now, entry }) {
   const tried = history.filter((e) => e.ig?.at && e.ig.at > now - DAY_MS)
   if (tried.filter((e) => e.ig.id).length >= settings.perDay) return `${settings.perDay} Instagram posts in the last 24 hours`
   const last = Math.max(0, ...tried.map((e) => e.ig.at))
-  const spacing = (DAY_MS / settings.perDay) * EARLY
+  const spacing = kind === 'reel' ? REEL_GAP_MS : (DAY_MS / settings.perDay) * EARLY
   if (now - last < spacing) return `the last one was ${Math.round((now - last) / 60_000)} minutes ago`
   return null
 }
