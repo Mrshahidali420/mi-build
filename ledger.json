@@ -31123,6 +31123,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120228181500964",
    "commentId": "122120228181500964_1150552750842189"
+  },
+  {
+   "key": "2026-11-01|out-now:206814:4:out|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "out-now:206814:4:out",
+   "title": "Dragon Ball Super: Beerus",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "206814:4:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793548377438,
+   "status": "claimed"
   }
  ],
  "health": {
