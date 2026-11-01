@@ -29585,6 +29585,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120098491500964",
    "commentId": "122120098491500964_2212732942920482"
+  },
+  {
+   "key": "2026-11-01|character:char:429|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "character:char:429",
+   "title": "Paradise Kiss",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:429",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793523917352,
+   "status": "claimed"
   }
  ],
  "health": {
