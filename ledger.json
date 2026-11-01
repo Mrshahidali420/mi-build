@@ -28487,6 +28487,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120012019500964",
    "commentId": "122120012019500964_1154140690607903"
+  },
+  {
+   "key": "2026-11-01|next:80767|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:80767",
+   "title": "Real Girl",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "80767",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793506434504,
+   "status": "claimed"
   }
  ],
  "health": {
