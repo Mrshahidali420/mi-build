@@ -29263,6 +29263,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120075511500964",
    "commentId": "122120075511500964_1101862352727459"
+  },
+  {
+   "key": "2026-11-01|next:112234|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:112234",
+   "title": "Nina the Starry Bride",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "112234",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793518789580,
+   "status": "claimed"
   }
  ],
  "health": {
