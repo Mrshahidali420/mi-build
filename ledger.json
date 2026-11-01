@@ -28488,47 +28488,47 @@
   }
  },
  "birthdays": {
-  "day": "2026-10-31",
-  "at": 1793419214112,
+  "day": "2026-11-01",
+  "at": 1793506124324,
   "list": [
    {
-    "id": 71,
-    "name": "L Lawliet",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71-1W4panC53vfs.png",
-    "favourites": 26958,
-    "mediaId": 30021,
+    "id": 1424,
+    "name": "Shinichi Okazaki",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1424-dcHnhsX7XfrP.jpg",
+    "favourites": 3072,
+    "mediaId": 30028,
     "voice": null
    },
    {
-    "id": 136071,
-    "name": "Tengen Uzui",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b136071-99Kexnnn2PiV.png",
-    "favourites": 7962,
-    "mediaId": 87216,
+    "id": 173761,
+    "name": "Shizuka Yoshimoto",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173761-1FcQvX74KVW7.png",
+    "favourites": 1322,
+    "mediaId": 165899,
     "voice": null
    },
    {
-    "id": 175659,
-    "name": "Anko Uguisu",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b175659-1W8HJJzAZ1dI.png",
-    "favourites": 2409,
-    "mediaId": 111233,
+    "id": 281251,
+    "name": "Yuusuke Tani",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b281251-fpCKCGSQH6Rv.png",
+    "favourites": 528,
+    "mediaId": 147997,
     "voice": null
    },
    {
-    "id": 88114,
-    "name": "Yuu Kashima",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/88114.jpg",
-    "favourites": 974,
-    "mediaId": 59211,
+    "id": 2089,
+    "name": "Layla Serizawa",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2089-zofXDvhPOO2U.jpg",
+    "favourites": 375,
+    "mediaId": 30028,
     "voice": null
    },
    {
-    "id": 88990,
-    "name": "Ferid Bathory",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b88990-GQCTvKZPTg3h.png",
-    "favourites": 684,
-    "mediaId": 73661,
+    "id": 74361,
+    "name": "Senjumaru Shutara",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b74361-xZVDAsxJmXJY.png",
+    "favourites": 319,
+    "mediaId": 30012,
     "voice": null
    }
   ]
