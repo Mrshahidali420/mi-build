@@ -31779,47 +31779,31 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-01",
-  "at": 1793506124324,
+  "day": "2026-11-02",
+  "at": 1793598728731,
   "list": [
    {
-    "id": 1424,
-    "name": "Shinichi Okazaki",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1424-dcHnhsX7XfrP.jpg",
-    "favourites": 3072,
-    "mediaId": 30028,
+    "id": 5343,
+    "name": "Kobato Hanato",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b5343-XHTtP0cV1uXG.png",
+    "favourites": 454,
+    "mediaId": 30118,
     "voice": null
    },
    {
-    "id": 173761,
-    "name": "Shizuka Yoshimoto",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b173761-1FcQvX74KVW7.png",
-    "favourites": 1322,
-    "mediaId": 165899,
+    "id": 89445,
+    "name": "Megumi Natsu",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89445-D783CfWBZtm1.png",
+    "favourites": 135,
+    "mediaId": 79835,
     "voice": null
    },
    {
-    "id": 281251,
-    "name": "Yuusuke Tani",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b281251-fpCKCGSQH6Rv.png",
-    "favourites": 528,
-    "mediaId": 147997,
-    "voice": null
-   },
-   {
-    "id": 2089,
-    "name": "Layla Serizawa",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2089-zofXDvhPOO2U.jpg",
-    "favourites": 375,
-    "mediaId": 30028,
-    "voice": null
-   },
-   {
-    "id": 74361,
-    "name": "Senjumaru Shutara",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b74361-xZVDAsxJmXJY.png",
-    "favourites": 319,
-    "mediaId": 30012,
+    "id": 7738,
+    "name": "Hayate Gekkou",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/n7738-jp6LVMZ3nwXR.png",
+    "favourites": 100,
+    "mediaId": 30011,
     "voice": null
    }
   ]
