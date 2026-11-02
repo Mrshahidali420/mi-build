@@ -31410,6 +31410,22 @@
    "at": 1793590268522,
    "status": "posted",
    "postId": "1318170941390322_122120424171500964"
+  },
+  {
+   "key": "2026-11-01|where:86994|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:86994",
+   "title": "No Guns Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86994",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793590570034,
+   "status": "claimed"
   }
  ],
  "health": {
