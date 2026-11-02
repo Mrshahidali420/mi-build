@@ -31926,6 +31926,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120488131500964",
    "commentId": "122120488131500964_1498414962197413"
+  },
+  {
+   "key": "2026-11-02|where:35627|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:35627",
+   "title": "Bloody Monday",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "35627",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793601457944,
+   "status": "claimed"
   }
  ],
  "health": {
