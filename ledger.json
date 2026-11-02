@@ -31432,6 +31432,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793590570034
    }
+  },
+  {
+   "key": "2026-11-01|next:30554|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:30554",
+   "title": "Tokyo Mew Mew",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30554",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793590871452,
+   "status": "claimed"
   }
  ],
  "health": {
