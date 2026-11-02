@@ -32841,6 +32841,24 @@
    "status": "posted",
    "postId": "1318170941390322_122120659965500964",
    "commentId": "122120659965500964_1433523935108235"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-02|reel-ranking:rank:manhwa:adventure|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "reel-ranking:rank:manhwa:adventure",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhwa:adventure",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793651557360,
+   "track": "gods-notebook-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
