@@ -32860,6 +32860,29 @@
    "track": "gods-notebook-lofi.m4a",
    "status": "failed",
    "error": "GET /3196316307386961 failed: Unsupported get request. Object with ID '3196316307386961' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "share": true,
+   "key": "2026-11-02|share:1790860322189675|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "share:1790860322189675",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1790860322189675",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1790860322189675",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": null,
+   "sourceFormat": "reel:reel-anticipated",
+   "link": "https://www.facebook.com/reel/1790860322189675",
+   "message": "New on our sister Page, WhereAnime:",
+   "at": 1793656700568,
+   "status": "claimed"
   }
  ],
  "health": {
