@@ -31368,6 +31368,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793585434315
    }
+  },
+  {
+   "key": "2026-11-01|next:30366|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:30366",
+   "title": "Voices of a Distant Star",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30366",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793588756981,
+   "status": "claimed"
   }
  ],
  "health": {
