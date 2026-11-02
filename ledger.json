@@ -31986,6 +31986,22 @@
     "id": "18573246421078504",
     "at": 1793602060128
    }
+  },
+  {
+   "key": "2026-11-02|next:108984|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "next:108984",
+   "title": "Versatile Mage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "108984",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793602361248,
+   "status": "claimed"
   }
  ],
  "health": {
