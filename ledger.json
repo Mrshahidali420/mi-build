@@ -32290,6 +32290,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120544489500964",
    "commentId": "122120544489500964_2180104769248069"
+  },
+  {
+   "key": "2026-11-02|new-title:219291|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "new-title:219291",
+   "title": "Bartlet Fairy Basslet",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:new-title",
+   "type": "new-title",
+   "item": "219291",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793615299032,
+   "status": "claimed"
   }
  ],
  "health": {
