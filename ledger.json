@@ -32384,6 +32384,24 @@
    "status": "posted",
    "postId": "1318170941390322_122120562255500964",
    "commentId": "122120562255500964_1088168994042801"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-02|reel-next:80027|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "reel-next:80027",
+   "title": "About Death",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "80027",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793620432799,
+   "track": "anime-intro.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
