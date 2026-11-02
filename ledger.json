@@ -32794,7 +32794,11 @@
    "at": 1793639460766,
    "status": "posted",
    "postId": "1318170941390322_122120648391500964",
-   "commentId": "122120648391500964_1495479399119587"
+   "commentId": "122120648391500964_1495479399119587",
+   "ig": {
+    "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
+    "at": 1793639460766
+   }
   }
  ],
  "health": {
