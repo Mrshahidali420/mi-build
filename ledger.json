@@ -31706,6 +31706,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120454489500964",
    "commentId": "122120454489500964_29417905361230696"
+  },
+  {
+   "key": "2026-11-02|character:char:210935|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "character:char:210935",
+   "title": "Seasons of Blossom",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:210935",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793597825073,
+   "status": "claimed"
   }
  ],
  "health": {
