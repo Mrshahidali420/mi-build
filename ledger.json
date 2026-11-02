@@ -32799,6 +32799,24 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793639460766
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-02|reel-ranking:rank:manhua:drama|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "reel-ranking:rank:manhua:drama",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhua:drama",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793642184395,
+   "track": "meadow-thoughts.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
