@@ -32613,7 +32613,11 @@
    "at": 1793628593081,
    "status": "posted",
    "postId": "1318170941390322_122120606397500964",
-   "commentId": "122120606397500964_2736785050113490"
+   "commentId": "122120606397500964_2736785050113490",
+   "ig": {
+    "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
+    "at": 1793628593081
+   }
   }
  ],
  "health": {
