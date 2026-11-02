@@ -32022,6 +32022,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120495271500964",
    "commentId": "122120495271500964_1706558680887403"
+  },
+  {
+   "key": "2026-11-02|next:150823|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "next:150823",
+   "title": "A Dance of Swords in the Night",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "150823",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793602963560,
+   "status": "claimed"
   }
  ],
  "health": {
