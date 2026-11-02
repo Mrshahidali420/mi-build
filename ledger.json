@@ -32555,6 +32555,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120592849500964",
    "commentId": "122120592849500964_1159936383273930"
+  },
+  {
+   "key": "2026-11-02|where:38446|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:38446",
+   "title": "Ikigami: The Ultimate Limit",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "38446",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793625567692,
+   "status": "claimed"
   }
  ],
  "health": {
