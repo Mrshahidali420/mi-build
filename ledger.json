@@ -31890,6 +31890,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120485635500964",
    "commentId": "122120485635500964_2115581579050623"
+  },
+  {
+   "key": "2026-11-02|next:30411|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "next:30411",
+   "title": "Kitchen Princess",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30411",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793600855787,
+   "status": "claimed"
   }
  ],
  "health": {
