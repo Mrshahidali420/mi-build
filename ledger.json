@@ -32212,6 +32212,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120534997500964",
    "commentId": "122120534997500964_3144436769098355"
+  },
+  {
+   "key": "2026-11-02|where:148308|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:148308",
+   "title": "Reloaded into the Other World",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "148308",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793611708418,
+   "status": "claimed"
   }
  ],
  "health": {
