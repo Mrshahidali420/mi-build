@@ -31468,6 +31468,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120430303500964",
    "commentId": "122120430303500964_820747321133682"
+  },
+  {
+   "key": "2026-11-01|next:151212|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "next:151212",
+   "title": "The Holy Power of Modern Medicine",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "151212",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793592683981,
+   "status": "claimed"
   }
  ],
  "health": {
