@@ -32076,6 +32076,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120501529500964",
    "commentId": "122120501529500964_4679273379020946"
+  },
+  {
+   "key": "2026-11-02|where:144374|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:144374",
+   "title": "The Shiunji Family Children",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "144374",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793605078520,
+   "status": "claimed"
   }
  ],
  "health": {
