@@ -32272,6 +32272,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120543439500964",
    "commentId": "122120543439500964_3796726233823927"
+  },
+  {
+   "key": "2026-11-02|where:98858|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:98858",
+   "title": "My Boy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "98858",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793613828350,
+   "status": "claimed"
   }
  ],
  "health": {
