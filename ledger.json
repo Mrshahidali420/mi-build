@@ -31562,6 +31562,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793595109719
    }
+  },
+  {
+   "key": "2026-11-01|where:101584|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:101584",
+   "title": "My Instant Death Ability is So Overpowered, No One in This Other World Stands a Chance Against Me! —AΩ—",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101584",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793595411192,
+   "status": "claimed"
   }
  ],
  "health": {
