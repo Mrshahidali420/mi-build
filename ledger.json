@@ -32134,6 +32134,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120520255500964",
    "commentId": "122120520255500964_1519361183342645"
+  },
+  {
+   "key": "2026-11-02|where:118848|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:118848",
+   "title": "I’m Capped at Level 1?! Thus Begins My Journey to Become the World’s Strongest Badass!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "118848",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793608074338,
+   "status": "claimed"
   }
  ],
  "health": {
