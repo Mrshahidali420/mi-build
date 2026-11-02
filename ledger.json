@@ -31522,6 +31522,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120436519500964",
    "commentId": "122120436519500964_2175972786289982"
+  },
+  {
+   "key": "2026-11-01|where:141579|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:141579",
+   "title": "The Little Lady Behind the Scenes",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "141579",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793593598499,
+   "status": "claimed"
   }
  ],
  "health": {
