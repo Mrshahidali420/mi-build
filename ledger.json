@@ -31450,6 +31450,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120429331500964",
    "commentId": "122120429331500964_28976096218707057"
+  },
+  {
+   "key": "2026-11-01|where:86778|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "where:86778",
+   "title": "Cells at Work!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "86778",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793591172941,
+   "status": "claimed"
   }
  ],
  "health": {
