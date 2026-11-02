@@ -31670,6 +31670,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120451993500964",
    "commentId": "122120451993500964_1660182412482657"
+  },
+  {
+   "key": "2026-11-02|next:43271|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "next:43271",
+   "title": "House of Five Leaves",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "43271",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793597222317,
+   "status": "claimed"
   }
  ],
  "health": {
