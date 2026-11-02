@@ -31327,6 +31327,24 @@
     "id": "18111453368132003",
     "at": 1793570966823
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-01|reel-next:103036|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "reel-next:103036",
+   "title": "The Story of Our Unlikely Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "103036",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793580297734,
+   "track": "hot-springs-town.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
