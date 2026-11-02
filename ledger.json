@@ -32678,6 +32678,22 @@
    "at": 1793631001103,
    "status": "posted",
    "postId": "1318170941390322_122120614995500964"
+  },
+  {
+   "key": "2026-11-02|where:43723|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:43723",
+   "title": "Knights of Sidonia",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "43723",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793631302516,
+   "status": "claimed"
   }
  ],
  "health": {
