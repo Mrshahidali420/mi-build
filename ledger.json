@@ -32254,6 +32254,22 @@
    "at": 1793613222504,
    "status": "posted",
    "postId": "1318170941390322_122120542293500964"
+  },
+  {
+   "key": "2026-11-02|where:103655|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:103655",
+   "title": "My Status as an Assassin Obviously Exceeds the Hero’s",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103655",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793613526852,
+   "status": "claimed"
   }
  ],
  "health": {
