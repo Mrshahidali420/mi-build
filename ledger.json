@@ -32823,6 +32823,22 @@
     "id": "18133627375742828",
     "at": 1793642184395
    }
+  },
+  {
+   "key": "2026-11-02|next:30098|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "next:30098",
+   "title": "Rozen Maiden",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "30098",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793644287052,
+   "status": "claimed"
   }
  ],
  "health": {
