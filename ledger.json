@@ -31742,6 +31742,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120458923500964",
    "commentId": "122120458923500964_1660422768804226"
+  },
+  {
+   "key": "2026-11-02|next:74319|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "next:74319",
+   "title": "Puella Magi Madoka Magica: The Different Story",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "74319",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793598428005,
+   "status": "claimed"
   }
  ],
  "health": {
