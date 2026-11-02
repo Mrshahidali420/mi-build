@@ -31346,6 +31346,22 @@
    "track": "hot-springs-town.m4a",
    "status": "failed",
    "error": "GET /1094673120012864 failed: Unsupported get request. Object with ID '1094673120012864' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-11-01|out-now:137653:165:out|manhwaindex",
+   "day": "2026-11-01",
+   "slug": "out-now:137653:165:out",
+   "title": "Renegade Immortal",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "137653:165:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793585434315,
+   "status": "claimed"
   }
  ],
  "health": {
