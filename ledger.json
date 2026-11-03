@@ -33293,6 +33293,24 @@
    "status": "posted",
    "postId": "1318170941390322_122120932683500964",
    "commentId": "122120932683500964_28755485557487238"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-03|reel-ranking:rank:manhua:adventure|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "reel-ranking:rank:manhua:adventure",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhua:adventure",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793691687775,
+   "track": "jrpg-piano.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
