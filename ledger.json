@@ -33203,6 +33203,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793687451037
    }
+  },
+  {
+   "key": "2026-11-03|where:102476|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "where:102476",
+   "title": "My Daughter Left the Nest and Returned an S-Rank Adventurer: The Black-Haired Valkyrie",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "102476",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793687759740,
+   "status": "claimed"
   }
  ],
  "health": {
