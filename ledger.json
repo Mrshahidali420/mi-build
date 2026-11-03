@@ -33477,6 +33477,24 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793709491816
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-03|reel-ranking:rank:manga:supernatural|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "reel-ranking:rank:manga:supernatural",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manga:supernatural",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793711005408,
+   "track": "anime-intro.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
