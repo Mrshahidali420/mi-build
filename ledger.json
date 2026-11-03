@@ -33389,6 +33389,29 @@
    "status": "posted",
    "postId": "1318170941390322_122120947425500964",
    "commentId": "122120947425500964_1442232640681478"
+  },
+  {
+   "share": true,
+   "key": "2026-11-03|share:1329988470202923_122116683849503689|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "share:1329988470202923_122116683849503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122116683849503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122116683849503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Sparks of Tomorrow",
+   "sourceFormat": "type:where",
+   "link": "https://www.facebook.com/1329988470202923/posts/122116683849503689",
+   "message": "Seen this yet? From our sister Page, WhereAnime:",
+   "at": 1793699833905,
+   "status": "claimed"
   }
  ],
  "health": {
