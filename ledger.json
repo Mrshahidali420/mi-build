@@ -33239,6 +33239,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120926209500964",
    "commentId": "122120926209500964_2720772321689946"
+  },
+  {
+   "key": "2026-11-03|where:47192|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "where:47192",
+   "title": "Junji Ito's Cat Diary: Yon & Mu",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "47192",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793688362671,
+   "status": "claimed"
   }
  ],
  "health": {
