@@ -33501,6 +33501,22 @@
     "id": "18113858999149322",
     "at": 1793711005408
    }
+  },
+  {
+   "key": "2026-11-03|out-now:209502:5:out|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "out-now:209502:5:out",
+   "title": "The Cold Sato-san is Only Sweet to Me",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "209502:5:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793711307210,
+   "status": "claimed"
   }
  ],
  "health": {
