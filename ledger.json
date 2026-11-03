@@ -33257,6 +33257,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120927085500964",
    "commentId": "122120927085500964_2563233020862713"
+  },
+  {
+   "key": "2026-11-03|where:112673|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "where:112673",
+   "title": "Dr. STONE Reboot: Byakuya",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "112673",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793689874110,
+   "status": "claimed"
   }
  ],
  "health": {
