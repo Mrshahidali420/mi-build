@@ -33413,6 +33413,24 @@
    "at": 1793699833905,
    "status": "posted",
    "postId": "1318170941390322_122120972271500964"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-03|reel-ranking:rank:manhwa:supernatural|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "reel-ranking:rank:manhwa:supernatural",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhwa:supernatural",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793701340348,
+   "track": "hot-springs-town.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
