@@ -33624,6 +33624,24 @@
    "at": 1793718249329,
    "status": "posted",
    "postId": "1318170941390322_122121081111500964"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-03|reel-ranking:rank:manhua:supernatural|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "reel-ranking:rank:manhua:supernatural",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhua:supernatural",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793719763866,
+   "track": "determination-anime.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
