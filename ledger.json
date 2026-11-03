@@ -33759,6 +33759,29 @@
     "id": "18102469058378412",
     "at": 1793738516733
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-03|share:1329988470202923_122116906395503689|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "share:1329988470202923_122116906395503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122116906395503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122116906395503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Vinland Saga",
+   "sourceFormat": "type:character",
+   "link": "https://www.facebook.com/1329988470202923/posts/122116906395503689",
+   "message": "New on our sister Page, WhereAnime:",
+   "at": 1793743876153,
+   "status": "claimed"
   }
  ],
  "health": {
