@@ -33670,6 +33670,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793723703889
    }
+  },
+  {
+   "key": "2026-11-03|out-now:179876:4:out|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "out-now:179876:4:out",
+   "title": "DARK MACHINE THE ANIMATION",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "179876:4:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793725229407,
+   "status": "claimed"
   }
  ],
  "health": {
