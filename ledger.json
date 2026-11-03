@@ -33437,6 +33437,22 @@
     "id": "18123684865821713",
     "at": 1793701340348
    }
+  },
+  {
+   "key": "2026-11-03|rating:tt49502696|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "rating:tt49502696",
+   "title": "Tokyo Revengers: War of the Three Titans Arc",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:rating",
+   "type": "rating",
+   "item": "tt49502696",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793702257382,
+   "status": "claimed"
   }
  ],
  "health": {
