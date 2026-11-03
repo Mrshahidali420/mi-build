@@ -33648,6 +33648,22 @@
     "id": "18101709380413295",
     "at": 1793719763866
    }
+  },
+  {
+   "key": "2026-11-03|out-now:207809:18:out|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "out-now:207809:18:out",
+   "title": "Red River",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "207809:18:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793723703889,
+   "status": "claimed"
   }
  ],
  "health": {
