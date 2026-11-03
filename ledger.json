@@ -33127,6 +33127,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120907933500964",
    "commentId": "122120907933500964_1818632802787301"
+  },
+  {
+   "key": "2026-11-03|where:46144|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "where:46144",
+   "title": "Umineko When They Cry Episode 4: Alliance of the Golden Witch",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "46144",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793684131899,
+   "status": "claimed"
   }
  ],
  "health": {
