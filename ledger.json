@@ -32884,6 +32884,24 @@
    "at": 1793656700568,
    "status": "posted",
    "postId": "1318170941390322_122120713131500964"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-02|reel-ranking:rank:manga:adventure|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "reel-ranking:rank:manga:adventure",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manga:adventure",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793673261153,
+   "track": "meadow-thoughts.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
