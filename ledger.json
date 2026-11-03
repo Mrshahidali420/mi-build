@@ -33783,6 +33783,24 @@
    "at": 1793743876153,
    "status": "posted",
    "postId": "1318170941390322_122121194811500964"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-03|reel-ranking:rank:manhua:slice-of-life|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "reel-ranking:rank:manhua:slice-of-life",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhua:slice-of-life",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793748114046,
+   "track": "jrpg-piano.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
