@@ -33013,6 +33013,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120881857500964",
    "commentId": "122120881857500964_1122088666899434"
+  },
+  {
+   "key": "2026-11-02|where:121204|manhwaindex",
+   "day": "2026-11-02",
+   "slug": "where:121204",
+   "title": "The Unrivaled Reincarnated Sage of Another World ~The Strongest in Another World Through Game Knowledges~",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "121204",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1793679899980,
+   "status": "claimed"
   }
  ],
  "health": {
