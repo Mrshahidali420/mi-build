@@ -33317,6 +33317,22 @@
     "id": "18076813022577774",
     "at": 1793691687775
    }
+  },
+  {
+   "key": "2026-11-03|where:145531|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "where:145531",
+   "title": "The Color of the End: Mission in the Apocalypse",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "145531",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793691989332,
+   "status": "claimed"
   }
  ],
  "health": {
