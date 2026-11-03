@@ -33073,6 +33073,22 @@
     "id": "18120435325784873",
     "at": 1793682927334
    }
+  },
+  {
+   "key": "2026-11-03|today:today:2026-11-03|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "today:today:2026-11-03",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:today",
+   "type": "today",
+   "item": "today:2026-11-03",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793683228494,
+   "status": "claimed"
   }
  ],
  "health": {
