@@ -33546,6 +33546,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793715241410
    }
+  },
+  {
+   "key": "2026-11-03|out-now:198727:4:out|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "out-now:198727:4:out",
+   "title": "Chitose Is in the Ramune Bottle 2nd Cour",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "198727:4:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793715543036,
+   "status": "claimed"
   }
  ],
  "health": {
