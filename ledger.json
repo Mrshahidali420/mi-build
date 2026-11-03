@@ -33163,6 +33163,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120913129500964",
    "commentId": "122120913129500964_1656753699442751"
+  },
+  {
+   "key": "2026-11-03|where:103853|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "where:103853",
+   "title": "Bofuri: I Don't Want to Get Hurt, so I'll Max Out My Defense.",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "103853",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793685941920,
+   "status": "claimed"
   }
  ],
  "health": {
