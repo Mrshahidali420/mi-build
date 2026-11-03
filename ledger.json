@@ -33335,6 +33335,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120940705500964",
    "commentId": "122120940705500964_1078405625252538"
+  },
+  {
+   "key": "2026-11-03|where:146238|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "where:146238",
+   "title": "Re-Living My Life with a Boyfriend Who Doesn't Remember Me",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "146238",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1793692290761,
+   "status": "claimed"
   }
  ],
  "health": {
