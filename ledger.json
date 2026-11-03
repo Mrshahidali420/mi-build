@@ -33371,6 +33371,22 @@
    "status": "posted",
    "postId": "1318170941390322_122120946051500964",
    "commentId": "122120946051500964_952371034619787"
+  },
+  {
+   "key": "2026-11-03|where:30729|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "where:30729",
+   "title": "Emma",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30729",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1793694103687,
+   "status": "claimed"
   }
  ],
  "health": {
