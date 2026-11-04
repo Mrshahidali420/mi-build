@@ -34231,6 +34231,24 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793807322499
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-04|reel-ranking:rank:manhwa:horror|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "reel-ranking:rank:manhwa:horror",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhwa:horror",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793813353520,
+   "track": "jrpg-piano.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
