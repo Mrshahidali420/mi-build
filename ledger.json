@@ -34047,6 +34047,24 @@
    "message": "Seen this yet? From our sister Page, WhereAnime:",
    "at": 1793787029221,
    "status": "claimed"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-04|reel-ranking:rank:manhwa:sci-fi|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "reel-ranking:rank:manhwa:sci-fi",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhwa:sci-fi",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793795190879,
+   "track": "jrpg-piano.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
