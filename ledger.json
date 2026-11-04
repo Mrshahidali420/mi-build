@@ -34071,6 +34071,22 @@
     "id": "18128750588492708",
     "at": 1793795190879
    }
+  },
+  {
+   "key": "2026-11-04|out-now:152677:5:out|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "out-now:152677:5:out",
+   "title": "The Detective Is Already Dead Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "152677:5:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793795492430,
+   "status": "claimed"
   }
  ],
  "health": {
