@@ -34142,7 +34142,11 @@
    "at": 1793803698394,
    "status": "posted",
    "postId": "1318170941390322_122121466749500964",
-   "commentId": "122121466749500964_28940719572222161"
+   "commentId": "122121466749500964_28940719572222161",
+   "ig": {
+    "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
+    "at": 1793803698394
+   }
   }
  ],
  "health": {
