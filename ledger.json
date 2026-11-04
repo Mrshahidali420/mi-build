@@ -33902,6 +33902,22 @@
    "status": "posted",
    "postId": "1318170941390322_122121297225500964",
    "commentId": "122121297225500964_1737943827270392"
+  },
+  {
+   "key": "2026-11-04|today:today:2026-11-04|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "today:today:2026-11-04",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:today",
+   "type": "today",
+   "item": "today:2026-11-04",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793768596119,
+   "status": "claimed"
   }
  ],
  "health": {
