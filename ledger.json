@@ -34147,6 +34147,24 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793803698394
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-04|reel-ranking:rank:manga:sci-fi|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "reel-ranking:rank:manga:sci-fi",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manga:sci-fi",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793803999469,
+   "track": "determination-anime.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
