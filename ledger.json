@@ -34279,6 +34279,29 @@
     "id": "18138949225735039",
     "at": 1793823000730
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-04|share:1329988470202923_122117310717503689|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "share:1329988470202923_122117310717503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122117310717503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122117310717503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "The Devil is a Part-Timer!",
+   "sourceFormat": "type:character",
+   "link": "https://www.facebook.com/1329988470202923/posts/122117310717503689",
+   "message": "New on our sister Page, WhereAnime:",
+   "at": 1793831436241,
+   "status": "claimed"
   }
  ],
  "health": {
