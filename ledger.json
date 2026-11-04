@@ -34255,6 +34255,24 @@
     "id": "18111317309192199",
     "at": 1793813353520
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-04|reel-ranking:rank:manga:horror|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "reel-ranking:rank:manga:horror",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manga:horror",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793823000730,
+   "track": "hot-springs-town.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
