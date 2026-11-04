@@ -34024,6 +34024,29 @@
     "id": "18136353367730501",
     "at": 1793785519547
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-04|share:1329988470202923_122117096991503689|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "share:1329988470202923_122117096991503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122117096991503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122117096991503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "The Ramparts of Ice Season 2",
+   "sourceFormat": "type:collage",
+   "link": "https://www.facebook.com/1329988470202923/posts/122117096991503689",
+   "message": "Seen this yet? From our sister Page, WhereAnime:",
+   "at": 1793787029221,
+   "status": "claimed"
   }
  ],
  "health": {
