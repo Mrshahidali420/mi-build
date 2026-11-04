@@ -33921,47 +33921,47 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-03",
-  "at": 1793682918062,
+  "day": "2026-11-04",
+  "at": 1793768586434,
   "list": [
    {
-    "id": 46494,
-    "name": "Armin Arlert",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b46494-g7xYYuBtYPnO.png",
-    "favourites": 14230,
-    "mediaId": 53390,
+    "id": 179809,
+    "name": "Yuki Itose",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b179809-pxG89n30MGwl.jpg",
+    "favourites": 2166,
+    "mediaId": 111189,
     "voice": null
    },
    {
-    "id": 145343,
-    "name": "Keisuke Baji",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b145343-vRrkdWEUXwYM.jpg",
-    "favourites": 4390,
-    "mediaId": 102988,
+    "id": 89856,
+    "name": "Kyouka Izumi",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89856-GB3SOKXTBnrX.jpg",
+    "favourites": 1888,
+    "mediaId": 85307,
     "voice": null
    },
    {
-    "id": 176840,
-    "name": "Yamato",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b176840-8KRqXXLJeLOg.png",
-    "favourites": 2367,
-    "mediaId": 30013,
+    "id": 147760,
+    "name": "Keroli Crocell",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b147760-FehhFYbZYi3g.jpg",
+    "favourites": 313,
+    "mediaId": 99324,
     "voice": null
    },
    {
-    "id": 185661,
-    "name": "Ai Kamiya",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b185661-hU8QpclbKiwI.jpg",
-    "favourites": 1285,
-    "mediaId": 107282,
+    "id": 129139,
+    "name": "Mary Hunt",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129139-o7zD077wZmC7.png",
+    "favourites": 244,
+    "mediaId": 100560,
     "voice": null
    },
    {
-    "id": 16596,
-    "name": "Eiji Niizuma",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b16596-F2ykCK1ruRws.png",
-    "favourites": 803,
-    "mediaId": 39711,
+    "id": 147657,
+    "name": "Minare Koda",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b147657-bCVU4fhJN05Q.png",
+    "favourites": 200,
+    "mediaId": 87206,
     "voice": null
    }
   ]
