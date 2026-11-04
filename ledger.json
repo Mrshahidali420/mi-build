@@ -33807,6 +33807,24 @@
     "id": "18146320318608162",
     "at": 1793748114046
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-03|reel-ranking:rank:manhwa:mystery|manhwaindex",
+   "day": "2026-11-03",
+   "slug": "reel-ranking:rank:manhwa:mystery",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhwa:mystery",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793757763767,
+   "track": "chill-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
