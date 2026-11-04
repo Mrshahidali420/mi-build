@@ -34167,6 +34167,29 @@
    "status": "posted",
    "postId": "1154296967158389",
    "commentId": "1154296967158389_1107206665407655"
+  },
+  {
+   "share": true,
+   "key": "2026-11-04|share:1329988470202923_122117194923503689|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "share:1329988470202923_122117194923503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122117194923503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122117194923503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "The World's Strongest Witch",
+   "sourceFormat": "type:out-now",
+   "link": "https://www.facebook.com/1329988470202923/posts/122117194923503689",
+   "message": "In case you missed it, from our sister Page, WhereAnime:",
+   "at": 1793805510922,
+   "status": "claimed"
   }
  ],
  "health": {
