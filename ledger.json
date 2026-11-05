@@ -34351,6 +34351,24 @@
     "id": "17898269544611129",
     "at": 1793841173770
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-04|reel-ranking:rank:manga:sports|manhwaindex",
+   "day": "2026-11-04",
+   "slug": "reel-ranking:rank:manga:sports",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manga:sports",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793850830778,
+   "track": "chill-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
