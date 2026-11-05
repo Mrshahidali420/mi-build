@@ -34586,6 +34586,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793890740910
    }
+  },
+  {
+   "key": "2026-11-05|out-now:199594:5:out|manhwaindex",
+   "day": "2026-11-05",
+   "slug": "out-now:199594:5:out",
+   "title": "TETSURYO! Meet With Tetsudou Musume",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "199594:5:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793891044558,
+   "status": "claimed"
   }
  ],
  "health": {
