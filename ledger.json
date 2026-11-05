@@ -34564,6 +34564,22 @@
    "status": "posted",
    "postId": "1318170941390322_122121777549500964",
    "commentId": "122121777549500964_2697133434054623"
+  },
+  {
+   "key": "2026-11-05|out-now:213805:6:out|manhwaindex",
+   "day": "2026-11-05",
+   "slug": "out-now:213805:6:out",
+   "title": "The Ramparts of Ice Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "213805:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793890740910,
+   "status": "claimed"
   }
  ],
  "health": {
