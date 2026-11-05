@@ -34418,47 +34418,47 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-04",
-  "at": 1793768586434,
+  "day": "2026-11-05",
+  "at": 1793855635465,
   "list": [
    {
-    "id": 179809,
-    "name": "Yuki Itose",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b179809-pxG89n30MGwl.jpg",
-    "favourites": 2166,
-    "mediaId": 111189,
+    "id": 127613,
+    "name": "Kaede Azusagawa",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127613-LBtFkMJfUWpg.png",
+    "favourites": 3351,
+    "mediaId": 87471,
     "voice": null
    },
    {
-    "id": 89856,
-    "name": "Kyouka Izumi",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89856-GB3SOKXTBnrX.jpg",
-    "favourites": 1888,
-    "mediaId": 85307,
+    "id": 71949,
+    "name": "Jugram Haschwalth",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71949-wcakVhS04k9t.png",
+    "favourites": 373,
+    "mediaId": 30012,
     "voice": null
    },
    {
-    "id": 147760,
-    "name": "Keroli Crocell",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b147760-FehhFYbZYi3g.jpg",
-    "favourites": 313,
-    "mediaId": 99324,
+    "id": 14546,
+    "name": "Miho Azuki",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b14546-J1ES7lBIPEIj.png",
+    "favourites": 222,
+    "mediaId": 39711,
     "voice": null
    },
    {
-    "id": 129139,
-    "name": "Mary Hunt",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b129139-o7zD077wZmC7.png",
-    "favourites": 244,
-    "mediaId": 100560,
+    "id": 21809,
+    "name": "Tiger Fisher",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b21809-NcG6Wa7P6t3k.jpg",
+    "favourites": 176,
+    "mediaId": 30013,
     "voice": null
    },
    {
-    "id": 147657,
-    "name": "Minare Koda",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b147657-bCVU4fhJN05Q.png",
-    "favourites": 200,
-    "mediaId": 87206,
+    "id": 195647,
+    "name": "Floyd Leech",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b195647-MBOxIPgKnuhu.png",
+    "favourites": 160,
+    "mediaId": 126064,
     "voice": null
    }
   ]
