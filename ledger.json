@@ -34693,47 +34693,31 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-05",
-  "at": 1793855635465,
+  "day": "2026-11-06",
+  "at": 1793941441105,
   "list": [
    {
-    "id": 127613,
-    "name": "Kaede Azusagawa",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b127613-LBtFkMJfUWpg.png",
-    "favourites": 3351,
-    "mediaId": 87471,
-    "voice": null
-   },
-   {
-    "id": 71949,
-    "name": "Jugram Haschwalth",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71949-wcakVhS04k9t.png",
-    "favourites": 373,
+    "id": 564,
+    "name": "Uryuu Ishida",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b564-a6LJitrjSfKC.jpg",
+    "favourites": 1835,
     "mediaId": 30012,
     "voice": null
    },
    {
-    "id": 14546,
-    "name": "Miho Azuki",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b14546-J1ES7lBIPEIj.png",
-    "favourites": 222,
-    "mediaId": 39711,
-    "voice": null
-   },
-   {
-    "id": 21809,
-    "name": "Tiger Fisher",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b21809-NcG6Wa7P6t3k.jpg",
-    "favourites": 176,
+    "id": 17178,
+    "name": "Ryuuma Shimotsuki",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b17178-SczXHzLzZqzn.jpg",
+    "favourites": 231,
     "mediaId": 30013,
     "voice": null
    },
    {
-    "id": 195647,
-    "name": "Floyd Leech",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b195647-MBOxIPgKnuhu.png",
-    "favourites": 160,
-    "mediaId": 126064,
+    "id": 250569,
+    "name": "Ga-Min Yun",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b250569-9D1J2BXOKlnN.jpg",
+    "favourites": 114,
+    "mediaId": 110472,
     "voice": null
    }
   ]
