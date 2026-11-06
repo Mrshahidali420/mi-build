@@ -34722,6 +34722,22 @@
    "at": 1793941752297,
    "status": "posted",
    "postId": "1318170941390322_122121985449500964"
+  },
+  {
+   "key": "2026-11-06|today:today:2026-11-06|manhwaindex",
+   "day": "2026-11-06",
+   "slug": "today:today:2026-11-06",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:today",
+   "type": "today",
+   "item": "today:2026-11-06",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793942053533,
+   "status": "claimed"
   }
  ],
  "health": {
