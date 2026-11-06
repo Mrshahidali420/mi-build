@@ -34906,6 +34906,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793968044527
    }
+  },
+  {
+   "key": "2026-11-06|out-now:186742:5:out|manhwaindex",
+   "day": "2026-11-06",
+   "slug": "out-now:186742:5:out",
+   "title": "A Certain Dark Item",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "186742:5:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793972957482,
+   "status": "claimed"
   }
  ],
  "health": {
