@@ -34842,6 +34842,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793959552253
    }
+  },
+  {
+   "key": "2026-11-06|out-now:165159:139:out|manhwaindex",
+   "day": "2026-11-06",
+   "slug": "out-now:165159:139:out",
+   "title": "BEYBLADE X",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "165159:139:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793959855106,
+   "status": "claimed"
   }
  ],
  "health": {
