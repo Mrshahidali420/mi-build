@@ -34820,6 +34820,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793952912489
    }
+  },
+  {
+   "key": "2026-11-06|out-now:158871:156:out|manhwaindex",
+   "day": "2026-11-06",
+   "slug": "out-now:158871:156:out",
+   "title": "Pokémon Horizons: The Series",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "158871:156:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793959552253,
+   "status": "claimed"
   }
  ],
  "health": {
