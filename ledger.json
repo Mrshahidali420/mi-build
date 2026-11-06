@@ -34928,6 +34928,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793972957482
    }
+  },
+  {
+   "key": "2026-11-06|out-now:195516:6:out|manhwaindex",
+   "day": "2026-11-06",
+   "slug": "out-now:195516:6:out",
+   "title": "The Apothecary Diaries Season 3",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "195516:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793974468478,
+   "status": "claimed"
   }
  ],
  "health": {
