@@ -35050,6 +35050,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793984419112
    }
+  },
+  {
+   "key": "2026-11-06|rating-week:week|manhwaindex",
+   "day": "2026-11-06",
+   "slug": "rating-week:week",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:rating-week",
+   "type": "rating-week",
+   "item": "week",
+   "gapDays": 7,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1793992340746,
+   "status": "claimed"
   }
  ],
  "health": {
