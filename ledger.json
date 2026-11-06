@@ -35072,6 +35072,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1793992340746
    }
+  },
+  {
+   "key": "2026-11-06|rating:tt44925664|manhwaindex",
+   "day": "2026-11-06",
+   "slug": "rating:tt44925664",
+   "title": "ONE PIECE",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:rating",
+   "type": "rating",
+   "item": "tt44925664",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1793992642398,
+   "status": "claimed"
   }
  ],
  "health": {
