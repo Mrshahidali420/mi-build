@@ -34674,6 +34674,24 @@
    "at": 1793918521002,
    "status": "posted",
    "postId": "1318170941390322_122121903201500964"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-06|reel-today:today:2026-11-06|manhwaindex",
+   "day": "2026-11-06",
+   "slug": "reel-today:today:2026-11-06",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-today",
+   "type": "reel-today",
+   "item": "today:2026-11-06",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1793941451048,
+   "track": "gods-notebook-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
