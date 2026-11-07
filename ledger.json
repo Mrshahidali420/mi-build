@@ -35500,6 +35500,29 @@
    "status": "posted",
    "postId": "1318170941390322_122122495437500964",
    "commentId": "122122495437500964_964995912960752"
+  },
+  {
+   "share": true,
+   "key": "2026-11-07|share:1329988470202923_122118298209503689|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "share:1329988470202923_122118298209503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122118298209503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122118298209503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "DON'T TOY WITH ME, MISS NAGATORO",
+   "sourceFormat": "type:scenes",
+   "link": "https://www.facebook.com/1329988470202923/posts/122118298209503689",
+   "message": "In case you missed it, from our sister Page, WhereAnime:",
+   "at": 1794066853363,
+   "status": "claimed"
   }
  ],
  "health": {
