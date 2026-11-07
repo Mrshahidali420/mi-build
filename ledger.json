@@ -35592,6 +35592,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794092785918
    }
+  },
+  {
+   "key": "2026-11-07|out-now:202957:40:out|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "out-now:202957:40:out",
+   "title": "Star Detective Precure!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "202957:40:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794094881941,
+   "status": "claimed"
   }
  ],
  "health": {
