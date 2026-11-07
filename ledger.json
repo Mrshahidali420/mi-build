@@ -35318,6 +35318,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122407573500964",
    "commentId": "122122407573500964_1159609436936458"
+  },
+  {
+   "key": "2026-11-07|out-now:212799:6:out|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "out-now:212799:6:out",
+   "title": "The Seven Knights of the Marronnier Kingdom",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "212799:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794044219058,
+   "status": "claimed"
   }
  ],
  "health": {
