@@ -35464,6 +35464,22 @@
     "id": "18639725740031620",
     "at": 1794064742952
    }
+  },
+  {
+   "key": "2026-11-07|next:140658|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "next:140658",
+   "title": "Can We Become Family?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "140658",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794065044312,
+   "status": "claimed"
   }
  ],
  "health": {
