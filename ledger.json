@@ -35482,6 +35482,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122492539500964",
    "commentId": "122122492539500964_3073376776202853"
+  },
+  {
+   "key": "2026-11-07|character:char:311373|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "character:char:311373",
+   "title": "Time-Limited Genius Dark Knight",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:311373",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794065345312,
+   "status": "claimed"
   }
  ],
  "health": {
