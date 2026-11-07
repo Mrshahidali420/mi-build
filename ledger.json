@@ -35382,6 +35382,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794053873161
    }
+  },
+  {
+   "key": "2026-11-07|out-now:187402:7:out|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "out-now:187402:7:out",
+   "title": "A Tale of the Secret Saint",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "187402:7:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794056597662,
+   "status": "claimed"
   }
  ],
  "health": {
