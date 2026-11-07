@@ -35154,6 +35154,24 @@
    "status": "posted",
    "postId": "1318170941390322_122122297065500964",
    "commentId": "122122297065500964_1998787224133215"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-07|reel-today:today:2026-11-07|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "reel-today:today:2026-11-07",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-today",
+   "type": "reel-today",
+   "item": "today:2026-11-07",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794028526429,
+   "track": "jrpg-piano.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
