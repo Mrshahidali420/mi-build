@@ -35300,6 +35300,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794041192512
    }
+  },
+  {
+   "key": "2026-11-07|out-now:235:1219:out|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "out-now:235:1219:out",
+   "title": "Detective Conan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "235:1219:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794042702081,
+   "status": "claimed"
   }
  ],
  "health": {
