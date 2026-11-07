@@ -35570,6 +35570,22 @@
    "at": 1794092483241,
    "status": "posted",
    "postId": "1318170941390322_122122582311500964"
+  },
+  {
+   "key": "2026-11-07|out-now:185646:84:out|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "out-now:185646:84:out",
+   "title": "Koupen-chan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "185646:84:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794092785918,
+   "status": "claimed"
   }
  ],
  "health": {
