@@ -35173,31 +35173,31 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-06",
-  "at": 1793941441105,
+  "day": "2026-11-07",
+  "at": 1794028518826,
   "list": [
    {
-    "id": 564,
-    "name": "Uryuu Ishida",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b564-a6LJitrjSfKC.jpg",
-    "favourites": 1835,
-    "mediaId": 30012,
+    "id": 217334,
+    "name": "Alisa Kujou",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b217334-buImnwO26SgS.jpg",
+    "favourites": 3714,
+    "mediaId": 152404,
     "voice": null
    },
    {
-    "id": 17178,
-    "name": "Ryuuma Shimotsuki",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b17178-SczXHzLzZqzn.jpg",
-    "favourites": 231,
-    "mediaId": 30013,
+    "id": 158154,
+    "name": "Shouko Ieiri",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b158154-UCqbiULli62P.png",
+    "favourites": 1523,
+    "mediaId": 105469,
     "voice": null
    },
    {
-    "id": 250569,
-    "name": "Ga-Min Yun",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b250569-9D1J2BXOKlnN.jpg",
-    "favourites": 114,
-    "mediaId": 110472,
+    "id": 128469,
+    "name": "Chartreux Westia",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b128469-MKtpVYyFx199.png",
+    "favourites": 342,
+    "mediaId": 86279,
     "voice": null
    }
   ]
