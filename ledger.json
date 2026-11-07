@@ -35440,6 +35440,24 @@
    "status": "posted",
    "postId": "1318170941390322_122122480461500964",
    "commentId": "122122480461500964_1623837648614837"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-07|reel-next:142347|manhwaindex",
+   "day": "2026-11-07",
+   "slug": "reel-next:142347",
+   "title": "I'm No Heroine!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "142347",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794064742952,
+   "track": "hot-springs-town.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
