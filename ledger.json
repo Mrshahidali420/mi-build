@@ -2173,6 +2173,22 @@
    "at": 1794169709548,
    "status": "posted",
    "postId": "1318170941390322_122122921995500964"
+  },
+  {
+   "key": "2026-11-08|where:132457|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:132457",
+   "title": "The Celestial Returned from Hell",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "132457",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794170010403,
+   "status": "claimed"
   }
  ],
  "health": {
