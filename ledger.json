@@ -1435,6 +1435,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122868253500964",
    "commentId": "122122868253500964_1159489743692846"
+  },
+  {
+   "key": "2026-11-08|character:char:180694|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:180694",
+   "title": "Kaiju No.8",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:180694",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794157944027,
+   "status": "claimed"
   }
  ],
  "health": {
