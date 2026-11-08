@@ -452,6 +452,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122801287500964",
    "commentId": "122122801287500964_4615231352139761"
+  },
+  {
+   "key": "2026-11-08|fact:fact:133122:run|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "fact:fact:133122:run",
+   "title": "Rise from the Rubble",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:133122:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794141949991,
+   "status": "claimed"
   }
  ],
  "health": {
