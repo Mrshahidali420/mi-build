@@ -636,6 +636,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122812681500964",
    "commentId": "122122812681500964_1112102691462309"
+  },
+  {
+   "key": "2026-11-08|where:110095|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:110095",
+   "title": "A Business Proposal",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "110095",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794144966948,
+   "status": "claimed"
   }
  ],
  "health": {
