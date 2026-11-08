@@ -1453,6 +1453,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122869603500964",
    "commentId": "122122869603500964_4325122477620014"
+  },
+  {
+   "key": "2026-11-08|next:39115|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:39115",
+   "title": "Spice & Wolf",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "39115",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794158245277,
+   "status": "claimed"
   }
  ],
  "health": {
