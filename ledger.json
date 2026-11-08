@@ -166,5 +166,51 @@
   "cut": null,
   "blockedUntil": 0,
   "halted": null
+ },
+ "birthdays": {
+  "day": "2026-11-08",
+  "at": 1794137074615,
+  "list": [
+   {
+    "id": 89225,
+    "name": "Shouta Aizawa",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89225-XBgvUhI9naVI.png",
+    "favourites": 8747,
+    "mediaId": 85486,
+    "voice": null
+   },
+   {
+    "id": 1900,
+    "name": "Sasori",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1900-Dpd9wVWtlvIx.png",
+    "favourites": 1630,
+    "mediaId": 30011,
+    "voice": null
+   },
+   {
+    "id": 195601,
+    "name": "Amane Fujimiya",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b195601-rDhWj5yC1BAe.png",
+    "favourites": 763,
+    "mediaId": 122337,
+    "voice": null
+   },
+   {
+    "id": 25870,
+    "name": "Carue",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/25870.jpg",
+    "favourites": 307,
+    "mediaId": 30013,
+    "voice": null
+   },
+   {
+    "id": 3168,
+    "name": "Pan",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b3168-z2Iy2r5zVUTe.png",
+    "favourites": 294,
+    "mediaId": 30042,
+    "voice": null
+   }
+  ]
  }
 }
