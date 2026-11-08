@@ -1561,6 +1561,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122876203500964",
    "commentId": "122122876203500964_2011482589526661"
+  },
+  {
+   "key": "2026-11-08|where:184502|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:184502",
+   "title": "The Academy’s Sashimi Sword Master",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "184502",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794160057571,
+   "status": "claimed"
   }
  ],
  "health": {
