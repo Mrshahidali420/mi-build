@@ -1983,6 +1983,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122909569500964",
    "commentId": "122122909569500964_1654406946072283"
+  },
+  {
+   "key": "2026-11-08|next:117536|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:117536",
+   "title": "Kill the Hero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "117536",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794166997070,
+   "status": "claimed"
   }
  ],
  "health": {
