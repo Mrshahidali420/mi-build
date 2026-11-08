@@ -2001,6 +2001,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122910619500964",
    "commentId": "122122910619500964_3001456963549123"
+  },
+  {
+   "key": "2026-11-08|where:30012|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:30012",
+   "title": "Bleach",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30012",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794167297873,
+   "status": "claimed"
   }
  ],
  "health": {
