@@ -672,6 +672,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122815219500964",
    "commentId": "122122815219500964_1450947853029220"
+  },
+  {
+   "key": "2026-11-08|ranking:rank:manhwa:action|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "ranking:rank:manhwa:action",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhwa:action",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794145569675,
+   "status": "claimed"
   }
  ],
  "health": {
