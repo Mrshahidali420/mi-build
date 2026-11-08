@@ -2614,6 +2614,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122957869500964",
    "commentId": "122122957869500964_2238870156682657"
+  },
+  {
+   "key": "2026-11-08|next:86406|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:86406",
+   "title": "So I'm a Spider, So What?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86406",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794177245902,
+   "status": "claimed"
   }
  ],
  "health": {
