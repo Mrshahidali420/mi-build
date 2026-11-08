@@ -858,6 +858,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122829541500964",
    "commentId": "122122829541500964_880056015197974"
+  },
+  {
+   "key": "2026-11-08|next:86365|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:86365",
+   "title": "Grimgar of Fantasy and Ash",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86365",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794148591732,
+   "status": "claimed"
   }
  ],
  "health": {
