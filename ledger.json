@@ -358,6 +358,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122795023500964",
    "commentId": "122122795023500964_1071040689318779"
+  },
+  {
+   "key": "2026-11-08|where:130687|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:130687",
+   "title": "Alya Sometimes Hides Her Feelings in Russian",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "130687",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794140439928,
+   "status": "claimed"
   }
  ],
  "health": {
