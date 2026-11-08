@@ -1232,6 +1232,24 @@
    "status": "posted",
    "postId": "1318170941390322_122122856523500964",
    "commentId": "122122856523500964_1486054136761778"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-08|reel-next:85849|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "reel-next:85849",
+   "title": "ReLIFE",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "85849",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794154624042,
+   "track": "gods-notebook-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
