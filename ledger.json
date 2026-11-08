@@ -1160,6 +1160,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794153118122
    }
+  },
+  {
+   "key": "2026-11-08|next:54692|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:54692",
+   "title": "Noragami: Stray God",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "54692",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794153419272,
+   "status": "claimed"
   }
  ],
  "health": {
