@@ -1601,6 +1601,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794160363547
    }
+  },
+  {
+   "key": "2026-11-08|character:char:120649|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:120649",
+   "title": "Kaguya-sama: Love is War",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:120649",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794160664629,
+   "status": "claimed"
   }
  ],
  "health": {
