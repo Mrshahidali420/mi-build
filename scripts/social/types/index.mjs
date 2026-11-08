@@ -24,6 +24,7 @@ import reelNext from './reel-next.mjs'
 import reelRanking from './reel-ranking.mjs'
 import reelToday from './reel-today.mjs'
 import today from './today.mjs'
+import { clipReel, clipVideo } from './clip.mjs'
 import where from './where.mjs'
 
 export const TYPES = [outNow, finale, today, rating, ratingMove, ratingWeek, newTitle, where, ranking, birthday, character, fact, next, fanart, cosplay]
@@ -34,4 +35,7 @@ export const TYPE_KEYS = TYPES.map((type) => type.key)
 export const REELS = [reelRanking, reelNext, reelToday]
 
 /** Every kind a run can be asked for by name. */
-export const KINDS = [...TYPES, ...REELS]
+/** The clips of a trending episode (clip.mjs): a Reel and a normal video, from files the recap project made. */
+export const CLIPS = [clipReel, clipVideo]
+
+export const KINDS = [...TYPES, ...REELS, ...CLIPS]

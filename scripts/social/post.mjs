@@ -42,6 +42,7 @@
 import { execFileSync } from 'node:child_process'
 import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
+import { loadClips } from './clip/store.mjs'
 import { fileURLToPath } from 'node:url'
 import { attemptOnce } from './attempt.mjs'
 import { runChain } from './chain.mjs'
@@ -315,6 +316,7 @@ async function defaultRender(type, post, { avoidTrack = null, words, swipe = fal
     const reel = (await import('./types/index.mjs')).REELS.find((r) => r.carouselOf === type.key && r.carousel)
     return reel ? { jpegs: await (await import('./reel/engine.mjs')).renderCarousel(reel, reel.fromPost(post), { theme: THEME }) } : null
   }
+  if (type.render) return type.render(type, post)
   if (type.reel) return (await import('./reel/engine.mjs')).renderReel(type, post, { theme: THEME, avoidTrack })
   return (await import('./render/engine.mjs')).renderPost(type, post, { theme: THEME, words })
 }
@@ -338,7 +340,12 @@ async function main() {
   const outputs = new Map()
   const code = await run({
     env: process.env,
-    loadPools,
+    // The clips of a trending episode (clip/store.mjs) ride along with the catalog; a store that cannot be read is an empty list.
+    loadPools: async (options) => {
+      const loaded = loadPools(options)
+      loaded.data.clips = await loadClips(options)
+      return loaded
+    },
     store: gitStore({ git }),
     makeGraph: graphClient,
     // The summary goes to the job page and to the log (secrets are masked there), line by line as the chain runs.

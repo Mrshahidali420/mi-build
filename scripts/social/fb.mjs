@@ -221,6 +221,12 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
       await call('POST', `/${pageId}/video_reels`, { upload_phase: 'finish', video_id: start.video_id, video_state: 'PUBLISHED', description })
       return { videoId: start.video_id, postId: start.video_id }
     },
+    /** A normal video post (not a reel) from an MP4 made elsewhere: the whole clip, with the caption as its text. */
+    async publishVideo({ bytes, description }) {
+      if (!bytes?.length) throw new GraphError('publishVideo needs the video bytes')
+      const json = await call('POST', `/${pageId}/videos`, { description }, { bytes, filename: 'clip.mp4', contentType: 'video/mp4' })
+      return { videoId: json.id, postId: json.id }
+    },
     /**
      * Wait until Facebook has processed and published a reel, so the first
      * comment has something to land on. True when it is ready, false when the

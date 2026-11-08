@@ -134,6 +134,10 @@ export function typedEntry({ type, post, variant }, day, now) {
 /** A template post: the picture is drawn here and sent as a file. */
 /** How a drawn post is described, saved by a dry run, and sent: a picture, or a reel. */
 function mediumOf(type, made, { graph, caption, sleep }) {
+  if (type.video) {
+    const send = () => graph.publishVideo({ bytes: made.mp4, description: caption })
+    return { line: `a video clip from the recap project, ${made.seconds} s, ${Math.round(made.mp4.length / 1024)} KB`, file: 'mp4', bytes: made.mp4, send }
+  }
   if (!type.reel) {
     return { line: `drawn on the runner, 1080x1350, ${Math.round(made.jpeg.length / 1024)} KB`, file: 'jpg', bytes: made.jpeg, send: () => graph.publishPhotoFile({ bytes: made.jpeg, caption, filename: `${type.key}.jpg` }) }
   }
@@ -172,13 +176,13 @@ export async function typedStep({ s, graph, ig = null, book, plan, now, day, ski
   out.push(describe({ heading: `${type.reel ? 'REEL' : 'TEMPLATE'} · ${type.key} · ${name}`, image: medium.line, path: post.path, caption, comment, now }))
   // The Instagram picture: a raw one (fan art, cosplay) carries no words and is used as it is;
   // any other is drawn again with "link in bio" for the line about the first comment.
-  const igPicture = async () => (type.size ? picture.jpeg : (await render(type, post, { words: igWords })).jpeg)
+  const igPicture = async () => (type.size || type.video ? picture.jpeg : (await render(type, post, { words: igWords })).jpeg)
   if (s.dry) {
     const name = entry.slug.replace(/[^a-z0-9-]+/gi, '-')
     if (preview) await preview(`${name}.${medium.file}`, medium.bytes)
     const line = igDryLine({ ig, history, now, entry })
     if (line) out.push(line, '')
-    const igBytes = line && preview && !type.reel && !type.size ? await igPicture().catch(() => null) : null
+    const igBytes = line && preview && !type.reel && !type.video && !type.size ? await igPicture().catch(() => null) : null
     if (igBytes) await preview(`${name}.instagram.jpg`, igBytes)
     await settle(book, entry.key, { status: 'dry' })
     return STEP.posted
@@ -190,6 +194,6 @@ export async function typedStep({ s, graph, ig = null, book, plan, now, day, ski
   // when its type has one; any other picture post as its Instagram picture.
   const igSlides = async () => (await render(type, post, { swipe: true }))?.jpegs || null
   const igMedium = type.reel ? { video: { bytes: picture.mp4, seconds: picture.seconds } } : { image: { make: igPicture }, slides: { make: igSlides } }
-  const after = ig ? () => crossPost({ ig, graph, book, entry, history, now, out, caption, ...igMedium, sleep }) : null
+  const after = ig && !type.video ? () => crossPost({ ig, graph, book, entry, history, now, out, caption, ...igMedium, sleep }) : null
   return publish({ graph, book, entry, send: medium.send, comment, plain, out, name, onError: onFail, after })
 }
