@@ -2267,6 +2267,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794171213750
    }
+  },
+  {
+   "key": "2026-11-08|ranking:rank:manhua:adventure|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "ranking:rank:manhua:adventure",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhua:adventure",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794171514483,
+   "status": "claimed"
   }
  ],
  "health": {
