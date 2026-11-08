@@ -2447,6 +2447,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122947729500964",
    "commentId": "122122947729500964_1776685336722269"
+  },
+  {
+   "key": "2026-11-08|next:65573|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:65573",
+   "title": "orange",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "65573",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794174529446,
+   "status": "claimed"
   }
  ],
  "health": {
