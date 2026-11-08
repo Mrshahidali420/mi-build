@@ -1269,6 +1269,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122859019500964",
    "commentId": "122122859019500964_2265619567347986"
+  },
+  {
+   "key": "2026-11-08|next:142287|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:142287",
+   "title": "I Am The Fated Villain",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "142287",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794155232824,
+   "status": "claimed"
   }
  ],
  "health": {
