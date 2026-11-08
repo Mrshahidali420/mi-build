@@ -2227,6 +2227,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122925301500964",
    "commentId": "122122925301500964_1713528657027806"
+  },
+  {
+   "key": "2026-11-08|next:113666|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:113666",
+   "title": "FFF-Class Trashero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "113666",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794170912922,
+   "status": "claimed"
   }
  ],
  "health": {
