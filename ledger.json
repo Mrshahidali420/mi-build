@@ -750,6 +750,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122821579500964",
    "commentId": "122122821579500964_1784651309505657"
+  },
+  {
+   "key": "2026-11-08|where:100230|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:100230",
+   "title": "The Quintessential Quintuplets",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "100230",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794146775697,
+   "status": "claimed"
   }
  ],
  "health": {
