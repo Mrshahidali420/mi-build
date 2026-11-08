@@ -2059,6 +2059,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122914987500964",
    "commentId": "122122914987500964_1471622781594869"
+  },
+  {
+   "key": "2026-11-08|next:146139|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:146139",
+   "title": "Maybe Meant to Be",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "146139",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794168200386,
+   "status": "claimed"
   }
  ],
  "health": {
