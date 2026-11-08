@@ -5,7 +5,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import sharp from 'sharp'
 import { GRAPH_VERSION } from '../scripts/social/fb.mjs'
-import { BIO_LINE, REEL_GAP_MS, IG_DEFAULT_PER_DAY, IG_MAX_PER_DAY, fitImage, frameOf, igCaption, igClient, igSettingsOf, igWhyNot, igWords, reelLengthProblem } from '../scripts/social/ig.mjs'
+import { BIO_LINE, REEL_GAP_MS, IG_DEFAULT_PER_DAY, IG_MAX_PER_DAY, fitImage, frameOf, igCaption, igClient, igSettingsOf, igWhyNot, igWords, reelLengthProblem, trimVideo, IG_UPLOAD_MAX_SECONDS } from '../scripts/social/ig.mjs'
 import { TYPES } from '../scripts/social/types/index.mjs'
 import { NOW, HOUR, harness, pools } from './social-kit.mjs'
 import { sampleData } from './social-data.mjs'
@@ -300,4 +300,19 @@ test('ig client: a reel from an address Instagram fetches itself', async () => {
   assert.deepEqual(await client.publishReelFromUrl({ videoUrl: 'https://video.fbcdn.net/v.mp4', caption: 'Hi' }), { mediaId: 'r5' })
   assert.match(seen[1].init.body, /media_type=REELS&video_url=https%3A%2F%2Fvideo\.fbcdn\.net%2Fv\.mp4&caption=Hi&share_to_feed=true/)
   await assert.rejects(client.publishReelFromUrl({ caption: 'x' }), /needs the video address/)
+})
+
+test('ig: a reel over 30 s goes up as its first 29 seconds, copied without a new encode', async () => {
+  assert.equal(IG_UPLOAD_MAX_SECONDS, 29)
+  const calls = []
+  const run = async (cmd, args) => {
+    calls.push([cmd, args])
+    const out = args.at(-1)
+    await import('node:fs').then((fs) => fs.writeFileSync(out, Buffer.from('trimmed')))
+  }
+  const trimmed = await trimVideo(Buffer.from('original-bytes'), IG_UPLOAD_MAX_SECONDS, { run })
+  assert.equal(trimmed.toString(), 'trimmed')
+  assert.equal(calls[0][0], 'ffmpeg')
+  assert.deepEqual(calls[0][1].slice(0, 6), ['-y', '-v', 'error', '-t', '29', '-i'])
+  assert.ok(calls[0][1].includes('copy'))
 })

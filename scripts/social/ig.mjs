@@ -39,6 +39,11 @@
  * Publishing: a container, its status, then media_publish; at most 100
  * posts by the API in 24 hours).
  */
+import { execFile } from 'node:child_process'
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { promisify } from 'node:util'
 import { graphCaller, GraphError, redact, GRAPH_VERSION, UPLOAD_HOST } from './fb.mjs'
 import { settle } from './ledger.mjs'
 import { DAY_MS } from './pace.mjs'
@@ -306,6 +311,29 @@ async function bytesOf(image, fetch) {
 }
 
 /** Why a reel of this length cannot go to Instagram, or null when it can. */
+const execFileAsync = promisify(execFile)
+
+/**
+ * Measured on 8 Nov 2026 on @whereanimeofficial (stored clips sent by hand, ig-reel-test.yml): a reel of 30 s or
+ * less uploads; one of 31 s or more is refused with "ProcessingFailedError" (HTTP 400) whatever its size
+ * (a 6.6 MB file of 60 s failed, a 16 MB file of 30 s passed). A longer reel goes up as its first 29 seconds.
+ */
+export const IG_UPLOAD_MAX_SECONDS = 29
+
+/** The first `seconds` of an MP4, copied without a new encode (ffmpeg must be on the PATH, as for the reels). */
+export async function trimVideo(bytes, seconds, { run = execFileAsync } = {}) {
+  const dir = mkdtempSync(join(tmpdir(), 'igtrim-'))
+  try {
+    const from = join(dir, 'in.mp4')
+    const to = join(dir, 'out.mp4')
+    writeFileSync(from, bytes)
+    await run('ffmpeg', ['-y', '-v', 'error', '-t', String(seconds), '-i', from, '-c', 'copy', '-movflags', '+faststart', to], { timeout: 120_000 })
+    return readFileSync(to)
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
+
 export function reelLengthProblem(seconds) {
   if (!Number.isFinite(seconds)) return null
   if (seconds < REEL_SECONDS.min) return `the reel is ${seconds} s; Instagram needs at least ${REEL_SECONDS.min} s`
@@ -351,12 +379,14 @@ export async function crossPost({ ig, graph, book, entry, history, now, out, cap
     // A reel is uploaded straight to Instagram. When that upload is refused (a big clip got "HTTP 400" on 8 Nov 2026),
     // the video is hosted on the Page and Instagram is handed its address instead.
     const sendReel = async () => {
+      // Instagram refuses a reel over 30 s from this account: a longer one goes up as its first 29 seconds.
+      const reelBytes = Number(video.seconds) > IG_UPLOAD_MAX_SECONDS ? await trimVideo(video.bytes, IG_UPLOAD_MAX_SECONDS) : video.bytes
       try {
-        return await ig.client.publishReel({ bytes: video.bytes, caption: igCaption(caption), sleep })
+        return await ig.client.publishReel({ bytes: reelBytes, caption: igCaption(caption), sleep })
       } catch (error) {
         if (!graph.hostVideo || !/reel upload/i.test(String(error?.message))) throw error
         out.push(`Instagram: the direct upload was refused (${error.message}); sending a link to the video instead.`, '')
-        const { videoId } = await graph.hostVideo({ bytes: video.bytes })
+        const { videoId } = await graph.hostVideo({ bytes: reelBytes })
         return ig.client.publishReelFromUrl({ videoUrl: await graph.videoUrl(videoId, { sleep }), caption: igCaption(caption), sleep })
       }
     }

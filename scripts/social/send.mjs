@@ -150,9 +150,6 @@ function mediumOf(type, made, { graph, caption, sleep }) {
   return { line: `a reel made on the runner, 1080x1920, ${made.seconds} s, music ${made.track || 'none'}, ${Math.round(made.mp4.length / 1024)} KB`, file: 'mp4', bytes: made.mp4, send }
 }
 
-/** Instagram takes a Reel up to 90 s; a longer full clip stays on Facebook only. */
-const IG_REEL_MAX_SECONDS = 90
-
 /** The music of the last reel in the ledger: the next reel takes another track. */
 const lastTrack = (history = []) => history.findLast((e) => e.reel && e.track)?.track || null
 
@@ -196,7 +193,7 @@ export async function typedStep({ s, graph, ig = null, book, plan, now, day, ski
   // A reel goes to Instagram as the same MP4; a list post as a swipe post (its slides, hook first)
   // when its type has one; any other picture post as its Instagram picture.
   const igSlides = async () => (await render(type, post, { swipe: true }))?.jpegs || null
-  const igMedium = type.reel || type.video ? { video: { bytes: picture.mp4, seconds: picture.seconds } } : { image: { make: igPicture }, slides: { make: igSlides } }
-  const after = ig && (!type.video || picture.seconds <= IG_REEL_MAX_SECONDS) ? () => crossPost({ ig, graph, book, entry, history, now, out, caption, ...igMedium, sleep }) : null
+  const igMedium = type.reel ? { video: { bytes: picture.mp4, seconds: picture.seconds } } : { image: { make: igPicture }, slides: { make: igSlides } }
+  const after = ig && !type.video ? () => crossPost({ ig, graph, book, entry, history, now, out, caption, ...igMedium, sleep }) : null
   return publish({ graph, book, entry, send: medium.send, comment, plain, out, name, onError: onFail, after })
 }
