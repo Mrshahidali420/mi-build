@@ -268,6 +268,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122787355500964",
    "commentId": "122122787355500964_1998871837474086"
+  },
+  {
+   "key": "2026-11-08|next:141007|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:141007",
+   "title": "How to Use a Returner",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "141007",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794138935856,
+   "status": "claimed"
   }
  ],
  "health": {
