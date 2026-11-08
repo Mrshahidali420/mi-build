@@ -136,10 +136,21 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
     } catch (error) {
       throw new GraphError(redact(`network error on the Instagram reel upload: ${error.message}`, token))
     }
-    const json = await res.json().catch(() => null)
+    const text = typeof res.text === 'function' ? await res.text().catch(() => '') : ''
+    const json = text
+      ? (() => {
+          try {
+            return JSON.parse(text)
+          } catch {
+            return null
+          }
+        })()
+      : await res.json?.().catch(() => null)
     if (!res.ok || !json || json.error || json.success === false) {
       const e = json?.error || {}
-      throw new GraphError(redact(`the Instagram reel upload failed: ${e.message || `HTTP ${res.status}`}`, token), { status: res.status, code: Number(e.code) || 0, subcode: Number(e.error_subcode) || 0, type: e.type || '' })
+      // The answer's own words, so a 400 says why (it said only "HTTP 400" on 8 Nov 2026).
+      const why = e.message || json?.debug_info?.message || text.replace(/\s+/g, ' ').slice(0, 160)
+      throw new GraphError(redact(`the Instagram reel upload failed: HTTP ${res.status}${why ? ` ${why}` : ''}`, token), { status: res.status, code: Number(e.code) || 0, subcode: Number(e.error_subcode) || 0, type: e.type || '' })
     }
   }
 
