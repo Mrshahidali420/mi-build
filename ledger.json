@@ -2762,6 +2762,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122977117500964",
    "commentId": "122122977117500964_1807943310429740"
+  },
+  {
+   "key": "2026-11-08|next:117540|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:117540",
+   "title": "Beware the Villainess!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "117540",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794179655476,
+   "status": "claimed"
   }
  ],
  "health": {
