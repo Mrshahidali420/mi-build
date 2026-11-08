@@ -2578,6 +2578,22 @@
    "track": "meadow-thoughts.m4a",
    "status": "failed",
    "error": "GET /1660936715633523 failed: Unsupported get request. Object with ID '1660936715633523' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-11-08|ranking:rank:manhwa:slice-of-life|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "ranking:rank:manhwa:slice-of-life",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhwa:slice-of-life",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794176637550,
+   "status": "claimed"
   }
  ],
  "health": {
