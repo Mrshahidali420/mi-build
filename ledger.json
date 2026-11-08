@@ -250,6 +250,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122785951500964",
    "commentId": "122122785951500964_1947462512897456"
+  },
+  {
+   "key": "2026-11-08|character:char:127691|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:127691",
+   "title": "Jujutsu Kaisen 0",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:127691",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794138635056,
+   "status": "claimed"
   }
  ],
  "health": {
