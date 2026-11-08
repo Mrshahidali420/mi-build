@@ -2523,6 +2523,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122953477500964",
    "commentId": "122122953477500964_978458628211532"
+  },
+  {
+   "key": "2026-11-08|next:74485|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:74485",
+   "title": "The Seven Deadly Sins",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "74485",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794175734064,
+   "status": "claimed"
   }
  ],
  "health": {
