@@ -952,6 +952,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122836831500964",
    "commentId": "122122836831500964_1691609402350697"
+  },
+  {
+   "key": "2026-11-08|out-now:200455:6:out|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "out-now:200455:6:out",
+   "title": "Even Though I'm a Super Timid Noble Girl, I Accepted the Bet From My Cunning Fiancé",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "200455:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794150099236,
+   "status": "claimed"
   }
  ],
  "health": {
