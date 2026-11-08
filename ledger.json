@@ -2095,6 +2095,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122917711500964",
    "commentId": "122122917711500964_1806837743918606"
+  },
+  {
+   "key": "2026-11-08|ranking:rank:manhwa:adventure|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "ranking:rank:manhwa:adventure",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhwa:adventure",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794168801969,
+   "status": "claimed"
   }
  ],
  "health": {
