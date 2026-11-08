@@ -2285,6 +2285,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122931973500964",
    "commentId": "122122931973500964_1015211484956256"
+  },
+  {
+   "key": "2026-11-08|character:char:266438|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:266438",
+   "title": "Gachiakuta",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:266438",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794171815383,
+   "status": "claimed"
   }
  ],
  "health": {
