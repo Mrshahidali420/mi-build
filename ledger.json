@@ -2816,6 +2816,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122979919500964",
    "commentId": "122122979919500964_4449228608623838"
+  },
+  {
+   "key": "2026-11-08|clip-video:clip-overgeared-e07-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "clip-video:clip-overgeared-e07-manhwaindex-03:full",
+   "title": "Overgeared",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-overgeared-e07-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794180566104,
+   "status": "claimed"
   }
  ],
  "health": {
