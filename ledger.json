@@ -35656,6 +35656,24 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794114173199
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-08|reel-today:today:2026-11-08|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "reel-today:today:2026-11-08",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-today",
+   "type": "reel-today",
+   "item": "today:2026-11-08",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794114474078,
+   "track": "determination-anime.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
