@@ -1763,6 +1763,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122891701500964",
    "commentId": "122122891701500964_1427423826223460"
+  },
+  {
+   "key": "2026-11-08|next:108556|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:108556",
+   "title": "SPY x FAMILY",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "108556",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794163380373,
+   "status": "claimed"
   }
  ],
  "health": {
