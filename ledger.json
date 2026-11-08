@@ -2632,6 +2632,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122961421500964",
    "commentId": "122122961421500964_1663020075274561"
+  },
+  {
+   "key": "2026-11-08|where:130429|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:130429",
+   "title": "I Shall Master this Family!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "130429",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794177547158,
+   "status": "claimed"
   }
  ],
  "health": {
