@@ -1839,6 +1839,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122896537500964",
    "commentId": "122122896537500964_2290401391743840"
+  },
+  {
+   "key": "2026-11-08|next:46765|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:46765",
+   "title": "Kingdom",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "46765",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794164584762,
+   "status": "claimed"
   }
  ],
  "health": {
