@@ -154,6 +154,24 @@
    "status": "posted",
    "postId": "1318170941390322_122122779681500964",
    "commentId": "122122779681500964_1852528742600866"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-08|reel-today:today:2026-11-08|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "reel-today:today:2026-11-08",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-today",
+   "type": "reel-today",
+   "item": "today:2026-11-08",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794137131209,
+   "track": "determination-anime.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
