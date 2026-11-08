@@ -178,6 +178,22 @@
     "id": "17956415244325919",
     "at": 1794137131209
    }
+  },
+  {
+   "key": "2026-11-08|out-now:213658:5:out|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "out-now:213658:5:out",
+   "title": "Ace of the Diamond act II -Second Season-",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "213658:5:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794137431959,
+   "status": "claimed"
   }
  ],
  "health": {
