@@ -596,6 +596,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122810419500964",
    "commentId": "122122810419500964_29127514170212335"
+  },
+  {
+   "key": "2026-11-08|fact:fact:40884:run|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "fact:fact:40884:run",
+   "title": "Ace of the Diamond",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:40884:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794144364044,
+   "status": "claimed"
   }
  ],
  "health": {
