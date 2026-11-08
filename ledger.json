@@ -2726,6 +2726,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122972185500964",
    "commentId": "122122972185500964_1348416677262655"
+  },
+  {
+   "key": "2026-11-08|ranking:rank:manhua:slice-of-life|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "ranking:rank:manhua:slice-of-life",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhua:slice-of-life",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794179053043,
+   "status": "claimed"
   }
  ],
  "health": {
