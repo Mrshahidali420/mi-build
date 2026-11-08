@@ -1745,6 +1745,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122890741500964",
    "commentId": "122122890741500964_2275390936649722"
+  },
+  {
+   "key": "2026-11-08|character:char:19492|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:19492",
+   "title": "JoJo's Bizarre Adventure: Part 7–Steel Ball Run",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:19492",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794163079337,
+   "status": "claimed"
   }
  ],
  "health": {
