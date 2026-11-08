@@ -24,6 +24,22 @@
    "at": 1794134668788,
    "status": "posted",
    "postId": "1318170941390322_122122767309500964"
+  },
+  {
+   "key": "2026-11-08|out-now:189123:5:out|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "out-now:189123:5:out",
+   "title": "Blue Box Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "189123:5:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794134969519,
+   "status": "claimed"
   }
  ],
  "health": {
