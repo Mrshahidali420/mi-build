@@ -1619,6 +1619,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122881081500964",
    "commentId": "122122881081500964_2279070492942049"
+  },
+  {
+   "key": "2026-11-08|next:125828|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:125828",
+   "title": "Sakamoto Days",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "125828",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794160965643,
+   "status": "claimed"
   }
  ],
  "health": {
