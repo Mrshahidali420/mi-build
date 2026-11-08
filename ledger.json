@@ -2393,6 +2393,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122941693500964",
    "commentId": "122122941693500964_1002330756254255"
+  },
+  {
+   "key": "2026-11-08|where:109436|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:109436",
+   "title": "The Monstrous Duke's Adopted Daughter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "109436",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794173626338,
+   "status": "claimed"
   }
  ],
  "health": {
