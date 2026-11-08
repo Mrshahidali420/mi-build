@@ -894,6 +894,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122832877500964",
    "commentId": "122122832877500964_1471056908546241"
+  },
+  {
+   "key": "2026-11-08|where:151460|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:151460",
+   "title": "Absolute Sword Sense",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "151460",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794149194717,
+   "status": "claimed"
   }
  ],
  "health": {
