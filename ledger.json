@@ -1341,6 +1341,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122862361500964",
    "commentId": "122122862361500964_1144635931672869"
+  },
+  {
+   "key": "2026-11-08|character:char:269320|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:269320",
+   "title": "The Greatest Estate Developer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:269320",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794156437893,
+   "status": "claimed"
   }
  ],
  "health": {
