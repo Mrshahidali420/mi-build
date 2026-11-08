@@ -2708,6 +2708,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794178450664
    }
+  },
+  {
+   "key": "2026-11-08|where:76716|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:76716",
+   "title": "Masamune-kun’s Revenge",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "76716",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794178751902,
+   "status": "claimed"
   }
  ],
  "health": {
