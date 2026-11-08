@@ -2357,6 +2357,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122937901500964",
    "commentId": "122122937901500964_1846699539692943"
+  },
+  {
+   "key": "2026-11-08|character:char:678|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:678",
+   "title": "Dragon Ball",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:678",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794173018823,
+   "status": "claimed"
   }
  ],
  "health": {
