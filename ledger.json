@@ -1709,6 +1709,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122888071500964",
    "commentId": "122122888071500964_1516667623985701"
+  },
+  {
+   "key": "2026-11-08|where:109957|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:109957",
+   "title": "Second Life Ranker",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "109957",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794162477197,
+   "status": "claimed"
   }
  ],
  "health": {
