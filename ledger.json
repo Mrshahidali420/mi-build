@@ -1178,6 +1178,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122853025500964",
    "commentId": "122122853025500964_2267857184071541"
+  },
+  {
+   "key": "2026-11-08|where:187944|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:187944",
+   "title": "My Bias Gets on the Last Train",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "187944",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794153720481,
+   "status": "claimed"
   }
  ],
  "health": {
