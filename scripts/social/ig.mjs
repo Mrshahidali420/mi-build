@@ -155,6 +155,12 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
   }
 
   return {
+    /** What Instagram says about the publishing quota (24 hours): used and allowed. For the log when a post is refused. */
+    async publishingLimit() {
+      const json = await call('GET', `/${igId}/content_publishing_limit`, { fields: 'quota_usage,config' })
+      const row = json.data?.[0] || {}
+      return `${row.quota_usage ?? '?'} used of ${row.config?.quota_total ?? '?'} in ${row.config?.quota_duration ? Math.round(row.config.quota_duration / 3600) : '?'} h`
+    },
     /**
      * The account: { id, username }. With a Page id it is read from the Page
      * (GET /{page-id}?fields=instagram_business_account{id,username}), which
@@ -325,7 +331,8 @@ export async function crossPost({ ig, graph, book, entry, history, now, out, cap
   } catch (error) {
     await settle(book, entry.key, { ig: { error: error.message, at: now } }).catch(() => null)
     if (error instanceof GraphError && error.isAuth) ig.off = 'the Instagram token was refused'
-    out.push(`Instagram: **failed** (${error.message}).${ig.off ? ' No more Instagram posts this run: check IG_USER_ID and the token (docs/facebook-posting.md, Instagram).' : ''} Facebook is not affected.`, '')
+    const quota = await ig.client.publishingLimit?.().catch((e) => `unknown (${e.message})`)
+    out.push(`Instagram: **failed** (${error.message}).${quota ? ` Publishing quota: ${quota}.` : ''}${ig.off ? ' No more Instagram posts this run: check IG_USER_ID and the token (docs/facebook-posting.md, Instagram).' : ''} Facebook is not affected.`, '')
     return null
   }
 }
