@@ -2465,6 +2465,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122948827500964",
    "commentId": "122122948827500964_1629134718523541"
+  },
+  {
+   "key": "2026-11-08|where:51525|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:51525",
+   "title": "Yona of the Dawn",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "51525",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794174830517,
+   "status": "claimed"
   }
  ],
  "health": {
