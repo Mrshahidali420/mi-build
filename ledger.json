@@ -506,6 +506,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122805085500964",
    "commentId": "122122805085500964_1426246999488747"
+  },
+  {
+   "key": "2026-11-08|out-now:202079:6:out|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "out-now:202079:6:out",
+   "title": "Uncle's Obsession with Cute Things",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "202079:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794142852548,
+   "status": "claimed"
   }
  ],
  "health": {
