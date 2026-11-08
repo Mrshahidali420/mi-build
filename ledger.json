@@ -2041,6 +2041,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794167598691
    }
+  },
+  {
+   "key": "2026-11-08|character:char:6194|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:6194",
+   "title": "Vagabond",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:6194",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794167899560,
+   "status": "claimed"
   }
  ],
  "health": {
