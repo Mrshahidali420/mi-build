@@ -1078,6 +1078,29 @@
    "status": "posted",
    "postId": "1318170941390322_122122847505500964",
    "commentId": "122122847505500964_2119272725379117"
+  },
+  {
+   "share": true,
+   "key": "2026-11-08|share:1329988470202923_122118641901503689|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "share:1329988470202923_122118641901503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122118641901503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122118641901503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Your lie in April",
+   "sourceFormat": "type:scenes",
+   "link": "https://www.facebook.com/1329988470202923/posts/122118641901503689",
+   "message": "Worth a look from our sister Page, WhereAnime:",
+   "at": 1794152214690,
+   "status": "claimed"
   }
  ],
  "health": {
