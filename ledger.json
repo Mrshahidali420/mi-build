@@ -714,6 +714,22 @@
     "id": "18200035159385210",
     "at": 1794145871213
    }
+  },
+  {
+   "key": "2026-11-08|character:char:123385|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:123385",
+   "title": "Land of the Lustrous",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:123385",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794146172686,
+   "status": "claimed"
   }
  ],
  "health": {
