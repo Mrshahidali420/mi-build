@@ -105,6 +105,19 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
     throw new GraphError(`Instagram was still preparing the ${what} when the wait ran out`)
   }
 
+  /**
+   * Instagram sometimes answers media_publish with "Application request limit reached" and posts anyway
+   * (checked 8 Nov 2026: the account held an hourly picture the ledger had called failed). The container
+   * says which: PUBLISHED means the post is out.
+   */
+  async function alreadyPublished(id) {
+    try {
+      return (await call('GET', `/${id}`, { fields: 'status_code' })).status_code === 'PUBLISHED'
+    } catch {
+      return false
+    }
+  }
+
   async function publishContainer(id, sleep = null) {
     let posted
     for (let i = 1; ; i++) {
@@ -112,7 +125,10 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
         posted = await call('POST', `/${igId}/media_publish`, { creation_id: id })
         break
       } catch (error) {
-        if (i >= PUBLISH_RETRY.tries || !PUBLISH_RETRY.when.test(String(error?.message))) throw error
+        if (i >= PUBLISH_RETRY.tries || !PUBLISH_RETRY.when.test(String(error?.message))) {
+          if (await alreadyPublished(id)) return { mediaId: id, late: true }
+          throw error
+        }
         if (sleep) await sleep(PUBLISH_RETRY.everyMs)
       }
     }
@@ -198,6 +214,14 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
       if (!id) throw new GraphError('Instagram gave no container id for the swipe post')
       await waitReady(id, { what: 'swipe post', sleep, tries, everyMs })
       return publishContainer(id, sleep)
+    },
+    /** A reel Instagram fetches itself from a public address (the video hosted on the Page): no upload from here. */
+    async publishReelFromUrl({ videoUrl, caption, sleep, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
+      if (!videoUrl) throw new GraphError('publishReelFromUrl needs the video address')
+      const made = await call('POST', `/${igId}/media`, { media_type: 'REELS', video_url: videoUrl, caption, share_to_feed: 'true' })
+      if (!made.id) throw new GraphError('Instagram gave no container id')
+      await waitReady(made.id, { what: 'video', sleep, tries, everyMs })
+      return publishContainer(made.id, sleep)
     },
     /** A reel by resumable upload: the container, the bytes, a wait until Instagram has the video, then the post. */
     async publishReel({ bytes, caption, sleep, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
@@ -324,7 +348,19 @@ export async function crossPost({ ig, graph, book, entry, history, now, out, cap
       return ig.client.publish({ imageUrl, caption: igCaption(caption), sleep })
     }
     const swipe = jpegs?.length >= CAROUSEL_ITEMS.min
-    const { mediaId } = video ? await ig.client.publishReel({ bytes: video.bytes, caption: igCaption(caption), sleep }) : swipe ? await sendSlides() : await sendPicture()
+    // A reel is uploaded straight to Instagram. When that upload is refused (a big clip got "HTTP 400" on 8 Nov 2026),
+    // the video is hosted on the Page and Instagram is handed its address instead.
+    const sendReel = async () => {
+      try {
+        return await ig.client.publishReel({ bytes: video.bytes, caption: igCaption(caption), sleep })
+      } catch (error) {
+        if (!graph.hostVideo || !/reel upload/i.test(String(error?.message))) throw error
+        out.push(`Instagram: the direct upload was refused (${error.message}); sending a link to the video instead.`, '')
+        const { videoId } = await graph.hostVideo({ bytes: video.bytes })
+        return ig.client.publishReelFromUrl({ videoUrl: await graph.videoUrl(videoId, { sleep }), caption: igCaption(caption), sleep })
+      }
+    }
+    const { mediaId } = video ? await sendReel() : swipe ? await sendSlides() : await sendPicture()
     await settle(book, entry.key, { ig: { id: mediaId, at: now, ...(swipe ? { slides: jpegs.length } : {}) } })
     out.push(`Instagram: posted ${video ? 'reel ' : swipe ? `swipe post (${jpegs.length} slides) ` : ''}${mediaId}.`, '')
     return mediaId

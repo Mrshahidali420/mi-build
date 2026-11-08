@@ -268,3 +268,36 @@ test('ig client: "Media ID is not available" is tried again, other errors are no
   const bad = fakeFetch([{ json: { id: 'c1' } }, { json: { status_code: 'FINISHED' } }, { status: 400, json: { error: { message: 'Invalid parameter', code: 100 } } }])
   await assert.rejects(igClient({ userId: '17', token: 'T', fetch: bad.fetch }).publish({ imageUrl: 'https://x/p.jpg', caption: 'c', sleep: async () => {} }), /Invalid parameter/)
 })
+
+test('ig client: a post Instagram called refused but published counts as posted', async () => {
+  const { fetch } = fakeFetch([
+    { json: { id: 'c1' } },
+    { json: { status_code: 'FINISHED' } },
+    { status: 403, json: { error: { message: 'Application request limit reached', code: 4 } } },
+    { json: { status_code: 'PUBLISHED' } },
+  ])
+  const client = igClient({ userId: '178', token: 'T', fetch })
+  assert.deepEqual(await client.publish({ imageUrl: 'https://fbcdn/x.jpg', caption: 'Hi' }), { mediaId: 'c1', late: true })
+  // A refusal that did not publish is still a failure.
+  const real = fakeFetch([
+    { json: { id: 'c2' } },
+    { json: { status_code: 'FINISHED' } },
+    { status: 403, json: { error: { message: 'Application request limit reached', code: 4 } } },
+    { json: { status_code: 'FINISHED' } },
+  ])
+  await assert.rejects(igClient({ userId: '178', token: 'T', fetch: real.fetch }).publish({ imageUrl: 'https://fbcdn/x.jpg', caption: 'Hi' }), /request limit/)
+})
+
+test('ig client: a reel from an address Instagram fetches itself', async () => {
+  const { fetch, seen } = fakeFetch([
+    { json: { instagram_business_account: { id: '1784', username: 'x' } } },
+    { json: { id: 'c5' } },
+    { json: { status_code: 'FINISHED' } },
+    { json: { id: 'r5' } },
+  ])
+  const client = igClient({ pageId: '131', token: 'T', fetch })
+  await client.account()
+  assert.deepEqual(await client.publishReelFromUrl({ videoUrl: 'https://video.fbcdn.net/v.mp4', caption: 'Hi' }), { mediaId: 'r5' })
+  assert.match(seen[1].init.body, /media_type=REELS&video_url=https%3A%2F%2Fvideo\.fbcdn\.net%2Fv\.mp4&caption=Hi&share_to_feed=true/)
+  await assert.rejects(client.publishReelFromUrl({ caption: 'x' }), /needs the video address/)
+})

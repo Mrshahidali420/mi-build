@@ -221,6 +221,21 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
       await call('POST', `/${pageId}/video_reels`, { upload_phase: 'finish', video_id: start.video_id, video_state: 'PUBLISHED', description })
       return { videoId: start.video_id, postId: start.video_id }
     },
+    /** A video kept on the Page but never shown (published=false): Facebook hosts it, so Instagram can fetch it by its address. */
+    async hostVideo({ bytes }) {
+      if (!bytes?.length) throw new GraphError('hostVideo needs the video bytes')
+      const json = await call('POST', `/${pageId}/videos`, { published: 'false' }, { bytes, filename: 'instagram.mp4', contentType: 'video/mp4' })
+      return { videoId: json.id }
+    },
+    /** The public address of a hosted video, once Facebook has made it: polls up to ten minutes. */
+    async videoUrl(videoId, { sleep, tries = 60, everyMs = 10_000 } = {}) {
+      for (let i = 0; i < tries; i += 1) {
+        const json = await call('GET', `/${videoId}`, { fields: 'source' })
+        if (json.source) return json.source
+        if (sleep) await sleep(everyMs)
+      }
+      throw new GraphError(`no address came back for the video ${videoId}`)
+    },
     /** A normal video post (not a reel) from an MP4 made elsewhere: the whole clip, with the caption as its text. */
     async publishVideo({ bytes, description }) {
       if (!bytes?.length) throw new GraphError('publishVideo needs the video bytes')
