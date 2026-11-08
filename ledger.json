@@ -1042,6 +1042,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122843983500964",
    "commentId": "122122843983500964_1397560193444751"
+  },
+  {
+   "key": "2026-11-08|next:33083|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:33083",
+   "title": "The Melancholy of Haruhi Suzumiya",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "33083",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794151612429,
+   "status": "claimed"
   }
  ],
  "health": {
