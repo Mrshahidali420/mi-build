@@ -2924,6 +2924,22 @@
    "status": "posted",
    "postId": "1851975945959205",
    "commentId": "1851975945959205_2373356296748992"
+  },
+  {
+   "key": "2026-11-08|character:char:48393|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:48393",
+   "title": "Nisekoi: False Love",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:48393",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794182373872,
+   "status": "claimed"
   }
  ],
  "health": {
