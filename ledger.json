@@ -1821,6 +1821,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794163982592
    }
+  },
+  {
+   "key": "2026-11-08|character:char:13|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:13",
+   "title": "Naruto",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:13",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794164283659,
+   "status": "claimed"
   }
  ],
  "health": {
