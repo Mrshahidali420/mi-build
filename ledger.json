@@ -1399,6 +1399,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122865577500964",
    "commentId": "122122865577500964_1599630701964552"
+  },
+  {
+   "key": "2026-11-08|new-title:219135|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "new-title:219135",
+   "title": "Evershifting Girlfriends",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:new-title",
+   "type": "new-title",
+   "item": "219135",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794157341577,
+   "status": "claimed"
   }
  ],
  "health": {
