@@ -286,6 +286,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122788609500964",
    "commentId": "122122788609500964_981453581480203"
+  },
+  {
+   "key": "2026-11-08|out-now:215835:7:out|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "out-now:215835:7:out",
+   "title": "Umayuru: Full Gate!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "215835:7:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794139236649,
+   "status": "claimed"
   }
  ],
  "health": {
