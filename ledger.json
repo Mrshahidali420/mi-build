@@ -35676,6 +35676,29 @@
    "status": "posted",
    "postId": "1714619146793812",
    "commentId": "1714619146793812_1176805405030173"
+  },
+  {
+   "share": true,
+   "key": "2026-11-08|share:1329988470202923_122118506571503689|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "share:1329988470202923_122118506571503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122118506571503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122118506571503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Summoned to Another World for a Second Time",
+   "sourceFormat": "type:where",
+   "link": "https://www.facebook.com/1329988470202923/posts/122118506571503689",
+   "message": "Worth a look from our sister Page, WhereAnime:",
+   "at": 1794115365462,
+   "status": "claimed"
   }
  ],
  "health": {
