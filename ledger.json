@@ -5139,6 +5139,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123271849500964",
    "commentId": "122123271849500964_1481947520542040"
+  },
+  {
+   "key": "2026-11-09|where:152608|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:152608",
+   "title": "Enrolling in the Transcendent Academy",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "152608",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794252790145,
+   "status": "claimed"
   }
  ],
  "health": {
