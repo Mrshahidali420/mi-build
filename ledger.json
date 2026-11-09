@@ -5793,6 +5793,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123356563500964",
    "commentId": "122123356563500964_1619553122988782"
+  },
+  {
+   "key": "2026-11-09|next:138366|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:138366",
+   "title": "Your Talent Is Mine",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "138366",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794266349372,
+   "status": "claimed"
   }
  ],
  "health": {
