@@ -3482,6 +3482,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123025747500964",
    "commentId": "122123025747500964_1830564151424307"
+  },
+  {
+   "key": "2026-11-08|ranking:rank:manhwa:sports|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "ranking:rank:manhwa:sports",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhwa:sports",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794191428557,
+   "status": "claimed"
   }
  ],
  "health": {
