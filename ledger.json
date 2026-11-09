@@ -3666,6 +3666,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123036337500964",
    "commentId": "122123036337500964_2252849751987130"
+  },
+  {
+   "key": "2026-11-08|next:86717|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:86717",
+   "title": "Wotakoi: Love is Hard for Otaku",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86717",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794194438193,
+   "status": "claimed"
   }
  ],
  "health": {
