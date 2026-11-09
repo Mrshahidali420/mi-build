@@ -4337,6 +4337,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794233858530
    }
+  },
+  {
+   "key": "2026-11-09|where:32921|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:32921",
+   "title": "Maid-sama!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "32921",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794234159669,
+   "status": "claimed"
   }
  ],
  "health": {
