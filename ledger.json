@@ -4811,6 +4811,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123245719500964",
    "commentId": "122123245719500964_1537282114904995"
+  },
+  {
+   "key": "2026-11-09|where:153994|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:153994",
+   "title": "My F-Rank High School Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "153994",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794246159943,
+   "status": "claimed"
   }
  ],
  "health": {
