@@ -5370,6 +5370,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794257912661
    }
+  },
+  {
+   "key": "2026-11-09|character:char:75|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "character:char:75",
+   "title": "Death Note",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:75",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794258213974,
+   "status": "claimed"
   }
  ],
  "health": {
