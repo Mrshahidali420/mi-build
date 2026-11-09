@@ -3316,6 +3316,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123015685500964",
    "commentId": "122123015685500964_1678125497380867"
+  },
+  {
+   "key": "2026-11-08|ranking:rank:manga:horror|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "ranking:rank:manga:horror",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manga:horror",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794188714756,
+   "status": "claimed"
   }
  ],
  "health": {
