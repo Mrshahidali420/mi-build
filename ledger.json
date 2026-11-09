@@ -5198,6 +5198,22 @@
    "status": "posted",
    "postId": "2646835112430468",
    "commentId": "2646835112430468_2042970576408387"
+  },
+  {
+   "key": "2026-11-09|next:160980|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:160980",
+   "title": "Log Into The Future",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "160980",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794254293647,
+   "status": "claimed"
   }
  ],
  "health": {
