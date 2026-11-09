@@ -5739,6 +5739,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123350209500964",
    "commentId": "122123350209500964_2134948067229446"
+  },
+  {
+   "key": "2026-11-09|next:163448|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:163448",
+   "title": "The Constellations Are My Disciples",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "163448",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794265446842,
+   "status": "claimed"
   }
  ],
  "health": {
