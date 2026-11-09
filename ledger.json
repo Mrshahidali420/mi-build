@@ -4396,6 +4396,22 @@
     "id": "18174908539458152",
     "at": 1794235970611
    }
+  },
+  {
+   "key": "2026-11-09|clip-video:clip-overgeared-e06-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "clip-video:clip-overgeared-e06-manhwaindex-03:full",
+   "title": "Overgeared",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-overgeared-e06-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794236271840,
+   "status": "claimed"
   }
  ],
  "health": {
