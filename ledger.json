@@ -2964,6 +2964,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122992507500964",
    "commentId": "122122992507500964_1465569359019398"
+  },
+  {
+   "key": "2026-11-08|where:41514|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:41514",
+   "title": "A Bride's Story",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "41514",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794182976491,
+   "status": "claimed"
   }
  ],
  "health": {
