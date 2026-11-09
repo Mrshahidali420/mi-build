@@ -4225,6 +4225,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123184417500964",
    "commentId": "122123184417500964_1471383494921384"
+  },
+  {
+   "key": "2026-11-09|fact:fact:96767:wait|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "fact:fact:96767:wait",
+   "title": "Honey Lemon Soda",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:96767:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794231145253,
+   "status": "claimed"
   }
  ],
  "health": {
