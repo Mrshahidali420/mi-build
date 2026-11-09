@@ -4829,6 +4829,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123246721500964",
    "commentId": "122123246721500964_2675980379487872"
+  },
+  {
+   "key": "2026-11-09|character:char:80491|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "character:char:80491",
+   "title": "A Silent Voice",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:80491",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794246466880,
+   "status": "claimed"
   }
  ],
  "health": {
