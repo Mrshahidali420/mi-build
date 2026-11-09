@@ -3464,6 +3464,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123024841500964",
    "commentId": "122123024841500964_2335416003915429"
+  },
+  {
+   "key": "2026-11-08|where:30022|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:30022",
+   "title": "Rurouni Kenshin",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "30022",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794191121573,
+   "status": "claimed"
   }
  ],
  "health": {
