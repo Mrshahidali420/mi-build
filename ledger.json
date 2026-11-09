@@ -3875,6 +3875,24 @@
    "status": "posted",
    "postId": "1318170941390322_122123096787500964",
    "commentId": "122123096787500964_1675919994564452"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-09|reel-next:107518|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "reel-next:107518",
+   "title": "Heavenly Demon Reborn!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "107518",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794217864403,
+   "track": "meadow-thoughts.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
