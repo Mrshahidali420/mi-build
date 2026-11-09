@@ -3298,6 +3298,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123014107500964",
    "commentId": "122123014107500964_1652057929922580"
+  },
+  {
+   "key": "2026-11-08|where:138363|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:138363",
+   "title": "The Male Lead's Little Lion Daughter",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "138363",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794188413903,
+   "status": "claimed"
   }
  ],
  "health": {
