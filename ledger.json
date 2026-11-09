@@ -4279,6 +4279,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123188101500964",
    "commentId": "122123188101500964_1839958140486860"
+  },
+  {
+   "key": "2026-11-09|out-now:204011:5:out|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "out-now:204011:5:out",
+   "title": "PSYREN",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "204011:5:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794233256336,
+   "status": "claimed"
   }
  ],
  "health": {
