@@ -5851,6 +5851,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794268146911
    }
+  },
+  {
+   "key": "2026-11-09|next:153883|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:153883",
+   "title": "The SSS-Ranker Returns",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "153883",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794268447873,
+   "status": "claimed"
   }
  ],
  "health": {
