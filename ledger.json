@@ -5252,6 +5252,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123280993500964",
    "commentId": "122123280993500964_2574193079765914"
+  },
+  {
+   "key": "2026-11-09|next:113485|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:113485",
+   "title": "The Laid Off Demon King",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "113485",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794255197618,
+   "status": "claimed"
   }
  ],
  "health": {
