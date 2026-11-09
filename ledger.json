@@ -3590,6 +3590,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123031921500964",
    "commentId": "122123031921500964_1184040657283521"
+  },
+  {
+   "key": "2026-11-08|next:115000|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:115000",
+   "title": "Unholy Blood",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "115000",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794193234261,
+   "status": "claimed"
   }
  ],
  "health": {
