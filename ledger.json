@@ -4694,6 +4694,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123234091500964",
    "commentId": "122123234091500964_1822061019126906"
+  },
+  {
+   "key": "2026-11-09|next:139339|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:139339",
+   "title": "Into the Light, Once Again",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "139339",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794243144764,
+   "status": "claimed"
   }
  ],
  "health": {
