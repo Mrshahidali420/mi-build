@@ -4734,6 +4734,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123237577500964",
    "commentId": "122123237577500964_989706877524461"
+  },
+  {
+   "key": "2026-11-09|out-now:160803:6:out|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "out-now:160803:6:out",
+   "title": "MAGICAL GIRL RAISING PROJECT restart",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "160803:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794243746826,
+   "status": "claimed"
   }
  ],
  "health": {
