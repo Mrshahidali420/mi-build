@@ -4847,6 +4847,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123248005500964",
    "commentId": "122123248005500964_1111317615119177"
+  },
+  {
+   "key": "2026-11-09|next:160750|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:160750",
+   "title": "Demon King of the Royal Class",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "160750",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794246767651,
+   "status": "claimed"
   }
  ],
  "health": {
