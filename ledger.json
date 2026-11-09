@@ -3702,6 +3702,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123038257500964",
    "commentId": "122123038257500964_1458575772928522"
+  },
+  {
+   "key": "2026-11-08|character:char:155702|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "character:char:155702",
+   "title": "Shikimori's Not Just a Cutie",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:155702",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794195046925,
+   "status": "claimed"
   }
  ],
  "health": {
