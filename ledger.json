@@ -3963,6 +3963,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123162133500964",
    "commentId": "122123162133500964_1845230726631743"
+  },
+  {
+   "key": "2026-11-09|next:60079|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:60079",
+   "title": "The Sound of Magic: Annarasumanara",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "60079",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794225710280,
+   "status": "claimed"
   }
  ],
  "health": {
