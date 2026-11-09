@@ -4041,6 +4041,22 @@
     "id": "17985489731902375",
     "at": 1794226614156
    }
+  },
+  {
+   "key": "2026-11-09|where:147278|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:147278",
+   "title": "The Villainess's Stationery Shop",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "147278",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794226915415,
+   "status": "claimed"
   }
  ],
  "health": {
