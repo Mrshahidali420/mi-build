@@ -4504,6 +4504,22 @@
    "status": "posted",
    "postId": "2396319101136362",
    "commentId": "2396319101136362_1108291728648428"
+  },
+  {
+   "key": "2026-11-09|next:84897|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:84897",
+   "title": "ORANGE MARMALADE",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "84897",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794238079310,
+   "status": "claimed"
   }
  ],
  "health": {
