@@ -3126,6 +3126,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123000811500964",
    "commentId": "122123000811500964_1770622350832097"
+  },
+  {
+   "key": "2026-11-08|where:123573|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:123573",
+   "title": "Lout of Count’s Family",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "123573",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794185696739,
+   "status": "claimed"
   }
  ],
  "health": {
