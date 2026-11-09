@@ -5085,6 +5085,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123268759500964",
    "commentId": "122123268759500964_1163859089656076"
+  },
+  {
+   "key": "2026-11-09|where:136087|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:136087",
+   "title": "The Ember Knight",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "136087",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794251887263,
+   "status": "claimed"
   }
  ],
  "health": {
