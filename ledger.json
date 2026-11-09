@@ -5460,6 +5460,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123312433500964",
    "commentId": "122123312433500964_1894743001552440"
+  },
+  {
+   "key": "2026-11-09|where:122060|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:122060",
+   "title": "See You in My 19th Life",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "122060",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794259721180,
+   "status": "claimed"
   }
  ],
  "health": {
