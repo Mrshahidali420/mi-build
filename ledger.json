@@ -3244,6 +3244,22 @@
    "at": 1794187203927,
    "status": "posted",
    "postId": "1318170941390322_122123009475500964"
+  },
+  {
+   "key": "2026-11-08|ranking:rank:manhwa:horror|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "ranking:rank:manhwa:horror",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:ranking",
+   "type": "ranking",
+   "item": "rank:manhwa:horror",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794187505376,
+   "status": "claimed"
   }
  ],
  "health": {
