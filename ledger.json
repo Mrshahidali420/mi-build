@@ -5631,6 +5631,22 @@
     "id": "18648931177028949",
     "at": 1794263340527
    }
+  },
+  {
+   "key": "2026-11-09|next:143003|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:143003",
+   "title": "Daytime Star",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "143003",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794263641566,
+   "status": "claimed"
   }
  ],
  "health": {
