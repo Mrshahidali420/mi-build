@@ -5121,6 +5121,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123270991500964",
    "commentId": "122123270991500964_3541322402709189"
+  },
+  {
+   "key": "2026-11-09|next:177982|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:177982",
+   "title": "The Last Adventurer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "177982",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794252489260,
+   "status": "claimed"
   }
  ],
  "health": {
