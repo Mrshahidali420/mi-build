@@ -3857,6 +3857,22 @@
     "id": "18641561599050030",
     "at": 1794208209210
    }
+  },
+  {
+   "key": "2026-11-09|rating:tt50436153|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "rating:tt50436153",
+   "title": "Black Clover Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:rating",
+   "type": "rating",
+   "item": "tt50436153",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794209415778,
+   "status": "claimed"
   }
  ],
  "health": {
