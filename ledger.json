@@ -4095,6 +4095,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123175981500964",
    "commentId": "122123175981500964_1693398762127836"
+  },
+  {
+   "key": "2026-11-09|next:87383|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:87383",
+   "title": "Ascendance of a Bookworm: Part 1",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "87383",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794229029501,
+   "status": "claimed"
   }
  ],
  "health": {
