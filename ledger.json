@@ -5869,6 +5869,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123363895500964",
    "commentId": "122123363895500964_1159894770326421"
+  },
+  {
+   "key": "2026-11-09|where:101311|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:101311",
+   "title": "Bakemonogatari",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101311",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794268748976,
+   "status": "claimed"
   }
  ],
  "health": {
