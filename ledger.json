@@ -4973,6 +4973,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123256789500964",
    "commentId": "122123256789500964_1569512501536540"
+  },
+  {
+   "key": "2026-11-09|where:155950|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:155950",
+   "title": "Auto Hunting With My Clones",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "155950",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794250081745,
+   "status": "claimed"
   }
  ],
  "health": {
