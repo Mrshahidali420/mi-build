@@ -4017,6 +4017,24 @@
    "status": "posted",
    "postId": "1318170941390322_122123165985500964",
    "commentId": "122123165985500964_1597745524996834"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-09|reel-ranking:rank:manhua:ongoing|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "reel-ranking:rank:manhua:ongoing",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhua:ongoing",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794226614156,
+   "track": "anime-intro.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
