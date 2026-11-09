@@ -5568,6 +5568,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123330853500964",
    "commentId": "122123330853500964_1160052219803531"
+  },
+  {
+   "key": "2026-11-09|where:99758|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:99758",
+   "title": "Bottom-Tier Character Tomozaki",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "99758",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794261532100,
+   "status": "claimed"
   }
  ],
  "health": {
