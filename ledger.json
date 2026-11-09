@@ -3720,6 +3720,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123039961500964",
    "commentId": "122123039961500964_1160985346377930"
+  },
+  {
+   "key": "2026-11-08|next:156193|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:156193",
+   "title": "The Nine Heavens Swordmaster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "156193",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794195348014,
+   "status": "claimed"
   }
  ],
  "health": {
