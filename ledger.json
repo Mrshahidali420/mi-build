@@ -4546,6 +4546,22 @@
    "at": 1794239226411,
    "status": "posted",
    "postId": "1318170941390322_122123215503500964"
+  },
+  {
+   "key": "2026-11-09|where:101557|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:101557",
+   "title": "The Dangers in My Heart",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101557",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794239527359,
+   "status": "claimed"
   }
  ],
  "health": {
