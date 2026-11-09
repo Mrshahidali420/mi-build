@@ -5013,6 +5013,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123263887500964",
    "commentId": "122123263887500964_1170490465400227"
+  },
+  {
+   "key": "2026-11-09|next:98610|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:98610",
+   "title": "86―EIGHTY-SIX",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98610",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794250683698,
+   "status": "claimed"
   }
  ],
  "health": {
