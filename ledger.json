@@ -4604,6 +4604,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123218989500964",
    "commentId": "122123218989500964_1749056942864202"
+  },
+  {
+   "key": "2026-11-09|where:67705|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:67705",
+   "title": "Cheese in the Trap Season 1",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "67705",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794240430602,
+   "status": "claimed"
   }
  ],
  "health": {
