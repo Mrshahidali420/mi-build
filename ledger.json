@@ -5348,6 +5348,22 @@
    "at": 1794257611444,
    "status": "posted",
    "postId": "1318170941390322_122123289117500964"
+  },
+  {
+   "key": "2026-11-09|where:143117|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:143117",
+   "title": "The Divine Twilight's Return",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "143117",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794257912661,
+   "status": "claimed"
   }
  ],
  "health": {
