@@ -3923,6 +3923,22 @@
    "at": 1794221786706,
    "status": "posted",
    "postId": "1318170941390322_122123146827500964"
+  },
+  {
+   "key": "2026-11-09|where:80217|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:80217",
+   "title": "the gods lie.",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "80217",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794225107760,
+   "status": "claimed"
   }
  ],
  "health": {
