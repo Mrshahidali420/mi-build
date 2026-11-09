@@ -4077,6 +4077,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123173707500964",
    "commentId": "122123173707500964_1954615338833826"
+  },
+  {
+   "key": "2026-11-09|character:char:145342|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "character:char:145342",
+   "title": "Tokyo Revengers",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:145342",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794228728075,
+   "status": "claimed"
   }
  ],
  "health": {
