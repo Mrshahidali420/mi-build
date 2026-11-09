@@ -4865,6 +4865,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123249937500964",
    "commentId": "122123249937500964_3544994562330462"
+  },
+  {
+   "key": "2026-11-09|where:99324|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:99324",
+   "title": "Welcome to Demon School! Iruma-kun",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "99324",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794247068467,
+   "status": "claimed"
   }
  ],
  "health": {
