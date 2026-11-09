@@ -3612,6 +3612,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794193234261
    }
+  },
+  {
+   "key": "2026-11-08|where:138222|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:138222",
+   "title": "Level Up with the Gods",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "138222",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794193535303,
+   "status": "claimed"
   }
  ],
  "health": {
