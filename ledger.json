@@ -3899,6 +3899,29 @@
     "id": "17927545317202527",
     "at": 1794217864403
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-09|share:1329988470202923_122118956031503689|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "share:1329988470202923_122118956031503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122118956031503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122118956031503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Tokyo Revengers: War of the Three Titans Arc",
+   "sourceFormat": "type:stills",
+   "link": "https://www.facebook.com/1329988470202923/posts/122118956031503689",
+   "message": "New on our sister Page, WhereAnime:",
+   "at": 1794221786706,
+   "status": "claimed"
   }
  ],
  "health": {
