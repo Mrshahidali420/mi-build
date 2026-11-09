@@ -4716,6 +4716,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794243144764
    }
+  },
+  {
+   "key": "2026-11-09|where:146715|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:146715",
+   "title": "The Slumbering Ranker",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "146715",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794243445764,
+   "status": "claimed"
   }
  ],
  "health": {
