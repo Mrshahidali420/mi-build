@@ -2946,6 +2946,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794182373872
    }
+  },
+  {
+   "key": "2026-11-08|next:85135|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "next:85135",
+   "title": "A Silent Voice",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85135",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794182675183,
+   "status": "claimed"
   }
  ],
  "health": {
