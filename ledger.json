@@ -5590,6 +5590,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794261532100
    }
+  },
+  {
+   "key": "2026-11-09|character:char:127292|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "character:char:127292",
+   "title": "Delicious in Dungeon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:127292",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794261832987,
+   "status": "claimed"
   }
  ],
  "health": {
