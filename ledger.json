@@ -4315,6 +4315,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123193579500964",
    "commentId": "122123193579500964_1119339567523169"
+  },
+  {
+   "key": "2026-11-09|next:42854|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:42854",
+   "title": "A Certain Magical Index",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "42854",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794233858530,
+   "status": "claimed"
   }
  ],
  "health": {
