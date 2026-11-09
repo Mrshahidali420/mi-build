@@ -5757,6 +5757,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123352273500964",
    "commentId": "122123352273500964_1442391387982365"
+  },
+  {
+   "key": "2026-11-09|where:154782|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:154782",
+   "title": "Helmut",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "154782",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794265747698,
+   "status": "claimed"
   }
  ],
  "health": {
