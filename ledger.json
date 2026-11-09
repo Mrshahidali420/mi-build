@@ -5514,6 +5514,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123327445500964",
    "commentId": "122123327445500964_2597906530684007"
+  },
+  {
+   "key": "2026-11-09|where:143056|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:143056",
+   "title": "The Return of the Disaster-Class Hero",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "143056",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794260624901,
+   "status": "claimed"
   }
  ],
  "health": {
