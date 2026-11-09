@@ -70,4 +70,4 @@ function template(v, k) {
   return card(k, t, v.art.hero, head, 440, v.cta)
 }
 
-export default { key: 'rating-move', name: 'Episode rating on the move', urgent: false, gapDays: 300, titleGap: false, window: 1, find, captions, questions, tags: (p) => p.tags, template, extra: ratingsExtra }
+export default { key: 'rating-move', name: 'Episode rating on the move', urgent: true, gapDays: 300, titleGap: false, window: 1, find, captions, questions, tags: (p) => p.tags, template, extra: ratingsExtra }

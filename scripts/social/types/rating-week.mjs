@@ -102,4 +102,4 @@ function template(v, k) {
   )
 }
 
-export default { key: 'rating-week', name: 'Top-rated episodes of the week', urgent: false, gapDays: 7, titleGap: false, window: 1, find, captions, questions, tags: (p) => p.tags, template, extra: ratingsExtra }
+export default { key: 'rating-week', name: 'Top-rated episodes of the week', urgent: true, gapDays: 7, titleGap: false, window: 1, find, captions, questions, tags: (p) => p.tags, template, extra: ratingsExtra }

@@ -149,4 +149,4 @@ function template(v, k) {
   return card(k, t, v.art.hero, [ratingLabel(k, t), k.box({ marginTop: 6 }, scoreMark(k, t.ink, v.score, 250)), k.box({ marginTop: 18 }, episodeLine(k, t, v))], undefined, v.cta)
 }
 
-export default { key: 'rating', name: 'Episode rating on IMDb', urgent: false, gapDays: 300, titleGap: false, window: 1, find, captions, questions, tags: (p) => p.tags, template, extra: ratingsExtra }
+export default { key: 'rating', name: 'Episode rating on IMDb', urgent: true, gapDays: 300, titleGap: false, window: 1, find, captions, questions, tags: (p) => p.tags, template, extra: ratingsExtra }

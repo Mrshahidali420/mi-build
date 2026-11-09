@@ -43,7 +43,7 @@ const render = (which) => async (type, post, { env = process.env, fetch = global
   track: null,
 })
 
-const common = { urgent: false, gapDays: 30, titleGap: false, sameDay: true, window: 1, captions, questions, tags: (p) => p.tags }
+const common = { urgent: true, gapDays: 30, titleGap: false, sameDay: true, window: 1, captions, questions, tags: (p) => p.tags }
 
 export const clipReel = { ...common, key: 'clip-reel', name: 'Reel: clip of a trending episode', reel: true, find: (data) => posts(data, 'short'), render: render('short') }
 export const clipVideo = { ...common, key: 'clip-video', name: 'Video: clip of a trending episode', video: true, find: (data) => posts(data, 'full'), render: render('full') }
