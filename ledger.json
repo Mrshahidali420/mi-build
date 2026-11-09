@@ -5685,6 +5685,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123345733500964",
    "commentId": "122123345733500964_1796026328333206"
+  },
+  {
+   "key": "2026-11-09|next:86279|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:86279",
+   "title": "Boarding School Juliet",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86279",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794264544130,
+   "status": "claimed"
   }
  ],
  "health": {
