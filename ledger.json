@@ -3054,6 +3054,22 @@
    "status": "posted",
    "postId": "1318170941390322_122122996485500964",
    "commentId": "122122996485500964_1700838608135499"
+  },
+  {
+   "key": "2026-11-08|where:74347|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:74347",
+   "title": "One-Punch Man",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "74347",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794184491057,
+   "status": "claimed"
   }
  ],
  "health": {
