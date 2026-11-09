@@ -3392,6 +3392,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794189617234
    }
+  },
+  {
+   "key": "2026-11-08|where:146017|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:146017",
+   "title": "The Hero Returns",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "146017",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794189918094,
+   "status": "claimed"
   }
  ],
  "health": {
