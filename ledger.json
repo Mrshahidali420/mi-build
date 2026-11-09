@@ -3536,6 +3536,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123028591500964",
    "commentId": "122123028591500964_2629313620883209"
+  },
+  {
+   "key": "2026-11-08|where:73661|manhwaindex",
+   "day": "2026-11-08",
+   "slug": "where:73661",
+   "title": "Seraph of the End: Vampire Reign",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "73661",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794192331430,
+   "status": "claimed"
   }
  ],
  "health": {
