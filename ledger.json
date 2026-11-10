@@ -6589,6 +6589,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123515773500964",
    "commentId": "122123515773500964_2080347039352047"
+  },
+  {
+   "key": "2026-11-10|next:106130|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:106130",
+   "title": "Blue Lock",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "106130",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794312012643,
+   "status": "claimed"
   }
  ],
  "health": {
