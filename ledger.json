@@ -6392,6 +6392,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794279334056
    }
+  },
+  {
+   "key": "2026-11-09|next:101408|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:101408",
+   "title": "Principles of Heavens: Zen’s Cultivation of Immortality",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "101408",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794279635450,
+   "status": "claimed"
   }
  ],
  "health": {
