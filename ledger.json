@@ -6352,6 +6352,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123397681500964",
    "commentId": "122123397681500964_2395408611236077"
+  },
+  {
+   "key": "2026-11-09|where:101134|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:101134",
+   "title": "Hardcore Leveling Warrior",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "101134",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794279032673,
+   "status": "claimed"
   }
  ],
  "health": {
