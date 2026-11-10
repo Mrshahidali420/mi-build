@@ -8487,6 +8487,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123687829500964",
    "commentId": "122123687829500964_2294411508006213"
+  },
+  {
+   "key": "2026-11-10|rating:tt50436983|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "rating:tt50436983",
+   "title": "Dragon Ball Super: Beerus",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:rating",
+   "type": "rating",
+   "item": "tt50436983",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794354231822,
+   "status": "claimed"
   }
  ],
  "health": {
