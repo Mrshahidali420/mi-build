@@ -6525,47 +6525,47 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-09",
-  "at": 1794200472997,
+  "day": "2026-11-10",
+  "at": 1794310800499,
   "list": [
    {
-    "id": 13725,
-    "name": "Ami Kawashima",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b13725-Vk30kjvVT82z.png",
-    "favourites": 2169,
-    "mediaId": 34368,
+    "id": 71609,
+    "name": "Tadashi Yamaguchi",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71609-5Ht0aqB34eEa.png",
+    "favourites": 2646,
+    "mediaId": 65243,
     "voice": null
    },
    {
-    "id": 122192,
-    "name": "Tarou Kabakura",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b122192-qnLmMg3YaGNd.png",
-    "favourites": 2006,
-    "mediaId": 86717,
+    "id": 215082,
+    "name": "Sarasa Watanabe",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b215082-TR09CcCMN82H.png",
+    "favourites": 289,
+    "mediaId": 93901,
     "voice": null
    },
    {
-    "id": 1151,
-    "name": "Ikkaku Madarame",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b1151-izBrO6oWMvDv.png",
-    "favourites": 844,
-    "mediaId": 30012,
+    "id": 289297,
+    "name": "Eta",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b289297-e2DgfeWhVPRa.jpg",
+    "favourites": 289,
+    "mediaId": 106758,
     "voice": null
    },
    {
-    "id": 193218,
-    "name": "Kana Ichikawa",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b193218-3mexVYcc0PoC.jpg",
-    "favourites": 394,
-    "mediaId": 101557,
+    "id": 264316,
+    "name": "Orter Mádl",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b264316-KBzNLTjnhkEe.jpg",
+    "favourites": 137,
+    "mediaId": 114960,
     "voice": null
    },
    {
-    "id": 286859,
-    "name": "Sett",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b286859-Ibihr3GeSmFf.png",
-    "favourites": 280,
-    "mediaId": 112234,
+    "id": 77415,
+    "name": "Kenji Futakuchi",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b77415-T3E1rohigs8j.jpg",
+    "favourites": 111,
+    "mediaId": 65243,
     "voice": null
    }
   ]
