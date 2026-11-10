@@ -6036,6 +6036,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123375625500964",
    "commentId": "122123375625500964_2230575061220160"
+  },
+  {
+   "key": "2026-11-09|next:118408|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:118408",
+   "title": "Villains Are Destined to Die",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "118408",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794272665760,
+   "status": "claimed"
   }
  ],
  "health": {
