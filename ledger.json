@@ -5887,6 +5887,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123364963500964",
    "commentId": "122123364963500964_1323753806479256"
+  },
+  {
+   "key": "2026-11-09|character:char:164986|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "character:char:164986",
+   "title": "Kubo Won't Let Me Be Invisible",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:164986",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794269050012,
+   "status": "claimed"
   }
  ],
  "health": {
