@@ -8034,7 +8034,11 @@
    "at": 1794345475258,
    "status": "posted",
    "postId": "1318170941390322_122123656821500964",
-   "commentId": "122123656821500964_1688585716157312"
+   "commentId": "122123656821500964_1688585716157312",
+   "ig": {
+    "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
+    "at": 1794345475258
+   }
   }
  ],
  "health": {
