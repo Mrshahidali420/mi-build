@@ -7177,6 +7177,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123573121500964",
    "commentId": "122123573121500964_2301062523768064"
+  },
+  {
+   "key": "2026-11-10|next:168823|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:168823",
+   "title": "The Reincarnated Assassin Is a Swordmaster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "168823",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794325293097,
+   "status": "claimed"
   }
  ],
  "health": {
