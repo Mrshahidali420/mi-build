@@ -7195,6 +7195,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123574315500964",
    "commentId": "122123574315500964_2263423775053702"
+  },
+  {
+   "key": "2026-11-10|where:120288|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:120288",
+   "title": "Spare Me, Great Lord!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "120288",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794326803197,
+   "status": "claimed"
   }
  ],
  "health": {
