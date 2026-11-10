@@ -5977,6 +5977,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123373177500964",
    "commentId": "122123373177500964_3877479252392446"
+  },
+  {
+   "key": "2026-11-09|where:123366|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:123366",
+   "title": "Queen in the Shadows",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "123366",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794271762592,
+   "status": "claimed"
   }
  ],
  "health": {
