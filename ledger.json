@@ -7253,6 +7253,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123580603500964",
    "commentId": "122123580603500964_1467936888599410"
+  },
+  {
+   "key": "2026-11-10|where:98334|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:98334",
+   "title": "Blue Flag",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "98334",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794327707268,
+   "status": "claimed"
   }
  ],
  "health": {
