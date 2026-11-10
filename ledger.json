@@ -8265,6 +8265,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794349091736
    }
+  },
+  {
+   "key": "2026-11-10|where:136204|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:136204",
+   "title": "Descended from Divinity",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "136204",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794349392658,
+   "status": "claimed"
   }
  ],
  "health": {
