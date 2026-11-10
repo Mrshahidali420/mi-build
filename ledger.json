@@ -6244,6 +6244,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123390493500964",
    "commentId": "122123390493500964_1122117720718025"
+  },
+  {
+   "key": "2026-11-09|where:150440|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:150440",
+   "title": "RuriDragon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "150440",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794277217698,
+   "status": "claimed"
   }
  ],
  "health": {
