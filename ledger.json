@@ -7467,6 +7467,22 @@
     "id": "18099245291653562",
     "at": 1794332507616
    }
+  },
+  {
+   "key": "2026-11-10|character:char:14545|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:14545",
+   "title": "Bakuman。",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:14545",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794332808456,
+   "status": "claimed"
   }
  ],
  "health": {
