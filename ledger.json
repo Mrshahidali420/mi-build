@@ -7367,6 +7367,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123593611500964",
    "commentId": "122123593611500964_2370192593907674"
+  },
+  {
+   "key": "2026-11-10|where:164222|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:164222",
+   "title": "Chronicles of the Demon Faction",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "164222",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794330723560,
+   "status": "claimed"
   }
  ],
  "health": {
