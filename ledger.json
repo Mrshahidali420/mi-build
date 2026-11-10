@@ -7271,6 +7271,29 @@
    "status": "posted",
    "postId": "1318170941390322_122123582073500964",
    "commentId": "122123582073500964_1688667062616105"
+  },
+  {
+   "share": true,
+   "key": "2026-11-10|share:1329988470202923_122119526853503689|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "share:1329988470202923_122119526853503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122119526853503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122119526853503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Mobile Suit Gundam",
+   "sourceFormat": "type:where",
+   "link": "https://www.facebook.com/1329988470202923/posts/122119526853503689",
+   "message": "Worth a look from our sister Page, WhereAnime:",
+   "at": 1794329216808,
+   "status": "claimed"
   }
  ],
  "health": {
