@@ -8017,6 +8017,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123653119500964",
    "commentId": "122123653119500964_1117449397831965"
+  },
+  {
+   "key": "2026-11-10|where:107087|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:107087",
+   "title": "Dungeon Majesty",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "107087",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794345475258,
+   "status": "claimed"
   }
  ],
  "health": {
