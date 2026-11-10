@@ -8189,6 +8189,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123664711500964",
    "commentId": "122123664711500964_4601566336767246"
+  },
+  {
+   "key": "2026-11-10|next:104271|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:104271",
+   "title": "Father, Unrivaled",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "104271",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794348188864,
+   "status": "claimed"
   }
  ],
  "health": {
