@@ -6452,6 +6452,22 @@
     "id": "18135628624792798",
     "at": 1794281452476
    }
+  },
+  {
+   "key": "2026-11-09|character:char:140380|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "character:char:140380",
+   "title": "Lookism",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:140380",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794281753883,
+   "status": "claimed"
   }
  ],
  "health": {
