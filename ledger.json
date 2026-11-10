@@ -7687,6 +7687,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794337332962
    }
+  },
+  {
+   "key": "2026-11-10|character:char:66171|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:66171",
+   "title": "Horimiya",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:66171",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794337633946,
+   "status": "claimed"
   }
  ],
  "health": {
