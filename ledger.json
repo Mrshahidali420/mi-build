@@ -7909,6 +7909,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123646441500964",
    "commentId": "122123646441500964_1536547788231748"
+  },
+  {
+   "key": "2026-11-10|where:141626|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:141626",
+   "title": "Manager Kim",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "141626",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794342461773,
+   "status": "claimed"
   }
  ],
  "health": {
