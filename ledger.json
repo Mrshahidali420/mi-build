@@ -6506,6 +6506,24 @@
    "status": "posted",
    "postId": "1318170941390322_122123410899500964",
    "commentId": "122123410899500964_1625433199318937"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-10|reel-today:today:2026-11-10|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "reel-today:today:2026-11-10",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-today",
+   "type": "reel-today",
+   "item": "today:2026-11-10",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794310808108,
+   "track": "meadow-thoughts.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
