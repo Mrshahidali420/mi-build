@@ -6625,6 +6625,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123518581500964",
    "commentId": "122123518581500964_1369693078411250"
+  },
+  {
+   "key": "2026-11-10|fact:fact:85566:run|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "fact:fact:85566:run",
+   "title": "Love & Lies",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:85566:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794312614995,
+   "status": "claimed"
   }
  ],
  "health": {
