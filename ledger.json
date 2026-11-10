@@ -8325,6 +8325,22 @@
     "id": "18130195432862760",
     "at": 1794351201161
    }
+  },
+  {
+   "key": "2026-11-10|next:122395|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:122395",
+   "title": "Rooftop Swordmaster",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "122395",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794351502108,
+   "status": "claimed"
   }
  ],
  "health": {
