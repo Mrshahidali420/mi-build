@@ -6226,6 +6226,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123389557500964",
    "commentId": "122123389557500964_1641845870718808"
+  },
+  {
+   "key": "2026-11-09|next:153948|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:153948",
+   "title": "Villain with a Crush",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "153948",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794276916370,
+   "status": "claimed"
   }
  ],
  "health": {
