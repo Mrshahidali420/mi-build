@@ -7407,6 +7407,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123595861500964",
    "commentId": "122123595861500964_29973458845594837"
+  },
+  {
+   "key": "2026-11-10|next:87284|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:87284",
+   "title": "WorldEnd: What Do You Do at the End of the World? Are You Busy? Will You Save Us?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "87284",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794331325983,
+   "status": "claimed"
   }
  ],
  "health": {
