@@ -7981,6 +7981,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123650227500964",
    "commentId": "122123650227500964_1056171140817771"
+  },
+  {
+   "key": "2026-11-10|character:char:11|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:11",
+   "title": "Fullmetal Alchemist",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:11",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794343665415,
+   "status": "claimed"
   }
  ],
  "health": {
