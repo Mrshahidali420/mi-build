@@ -6751,6 +6751,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123526747500964",
    "commentId": "122123526747500964_1054903160342395"
+  },
+  {
+   "key": "2026-11-10|next:180752|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:180752",
+   "title": "Ichi the Witch",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "180752",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794314729459,
+   "status": "claimed"
   }
  ],
  "health": {
