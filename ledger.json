@@ -8243,6 +8243,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123668671500964",
    "commentId": "122123668671500964_3382981181885820"
+  },
+  {
+   "key": "2026-11-10|next:138397|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:138397",
+   "title": "Reincarnated as an Unruly Heir",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "138397",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794349091736,
+   "status": "claimed"
   }
  ],
  "health": {
