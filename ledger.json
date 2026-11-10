@@ -8039,6 +8039,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794345475258
    }
+  },
+  {
+   "key": "2026-11-10|character:char:130944|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:130944",
+   "title": "Fly Me to the Moon",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:130944",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794345776137,
+   "status": "claimed"
   }
  ],
  "health": {
