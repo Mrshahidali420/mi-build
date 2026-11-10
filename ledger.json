@@ -8153,6 +8153,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123662311500964",
    "commentId": "122123662311500964_2237467560540797"
+  },
+  {
+   "key": "2026-11-10|where:159930|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:159930",
+   "title": "The Infinite Mage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "159930",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794347587086,
+   "status": "claimed"
   }
  ],
  "health": {
