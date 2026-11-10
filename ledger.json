@@ -6054,6 +6054,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123376669500964",
    "commentId": "122123376669500964_1394786406060819"
+  },
+  {
+   "key": "2026-11-09|where:116133|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:116133",
+   "title": "I Stan the Prince",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "116133",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794272966813,
+   "status": "claimed"
   }
  ],
  "health": {
