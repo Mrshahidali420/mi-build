@@ -7011,6 +7011,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794319856293
    }
+  },
+  {
+   "key": "2026-11-10|character:char:84781|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:84781",
+   "title": "Tower of God",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:84781",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794320157189,
+   "status": "claimed"
   }
  ],
  "health": {
