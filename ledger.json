@@ -7647,6 +7647,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123614683500964",
    "commentId": "122123614683500964_1547251850560801"
+  },
+  {
+   "key": "2026-11-10|next:98741|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:98741",
+   "title": "Wandering Witch: The Journey of Elaina",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "98741",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794335819105,
+   "status": "claimed"
   }
  ],
  "health": {
