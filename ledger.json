@@ -6971,6 +6971,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123542881500964",
    "commentId": "122123542881500964_2139675526941309"
+  },
+  {
+   "key": "2026-11-10|where:172623|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:172623",
+   "title": "Act Like a Boss Monster, Mr. Swallow!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "172623",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794318348746,
+   "status": "claimed"
   }
  ],
  "health": {
