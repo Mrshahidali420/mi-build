@@ -8260,7 +8260,11 @@
    "at": 1794349091736,
    "status": "posted",
    "postId": "1318170941390322_122123670015500964",
-   "commentId": "122123670015500964_1090345934003297"
+   "commentId": "122123670015500964_1090345934003297",
+   "ig": {
+    "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
+    "at": 1794349091736
+   }
   }
  ],
  "health": {
