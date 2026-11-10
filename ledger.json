@@ -7235,6 +7235,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794327104486
    }
+  },
+  {
+   "key": "2026-11-10|next:59983|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:59983",
+   "title": "Noblesse",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "59983",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794327405902,
+   "status": "claimed"
   }
  ],
  "health": {
