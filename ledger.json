@@ -7759,6 +7759,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123629857500964",
    "commentId": "122123629857500964_5009327809390328"
+  },
+  {
+   "key": "2026-11-10|next:65719|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:65719",
+   "title": "Like a Butterfly",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "65719",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794338839049,
+   "status": "claimed"
   }
  ],
  "health": {
