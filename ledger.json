@@ -7213,6 +7213,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123578467500964",
    "commentId": "122123578467500964_1172997495063147"
+  },
+  {
+   "key": "2026-11-10|character:char:12236|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:12236",
+   "title": "Real",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:12236",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794327104486,
+   "status": "claimed"
   }
  ],
  "health": {
