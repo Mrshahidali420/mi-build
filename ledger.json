@@ -8117,6 +8117,22 @@
    "at": 1794346679055,
    "status": "posted",
    "postId": "1318170941390322_122123660979500964"
+  },
+  {
+   "key": "2026-11-10|character:char:8439|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:8439",
+   "title": "Soul Eater",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:8439",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794346985188,
+   "status": "claimed"
   }
  ],
  "health": {
