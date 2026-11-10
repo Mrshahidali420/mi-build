@@ -6190,6 +6190,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123387151500964",
    "commentId": "122123387151500964_1651787120297353"
+  },
+  {
+   "key": "2026-11-09|where:189051|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:189051",
+   "title": "What a Bountiful Harvest, Demon Lord!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "189051",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794276313576,
+   "status": "claimed"
   }
  ],
  "health": {
