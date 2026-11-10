@@ -6410,6 +6410,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123400699500964",
    "commentId": "122123400699500964_2383356855534707"
+  },
+  {
+   "key": "2026-11-09|where:144999|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "where:144999",
+   "title": "Grand Warlock Streamer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "144999",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794279936880,
+   "status": "claimed"
   }
  ],
  "health": {
