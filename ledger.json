@@ -6470,6 +6470,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123407383500964",
    "commentId": "122123407383500964_1789844128730119"
+  },
+  {
+   "key": "2026-11-09|next:86508|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "next:86508",
+   "title": "Dragon Ball Super",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "86508",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794282055314,
+   "status": "claimed"
   }
  ],
  "health": {
