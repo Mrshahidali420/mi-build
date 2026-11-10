@@ -7999,6 +7999,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123651793500964",
    "commentId": "122123651793500964_1864020591437408"
+  },
+  {
+   "key": "2026-11-10|next:187140|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:187140",
+   "title": "Destined To Be Loved by the Villains",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "187140",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794343966297,
+   "status": "claimed"
   }
  ],
  "health": {
