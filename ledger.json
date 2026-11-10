@@ -6428,6 +6428,24 @@
    "status": "posted",
    "postId": "1318170941390322_122123402073500964",
    "commentId": "122123402073500964_1910835163220261"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-09|reel-next:69325|manhwaindex",
+   "day": "2026-11-09",
+   "slug": "reel-next:69325",
+   "title": "Erased",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "69325",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794281452476,
+   "track": "gods-notebook-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
