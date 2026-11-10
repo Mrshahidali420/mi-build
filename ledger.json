@@ -7137,6 +7137,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123566239500964",
    "commentId": "122123566239500964_1527056349263576"
+  },
+  {
+   "key": "2026-11-10|where:166658|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:166658",
+   "title": "The Top Dungeon Farmer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "166658",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794323474408,
+   "status": "claimed"
   }
  ],
  "health": {
