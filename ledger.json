@@ -7723,6 +7723,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123627187500964",
    "commentId": "122123627187500964_1415982346949107"
+  },
+  {
+   "key": "2026-11-10|where:31303|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:31303",
+   "title": "Ashita no Joe: Fighting for Tomorrow",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "31303",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794338236081,
+   "status": "claimed"
   }
  ],
  "health": {
