@@ -6525,6 +6525,29 @@
    "track": "meadow-thoughts.m4a",
    "status": "failed",
    "error": "GET /1133788606071992 failed: Unsupported get request. Object with ID '1133788606071992' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "share": true,
+   "key": "2026-11-10|share:1329988470202923_122119439235503689|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "share:1329988470202923_122119439235503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122119439235503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122119439235503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Kemono Jihen",
+   "sourceFormat": "type:character",
+   "link": "https://www.facebook.com/1329988470202923/posts/122119439235503689",
+   "message": "New on our sister Page, WhereAnime:",
+   "at": 1794311109256,
+   "status": "claimed"
   }
  ],
  "health": {
