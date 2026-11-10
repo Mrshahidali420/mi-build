@@ -6917,6 +6917,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123539047500964",
    "commentId": "122123539047500964_1036659182166355"
+  },
+  {
+   "key": "2026-11-10|next:127868|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:127868",
+   "title": "My Gently Raised Beast",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "127868",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794317441048,
+   "status": "claimed"
   }
  ],
  "health": {
