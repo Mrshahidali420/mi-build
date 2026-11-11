@@ -8581,6 +8581,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123692713500964",
    "commentId": "122123692713500964_2013337316295318"
+  },
+  {
+   "key": "2026-11-10|where:164599|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:164599",
+   "title": "Not Your Typical Reincarnation Story",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "164599",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794355739040,
+   "status": "claimed"
   }
  ],
  "health": {
