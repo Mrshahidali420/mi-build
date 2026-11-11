@@ -32,3 +32,12 @@ jobs:
           sort -t$'\t' -k3 -nr views.tsv | head -25
           echo "--- total views by type"
           awk -F'\t' '$3!="?"{s[$2]+=$3;n[$2]++} END{for(k in s)print k, n[k], "posts", s[k], "views"}' views.tsv
+          echo "--- reels (blue_reels_play_count) and videos (total_video_views)"
+          curl -sS "$api/$FB_PAGE_ID/video_reels?fields=id,created_time,description&limit=100&access_token=$FB_PAGE_TOKEN" > reels.json
+          echo "reels read: $(jq '.data|length' reels.json) $(jq -r '.error.message // empty' reels.json)"
+          for id in $(jq -r '.data[]?.id' reels.json); do
+            v=$(curl -sS "$api/$id/video_insights?metric=blue_reels_play_count&access_token=$FB_PAGE_TOKEN" | jq -r '.data[0].values[0].value // "?"')
+            jq -r --arg id "$id" --arg v "$v" '.data[] | select(.id==$id) | [.created_time[5:16], "reel", $v, (.description // "" | .[0:60] | gsub("[\n]";" "))] | @tsv' reels.json
+          done | sort -t$'\t' -k3 -nr | head -40
+          echo "--- reel totals"
+          for id in $(jq -r '.data[]?.id' reels.json); do curl -sS "$api/$id/video_insights?metric=blue_reels_play_count&access_token=$FB_PAGE_TOKEN" | jq -r '.data[0].values[0].value // 0'; done | awk '{s+=$1;n++} END{print n, "reels", s, "plays"}'
