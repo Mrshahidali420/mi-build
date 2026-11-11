@@ -9463,6 +9463,24 @@
     "fb": "1749998102759139",
     "ig": "18138960853628767"
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|reel-ranking:rank:manhua:romance|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "reel-ranking:rank:manhua:romance",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhua:romance",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794406241924,
+   "track": "jrpg-piano.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
