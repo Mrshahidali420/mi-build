@@ -10056,6 +10056,22 @@
    "status": "posted",
    "postId": "1702347868069702",
    "commentId": "1702347868069702_1291791326712125"
+  },
+  {
+   "key": "2026-11-11|next:108105|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "next:108105",
+   "title": "When Will Ayumu Make His Move?",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "108105",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794437600012,
+   "status": "claimed"
   }
  ],
  "health": {
