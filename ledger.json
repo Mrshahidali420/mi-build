@@ -9341,6 +9341,23 @@
     "id": "17866333812693757",
     "at": 1794388930904
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|clip-reel:clip-super-psychic-policeman-chojo-e06-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-reel:clip-super-psychic-policeman-chojo-e06-manhwaindex-03:short",
+   "title": "Super Psychic Policeman Chojo",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-super-psychic-policeman-chojo-e06-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794391819178,
+   "status": "claimed"
   }
  ],
  "health": {
