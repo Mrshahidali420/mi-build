@@ -9269,6 +9269,24 @@
     "id": "17891657217621779",
     "at": 1794378341313
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|reel-next:94970|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "reel-next:94970",
+   "title": "Classroom of the Elite",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "94970",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794383162607,
+   "track": "gods-notebook-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
