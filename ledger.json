@@ -8937,6 +8937,29 @@
    "status": "posted",
    "postId": "1318170941390322_122123719041500964",
    "commentId": "122123719041500964_2345701422896469"
+  },
+  {
+   "share": true,
+   "key": "2026-11-10|share:1329988470202923_122119525263503689|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "share:1329988470202923_122119525263503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122119525263503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122119525263503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Promare",
+   "sourceFormat": "type:character",
+   "link": "https://www.facebook.com/1329988470202923/posts/122119525263503689",
+   "message": "In case you missed it, from our sister Page, WhereAnime:",
+   "at": 1794364174557,
+   "status": "claimed"
   }
  ],
  "health": {
