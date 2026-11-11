@@ -9673,6 +9673,22 @@
    "status": "posted",
    "postId": "1648955756721721",
    "commentId": "1648955756721721_1652825386579639"
+  },
+  {
+   "key": "2026-11-11|out-now:172192:6:out|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "out-now:172192:6:out",
+   "title": "A Returner's Magic Should be Special Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "172192:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794420441640,
+   "status": "claimed"
   }
  ],
  "health": {
