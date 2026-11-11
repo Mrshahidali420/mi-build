@@ -9567,6 +9567,29 @@
     "fb": "1517153420254359",
     "ig": "18104052509455107"
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-11|share:2616787795487066|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "share:2616787795487066",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "2616787795487066",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "2616787795487066",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Super Psychic Policeman Chojo",
+   "sourceFormat": "type:clip-video",
+   "link": "https://www.facebook.com/2616787795487066",
+   "message": "New on our sister Page, WhereAnime:",
+   "at": 1794416823301,
+   "status": "claimed"
   }
  ],
  "health": {
