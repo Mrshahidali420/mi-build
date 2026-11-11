@@ -8879,6 +8879,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123716581500964",
    "commentId": "122123716581500964_1662885678551464"
+  },
+  {
+   "key": "2026-11-10|where:144866|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:144866",
+   "title": "Akane-banashi",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "144866",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794363270543,
+   "status": "claimed"
   }
  ],
  "health": {
