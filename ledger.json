@@ -9105,6 +9105,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123728995500964",
    "commentId": "122123728995500964_957891557108878"
+  },
+  {
+   "key": "2026-11-10|next:147997|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:147997",
+   "title": "You and I Are Polar Opposites",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "147997",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794366894391,
+   "status": "claimed"
   }
  ],
  "health": {
