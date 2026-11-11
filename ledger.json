@@ -9933,6 +9933,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123961009500964",
    "commentId": "122123961009500964_1718471126304393"
+  },
+  {
+   "key": "2026-11-11|clip-video:clip-my-girlfriend-s-friend-e06-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-video:clip-my-girlfriend-s-friend-e06-manhwaindex-03:full",
+   "title": "My Girlfriend's Friend",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-my-girlfriend-s-friend-e06-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794432179417,
+   "status": "claimed"
   }
  ],
  "health": {
