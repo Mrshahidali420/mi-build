@@ -8635,6 +8635,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123695299500964",
    "commentId": "122123695299500964_1898708314628213"
+  },
+  {
+   "key": "2026-11-10|where:136499|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:136499",
+   "title": "All Hail The Sect Leader",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "136499",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794356643580,
+   "status": "claimed"
   }
  ],
  "health": {
