@@ -28,6 +28,5 @@ jobs:
             done
           done
           echo "--- videos and reels with their own view counts"
-          curl -sS "$api/$FB_PAGE_ID/videos?fields=id,created_time,title,description,length,views&limit=100&since=$since&access_token=$FB_PAGE_TOKEN" | jq -r '.data[]? | [.created_time[0:16], (.length|tostring), (.views|tostring), ((.title // .description // "")|gsub("
-";" ")|.[0:60])] | @tsv' | sort | tail -70
+          curl -sS "$api/$FB_PAGE_ID/videos?fields=id,created_time,title,description,length,views&limit=100&since=$since&access_token=$FB_PAGE_TOKEN" | jq -r '.data[]? | [.created_time[0:16], (.length|tostring), (.views|tostring), ((.title // .description // "")|gsub("[\n]";" ")|.[0:60])] | @tsv' | sort | tail -70
           curl -sS "$api/$FB_PAGE_ID/video_reels?fields=id,created_time,description,video_insights&limit=50&access_token=$FB_PAGE_TOKEN" | head -c 1500
