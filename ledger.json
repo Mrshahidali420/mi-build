@@ -8861,6 +8861,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123715969500964",
    "commentId": "122123715969500964_2601278937021466"
+  },
+  {
+   "key": "2026-11-10|next:176812|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:176812",
+   "title": "The Reincarnated King of Fists",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "176812",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794362969323,
+   "status": "claimed"
   }
  ],
  "health": {
