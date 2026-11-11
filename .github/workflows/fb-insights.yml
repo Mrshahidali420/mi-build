@@ -1,15 +1,14 @@
 name: Facebook insights
 run-name: Facebook insights (read only)
 
-# Reads the Page's own numbers: views per post of the last 30 days, so we can see which kind of post earns views.
-# Reads only. Posts nothing.
+# Reads the Page's own numbers: views per post of the last 30 days. Reads only. Posts nothing.
 on:
   workflow_dispatch:
 
 jobs:
   insights:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Views per post
         env:
@@ -18,15 +17,18 @@ jobs:
         run: |
           api="https://graph.facebook.com/v21.0"
           since=$(date -d '30 days ago' +%s)
-          curl -sS "$api/$FB_PAGE_ID?fields=name,fan_count,followers_count&access_token=$FB_PAGE_TOKEN" | jq -c .
-          echo "--- page views, daily, last 30 days"
-          curl -sS "$api/$FB_PAGE_ID/insights?metric=page_media_view&period=day&since=$since&access_token=$FB_PAGE_TOKEN" | jq -c '.data[0].values | map(.value) // .' 2>&1 | head -c 1500; echo
-          echo "--- raw metric probe on the first post, the first video and one reel"
-          for id in $(jq -r '[.data[]|select(.status_type=="added_video")][0].id' posts.json) $(jq -r '.data[0].id' posts.json); do
-            for m in post_media_view post_impressions post_impressions_unique post_video_views post_engaged_users; do
-              echo "$id $m: $(curl -sS "$api/$id/insights?metric=$m&access_token=$FB_PAGE_TOKEN" | head -c 300)"
-            done
-          done
-          echo "--- videos and reels with their own view counts"
-          curl -sS "$api/$FB_PAGE_ID/videos?fields=id,created_time,title,description,length,views&limit=100&since=$since&access_token=$FB_PAGE_TOKEN" | jq -r '.data[]? | [.created_time[0:16], (.length|tostring), (.views|tostring), ((.title // .description // "")|gsub("[\n]";" ")|.[0:60])] | @tsv' | sort | tail -70
-          curl -sS "$api/$FB_PAGE_ID/video_reels?fields=id,created_time,description,video_insights&limit=50&access_token=$FB_PAGE_TOKEN" | head -c 1500
+          curl -sS "$api/$FB_PAGE_ID?fields=name,followers_count&access_token=$FB_PAGE_TOKEN" | jq -c .
+          echo "--- page views by day (page_media_view)"
+          curl -sS "$api/$FB_PAGE_ID/insights?metric=page_media_view&period=day&since=$since&access_token=$FB_PAGE_TOKEN" | jq -c 'if .data then (.data[0].values | map([.end_time[5:10], .value])) else .error.message end'
+          curl -fsS "$api/$FB_PAGE_ID/published_posts?fields=id,created_time,status_type,message&limit=100&since=$since&access_token=$FB_PAGE_TOKEN" > posts.json
+          echo "--- posts read: $(jq '.data|length' posts.json)"
+          probe=$(jq -r '.data[0].id' posts.json)
+          echo "probe: $(curl -sS "$api/$probe/insights?metric=post_media_view&access_token=$FB_PAGE_TOKEN" | head -c 250)"
+          echo "--- views by post: time, type, views, text"
+          for id in $(jq -r '.data[].id' posts.json); do
+            v=$(curl -sS "$api/$id/insights?metric=post_media_view&access_token=$FB_PAGE_TOKEN" | jq -r '.data[0].values[0].value // "?"')
+            jq -r --arg id "$id" --arg v "$v" '.data[] | select(.id==$id) | [.created_time[5:16], .status_type, $v, (.message // "" | .[0:60] | gsub("[\n]";" "))] | @tsv' posts.json
+          done | sort > views.tsv
+          sort -t$'\t' -k3 -nr views.tsv | head -25
+          echo "--- total views by type"
+          awk -F'\t' '$3!="?"{s[$2]+=$3;n[$2]++} END{for(k in s)print k, n[k], "posts", s[k], "views"}' views.tsv
