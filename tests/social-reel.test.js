@@ -107,8 +107,8 @@ const reel = { key: 'reel-x', reel: true }
 const picture = { key: 'a' }
 const entry = (minutesAgo, over = {}) => ({ at: NOW - minutesAgo * MINUTE_MS, page: SITE.key, status: 'posted', ...over })
 
-test('limits: three reels in a rolling day unless set, ten at most, and never two in a row', () => {
-  assert.deepEqual([reelsPerDayOf(undefined), reelsPerDayOf(''), reelsPerDayOf('5'), reelsPerDayOf('0'), reelsPerDayOf('99'), reelsPerDayOf('x')], [3, 3, 5, 0, 10, 3])
+test('limits: three reels in a rolling day unless set, thirty at most, and never two in a row', () => {
+  assert.deepEqual([reelsPerDayOf(undefined), reelsPerDayOf(''), reelsPerDayOf('5'), reelsPerDayOf('0'), reelsPerDayOf('99'), reelsPerDayOf('x')], [3, 3, 5, 0, 30, 3])
   assert.equal(settingsOf({}).reelsPerDay, 3)
   const kinds = ['classic', picture, reel]
   assert.deepEqual(kindsNow(kinds, [], NOW, 3), kinds)

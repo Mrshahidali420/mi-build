@@ -48,9 +48,9 @@ export const perDayOf = (value) => (whole(value) > 0 ? Math.min(whole(value), MA
 
 /** Reels in any 24 hours when FB_REELS_PER_DAY is unset, and the most it can be set to. Facebook's own limit is 30. */
 export const DEFAULT_REELS_PER_DAY = 3
-export const MAX_REELS_PER_DAY = 10
+export const MAX_REELS_PER_DAY = 30
 
-/** FB_REELS_PER_DAY as a number: 3 when unset, 0 switches reels off, never over 10. */
+/** FB_REELS_PER_DAY as a number: 3 when unset, 0 switches reels off, never over 30. */
 export const reelsPerDayOf = (value) => (String(value ?? '').trim() === '' || !Number.isFinite(Number.parseInt(value, 10)) ? DEFAULT_REELS_PER_DAY : Math.min(MAX_REELS_PER_DAY, Math.max(0, whole(value))))
 
 /** One Page's entries that count against the pace (everything but a dry run), oldest first. */
