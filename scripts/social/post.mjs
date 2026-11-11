@@ -99,8 +99,9 @@ export function settingsOf(env) {
   const mode = dry ? 'dry' : manual && asked ? 'manual' : 'chain'
   const count = asked || (dry ? DRY_SAMPLES : 1)
   // A manual DRY run may name its own types, to look at a design before it is switched on.
-  // A run that posts for real reads the repo variable alone.
-  const typesValue = String((manual && askedDry && env.TYPES) || env.FB_POST_TYPES || '').trim()
+  // A manual run that says how many posts it wants (COUNT) may name them too, to post one kind by hand.
+  // The chain reads the repo variable alone.
+  const typesValue = String((manual && (askedDry || asked) && env.TYPES) || env.FB_POST_TYPES || '').trim()
   return {
     configured,
     enabled,
