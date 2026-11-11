@@ -9298,9 +9298,9 @@
  "health": {
   "signals": [],
   "peak": {
-   "pct": 4,
-   "source": "x-business-use-case-usage",
-   "at": 1794369606306
+   "pct": 5,
+   "source": "x-app-usage",
+   "at": 1794383232348
   },
   "cut": null,
   "blockedUntil": 0,
