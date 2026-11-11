@@ -9609,6 +9609,23 @@
    "status": "posted",
    "postId": "29364808429820515",
    "commentId": "29364808429820515_991964166739899"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|clip-reel:clip-magical-girl-raising-project-restart-e06-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-reel:clip-magical-girl-raising-project-restart-e06-manhwaindex-03:short",
+   "title": "MAGICAL GIRL RAISING PROJECT restart",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-magical-girl-raising-project-restart-e06-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794418025008,
+   "status": "claimed"
   }
  ],
  "health": {
