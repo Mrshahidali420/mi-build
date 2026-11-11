@@ -21,10 +21,13 @@ jobs:
           curl -sS "$api/$FB_PAGE_ID?fields=name,fan_count,followers_count&access_token=$FB_PAGE_TOKEN" | jq -c .
           echo "--- page views, daily, last 30 days"
           curl -sS "$api/$FB_PAGE_ID/insights?metric=page_media_view&period=day&since=$since&access_token=$FB_PAGE_TOKEN" | jq -c '.data[0].values | map(.value) // .' 2>&1 | head -c 1500; echo
-          echo "--- posts: id, time, type, views"
-          curl -sS "$api/$FB_PAGE_ID/published_posts?fields=id,created_time,status_type,message&limit=100&since=$since&access_token=$FB_PAGE_TOKEN" > posts.json
-          jq -r '.data | length' posts.json
-          for id in $(jq -r '.data[].id' posts.json | head -100); do
-            v=$(curl -sS "$api/$id/insights?metric=post_media_view&access_token=$FB_PAGE_TOKEN" | jq -r '.data[0].values[0].value // "?"')
-            jq -r --arg id "$id" --arg v "$v" '.data[] | select(.id==$id) | [.created_time[0:16], .status_type, $v, (.message // "" | gsub("\n";" ") | .[0:70])] | @tsv' posts.json
-          done | sort
+          echo "--- raw metric probe on the first post, the first video and one reel"
+          for id in $(jq -r '[.data[]|select(.status_type=="added_video")][0].id' posts.json) $(jq -r '.data[0].id' posts.json); do
+            for m in post_media_view post_impressions post_impressions_unique post_video_views post_engaged_users; do
+              echo "$id $m: $(curl -sS "$api/$id/insights?metric=$m&access_token=$FB_PAGE_TOKEN" | head -c 300)"
+            done
+          done
+          echo "--- videos and reels with their own view counts"
+          curl -sS "$api/$FB_PAGE_ID/videos?fields=id,created_time,title,description,length,views&limit=100&since=$since&access_token=$FB_PAGE_TOKEN" | jq -r '.data[]? | [.created_time[0:16], (.length|tostring), (.views|tostring), ((.title // .description // "")|gsub("
+";" ")|.[0:60])] | @tsv' | sort | tail -70
+          curl -sS "$api/$FB_PAGE_ID/video_reels?fields=id,created_time,description,video_insights&limit=50&access_token=$FB_PAGE_TOKEN" | head -c 1500
