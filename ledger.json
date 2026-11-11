@@ -8789,6 +8789,22 @@
     "id": "18136137673737117",
     "at": 1794359965117
    }
+  },
+  {
+   "key": "2026-11-10|character:char:246|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:246",
+   "title": "Dragon Ball",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:246",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794360266670,
+   "status": "claimed"
   }
  ],
  "health": {
