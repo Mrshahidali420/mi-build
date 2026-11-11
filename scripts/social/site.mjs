@@ -14,7 +14,7 @@ export const SITE = {
  * A post's link: the plain address, no query (owner decision, 28 Oct 2026).
  * The site counts Facebook visits from the referrer and Facebook's own fbclid.
  */
-export const linkOf = (path) => `${SITE.origin}${path}`
+export const linkOf = (path) => (/^https?:\/\//.test(path) ? path : `${SITE.origin}${path}`)
 
 /** The repo variable that adds the Amazon line to the first comment. Off unless it is exactly 'true'. */
 export const affiliateOn = (env) => env.FB_AFFILIATE_COMMENT === 'true'

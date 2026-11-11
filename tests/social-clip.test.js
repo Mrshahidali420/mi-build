@@ -6,6 +6,7 @@ import { captionFor } from '../scripts/social/plan.mjs'
 import { downloadClip, loadClips } from '../scripts/social/clip/store.mjs'
 import { KINDS } from '../scripts/social/types/index.mjs'
 import { clipReel, clipVideo } from '../scripts/social/types/clip.mjs'
+import { linkOf } from '../scripts/social/site.mjs'
 import { NOW, BLOCKED } from './social-kit.mjs'
 import { sampleData } from './social-data.mjs'
 
@@ -67,4 +68,12 @@ test('the store: only the last days, newest first', async () => {
 test('a download that is too small is refused', async () => {
   const fetch = async () => ({ ok: true, status: 200, arrayBuffer: async () => new ArrayBuffer(10) })
   await assert.rejects(downloadClip(item(), 'short', { env: { CLIPS_TOKEN: 't' }, fetch }), /too small/)
+})
+
+test('a clip of an anime with no comic behind it is offered and links the sister site', () => {
+  const data = dataWith([item({ anilist_id: null, anime: 'Black Clover Season 2', link: 'https://whereanime.com/' })])
+  const [post] = clipReel.find(data, { now: NOW })
+  assert.equal(post.title, 'Black Clover Season 2')
+  assert.equal(post.path, 'https://whereanime.com/')
+  assert.equal(linkOf(post.path), 'https://whereanime.com/')
 })

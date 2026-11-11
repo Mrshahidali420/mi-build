@@ -24,10 +24,13 @@ function spread(list) {
   return out
 }
 
+/** A clip of an anime that is not made from a comic has no title page here: it links the sister site, WhereAnime. */
+const sisterTitle = (it) => ({ title: it.anime, path: it.link || 'https://whereanime.com/', synopsis: null, tagline: null, shop: null, platforms: [], tags: [] })
+
 function posts(data, which) {
   return spread((data.clips?.items || [])
-    .map((it) => ({ it, title: data.byId?.get(it.anilist_id) }))
-    .filter(({ it, title }) => title && usable(title) && (which === 'full' ? Boolean(it.full_id) : Boolean(it.short_id) && it.short_seconds <= SHORT_MAX_SECONDS))
+    .map((it) => ({ it, title: it.anilist_id ? data.byId?.get(it.anilist_id) : sisterTitle(it) }))
+    .filter(({ it, title }) => title && (!it.anilist_id || usable(title)) && (which === 'full' ? Boolean(it.full_id) : Boolean(it.short_id) && it.short_seconds <= SHORT_MAX_SECONDS))
     .map(({ it, title }) => ({
       ...single(title),
       item: `${it.id}:${which}`,
