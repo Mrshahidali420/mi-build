@@ -9762,7 +9762,11 @@
    "at": 1794423151449,
    "status": "posted",
    "postId": "1318170941390322_122123933883500964",
-   "commentId": "122123933883500964_1706154011175494"
+   "commentId": "122123933883500964_1706154011175494",
+   "ig": {
+    "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
+    "at": 1794423151449
+   }
   }
  ],
  "health": {
