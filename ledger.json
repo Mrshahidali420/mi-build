@@ -9169,6 +9169,22 @@
     "id": "17960588865256090",
     "at": 1794368690054
    }
+  },
+  {
+   "key": "2026-11-10|character:char:13835|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "character:char:13835",
+   "title": "Pandora Hearts",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:13835",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794368991162,
+   "status": "claimed"
   }
  ],
  "health": {
