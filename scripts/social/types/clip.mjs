@@ -14,8 +14,18 @@ import { single, usable } from './shared.mjs'
 const SHORT_MAX_SECONDS = 90
 const CTAS = ['👇 Where to watch it: the link is in the first comment.', '👇 Watch the whole episode legally: the link is in the first comment.']
 
+/** One clip of each show in turn, so the Page shows many shows in a row, never three clips of one episode. */
+function spread(list) {
+  const byTitle = new Map()
+  for (const post of [...list].sort((x, y) => y.at - x.at)) byTitle.set(post.title, [...(byTitle.get(post.title) || []), post])
+  const groups = [...byTitle.values()]
+  const out = []
+  for (let i = 0; out.length < list.length; i += 1) for (const group of groups) if (group[i]) out.push(group[i])
+  return out
+}
+
 function posts(data, which) {
-  return (data.clips?.items || [])
+  return spread((data.clips?.items || [])
     .map((it) => ({ it, title: data.byId?.get(it.anilist_id) }))
     .filter(({ it, title }) => title && usable(title) && (which === 'full' ? Boolean(it.full_id) : Boolean(it.short_id) && it.short_seconds <= SHORT_MAX_SECONDS))
     .map(({ it, title }) => ({
@@ -27,7 +37,7 @@ function posts(data, which) {
       names: [title.title],
       clip: { item: it, which, line: it.title, question: it.comment, seconds: which === 'full' ? it.full_seconds : it.short_seconds },
       tags: uniqueTags([tagOf(title.title), '#anime', '#animeclips']),
-    }))
+    })))
 }
 
 const captions = [
