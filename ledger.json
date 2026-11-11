@@ -10096,6 +10096,22 @@
    "status": "posted",
    "postId": "28266766612998052",
    "commentId": "28266766612998052_1447614064127817"
+  },
+  {
+   "key": "2026-11-11|clip-video:clip-dragon-ball-super-beerus-e05-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-video:clip-dragon-ball-super-beerus-e05-manhwaindex-03:full",
+   "title": "Dragon Ball Super: Beerus",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-dragon-ball-super-beerus-e05-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794439401884,
+   "status": "claimed"
   }
  ],
  "health": {
