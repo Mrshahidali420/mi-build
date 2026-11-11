@@ -10078,6 +10078,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794437600012
    }
+  },
+  {
+   "key": "2026-11-11|clip-video:clip-i-m-dating-a-dark-summoner-e06-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-video:clip-i-m-dating-a-dark-summoner-e06-manhwaindex-03:full",
+   "title": "I'm Dating a Dark Summoner",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-i-m-dating-a-dark-summoner-e06-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794438500992,
+   "status": "claimed"
   }
  ],
  "health": {
