@@ -228,6 +228,15 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
       await waitReady(made.id, { what: 'video', sleep, tries, everyMs })
       return publishContainer(made.id, sleep)
     },
+    /** An Instagram Story from an MP4 by resumable upload (no caption, no link). */
+    async publishStory({ bytes, sleep, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
+      if (!bytes?.length) throw new GraphError('publishStory needs the video bytes')
+      const made = await call('POST', `/${igId}/media`, { media_type: 'STORIES', upload_type: 'resumable' })
+      if (!made.id) throw new GraphError('Instagram gave no container id')
+      await upload(made.id, made.uri, bytes)
+      await waitReady(made.id, { what: 'video', sleep, tries, everyMs })
+      return publishContainer(made.id, sleep)
+    },
     /** A reel by resumable upload: the container, the bytes, a wait until Instagram has the video, then the post. */
     async publishReel({ bytes, caption, sleep, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
       if (!bytes?.length) throw new GraphError('publishReel needs the video bytes')

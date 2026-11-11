@@ -221,6 +221,15 @@ export function graphClient({ pageId, token, fetch = globalThis.fetch, version =
       await call('POST', `/${pageId}/video_reels`, { upload_phase: 'finish', video_id: start.video_id, video_state: 'PUBLISHED', description })
       return { videoId: start.video_id, postId: start.video_id }
     },
+    /** A Page Story from an MP4 (9:16): start, upload, finish. A story carries no link; the API has no link sticker. */
+    async publishStory({ bytes }) {
+      if (!bytes?.length) throw new GraphError('publishStory needs the video bytes')
+      const start = await call('POST', `/${pageId}/video_stories`, { upload_phase: 'start' })
+      if (!start.video_id) throw new GraphError('the story upload could not be started: no video id came back')
+      await upload(start.video_id, start.upload_url, bytes)
+      const done = await call('POST', `/${pageId}/video_stories`, { upload_phase: 'finish', video_id: start.video_id })
+      return { storyId: done.post_id || start.video_id }
+    },
     /** A video kept on the Page but never shown (published=false): Facebook hosts it, so Instagram can fetch it by its address. */
     async hostVideo({ bytes }) {
       if (!bytes?.length) throw new GraphError('hostVideo needs the video bytes')

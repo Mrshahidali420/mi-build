@@ -22,6 +22,7 @@ import { pickNext } from './pick.mjs'
 import { slugOf } from './plan.mjs'
 import { SITE, commentFor, commentOf, linkOf } from './site.mjs'
 import { crossPost, igDryLine, igWords } from './ig.mjs'
+import { postStory, storiesPerDayOf } from './page-story.mjs'
 
 export const STEP = { posted: 'posted', skipped: 'skipped', none: 'none', failed: 'failed' }
 /** Inside publish() only: the Facebook post itself failed, so nothing goes anywhere else. */
@@ -194,6 +195,10 @@ export async function typedStep({ s, graph, ig = null, book, plan, now, day, ski
   // when its type has one; any other picture post as its Instagram picture.
   const igSlides = async () => (await render(type, post, { swipe: true }))?.jpegs || null
   const igMedium = type.reel ? { video: { bytes: picture.mp4, seconds: picture.seconds } } : { image: { make: igPicture }, slides: { make: igSlides } }
-  const after = ig && !type.video ? () => crossPost({ ig, graph, book, entry, history, now, out, caption, ...igMedium, sleep }) : null
+  const crossed = ig && !type.video ? () => crossPost({ ig, graph, book, entry, history, now, out, caption, ...igMedium, sleep }) : null
+  // A clip reel also goes out as a Story (page-story.mjs), after the post and its Instagram copy.
+  const perDayStories = storiesPerDayOf(process.env.FB_STORIES_PER_DAY)
+  const story = type.reel && perDayStories ? () => postStory({ graph, ig, book, entry, history, now, out, bytes: picture.mp4, seconds: picture.seconds, sleep, perDay: perDayStories }) : null
+  const after = crossed || story ? async () => { if (crossed) await crossed(); if (story) await story() } : null
   return publish({ graph, book, entry, send: medium.send, comment, plain, out, name, onError: onFail, after })
 }
