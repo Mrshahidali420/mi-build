@@ -8919,6 +8919,22 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794363571876
    }
+  },
+  {
+   "key": "2026-11-10|next:120385|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:120385",
+   "title": "Log-in Murim",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "120385",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794363873158,
+   "status": "claimed"
   }
  ],
  "health": {
