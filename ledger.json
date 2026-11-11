@@ -8997,6 +8997,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123722029500964",
    "commentId": "122123722029500964_4490399651221242"
+  },
+  {
+   "key": "2026-11-10|next:113258|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:113258",
+   "title": "Charlotte and Her 5 Disciples",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "113258",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794365078566,
+   "status": "claimed"
   }
  ],
  "health": {
