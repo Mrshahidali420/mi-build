@@ -10114,6 +10114,22 @@
    "status": "posted",
    "postId": "3571941736299956",
    "commentId": "3571941736299956_1447936003437228"
+  },
+  {
+   "key": "2026-11-11|where:67523|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "where:67523",
+   "title": "Date A Live",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "67523",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794440302917,
+   "status": "claimed"
   }
  ],
  "health": {
