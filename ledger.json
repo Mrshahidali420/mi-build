@@ -9317,6 +9317,24 @@
     "id": "18079592429438439",
     "at": 1794386043731
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|reel-next:150170|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "reel-next:150170",
+   "title": "Ending Maker",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "150170",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794388930904,
+   "track": "gods-notebook-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
