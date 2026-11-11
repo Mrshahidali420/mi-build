@@ -9242,47 +9242,47 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-10",
-  "at": 1794310800499,
+  "day": "2026-11-11",
+  "at": 1794373513109,
   "list": [
    {
-    "id": 71609,
-    "name": "Tadashi Yamaguchi",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71609-5Ht0aqB34eEa.png",
-    "favourites": 2646,
-    "mediaId": 65243,
+    "id": 62,
+    "name": "Zoro Roronoa",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b62-S7oAeA9WInjV.png",
+    "favourites": 28854,
+    "mediaId": 30013,
     "voice": null
    },
    {
-    "id": 215082,
-    "name": "Sarasa Watanabe",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b215082-TR09CcCMN82H.png",
-    "favourites": 289,
-    "mediaId": 93901,
+    "id": 2423,
+    "name": "Jiraiya",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2423-RO5MyoXSA9OL.png",
+    "favourites": 6696,
+    "mediaId": 30011,
     "voice": null
    },
    {
-    "id": 289297,
-    "name": "Eta",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b289297-e2DgfeWhVPRa.jpg",
-    "favourites": 289,
-    "mediaId": 106758,
+    "id": 21173,
+    "name": "Azusa Nakano",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b21173-0RB5dOJdGt9y.png",
+    "favourites": 4249,
+    "mediaId": 43001,
     "voice": null
    },
    {
-    "id": 264316,
-    "name": "Orter Mádl",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b264316-KBzNLTjnhkEe.jpg",
-    "favourites": 137,
+    "id": 158734,
+    "name": "Mash Burnedead",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b158734-k8FAVIyXKdW1.jpg",
+    "favourites": 3495,
     "mediaId": 114960,
     "voice": null
    },
    {
-    "id": 77415,
-    "name": "Kenji Futakuchi",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b77415-T3E1rohigs8j.jpg",
-    "favourites": 111,
-    "mediaId": 65243,
+    "id": 145097,
+    "name": "Ryuusui Nanami",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b145097-TYg5SshsyvUU.png",
+    "favourites": 2377,
+    "mediaId": 98416,
     "voice": null
    }
   ]
