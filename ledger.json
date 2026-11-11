@@ -8807,6 +8807,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123708871500964",
    "commentId": "122123708871500964_1184257457492657"
+  },
+  {
+   "key": "2026-11-10|next:110059|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:110059",
+   "title": "My Life as an Internet Novel",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "110059",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794360568321,
+   "status": "claimed"
   }
  ],
  "health": {
