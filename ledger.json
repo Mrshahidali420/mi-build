@@ -9515,6 +9515,24 @@
     "fb": "973620145405157",
     "ig": "18104224532647921"
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|reel-next:163536|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "reel-next:163536",
+   "title": "The Devil Never Cries",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "163536",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794412008920,
+   "track": "meadow-thoughts.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
