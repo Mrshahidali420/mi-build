@@ -9785,6 +9785,22 @@
    "status": "posted",
    "postId": "1501915948559905",
    "commentId": "1501915948559905_1834506667790520"
+  },
+  {
+   "key": "2026-11-11|clip-video:clip-tank-chair-e06-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-video:clip-tank-chair-e06-manhwaindex-03:full",
+   "title": "TANK CHAIR",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-tank-chair-e06-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794424953660,
+   "status": "claimed"
   }
  ],
  "health": {
