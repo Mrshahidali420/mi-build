@@ -9145,6 +9145,24 @@
     "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
     "at": 1794367195904
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-10|reel-ranking:rank:manhua:action|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "reel-ranking:rank:manhua:action",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhua:action",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794368690054,
+   "track": "hot-springs-town.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
