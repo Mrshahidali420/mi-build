@@ -9051,6 +9051,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123725449500964",
    "commentId": "122123725449500964_1566916388457852"
+  },
+  {
+   "key": "2026-11-10|next:168656|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:168656",
+   "title": "The Dawn to Come",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "168656",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794365982523,
+   "status": "claimed"
   }
  ],
  "health": {
