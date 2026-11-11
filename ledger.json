@@ -9364,6 +9364,24 @@
     "id": "18110722034350703",
     "at": 1794391819178
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|reel-ranking:rank:manga:romance|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "reel-ranking:rank:manga:romance",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manga:romance",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794394700409,
+   "track": "chill-lofi.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
