@@ -8765,6 +8765,24 @@
    "status": "posted",
    "postId": "1318170941390322_122123706975500964",
    "commentId": "122123706975500964_2052462862076984"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-10|reel-next:131376|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "reel-next:131376",
+   "title": "From a Knight to a Lady",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "131376",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794359965117,
+   "track": "determination-anime.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
