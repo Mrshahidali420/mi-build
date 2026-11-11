@@ -9915,6 +9915,22 @@
    "status": "posted",
    "postId": "1344829987655145",
    "commentId": "1344829987655145_1474576891403108"
+  },
+  {
+   "key": "2026-11-11|character:char:162246|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "character:char:162246",
+   "title": "The Eminence in Shadow",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:162246",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794431278267,
+   "status": "claimed"
   }
  ],
  "health": {
