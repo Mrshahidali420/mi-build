@@ -9140,7 +9140,11 @@
    "at": 1794367195904,
    "status": "posted",
    "postId": "1318170941390322_122123731533500964",
-   "commentId": "122123731533500964_1665775618588629"
+   "commentId": "122123731533500964_1665775618588629",
+   "ig": {
+    "error": "POST /17841474338210568/media_publish failed: Application request limit reached",
+    "at": 1794367195904
+   }
   }
  ],
  "health": {
