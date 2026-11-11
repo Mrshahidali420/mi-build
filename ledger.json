@@ -8729,6 +8729,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123705049500964",
    "commentId": "122123705049500964_2298603574320392"
+  },
+  {
+   "key": "2026-11-10|next:67707|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:67707",
+   "title": "Your Lie in April",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "67707",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794359362138,
+   "status": "claimed"
   }
  ],
  "health": {
