@@ -9293,6 +9293,24 @@
     "id": "17966922318230508",
     "at": 1794383162607
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|reel-ranking:rank:manhwa:romance|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "reel-ranking:rank:manhwa:romance",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-ranking",
+   "type": "reel-ranking",
+   "item": "rank:manhwa:romance",
+   "gapDays": 60,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794386043731,
+   "track": "jrpg-piano.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
