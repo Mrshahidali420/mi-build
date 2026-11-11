@@ -8825,6 +8825,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123710155500964",
    "commentId": "122123710155500964_1669852778254376"
+  },
+  {
+   "key": "2026-11-10|where:124522|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "where:124522",
+   "title": "Like Wind on a Dry Branch",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "124522",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794360869765,
+   "status": "claimed"
   }
  ],
  "health": {
