@@ -9411,6 +9411,24 @@
     "id": "17912412996486793",
     "at": 1794397587488
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|reel-next:172619|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "reel-next:172619",
+   "title": "The Extra’s Academy Survival Guide",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:reel-next",
+   "type": "reel-next",
+   "item": "172619",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794400474511,
+   "track": "determination-anime.m4a",
+   "status": "claimed"
   }
  ],
  "health": {
