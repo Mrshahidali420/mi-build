@@ -8563,6 +8563,22 @@
    "status": "posted",
    "postId": "1318170941390322_122123691609500964",
    "commentId": "122123691609500964_1177089698163331"
+  },
+  {
+   "key": "2026-11-10|next:188781|manhwaindex",
+   "day": "2026-11-10",
+   "slug": "next:188781",
+   "title": "Ctrl+Alt+Resign",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "188781",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794355437572,
+   "status": "claimed"
   }
  ],
  "health": {
