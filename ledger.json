@@ -10553,6 +10553,22 @@
    "status": "posted",
    "postId": "1000481186438513",
    "commentId": "1000481186438513_1460942249558241"
+  },
+  {
+   "key": "2026-11-11|character:char:6977|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "character:char:6977",
+   "title": "Kimi ni Todoke: From Me to You",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:6977",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794455235362,
+   "status": "claimed"
   }
  ],
  "health": {
