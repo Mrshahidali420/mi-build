@@ -10972,6 +10972,22 @@
    "at": 1794469648826,
    "status": "posted",
    "postId": "1318170941390322_122124098913500964"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-super-psychic-policeman-chojo-e05-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-super-psychic-policeman-chojo-e05-manhwaindex-03:full",
+   "title": "Super Psychic Policeman Chojo",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-super-psychic-policeman-chojo-e05-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794470557605,
+   "status": "claimed"
   }
  ],
  "health": {
