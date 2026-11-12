@@ -10690,47 +10690,23 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-11",
-  "at": 1794373513109,
+  "day": "2026-11-12",
+  "at": 1794459794909,
   "list": [
    {
-    "id": 62,
-    "name": "Zoro Roronoa",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b62-S7oAeA9WInjV.png",
-    "favourites": 28854,
-    "mediaId": 30013,
+    "id": 120335,
+    "name": "Ann Takamaki",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b120335-122Vh3RaM4ZK.png",
+    "favourites": 755,
+    "mediaId": 98652,
     "voice": null
    },
    {
-    "id": 2423,
-    "name": "Jiraiya",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b2423-RO5MyoXSA9OL.png",
-    "favourites": 6696,
-    "mediaId": 30011,
-    "voice": null
-   },
-   {
-    "id": 21173,
-    "name": "Azusa Nakano",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b21173-0RB5dOJdGt9y.png",
-    "favourites": 4249,
-    "mediaId": 43001,
-    "voice": null
-   },
-   {
-    "id": 158734,
-    "name": "Mash Burnedead",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b158734-k8FAVIyXKdW1.jpg",
-    "favourites": 3495,
-    "mediaId": 114960,
-    "voice": null
-   },
-   {
-    "id": 145097,
-    "name": "Ryuusui Nanami",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b145097-TYg5SshsyvUU.png",
-    "favourites": 2377,
-    "mediaId": 98416,
+    "id": 311243,
+    "name": "Tasuku Tsubakino",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b311243-HwLsSTluPcL7.jpg",
+    "favourites": 496,
+    "mediaId": 135083,
     "voice": null
    }
   ]
