@@ -12244,6 +12244,22 @@
    "status": "posted",
    "postId": "1825936715195757",
    "commentId": "1825936715195757_2108101933159346"
+  },
+  {
+   "key": "2026-11-12|character:char:10863|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "character:char:10863",
+   "title": "Black Butler",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:10863",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794520988420,
+   "status": "claimed"
   }
  ],
  "health": {
