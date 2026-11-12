@@ -12368,6 +12368,22 @@
     "id": "18148756897588019",
     "at": 1794524648694
    }
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-the-iceblade-sorcerer-shall-rule-the-world-ii-e05-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-the-iceblade-sorcerer-shall-rule-the-world-ii-e05-manhwaindex-02:full",
+   "title": "The Iceblade Sorcerer Shall Rule the World II",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-the-iceblade-sorcerer-shall-rule-the-world-ii-e05-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794524950433,
+   "status": "claimed"
   }
  ],
  "health": {
