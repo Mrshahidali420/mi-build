@@ -10150,6 +10150,22 @@
    "status": "posted",
    "postId": "1074731588935823",
    "commentId": "1074731588935823_1657289779361308"
+  },
+  {
+   "key": "2026-11-11|clip-video:clip-reincarnated-as-a-sword-season-2-e07-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-video:clip-reincarnated-as-a-sword-season-2-e07-manhwaindex-02:full",
+   "title": "Reincarnated as a Sword Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-reincarnated-as-a-sword-season-2-e07-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794442111567,
+   "status": "claimed"
   }
  ],
  "health": {
