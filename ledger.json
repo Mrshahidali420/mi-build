@@ -11072,6 +11072,23 @@
    "status": "posted",
    "postId": "1318170941390322_122124110577500964",
    "commentId": "122124110577500964_1445504991099828"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-12|clip-reel:clip-black-clover-season-2-e05-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-reel:clip-black-clover-season-2-e05-manhwaindex-03:short",
+   "title": "Black Clover Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-black-clover-season-2-e05-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794474218014,
+   "status": "claimed"
   }
  ],
  "health": {
