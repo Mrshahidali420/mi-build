@@ -12072,6 +12072,22 @@
    "status": "posted",
    "postId": "4645589619012011",
    "commentId": "4645589619012011_2760944561027979"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-the-iceblade-sorcerer-shall-rule-the-world-ii-e06-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-the-iceblade-sorcerer-shall-rule-the-world-ii-e06-manhwaindex-02:full",
+   "title": "The Iceblade Sorcerer Shall Rule the World II",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-the-iceblade-sorcerer-shall-rule-the-world-ii-e06-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794514325235,
+   "status": "claimed"
   }
  ],
  "health": {
