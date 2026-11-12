@@ -12285,6 +12285,29 @@
     "error": "Instagram could not take the video: Error: Media upload has failed with error code 2207076",
     "at": 1794521758550
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-12|share:1136311182712275|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "share:1136311182712275",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1136311182712275",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1136311182712275",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "The Ramparts of Ice Season 2",
+   "sourceFormat": "type:clip-video",
+   "link": "https://www.facebook.com/1136311182712275",
+   "message": "Worth a look from our sister Page, WhereAnime:",
+   "at": 1794522060108,
+   "status": "claimed"
   }
  ],
  "health": {
