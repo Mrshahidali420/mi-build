@@ -10848,6 +10848,22 @@
     "id": "17910683577604903",
     "at": 1794465565904
    }
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-fx-fighter-kurumi-chan-e06-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-fx-fighter-kurumi-chan-e06-manhwaindex-02:full",
+   "title": "FX Fighter Kurumi-chan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-fx-fighter-kurumi-chan-e06-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794465866848,
+   "status": "claimed"
   }
  ],
  "health": {
