@@ -10337,6 +10337,23 @@
    "status": "posted",
    "postId": "2142340269705078",
    "commentId": "2142340269705078_1135719218948591"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|clip-reel:clip-a-returner-s-magic-should-be-special-season-2-e06-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-reel:clip-a-returner-s-magic-should-be-special-season-2-e06-manhwaindex-03:short",
+   "title": "A Returner's Magic Should be Special Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-a-returner-s-magic-should-be-special-season-2-e06-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794448269322,
+   "status": "claimed"
   }
  ],
  "health": {
