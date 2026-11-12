@@ -10232,6 +10232,27 @@
    "status": "posted",
    "postId": "1137957938728077",
    "commentId": "1137957938728077_1494421899246069"
+  },
+  {
+   "rare": true,
+   "hash": "ae34f0566801f56e08f611d838177406",
+   "rating": "g",
+   "ecchi": false,
+   "source": "danbooru",
+   "key": "2026-11-11|cosplay:danbooru:11165454|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "cosplay:danbooru:11165454",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:cosplay",
+   "type": "cosplay",
+   "item": "danbooru:11165454",
+   "gapDays": 3650,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794444820814,
+   "status": "claimed"
   }
  ],
  "health": {
