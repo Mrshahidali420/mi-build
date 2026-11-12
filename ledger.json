@@ -12280,7 +12280,11 @@
    "at": 1794521758550,
    "status": "posted",
    "postId": "1385602433450393",
-   "commentId": "1385602433450393_2552505655160994"
+   "commentId": "1385602433450393_2552505655160994",
+   "ig": {
+    "error": "Instagram could not take the video: Error: Media upload has failed with error code 2207076",
+    "at": 1794521758550
+   }
   }
  ],
  "health": {
