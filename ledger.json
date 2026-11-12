@@ -10589,6 +10589,23 @@
    "status": "posted",
    "postId": "3015943418761989",
    "commentId": "3015943418761989_4163318033962408"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-11|clip-reel:clip-romelia-war-chronicle-e06-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-reel:clip-romelia-war-chronicle-e06-manhwaindex-03:short",
+   "title": "Romelia War Chronicle",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-romelia-war-chronicle-e06-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794456914317,
+   "status": "claimed"
   }
  ],
  "health": {
