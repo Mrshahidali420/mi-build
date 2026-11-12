@@ -11521,6 +11521,22 @@
    "status": "posted",
    "postId": "1760524545041087",
    "commentId": "1760524545041087_28263841519955663"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-the-apothecary-diaries-season-3-e05-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-the-apothecary-diaries-season-3-e05-manhwaindex-02:full",
+   "title": "The Apothecary Diaries Season 3",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-the-apothecary-diaries-season-3-e05-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794494562737,
+   "status": "claimed"
   }
  ],
  "health": {
