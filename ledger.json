@@ -10712,6 +10712,22 @@
    "status": "posted",
    "postId": "2242116213036318",
    "commentId": "2242116213036318_1867827784662847"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-devils-crest-e02-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-devils-crest-e02-manhwaindex-03:full",
+   "title": "Devils' Crest",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-devils-crest-e02-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794461005898,
+   "status": "claimed"
   }
  ],
  "health": {
