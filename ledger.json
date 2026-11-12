@@ -12327,6 +12327,22 @@
    "status": "posted",
    "postId": "1718084909741878",
    "commentId": "1718084909741878_2325305171585514"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-a-certain-dark-item-e05-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-a-certain-dark-item-e05-manhwaindex-03:full",
+   "title": "A Certain Dark Item",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-a-certain-dark-item-e05-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794523863340,
+   "status": "claimed"
   }
  ],
  "health": {
