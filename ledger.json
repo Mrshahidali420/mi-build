@@ -10558,9 +10558,9 @@
  "health": {
   "signals": [],
   "peak": {
-   "pct": 11,
+   "pct": 18,
    "source": "x-app-usage",
-   "at": 1794386123381
+   "at": 1794454346685
   },
   "cut": null,
   "blockedUntil": 0,
