@@ -10930,6 +10930,22 @@
     "error": "Instagram could not take the video: Error: Media upload has failed with error code 2207076",
     "at": 1794468446803
    }
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-a-tale-of-the-secret-saint-e07-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-a-tale-of-the-secret-saint-e07-manhwaindex-03:full",
+   "title": "A Tale of the Secret Saint",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-a-tale-of-the-secret-saint-e07-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794468747887,
+   "status": "claimed"
   }
  ],
  "health": {
