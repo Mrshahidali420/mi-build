@@ -10196,6 +10196,22 @@
     "fb": "912953408469436",
     "ig": "18024989930947327"
    }
+  },
+  {
+   "key": "2026-11-11|clip-video:clip-dandivine-e06-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-video:clip-dandivine-e06-manhwaindex-02:full",
+   "title": "Dandivine",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-dandivine-e06-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794443012594,
+   "status": "claimed"
   }
  ],
  "health": {
