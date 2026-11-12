@@ -10866,6 +10866,22 @@
    "status": "posted",
    "postId": "1456333349241511",
    "commentId": "1456333349241511_29369060959446478"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-a-returner-s-magic-should-be-special-season-2-e05-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-a-returner-s-magic-should-be-special-season-2-e05-manhwaindex-03:full",
+   "title": "A Returner's Magic Should be Special Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-a-returner-s-magic-should-be-special-season-2-e05-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794466773282,
+   "status": "claimed"
   }
  ],
  "health": {
