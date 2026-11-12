@@ -11849,6 +11849,22 @@
    "status": "posted",
    "postId": "2040172303347287",
    "commentId": "2040172303347287_1015827047753516"
+  },
+  {
+   "key": "2026-11-12|next:194727|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "next:194727",
+   "title": "A Regressor's Tale of Cultivation",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "194727",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794506575228,
+   "status": "claimed"
   }
  ],
  "health": {
