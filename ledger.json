@@ -11373,6 +11373,22 @@
    "status": "posted",
    "postId": "1159063823239457",
    "commentId": "1159063823239457_1488540593157917"
+  },
+  {
+   "key": "2026-11-12|out-now:206401:7:out|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "out-now:206401:7:out",
+   "title": "FX Fighter Kurumi-chan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "206401:7:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794487334179,
+   "status": "claimed"
   }
  ],
  "health": {
