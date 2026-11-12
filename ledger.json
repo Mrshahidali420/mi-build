@@ -11831,6 +11831,22 @@
    "status": "posted",
    "postId": "1620701243127620",
    "commentId": "1620701243127620_1437030058594479"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-from-far-away-e06-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-from-far-away-e06-manhwaindex-02:full",
+   "title": "From Far Away",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-from-far-away-e06-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794505666416,
+   "status": "claimed"
   }
  ],
  "health": {
