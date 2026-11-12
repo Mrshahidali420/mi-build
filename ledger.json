@@ -10671,6 +10671,23 @@
    "status": "posted",
    "postId": "1118470237621684",
    "commentId": "1118470237621684_1989741038649452"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-12|clip-reel:clip-gensou-suikoden-e05-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-reel:clip-gensou-suikoden-e05-manhwaindex-03:short",
+   "title": "Gensou Suikoden",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-gensou-suikoden-e05-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794459803751,
+   "status": "claimed"
   }
  ],
  "health": {
