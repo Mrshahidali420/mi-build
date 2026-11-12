@@ -11165,7 +11165,8 @@
    "titleGap": false,
    "variant": 1,
    "at": 1794477099241,
-   "status": "claimed"
+   "status": "failed",
+   "error": "GET /1166321935827005 failed: Unsupported get request. Object with ID '1166321935827005' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
   }
  ],
  "health": {
