@@ -11167,6 +11167,22 @@
    "at": 1794477099241,
    "status": "failed",
    "error": "GET /1166321935827005 failed: Unsupported get request. Object with ID '1166321935827005' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-firefly-wedding-e04-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-firefly-wedding-e04-manhwaindex-03:full",
+   "title": "Firefly Wedding",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-firefly-wedding-e04-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794477407815,
+   "status": "claimed"
   }
  ],
  "health": {
