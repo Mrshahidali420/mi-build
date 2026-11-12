@@ -21,7 +21,7 @@ import { claim, settle, dayOf, keyOf } from './ledger.mjs'
 import { pickNext } from './pick.mjs'
 import { slugOf } from './plan.mjs'
 import { SITE, commentFor, commentOf, linkOf } from './site.mjs'
-import { crossPost, igDryLine, igWords } from './ig.mjs'
+import { crossPost, frameJpeg, igDryLine, igWords } from './ig.mjs'
 import { postStory, storiesPerDayOf } from './page-story.mjs'
 
 export const STEP = { posted: 'posted', skipped: 'skipped', none: 'none', failed: 'failed' }
@@ -134,7 +134,7 @@ export function typedEntry({ type, post, variant }, day, now) {
 
 /** A template post: the picture is drawn here and sent as a file. */
 /** How a drawn post is described, saved by a dry run, and sent: a picture, or a reel. */
-function mediumOf(type, made, { graph, caption, sleep }) {
+function mediumOf(type, made, { graph, caption, sleep, title = '' }) {
   if (type.video) {
     const send = () => graph.publishVideo({ bytes: made.mp4, description: caption })
     return { line: `a video clip from the recap project, ${made.seconds} s, ${Math.round(made.mp4.length / 1024)} KB`, file: 'mp4', bytes: made.mp4, send }
@@ -143,9 +143,12 @@ function mediumOf(type, made, { graph, caption, sleep }) {
     return { line: `drawn on the runner, 1080x1350, ${Math.round(made.jpeg.length / 1024)} KB`, file: 'jpg', bytes: made.jpeg, send: () => graph.publishPhotoFile({ bytes: made.jpeg, caption, filename: `${type.key}.jpg` }) }
   }
   const send = async () => {
-    const reel = await graph.publishReel({ bytes: made.mp4, description: caption })
+    const reel = await graph.publishReel({ bytes: made.mp4, description: caption, title })
     // The comment needs the reel to exist: wait until Facebook has published it.
     await graph.reelReady?.(reel.videoId, { sleep })
+    // A cover chosen from the clip itself (FB_COVER_FRAME_S, 0 = off); a failure here never fails the reel.
+    const frameAt = Number(process.env.FB_COVER_FRAME_S ?? 1.5)
+    if (frameAt > 0 && graph.setThumbnail) await frameJpeg(made.mp4, frameAt).then((jpeg) => graph.setThumbnail({ videoId: reel.videoId, jpeg })).catch(() => null)
     return reel
   }
   return { line: `a reel made on the runner, 1080x1920, ${made.seconds} s, music ${made.track || 'none'}, ${Math.round(made.mp4.length / 1024)} KB`, file: 'mp4', bytes: made.mp4, send }
@@ -173,7 +176,7 @@ export async function typedStep({ s, graph, ig = null, book, plan, now, day, ski
     return STEP.skipped
   }
   const comment = commentFor(post, { affiliate: s.affiliate })
-  const medium = mediumOf(type, picture, { graph, caption, sleep })
+  const medium = mediumOf(type, picture, { graph, caption, sleep, title: name })
   out.push(describe({ heading: `${type.reel ? 'REEL' : 'TEMPLATE'} · ${type.key} · ${name}`, image: medium.line, path: post.path, caption, comment, now }))
   // The Instagram picture: a raw one (fan art, cosplay) carries no words and is used as it is;
   // any other is drawn again with "link in bio" for the line about the first comment.

@@ -64,6 +64,30 @@ export const REEL_GAP_MS = 10 * 60_000
 const PUBLISH_RETRY = { tries: 3, everyMs: 15_000, when: /media id is not available|not ready/i }
 /** Instagram needs a while to make a video ready: every 10 seconds, for up to 10 minutes. */
 const REEL_POLL = { tries: 60, everyMs: 10_000 }
+
+/**
+ * Optional reel fields (Meta docs, checked 12 Nov 2026): thumb_offset = the frame, in ms, used as the cover;
+ * trial_params = a trial reel, shown only to non-followers first and graduated by Instagram when it performs
+ * (SS_PERFORMANCE). Trial is documented for the video_url method only.
+ */
+export const reelExtras = ({ thumbOffset = 0, trial = false } = {}) => ({
+  ...(Number(thumbOffset) > 0 ? { thumb_offset: String(Math.round(Number(thumbOffset))) } : {}),
+  ...(trial ? { trial_params: JSON.stringify({ graduation_strategy: 'SS_PERFORMANCE' }) } : {}),
+})
+
+/** One frame of an MP4 as a JPEG (ffmpeg must be on the PATH, as for the reels): a cover for a reel. */
+export async function frameJpeg(bytes, seconds, { run = execFileAsync } = {}) {
+  const dir = mkdtempSync(join(tmpdir(), 'igframe-'))
+  try {
+    const from = join(dir, 'in.mp4')
+    const to = join(dir, 'cover.jpg')
+    writeFileSync(from, bytes)
+    await run('ffmpeg', ['-y', '-v', 'error', '-ss', String(seconds), '-i', from, '-frames:v', '1', '-q:v', '2', to], { timeout: 60_000 })
+    return readFileSync(to)
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
 /** The pictures a swipe post (carousel) takes. */
 export const CAROUSEL_ITEMS = { min: 2, max: 10 }
 /** The reel lengths Instagram takes, in seconds. */
@@ -221,9 +245,9 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
       return publishContainer(id, sleep)
     },
     /** A reel Instagram fetches itself from a public address (the video hosted on the Page): no upload from here. */
-    async publishReelFromUrl({ videoUrl, caption, sleep, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
+    async publishReelFromUrl({ videoUrl, caption, sleep, thumbOffset = 0, trial = false, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
       if (!videoUrl) throw new GraphError('publishReelFromUrl needs the video address')
-      const made = await call('POST', `/${igId}/media`, { media_type: 'REELS', video_url: videoUrl, caption, share_to_feed: 'true' })
+      const made = await call('POST', `/${igId}/media`, { media_type: 'REELS', video_url: videoUrl, caption, share_to_feed: 'true', ...reelExtras({ thumbOffset, trial }) })
       if (!made.id) throw new GraphError('Instagram gave no container id')
       await waitReady(made.id, { what: 'video', sleep, tries, everyMs })
       return publishContainer(made.id, sleep)
@@ -238,9 +262,9 @@ export function igClient({ userId = '', pageId = '', token, fetch = globalThis.f
       return publishContainer(made.id, sleep)
     },
     /** A reel by resumable upload: the container, the bytes, a wait until Instagram has the video, then the post. */
-    async publishReel({ bytes, caption, sleep, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
+    async publishReel({ bytes, caption, sleep, thumbOffset = 0, tries = REEL_POLL.tries, everyMs = REEL_POLL.everyMs }) {
       if (!bytes?.length) throw new GraphError('publishReel needs the video bytes')
-      const made = await call('POST', `/${igId}/media`, { media_type: 'REELS', upload_type: 'resumable', caption, share_to_feed: 'true' })
+      const made = await call('POST', `/${igId}/media`, { media_type: 'REELS', upload_type: 'resumable', caption, share_to_feed: 'true', ...reelExtras({ thumbOffset }) })
       if (!made.id) throw new GraphError('Instagram gave no container id')
       await upload(made.id, made.uri, bytes)
       await waitReady(made.id, { what: 'video', sleep, tries, everyMs })
@@ -358,7 +382,7 @@ export function reelLengthProblem(seconds) {
  * @param video { bytes, seconds }: a reel, sent in place of a picture
  * @param slides { make } (() => the JPEGs of a swipe post, hook first, or null): sent in place of the picture when it gives some
  */
-export async function crossPost({ ig, graph, book, entry, history, now, out, caption, image, video = null, slides = null, sleep, fetch = globalThis.fetch, loadSharp = defaultSharp }) {
+export async function crossPost({ ig, graph, book, entry, history, now, out, caption, image, video = null, slides = null, sleep, env = process.env, fetch = globalThis.fetch, loadSharp = defaultSharp }) {
   if (!ig || ig.off) return null
   const why = igWhyNot({ settings: ig.settings, history, now, entry }) || (video ? reelLengthProblem(video.seconds) : null)
   if (why) {
@@ -390,13 +414,27 @@ export async function crossPost({ ig, graph, book, entry, history, now, out, cap
     const sendReel = async () => {
       // Instagram refuses a reel over 30 s from this account: a longer one goes up as its first 29 seconds.
       const reelBytes = Number(video.seconds) > IG_UPLOAD_MAX_SECONDS ? await trimVideo(video.bytes, IG_UPLOAD_MAX_SECONDS) : video.bytes
+      // The caption names the sister Page's account (IG_SISTER), which gets a notification; the cover is a frame (IG_THUMB_OFFSET_MS).
+      const reelCaption = igCaption(caption) + (env.IG_SISTER ? `\n\nSister page: ${env.IG_SISTER}` : '')
+      const thumbOffset = Number(env.IG_THUMB_OFFSET_MS) || 0
+      // A trial reel (IG_TRIAL_REELS=true) goes only to non-followers first. It needs the video_url method; any refusal falls back to a normal reel.
+      if (env.IG_TRIAL_REELS === 'true' && graph.hostVideo) {
+        try {
+          const { videoId } = await graph.hostVideo({ bytes: reelBytes })
+          const posted = await ig.client.publishReelFromUrl({ videoUrl: await graph.videoUrl(videoId, { sleep }), caption: reelCaption, sleep, thumbOffset, trial: true })
+          out.push('Instagram: published as a TRIAL reel (non-followers first).', '')
+          return posted
+        } catch (error) {
+          out.push(`Instagram: the trial reel was refused (${error.message}); sending a normal reel instead.`, '')
+        }
+      }
       try {
-        return await ig.client.publishReel({ bytes: reelBytes, caption: igCaption(caption), sleep })
+        return await ig.client.publishReel({ bytes: reelBytes, caption: reelCaption, thumbOffset, sleep })
       } catch (error) {
         if (!graph.hostVideo || !/reel upload/i.test(String(error?.message))) throw error
         out.push(`Instagram: the direct upload was refused (${error.message}); sending a link to the video instead.`, '')
         const { videoId } = await graph.hostVideo({ bytes: reelBytes })
-        return ig.client.publishReelFromUrl({ videoUrl: await graph.videoUrl(videoId, { sleep }), caption: igCaption(caption), sleep })
+        return ig.client.publishReelFromUrl({ videoUrl: await graph.videoUrl(videoId, { sleep }), caption: reelCaption, sleep, thumbOffset })
       }
     }
     const { mediaId } = video ? await sendReel() : swipe ? await sendSlides() : await sendPicture()
