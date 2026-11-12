@@ -10635,6 +10635,22 @@
    "status": "posted",
    "postId": "1135130828909902",
    "commentId": "1135130828909902_2024070461624170"
+  },
+  {
+   "key": "2026-11-11|next:87154|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "next:87154",
+   "title": "Something About Us",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "87154",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794458116464,
+   "status": "claimed"
   }
  ],
  "health": {
