@@ -11261,6 +11261,22 @@
    "status": "posted",
    "postId": "1774647646945009",
    "commentId": "1774647646945009_2210345403197616"
+  },
+  {
+   "key": "2026-11-12|character:char:144674|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "character:char:144674",
+   "title": "Blue Period",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:144674",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794481920630,
+   "status": "claimed"
   }
  ],
  "health": {
