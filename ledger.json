@@ -11597,6 +11597,22 @@
    "status": "posted",
    "postId": "2209092310001098",
    "commentId": "2209092310001098_1531963213327232"
+  },
+  {
+   "key": "2026-11-12|out-now:199594:6:out|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "out-now:199594:6:out",
+   "title": "TETSURYO! Meet With Tetsudou Musume",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "199594:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794498173819,
+   "status": "claimed"
   }
  ],
  "health": {
