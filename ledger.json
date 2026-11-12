@@ -11315,6 +11315,22 @@
    "status": "posted",
    "postId": "1898968588217539",
    "commentId": "1898968588217539_997811510045628"
+  },
+  {
+   "key": "2026-11-12|next:173233|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "next:173233",
+   "title": "A Flame Reborn",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "173233",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794484630616,
+   "status": "claimed"
   }
  ],
  "health": {
