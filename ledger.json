@@ -10535,6 +10535,22 @@
     "fb": "2021625535132723",
     "ig": "18114347495130485"
    }
+  },
+  {
+   "key": "2026-11-11|clip-video:clip-blue-box-season-2-e05-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-video:clip-blue-box-season-2-e05-manhwaindex-03:full",
+   "title": "Blue Box Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-blue-box-season-2-e05-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794454334342,
+   "status": "claimed"
   }
  ],
  "health": {
