@@ -11679,6 +11679,22 @@
    "status": "posted",
    "postId": "1179049521470195",
    "commentId": "1179049521470195_1128595936815510"
+  },
+  {
+   "key": "2026-11-12|out-now:212503:6:out|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "out-now:212503:6:out",
+   "title": "The Iceblade Sorcerer Shall Rule the World II",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "212503:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794500990780,
+   "status": "claimed"
   }
  ],
  "health": {
