@@ -12208,6 +12208,22 @@
     "id": "17933808900164827",
     "at": 1794518876866
    }
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-red-river-e18-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-red-river-e18-manhwaindex-03:full",
+   "title": "Red River",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-red-river-e18-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794519177659,
+   "status": "claimed"
   }
  ],
  "health": {
