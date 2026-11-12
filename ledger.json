@@ -11409,6 +11409,22 @@
    "status": "posted",
    "postId": "1770415027752014",
    "commentId": "1770415027752014_1433294978918682"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-dragon-ball-super-beerus-e04-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-dragon-ball-super-beerus-e04-manhwaindex-01:full",
+   "title": "Dragon Ball Super: Beerus",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-dragon-ball-super-beerus-e04-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794489143940,
+   "status": "claimed"
   }
  ],
  "health": {
