@@ -11485,6 +11485,22 @@
    "status": "posted",
    "postId": "1679932286931852",
    "commentId": "1679932286931852_28840846892270481"
+  },
+  {
+   "key": "2026-11-12|character:char:120889|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "character:char:120889",
+   "title": "Girls' Last Tour",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:120889",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794492760764,
+   "status": "claimed"
   }
  ],
  "health": {
