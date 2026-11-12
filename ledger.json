@@ -10447,6 +10447,22 @@
     "fb": "1090062480742515",
     "ig": "18121428841762190"
    }
+  },
+  {
+   "key": "2026-11-11|clip-video:clip-the-exiled-heavy-knight-knows-how-to-game-the-system-e19-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "clip-video:clip-the-exiled-heavy-knight-knows-how-to-game-the-system-e19-manhwaindex-02:full",
+   "title": "The Exiled Heavy Knight Knows How to Game the System",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-the-exiled-heavy-knight-knows-how-to-game-the-system-e19-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794451453376,
+   "status": "claimed"
   }
  ],
  "health": {
