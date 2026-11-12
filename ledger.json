@@ -10465,6 +10465,29 @@
    "status": "posted",
    "postId": "1649300176741628",
    "commentId": "1649300176741628_1657278076099989"
+  },
+  {
+   "share": true,
+   "key": "2026-11-11|share:1433279022301597|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "share:1433279022301597",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1433279022301597",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1433279022301597",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "MAGICAL GIRL RAISING PROJECT restart",
+   "sourceFormat": "type:clip-video",
+   "link": "https://www.facebook.com/1433279022301597",
+   "message": "Seen this yet? From our sister Page, WhereAnime:",
+   "at": 1794452360964,
+   "status": "claimed"
   }
  ],
  "health": {
