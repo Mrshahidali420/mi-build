@@ -11813,6 +11813,22 @@
     "fb": "1116260217917971",
     "ig": "18497631022106276"
    }
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-renegade-immortal-e166-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-renegade-immortal-e166-manhwaindex-02:full",
+   "title": "Renegade Immortal",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-renegade-immortal-e166-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794504764865,
+   "status": "claimed"
   }
  ],
  "health": {
