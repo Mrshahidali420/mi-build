@@ -10301,6 +10301,22 @@
    "status": "posted",
    "postId": "1465738965666088",
    "commentId": "1465738965666088_2258806458384454"
+  },
+  {
+   "key": "2026-11-11|fact:fact:86890:wait|manhwaindex",
+   "day": "2026-11-11",
+   "slug": "fact:fact:86890:wait",
+   "title": "Blue Giant",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:86890:wait",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794446623103,
+   "status": "claimed"
   }
  ],
  "health": {
