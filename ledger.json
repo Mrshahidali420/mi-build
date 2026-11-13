@@ -14585,6 +14585,29 @@
    "status": "posted",
    "postId": "1829620658348217",
    "commentError": "POST /1829620658348217/comments failed: Unsupported post request. Object with ID '1829620658348217' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "share": true,
+   "key": "2026-11-13|share:1329988470202923_122120624379503689|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "share:1329988470202923_122120624379503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122120624379503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122120624379503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "ERASED",
+   "sourceFormat": "type:character",
+   "link": "https://www.facebook.com/1329988470202923/posts/122120624379503689",
+   "message": "Worth a look from our sister Page, WhereAnime:",
+   "at": 1794609291840,
+   "status": "claimed"
   }
  ],
  "health": {
