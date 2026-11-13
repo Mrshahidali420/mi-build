@@ -12750,6 +12750,23 @@
    "status": "posted",
    "postId": "1318170941390322_122124357009500964",
    "commentId": "122124357009500964_1088808744161109"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-12|clip-reel:clip-a-tale-of-the-secret-saint-e07-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-reel:clip-a-tale-of-the-secret-saint-e07-manhwaindex-03:short",
+   "title": "A Tale of the Secret Saint",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-a-tale-of-the-secret-saint-e07-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794539060363,
+   "status": "claimed"
   }
  ],
  "health": {
