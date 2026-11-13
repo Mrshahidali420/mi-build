@@ -13238,6 +13238,23 @@
    "status": "posted",
    "postId": "1318170941390322_122124416337500964",
    "commentId": "122124416337500964_1077979535249418"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-13|clip-reel:clip-tank-chair-e06-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-reel:clip-tank-chair-e06-manhwaindex-03:short",
+   "title": "TANK CHAIR",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-tank-chair-e06-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794556353088,
+   "status": "claimed"
   }
  ],
  "health": {
