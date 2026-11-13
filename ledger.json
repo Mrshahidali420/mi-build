@@ -13711,6 +13711,23 @@
    "status": "posted",
    "postId": "1450803940358886",
    "commentError": "POST /1450803940358886/comments failed: Unsupported post request. Object with ID '1450803940358886' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-13|clip-reel:clip-red-river-e18-manhwaindex-02:short|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-reel:clip-red-river-e18-manhwaindex-02:short",
+   "title": "Red River",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-red-river-e18-manhwaindex-02:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794573648640,
+   "status": "claimed"
   }
  ],
  "health": {
