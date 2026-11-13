@@ -14083,6 +14083,22 @@
    "status": "posted",
    "postId": "2118674585441544",
    "commentError": "POST /2118674585441544/comments failed: Unsupported post request. Object with ID '2118674585441544' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-11-13|out-now:186742:6:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:186742:6:out",
+   "title": "A Certain Dark Item",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "186742:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794587286439,
+   "status": "claimed"
   }
  ],
  "health": {
