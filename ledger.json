@@ -13770,6 +13770,22 @@
    "status": "posted",
    "postId": "4005228879618726",
    "commentId": "4005228879618726_1523924996455789"
+  },
+  {
+   "key": "2026-11-13|out-now:216895:7:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:216895:7:out",
+   "title": "Welsh & Shedar",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "216895:7:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794575758025,
+   "status": "claimed"
   }
  ],
  "health": {
