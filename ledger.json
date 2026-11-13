@@ -14645,6 +14645,22 @@
    "status": "posted",
    "postId": "1905766560411753",
    "commentId": "1905766560411753_1452766737031853"
+  },
+  {
+   "key": "2026-11-13|where:100293|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "where:100293",
+   "title": "The Duke of Death and His Maid",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "100293",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794612001371,
+   "status": "claimed"
   }
  ],
  "health": {
