@@ -12650,6 +12650,22 @@
    "status": "posted",
    "postId": "2853948301666020",
    "commentId": "2853948301666020_1927312724902473"
+  },
+  {
+   "key": "2026-11-12|fact:fact:37149:popular|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "fact:fact:37149:popular",
+   "title": "Toradora!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:37149:popular",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794535403084,
+   "status": "claimed"
   }
  ],
  "health": {
