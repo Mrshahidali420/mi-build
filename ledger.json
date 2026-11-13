@@ -14395,6 +14395,22 @@
    "status": "posted",
    "postId": "1769019444203162",
    "commentId": "1769019444203162_2238865767060343"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-please-excuse-my-younger-brothers-e19-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-please-excuse-my-younger-brothers-e19-manhwaindex-02:full",
+   "title": "Please Excuse My Younger Brothers",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-please-excuse-my-younger-brothers-e19-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794600259446,
+   "status": "claimed"
   }
  ],
  "health": {
