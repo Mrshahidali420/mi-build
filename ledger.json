@@ -13007,6 +13007,23 @@
    "at": 1794546935215,
    "status": "posted",
    "postId": "1318170941390322_122124383169500964"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-13|clip-reel:clip-blue-box-season-2-e05-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-reel:clip-blue-box-season-2-e05-manhwaindex-03:short",
+   "title": "Blue Box Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-blue-box-season-2-e05-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794547703605,
+   "status": "claimed"
   }
  ],
  "health": {
