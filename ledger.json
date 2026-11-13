@@ -14377,6 +14377,22 @@
     "id": "18133905550881276",
     "at": 1794598457796
    }
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-tougen-anki-nikko-kegon-falls-arc-e07-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-tougen-anki-nikko-kegon-falls-arc-e07-manhwaindex-03:full",
+   "title": "TOUGEN ANKI: Nikko Kegon Falls Arc",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-tougen-anki-nikko-kegon-falls-arc-e07-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794599358547,
+   "status": "claimed"
   }
  ],
  "health": {
