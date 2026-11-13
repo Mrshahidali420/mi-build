@@ -14709,6 +14709,22 @@
    "status": "posted",
    "postId": "2351287325684768",
    "commentId": "2351287325684768_2522773584879447"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-pok-mon-horizons-the-series-e156-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-pok-mon-horizons-the-series-e156-manhwaindex-02:full",
+   "title": "Pokémon Horizons: The Series",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-pok-mon-horizons-the-series-e156-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794613803367,
+   "status": "claimed"
   }
  ],
  "health": {
