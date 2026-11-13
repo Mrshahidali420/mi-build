@@ -14207,6 +14207,22 @@
    "at": 1794590939772,
    "status": "failed",
    "error": "GET /4221596701309943 failed: Unsupported get request. Object with ID '4221596701309943' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-a-certain-dark-item-e06-manhwaindex-03:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-a-certain-dark-item-e06-manhwaindex-03:full",
+   "title": "A Certain Dark Item",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-a-certain-dark-item-e06-manhwaindex-03:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794591240632,
+   "status": "claimed"
   }
  ],
  "health": {
