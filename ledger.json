@@ -14047,6 +14047,22 @@
     "fb": "1824398245428981",
     "ig": "18645863533037885"
    }
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-dark-machine-the-animation-e05-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-dark-machine-the-animation-e05-manhwaindex-01:full",
+   "title": "DARK MACHINE THE ANIMATION",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-dark-machine-the-animation-e05-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794585479401,
+   "status": "claimed"
   }
  ],
  "health": {
