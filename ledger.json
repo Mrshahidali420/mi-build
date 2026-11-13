@@ -12545,6 +12545,22 @@
    "status": "posted",
    "postId": "1158177886628875",
    "commentId": "1158177886628875_1460144006266457"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-fx-fighter-kurumi-chan-e07-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-fx-fighter-kurumi-chan-e07-manhwaindex-02:full",
+   "title": "FX Fighter Kurumi-chan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-fx-fighter-kurumi-chan-e07-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794531614154,
+   "status": "claimed"
   }
  ],
  "health": {
