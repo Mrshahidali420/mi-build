@@ -13297,6 +13297,22 @@
    "status": "posted",
    "postId": "1563963249097640",
    "commentId": "1563963249097640_1806542257464276"
+  },
+  {
+   "key": "2026-11-13|out-now:210482:8:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:210482:8:out",
+   "title": "STEEL BALL RUN JoJo's Bizarre Adventure 2nd - 3rd STAGE",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "210482:8:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794558462278,
+   "status": "claimed"
   }
  ],
  "health": {
