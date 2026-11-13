@@ -14667,6 +14667,23 @@
     "id": "18112436114363180",
     "at": 1794612001371
    }
+  },
+  {
+   "reel": true,
+   "key": "2026-11-13|clip-reel:clip-pok-mon-horizons-the-series-e156-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-reel:clip-pok-mon-horizons-the-series-e156-manhwaindex-03:short",
+   "title": "Pokémon Horizons: The Series",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-pok-mon-horizons-the-series-e156-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794612540693,
+   "status": "claimed"
   }
  ],
  "health": {
