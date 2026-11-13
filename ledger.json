@@ -13456,6 +13456,29 @@
    "status": "posted",
    "postId": "955250150754733",
    "commentId": "955250150754733_990966520200065"
+  },
+  {
+   "share": true,
+   "key": "2026-11-13|share:1396996168915552|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "share:1396996168915552",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1396996168915552",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1396996168915552",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Aoashi Season 2",
+   "sourceFormat": "reel:clip-reel",
+   "link": "https://www.facebook.com/reel/1396996168915552",
+   "message": "In case you missed it, from our sister Page, WhereAnime:",
+   "at": 1794564218554,
+   "status": "claimed"
   }
  ],
  "health": {
