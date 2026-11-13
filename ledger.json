@@ -13598,6 +13598,22 @@
    "status": "posted",
    "postId": "1454076096067574",
    "commentId": "1454076096067574_1856001455408153"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-magical-explorer-e07-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-magical-explorer-e07-manhwaindex-01:full",
+   "title": "Magical Explorer",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-magical-explorer-e07-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794569095922,
+   "status": "claimed"
   }
  ],
  "health": {
