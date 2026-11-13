@@ -14609,6 +14609,22 @@
    "at": 1794609291840,
    "status": "posted",
    "postId": "1318170941390322_122124662199500964"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-the-apothecary-diaries-season-3-e07-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-the-apothecary-diaries-season-3-e07-manhwaindex-01:full",
+   "title": "The Apothecary Diaries Season 3",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-the-apothecary-diaries-season-3-e07-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794610192720,
+   "status": "claimed"
   }
  ],
  "health": {
