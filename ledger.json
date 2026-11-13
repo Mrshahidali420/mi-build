@@ -13752,6 +13752,22 @@
    "status": "posted",
    "postId": "880352548469891",
    "commentId": "880352548469891_990824830758575"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-magic-knight-rayearth-2026-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-magic-knight-rayearth-2026-e06-manhwaindex-01:full",
+   "title": "Magic Knight Rayearth (2026)",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-magic-knight-rayearth-2026-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794574850845,
+   "status": "claimed"
   }
  ],
  "health": {
