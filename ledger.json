@@ -13580,6 +13580,22 @@
     "id": "18034042895907351",
     "at": 1794567886259
    }
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-romelia-war-chronicle-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-romelia-war-chronicle-e06-manhwaindex-01:full",
+   "title": "Romelia War Chronicle",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-romelia-war-chronicle-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794568187457,
+   "status": "claimed"
   }
  ],
  "health": {
