@@ -14001,6 +14001,22 @@
    "status": "posted",
    "postId": "1414074417556164",
    "commentId": "1414074417556164_1533175475535514"
+  },
+  {
+   "key": "2026-11-13|out-now:204650:7:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:204650:7:out",
+   "title": "TOUGEN ANKI: Nikko Kegon Falls Arc",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "204650:7:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794584405518,
+   "status": "claimed"
   }
  ],
  "health": {
