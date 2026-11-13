@@ -12983,6 +12983,29 @@
    "status": "posted",
    "postId": "2274789526711232",
    "commentId": "2274789526711232_1823357275373613"
+  },
+  {
+   "share": true,
+   "key": "2026-11-13|share:1329988470202923_122120391327503689|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "share:1329988470202923_122120391327503689",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "1329988470202923_122120391327503689",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "1329988470202923_122120391327503689",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": null,
+   "sourceFormat": "type:rating-day",
+   "link": "https://www.facebook.com/1329988470202923/posts/122120391327503689",
+   "message": "Seen this yet? From our sister Page, WhereAnime:",
+   "at": 1794546935215,
+   "status": "claimed"
   }
  ],
  "health": {
