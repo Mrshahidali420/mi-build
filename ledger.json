@@ -13438,6 +13438,22 @@
    "status": "posted",
    "postId": "1147990124259174",
    "commentId": "1147990124259174_1785580562509907"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-tougen-anki-nikko-kegon-falls-arc-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-tougen-anki-nikko-kegon-falls-arc-e06-manhwaindex-01:full",
+   "title": "TOUGEN ANKI: Nikko Kegon Falls Arc",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-tougen-anki-nikko-kegon-falls-arc-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794563317603,
+   "status": "claimed"
   }
  ],
  "health": {
