@@ -13220,6 +13220,22 @@
    "status": "posted",
    "postId": "1773913597032930",
    "commentId": "1773913597032930_1726461229006399"
+  },
+  {
+   "key": "2026-11-13|where:46816|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "where:46816",
+   "title": "Durarara!!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "46816",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794555581667,
+   "status": "claimed"
   }
  ],
  "health": {
