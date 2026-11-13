@@ -12860,6 +12860,22 @@
     "fb": "1128302496760434",
     "ig": "18107429570197726"
    }
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-a-certain-dark-item-e05-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-a-certain-dark-item-e05-manhwaindex-01:full",
+   "title": "A Certain Dark Item",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-a-certain-dark-item-e05-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794542242626,
+   "status": "claimed"
   }
  ],
  "health": {
