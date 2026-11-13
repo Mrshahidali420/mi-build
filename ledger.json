@@ -13184,6 +13184,22 @@
     "id": "18150980479561597",
     "at": 1794553472035
    }
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-reincarnated-as-a-sword-season-2-e05-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-reincarnated-as-a-sword-season-2-e05-manhwaindex-01:full",
+   "title": "Reincarnated as a Sword Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-reincarnated-as-a-sword-season-2-e05-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794553773150,
+   "status": "claimed"
   }
  ],
  "health": {
