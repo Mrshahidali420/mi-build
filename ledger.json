@@ -14413,6 +14413,22 @@
    "status": "posted",
    "postId": "2311374382771307",
    "commentId": "2311374382771307_1157712836595636"
+  },
+  {
+   "key": "2026-11-13|character:char:283698|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "character:char:283698",
+   "title": "The Swordmaster's Son",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:283698",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794601167124,
+   "status": "claimed"
   }
  ],
  "health": {
