@@ -13002,23 +13002,15 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-12",
-  "at": 1794459794909,
+  "day": "2026-11-13",
+  "at": 1794546925313,
   "list": [
    {
-    "id": 120335,
-    "name": "Ann Takamaki",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b120335-122Vh3RaM4ZK.png",
-    "favourites": 755,
-    "mediaId": 98652,
-    "voice": null
-   },
-   {
-    "id": 311243,
-    "name": "Tasuku Tsubakino",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/b311243-HwLsSTluPcL7.jpg",
-    "favourites": 496,
-    "mediaId": 135083,
+    "id": 1085,
+    "name": "Kaname Tousen",
+    "image": "https://s4.anilist.co/file/anilistcdn/character/large/1085.jpg",
+    "favourites": 332,
+    "mediaId": 30012,
     "voice": null
    }
   ]
