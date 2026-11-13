@@ -12878,6 +12878,22 @@
    "status": "posted",
    "postId": "1155944783479020",
    "commentId": "1155944783479020_986310050705989"
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-red-river-e18-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-red-river-e18-manhwaindex-01:full",
+   "title": "Red River",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-red-river-e18-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794543149791,
+   "status": "claimed"
   }
  ],
  "health": {
