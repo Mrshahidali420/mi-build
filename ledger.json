@@ -14549,6 +14549,22 @@
    "status": "posted",
    "postId": "1318170941390322_122124619281500964",
    "commentId": "122124619281500964_1666442608319687"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-firefly-wedding-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-firefly-wedding-e06-manhwaindex-01:full",
+   "title": "Firefly Wedding",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-firefly-wedding-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794607481824,
+   "status": "claimed"
   }
  ],
  "health": {
