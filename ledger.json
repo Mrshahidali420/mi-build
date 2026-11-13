@@ -13693,6 +13693,22 @@
    "status": "posted",
    "postId": "1318170941390322_122124480129500964",
    "commentId": "122124480129500964_1172638968772037"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-dandivine-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-dandivine-e06-manhwaindex-01:full",
+   "title": "Dandivine",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-dandivine-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794572882212,
+   "status": "claimed"
   }
  ],
  "health": {
