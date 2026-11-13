@@ -14243,6 +14243,22 @@
    "status": "posted",
    "postId": "1130090836333058",
    "commentId": "1130090836333058_4417680631788229"
+  },
+  {
+   "key": "2026-11-13|out-now:178083:7:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:178083:7:out",
+   "title": "Tokyo Revengers: War of the Three Titans Arc",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "178083:7:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794593042552,
+   "status": "claimed"
   }
  ],
  "health": {
