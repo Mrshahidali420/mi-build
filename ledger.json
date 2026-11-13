@@ -13906,6 +13906,22 @@
    "status": "posted",
    "postId": "1012679628587286",
    "commentId": "1012679628587286_1577258934434882"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-uncle-s-obsession-with-cute-things-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-uncle-s-obsession-with-cute-things-e06-manhwaindex-01:full",
+   "title": "Uncle's Obsession with Cute Things",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-uncle-s-obsession-with-cute-things-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794580618140,
+   "status": "claimed"
   }
  ],
  "health": {
