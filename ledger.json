@@ -13616,6 +13616,22 @@
    "status": "posted",
    "postId": "1348896240565625",
    "commentId": "1348896240565625_3676337519198475"
+  },
+  {
+   "key": "2026-11-13|out-now:165159:140:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:165159:140:out",
+   "title": "BEYBLADE X",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "165159:140:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794569997281,
+   "status": "claimed"
   }
  ],
  "health": {
