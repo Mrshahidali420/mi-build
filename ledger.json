@@ -13847,6 +13847,22 @@
    "status": "posted",
    "postId": "1666022791593709",
    "commentId": "1666022791593709_1140784765268260"
+  },
+  {
+   "key": "2026-11-13|out-now:195516:7:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:195516:7:out",
+   "title": "The Apothecary Diaries Season 3",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "195516:7:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794578633329,
+   "status": "claimed"
   }
  ],
  "health": {
