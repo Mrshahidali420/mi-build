@@ -12614,6 +12614,22 @@
     "fb": "29051068134521467",
     "ig": "18121128136952972"
    }
+  },
+  {
+   "key": "2026-11-12|clip-video:clip-tank-chair-e06-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-12",
+   "slug": "clip-video:clip-tank-chair-e06-manhwaindex-02:full",
+   "title": "TANK CHAIR",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-tank-chair-e06-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794533593760,
+   "status": "claimed"
   }
  ],
  "health": {
