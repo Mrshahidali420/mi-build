@@ -15289,6 +15289,22 @@
    "status": "posted",
    "postId": "2230656044496761",
    "commentId": "2230656044496761_1844668533232842"
+  },
+  {
+   "key": "2026-11-14|where:135083|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "where:135083",
+   "title": "WIND BREAKER",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "135083",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794639188893,
+   "status": "claimed"
   }
  ],
  "health": {
