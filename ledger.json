@@ -16215,6 +16215,22 @@
    "status": "posted",
    "postId": "1413138680900912",
    "commentId": "1413138680900912_1146880924550268"
+  },
+  {
+   "key": "2026-11-14|out-now:202250:7:out|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "out-now:202250:7:out",
+   "title": "Magic Repo Man: Dumped by My Party, I’ll Cash In With a Cute Support Fairy to Become the Strongest!",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "202250:7:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794674118959,
+   "status": "claimed"
   }
  ],
  "health": {
