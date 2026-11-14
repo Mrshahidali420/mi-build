@@ -15982,6 +15982,22 @@
    "at": 1794662981786,
    "status": "failed",
    "error": "GET /2283113552251887 failed: Unsupported get request. Object with ID '2283113552251887' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-11-14|clip-video:clip-a-good-day-to-ascend-e20-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "clip-video:clip-a-good-day-to-ascend-e20-manhwaindex-02:full",
+   "title": "A Good Day to Ascend",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-a-good-day-to-ascend-e20-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794663282852,
+   "status": "claimed"
   }
  ],
  "health": {
