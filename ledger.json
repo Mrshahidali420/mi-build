@@ -15710,6 +15710,22 @@
    "status": "posted",
    "postId": "1318170941390322_122124885453500964",
    "commentId": "122124885453500964_1721610256227088"
+  },
+  {
+   "key": "2026-11-14|next:78151|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "next:78151",
+   "title": "World Trigger",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "78151",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794653554480,
+   "status": "claimed"
   }
  ],
  "health": {
