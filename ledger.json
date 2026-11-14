@@ -16179,6 +16179,22 @@
     "id": "18148731901603247",
     "at": 1794671405343
    }
+  },
+  {
+   "key": "2026-11-14|character:char:173331|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "character:char:173331",
+   "title": "Kubo Won't Let Me Be Invisible",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:173331",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794672306226,
+   "status": "claimed"
   }
  ],
  "health": {
