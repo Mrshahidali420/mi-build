@@ -15028,6 +15028,22 @@
    "status": "posted",
    "postId": "1008527794925172",
    "commentId": "1008527794925172_2202740637259916"
+  },
+  {
+   "key": "2026-11-13|next:162190|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "next:162190",
+   "title": "The Genius Medicinal Mage",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "162190",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794628359380,
+   "status": "claimed"
   }
  ],
  "health": {
