@@ -15887,6 +15887,23 @@
    "status": "posted",
    "postId": "1795168338424481",
    "commentId": "1795168338424481_3482180971954491"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-14|clip-reel:clip-the-vermilion-mask-e06-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "clip-reel:clip-the-vermilion-mask-e06-manhwaindex-03:short",
+   "title": "The Vermilion Mask",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-the-vermilion-mask-e06-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794660094389,
+   "status": "claimed"
   }
  ],
  "health": {
