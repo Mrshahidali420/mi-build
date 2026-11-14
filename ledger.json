@@ -14781,6 +14781,22 @@
    "status": "posted",
    "postId": "1147982167679491",
    "commentId": "1147982167679491_1861669028349103"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-i-m-dating-a-dark-summoner-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-i-m-dating-a-dark-summoner-e06-manhwaindex-01:full",
+   "title": "I'm Dating a Dark Summoner",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-i-m-dating-a-dark-summoner-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794616629709,
+   "status": "claimed"
   }
  ],
  "health": {
