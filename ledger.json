@@ -15833,6 +15833,22 @@
     "id": "18136471330819717",
     "at": 1794657213305
    }
+  },
+  {
+   "key": "2026-11-14|where:117853|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "where:117853",
+   "title": "The Tunnel to Summer, the Exit of Goodbyes",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "117853",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794657514524,
+   "status": "claimed"
   }
  ],
  "health": {
