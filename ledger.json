@@ -15165,18 +15165,9 @@
   }
  },
  "birthdays": {
-  "day": "2026-11-13",
-  "at": 1794546925313,
-  "list": [
-   {
-    "id": 1085,
-    "name": "Kaname Tousen",
-    "image": "https://s4.anilist.co/file/anilistcdn/character/large/1085.jpg",
-    "favourites": 332,
-    "mediaId": 30012,
-    "voice": null
-   }
-  ]
+  "day": "2026-11-14",
+  "at": 1794633770250,
+  "list": []
  },
  "ratings": {
   "at": 1794571969307,
