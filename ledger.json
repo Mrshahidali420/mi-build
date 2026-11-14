@@ -14938,6 +14938,22 @@
     "id": "18645985795004299",
     "at": 1794622948849
    }
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-red-river-e19-manhwaindex-02:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-red-river-e19-manhwaindex-02:full",
+   "title": "Red River",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-red-river-e19-manhwaindex-02:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794623849567,
+   "status": "claimed"
   }
  ],
  "health": {
