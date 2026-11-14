@@ -14763,6 +14763,22 @@
    "at": 1794615428145,
    "status": "failed",
    "error": "GET /1699277965153525 failed: Unsupported get request. Object with ID '1699277965153525' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-pok-mon-horizons-the-series-e156-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-pok-mon-horizons-the-series-e156-manhwaindex-01:full",
+   "title": "Pokémon Horizons: The Series",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-pok-mon-horizons-the-series-e156-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794615728875,
+   "status": "claimed"
   }
  ],
  "health": {
