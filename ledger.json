@@ -14916,6 +14916,22 @@
    "status": "posted",
    "postId": "4154563918169565",
    "commentId": "4154563918169565_1437405405240925"
+  },
+  {
+   "key": "2026-11-13|out-now:199353:9:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:199353:9:out",
+   "title": "Dawang Raoming 3",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "199353:9:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794622948849,
+   "status": "claimed"
   }
  ],
  "health": {
