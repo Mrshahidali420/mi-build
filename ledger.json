@@ -15581,6 +15581,22 @@
     "fb": "1319769646913298",
     "ig": "18063925436535210"
    }
+  },
+  {
+   "key": "2026-11-14|clip-video:clip-reincarnated-as-a-sword-season-2-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "clip-video:clip-reincarnated-as-a-sword-season-2-e06-manhwaindex-01:full",
+   "title": "Reincarnated as a Sword Season 2",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-reincarnated-as-a-sword-season-2-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794648862018,
+   "status": "claimed"
   }
  ],
  "health": {
