@@ -14974,6 +14974,22 @@
    "status": "posted",
    "postId": "2544578986034940",
    "commentId": "2544578986034940_4559161447563281"
+  },
+  {
+   "key": "2026-11-13|out-now:137683:179:out|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "out-now:137683:179:out",
+   "title": "Soul Land 2: The Peerless Tang Clan",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "137683:179:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794625651115,
+   "status": "claimed"
   }
  ],
  "health": {
