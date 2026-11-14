@@ -15810,6 +15810,23 @@
    "status": "posted",
    "postId": "1318170941390322_122124898353500964",
    "commentId": "122124898353500964_2250608302187151"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-14|clip-reel:clip-the-apothecary-diaries-season-3-e07-manhwaindex-02:short|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "clip-reel:clip-the-apothecary-diaries-season-3-e07-manhwaindex-02:short",
+   "title": "The Apothecary Diaries Season 3",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-the-apothecary-diaries-season-3-e07-manhwaindex-02:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794657213305,
+   "status": "claimed"
   }
  ],
  "health": {
