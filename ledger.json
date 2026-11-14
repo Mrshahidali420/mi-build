@@ -15499,6 +15499,22 @@
     "fb": "2688723141579848",
     "ig": "18152026123603163"
    }
+  },
+  {
+   "key": "2026-11-14|clip-video:clip-firefly-wedding-e05-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "clip-video:clip-firefly-wedding-e05-manhwaindex-01:full",
+   "title": "Firefly Wedding",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-firefly-wedding-e05-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794645980860,
+   "status": "claimed"
   }
  ],
  "health": {
