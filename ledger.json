@@ -15371,6 +15371,22 @@
    "status": "posted",
    "postId": "2252790528913256",
    "commentId": "2252790528913256_2075497906502460"
+  },
+  {
+   "key": "2026-11-14|fact:fact:30696:run|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "fact:fact:30696:run",
+   "title": "Hayate The Combat Butler",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:fact",
+   "type": "fact",
+   "item": "fact:30696:run",
+   "gapDays": 300,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794642027574,
+   "status": "claimed"
   }
  ],
  "health": {
