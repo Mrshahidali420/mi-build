@@ -14745,6 +14745,23 @@
    "status": "posted",
    "postId": "1318170941390322_122124747807500964",
    "commentId": "122124747807500964_1684488246706717"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-13|clip-reel:clip-tokyo-revengers-war-of-the-three-titans-arc-e07-manhwaindex-01:short|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-reel:clip-tokyo-revengers-war-of-the-three-titans-arc-e07-manhwaindex-01:short",
+   "title": "Tokyo Revengers: War of the Three Titans Arc",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-tokyo-revengers-war-of-the-three-titans-arc-e07-manhwaindex-01:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794615428145,
+   "status": "claimed"
   }
  ],
  "health": {
