@@ -15756,6 +15756,22 @@
     "fb": "4502938376590997",
     "ig": "17922661941242540"
    }
+  },
+  {
+   "key": "2026-11-14|where:104503|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "where:104503",
+   "title": "Trapped in a Dating Sim: The World of Otome Games is Tough for Mobs",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "104503",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 1,
+   "at": 1794654633355,
+   "status": "claimed"
   }
  ],
  "health": {
