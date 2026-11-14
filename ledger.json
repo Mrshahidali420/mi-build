@@ -16157,6 +16157,22 @@
    "status": "posted",
    "postId": "1318170941390322_122124945567500964",
    "commentId": "122124945567500964_1866135871486774"
+  },
+  {
+   "key": "2026-11-14|where:151457|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "where:151457",
+   "title": "The Overpowered Newbie",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:where",
+   "type": "where",
+   "item": "151457",
+   "gapDays": 30,
+   "titleGap": true,
+   "variant": 0,
+   "at": 1794671405343,
+   "status": "claimed"
   }
  ],
  "health": {
