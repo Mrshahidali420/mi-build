@@ -15964,6 +15964,23 @@
    "status": "posted",
    "postId": "1318170941390322_122124916923500964",
    "commentId": "122124916923500964_1818555329394518"
+  },
+  {
+   "reel": true,
+   "key": "2026-11-14|clip-reel:clip-a-good-day-to-ascend-e20-manhwaindex-03:short|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "clip-reel:clip-a-good-day-to-ascend-e20-manhwaindex-03:short",
+   "title": "A Good Day to Ascend",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "reel:clip-reel",
+   "type": "clip-reel",
+   "item": "clip-a-good-day-to-ascend-e20-manhwaindex-03:short",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 0,
+   "at": 1794662981786,
+   "status": "claimed"
   }
  ],
  "health": {
