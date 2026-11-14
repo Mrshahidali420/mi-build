@@ -16081,6 +16081,22 @@
    "status": "posted",
    "postId": "4049165495377036",
    "commentId": "4049165495377036_2158805921417024"
+  },
+  {
+   "key": "2026-11-14|out-now:199007:6:out|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "out-now:199007:6:out",
+   "title": "#I'm Looking For a Zombie",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:out-now",
+   "type": "out-now",
+   "item": "199007:6:out",
+   "gapDays": 300,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794667795816,
+   "status": "claimed"
   }
  ],
  "health": {
