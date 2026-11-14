@@ -15253,6 +15253,22 @@
     "fb": "2648798142248162",
     "ig": "18121564438762481"
    }
+  },
+  {
+   "key": "2026-11-14|clip-video:clip-super-psychic-policeman-chojo-e06-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "clip-video:clip-super-psychic-policeman-chojo-e06-manhwaindex-01:full",
+   "title": "Super Psychic Policeman Chojo",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-super-psychic-policeman-chojo-e06-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794637386650,
+   "status": "claimed"
   }
  ],
  "health": {
