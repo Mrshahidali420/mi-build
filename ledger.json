@@ -15110,6 +15110,22 @@
    "status": "posted",
    "postId": "1318170941390322_122124798255500964",
    "commentId": "122124798255500964_1639443004331860"
+  },
+  {
+   "key": "2026-11-13|clip-video:clip-the-exiled-heavy-knight-knows-how-to-game-the-system-e19-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-13",
+   "slug": "clip-video:clip-the-exiled-heavy-knight-knows-how-to-game-the-system-e19-manhwaindex-01:full",
+   "title": "The Exiled Heavy Knight Knows How to Game the System",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-the-exiled-heavy-knight-knows-how-to-game-the-system-e19-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794631969052,
+   "status": "claimed"
   }
  ],
  "health": {
