@@ -16139,6 +16139,22 @@
    "status": "posted",
    "postId": "1318170941390322_122124942789500964",
    "commentId": "122124942789500964_1132892125897267"
+  },
+  {
+   "key": "2026-11-14|next:85976|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "next:85976",
+   "title": "Overlord",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:next",
+   "type": "next",
+   "item": "85976",
+   "gapDays": 60,
+   "titleGap": true,
+   "variant": 2,
+   "at": 1794670504448,
+   "status": "claimed"
   }
  ],
  "health": {
