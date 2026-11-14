@@ -15668,6 +15668,29 @@
     "fb": "1475690551330304",
     "ig": "18104377682345257"
    }
+  },
+  {
+   "share": true,
+   "key": "2026-11-14|share:2211221949426696|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "share:2211221949426696",
+   "title": null,
+   "page": "manhwaindex",
+   "mix": "share",
+   "format": "share",
+   "type": "share",
+   "item": "2211221949426696",
+   "gapDays": 90,
+   "titleGap": false,
+   "sharedFrom": "2211221949426696",
+   "sharedPage": "whereanime",
+   "sharedRepo": "Mrshahidali420/where-build",
+   "sourceTitle": "Dandivine",
+   "sourceFormat": "reel:clip-reel",
+   "link": "https://www.facebook.com/reel/2211221949426696",
+   "message": "In case you missed it, from our sister Page, WhereAnime:",
+   "at": 1794651752013,
+   "status": "claimed"
   }
  ],
  "health": {
