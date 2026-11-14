@@ -15335,6 +15335,22 @@
     "fb": "1168406742311981",
     "igError": "the Instagram reel upload failed: HTTP 400 Request processing failed"
    }
+  },
+  {
+   "key": "2026-11-14|clip-video:clip-magic-knight-rayearth-2026-e05-manhwaindex-01:full|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "clip-video:clip-magic-knight-rayearth-2026-e05-manhwaindex-01:full",
+   "title": "Magic Knight Rayearth (2026)",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:clip-video",
+   "type": "clip-video",
+   "item": "clip-magic-knight-rayearth-2026-e05-manhwaindex-01:full",
+   "gapDays": 30,
+   "titleGap": false,
+   "variant": 1,
+   "at": 1794640218500,
+   "status": "claimed"
   }
  ],
  "health": {
