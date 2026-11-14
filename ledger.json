@@ -16103,6 +16103,22 @@
     "id": "17922289161466767",
     "at": 1794667795816
    }
+  },
+  {
+   "key": "2026-11-14|character:char:192792|manhwaindex",
+   "day": "2026-11-14",
+   "slug": "character:char:192792",
+   "title": "Eleceed",
+   "page": "manhwaindex",
+   "mix": "type",
+   "format": "type:character",
+   "type": "character",
+   "item": "char:192792",
+   "gapDays": 180,
+   "titleGap": false,
+   "variant": 2,
+   "at": 1794668696526,
+   "status": "claimed"
   }
  ],
  "health": {
